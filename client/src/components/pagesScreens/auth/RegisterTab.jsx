@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import InputComponents from "./../../InputComponents";
-import ButtonComponeent from "./../../ButtonComponeent";
+import InputComponents from "../../InputComponents";
+import ButtonComponeent from "../../ButtonComponeent";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import axios from "axios";

@@ -2,8 +2,8 @@ import React from "react";
 import { Tabs } from "antd";
 import styled from "styled-components";
 import MainContainer from "./../../MainContainer";
-import LoginComponent from "./login";
-import RegisterComponent from "./Register";
+import LoginComponent from "./loginTab";
+import RegisterComponent from "./RegisterTab";
 
 const { TabPane } = Tabs;
 

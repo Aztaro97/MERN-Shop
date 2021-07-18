@@ -13,6 +13,7 @@ import CompanyComponent from "./components/pagesScreens/company/tabs";
 import CartComponent from "./components/pagesScreens/cart/cart";
 import CheckOutComponenet from "./components/pagesScreens/checkout/checkout"
 import ThankComponenet from "./components/pagesScreens/checkout/thankPage"
+import RegisterComponenet from "./components/pagesScreens/auth/RegisterPage"
 
 
 import {Provider} from "react-redux";
@@ -33,6 +34,7 @@ function App() {
         <Route path="/cart" component={CartComponent} />
         <Route path="/checkout" component={CheckOutComponenet} />
         <Route path="/thank" component={ThankComponenet} />
+        <Route path="/register" component={RegisterComponenet} />
       </Switch>
       </MainContainer>
       <Footer />
