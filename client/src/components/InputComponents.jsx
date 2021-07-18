@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from "styled-components"
 
-function InputComponents({type, name, placeholder, id, value, onChange}) {
+function InputComponents({type, name, placeholder, id, value, onChange, style}) {
     return (
-        <Input type={type} id={id} name={name} placeholder={placeholder} value={value} onChange={onChange} />
+        <Input type={type} id={id} name={name} placeholder={placeholder} value={value} onChange={onChange} style={style} />
     )
 }
 
@@ -15,13 +15,13 @@ const Input = styled.input`
     list-style: none;
     width: 100%;
     min-width: 0;
-    padding: 4px 11px;
-    color: #2c3e50;
+    padding: 6px 11px;
+    color: var(--silver-color);
     font-size: 14px;
-    height: 2.3rem;
-    border: 2px solid var(--orange-color);
+    height: 3rem;
+    border: 3px solid var(--background-color);
     outline: none;
-    border-radius: 5px;
+    border-radius: 10px;
     transition: all 0.3s;
     background: #fff;
 

@@ -16,10 +16,12 @@ const ViewProducts = () => {
   const [visible, setVisible] = useState(false);
 
   return (
-    <div>
+    <>
       <Row>
-        <Brand />
-        <SliderE defaultValue={30} onChange={(value) => console.log(value)} />
+        <FilterForm>
+          <Brand />
+          <SliderE defaultValue={30} onChange={(value) => console.log(value)} />
+        </FilterForm>
       </Row>
       <Row>
         <Grid>
@@ -36,12 +38,12 @@ const ViewProducts = () => {
                 add to cart
               </Button>
               <Modal
-                title="Modal 1000px width"
                 centered
                 visible={visible}
                 onOk={() => setVisible(false)}
                 onCancel={() => setVisible(false)}
-                width={2000}
+                width={1300}
+                footer={null}
               >
                 <ModalContent />
               </Modal>
@@ -56,7 +58,19 @@ const ViewProducts = () => {
               <h2 className="price">
                 <span>60.00</span> dr
               </h2>
-              <Button>add to cart</Button>
+              <Button type="button" onClick={() => setVisible(true)}>
+                add to cart
+              </Button>
+              <Modal
+                centered
+                visible={visible}
+                onOk={() => setVisible(false)}
+                onCancel={() => setVisible(false)}
+                width={1300}
+                footer={null}
+              >
+                <ModalContent />
+              </Modal>
             </div>
           </Card>
           <Card>
@@ -133,24 +147,33 @@ const ViewProducts = () => {
           </Card>
         </Grid>
       </Row>
-    </div>
+    </>
   );
 };
 
+const Container = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+`;
 const Row = styled.div`
   display: block;
+  width: 100%;
   /* flex-direction: column; */
 
-  & img {
-    display: block;
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-  }
+  
 `;
 
+const FilterForm = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  height:6rem
+`;
 const SliderE = styled(Slider)`
   /* background: red; */
+  width: 200px;
 
   & .ant-slider-handle:hover {
     border-color: var(--orange-color);
@@ -164,6 +187,7 @@ const SliderE = styled(Slider)`
   }
 `;
 const Grid = styled.div`
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 1.5rem;
@@ -179,6 +203,12 @@ const Grid = styled.div`
 const Card = styled.div`
   border: 1px solid var(--border-color);
   border-radius: 10px;
+  & img {
+    display: block;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
 
   & .card-body {
     text-align: center;

@@ -12,12 +12,12 @@ function Tabulation() {
     <Tab>
       <MainContainer>
         <TabsE defaultActiveKey="1" centered size="default">
-          <TabPaneE tab="View Products" key="1">
+          <TabPane tab="View Products" key="1">
             <ViewProducts />
-          </TabPaneE>
-          <TabPaneE tab="Company Information" key="2">
+          </TabPane>
+          <TabPane tab="Company Information" key="2">
             <CompanyInfo />
-          </TabPaneE>
+          </TabPane>
         </TabsE>
       </MainContainer>
     </Tab>
@@ -48,10 +48,5 @@ const TabsE = styled(Tabs)`
   }
 `;
 
-const TabPaneE = styled(TabPane)`
-  color: var(--silver-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+
 export default Tabulation;

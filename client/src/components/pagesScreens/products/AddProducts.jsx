@@ -3,12 +3,13 @@ import styled from "styled-components";
 // import ImagesUploader from "react-images-uploader";
 // import "react-images-uploader/styles.css";
 // import "react-images-uploader/font.css";
-import { Checkbox, Collapse, Upload } from "antd";
+import { Collapse, Upload } from "antd";
 import { FaPlus } from "react-icons/fa";
 import ImgCrop from "antd-img-crop";
 import axios from "axios";
 import InputC from "../../InputComponents";
-import ButtonC from "../../ButtonComponeent"
+import ButtonC from "../../ButtonComponeent";
+import InputCheck from "../../CheckBoxComponent"
 
 const { Panel } = Collapse;
 // import SelectItem from "./SelectItem"
@@ -178,10 +179,10 @@ const FormRight = () => {
 function AddProduct() {
   return (
     <Container>
-      <HeaderProduct>
+      <Header>
         <a href="#/">Back</a>
         <h2>Add your products</h2>
-      </HeaderProduct>
+      </Header>
       <BodyProduct>
         <ColLeft>
           <Card>
@@ -349,7 +350,7 @@ const Container = styled.div`
   margin: 0 auto;
 `;
 
-const HeaderProduct = styled.div`
+const Header = styled.div`
   height: 5rem;
   width: 100%;
 
@@ -358,12 +359,14 @@ const HeaderProduct = styled.div`
     color: #000;
     font-weight: 700;
     position: relative;
-    top: 1.25rem;
+    top: 2rem;
   }
 
   & h2 {
     text-align: center;
     color: #aaaaac;
+    font-weight: 700;
+    margin-bottom: 0;
   }
 `;
 const BodyProduct = styled.div`
@@ -419,26 +422,7 @@ const RowCheck = styled.div`
   align-items: center;
   padding: 0.3rem 0;
 `;
-const InputCheck = styled(Checkbox)`
-  color: #aaaaaa !important;
-  text-transform: uppercase;
 
-  /* & span span span span .span {
-  color: #C58787 !important;
-  } */
-  & span .ant-checkbox-inner {
-    border-color: #c58787;
-  }
-  & span .ant-checkbox-wrapper:hover {
-    border: none;
-    outline: none;
-    box-shadow: none;
-  }
-  & .ant-checkbox-checked .ant-checkbox-inner {
-    background: #c58787 !important;
-    border: none;
-  }
-`;
 
 const GridRow = styled.div`
   display: grid;
