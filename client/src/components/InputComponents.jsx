@@ -17,7 +17,7 @@ const Input = styled.input`
     min-width: 0;
     padding: 6px 11px;
     color: var(--silver-color);
-    font-size: 14px;
+    font-size: .8rem;
     height: 3rem;
     border: 3px solid var(--background-color);
     outline: none;
@@ -35,6 +35,9 @@ const Input = styled.input`
     &:hover {
         border-color: var( --orange-color);
     border-right-width: 1px !important;
+    }
+    @media only screen and (max-width: 900px) {
+        /* height: 2rem; */
     }
 `
 export default InputComponents

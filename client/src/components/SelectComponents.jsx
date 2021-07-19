@@ -18,7 +18,6 @@ function SelectCOmponents({ options, placeholder, style, name, id , className}) 
       className={className}
       onChange={handleChange}
       placeholder={placeholder}
-      className="select"
     >
       {options && options.length > 0
         ? options.map((elem) => {

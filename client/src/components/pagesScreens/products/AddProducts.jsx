@@ -4,12 +4,16 @@ import styled from "styled-components";
 // import "react-images-uploader/styles.css";
 // import "react-images-uploader/font.css";
 import { Collapse, Upload } from "antd";
+import { useFormik } from "formik";
 import { FaPlus } from "react-icons/fa";
+import {GoPlus} from "react-icons/go"
 import ImgCrop from "antd-img-crop";
 import axios from "axios";
 import InputC from "../../InputComponents";
 import ButtonC from "../../ButtonComponeent";
-import InputCheck from "../../CheckBoxComponent"
+import InputCheck from "../../CheckBoxComponent";
+
+import { useDispatch, useSelector } from "react-redux";
 
 const { Panel } = Collapse;
 // import SelectItem from "./SelectItem"
@@ -71,106 +75,252 @@ const FormRight = () => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Card>
-        <Row>
-          <InputC
-            type="text"
-            name="productName"
-            id="productName"
-            name="productName"
-            placeholder="PRODUCT NAME"
-          />
-        </Row>
-        <Row>
-          <TextArea
-            type="text"
-            name="descript"
-            id="descript"
-            name="descript"
-            placeholder="Describe your Product"
-          />
-        </Row>
-        <Row>
-          <Label>Add Photo for your Product</Label>
-          <ImgCrop rotate>
-            <Upload
-              listType="picture-card"
-              beforeUpload={() => false}
-              onChange={onChange}
-              onPreview={onPreview}
-              fileList={fileList}
-              name="image-files"
-            >
-              {fileList.length < 5 && "+ Upload"}
-            </Upload>
-          </ImgCrop>
-        </Row>
-
-        <Row>
-          <Label>variants</Label>
-          <h5
-            style={{
-              color: "#aaaaac",
-              marginBottom: "1rem",
-              textTransform: "uppercase",
-            }}
+      <Row>
+        <InputC
+          type="text"
+          name="productName"
+          id="productName"
+          name="productName"
+          placeholder="PRODUCT NAME"
+        />
+      </Row>
+      <Row>
+        <TextArea
+          type="text"
+          name="descript"
+          id="descript"
+          name="descript"
+          placeholder="Describe your Product"
+        />
+      </Row>
+      <Row>
+        <Label>Add Photo for your Product</Label>
+        <ImgCrop rotate>
+          <Upload
+            listType="picture-card"
+            beforeUpload={() => false}
+            onChange={onChange}
+            onPreview={onPreview}
+            fileList={fileList}
+            name="image-files"
           >
-            Add variant if this product comes in multiple versions like
-            different sizes or colors
-          </h5>
-          <Card style={{ border: ".8px solid #c58787" }}>
-            <Todo>
+            {fileList.length < 5 && <UploadIcon><GoPlus size={30} /></UploadIcon>}
+          </Upload>
+        </ImgCrop>
+      </Row>
+
+      <Row>
+        <Label>variants</Label>
+        <h5
+          style={{
+            color: "#aaaaac",
+            marginBottom: "1rem",
+            textTransform: "uppercase",
+          }}
+        >
+          Add variant if this product comes in multiple versions like different
+          sizes or colors
+        </h5>
+        <Card style={{ border: ".8px solid #c58787" }}>
+          {/* <Todo>
               <p>color</p>
               <FaPlus className="icons" />
-            </Todo>
+            </Todo> */}
+          <Drop>
+            <p>size</p>
+            <FaPlus className="icons" />
+          </Drop>
+          <Drop>
+            <p>finish</p>
+            <FaPlus className="icons" />
+          </Drop>
+          <Drop>
+            <p>material</p>
+            <FaPlus className="icons" />
+          </Drop>
+          <Drop>
+            <p>style</p>
+            <FaPlus className="icons" />
+          </Drop>
+        </Card>
+      </Row>
+
+      <Card>
+        <Row>
+          <Label>Add value for size</Label>
+          <Card style={{ border: ".8px solid #c58787" }}>
             <Drop>
-              <p>size</p>
-              <FaPlus className="icons" />
-            </Drop>
-            <Drop>
-              <p>finish</p>
-              <FaPlus className="icons" />
-            </Drop>
-            <Drop>
-              <p>material</p>
-              <FaPlus className="icons" />
-            </Drop>
-            <Drop>
-              <p>style</p>
+              <p>add another value</p>
               <FaPlus className="icons" />
             </Drop>
           </Card>
         </Row>
+        <Row>
+          <Label>size</Label>
+          <InputC type="number" placeholder="500 GRAM" />
+          <Column>
+            <div>
+              <Label>price</Label>
+              <InputC type="number" placeholder="AED 25.00" />
+            </div>
+            <div>
+              <Label>compare at price</Label>
+              <InputC type="number" placeholder="AED 30.00" />
+            </div>
+          </Column>
+        </Row>
+      </Card>
+      <ButtonC type="submit" style={{ margin: "1.3rem auto 0" }}>
+        save & share
+      </ButtonC>
+      <Link href="#">ADD ANOTHER PRODUCT</Link>
+    </Form>
+  );
+};
 
+const FormShipping = () => {
+  return (
+    <Form>
+      <Row>
+        <Label>Creat code</Label>
+        <InputC type="text" name="" id="" />
+      </Row>
+      <Row>
+        <Label type="text" name="" id="">
+          Selectservice
+        </Label>
         <Card>
-          <Row>
-            <Label>Add value for size</Label>
-            <Card style={{ border: ".8px solid #c58787" }}>
-              <Drop>
-                <p>add another value</p>
-                <FaPlus className="icons" />
-              </Drop>
-            </Card>
-          </Row>
-          <Row>
-            <Label>size</Label>
-            <InputC type="number" placeholder="500 GRAM" />
-            <Column>
-              <div>
-                <Label>price</Label>
-                <InputC type="number" placeholder="AED 25.00" />
-              </div>
-              <div>
-                <Label>compare at price</Label>
-                <InputC type="number" placeholder="AED 30.00" />
-              </div>
-            </Column>
-          </Row>
+          <RowCheck>
+            <InputCheck
+              type="checkbox"
+              id="sellbyAU79CODE"
+              name="sellbyAU79CODE"
+            >
+              sell by <span className="span">AU79CODE</span>
+            </InputCheck>
+            {/* <LabelCheck for="sellbyAU79CODE">
+                    
+                  </LabelCheck> */}
+          </RowCheck>
+          <RowCheck>
+            <InputCheck
+              type="checkbox"
+              id="DeliverywithAU79CODE"
+              name="DeliverywithAU79CODE"
+            >
+              Delivery with <span className="span">AU79CODE</span>
+            </InputCheck>
+          </RowCheck>
         </Card>
-        <ButtonC type="submit" style={{ marginTop: "1.3rem" }}>
-          save & share
-        </ButtonC>
-        <Link href="#">ADD ANOTHER PRODUCT</Link>
+      </Row>
+      <Row>
+        <Label>Creat zone</Label>
+      </Row>
+      <Card>
+        <Row>
+          <Label for="RateName">Shipping From</Label>
+          <InputC type="text" name="RateName" id="RateName" name="RateName" />
+        </Row>
+        <Row>
+          <Label for="ShippingTo">Shipping To</Label>
+          <InputC
+            type="text"
+            name="ShippingTo"
+            id="ShippingTo"
+            name="ShippingTo"
+          />
+        </Row>
+        <Row>
+          <RowCheck>
+            <InputCheck
+              type="checkbox"
+              id="United emirates"
+              name="United emirates"
+            >
+              United emirates
+            </InputCheck>
+          </RowCheck>
+          <RowCheck>
+            <InputCheck
+              type="checkbox"
+              id="nameofemirate1"
+              name="nameofemirate1"
+            >
+              name of emirate
+            </InputCheck>
+          </RowCheck>
+          <RowCheck>
+            <InputCheck
+              type="checkbox"
+              id="nameofemirate2"
+              name="nameofemirate2"
+            >
+              name of emirate
+            </InputCheck>
+          </RowCheck>
+          <RowCheck>
+            <InputCheck
+              type="checkbox"
+              id="nameofemirate3"
+              name="nameofemirate3"
+            >
+              name of emirate
+            </InputCheck>
+          </RowCheck>
+          <RowCheck>
+            <InputCheck type="checkbox" id="other" name="other">
+              ITALY
+            </InputCheck>
+          </RowCheck>
+        </Row>
+        <ButtonC style={{ margin:"0 auto"}}>save</ButtonC>
+      </Card>
+    </Form>
+  );
+};
+
+const FormRate = () => {
+  return (
+    <Form>
+      <Row>
+        <Label style={{ marginTop: "1.4rem" }}>Add Rate</Label>
+      </Row>
+      <Card>
+        <Row>
+          <Label for="RateName">Rate Name</Label>
+          <InputC type="text" name="RateName" id="RateName" name="RateName" />
+        </Row>
+        <Row>
+          <Label for="">Shipping To</Label>
+          <GridRow>
+            <p className="title">name of city</p>
+            <p className="title">price</p>
+            <p className="title">condition</p>
+          </GridRow>
+          <hr style={{ background: "#aaaaac", marginBottom: ".7rem" }} />
+          <GridRow>
+            <p>Dubai</p>
+            <p>free</p>
+            <p>ad 50.00</p>
+          </GridRow>
+          <GridRow>
+            <p>al sharqa</p>
+            <p>20</p>
+            <p>add condition</p>
+          </GridRow>
+          <GridRow>
+            <p>al fougera</p>
+            <p>20</p>
+            <p>add condition</p>
+          </GridRow>
+          <GridRow>
+            <p>al ain</p>
+            <p>0</p>
+            <p>add condition</p>
+          </GridRow>
+        </Row>
+
+        <ButtonC style={{ margin:"0 auto"}}>save</ButtonC>
       </Card>
     </Form>
   );
@@ -184,165 +334,21 @@ function AddProduct() {
         <h2>Add your products</h2>
       </Header>
       <BodyProduct>
-        <ColLeft>
-          <Card>
-            <Row>
-              <Label>Creat code</Label>
-              <InputC type="text" name="" id="" />
-            </Row>
-            <Row>
-              <Label type="text" name="" id="">
-                Selectservice
-              </Label>
-              <Card>
-                <RowCheck>
-                  <InputCheck
-                    type="checkbox"
-                    id="sellbyAU79CODE"
-                    name="sellbyAU79CODE"
-                  >
-                    sell by <span className="span">AU79CODE</span>
-                  </InputCheck>
-                  {/* <LabelCheck for="sellbyAU79CODE">
-                    
-                  </LabelCheck> */}
-                </RowCheck>
-                <RowCheck>
-                  <InputCheck
-                    type="checkbox"
-                    id="DeliverywithAU79CODE"
-                    name="DeliverywithAU79CODE"
-                  >
-                    Delivery with <span className="span">AU79CODE</span>
-                  </InputCheck>
-                </RowCheck>
-              </Card>
-            </Row>
-            <Row>
-              <Label>Creat zone</Label>
-            </Row>
-            <Card>
-              <Row>
-                <Label for="RateName">Shipping From</Label>
-                <InputC
-                  type="text"
-                  name="RateName"
-                  id="RateName"
-                  name="RateName"
-                />
-              </Row>
-              <Row>
-                <Label for="ShippingTo">Shipping To</Label>
-                <InputC
-                  type="text"
-                  name="ShippingTo"
-                  id="ShippingTo"
-                  name="ShippingTo"
-                />
-              </Row>
-              <Row>
-                <RowCheck>
-                  <InputCheck
-                    type="checkbox"
-                    id="United emirates"
-                    name="United emirates"
-                  >
-                    United emirates
-                  </InputCheck>
-                </RowCheck>
-                <RowCheck>
-                  <InputCheck
-                    type="checkbox"
-                    id="nameofemirate1"
-                    name="nameofemirate1"
-                  >
-                    name of emirate
-                  </InputCheck>
-                </RowCheck>
-                <RowCheck>
-                  <InputCheck
-                    type="checkbox"
-                    id="nameofemirate2"
-                    name="nameofemirate2"
-                  >
-                    name of emirate
-                  </InputCheck>
-                </RowCheck>
-                <RowCheck>
-                  <InputCheck
-                    type="checkbox"
-                    id="nameofemirate3"
-                    name="nameofemirate3"
-                  >
-                    name of emirate
-                  </InputCheck>
-                </RowCheck>
-                <RowCheck>
-                  <InputCheck type="checkbox" id="other" name="other">
-                    ITALY
-                  </InputCheck>
-                </RowCheck>
-              </Row>
-              <ButtonC>save</ButtonC>
-            </Card>
-
-            {/* Lst One */}
-            <Row>
-              <Label style={{ marginTop: "1.4rem" }}>Add Rate</Label>
-            </Row>
-            <Card>
-              <Row>
-                <Label for="RateName">Rate Name</Label>
-                <InputC
-                  type="text"
-                  name="RateName"
-                  id="RateName"
-                  name="RateName"
-                />
-              </Row>
-              <Row>
-                <Label for="">Shipping To</Label>
-                <GridRow>
-                  <p className="title">name of city</p>
-                  <p className="title">price</p>
-                  <p className="title">condition</p>
-                </GridRow>
-                <hr style={{ background: "#aaaaac", marginBottom: ".7rem" }} />
-                <GridRow>
-                  <p>Dubai</p>
-                  <p>free</p>
-                  <p>ad 50.00</p>
-                </GridRow>
-                <GridRow>
-                  <p>al sharqa</p>
-                  <p>20</p>
-                  <p>add condition</p>
-                </GridRow>
-                <GridRow>
-                  <p>al fougera</p>
-                  <p>20</p>
-                  <p>add condition</p>
-                </GridRow>
-                <GridRow>
-                  <p>al ain</p>
-                  <p>0</p>
-                  <p>add condition</p>
-                </GridRow>
-              </Row>
-
-              <ButtonC>save</ButtonC>
-            </Card>
-          </Card>
-        </ColLeft>
+        <Col>
+          <FormShipping />
+          <FormRate />
+        </Col>
 
         {/* ////////////////////////   COLLUMN RIGHT   /////////// */}
-        <ColRight>
+        <Col>
           <FormRight />
-        </ColRight>
+        </Col>
       </BodyProduct>
     </Container>
   );
 }
+
+
 
 const Container = styled.div`
   padding: 1rem;
@@ -372,7 +378,7 @@ const Header = styled.div`
 const BodyProduct = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 1.5rem;
+  grid-gap: 2rem;
 
   @media only screen and (max-width: 768px) {
     display: block;
@@ -382,8 +388,11 @@ const BodyProduct = styled.div`
     }
   }
 `;
-const ColLeft = styled.div``;
-const ColRight = styled.div``;
+const Col = styled.div`
+border: 1px solid #cccbcb;
+  border-radius: 10px;
+  padding: 1.25rem;
+`;
 const Card = styled.div`
   border: 1px solid #cccbcb;
   border-radius: 10px;
@@ -422,7 +431,6 @@ const RowCheck = styled.div`
   align-items: center;
   padding: 0.3rem 0;
 `;
-
 
 const GridRow = styled.div`
   display: grid;
@@ -469,6 +477,19 @@ const Drop = styled.div`
   }
 `;
 
-const Form = styled.form``;
+const Form = styled.form`
+  
+`;
+
+
+const UploadIcon = styled.div`
+width: 100%;
+height: 100%;
+color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--orange-color);
+`
 
 export default AddProduct;
