@@ -3,7 +3,7 @@ import styled from "styled-components";
 // import ImagesUploader from "react-images-uploader";
 // import "react-images-uploader/styles.css";
 // import "react-images-uploader/font.css";
-import { Collapse, Upload } from "antd";
+import { Collapse, Upload, Modal } from "antd";
 import { useFormik } from "formik";
 import { FaPlus } from "react-icons/fa";
 import {GoPlus} from "react-icons/go"
@@ -32,14 +32,35 @@ const Todo = () => {
 };
 
 const FormRight = () => {
-  const [fileList, setFileList] = useState([{}]);
+  const [fileList, setFileList] = useState([]);
 
-  const onChange = ({ fileList: newFileList }) => {
+  const handleChange = ({ fileList: newFileList }) => {
     setFileList(newFileList);
-    console.log(fileList);
+    console.log(fileList)
   };
 
-  const onPreview = async (file) => {
+  const handleUpload = async (e) => {
+    // e.preventDefault();
+
+    try {
+      let formData = new FormData();
+    // add one or more of your files in FormData
+    // again, the original file is located at the `originFileObj` key
+    formData.append("image-files", fileList[0].originFileObj);
+
+    const res = await axios.post("/api/upload/", formData);
+
+    console.log(res)
+      
+    } catch (error) {
+      console.log(error)
+    }
+
+  
+    
+  };
+
+  const handlePreview = async (file) => {
     let src = file.url;
     if (!src) {
       src = await new Promise((resolve) => {
@@ -56,21 +77,7 @@ const FormRight = () => {
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-
-    let formData = new FormData();
-    // add one or more of your files in FormData
-    // again, the original file is located at the `originFileObj` key
-    formData.append("image-files", fileList[0].originFileObj);
-
-    axios
-      .post("/api/upload", formData)
-      .then((res) => {
-        console.log("res", res);
-      })
-      .catch((err) => {
-        console.log("err", err);
-      });
+    
   };
 
   return (
@@ -95,18 +102,33 @@ const FormRight = () => {
       </Row>
       <Row>
         <Label>Add Photo for your Product</Label>
-        <ImgCrop rotate>
+
+        <Upload
+          // action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+          listType="picture-card"
+          fileList={fileList}
+          onPreview={handlePreview}
+          onChange={handleUpload}
+          onRemove={() => console.log("Image remove")}
+          name="imgfiles"
+        >
+        {fileList.length < 5 && <UploadIcon><GoPlus size={30} /></UploadIcon>}
+
+        </Upload>
+      
+        {/* <ImgCrop rotate>
           <Upload
             listType="picture-card"
             beforeUpload={() => false}
-            onChange={onChange}
-            onPreview={onPreview}
+            onChange={handleUpload}
+            onPreview={handlePreview}
+            onRemove={() => console.log("Image remove")}
             fileList={fileList}
-            name="image-files"
+            name="imgfiles"
           >
             {fileList.length < 5 && <UploadIcon><GoPlus size={30} /></UploadIcon>}
           </Upload>
-        </ImgCrop>
+        </ImgCrop> */}
       </Row>
 
       <Row>

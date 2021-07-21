@@ -34,7 +34,7 @@ function App() {
           <Route path="/payement" component={PayementStep} />
         </Switch>
       </MainContainer>
-      <Footer />
+      {/* <Footer /> */}
     </Router>
   );
 }

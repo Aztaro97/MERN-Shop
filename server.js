@@ -5,15 +5,13 @@ const morgan = require("morgan");
 const cors = require("cors");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware.js");
 const connectDB = require("./config/db.js");
-const multer = require("multer");
-const cloudinary = require("cloudinary").v2;
 const fs = require("fs");
-// const uuidv4  = require("uuid/v4");
+const fileUpload = require('express-fileupload')
 
 const productRoutes = require("./routes/productRoutes.js");
 const userRoutes = require("./routes/userRoutes.js");
 const orderRoutes = require("./routes/orderRoutes.js");
-const uploadRoutes = require("./routes/uploadRoutes")
+const uploadRoutes = require("./routes/upload")
 
 dotenv.config();
 
@@ -27,6 +25,9 @@ if (process.env.NODE_ENV === "development") {
 
 app.use(express.json());
 app.use(cors());
+app.use(fileUpload({
+  useTempFiles: true
+}))
 
 app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);

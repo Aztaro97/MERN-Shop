@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { FaUser, FaShoppingCart } from "react-icons/fa";
 import { Popover } from "antd";
-import MAinContainer from "../MainContainer"
+import MAinContainer from "../MainContainer";
 
 function NavBar() {
   const ProfileContent = (
@@ -18,56 +18,110 @@ function NavBar() {
     </Content>
   );
   return (
-    <MAinContainer>
-        <NavContainer>
-      <Lang to="/arab">Arabic</Lang>
-      <Nav>
-        <NavItem>
-          <Popover
-            placement="bottomRight"
-            content={ProfileContent}
-            trigger="hover"
-          >
+      <NavContainer>
+        <Lang to="/arab">Arabic</Lang>
+        <Nav>
+          <NavItem>
+            <Popover
+              placement="bottomRight"
+              content={ProfileContent}
+              trigger="hover"
+            >
+              <NavLink>
+                <FaUser className="icon" />
+              </NavLink>
+            </Popover>
+          </NavItem>
+          <NavItem>
             <NavLink>
-              <FaUser className="icon" />
+              <FaShoppingCart className="icon" />
+              <span className="count">10</span>
             </NavLink>
-          </Popover>
-        </NavItem>
-        <NavItem>
-          <NavLink>
-            <FaShoppingCart className="icon" />
-            <span className="count">10</span>
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink className="menuButton">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-          </NavLink>
-        </NavItem>
-      </Nav>
-    </NavContainer>
-    <Hr />
-    </MAinContainer>
+          </NavItem>
+          <NavItem>
+            <NavLink className="menuButton menuBtn">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </NavLink>
+          </NavItem>
+          <nav class="toggleMenu" id="menu">
+        <div class="row">
+            <div class="col">
+                <div class="item">
+                    <button onclick="homePage(0)" class="btn itemLink text-uppercase weight-600">
+                        Home
+                    </button>
+                </div>
+            </div>
+            <div class="col">
+                <div class="item">
+                    <a onclick="homePage(1)" class="itemLink text-uppercase weight-600">
+                        Services
+                    </a>
+                    <ul class="subLinks">
+                        <li><a href="#" onclick="menuToggling()" class="subLink text-uppercase weight-500">Advertising</a></li>
+                        <li><a href="#" onclick="menuToggling()" class="subLink text-uppercase weight-500">marketing</a></li>
+                        <li><a href="#" onclick="menuToggling()" class="subLink text-uppercase weight-500">E-commerce</a></li>
+                        <li><a href="./pos.html" onclick="menuToggling()" class="subLink text-uppercase weight-500">Pos</a></li>
+                        <li><a href="#" onclick="menuToggling()" class="subLink text-uppercase weight-500">Print</a></li>
+                        <li><a href="#" onclick="menuToggling()" class="subLink text-uppercase weight-500">Photography</a></li>
+                        <li><a href="#" onclick="menuToggling()" class="subLink text-uppercase weight-500">design</a></li>
+                        <li><a href="#" onclick="menuToggling()" class="subLink text-uppercase weight-500">Delivery</a></li>
+                        <li><a href="#" onclick="menuToggling()" class="subLink text-uppercase weight-500">Programming</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col">
+                <div class="item">
+                    <a onclick="homePage(2)" class="itemLink text-uppercase weight-600">
+                        About Us
+                    </a>
+                </div>
+            </div>
+            <div class="col">
+                <div class="item">
+                    <a onclick="homePage(3)" class="itemLink text-uppercase weight-600">
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="menuShapes">
+            <div class="a a1"></div>
+            <div class="a a2"></div>
+            <div class="a a3"></div>
+            <div class="a a4"></div>
+            <div class="s s1"></div>
+            <div class="s s2"></div>
+            <div class="s s3"></div>
+            <div class="s s4"></div>
+        </div>
+    </nav>
+        </Nav>
+      </NavContainer>
   );
 }
 const Hr = styled.div`
-    background: #cecece ;
-    height:.1px;
-`
+  background: #cecece;
+  height: 0.1px;
+`;
 const NavContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 0;
-  
+  padding: 2rem 3rem  ;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  z-index: 10000;
 `;
 const Nav = styled.ul`
   display: flex;
@@ -77,7 +131,7 @@ const Nav = styled.ul`
   margin-bottom: 0;
   position: relative;
   right: 1.8rem;
-  top: .6rem;
+  top: 0.6rem;
 `;
 const NavItem = styled.li`
   padding: 0 1rem;
@@ -85,11 +139,9 @@ const NavItem = styled.li`
 const NavLink = styled(Link)`
   text-decoration: none;
   color: var(--silver-color);
-
   & .icon {
     font-size: 1.4rem;
   }
-
   &.menuButton {
     position: absolute;
     top: -1rem;
@@ -118,7 +170,6 @@ const NavLink = styled(Link)`
   &.menuButton:hover {
     background: #f7f7f7;
   }
-
   & .count {
     position: relative;
     bottom: 1rem;
@@ -128,7 +179,6 @@ const NavLink = styled(Link)`
     padding: 4px;
     border-radius: 50%;
   }
-
   &:hover {
     color: var(--orange-color);
   }
@@ -141,7 +191,6 @@ const Lang = styled(Link)`
   border-radius: 30px;
   transition: 0.3s all ease-in-out;
   letter-spacing: 3px;
-
   &:hover {
     color: #fff;
     background: var(--orange-color);
@@ -165,12 +214,10 @@ const LinkP = styled(Link)`
   margin: 0.7rem 0;
   text-align: center;
   transition: 0.2s all ease-in;
-
   &:hover {
     color: #fff;
     background: var(--orange-color);
   }
-
   &.btn_logOut {
     margin-top: 1rem;
     background: var(--orange-color);

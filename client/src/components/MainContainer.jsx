@@ -10,14 +10,14 @@ function MainContainer({children}) {
 }
 
 const Container = styled.div`
-    max-width:1300px;
+    /* max-width:1300px; */
     margin: 0 auto;
-    @media only screen and (max-width:2500px) {
+    /* @media only screen and (max-width:2500px) {
         padding: 0 4rem;
     }
     @media only screen and (max-width:890px) {
         padding: 0 1rem;
-    }
+    } */
 `
 
 export default MainContainer;
