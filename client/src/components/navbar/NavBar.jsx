@@ -51,57 +51,57 @@ function NavBar() {
               <span></span>
             </NavLink>
           </NavItem>
-          <nav class="toggleMenu" id="menu">
-        <div class="row">
-            <div class="col">
-                <div class="item">
-                    <button onclick="homePage(0)" class="btn itemLink text-uppercase weight-600">
+          <nav className="toggleMenu" id="menu">
+        <div className="row">
+            <div className="col">
+                <div className="item">
+                    <button onClick="homePage(0)" className="btn itemLink text-uppercase weight-600">
                         Home
                     </button>
                 </div>
             </div>
-            <div class="col">
-                <div class="item">
-                    <a onclick="homePage(1)" class="itemLink text-uppercase weight-600">
+            <div className="col">
+                <div className="item">
+                    <a onClick="homePage(1)" className="itemLink text-uppercase weight-600">
                         Services
                     </a>
-                    <ul class="subLinks">
-                        <li><a href="#" onclick="menuToggling()" class="subLink text-uppercase weight-500">Advertising</a></li>
-                        <li><a href="#" onclick="menuToggling()" class="subLink text-uppercase weight-500">marketing</a></li>
-                        <li><a href="#" onclick="menuToggling()" class="subLink text-uppercase weight-500">E-commerce</a></li>
-                        <li><a href="./pos.html" onclick="menuToggling()" class="subLink text-uppercase weight-500">Pos</a></li>
-                        <li><a href="#" onclick="menuToggling()" class="subLink text-uppercase weight-500">Print</a></li>
-                        <li><a href="#" onclick="menuToggling()" class="subLink text-uppercase weight-500">Photography</a></li>
-                        <li><a href="#" onclick="menuToggling()" class="subLink text-uppercase weight-500">design</a></li>
-                        <li><a href="#" onclick="menuToggling()" class="subLink text-uppercase weight-500">Delivery</a></li>
-                        <li><a href="#" onclick="menuToggling()" class="subLink text-uppercase weight-500">Programming</a></li>
+                    <ul className="subLinks">
+                        <li><a href="#" onClick="menuToggling()" className="subLink text-uppercase weight-500">Advertising</a></li>
+                        <li><a href="#" onClick="menuToggling()" className="subLink text-uppercase weight-500">marketing</a></li>
+                        <li><a href="#" onClick="menuToggling()" className="subLink text-uppercase weight-500">E-commerce</a></li>
+                        <li><a href="./pos.html" onClick="menuToggling()" className="subLink text-uppercase weight-500">Pos</a></li>
+                        <li><a href="#" onClick="menuToggling()" className="subLink text-uppercase weight-500">Print</a></li>
+                        <li><a href="#" onClick="menuToggling()" className="subLink text-uppercase weight-500">Photography</a></li>
+                        <li><a href="#" onClick="menuToggling()" className="subLink text-uppercase weight-500">design</a></li>
+                        <li><a href="#" onClick="menuToggling()" className="subLink text-uppercase weight-500">Delivery</a></li>
+                        <li><a href="#" onClick="menuToggling()" className="subLink text-uppercase weight-500">Programming</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="col">
-                <div class="item">
-                    <a onclick="homePage(2)" class="itemLink text-uppercase weight-600">
+            <div className="col">
+                <div className="item">
+                    <a onClick="homePage(2)" className="itemLink text-uppercase weight-600">
                         About Us
                     </a>
                 </div>
             </div>
-            <div class="col">
-                <div class="item">
-                    <a onclick="homePage(3)" class="itemLink text-uppercase weight-600">
+            <div className="col">
+                <div className="item">
+                    <a onClick="homePage(3)" className="itemLink text-uppercase weight-600">
                         Contact Us
                     </a>
                 </div>
             </div>
         </div>
-        <div class="menuShapes">
-            <div class="a a1"></div>
-            <div class="a a2"></div>
-            <div class="a a3"></div>
-            <div class="a a4"></div>
-            <div class="s s1"></div>
-            <div class="s s2"></div>
-            <div class="s s3"></div>
-            <div class="s s4"></div>
+        <div className="menuShapes">
+            <div className="a a1"></div>
+            <div className="a a2"></div>
+            <div className="a a3"></div>
+            <div className="a a4"></div>
+            <div className="s s1"></div>
+            <div className="s s2"></div>
+            <div className="s s3"></div>
+            <div className="s s4"></div>
         </div>
     </nav>
         </Nav>
