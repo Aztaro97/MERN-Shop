@@ -1,6 +1,5 @@
 /* Created by Mohamed Elshamhout  */
 
-
 /*
 mainColor : #0b1b34  ;
 secColor:#c68787  ;
@@ -14,6 +13,54 @@ SFCompactText-Bold / SFCompactText-Medium / SFCompactText-Regular
 *fonts Size classes   
   .largestTitle/ .largeText  /.normalText
  */
+
+/* ///////////////////////////////////   DOT BAR STYLE  /////////////////////// */
+.button__bar {
+    display: flex;
+    justify-content:center;
+    width:100%;
+    position:relative;
+    bottom: 3rem;
+    border-radius: 40px;
+    text-align: center;
+  }
+  
+  .button__bar li {
+    list-style: none;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 3px;
+    padding: 0;
+  }
+  
+  .button__bar li button {
+    border: none;
+    background: #a53692;
+    color: transparent;
+    cursor: pointer;
+    display: block;
+    height: 15px;
+    width: 15px;
+    border-radius: 7.5px;
+  }
+  
+  .button__bar li.slick-active button {
+    background-color: rgb(8, 255, 140);
+  }
+  
+  .button__bar li button:hover,
+  .button__bar li button:focus {
+    background-color: var(--orange-color);
+    outline: 0;
+  }
+  
+  .slick-slide img {
+    border: 5px solid #fff;
+    display: block;
+    margin: auto;
+  }
+  
+
 
  @font-face {
     font-family: enFont;
@@ -57,7 +104,7 @@ SFCompactText-Bold / SFCompactText-Medium / SFCompactText-Regular
 }
 
 .mainColor {
-    color: #0b1b34 !important;
+    color: #fff !important;
 }
 
 .secColor {
@@ -393,9 +440,7 @@ main {
 }
 
 .introSlider {
-    background-image: url(../../../img/pictures/back1.png);
-    background-position: center center;
-    background-size: cover;
+    
 }
 
 .introSlider .container {

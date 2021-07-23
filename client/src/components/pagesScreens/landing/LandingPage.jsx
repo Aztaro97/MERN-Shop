@@ -1,65 +1,10 @@
 import React from "react";
-import Slider from "react-slick";
-import styled from "styled-components";
 import "./landing.css";
 
-import bg_landing1 from "../../../img/bg_landing.png"
-
-const Slide = styled.div`
-  height: 700px;
-
-  & img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-  }
-  
-
-  & h1 {
-    color:#fff;
-    width: 100%;
-    height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 99999;
-  }
+import HomeSlider from "./homeSlider"
 
 
-`;
 
-const HomeSection = () => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    fade: true,
-    speed: 500,
-    autoplay: true,
-      autoplaySpeed: 4000,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    appendDots: dots => <ul style={{width:"50px", height:"50px",background:"red"}}>1</ul>,
-    customPaging: i => (
-      <div className="ft-slick__dots--custom" style={{width:"50px", height:"50px",background:"red"}}>
-        <div className="loading" />
-      </div>
-    )
-  };
-  return (
-    <div>
-      <Slider {...settings}>
-        <Slide>
-          <img src={bg_landing1} alt="" />
-          <h1>Home</h1>
-        </Slide>
-        <Slide>
-          <img src="https://images.unsplash.com/photo-1529460608-bc455fccd5a4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1190&q=80" alt="" />
-          <h1>Pays</h1>
-        </Slide>
-      </Slider>
-    </div>
-  );
-};
 
 function LandingPage() {
   return (
@@ -92,7 +37,16 @@ function LandingPage() {
       </div>
 
       <section class="introSlider page">
-      <HomeSection />
+        <HomeSlider />
+      </section>
+      <section class="homeServices page">
+        <HomeSlider />
+      </section>
+      <section class="homeAbout page">
+        <HomeSlider />
+      </section>
+      <section class="homeContact page">
+        <HomeSlider />
       </section>
 
       {/* <section class="introSlider page">
