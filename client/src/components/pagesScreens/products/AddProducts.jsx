@@ -374,7 +374,7 @@ function AddProduct() {
 
 const Container = styled.div`
   padding: 1rem;
-  max-width: 1200px;
+  max-width: var(--max-width);
   margin: 0 auto;
 `;
 

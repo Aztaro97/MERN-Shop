@@ -52,7 +52,7 @@ function CompletePayement() {
 
 const Border = styled.div`
     border: 1px solid var(--orange-color);
-    padding:1rem;
+    padding:1rem 2rem;
     border-radius: 20px;
     margin-bottom: 2rem;
 
@@ -180,6 +180,8 @@ const SectionRight = () => {
 };
 
 const Container = styled.div`
+  max-width: var(--max-width);
+  margin: 0 auto;
   padding: 3rem 0;
 `;
 

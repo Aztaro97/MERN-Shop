@@ -16,7 +16,7 @@ const ViewProducts = () => {
   const [visible, setVisible] = useState(false);
 
   return (
-    <>
+    <Container>
       <Row>
         <FilterForm>
           <Brand />
@@ -147,14 +147,14 @@ const ViewProducts = () => {
           </Card>
         </Grid>
       </Row>
-    </>
+    </Container>
   );
 };
 
 const Container = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+  max-width: var(--max-width) ;
+  /* display: flex;
+  flex-direction: column; */
 `;
 const Row = styled.div`
   display: block;

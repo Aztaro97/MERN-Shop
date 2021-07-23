@@ -14,6 +14,7 @@ import BgImg from "../../../img/Background.png";
 
 function companyInfo() {
   return (
+    <Container>
     <Grid>
       <Col>
         <img src={BgImg} alt="" />
@@ -146,8 +147,14 @@ function companyInfo() {
         </ImageGallerie>
       </Col>
     </Grid>
+    </Container>
   );
 }
+
+const Container = styled.div`
+  max-width: var(--max-width);
+  margin: 0 auto;
+`
 
 const Grid = styled.div`
   display: grid;
@@ -247,9 +254,7 @@ const Row = styled.div`
     }
   }
 `;
-const Container = styled.div`
-  padding: 1rem;
-`;
+
 
 const ImageGallerie = styled.div`
     display: grid;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Carousel, Image } from "antd";
 import styled from "styled-components";
-import Container from "../../MainContainer";
+// import Container from "../../MainContainer";
 import { AiOutlineClose } from "react-icons/ai";
 import {Link} from "react-router-dom"
 import ButtonC from "../../ButtonComponeent";
@@ -111,6 +111,12 @@ function CartComponent() {
     </Container>
   );
 }
+
+const Container = styled.div`
+  max-width: var(--max-width);
+  margin: 0 auto;
+`
+
 
 const Row = styled.div`
     & hr {
