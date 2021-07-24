@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Carousel, Image } from "antd";
 import styled from "styled-components";
-// import Container from "../../MainContainer";
+import MainContainer from "../../MainContainer";
 import { AiOutlineClose } from "react-icons/ai";
 import {Link} from "react-router-dom"
 import ButtonC from "../../ButtonComponeent";
@@ -34,7 +34,7 @@ import picture from "../../../img/productimg.png";
 function CartComponent() {
   const [qty, setQty] = useState(1);
   return (
-    <Container>
+    <MainContainer>
       <Header>
         <a href="#/">Back</a>
         <h2>Shoping Cart</h2>
@@ -108,7 +108,7 @@ function CartComponent() {
             </div>
         </Row>
       </CartContent>
-    </Container>
+    </MainContainer>
   );
 }
 

@@ -14,7 +14,7 @@ import BgImg from "../../../img/Background.png";
 
 function companyInfo() {
   return (
-    <Container>
+    <>
     <Grid>
       <Col>
         <img src={BgImg} alt="" />
@@ -147,7 +147,7 @@ function companyInfo() {
         </ImageGallerie>
       </Col>
     </Grid>
-    </Container>
+    </>
   );
 }
 

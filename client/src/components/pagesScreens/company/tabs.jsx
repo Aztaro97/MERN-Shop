@@ -9,8 +9,8 @@ const { TabPane } = Tabs;
 
 function Tabulation() {
   return (
-    <Tab>
-      <MainContainer>
+    <MainContainer>
+      <Tab>
         <TabsE defaultActiveKey="1" centered size="default">
           <TabPane tab="View Products" key="1">
             <ViewProducts />
@@ -19,8 +19,8 @@ function Tabulation() {
             <CompanyInfo />
           </TabPane>
         </TabsE>
-      </MainContainer>
-    </Tab>
+      </Tab>
+    </MainContainer>
   );
 }
 
@@ -47,6 +47,5 @@ const TabsE = styled(Tabs)`
     color: var(--orange-color) !important;
   }
 `;
-
 
 export default Tabulation;

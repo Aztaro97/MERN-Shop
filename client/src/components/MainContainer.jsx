@@ -1,17 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function MainContainer({children}) {
+function MainContainer({children, style}) {
     return (
-        <Container>
+        <Container style={style}>
             {children}
         </Container>
     )
 }
 
 const Container = styled.div`
-    max-width:1300px;
-    margin: 0 auto;
+    max-width:var(--max-width);
+    margin: 7rem auto 0;
     /* @media only screen and (max-width:2500px) {
         padding: 0 4rem;
     }

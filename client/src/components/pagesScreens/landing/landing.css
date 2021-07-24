@@ -20,10 +20,12 @@ SFCompactText-Bold / SFCompactText-Medium / SFCompactText-Regular
     justify-content:center;
     width:100%;
     position:relative;
-    bottom: 3rem;
+    bottom: 4rem;
     border-radius: 40px;
     text-align: center;
+    z-index: 99999;
   }
+
   
   .button__bar li {
     list-style: none;
@@ -35,7 +37,7 @@ SFCompactText-Bold / SFCompactText-Medium / SFCompactText-Regular
   
   .button__bar li button {
     border: none;
-    background: #a53692;
+    background: var(--orange-color);
     color: transparent;
     cursor: pointer;
     display: block;
@@ -50,14 +52,13 @@ SFCompactText-Bold / SFCompactText-Medium / SFCompactText-Regular
   
   .button__bar li button:hover,
   .button__bar li button:focus {
-    background-color: var(--orange-color);
+    background: var(--orange-color);
     outline: 0;
   }
   
   .slick-slide img {
-    border: 5px solid #fff;
     display: block;
-    margin: auto;
+    margin: 0;
   }
   
 
@@ -413,17 +414,22 @@ main {
 }
 
 .homePages {
-    height: 100Vh;
+    height:1000px;
     width: 100%;
     position: relative;
     overflow: hidden;
+}
+@media only screen and (max-width:780px) {
+    .homePages { 
+        height: 350px;
+    }
 }
 
 
 /* start styling introSlider */
 
 .page {
-    height: 100vh;
+    max-height: 1000px;
     width: 100%;
     overflow: hidden;
     position: absolute;
@@ -432,6 +438,14 @@ main {
     top: 175%;
     transform: skewY(10deg);
     transition: top ease 1.5s, transform ease 1.5s;
+}
+@media only screen and (max-width:768px)  {
+    .button__bar {
+        display: none;
+    }
+    .page {
+        max-height: 500px;
+    }
 }
 
 .page.current {
@@ -444,7 +458,7 @@ main {
 }
 
 .introSlider .container {
-    height: 100%;
+    /* height: 100%; */
 }
 
 .introSlider .sliders {
@@ -455,7 +469,7 @@ main {
 
 .introSlider .sliders:after {
     content: '';
-    height: 30vw;
+    /* height: 30vw; */
     width: 30vw;
     background: rgba(204, 204, 204, .2);
     position: absolute;

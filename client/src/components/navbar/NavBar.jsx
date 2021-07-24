@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { FaUser, FaShoppingCart } from "react-icons/fa";
@@ -6,6 +6,20 @@ import { Popover } from "antd";
 import MAinContainer from "../MainContainer";
 
 function NavBar() {
+  const [scrollNav, setScrollNav] = useState(false);
+
+  const ChangeNav = () => {
+    if (window.scrollY >= 80) {
+      console.log("object");
+      setScrollNav(true);
+    } else {
+      setScrollNav(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", ChangeNav);
+  }, []);
   const ProfileContent = (
     <Content>
       <LinkP to="/profile">my profile</LinkP>
@@ -18,82 +32,166 @@ function NavBar() {
     </Content>
   );
   return (
-      <NavContainer>
-        <Lang to="/arab">Arabic</Lang>
-        <Nav>
-          <NavItem>
-            <Popover
-              placement="bottomRight"
-              content={ProfileContent}
-              trigger="hover"
-            >
-              <NavLink>
-                <FaUser className="icon" />
-              </NavLink>
-            </Popover>
-          </NavItem>
-          <NavItem>
+    <Header scrollNav={scrollNav}>
+      <Lang to="/arab">Arabic</Lang>
+      <Nav>
+        <NavItem>
+          <Popover
+            placement="bottomRight"
+            content={ProfileContent}
+            trigger="hover"
+          >
             <NavLink>
-              <FaShoppingCart className="icon" />
-              <span className="count">10</span>
+              <FaUser className="icon" />
             </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink className="menuButton menuBtn">
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-            </NavLink>
-          </NavItem>
-          <nav className="toggleMenu" id="menu">
-        <div className="row">
+          </Popover>
+        </NavItem>
+        <NavItem>
+          <NavLink>
+            <FaShoppingCart className="icon" />
+            <span className="count">10</span>
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink className="menuButton menuBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </NavLink>
+        </NavItem>
+        <nav className="toggleMenu" id="menu">
+          <div className="row">
             <div className="col">
-                <div className="item">
-                    <button onClick="homePage(0)" className="btn itemLink text-uppercase weight-600">
-                        Home
-                    </button>
-                </div>
+              <div className="item">
+                <button
+                  onClick="homePage(0)"
+                  className="btn itemLink text-uppercase weight-600"
+                >
+                  Home
+                </button>
+              </div>
             </div>
             <div className="col">
-                <div className="item">
-                    <a onClick="homePage(1)" className="itemLink text-uppercase weight-600">
-                        Services
+              <div className="item">
+                <a
+                  onClick="homePage(1)"
+                  className="itemLink text-uppercase weight-600"
+                >
+                  Services
+                </a>
+                <ul className="subLinks">
+                  <li>
+                    <a
+                      href="#"
+                      onClick="menuToggling()"
+                      className="subLink text-uppercase weight-500"
+                    >
+                      Advertising
                     </a>
-                    <ul className="subLinks">
-                        <li><a href="#" onClick="menuToggling()" className="subLink text-uppercase weight-500">Advertising</a></li>
-                        <li><a href="#" onClick="menuToggling()" className="subLink text-uppercase weight-500">marketing</a></li>
-                        <li><a href="#" onClick="menuToggling()" className="subLink text-uppercase weight-500">E-commerce</a></li>
-                        <li><a href="./pos.html" onClick="menuToggling()" className="subLink text-uppercase weight-500">Pos</a></li>
-                        <li><a href="#" onClick="menuToggling()" className="subLink text-uppercase weight-500">Print</a></li>
-                        <li><a href="#" onClick="menuToggling()" className="subLink text-uppercase weight-500">Photography</a></li>
-                        <li><a href="#" onClick="menuToggling()" className="subLink text-uppercase weight-500">design</a></li>
-                        <li><a href="#" onClick="menuToggling()" className="subLink text-uppercase weight-500">Delivery</a></li>
-                        <li><a href="#" onClick="menuToggling()" className="subLink text-uppercase weight-500">Programming</a></li>
-                    </ul>
-                </div>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      onClick="menuToggling()"
+                      className="subLink text-uppercase weight-500"
+                    >
+                      marketing
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      onClick="menuToggling()"
+                      className="subLink text-uppercase weight-500"
+                    >
+                      E-commerce
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="./pos.html"
+                      onClick="menuToggling()"
+                      className="subLink text-uppercase weight-500"
+                    >
+                      Pos
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      onClick="menuToggling()"
+                      className="subLink text-uppercase weight-500"
+                    >
+                      Print
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      onClick="menuToggling()"
+                      className="subLink text-uppercase weight-500"
+                    >
+                      Photography
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      onClick="menuToggling()"
+                      className="subLink text-uppercase weight-500"
+                    >
+                      design
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      onClick="menuToggling()"
+                      className="subLink text-uppercase weight-500"
+                    >
+                      Delivery
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      onClick="menuToggling()"
+                      className="subLink text-uppercase weight-500"
+                    >
+                      Programming
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
             <div className="col">
-                <div className="item">
-                    <a onClick="homePage(2)" className="itemLink text-uppercase weight-600">
-                        About Us
-                    </a>
-                </div>
+              <div className="item">
+                <a
+                  onClick="homePage(2)"
+                  className="itemLink text-uppercase weight-600"
+                >
+                  About Us
+                </a>
+              </div>
             </div>
             <div className="col">
-                <div className="item">
-                    <a onClick="homePage(3)" className="itemLink text-uppercase weight-600">
-                        Contact Us
-                    </a>
-                </div>
+              <div className="item">
+                <a
+                  onClick="homePage(3)"
+                  className="itemLink text-uppercase weight-600"
+                >
+                  Contact Us
+                </a>
+              </div>
             </div>
-        </div>
-        <div className="menuShapes">
+          </div>
+          <div className="menuShapes">
             <div className="a a1"></div>
             <div className="a a2"></div>
             <div className="a a3"></div>
@@ -102,26 +200,27 @@ function NavBar() {
             <div className="s s2"></div>
             <div className="s s3"></div>
             <div className="s s4"></div>
-        </div>
-    </nav>
-        </Nav>
-      </NavContainer>
+          </div>
+        </nav>
+      </Nav>
+    </Header>
   );
 }
 const Hr = styled.div`
   background: #cecece;
   height: 0.1px;
 `;
-const NavContainer = styled.div`
+const Header = styled.header`
+  height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 3rem  ;
-  position: absolute;
+  padding:0 3rem;
+  position: fixed;
   top: 0;
-  right: 0;
   width: 100%;
-  z-index: 10000;
+  z-index: 99999999999999;
+  background: ${({ scrollNav }) => (scrollNav ? "#fff" : "transparent")};
 `;
 const Nav = styled.ul`
   display: flex;
@@ -132,6 +231,9 @@ const Nav = styled.ul`
   position: relative;
   right: 1.8rem;
   top: 0.6rem;
+  @media only screen and (max-width: 995px) {
+    right: -1rem;
+  }
 `;
 const NavItem = styled.li`
   padding: 0 1rem;
@@ -158,6 +260,9 @@ const NavLink = styled(Link)`
     transition: 0.2s;
     z-index: 200;
     background: #fff;
+    @media only screen and (max-width: 995px) {
+      right: -0.7rem;
+    }
   }
   &.menuButton span {
     display: inline-block;

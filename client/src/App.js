@@ -14,7 +14,8 @@ import CheckOutComponenet from "./components/pagesScreens/checkout/checkout";
 import ThankComponenet from "./components/pagesScreens/checkout/thankPage";
 import RegisterComponenet from "./components/pagesScreens/auth/RegisterPage";
 import PayementStep from "./components/pagesScreens/checkout/completePayement";
-import EcommerceHomeComponent from "./components/pagesScreens/CompanyList/index";
+import CompanyListComponent from "./components/pagesScreens/CompanyList/index";
+import EcommerceHomeComponent from "./components/pagesScreens/e-commerce/homeECommerce"
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
           <Route path="/add-product" component={AddProductComponent} />
           <Route path="/products" component={CompanyComponent} />
           <Route path="/e-commerce" component={EcommerceHomeComponent} />
+          <Route path="/companies" component={CompanyListComponent} />
           <Route path="/cart" component={CartComponent} />
           <Route path="/checkout" component={CheckOutComponenet} />
           <Route path="/thank" component={ThankComponenet} />

@@ -16,7 +16,7 @@ const ViewProducts = () => {
   const [visible, setVisible] = useState(false);
 
   return (
-    <Container>
+    <>
       <Row>
         <FilterForm>
           <Brand />
@@ -147,7 +147,7 @@ const ViewProducts = () => {
           </Card>
         </Grid>
       </Row>
-    </Container>
+    </>
   );
 };
 

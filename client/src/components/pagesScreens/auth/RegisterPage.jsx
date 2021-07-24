@@ -13,6 +13,7 @@ import {
 import ImgCrop from "antd-img-crop";
 import { Upload } from "antd";
 
+import MainContainer from "../../MainContainer"
 import InputRadio from "../../InputRadioComponent";
 import ButtonC from "../../ButtonComponeent";
 import InputC from "../../InputComponents";
@@ -26,6 +27,7 @@ function RegisterPage() {
     console.log(typeUser);
   };
   return (
+    <MainContainer>
     <FormContainer>
       <Header>
         <a href="#/">Back</a>
@@ -62,6 +64,7 @@ function RegisterPage() {
         <ButtonC style={{margin:"0 auto"}}>save</ButtonC>
       </div>
     </FormContainer>
+    </MainContainer>
   );
 }
 
@@ -343,6 +346,10 @@ const Header = styled.div`
 
       & input {
         font-size: 2rem;
+      }
+
+      & label {
+        margin-bottom: 0;
       }
     }
   }

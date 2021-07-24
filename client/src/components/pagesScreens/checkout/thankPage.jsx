@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import ButtonC from "../../ButtonComponeent";
+import MainContainer from "../../MainContainer"
 
 import piture from "../../../img/card_pic.png";
 
 function ThankPage() {
   return (
-    <Container>
+    <MainContainer>
       <Header>
         <a href="#/">Back</a>
         <h2>SHOPPING CART</h2>
@@ -22,7 +23,7 @@ function ThankPage() {
         </SectionLeft>
         <SectionRight />
       </Grid>
-    </Container>
+    </MainContainer>
   );
 }
 
@@ -89,11 +90,6 @@ const SectionRight = () => {
   );
 };
 
-const Container = styled.div`
-max-width: var(--max-width);
-margin: 0 auto;
-  padding: 3rem 0;
-`;
 
 const Header = styled.div`
   height: 5rem;

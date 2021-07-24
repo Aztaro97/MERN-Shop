@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import MainContainer from "./../../MainContainer";
 // import ImagesUploader from "react-images-uploader";
 // import "react-images-uploader/styles.css";
 // import "react-images-uploader/font.css";
@@ -350,7 +351,7 @@ const FormRate = () => {
 
 function AddProduct() {
   return (
-    <Container>
+    <MainContainer>
       <Header>
         <a href="#/">Back</a>
         <h2>Add your products</h2>
@@ -366,17 +367,12 @@ function AddProduct() {
           <FormRight />
         </Col>
       </BodyProduct>
-    </Container>
+    </MainContainer>
   );
 }
 
 
 
-const Container = styled.div`
-  padding: 1rem;
-  max-width: var(--max-width);
-  margin: 0 auto;
-`;
 
 const Header = styled.div`
   height: 5rem;
