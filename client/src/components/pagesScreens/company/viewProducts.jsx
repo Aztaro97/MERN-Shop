@@ -16,7 +16,7 @@ const ViewProducts = () => {
   const [visible, setVisible] = useState(false);
 
   return (
-    <>
+    <Container>
       <Row>
         <FilterForm>
           <Brand />
@@ -147,14 +147,14 @@ const ViewProducts = () => {
           </Card>
         </Grid>
       </Row>
-    </>
+    </Container>
   );
 };
 
 const Container = styled.div`
-  max-width: var(--max-width) ;
-  /* display: flex;
-  flex-direction: column; */
+  @media only screen and (max-width:1000px) {
+    padding:0 1rem
+  }
 `;
 const Row = styled.div`
   display: block;
@@ -169,7 +169,7 @@ const FilterForm = styled.div`
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  height:6rem
+  height:6rem;
 `;
 const SliderE = styled(Slider)`
   /* background: red; */
@@ -191,6 +191,7 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 1.5rem;
+  
 
   @media only screen and (max-width: 1000px) {
     grid-template-columns: repeat(2, 1fr);
@@ -218,15 +219,15 @@ const Card = styled.div`
       font-weight: 700;
       text-transform: uppercase;
       margin-bottom: 0rem;
+      font-size: 1.2rem;
     }
     & p {
-      margin-bottom: 0.5rem;
       color: var(--silver-color);
     }
     & hr {
       outline: none;
       border: none;
-      height: 2px;
+      height: 1px;
       background: var(--border-color);
       margin-bottom: 0.7rem;
     }

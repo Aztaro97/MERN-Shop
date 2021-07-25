@@ -1,0 +1,84 @@
+<svg 
+ xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ width="10.667in" height="9.75in">
+<defs>
+<filter filterUnits="userSpaceOnUse" id="Filter_0" x="311px" y="322px" width="218px" height="125px"  >
+    <feOffset in="SourceAlpha" dx="0" dy="4" />
+    <feGaussianBlur result="blurOut" stdDeviation="5.657" />
+    <feFlood flood-color="rgb(198, 135, 135)" result="floodOut" />
+    <feComposite operator="atop" in="floodOut" in2="blurOut" />
+    <feComponentTransfer><feFuncA type="linear" slope="1"/></feComponentTransfer>
+    <feMerge>
+    <feMergeNode/>
+    <feMergeNode in="SourceGraphic"/>
+  </feMerge>
+</filter>
+<filter filterUnits="userSpaceOnUse" id="Filter_1" x="435px" y="456px" width="230px" height="230px"  >
+    <feOffset in="SourceAlpha" dx="0" dy="0" />
+    <feGaussianBlur result="blurOut" stdDeviation="6.325" />
+    <feFlood flood-color="rgb(175, 211, 216)" result="floodOut" />
+    <feComposite operator="atop" in="floodOut" in2="blurOut" />
+    <feComponentTransfer><feFuncA type="linear" slope="0.48"/></feComponentTransfer>
+    <feMerge>
+    <feMergeNode/>
+    <feMergeNode in="SourceGraphic"/>
+  </feMerge>
+</filter>
+<filter filterUnits="userSpaceOnUse" id="Filter_2" x="0px" y="131px" width="225px" height="226px"  >
+    <feOffset in="SourceAlpha" dx="0" dy="0" />
+    <feGaussianBlur result="blurOut" stdDeviation="6.325" />
+    <feFlood flood-color="rgb(175, 211, 216)" result="floodOut" />
+    <feComposite operator="atop" in="floodOut" in2="blurOut" />
+    <feComponentTransfer><feFuncA type="linear" slope="0.48"/></feComponentTransfer>
+    <feMerge>
+    <feMergeNode/>
+    <feMergeNode in="SourceGraphic"/>
+  </feMerge>
+</filter>
+<filter filterUnits="userSpaceOnUse" id="Filter_3" x="538px" y="0px" width="229px" height="230px"  >
+    <feOffset in="SourceAlpha" dx="0" dy="0" />
+    <feGaussianBlur result="blurOut" stdDeviation="6.325" />
+    <feFlood flood-color="rgb(175, 211, 216)" result="floodOut" />
+    <feComposite operator="atop" in="floodOut" in2="blurOut" />
+    <feComponentTransfer><feFuncA type="linear" slope="0.48"/></feComponentTransfer>
+    <feMerge>
+    <feMergeNode/>
+    <feMergeNode in="SourceGraphic"/>
+  </feMerge>
+</filter>
+
+</defs>
+<path fill-rule="evenodd"  stroke="rgb(199, 206, 224)" stroke-width="1px" stroke-dasharray="10, 10" stroke-linecap="round" stroke-linejoin="round" fill="none"
+ d="M276.538,62.560 C276.538,62.560 497.547,-34.280 653.637,116.740 C809.727,267.760 756.537,406.190 686.127,479.302 C558.763,611.555 370.145,709.226 210.616,536.543 C51.087,363.861 78.051,193.618 276.538,62.560 Z"/>
+<text kerning="auto" font-family="Adobe Arabic" fill="rgb(0, 0, 0)" transform="matrix( 0.89826368983826, 0, 0, 0.89786275714166,282.735295140945, 273.797027003493)" font-size="37.5px"> <tspan><tspan font-size="37.5px" font-family="Myriad Arabic" font-weight="bold" fill="#42AFBE">How</tspan> </tspan><tspan x="0" dy="1.2em"><tspan font-size="37.5px" font-family="SFCompactText" font-weight="bold" fill="#FFFFFF">To&#32;make&#32;your&#32;ad</tspan> </tspan>
+</text>
+<g filter="url(#Filter_0)">
+<path fill-rule="evenodd"  fill="rgb(255, 83, 116)"
+ d="M369.112,349.019 L469.614,349.019 C484.525,349.019 496.614,361.107 496.614,376.019 L496.614,383.972 C496.614,398.883 484.525,410.972 469.614,410.972 L369.112,410.972 C354.201,410.972 342.112,398.883 342.112,383.972 L342.112,376.019 C342.112,361.107 354.201,349.019 369.112,349.019 Z"/>
+</g>
+<path fill-rule="evenodd"  fill="rgb(198, 135, 135)"
+ d="M375.280,340.041 L462.548,340.041 C483.346,340.041 500.207,356.901 500.207,377.700 L500.207,378.700 C500.207,399.498 483.346,416.359 462.548,416.359 L375.280,416.359 C354.482,416.359 337.621,399.498 337.621,378.700 L337.621,377.700 C337.621,356.901 354.482,340.041 375.280,340.041 Z"/>
+<text kerning="auto" font-family="Adobe Arabic" fill="rgb(0, 0, 0)" transform="matrix( 0.89826368983826, 0, 0, 0.89786275714166,370.298504652799, 385.285039299992)" font-size="20.833px"><tspan font-size="20.833px" font-family="SFCompactText" fill="#FFFFFF">Easy&#32;&#38;&#32;fast</tspan></text>
+<g filter="url(#Filter_1)">
+<path fill-rule="evenodd"  fill="rgb(255, 255, 255)"
+ d="M513.346,503.133 C513.346,503.133 564.508,478.875 600.642,516.704 C636.776,554.535 624.463,589.210 608.163,607.524 C578.679,640.652 535.015,665.118 498.085,621.862 C461.155,578.607 467.397,535.962 513.346,503.133 Z"/>
+</g>
+<g filter="url(#Filter_2)">
+<path fill-rule="evenodd"  fill="rgb(255, 255, 255)"
+ d="M39.140,244.429 C39.140,244.429 41.867,187.933 92.271,173.967 C142.676,160.002 167.456,187.208 175.924,210.203 C191.243,251.797 192.236,301.789 136.669,313.895 C81.103,326.000 46.432,300.379 39.140,244.429 Z"/>
+</g>
+<g filter="url(#Filter_3)">
+<path fill-rule="evenodd"  fill="rgb(255, 255, 255)"
+ d="M616.202,47.345 C616.202,47.345 667.204,23.087 703.226,60.916 C739.248,98.746 726.972,133.421 710.724,151.736 C681.332,184.863 637.803,209.330 600.988,166.074 C564.173,122.818 570.396,80.174 616.202,47.345 Z"/>
+</g>
+<path fill-rule="evenodd"  stroke="rgb(198, 135, 135)" stroke-width="2px" stroke-linecap="round" stroke-linejoin="miter" fill="rgb(198, 135, 135)"
+ d="M594.583,200.999 L717.287,200.999 C725.296,200.999 731.787,207.491 731.787,215.499 L731.787,216.500 C731.787,224.508 725.296,231.000 717.287,231.000 L594.583,231.000 C586.575,231.000 580.083,224.508 580.083,216.500 L580.083,215.499 C580.083,207.491 586.575,200.999 594.583,200.999 Z"/>
+<text kerning="auto" font-family="Adobe Arabic" fill="rgb(0, 0, 0)" transform="matrix( 0.99805453361148, 0, 0, 1.00001765190118,616.098777800747, 223.000123563308)" font-size="20px"><tspan font-size="20px" font-family="SFCompactText" fill="#FFFFFF">Register</tspan></text>
+<path fill-rule="evenodd"  stroke="rgb(198, 135, 135)" stroke-width="2px" stroke-linecap="round" stroke-linejoin="miter" fill="rgb(198, 135, 135)"
+ d="M483.422,668.999 L606.600,668.999 C614.608,668.999 621.100,675.491 621.100,683.499 L621.100,684.500 C621.100,692.508 614.608,699.000 606.600,699.000 L483.422,699.000 C475.413,699.000 468.922,692.508 468.922,684.500 L468.922,683.499 C468.922,675.491 475.413,668.999 483.422,668.999 Z"/>
+<text kerning="auto" font-family="Adobe Arabic" fill="rgb(0, 0, 0)" transform="matrix( 1.00116973368786, 0, 0, 1.00001753465755,503.738707483545, 691.000122742603)" font-size="20px"><tspan font-size="20px" font-family="SFCompactText" fill="#FFFFFF">Fill&#32;data</tspan></text>
+<path fill-rule="evenodd"  stroke="rgb(198, 135, 135)" stroke-width="2px" stroke-linecap="round" stroke-linejoin="miter" fill="rgb(198, 135, 135)"
+ d="M43.512,347.000 L166.562,347.000 C174.570,347.000 181.062,353.491 181.062,361.500 L181.062,362.501 C181.062,370.508 174.570,377.000 166.562,377.000 L43.512,377.000 C35.503,377.000 29.012,370.508 29.012,362.501 L29.012,361.500 C29.012,353.491 35.503,347.000 43.512,347.000 Z"/>
+<text kerning="auto" font-family="Adobe Arabic" fill="rgb(0, 0, 0)" transform="matrix( 1.00033225279279, 0, 0, 1.00001862459017,76.8053014153053, 369.000130372131)" font-size="20px"><tspan font-size="20px" font-family="SFCompactText" fill="#FFFFFF">Share</tspan></text>
+</svg>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styled from "styled-components";
 import LandingPage from "../landing/LandingPage";
 
@@ -8,6 +8,8 @@ import content_img from "../../../img/social_media_content.png";
 import svg_right from "../../../img/social_img.png";
 
 function HomeECommerce() {
+
+  
   return (
     <>
       <LandingPage />

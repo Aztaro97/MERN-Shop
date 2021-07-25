@@ -4,12 +4,13 @@ import MainContainer from "./../../MainContainer";
 // import ImagesUploader from "react-images-uploader";
 // import "react-images-uploader/styles.css";
 // import "react-images-uploader/font.css";
-import { Collapse, Upload, Modal } from "antd";
+import { Collapse, Upload, Modal, InputNumber  } from "antd";
 import { useFormik } from "formik";
-import { FaPlus } from "react-icons/fa";
-import {GoPlus} from "react-icons/go"
+import { FaPlus, AiFillDelete, GoPlus } from "react-icons/all";
 import ImgCrop from "antd-img-crop";
 import axios from "axios";
+
+// import Modal from "./Modal"
 import InputC from "../../InputComponents";
 import ButtonC from "../../ButtonComponeent";
 import InputCheck from "../../CheckBoxComponent";
@@ -33,11 +34,104 @@ const Todo = () => {
 };
 
 const FormRight = () => {
+  const [showInput, setShowInput] = useState(false);
+  const [showInput1, setShowInput1] = useState(false);
+  const [showInput2, setShowInput2] = useState(false);
+  const [showInput3, setShowInput3] = useState(false);
+  const [showInput4, setShowInput4] = useState(false);
+
+  // const [isModalVisible, setIsModalVisible] = useState(false);
   const [fileList, setFileList] = useState([]);
+
+  // Color State
+  const [color, setColor] = useState("");
+  const [Listcolor, listSetColor] = useState([]);
+
+  // Finish State
+  const [finish, setFinish] = useState("");
+  const [ListFinish, setListFinish] = useState([]);
+
+  // Material State
+  const [material, setMaterial] = useState("");
+  const [ListMaterial, setListMaterial] = useState([]);
+
+  // Styling State
+  const [styling, setStyling] = useState("");
+  const [ListStyling, setListStyling] = useState([]);
+
+  // ANOTHER VALUE State
+  const [sizeValue, setSizeValue] = useState("");
+  const [ListSizeValue, setListSizeValue] = useState([]);
+
+  //  Color function
+  const addColor = (e) => {
+    e.preventDefault();
+    Listcolor.push(color);
+    console.log(Listcolor);
+    setColor("");
+  };
+  const deleteColor = (itemIndex) => {
+    const newListColor = Listcolor.filter((_, index) => index !== itemIndex);
+    listSetColor(newListColor);
+    console.log(newListColor);
+  };
+
+  //  Finish function
+  const addFinish = (e) => {
+    e.preventDefault();
+    ListFinish.push(finish);
+    console.log(ListFinish);
+    setFinish("");
+  };
+  const deleteFinish = (itemIndex) => {
+    const newListFinish = ListFinish.filter((_, index) => index !== itemIndex);
+    setListFinish(newListFinish);
+    console.log(newListFinish);
+  };
+
+    //  Material function
+    const addMaterial = (e) => {
+      e.preventDefault();
+      ListMaterial.push(material);
+      console.log(ListMaterial);
+      setMaterial("");
+    };
+    const deleteMaterial = (itemIndex) => {
+      const newListMaterial = ListMaterial.filter((_, index) => index !== itemIndex);
+      setListMaterial(newListMaterial);
+      console.log(newListMaterial);
+    };
+
+    //  Styling function
+    const addStyling = (e) => {
+      e.preventDefault();
+      ListStyling.push(styling);
+      console.log(ListStyling);
+      setStyling("");
+    };
+    const deleteStyling = (itemIndex) => {
+      const newListStyling = ListStyling.filter((_, index) => index !== itemIndex);
+      setListStyling(newListStyling);
+      console.log(newListStyling);
+    };
+
+    //  SizeValue function
+    const addSizeValue = (e) => {
+      e.preventDefault();
+      ListSizeValue.push(sizeValue);
+      console.log(ListSizeValue);
+      setSizeValue("");
+    };
+    const deleteSizeValue = (itemIndex) => {
+      const newListSizeValue = ListSizeValue.filter((_, index) => index !== itemIndex);
+      setListSizeValue(newListSizeValue);
+      console.log(newListSizeValue);
+    };
+
 
   const handleChange = ({ fileList: newFileList }) => {
     setFileList(newFileList);
-    console.log(fileList)
+    console.log(fileList);
   };
 
   const handleUpload = async (e) => {
@@ -45,20 +139,16 @@ const FormRight = () => {
 
     try {
       let formData = new FormData();
-    // add one or more of your files in FormData
-    // again, the original file is located at the `originFileObj` key
-    formData.append("image-files", fileList[0].originFileObj);
+      // add one or more of your files in FormData
+      // again, the original file is located at the `originFileObj` key
+      formData.append("image-files", fileList[0].originFileObj);
 
-    const res = await axios.post("/api/upload/", formData);
+      const res = await axios.post("/api/upload/", formData);
 
-    console.log(res)
-      
+      console.log(res);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-
-  
-    
   };
 
   const handlePreview = async (file) => {
@@ -77,12 +167,10 @@ const FormRight = () => {
     imgWindow.document.write(image.outerHTML);
   };
 
-  const handleSubmit = (event) => {
-    
-  };
+  const handleSubmit = (event) => {};
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <div onSubmit={handleSubmit}>
       <Row>
         <InputC
           type="text"
@@ -113,10 +201,13 @@ const FormRight = () => {
           onRemove={() => console.log("Image remove")}
           name="imgfiles"
         >
-        {fileList.length < 5 && <UploadIcon><GoPlus size={30} /></UploadIcon>}
-
+          {fileList.length < 5 && (
+            <UploadIcon>
+              <GoPlus size={30} />
+            </UploadIcon>
+          )}
         </Upload>
-      
+
         {/* <ImgCrop rotate>
           <Upload
             listType="picture-card"
@@ -134,37 +225,178 @@ const FormRight = () => {
 
       <Row>
         <Label>variants</Label>
-        <h5
+        <p
           style={{
             color: "#aaaaac",
             marginBottom: "1rem",
             textTransform: "uppercase",
+            fontSize:".7rem"
           }}
         >
           Add variant if this product comes in multiple versions like different
           sizes or colors
-        </h5>
+        </p>
         <Card style={{ border: ".8px solid #c58787" }}>
           {/* <Todo>
               <p>color</p>
               <FaPlus className="icons" />
             </Todo> */}
-          <Drop>
-            <p>size</p>
-            <FaPlus className="icons" />
-          </Drop>
-          <Drop>
-            <p>finish</p>
-            <FaPlus className="icons" />
-          </Drop>
-          <Drop>
-            <p>material</p>
-            <FaPlus className="icons" />
-          </Drop>
-          <Drop>
-            <p>style</p>
-            <FaPlus className="icons" />
-          </Drop>
+          <form onSubmit={addColor}>
+            <Drop>
+              <p>size</p>
+              <FaPlus
+                className="icons"
+                onClick={() => setShowInput(!showInput)}
+              />
+            </Drop>
+            {showInput ? (
+              <>
+                <div className="variant_add">
+                  <input 
+                    type="number"
+                    className="input"
+                    placeholder="Enter size"
+                    value={color}
+                    onChange={(e) => setColor(e.target.value)}
+                  />
+                  <button className="add_btn" type="submit">
+                    add
+                  </button>
+                </div>
+                <Ul>
+                  {Listcolor.length > 0
+                    ? Listcolor.map((item, index) => (
+                        <li key={index}>
+                          <p>{item}</p>
+                          <AiFillDelete
+                            className="delete_icon"
+                            onClick={() => deleteColor(index)}
+                          />
+                        </li>
+                      ))
+                    : null}
+                </Ul>
+              </>
+            ) : null}
+          </form>
+
+          <form onSubmit={addFinish}>
+            <Drop>
+              <p>finish</p>
+              <FaPlus
+                className="icons"
+                onClick={() => setShowInput1(!showInput1)}
+              />
+            </Drop>
+            {showInput1 ? (
+              <>
+                <div className="variant_add">
+                  <input 
+                    type="number"
+                    className="input"
+                    placeholder="Enter finish"
+                    value={finish}
+                    onChange={(e) => setFinish(e.target.value)}
+                  />
+                  <button className="add_btn" type="submit">
+                    add
+                  </button>
+                </div>
+                <Ul>
+                  {ListFinish.length > 0
+                    ? ListFinish.map((item, index) => (
+                        <li key={index}>
+                          <p>{item}</p>
+                          <AiFillDelete
+                            className="delete_icon"
+                            onClick={() => deleteFinish(index)}
+                          />
+                        </li>
+                      ))
+                    : null}
+                </Ul>
+              </>
+            ) : null}
+          </form>
+
+
+          <form onSubmit={addMaterial}>
+            <Drop>
+              <p>Material</p>
+              <FaPlus
+                className="icons"
+                onClick={() => setShowInput2(!showInput2)}
+              />
+            </Drop>
+            {showInput2 ? (
+              <>
+                <div className="variant_add">
+                  <input 
+                    type="text"
+                    className="input"
+                    placeholder="Enter Material"
+                    value={material}
+                    onChange={(e) => setMaterial(e.target.value)}
+                  />
+                  <button className="add_btn" type="submit">
+                    add
+                  </button>
+                </div>
+                <Ul>
+                  {ListMaterial.length > 0
+                    ? ListMaterial.map((item, index) => (
+                        <li key={index}>
+                          <p>{item}</p>
+                          <AiFillDelete
+                            className="delete_icon"
+                            onClick={() => deleteMaterial(index)}
+                          />
+                        </li>
+                      ))
+                    : null}
+                </Ul>
+              </>
+            ) : null}
+          </form>
+
+          <form onSubmit={addStyling}>
+            <Drop>
+              <p>Style</p>
+              <FaPlus
+                className="icons"
+                onClick={() => setShowInput3(!showInput3)}
+              />
+            </Drop>
+            {showInput3 ? (
+              <>
+                <div className="variant_add">
+                  <input 
+                    type="text"
+                    className="input"
+                    placeholder="Enter style"
+                    value={styling}
+                    onChange={(e) => setStyling(e.target.value)}
+                  />
+                  <button className="add_btn" type="submit">
+                    add
+                  </button>
+                </div>
+                <Ul>
+                  {ListStyling.length > 0
+                    ? ListStyling.map((item, index) => (
+                        <li key={index}>
+                          <p>{item}</p>
+                          <AiFillDelete
+                            className="delete_icon"
+                            onClick={() => deleteStyling(index)}
+                          />
+                        </li>
+                      ))
+                    : null}
+                </Ul>
+              </>
+            ) : null}
+          </form>
         </Card>
       </Row>
 
@@ -172,22 +404,56 @@ const FormRight = () => {
         <Row>
           <Label>Add value for size</Label>
           <Card style={{ border: ".8px solid #c58787" }}>
+          <form onSubmit={addSizeValue}>
             <Drop>
               <p>add another value</p>
-              <FaPlus className="icons" />
+              <FaPlus
+                className="icons"
+                onClick={() => setShowInput4(!showInput4)}
+              />
             </Drop>
+            {showInput4 ? (
+              <>
+                <div className="variant_add">
+                  <input 
+                    type="text"
+                    className="input"
+                    placeholder="Enter avlue for size"
+                    value={sizeValue}
+                    onChange={(e) => setSizeValue(e.target.value)}
+                  />
+                  <button className="add_btn" type="submit">
+                    add
+                  </button>
+                </div>
+                <Ul>
+                  {ListSizeValue.length > 0
+                    ? ListSizeValue.map((item, index) => (
+                        <li key={index}>
+                          <p>{item}</p>
+                          <AiFillDelete
+                            className="delete_icon"
+                            onClick={() => deleteSizeValue(index)}
+                          />
+                        </li>
+                      ))
+                    : null}
+                </Ul>
+              </>
+            ) : null}
+          </form>
           </Card>
         </Row>
         <Row>
-          <Label>size</Label>
+          <Label style={{color:"#000"}}>size</Label>
           <InputC type="number" placeholder="500 GRAM" />
           <Column>
             <div>
-              <Label>price</Label>
+              <Label style={{color:"#000"}}>price</Label>
               <InputC type="number" placeholder="AED 25.00" />
             </div>
             <div>
-              <Label>compare at price</Label>
+              <Label style={{color:"#000"}}>compare at price</Label>
               <InputC type="number" placeholder="AED 30.00" />
             </div>
           </Column>
@@ -197,7 +463,7 @@ const FormRight = () => {
         save & share
       </ButtonC>
       <Link href="#">ADD ANOTHER PRODUCT</Link>
-    </Form>
+    </div>
   );
 };
 
@@ -236,75 +502,14 @@ const FormShipping = () => {
           </RowCheck>
         </Card>
       </Row>
-      <Row>
-        <Label>Creat zone</Label>
-      </Row>
-      <Card>
-        <Row>
-          <Label for="RateName">Shipping From</Label>
-          <InputC type="text" name="RateName" id="RateName" name="RateName" />
-        </Row>
-        <Row>
-          <Label for="ShippingTo">Shipping To</Label>
-          <InputC
-            type="text"
-            name="ShippingTo"
-            id="ShippingTo"
-            name="ShippingTo"
-          />
-        </Row>
-        <Row>
-          <RowCheck>
-            <InputCheck
-              type="checkbox"
-              id="United emirates"
-              name="United emirates"
-            >
-              United emirates
-            </InputCheck>
-          </RowCheck>
-          <RowCheck>
-            <InputCheck
-              type="checkbox"
-              id="nameofemirate1"
-              name="nameofemirate1"
-            >
-              name of emirate
-            </InputCheck>
-          </RowCheck>
-          <RowCheck>
-            <InputCheck
-              type="checkbox"
-              id="nameofemirate2"
-              name="nameofemirate2"
-            >
-              name of emirate
-            </InputCheck>
-          </RowCheck>
-          <RowCheck>
-            <InputCheck
-              type="checkbox"
-              id="nameofemirate3"
-              name="nameofemirate3"
-            >
-              name of emirate
-            </InputCheck>
-          </RowCheck>
-          <RowCheck>
-            <InputCheck type="checkbox" id="other" name="other">
-              ITALY
-            </InputCheck>
-          </RowCheck>
-        </Row>
-        <ButtonC style={{ margin:"0 auto"}}>save</ButtonC>
-      </Card>
     </Form>
   );
 };
 
 const FormRate = () => {
+  const handleSunmit = () => {};
   return (
-    <Form>
+    <Form onSubmit={handleSunmit}>
       <Row>
         <Label style={{ marginTop: "1.4rem" }}>Add Rate</Label>
       </Row>
@@ -343,7 +548,7 @@ const FormRate = () => {
           </GridRow>
         </Row>
 
-        <ButtonC style={{ margin:"0 auto"}}>save</ButtonC>
+        <ButtonC style={{ margin: "0 auto" }}>save</ButtonC>
       </Card>
     </Form>
   );
@@ -359,6 +564,7 @@ function AddProduct() {
       <BodyProduct>
         <Col>
           <FormShipping />
+          <ShippingComponent />
           <FormRate />
         </Col>
 
@@ -371,8 +577,62 @@ function AddProduct() {
   );
 }
 
+const ShippingComponent = () => {
+  const [shippingFrom, setShippingFrom] = useState("");
+  const [shippingTo, setShippingTo] = useState("");
+  const [ListShippingTo, setListShippingTo] = useState([]);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    ListShippingTo.push(shippingTo);
+    setShippingTo("");
 
+    console.log(ListShippingTo);
+  };
+  return (
+    <form onSubmit={handleSubmit}>
+      <Row>
+        <Label>Creat zone</Label>
+      </Row>
+      <Card>
+        <Row>
+          <Label for="RateName">Shipping From</Label>
+          <InputC
+            type="text"
+            name="RateName"
+            id="RateName"
+            name="RateName"
+            value={shippingFrom}
+            onChange={(e) => setShippingFrom(e.target.value)}
+          />
+        </Row>
+        <Row>
+          <Label for="ShippingTo">Shipping To</Label>
+          <InputC
+            type="text"
+            name="ShippingTo"
+            id="ShippingTo"
+            name="ShippingTo"
+            value={shippingTo}
+            onChange={(e) => setShippingTo(e.target.value)}
+          />
+        </Row>
+        <Row>
+          {ListShippingTo.map((item, index) => (
+            <RowCheck key={index}>
+              <InputCheck type="checkbox" id={item} name={item}>
+                {item}
+              </InputCheck>
+            </RowCheck>
+          ))}
+        </Row>
+        <ButtonC type="submit" style={{ margin: "0 auto" }}>
+          save
+        </ButtonC>
+      </Card>
+    </form>
+  );
+};
 
 const Header = styled.div`
   height: 5rem;
@@ -407,7 +667,7 @@ const BodyProduct = styled.div`
   }
 `;
 const Col = styled.div`
-border: 1px solid #cccbcb;
+  border: 1px solid #cccbcb;
   border-radius: 10px;
   padding: 1.25rem;
 `;
@@ -415,6 +675,38 @@ const Card = styled.div`
   border: 1px solid #cccbcb;
   border-radius: 10px;
   padding: 1.25rem;
+
+  & .variant_add {
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    & .input {
+    color: var(--silver-color);
+    list-style: none;
+    width: 200px;
+    min-width: 0;
+    padding: 6px 11px;
+    color: var(--silver-color);
+    font-size: .8rem;
+    height: 2rem;
+    border: 3px solid var(--background-color);
+    outline: none;
+    border-radius: 10px 0 0 10px;
+    transition: all 0.3s;
+    background: #fff;
+      /* width: 100%; */
+    }
+    & .add_btn {
+      font-size:.9rem;
+      border: none;
+      background: var(--orange-color);
+      color: #fff;
+      outline: none;
+      padding: 5px 1rem;
+      border-radius:0 10px 10px 0;
+      text-transform: uppercase;
+    }
+  }
 `;
 
 const Row = styled.div`
@@ -495,19 +787,43 @@ const Drop = styled.div`
   }
 `;
 
-const Form = styled.form`
-  
-`;
-
+const Form = styled.form``;
 
 const UploadIcon = styled.div`
-width: 100%;
-height: 100%;
-color: #fff;
+  width: 100%;
+  height: 100%;
+  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
   background: var(--orange-color);
-`
+`;
+
+const Ul = styled.ul`
+  list-style: none;
+  padding-top: 1rem;
+  padding-left: .7rem;
+
+  & li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & p {
+      text-transform: uppercase;
+      color: var(--silver-color);
+      font-weight: 700;
+      margin-bottom: 0;
+    }
+
+    & .delete_icon {
+      color: var(--silver-color);
+      cursor: pointer;
+      &:hover {
+        color: #9c1717;
+      }
+    }
+  }
+`;
 
 export default AddProduct;

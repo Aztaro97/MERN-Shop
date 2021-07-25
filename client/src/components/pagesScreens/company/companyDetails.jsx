@@ -154,6 +154,7 @@ function companyInfo() {
 const Container = styled.div`
   max-width: var(--max-width);
   margin: 0 auto;
+  padding: 1rem 1rem 0;
 `
 
 const Grid = styled.div`
@@ -172,7 +173,7 @@ const Col = styled.div`
   & img {
     width: 100%;
     object-fit: cover;
-    border-radius: 20px;
+    /* border-radius: 20px; */
   }
 
   & .bg-right {
@@ -273,6 +274,7 @@ const ImageGallerie = styled.div`
 
 const ImageA = styled(Image)`
     height: 100%;
+
     @media only screen and (max-width: 768px) {
         border-radius: 10px;
     }

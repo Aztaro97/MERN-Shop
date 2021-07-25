@@ -6,6 +6,8 @@ import CheckBoxC from "../../CheckBoxComponent";
 import SelectC from "../../SelectComponents";
 import ButtonC from "../../ButtonComponeent";
 
+import MapComponent from "./maps"
+
 import piture from "../../../img/card_pic.png";
 
 const gouvList = [
@@ -118,12 +120,13 @@ function Checkout() {
           </Row>
           <Row>
             <ButtonC>continue to payment</ButtonC>
-            <Link className="link" to="cart">
+            <Link className="link" to="/products">
               Back To Cart
             </Link>
           </Row>
         </Form>
         <SectionRight />
+        <MapComponent />
       </Grid>
     </Container>
   );

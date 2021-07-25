@@ -15,7 +15,7 @@ const Button = styled.button`
     background: var(--orange-color);
     color: #fff;
     text-transform: uppercase;
-    padding: .6rem 3.5rem;
+    padding: .3rem 3.5rem;
     border: none;
     font-weight: 700;
     border-radius: 10px;
@@ -23,7 +23,7 @@ const Button = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
-    /* text-align: center; */
+    font-size: .9rem;
     cursor: pointer;
 
     &:hover {
@@ -31,7 +31,7 @@ const Button = styled.button`
     }
 
     @media only screen and (max-width: 768px) {
-        font-size: .8rem;
+        font-size: .7rem;
         padding: .7rem 1.5rem;
     }
 `

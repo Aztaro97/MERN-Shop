@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import ButtonC from "../../ButtonComponeent";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
 import piture from "../../../img/card_pic.png";
 
@@ -15,33 +15,42 @@ function CompletePayement() {
       <Grid>
         <SectionLeft>
           <Border>
-              <div className="row">
-                  <h2>contact</h2>
-                  <input type="text" value="rana@aucode.com" />
-                  <button>Change</button>
+            <div className="row">
+              <div>
+                <h2>contact</h2>
+                <p>rana@aucode.com</p>
               </div>
-              <hr />
-              <div className="row">
-                  <h2>address</h2>
-                  <input type="text" value="15 Salah El Dien Street ,Sisis MArket , Egypt15 Salah El Dien Street ,Sisis MArket , Egypt" />
-                  <button>Change</button>
+              <Link className="link">Change</Link>
+            </div>
+            <hr />
+            <div className="row">
+              <div>
+                <h2>address</h2>
+                <p>
+                  15 Salah El Dien Street ,Sisis MArket , Egypt15 Salah El Dien
+                  Street ,Sisis MArket , Egypt
+                </p>
               </div>
+              <Link className="link">Change</Link>
+            </div>
           </Border>
           <Border>
-              <div className="price">
-                  <h2>shipping cost</h2>
-                  <p>aed 50.00</p>
-              </div>
+            <div className="price">
+              <h2>shipping cost</h2>
+              <p>aed 50.00</p>
+            </div>
           </Border>
           <Border>
-              <div className="price">
-                  <h2>shipping cost</h2>
-                  <p>aed 50.00</p>
-              </div>
+            <div className="price">
+              <h2>shipping cost</h2>
+              <p>aed 50.00</p>
+            </div>
           </Border>
           <div className="row">
-              <ButtonC className="">submit</ButtonC>
-              <Link className="link" to="/">back to payment</Link>
+            <ButtonC className="">submit</ButtonC>
+            <Link to="/products" className="link_back" >
+              back to payment
+            </Link>
           </div>
         </SectionLeft>
         <SectionRight />
@@ -51,85 +60,100 @@ function CompletePayement() {
 }
 
 const Border = styled.div`
-    border: 1px solid var(--orange-color);
-    padding:1rem 2rem;
-    border-radius: 20px;
-    margin-bottom: 2rem;
+  border: 1px solid var(--orange-color);
+  padding: 1rem 2rem;
+  border-radius: 20px;
+  margin-bottom: 2rem;
 
-    & hr {
-        margin: .7rem 0;
-        border: none;
-        background: var(--silver-color);
-        height: 1px;
+  & hr {
+    margin: 0.7rem 0;
+    border: none;
+    background: var(--silver-color);
+    height: 1px;
+  }
+
+  & .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @media only screen and (max-width: 453px) {
+      display: block;
     }
-    
-    & .row {
+
+    & div {
+      display: flex;
+      align-items: center;
+      & h2 {
+        color: var(--orange-color);
+        margin: 0;
+        margin-right: 1rem;
+        text-transform: uppercase;
+        font-size: 1rem;
+        font-weight: 700;
+      }
+      & p {
         display: flex;
-        align-items: center;
-        @media only screen and (max-width: 453px) {
-            display: block;
-        }
-
-        & h2 {
-            color: var(--orange-color);
-            margin: 0;
-            margin-right: 1rem;
-            text-transform: uppercase;
-            font-size: 1rem;
-            font-weight: 700;
-        }
-        & input {
-            border: none;
-        }
-        & button {
-            margin-left: auto;
-            outline: none;
-            border: none;
-            background: transparent;
-            color: var(--orange-color);
-        }
-
-       
+        margin: 0;
+        max-width: 300px;
+      }
     }
-    .price {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            text-transform: uppercase;
+    & .link {
+      margin-left: auto;
+      outline: none;
+      border: none;
+      background: transparent;
+      color: var(--orange-color);
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+  .price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
 
-            & h2 {
-                margin: 0;
-                color: var(--orange-color);
-                font-size: 1rem;
-                font-weight: 700;
-            }
-        }
-`
+    & h2 {
+      margin: 0;
+      color: var(--orange-color);
+      font-size: 1rem;
+      font-weight: 700;
+    }
+  }
+`;
 
 const SectionLeft = styled.div`
   padding: 2rem;
 
   & h1 {
-      color: var(--orange-color);
-      text-transform: uppercase;
+    color: var(--orange-color);
+    text-transform: uppercase;
   }
   & p {
-      color: var(--silver-color);
-      margin-bottom: 0;
+    color: var(--silver-color);
+    margin-bottom: 0;
   }
   & .btn {
-      position: relative;
-      top: 3rem;
+    position: relative;
+    top: 3rem;
   }
   & .row {
-      display: flex;
-      /* justify-content: center; */
-      align-items: center;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
 
-      & .link {
-          color: var(--orange-color);
-          margin-left: 2rem;
-      }
+    & .link {
+      color: var(--orange-color);
+      /* margin-left: 2rem; */
+    }
+
+    & .link_back {
+      color: var(--orange-color);
+      margin-left: 2rem;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
   }
 `;
 
