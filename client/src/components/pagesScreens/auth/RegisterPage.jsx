@@ -343,6 +343,7 @@ const Header = styled.div`
       justify-content: center;
       align-items: center;
       margin: 0 1rem;
+      
 
       & input {
         font-size: 2rem;
@@ -350,6 +351,7 @@ const Header = styled.div`
 
       & label {
         margin-bottom: 0;
+        cursor: pointer;
       }
     }
   }

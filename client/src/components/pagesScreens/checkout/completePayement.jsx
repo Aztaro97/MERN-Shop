@@ -212,13 +212,14 @@ const Container = styled.div`
 const Header = styled.div`
   height: 5rem;
   width: 100%;
+  padding:0 1rem;
 
   & a {
     text-decoration: none;
     color: #000;
     font-weight: 700;
     position: relative;
-    top: 2rem;
+    top: 1.4rem;
   }
 
   & h2 {
@@ -226,6 +227,7 @@ const Header = styled.div`
     color: #aaaaac;
     margin-bottom: 0;
     font-weight: 700;
+    font-size: 1.1rem;
   }
 `;
 

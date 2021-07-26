@@ -88,6 +88,7 @@ function companyInfo() {
         </Container>
       </Col>
       <Col>
+        <div className="container">
         <img src={BgImg} alt="" className="bg-right" />
         <ImageGallerie>
           <ImageA
@@ -145,6 +146,7 @@ function companyInfo() {
             src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
           />
         </ImageGallerie>
+        </div>
       </Col>
     </Grid>
     </>
@@ -167,8 +169,16 @@ const Grid = styled.div`
     }
 `;
 const Col = styled.div`
-  border-radius: 20px;
-  border: 1px solid #e9e6e6;
+  
+  .container {
+    /* border: 1px solid #e9e6e6; */
+    border-radius: 20px;
+    padding: 0 .7rem;
+
+    & img {
+      
+    }
+  }
 
   & img {
     width: 100%;

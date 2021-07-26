@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-function InputRadio({ value, name, checked, onChange }) {
-  return <Input type="radio" name={name} value={value} checked={checked} onChange={onChange} />
+function InputRadio({ value, name, id, checked, onChange }) {
+  return <Input type="radio" name={name} value={value} id={id} checked={checked} onChange={onChange} />
 }
 
 const Input = styled.input`

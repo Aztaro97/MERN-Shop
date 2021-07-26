@@ -1,12 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
+import { Modal } from "antd";
 import { Link } from "react-router-dom";
 import InputC from "../../InputComponents";
 import CheckBoxC from "../../CheckBoxComponent";
 import SelectC from "../../SelectComponents";
 import ButtonC from "../../ButtonComponeent";
 
-import MapComponent from "./maps"
+import MapComponent from "./map/getCurrentPosition";
 
 import piture from "../../../img/card_pic.png";
 
@@ -40,6 +41,12 @@ const countryList = [
 ];
 
 function Checkout() {
+  const [visible, setVisible] = useState(false);
+  const [localistion, setLocalistion] = useState({
+    city:"",
+    address:"",
+    cuntry:""
+  })
   return (
     <Container>
       <Header>
@@ -101,10 +108,25 @@ function Checkout() {
             </div>
           </Row>
           <Row>
-            <ButtonC type="button" style={{ width: "100%" }}>
+            <ButtonC
+              type="button"
+              style={{ width: "100%" }}
+              onClick={() => setVisible(true)}
+            >
               Select ur localisation on map
             </ButtonC>
+            <Modal
+              centered
+              visible={visible}
+              onOk={() => setVisible(false)}
+              onCancel={() => setVisible(false)}
+              width={1000}
+              footer={null}
+            >
+              <MapComponent setLocalistion={setLocalistion} setVisible={setVisible} />
+            </Modal>
           </Row>
+
           <Row>
             <InputC
               type="number"
@@ -126,7 +148,7 @@ function Checkout() {
           </Row>
         </Form>
         <SectionRight />
-        <MapComponent />
+        {/* <MapComponent /> */}
       </Grid>
     </Container>
   );
@@ -179,8 +201,8 @@ const SectionRight = () => {
 };
 
 const Container = styled.div`
-max-width: var(--max-width);
-margin: 0 auto;
+  max-width: var(--max-width);
+  margin: 0 auto;
   padding: 3rem 0;
 `;
 
@@ -222,8 +244,8 @@ const Row = styled.div`
       opacity: 0.9;
     }
     @media only screen and (max-width: 900px) {
-     position: relative;
-     top: .7rem;
+      position: relative;
+      top: 0.7rem;
     }
   }
 
@@ -235,13 +257,14 @@ const Row = styled.div`
 const Header = styled.div`
   height: 5rem;
   width: 100%;
+  padding: 0 1rem;
 
   & a {
     text-decoration: none;
     color: #000;
     font-weight: 700;
     position: relative;
-    top: 2rem;
+    top: 1.4rem;
   }
 
   & h2 {
@@ -249,6 +272,7 @@ const Header = styled.div`
     color: #aaaaac;
     margin-bottom: 0;
     font-weight: 700;
+    font-size: 1.1rem;
   }
 `;
 

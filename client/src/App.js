@@ -8,7 +8,7 @@ import { GlobalStyle } from "./globalStyle";
 import AuthComponents from "./components/pagesScreens/auth/authTab";
 import LoaderComponent from "./components/loader";
 import AddProductComponent from "./components/pagesScreens/products/AddProducts";
-import CompanyComponent from "./components/pagesScreens/company/tabs";
+import CompanyComponent from "./components/pagesScreens/productsAndCompany/tabs";
 import CartComponent from "./components/pagesScreens/cart/cart";
 import CheckOutComponenet from "./components/pagesScreens/checkout/checkout";
 import ThankComponenet from "./components/pagesScreens/checkout/thankPage";

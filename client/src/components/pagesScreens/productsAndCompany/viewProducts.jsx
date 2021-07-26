@@ -8,19 +8,28 @@ import productImg from "../../../img/productimg.png";
 
 const Brand = () => {
   const OptionList = ["Iphone", "Samsumg", "Nokia"];
-
   return <SelectC placeholder="Brand">{OptionList}</SelectC>;
 };
 
 const ViewProducts = () => {
   const [visible, setVisible] = useState(false);
 
+  const brandList = [{title:"Electronic", value:"electronic"}, {title:"Cloth", value:"cloth"}, {title:"Food", value:"food"}];
+  const colorList = [{title:"Red", value:"red"}, {title:"Blue", value:"blue"}, {title:"White", value:"white"}];
+  const sizeList = [{title:"20", value:"20"}, {title:"30", value:"30"}, {title:"40", value:"40"}];
+
   return (
     <Container>
       <Row>
         <FilterForm>
-          <Brand />
+        <SelectC style={{maxWidth:"200px"}} placeholder="Brand" options={brandList} />
+        <SelectC style={{maxWidth:"200px"}} placeholder="Color" options={colorList} />
+        <SelectC style={{maxWidth:"200px"}} placeholder="Size" options={sizeList} />
+        <div className="slider">
+          <p>Price Less than Aed 500</p>
           <SliderE defaultValue={30} onChange={(value) => console.log(value)} />
+        </div>
+        <button className="btn">Clear</button>
         </FilterForm>
       </Row>
       <Row>
@@ -42,7 +51,7 @@ const ViewProducts = () => {
                 visible={visible}
                 onOk={() => setVisible(false)}
                 onCancel={() => setVisible(false)}
-                width={1300}
+                width={1000}
                 footer={null}
               >
                 <ModalContent />
@@ -170,10 +179,41 @@ const FilterForm = styled.div`
   justify-content: space-between;
   align-items: center;
   height:6rem;
+
+  & .slider {
+    display: flex;
+    flex-direction: column;
+
+    & p{
+      margin-bottom: 0;
+    }
+  }
+
+  & .btn {
+    outline: none;
+    border: none;
+    background: var(--orange-color);
+    color: #fff;
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  @media only screen and (max-width:768px) {
+    display: block;
+    height: 100%;
+    & > * {
+      margin-bottom: 1rem;
+    }
+  }
 `;
 const SliderE = styled(Slider)`
   /* background: red; */
   width: 200px;
+
+  & .ant-slider-rail {
+    background: var(--silver-color);
+  }
 
   & .ant-slider-handle:hover {
     border-color: var(--orange-color);
