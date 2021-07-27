@@ -121,7 +121,7 @@ const GallerieContent = styled.div`
   & .current-img {
     border: 4px solid #c68787;
     border-radius: 10px;
-    height: 100%;
+    max-height: 470px;
     width: 70%;
     object-fit: cover;
   }

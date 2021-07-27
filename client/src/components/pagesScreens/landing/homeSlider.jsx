@@ -42,14 +42,7 @@ const HomeSection = () => {
         </button>
       );
     },
-    // appendDots: dots => (<div style={{ width: "20px", height: "20px", background: "black" }}>{dots}</div>),
-    // customPaging: i => (<div style={{ width: "20px", height: "20px", background: "red" }}>{i}</div>)
-    // appendDots: (dots) => (
-    //   <ul style={{ width: "50px", height: "50px", background: "red" }}>15</ul>
-    // ),
-    // customPaging: (i) => (
-    //   <ul style={{ width: "50px", height: "50px", background: "red" }}>23</ul>
-    // ),
+  
   };
   return (
     <div>
@@ -192,6 +185,7 @@ const SlideOverlay = styled.div`
     justify-content: center;
     width: 100%;
     & .link2 {
+      text-decoration: none;
       background: var(--orange-color);
       border-radius: 30px;
       padding: 0.5rem 1.5rem;

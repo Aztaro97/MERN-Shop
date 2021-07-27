@@ -24,6 +24,7 @@ const Input = styled.input`
     border-radius: 10px;
     transition: all 0.3s;
     background: #fff;
+    letter-spacing:2px;
 
     &:focus {
         border-color: var( --orange-color) ;

@@ -3,7 +3,7 @@ import { Carousel, Image } from "antd";
 import styled from "styled-components";
 import MainContainer from "../../MainContainer";
 import { AiOutlineClose } from "react-icons/ai";
-import {Link} from "react-router-dom"
+import {Link, useHistory} from "react-router-dom"
 import ButtonC from "../../ButtonComponeent";
 
 import picture from "../../../img/productimg.png";
@@ -31,12 +31,17 @@ import picture from "../../../img/productimg.png";
 //   );
 // };
 
+
 function CartComponent() {
   const [qty, setQty] = useState(1);
+
+const history = useHistory();
+
+
   return (
     <MainContainer>
       <Header>
-        <a href="#/">Back</a>
+        <a href="#/" onClick={() => history.goBack()}>Back</a>
         <h2>Shoping Cart</h2>
       </Header>
       <CartContent>
@@ -103,8 +108,9 @@ function CartComponent() {
         </Row>
         <Row>
             <div className="btn-checkout">
-            <ButtonC>check out</ButtonC>
-            <Link className="link" to="/">continue shopping</Link>
+            <Link to="/checkout" style={{textDecoration:"none"}}>
+            <ButtonC type="button">check out</ButtonC></Link>
+            <Link className="link" to="/products">continue shopping</Link>
             </div>
         </Row>
       </CartContent>

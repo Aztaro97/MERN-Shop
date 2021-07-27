@@ -8,14 +8,16 @@ import { GlobalStyle } from "./globalStyle";
 import AuthComponents from "./components/pagesScreens/auth/authTab";
 import LoaderComponent from "./components/loader";
 import AddProductComponent from "./components/pagesScreens/products/AddProducts";
-import CompanyComponent from "./components/pagesScreens/productsAndCompany/tabs";
+import ProductAndCompanyComponent from "./components/pagesScreens/productsAndCompany/tabs";
+import EditProductAndCompanyComponent from "./components/pagesScreens/EditProductsAndCompany/tabs";
 import CartComponent from "./components/pagesScreens/cart/cart";
 import CheckOutComponenet from "./components/pagesScreens/checkout/checkout";
 import ThankComponenet from "./components/pagesScreens/checkout/thankPage";
 import RegisterComponenet from "./components/pagesScreens/auth/RegisterPage";
 import PayementStep from "./components/pagesScreens/checkout/completePayement";
 import CompanyListComponent from "./components/pagesScreens/CompanyList/index";
-import EcommerceHomeComponent from "./components/pagesScreens/e-commerce/homeECommerce"
+import EcommerceHomeComponent from "./components/pagesScreens/e-commerce/homeECommerce";
+import PaymentCompopnent from "./components/pagesScreens/checkout/payment"
 
 
 function App() {
@@ -27,7 +29,8 @@ function App() {
           <Route exact path="/" component={HomeComponents} />
           <Route path="/auth" component={AuthComponents} />
           <Route path="/add-product" component={AddProductComponent} />
-          <Route path="/products" component={CompanyComponent} />
+          <Route path="/products" component={ProductAndCompanyComponent} />
+          <Route path="/edit-products" component={EditProductAndCompanyComponent} />
           <Route path="/e-commerce" component={EcommerceHomeComponent} />
           <Route path="/companies" component={CompanyListComponent} />
           <Route path="/cart" component={CartComponent} />
@@ -35,6 +38,7 @@ function App() {
           <Route path="/thank" component={ThankComponenet} />
           <Route path="/register" component={RegisterComponenet} />
           <Route path="/payement" component={PayementStep} />
+          <Route path="/payment" component={PaymentCompopnent} />
         </Switch>
       {/* <Footer /> */}
     </Router>

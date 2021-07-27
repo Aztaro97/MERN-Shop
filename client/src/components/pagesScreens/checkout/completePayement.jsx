@@ -1,15 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import ButtonC from "../../ButtonComponeent";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import piture from "../../../img/card_pic.png";
 
 function CompletePayement() {
+
+  const history = useHistory();
+
   return (
     <Container>
       <Header>
-        <a href="#/">Back</a>
+        <a href="#/" onClick={() => history.goBack()}>Back</a>
         <h2>COMPLETE PAYEMENT</h2>
       </Header>
       <Grid>

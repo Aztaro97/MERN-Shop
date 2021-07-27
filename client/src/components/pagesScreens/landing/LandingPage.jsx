@@ -8,7 +8,7 @@ import HomeSlider from "./homeSlider"
 
 function LandingPage() {
   return (
-    <div className="homePages">
+    <div className="LandinghomePages">
       <div class="navDiv" id="navpoints">
         <a href="#/" class="active">
           <p class="mainColor  ">Home</p>

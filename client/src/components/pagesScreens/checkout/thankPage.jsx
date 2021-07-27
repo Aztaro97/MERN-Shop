@@ -1,15 +1,19 @@
 import React from "react";
 import styled from "styled-components";
+import {useHistory} from "react-router-dom"
 import ButtonC from "../../ButtonComponeent";
 import MainContainer from "../../MainContainer"
 
 import piture from "../../../img/card_pic.png";
 
 function ThankPage() {
+
+  const history = useHistory();
+
   return (
     <MainContainer>
       <Header>
-        <a href="#/">Back</a>
+        <a href="#/" onClick={() => history.goBack()}>Back</a>
         <h2>SHOPPING CART</h2>
       </Header>
       <Grid>

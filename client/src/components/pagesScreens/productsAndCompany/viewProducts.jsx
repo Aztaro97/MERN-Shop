@@ -292,7 +292,7 @@ const Button = styled.button`
   width: 100%;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  font-size: 1.1rem;
+  font-size: 1rem;
 
   &:hover {
     background: var(--orange-color);

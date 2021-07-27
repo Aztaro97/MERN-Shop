@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import {useHistory} from "react-router-dom"
 import MainContainer from "./../../MainContainer";
 // import ImagesUploader from "react-images-uploader";
 // import "react-images-uploader/styles.css";
@@ -462,7 +463,7 @@ const FormRight = () => {
       <ButtonC type="submit" style={{ margin: "1.3rem auto 0" }}>
         save & share
       </ButtonC>
-      <Link href="#">ADD ANOTHER PRODUCT</Link>
+      <Link href="/add-product">ADD ANOTHER PRODUCT</Link>
     </div>
   );
 };
@@ -555,10 +556,13 @@ const FormRate = () => {
 };
 
 function AddProduct() {
+
+  const history = useHistory();
+
   return (
     <MainContainer>
       <Header>
-        <a href="#/">Back</a>
+        <a href="#/" onClick={() => history.goBack()}>Back</a>
         <h2>Add your products</h2>
       </Header>
       <BodyProduct>
@@ -766,12 +770,16 @@ const Column = styled.div`
 `;
 const Link = styled.a`
   text-decoration: none;
+  font-weight: 700;
   color: #aaaaac;
   text-align: center;
   width: 100%;
   display: block;
   font-size: 0.8rem;
   margin-top: 0.7rem;
+  &:hover {
+    color:var(--orange-color);
+  }
 `;
 const Drop = styled.div`
   display: flex;

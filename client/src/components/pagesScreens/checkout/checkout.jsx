@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import styled from "styled-components";
 import { Modal } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import InputC from "../../InputComponents";
 import CheckBoxC from "../../CheckBoxComponent";
 import SelectC from "../../SelectComponents";
@@ -47,10 +47,12 @@ function Checkout() {
     address:"",
     cuntry:""
   })
+
+  const history = useHistory();
   return (
     <Container>
       <Header>
-        <a href="#/">Back</a>
+        <a href="#/" onClick={() => history.goBack()}>Back</a>
         <h2>CHECK OUT</h2>
       </Header>
       <Grid>
@@ -141,8 +143,8 @@ function Checkout() {
             </CheckBox>
           </Row>
           <Row>
-            <ButtonC>continue to payment</ButtonC>
-            <Link className="link" to="/products">
+            <ButtonC type="submit">continue to payment</ButtonC>
+            <Link className="link" to="/cart" style={{textDecoration: "none"}}>
               Back To Cart
             </Link>
           </Row>
@@ -202,7 +204,7 @@ const SectionRight = () => {
 
 const Container = styled.div`
   max-width: var(--max-width);
-  margin: 0 auto;
+  margin: 3rem auto 0;
   padding: 3rem 0;
 `;
 
@@ -241,7 +243,7 @@ const Row = styled.div`
     text-transform: uppercase;
     font-weight: 700;
     &:hover {
-      opacity: 0.9;
+      opacity: 0.8;
     }
     @media only screen and (max-width: 900px) {
       position: relative;

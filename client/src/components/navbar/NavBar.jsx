@@ -8,22 +8,24 @@ import MAinContainer from "../MainContainer";
 function NavBar() {
   const [scrollNav, setScrollNav] = useState(false);
 
-  const ChangeNav = () => {
+  const ChangeNav = () => {    
     if (window.scrollY >= 80) {
-      console.log("object");
       setScrollNav(true);
     } else {
       setScrollNav(false);
     }
   };
 
+ 
+
   useEffect(() => {
-    window.addEventListener("scroll", ChangeNav);
+    window.addEventListener('scroll', ChangeNav);
   }, []);
+
   const ProfileContent = (
     <Content>
-      <LinkP to="/profile">my profile</LinkP>
-      <LinkP to="/myproducts">my products</LinkP>
+      <LinkP to="/companies">my profile</LinkP>
+      <LinkP to="/edit-products">my products</LinkP>
       <LinkP to="/add-product">add more products</LinkP>
 
       <LinkP className="btn_logOut" to="/logout">
@@ -47,7 +49,7 @@ function NavBar() {
           </Popover>
         </NavItem>
         <NavItem>
-          <NavLink>
+          <NavLink to="/cart">
             <FaShoppingCart className="icon" />
             <span className="count">10</span>
           </NavLink>
@@ -106,7 +108,7 @@ function NavBar() {
                   </li>
                   <li>
                     <a
-                      href="#"
+                      href="/e-commerce"
                       onClick="menuToggling()"
                       className="subLink text-uppercase weight-500"
                     >
@@ -219,8 +221,13 @@ const Header = styled.header`
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 99999999999999;
+  z-index: 99999999999;
   background: ${({ scrollNav }) => (scrollNav ? "#fff" : "transparent")};
+  box-shadow: ${({ scrollNav }) => (scrollNav ? "0px 8px 5px 1px rgba(0,0,0,0.11)" : "none")}; 
+  transition: ${({ scrollNav }) => (scrollNav ? "background 0s ease-in-out" : "background .5s ease-in-out")}; 
+  @media only screen and (max-width: 995px) {
+    padding-left: 1rem;
+  }
 `;
 const Nav = styled.ul`
   display: flex;
@@ -233,6 +240,7 @@ const Nav = styled.ul`
   top: 0.6rem;
   @media only screen and (max-width: 995px) {
     right: -1rem;
+    top: 0.1rem;
   }
 `;
 const NavItem = styled.li`
@@ -299,6 +307,7 @@ const Lang = styled(Link)`
   &:hover {
     color: #fff;
     background: var(--orange-color);
+    text-decoration: none;
   }
 `;
 
@@ -308,6 +317,7 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  z-index: 99999999;
 `;
 const LinkP = styled(Link)`
   text-decoration: none;
@@ -322,6 +332,7 @@ const LinkP = styled(Link)`
   &:hover {
     color: #fff;
     background: var(--orange-color);
+    text-decoration: none;
   }
   &.btn_logOut {
     margin-top: 1rem;

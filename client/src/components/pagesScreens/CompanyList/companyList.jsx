@@ -14,7 +14,7 @@ const CarouselButton = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 5,
+    slidesToShow: 4,
     slidesToScroll: 1,
   };
   return (
@@ -180,7 +180,9 @@ const SliderCarousel = styled(Slider)`
   /* display: flex; */
   padding: 0 3rem;
   margin: 4rem 0;
-  width: 100%;
+  width: 100&;
+  margin-right: auto;
+  margin-left: auto;
   z-index: 999;
 
   & div {

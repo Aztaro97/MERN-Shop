@@ -5,11 +5,11 @@ import React from "react";
 // import 'owl.carousel/dist/assets/owl.theme.default.css';  
 
 
-// import "../../css/style.css"
-// import "../../css/bootstrap.min.css";
-// import "../../css/owl.carousel.min.css";
-// import "../../css/owl.theme.default.min.css";
-// import "../../css/animate.min.css";
+import "./css/style.css"
+import "./css/bootstrap.min.css";
+import "./css/owl.carousel.min.css";
+import "./css/owl.theme.default.min.css";
+import "./css/animate.min.css";
 
 // import "../../js/main"
 // import "../../js/jquery-3.5.1.slim.min.js"

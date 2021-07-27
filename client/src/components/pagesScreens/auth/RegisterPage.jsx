@@ -10,17 +10,20 @@ import {
   FaInstagram,
   FaTwitter,
 } from "react-icons/all";
+import { Link, useHistory } from "react-router-dom";
 import ImgCrop from "antd-img-crop";
 import { Upload } from "antd";
 
-import MainContainer from "../../MainContainer"
+import MainContainer from "../../MainContainer";
 import InputRadio from "../../InputRadioComponent";
 import ButtonC from "../../ButtonComponeent";
 import InputC from "../../InputComponents";
-import SelectC from "../../SelectComponents"
+import SelectC from "../../SelectComponents";
 
 function RegisterPage() {
   const [typeUser, setTypeUser] = useState(null);
+
+  const history = useHistory();
 
   const handleClickRadio = (e) => {
     setTypeUser(e.target.value);
@@ -28,42 +31,44 @@ function RegisterPage() {
   };
   return (
     <MainContainer>
-    <FormContainer>
-      <Header>
-        <a href="#/">Back</a>
-        <div className="radio-button">
-          <div>
-            <InputRadio
-              value="company"
-              name="typeCpny"
-              id="company"
-              checked
-              onChange={handleClickRadio}
-              //   onClick={handleClickRadio}
-            />
-            <label htmlFor="company">Comapny</label>
-          </div>
+      <FormContainer>
+        <Header>
+          <a href="#/" onClick={() => history.goBack()}>Back</a>
+          <div className="radio-button">
+            <div>
+              <InputRadio
+                value="company"
+                name="typeCpny"
+                id="company"
+                checked
+                onChange={handleClickRadio}
+                //   onClick={handleClickRadio}
+              />
+              <label htmlFor="company">Comapny</label>
+            </div>
 
-          <div>
-            <InputRadio
-              value="crafman"
-              name="typeCpny"
-              id="crafman"
-              onChange={handleClickRadio}
-              //   onClick={handleClickRadio}
-            />
-            <label htmlFor="crafman">Craftman</label>
+            <div>
+              <InputRadio
+                value="crafman"
+                name="typeCpny"
+                id="crafman"
+                onChange={handleClickRadio}
+                //   onClick={handleClickRadio}
+              />
+              <label htmlFor="crafman">Craftman</label>
+            </div>
           </div>
+        </Header>
+        <UserForm />
+        <CompanyInfo />
+        <BankInfo />
+        <GalleryPhotos />
+        <div className="row">
+          <Link to="/add-product" className="submittion_btn">
+            <ButtonC style={{ margin: "0 auto" }}>save</ButtonC>
+          </Link>
         </div>
-      </Header>
-      <UserForm />
-      <CompanyInfo />
-      <BankInfo />
-      <GalleryPhotos />
-      <div className="row">
-        <ButtonC style={{margin:"0 auto"}}>save</ButtonC>
-      </div>
-    </FormContainer>
+      </FormContainer>
     </MainContainer>
   );
 }
@@ -191,7 +196,11 @@ const CompanyInfo = () => {
           <div className="col">
             <div className="row">
               <h1>about company</h1>
-              <TextArea type="text" style={{ height: 100 }} name="description" />
+              <TextArea
+                type="text"
+                style={{ height: 100 }}
+                name="description"
+              />
             </div>
             <div className="row">
               <h1>our services</h1>
@@ -209,7 +218,11 @@ const CompanyInfo = () => {
                 <FaTwitter className="twitter" />
                 <ImPhone className="whatsapp" />
               </div>
-              <InputC style={{ marginTop:15 }} name="social-link" placeholder="TYPE YOUR FACEBOOK LINK"/>
+              <InputC
+                style={{ marginTop: 15 }}
+                name="social-link"
+                placeholder="TYPE YOUR FACEBOOK LINK"
+              />
             </div>
           </div>
         </div>
@@ -222,17 +235,17 @@ const BankInfo = () => {
   const options = [
     {
       title: "Dollar",
-      value: "dollar"
+      value: "dollar",
     },
     {
       title: "Euro",
-      value: "euro"
+      value: "euro",
     },
     {
       title: "Dirham",
-      value: "dirham"
-    }
-  ]
+      value: "dirham",
+    },
+  ];
   return (
     <Form>
       <h1>bank information</h1>
@@ -253,15 +266,22 @@ const BankInfo = () => {
           <InputC name="bankName" type="text" placeholder="SWIFT CODE" />
         </div>
         <div className="row">
-          <SelectC options={options} name="bankName" type="text" placeholder="BANK NAME" />
+          <SelectC
+            options={options}
+            name="bankName"
+            type="text"
+            placeholder="BANK NAME"
+          />
         </div>
         <div className="row">
-          <ButtonC style={{marginLeft:"auto"}} type="submit">save</ButtonC>
+          <ButtonC style={{ marginLeft: "auto" }} type="submit">
+            save
+          </ButtonC>
         </div>
       </div>
     </Form>
-  )
-}
+  );
+};
 
 const GalleryPhotos = () => {
   const [fileList, setFileList] = useState([{}]);
@@ -287,38 +307,42 @@ const GalleryPhotos = () => {
   };
   return (
     <Form>
-    <div className="row">
-      <h1>add photo for your company</h1>
-      <div className="card">
-      <ImgCrop rotate>
-          <Upload
-          // style={{background:"red"}
-            listType="picture-card"
-            beforeUpload={() => false}
-            onChange={onChange}
-            onPreview={onPreview}
-            fileList={fileList}
-            name="image-files"
-          >
-            {fileList.length < 9 && <UploadIcon><GoPlus size={30} /></UploadIcon>}
-          </Upload>
-        </ImgCrop>
-        <h5>COVER PHOTO</h5>
+      <div className="row_galery">
+        <h1>add photo for your company</h1>
+        <div className="card">
+          <ImgCrop rotate>
+            <Upload
+              // style={{background:"red"}
+              listType="picture-card"
+              beforeUpload={() => false}
+              onChange={onChange}
+              onPreview={onPreview}
+              fileList={fileList}
+              name="image-files"
+            >
+              {fileList.length < 9 && (
+                <UploadIcon>
+                  <GoPlus size={30} />
+                </UploadIcon>
+              )}
+            </Upload>
+          </ImgCrop>
+          <h5>COVER PHOTO</h5>
+        </div>
       </div>
-    </div>
     </Form>
-  )
-}
+  );
+};
 
 const UploadIcon = styled.div`
-width: 100%;
-height: 100%;
-color: #fff;
+  width: 100%;
+  height: 100%;
+  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
   background: var(--orange-color);
-`
+`;
 
 const Header = styled.div`
   height: 5rem;
@@ -343,7 +367,6 @@ const Header = styled.div`
       justify-content: center;
       align-items: center;
       margin: 0 1rem;
-      
 
       & input {
         font-size: 2rem;
@@ -359,6 +382,12 @@ const Header = styled.div`
 
 const FormContainer = styled.form`
   padding: 2rem;
+
+  & .submittion_btn {
+    margin:2rem 0;
+    text-align:center;
+    width: 100%;
+  }
 `;
 
 const Form = styled.form`
@@ -379,7 +408,6 @@ const Form = styled.form`
       grid-gap: 3rem;
       @media only screen and (max-width: 900px) {
         grid-template-columns: 1fr;
-
       }
     }
 
@@ -399,21 +427,21 @@ const Form = styled.form`
           padding: 7px;
           font-size: 2.4rem;
           background: #3b5998;
-          margin-right: .7rem;
+          margin-right: 0.7rem;
         }
         & .insta {
           border-radius: 50%;
           padding: 7px;
           font-size: 2.4rem;
           background: #6a453b;
-          margin-right: .7rem;
+          margin-right: 0.7rem;
         }
         & .twitter {
           border-radius: 50%;
           padding: 7px;
           font-size: 2.4rem;
           background: #55acee;
-          margin-right: .7rem;
+          margin-right: 0.7rem;
         }
         & .whatsapp {
           border-radius: 50%;
@@ -429,10 +457,10 @@ const Form = styled.form`
         width: 100%;
         margin-bottom: 15px;
         border-radius: 20px;
-        height:3rem;
+        height: 3rem;
 
         & .icon {
-          padding: .6rem;
+          padding: 0.6rem;
           background: var(--orange-color);
           color: white;
           min-width: 3.12rem;
