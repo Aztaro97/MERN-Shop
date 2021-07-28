@@ -25,6 +25,12 @@ import {
     USER_UPDATE_SUCCESS,
     USER_UPDATE_FAIL,
     USER_UPDATE_PROFILE_RESET,
+    USER_REGISTER_COMPANY_INFO_REQUEST,
+  USER_REGISTER_COMPANY_INFO_SUCCESS,
+  USER_REGISTER_COMPANY_INFO_FAIL,
+  USER_REGISTER_BANK_INFO_REQUEST,
+  USER_REGISTER_BANK_INFO_SUCCESS,
+  USER_REGISTER_BANK_INFO_FAIL
   } from '../constants/userConstants'
   
   export const userLoginReducer = (state = {}, action) => {
@@ -129,6 +135,34 @@ import {
         }
       default:
         return state
+    }
+  }
+
+
+  export const userRegisterCompanyInfo = (state = {}, action) => {
+    switch (action.type) {
+      case USER_REGISTER_COMPANY_INFO_REQUEST:
+        return { loading: true }
+      case USER_REGISTER_COMPANY_INFO_SUCCESS:
+        return { loading: false, info: action.payload }
+      case USER_REGISTER_COMPANY_INFO_FAIL:
+        return { loading:false, error: action.payload}        
+        default:
+          return state;
+    }
+  }
+
+
+  export const userRegisterBankInfo = (state = {}, action) => {
+    switch (action.type) {
+      case USER_REGISTER_BANK_INFO_REQUEST:
+        return { loading: true }
+      case USER_REGISTER_BANK_INFO_SUCCESS:
+        return { loading: false, info: action.payload }
+      case USER_REGISTER_BANK_INFO_FAIL:
+        return { loading:false, error: action.payload}        
+        default:
+          return state;
     }
   }
   

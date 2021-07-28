@@ -3,10 +3,7 @@ const bcrypt = require('bcryptjs')
 
 const userSchema = mongoose.Schema(
   {
-    name: {
-      type: String,
-      // required: true,
-    },
+    // //////    AUTHENTIFICATION INFORMATION   //////////////////
     email: {
       type: String,
       required: true,
@@ -16,6 +13,50 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+
+
+    // ///////////  COMPANY INFORMATION    //////////////////
+    company : { 
+      type:{ type: String},
+      name: {type: String,},
+      scopeBusiness: {type: String,},
+      phoneNumber: {type: Array},
+      location: {type: String},
+      email: {type: String},
+      workHours:[{
+        from:{ type: String},
+        to:{ type: String },
+      }],
+      holidays:{ type: Array},
+      about:{ type: String},
+      services:{ type: String},
+      videoLink: { type: String },
+      mediaLink: {
+        facebook:{ type: String},
+        insta:{ type: String},
+        twitter:{ type: String},
+        whatsapp:{ type: String},
+      }
+    },
+
+
+    // /////////////////  BANK INFORMATION   //////////////////
+    bank : {
+      name: { type: String},
+      branch: { type: String},
+      accountNumber: { type: String},
+      iban: { type: String},
+      swiftCode: { type: String},
+      device: { type: String},
+    },
+
+
+    //   ///////////   COMPANY PHOTOS
+    urlImg:[{ type: String}],
+
+
+
+    // /////////////////
     isAdmin: {
       type: Boolean,
       required: true,

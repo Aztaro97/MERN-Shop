@@ -1,8 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 
-function InputRadio({ value, name, id, checked, onChange }) {
-  return <Input type="radio" name={name} value={value} id={id} checked={checked} onChange={onChange} />
+function InputRadio({ value, name, id, checked ,onChange, onClick}) {
+  return (
+    <Input
+      type="radio"
+      name={name}
+      value={value}
+      id={id}
+      checked={checked}
+      onClick={onClick}
+      onChange={onChange}
+    />
+  );
 }
 
 const Input = styled.input`
@@ -17,10 +27,9 @@ const Input = styled.input`
     margin-right: 5px;
   }
   &:checked {
-	background-color: var(--orange-color);
-  padding: 3px;
-
-}
+    background-color: var(--orange-color);
+    padding: 3px;
+  }
 `;
 
 export default InputRadio;

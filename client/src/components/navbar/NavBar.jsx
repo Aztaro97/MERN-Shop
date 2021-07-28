@@ -221,7 +221,7 @@ const Header = styled.header`
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 99999999999;
+  z-index: 99;
   background: ${({ scrollNav }) => (scrollNav ? "#fff" : "transparent")};
   box-shadow: ${({ scrollNav }) => (scrollNav ? "0px 8px 5px 1px rgba(0,0,0,0.11)" : "none")}; 
   transition: ${({ scrollNav }) => (scrollNav ? "background 0s ease-in-out" : "background .5s ease-in-out")}; 

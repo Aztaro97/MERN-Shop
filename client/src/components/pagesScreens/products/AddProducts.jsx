@@ -142,13 +142,13 @@ const FormRight = () => {
       let formData = new FormData();
       // add one or more of your files in FormData
       // again, the original file is located at the `originFileObj` key
-      formData.append("image-files", fileList[0].originFileObj);
+      formData.append("imgfiles", fileList[0].originFileObj);
 
-      const res = await axios.post("/api/upload/", formData);
+      const res = await axios.post("/api/upload", formData);
 
       console.log(res);
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
   };
 

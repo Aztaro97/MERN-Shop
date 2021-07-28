@@ -4,19 +4,14 @@ import styled from "styled-components";
 
 // const { Option } = Select;
 
-function SelectCOmponents({ options, placeholder, style, name, id , className}) {
-  const [valueSeleted, setValueSeleted] = useState("");
-  const handleChange = (value) => {
-    setValueSeleted(value);
-    console.log(`selected ${value}`);
-  };
+function SelectCOmponents({ options, placeholder, style, name, id , className, onChange}) {
   return (
     <SelectE
       name={name}
       id={id}
       style={style}
       className={className}
-      onChange={handleChange}
+      onChange={onChange}
       placeholder={placeholder}
     >
       {options && options.length > 0

@@ -10,9 +10,11 @@ const {
   getUserById,
   updateUser,
   resetPassword,
-  updatePassword
+  updatePassword,
+  saveCompanyInformation,
+  saveBankInformation
 } = require('../controllers/userController')
-const { protect, admin } = require('../middleware/authMiddleware')
+const { protect, admin, secure } = require('../middleware/authMiddleware')
 
 router.route('/').post(registerUser).get(protect, admin, getUsers)
 router.post('/login', authUser)
@@ -27,5 +29,7 @@ router
   .put(protect, admin, updateUser)
 router.post("/reset-password", resetPassword)
 router.post("/new-password/:token", updatePassword)
+router.route("/company").post(protect, saveCompanyInformation);
+router.route("/bank").post(protect, saveBankInformation);
 
 module.exports = router

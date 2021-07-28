@@ -24,8 +24,15 @@ import {
   USER_UPDATE_FAIL,
   USER_UPDATE_SUCCESS,
   USER_UPDATE_REQUEST,
+  USER_REGISTER_COMPANY_INFO_REQUEST,
+  USER_REGISTER_COMPANY_INFO_SUCCESS,
+  USER_REGISTER_COMPANY_INFO_FAIL,
+  USER_REGISTER_BANK_INFO_REQUEST,
+  USER_REGISTER_BANK_INFO_SUCCESS,
+  USER_REGISTER_BANK_INFO_FAIL
 } from '../constants/userConstants'
-import { ORDER_LIST_MY_RESET } from '../constants/orderConstants'
+import { ORDER_LIST_MY_RESET } from '../constants/orderConstants';
+import {successMessage, warningMessage} from "../../components/message"
 
 export const login = (email, password) => async (dispatch) => {
   try {
@@ -97,6 +104,8 @@ export const register = (body) => async (dispatch) => {
       payload: data,
     })
 
+    successMessage("User Registration Successfull ")
+
     dispatch({
       type: USER_LOGIN_SUCCESS,
       payload: data,
@@ -105,10 +114,11 @@ export const register = (body) => async (dispatch) => {
     localStorage.setItem('userInfo', JSON.stringify(data))
   } catch (error) {
     console.log(error)
+    warningMessage(error.response.data.message)
     dispatch({
       type: USER_REGISTER_FAIL,
       payload:
-        error.response && error.response.data.message
+        error.response && error.response.data
           ? error.response.data.message
           : error.message,
     })
@@ -301,6 +311,102 @@ export const updateUser = (user) => async (dispatch, getState) => {
     dispatch({
       type: USER_UPDATE_FAIL,
       payload: message,
+    })
+  }
+}
+
+
+
+
+
+// /////////   REGISTER COMPANY INFORMATION
+export const registerCompanyInfo = (body) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: USER_REGISTER_COMPANY_INFO_REQUEST,
+    })
+
+    const {
+      userLogin: { userInfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+
+    const { data } = await axios.post(
+      '/api/users/company',
+      body,
+      config
+    )
+
+    dispatch({
+      type: USER_REGISTER_COMPANY_INFO_SUCCESS,
+      payload: data,
+    })
+    successMessage("COMPANY INFORMATION SUCCESSFULL SAVED")
+
+  } catch (error) {
+    console.log(error)
+    warningMessage(error.message)
+    dispatch({
+      type: USER_REGISTER_COMPANY_INFO_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    })
+  }
+}
+
+
+
+
+// /////////   REGISTER BANK INFORMATION
+export const registerBankInfo = (body) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: USER_REGISTER_BANK_INFO_REQUEST,
+    })
+
+    const {
+      userLogin: { userInfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+
+    const { data } = await axios.post(
+      '/api/users/bank',
+      body,
+      config
+    )
+
+
+
+    dispatch({
+      type: USER_REGISTER_BANK_INFO_SUCCESS,
+      payload: data,
+    })
+    successMessage("BANK INFORMATION SUCCESSFULL SAVED")
+
+
+  } catch (error) {
+    console.log(error)
+    warningMessage(error.message)
+    dispatch({
+      type: USER_REGISTER_BANK_INFO_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
     })
   }
 }
