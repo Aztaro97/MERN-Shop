@@ -3,45 +3,22 @@ import { Carousel, Image } from "antd";
 import styled from "styled-components";
 import MainContainer from "../../MainContainer";
 import { AiOutlineClose } from "react-icons/ai";
-import {Link, useHistory} from "react-router-dom"
+import { Link, useHistory } from "react-router-dom";
 import ButtonC from "../../ButtonComponeent";
 
 import picture from "../../../img/productimg.png";
 
-// const CarouselImage = () => {
-//   const contentStyle = {
-//     height: "160px",
-//     color: "#fff",
-//     lineHeight: "160px",
-//     textAlign: "center",
-//     background: "#364d79",
-//     width: "10px",
-//   };
-//   return (
-//     <Carousel autoplay effect="fade">
-//       <Image src={picture} width={100} />
-//       <Image src={picture} width={100} />
-//       <div>
-//         <h3 style={contentStyle}>3</h3>
-//       </div>
-//       <div>
-//         <h3 style={contentStyle}>4</h3>
-//       </div>
-//     </Carousel>
-//   );
-// };
-
-
 function CartComponent() {
   const [qty, setQty] = useState(1);
 
-const history = useHistory();
-
+  const history = useHistory();
 
   return (
     <MainContainer>
       <Header>
-        <a href="#/" onClick={() => history.goBack()}>Back</a>
+        <a href="#/" onClick={() => history.goBack()}>
+          Back
+        </a>
         <h2>Shoping Cart</h2>
       </Header>
       <CartContent>
@@ -101,17 +78,20 @@ const history = useHistory();
           <hr />
         </Row>
         <Row>
-            <div className="suptotal">
-                <p>suptotal</p>
-                <p>aed 2000.00</p>
-            </div>
+          <div className="suptotal">
+            <p>suptotal</p>
+            <p>aed 2000.00</p>
+          </div>
         </Row>
         <Row>
-            <div className="btn-checkout">
-            <Link to="/checkout" style={{textDecoration:"none"}}>
-            <ButtonC type="button">check out</ButtonC></Link>
-            <Link className="link" to="/products">continue shopping</Link>
-            </div>
+          <div className="btn-checkout">
+            <Link to="/checkout" style={{ textDecoration: "none" }}>
+              <ButtonC type="button">check out</ButtonC>
+            </Link>
+            <Link className="link" to="/products">
+              continue shopping
+            </Link>
+          </div>
         </Row>
       </CartContent>
     </MainContainer>
@@ -121,44 +101,43 @@ const history = useHistory();
 const Container = styled.div`
   max-width: var(--max-width);
   margin: 0 auto;
-`
-
+`;
 
 const Row = styled.div`
-    & hr {
-        outline: none;
-        border: none;
-        height:.1px;
-        background: #cecece;
-        margin-top: .3rem;
-    }
+  & hr {
+    outline: none;
+    border: none;
+    height: 0.1px;
+    background: #cecece;
+    margin-top: 0.3rem;
+  }
 
-    & .suptotal {
-        display: flex;
-        justify-content: space-between;
-        text-transform: uppercase;
-        font-weight: 700;
-        margin-top: 1.3rem;
-    }
+  & .suptotal {
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-top: 1.3rem;
+  }
 
-    & .btn-checkout {
-        text-align: center;
-        margin-top: 1rem;
-        margin-bottom: 4rem;
-    }
+  & .btn-checkout {
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 4rem;
+  }
 
-    & .link {
-        display:block;
-        text-decoration: none;
-        color: var(--orange-color);
-        margin-top: 1rem;
-        text-transform: uppercase;
-        font-weight: 700;
-        font-size: .9rem;
-        &:hover {
-            opacity:.9
-        }
+  & .link {
+    display: block;
+    text-decoration: none;
+    color: var(--orange-color);
+    margin-top: 1rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 0.9rem;
+    &:hover {
+      opacity: 0.9;
     }
+  }
 `;
 
 const Header = styled.div`
@@ -182,7 +161,7 @@ const Header = styled.div`
 `;
 
 const CartContent = styled.div`
-    padding: 1rem 0 3rem 0;
+  padding: 1rem 0 3rem 0;
 `;
 
 const GridTop = styled.div`
@@ -245,7 +224,7 @@ const Grid = styled.div`
         }
 
         & > * {
-          margin-right: .6rem;
+          margin-right: 0.6rem;
         }
       }
     }
@@ -266,7 +245,7 @@ const Btn = styled.div`
   }
 
   & button {
-    padding:0 1rem;
+    padding: 0 1rem;
     background: transparent;
     outline: none;
     border-radius: 10px;

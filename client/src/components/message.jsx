@@ -3,27 +3,27 @@ import { message, Button, Space } from "antd";
 
 const key = 'updatable';
 
-export const successMessage = (sms) => {
+export const successMessage = (sms, time) => {
   message.loading({ content: "Loading...", key });
   setTimeout(() => {
     message.success({ content: sms, key, duration: 2, style:{color:"#429e14"} });
-  }, 1000);
+  }, time ? time : 1000 );
 };
 
-export const errorMessage = (sms) => {
+export const errorMessage = (sms, time) => {
   message.loading({ content: "Loading...", key });
   setTimeout(() => {
     message.error({ content: sms, key, duration: 2, style:{color:"red"} });
-  }, 1000);
+  }, time ? time : 1000);
 };
 
 // export const errorMessage = (sms) => message.success(sms);
 
 // export const warningMessage = (sms) => message.warning(sms);
 
-export const warningMessage = (sms) => {
+export const warningMessage = (sms, time) => {
   message.loading({ content: "Loading...", key });
   setTimeout(() => {
     message.warning({ content: sms, key, duration: 2, style:{color:"#000",} });
-  }, 1000);
+  }, time ? time : 1000);
 };

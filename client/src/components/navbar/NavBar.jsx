@@ -1,12 +1,25 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { FaUser, FaShoppingCart } from "react-icons/fa";
 import { Popover } from "antd";
+import {useDispatch, useSelector} from "react-redux";
+import {logout} from "../../flux/actions/userAction"
 import MAinContainer from "../MainContainer";
 
 function NavBar() {
   const [scrollNav, setScrollNav] = useState(false);
+
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const userLogin = useSelector(state => state.userLogin);
+  const {userInfo} = userLogin;
+
+  const handleLogOut = () => {
+    dispatch(logout())
+    history.push("/auth")
+  }
 
   const ChangeNav = () => {    
     if (window.scrollY >= 80) {
@@ -22,15 +35,26 @@ function NavBar() {
     window.addEventListener('scroll', ChangeNav);
   }, []);
 
-  const ProfileContent = (
+  const ProfileContentLogin = (
     <Content>
       <LinkP to="/companies">my profile</LinkP>
       <LinkP to="/edit-products">my products</LinkP>
       <LinkP to="/add-product">add more products</LinkP>
 
-      <LinkP className="btn_logOut" to="/logout">
+      <LinkP className="btn_logOut" onClick={handleLogOut}>
         Log Out
       </LinkP>
+    </Content>
+  );
+  const ProfileContentLogOut = (
+    <Content>
+      <LinkP to="/auth" className="btn_signin" >Sign in</LinkP>
+      {/* <LinkP to="/edit-products">my products</LinkP>
+      <LinkP to="/add-product">add more products</LinkP> */}
+
+      {/* <LinkP className="btn_logOut">
+        Log in
+      </LinkP> */}
     </Content>
   );
   return (
@@ -40,7 +64,7 @@ function NavBar() {
         <NavItem>
           <Popover
             placement="bottomRight"
-            content={ProfileContent}
+            content={userInfo ? ProfileContentLogin : ProfileContentLogOut}
             trigger="hover"
           >
             <NavLink>
@@ -342,6 +366,13 @@ const LinkP = styled(Link)`
   }
   &.btn_logOut:hover {
     opacity: 0.9;
+  }
+  &.btn_signin {
+    text-transform: capitalize;
+    background: var(--orange-color);
+    color: #fff;
+    padding: 0.3rem 3rem;
+    /* margin:2rem 0 */
   }
 `;
 export default NavBar;

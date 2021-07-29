@@ -62,6 +62,8 @@ const createProduct =   asyncHandler(async (req, res) => {
   const imageList = [];
 
   const {
+    code,
+    typeService,
     name,
     price,
     brand,
@@ -73,15 +75,18 @@ const createProduct =   asyncHandler(async (req, res) => {
     shippingFrom,
     shippingTo,
     rateShipping,
-    varianColor,
-    varianSize,
-    varianFinish,
-    varianMaterial,
+    variantColor,
+    variantSize,
+    variantFinish,
+    variantMaterial,
+    variantStyle,
     united,
     size,
   } = req.body;
   const product = new Product({
     user: req.user._id,
+    code,
+    typeService,
     name,
     price,
     imageUrl: imageList,
@@ -94,10 +99,11 @@ const createProduct =   asyncHandler(async (req, res) => {
     shippingFrom,
     shippingTo,
     rateShipping,
-    varianColor,
-    varianSize,
-    varianFinish,
-    varianMaterial,
+    variantColor,
+    variantSize,
+    variantFinish,
+    variantMaterial,
+    variantStyle,
     united,
     size,
   });

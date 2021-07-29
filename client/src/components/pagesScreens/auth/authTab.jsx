@@ -1,6 +1,8 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Tabs } from "antd";
 import styled from "styled-components";
+import {useHistory, Redirect} from "react-router-dom"
+import {useDispatch, useSelector} from "react-redux"
 import MainContainer from "./../../MainContainer";
 import LoginComponent from "./loginTab";
 import RegisterComponent from "./RegisterTab";
@@ -8,6 +10,20 @@ import RegisterComponent from "./RegisterTab";
 const { TabPane } = Tabs;
 
 function AuthTabPage() {
+
+  const history = useHistory();
+  const userLogin = useSelector((state) => state.userLogin);
+  const {userInfo} = userLogin
+
+  
+
+  useEffect(() => {
+    if (userInfo) {
+      return (<Redirect to="/e-commerce" />)
+    }
+
+  }, [userInfo])
+
   return (
     <AuthTab>
       <MainContainer>

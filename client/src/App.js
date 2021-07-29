@@ -7,7 +7,7 @@ import HomeComponents from "./components/pagesScreens/Home/HomeComponents";
 import { GlobalStyle } from "./globalStyle";
 import AuthComponents from "./components/pagesScreens/auth/authTab";
 import LoaderComponent from "./components/loader";
-import AddProductComponent from "./components/pagesScreens/products/AddProducts";
+import CreateProductComponent from "./components/pagesScreens/products/createProduct";
 import ProductAndCompanyComponent from "./components/pagesScreens/productsAndCompany/tabs";
 import EditProductAndCompanyComponent from "./components/pagesScreens/EditProductsAndCompany/tabs";
 import CartComponent from "./components/pagesScreens/cart/cart";
@@ -17,7 +17,8 @@ import RegisterComponenet from "./components/pagesScreens/auth/RegisterPage";
 import PayementStep from "./components/pagesScreens/checkout/completePayement";
 import CompanyListComponent from "./components/pagesScreens/CompanyList/index";
 import EcommerceHomeComponent from "./components/pagesScreens/e-commerce/homeECommerce";
-import PaymentCompopnent from "./components/pagesScreens/checkout/payment"
+import PaymentCompopnent from "./components/pagesScreens/checkout/payment";
+import pageNotFound from "./components/pagesScreens/pageNotFund"
 
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={HomeComponents} />
           <Route path="/auth" component={AuthComponents} />
-          <Route path="/add-product" component={AddProductComponent} />
+          <Route path="/add-product" component={CreateProductComponent} />
           <Route path="/products" component={ProductAndCompanyComponent} />
           <Route path="/edit-products" component={EditProductAndCompanyComponent} />
           <Route path="/e-commerce" component={EcommerceHomeComponent} />
@@ -39,6 +40,7 @@ function App() {
           <Route path="/register" component={RegisterComponenet} />
           <Route path="/payement" component={PayementStep} />
           <Route path="/payment" component={PaymentCompopnent} />
+          <Route component={pageNotFound} />
         </Switch>
       {/* <Footer /> */}
     </Router>

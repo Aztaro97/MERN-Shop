@@ -1,3 +1,4 @@
+import { useHistory } from "react-router-dom";
 import axios from 'axios'
 import {
   USER_DETAILS_FAIL,
@@ -34,8 +35,12 @@ import {
 import { ORDER_LIST_MY_RESET } from '../constants/orderConstants';
 import {successMessage, warningMessage} from "../../components/message"
 
-export const login = (email, password) => async (dispatch) => {
+
+export const login = (body) => async (dispatch) => {
+  
+  
   try {
+  
     dispatch({
       type: USER_LOGIN_REQUEST,
     })
@@ -48,7 +53,7 @@ export const login = (email, password) => async (dispatch) => {
 
     const { data } = await axios.post(
       '/api/users/login',
-      { email, password },
+      body,
       config
     )
 
@@ -56,9 +61,15 @@ export const login = (email, password) => async (dispatch) => {
       type: USER_LOGIN_SUCCESS,
       payload: data,
     })
+    document.location.href = '/e-commerce'
 
     localStorage.setItem('userInfo', JSON.stringify(data))
   } catch (error) {
+    warningMessage(
+      error.response && error.response.data.message
+      ? error.response.data.message
+      : error.message
+    )
     dispatch({
       type: USER_LOGIN_FAIL,
       payload:
@@ -78,7 +89,6 @@ export const logout = () => (dispatch) => {
   dispatch({ type: USER_DETAILS_RESET })
   dispatch({ type: ORDER_LIST_MY_RESET })
   dispatch({ type: USER_LIST_RESET })
-  document.location.href = '/login'
 }
 
 export const register = (body) => async (dispatch) => {
@@ -113,8 +123,12 @@ export const register = (body) => async (dispatch) => {
 
     localStorage.setItem('userInfo', JSON.stringify(data))
   } catch (error) {
-    console.log(error)
-    warningMessage(error.response.data.message)
+    // console.log(error)
+    warningMessage(
+      error.response && error.response.data.message
+      ? error.response.data.message
+      : error.message
+    )
     dispatch({
       type: USER_REGISTER_FAIL,
       payload:

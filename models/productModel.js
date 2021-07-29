@@ -7,7 +7,7 @@ const reviewSchema = mongoose.Schema(
     comment: { type: String, required: true },
     user: {
       type: mongoose.Schema.Types.ObjectId,
-      required: true,
+      // required: true,
       ref: "User",
     },
   },
@@ -20,84 +20,98 @@ const productSchema = mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
-      required: true,
+      // required: true,
       ref: "User",
     },
-    service: {
+    code: {
       type: String,
-      required: true,
+      // required: true,
+    },
+    typeService: {
+      type: String,
+      // required: true,
     },
     shippingFrom: {
       type: String,
-      required: true,
+      // required: true,
     },
     shippingTo: [
       {
         type: String,
-        required: true,
+        // required: true,
       },
     ],
     rateShipping: [
       {
-        ShippingAdress: { type: String, required: true },
+        ShippingAdress: {
+          type: String,
+          // required: true,
+        },
         shippingPice: { type: Number, default: 0 },
         // rateName: {type: String, required: true}
       },
     ],
     name: {
       type: String,
-      required: true,
+      // required: true,
     },
     description: {
       type: String,
-      required: true,
+      // required: true,
     },
     imageUrl: {
       type: Array,
-      required: true,
+      // required: true,
     },
     brand: {
       type: String,
-      required: true,
+      // required: true,
     },
     category: {
       type: String,
-      required: true,
+      // required: true,
     },
 
     reviews: [reviewSchema],
     numReviews: {
       type: Number,
-      required: true,
+      // required: true,
       default: 0,
     },
-    variancolor: [{ type: String, required: true }],
-    varianSize: {
-      type: Number,
-      required: true,
-    },
-    varianFinish: [
+    variantColor: [
       {
         type: String,
-        required: true,
+        // required: true,
       },
     ],
-    varianMaterial: [
+    variantSize: [
       {
-        type: String,
-        required: true,
+        type: Number,
+        // required: true,
       },
     ],
-    varianStyle: [
+    variantFinish: [
       {
         type: String,
-        required: true,
+        // required: true,
+      },
+    ],
+    variantMaterial: [
+      {
+        type: String,
+        // required: true,
+      },
+    ],
+    variantStyle: [
+      {
+        type: String,
+        // required: true,
       },
     ],
 
     united: {
-      type: String,
-      required: true,
+      type: Array,
+      // required: true,
     },
     size: {
       type: Number,
@@ -105,17 +119,17 @@ const productSchema = mongoose.Schema(
     },
     price: {
       type: Number,
-      required: true,
+      // required: true,
       default: 0,
     },
     compareAtPrice: {
       type: Number,
-      required: true,
+      // required: true,
       default: 0,
     },
     countInStock: {
       type: Number,
-      required: true,
+      // required: true,
       default: 0,
     },
   },

@@ -2,11 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import InputComponents from "../../InputComponents";
 import ButtonComponeent from "../../ButtonComponeent";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useFormik } from "formik";
-import axios from "axios";
+import {useDispatch} from "react-redux"
+import {login} from "../../../flux/actions/userAction"
 
 function LoginForm() {
+  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -14,20 +16,8 @@ function LoginForm() {
     },
     onSubmit:async (values) => {
       const body = JSON.stringify(values, null, 2);
-      console.log(body);
-      const config = {
-        headers: {
-          "Content-Type": "application/json"
-        }
-      }
-      axios.post("/api/users/login", body, config)
-      .then(res => {
-        console.log("sucees")
-      })
-      .catch(err => {
-        console.log(err)
-      } )
-
+      dispatch(login(body));
+      formik.setFieldValue("password", "")
     },
   });
   return (
