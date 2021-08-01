@@ -1,26 +1,45 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Carousel, Image } from "antd";
 import styled from "styled-components";
 import MainContainer from "../../MainContainer";
 import { AiOutlineClose } from "react-icons/ai";
 import { Link, useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { removeFromCart, addToCart } from "../../../flux/actions/cartAction";
 import ButtonC from "../../ButtonComponeent";
+// import {} from ""
 
 import picture from "../../../img/productimg.png";
 
-function CartComponent() {
-  const [qty, setQty] = useState(1);
+function CartComponent({location}) {
 
+  
+
+  const { cartItems, error } = useSelector((state) => state.cart);
   const history = useHistory();
 
+  const dispatch = useDispatch();
+  const handleRemoveCart = (productId) => {
+    dispatch(removeFromCart(productId));
+  };
+
+  const handleCheckOut = () => {
+    history.push("/auth?redirect=checkout");
+  };
+
+  // useEffect(() => {
+  //   if (user)
+  // }, [redirect]);
+
   return (
-    <MainContainer>
+    <Container>
       <Header>
         <a href="#/" onClick={() => history.goBack()}>
           Back
         </a>
         <h2>Shoping Cart</h2>
       </Header>
+      {error && <h1>Error : {error}</h1>}
       <CartContent>
         <Row>
           <GridTop>
@@ -31,76 +50,98 @@ function CartComponent() {
           </GridTop>
           <hr />
         </Row>
-        <Row>
-          <Grid>
-            <div className="cart">
-              <img src={picture} />
-              <div className="cart-name">
-                <h3>name of the product</h3>
-                <button>
-                  <AiOutlineClose size={20} /> remove
-                </button>
+
+        {cartItems.length === 0 ? (
+          <h1>
+            Cart item is Empty <Link to="/products">Go Shopping</Link>{" "}
+          </h1>
+        ) : (
+          <>
+            {cartItems.map((item, index) => (
+              <Row key={index}>
+                <Grid>
+                  <div className="cart">
+                    <img src={picture} />
+                    <div className="cart-name">
+                      <h3>{item.name}</h3>
+                      <button
+                        type="button"
+                        onClick={() => handleRemoveCart(item.product)}
+                      >
+                        <AiOutlineClose size={20} /> remove
+                      </button>
+                    </div>
+                  </div>
+                  <p className="price">
+                    {" "}
+                    <span className="mobile_view">Price: </span> {item.price}{" "}
+                    AED
+                  </p>
+                  <Btn className="qty_btn">
+                    <button
+                      onClick={() =>
+                        dispatch(addToCart(item.product, item.qty - 1))
+                      }
+                    >
+                      -
+                    </button>
+                    <p>{item.qty}</p>
+                    <button
+                      onClick={() =>
+                        dispatch(addToCart(item.product, item.qty + 1))
+                      }
+                    >
+                      +
+                    </button>
+                  </Btn>
+                  <p>
+                    {" "}
+                    <span className="mobile_view">Total: </span>
+                    {item.price * item.qty} AED
+                  </p>
+                </Grid>
+                <hr />
+              </Row>
+            ))}
+          </>
+        )}
+
+        {cartItems.length !== 0 && (
+          <>
+            <Row>
+              <div className="suptotal">
+                <p>suptotal</p>
+                <p>
+                  {cartItems
+                    .reduce((acc, item) => acc + item.qty * item.price, 0)
+                    .toFixed(2)}{" "}
+                  AED
+                </p>
               </div>
-            </div>
-            <p className="price">50.00 AED</p>
-            <Btn>
-              <button onClick={() => (qty > 1 ? setQty(qty - 1) : qty)}>
-                -
-              </button>
-              <p>{qty}</p>
-              <button onClick={() => setQty(qty + 1)}>+</button>
-            </Btn>
-            <p>100.00 AED</p>
-          </Grid>
-          <hr />
-        </Row>
-        <Row>
-          <Grid>
-            <div className="cart">
-              <img src={picture} />
-              <div className="cart-name">
-                <h3>name of the product</h3>
-                <button>
-                  <AiOutlineClose size={20} /> remove
-                </button>
+            </Row>
+            <Row>
+              <div className="btn-checkout">
+                <ButtonC type="button" onClick={handleCheckOut}>
+                  check out
+                </ButtonC>
+                <Link className="link" to="/products">
+                  continue shopping
+                </Link>
               </div>
-            </div>
-            <p className="price">50.00 AED</p>
-            <Btn>
-              <button onClick={() => (qty > 1 ? setQty(qty - 1) : qty)}>
-                -
-              </button>
-              <p>{qty}</p>
-              <button onClick={() => setQty(qty + 1)}>+</button>
-            </Btn>
-            <p>100.00 AED</p>
-          </Grid>
-          <hr />
-        </Row>
-        <Row>
-          <div className="suptotal">
-            <p>suptotal</p>
-            <p>aed 2000.00</p>
-          </div>
-        </Row>
-        <Row>
-          <div className="btn-checkout">
-            <Link to="/checkout" style={{ textDecoration: "none" }}>
-              <ButtonC type="button">check out</ButtonC>
-            </Link>
-            <Link className="link" to="/products">
-              continue shopping
-            </Link>
-          </div>
-        </Row>
+            </Row>
+          </>
+        )}
       </CartContent>
-    </MainContainer>
+    </Container>
   );
 }
 
 const Container = styled.div`
   max-width: var(--max-width);
-  margin: 0 auto;
+  margin: 7rem auto 0;
+  @media only screen and (max-width: 1100px) {
+    padding: 0 2rem;
+  }
 `;
 
 const Row = styled.div`
@@ -116,8 +157,14 @@ const Row = styled.div`
     display: flex;
     justify-content: space-between;
     text-transform: uppercase;
-    font-weight: 700;
     margin-top: 1.3rem;
+
+    & P {
+      font-weight: 700;
+      &:nth-child(1) {
+        color: var(--orange-color);
+      }
+    }
   }
 
   & .btn-checkout {
@@ -174,6 +221,9 @@ const GridTop = styled.div`
     text-transform: uppercase;
     font-weight: 700;
     margin: 0;
+  }
+  @media only screen and (max-width: 900px) {
+    display: none;
   }
 `;
 
@@ -233,6 +283,23 @@ const Grid = styled.div`
   & p {
     color: #aaaaac;
     font-weight: 700;
+    & .mobile_view {
+      display: none;
+      color: var(--orange-color);
+      font-weight: 700;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    display: block;
+
+    & p,
+    .qty_btn {
+      margin-top: 1rem;
+      & .mobile_view {
+        display: inline;
+      }
+    }
   }
 `;
 

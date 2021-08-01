@@ -30,7 +30,8 @@ import {
   USER_REGISTER_COMPANY_INFO_FAIL,
   USER_REGISTER_BANK_INFO_REQUEST,
   USER_REGISTER_BANK_INFO_SUCCESS,
-  USER_REGISTER_BANK_INFO_FAIL
+  USER_REGISTER_BANK_INFO_FAIL,
+  USER_ADDRESS_MAP_CONFIRM
 } from '../constants/userConstants'
 import { ORDER_LIST_MY_RESET } from '../constants/orderConstants';
 import {successMessage, warningMessage} from "../../components/message"
@@ -61,7 +62,7 @@ export const login = (body) => async (dispatch) => {
       type: USER_LOGIN_SUCCESS,
       payload: data,
     })
-    document.location.href = '/e-commerce'
+    successMessage("Login Succefull", 500)
 
     localStorage.setItem('userInfo', JSON.stringify(data))
   } catch (error) {
@@ -424,3 +425,13 @@ export const registerBankInfo = (body) => async (dispatch, getState) => {
     })
   }
 }
+
+
+export const userAddressMapReducer = (state = {}, action) => {
+  switch (action.type) {
+    case USER_ADDRESS_MAP_CONFIRM:
+      return { address: action.payload };
+    default:
+      return state;
+  }
+};

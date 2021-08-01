@@ -5,7 +5,7 @@ import { Spin  } from "antd"
 function LoaderComponent() {
     return (
         <Loader>
-            <Spin size="large" />
+            <Spin size="large" className="spin_loader" />
         </Loader>
     )
 }
@@ -15,5 +15,11 @@ const Loader = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+     & .spin_loader {
+        & .ant-spin-dot > * {
+            background: var(--orange-color)
+        }
+     }
 `
 export default LoaderComponent

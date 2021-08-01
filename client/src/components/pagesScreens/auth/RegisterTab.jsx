@@ -3,25 +3,16 @@ import styled from "styled-components";
 import { Alert } from "antd";
 import InputComponents from "../../InputComponents";
 import ButtonComponeent from "../../ButtonComponeent";
-import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import { register } from "../../../flux/actions/userAction";
 import { successMessage, errorMessage } from "../../message";
-
 import { useDispatch, useSelector } from "react-redux";
 
-function Register({ history, location }) {
+function Register() {
   const [errorPwd, setErrorPwd] = useState(false);
 
   const dispatch = useDispatch();
-  const userRegister = useSelector((state) => state.userRegister);
-  const { loading, userInfo } = userRegister;
 
-  useEffect(() => {
-    if (userInfo) {
-      console.log("User existe");
-    }
-  }, [userInfo, history]);
 
   const validate = (values) => {
     const errors = {};

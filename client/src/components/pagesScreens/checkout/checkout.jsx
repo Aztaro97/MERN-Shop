@@ -2,12 +2,15 @@ import React, {useState} from "react";
 import styled from "styled-components";
 import { Modal } from "antd";
 import { Link, useHistory } from "react-router-dom";
+import {useSelector} from "react-redux"
 import InputC from "../../InputComponents";
 import CheckBoxC from "../../CheckBoxComponent";
 import SelectC from "../../SelectComponents";
 import ButtonC from "../../ButtonComponeent";
 
-import MapComponent from "./map/getCurrentPosition";
+// import MapComponent from "./map/getCurrentPosition";
+import MapComponent from "./googleMap/mapScreen";
+
 
 import piture from "../../../img/card_pic.png";
 
@@ -49,6 +52,7 @@ function Checkout() {
   })
 
   const history = useHistory();
+  const {cartItems} = useSelector(state => state.cart)
   return (
     <Container>
       <Header>
@@ -149,36 +153,31 @@ function Checkout() {
             </Link>
           </Row>
         </Form>
-        <SectionRight />
+        <SectionRight cartItems={cartItems} />
         {/* <MapComponent /> */}
       </Grid>
     </Container>
   );
 }
 
-const SectionRight = () => {
+const SectionRight = ({cartItems}) => {
   return (
     <ContainerCart>
-      <Card>
-        <div class="card__image">
-          <img src={piture} alt="" />
-          <p className="quantity">2</p>
-        </div>
-        <div class="card__details">
-          <h1 class="card__title">Name of the Product</h1>
-          <h1 class="card__price">100.00 AED</h1>
-        </div>
-      </Card>
-      <Card>
-        <div class="card__image">
-          <img src={piture} alt="" />
-          <p className="quantity">2</p>
-        </div>
-        <div class="card__details">
-          <h1 class="card__title">Name of the Product</h1>
-          <h1 class="card__price">100.00 AED</h1>
-        </div>
-      </Card>
+      {cartItems.length > 0 && (
+        cartItems.map(item => (
+          <Card key={item._id}>
+          <div class="card__image">
+            <img src={piture} alt="" />
+            <p className="quantity">{item.qty}</p>
+          </div>
+          <div class="card__details">
+            <h1 class="card__title">{item.name}</h1>
+            <h1 class="card__price">{item.price} AED</h1>
+          </div>
+        </Card>
+        ))
+      )}
+      
       <hr />
       <form action="">
         <input type="text" placeholder="DISCOUNT CODE" />

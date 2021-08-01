@@ -9,20 +9,22 @@ import RegisterComponent from "./RegisterTab";
 
 const { TabPane } = Tabs;
 
-function AuthTabPage() {
+function AuthTabPage({location}) {
+
+  const redirect = location.search ? location.search.split('=')[1] : "/"
 
   const history = useHistory();
-  const userLogin = useSelector((state) => state.userLogin);
-  const {userInfo} = userLogin
-
-  
+  const {userInfo} = useSelector((state) => state.userLogin);
 
   useEffect(() => {
     if (userInfo) {
-      return (<Redirect to="/e-commerce" />)
+      history.push(redirect)
     }
+  }, [redirect])
 
-  }, [userInfo])
+  if (userInfo) {
+    history.push("/products")
+  }
 
   return (
     <AuthTab>

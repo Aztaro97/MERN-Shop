@@ -82,7 +82,7 @@ function AddProductScreen() {
     dispatch(createProduct(body));
   };
 
-  if (userInfo) {
+  if (!userInfo) {
     history.push("/auth")
   }
 

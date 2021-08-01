@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Link, useHistory } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { FaUser, FaShoppingCart } from "react-icons/fa";
 import { Popover } from "antd";
 import {useDispatch, useSelector} from "react-redux";
@@ -11,14 +11,13 @@ function NavBar() {
   const [scrollNav, setScrollNav] = useState(false);
 
   const dispatch = useDispatch();
-  const history = useHistory();
 
-  const userLogin = useSelector(state => state.userLogin);
-  const {userInfo} = userLogin;
+  const {cartItems} = useSelector(state => state.cart)
+
+  const {userInfo} = useSelector(state => state.userLogin);
 
   const handleLogOut = () => {
-    dispatch(logout())
-    history.push("/auth")
+    dispatch(logout());
   }
 
   const ChangeNav = () => {    
@@ -75,7 +74,7 @@ function NavBar() {
         <NavItem>
           <NavLink to="/cart">
             <FaShoppingCart className="icon" />
-            <span className="count">10</span>
+            {cartItems.length > 0 ? (<span className="count">{cartItems.length}</span>) : (<span className="count">0</span>)}
           </NavLink>
         </NavItem>
         <NavItem>
@@ -268,7 +267,7 @@ const Nav = styled.ul`
   }
 `;
 const NavItem = styled.li`
-  padding: 0 1rem;
+  margin: 0 1rem;
 `;
 const NavLink = styled(Link)`
   text-decoration: none;
@@ -313,8 +312,11 @@ const NavLink = styled(Link)`
     right: 0.4rem;
     background: var(--orange-color);
     color: #fff;
-    padding: 4px;
+    padding: 6px;
     border-radius: 50%;
+    /* width:70px;
+    height:70px; */
+    font-size: 1rem;
   }
   &:hover {
     color: var(--orange-color);

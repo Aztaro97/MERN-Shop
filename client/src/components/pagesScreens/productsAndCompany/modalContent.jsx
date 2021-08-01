@@ -1,12 +1,27 @@
 import React, { useState } from "react";
 import { Modal } from "antd";
+import {useDispatch} from "react-redux"
 import styled from "styled-components";
 import { FaWhatsapp, FaInstagram, FaTwitter, FaFacebookF, FaTumblr, FaSnapchatGhost } from "react-icons/fa"
+import {addToCart} from "../../../flux/actions/cartAction"
 
 import picture from "../../../img/Background.png";
 import picture1 from "../../../img/productimg.png";
 
-const GalleryImg = () => {
+
+const ModalContent = ({ product, setShowModal }) => {
+  return (
+    <Container>
+      <Grid>
+        <GalleryImg product={product} />
+        <Contente product={product} setShowModal={setShowModal} />
+      </Grid>
+    </Container>
+  );
+};
+
+
+const GalleryImg = ({product}) => {
   const [currentImg, setCurrentImg] = useState(picture);
 
   const hanleClick = (e) => {
@@ -26,8 +41,8 @@ const GalleryImg = () => {
   );
 };
 
-const Contente = () => {
-  const [qtyNumber, setQtyNumber] = useState(0);
+const Contente = ({product, setShowModal}) => {
+  const [qtyNumber, setQtyNumber] = useState(1);
   const [size, setSize] = useState(null);
 
   const handleClickSize = (e) => {
@@ -36,12 +51,18 @@ const Contente = () => {
     console.log(size)
   }
 
+  const dispatch = useDispatch();
+  
+  const addToCartHandler = (id, qty) => {
+    dispatch(addToCart(id,qty))
+    setShowModal(false)
+  }
+
   return (
-    <Container>
+    <ContenteContainer>
       <Row>
-        <h1>product name</h1>
-        <p>Product description Product description</p>
-        <p>Product description Product description</p>
+        <h1>{product.name}</h1>
+        <p>{product.description}</p>
       </Row>
       <Row>
         <div className="productDetail">
@@ -56,7 +77,7 @@ const Contente = () => {
           </div>
           <h1 className="price">
             {" "}
-            <span>60.00</span> DR{" "}
+            <span>{product.price}</span> DR{" "}
           </h1>
           <Btn>
             <button
@@ -70,7 +91,13 @@ const Contente = () => {
             <button onClick={() => setQtyNumber(qtyNumber + 1)}>+</button>
           </Btn>
 
-          <button className="btn">add to cart</button>
+          <button 
+          type="button"
+          className="btn" 
+          onClick={() => addToCartHandler(product._id, qtyNumber )} 
+          >
+            add to cart
+          </button>
 
           <hr />
             
@@ -100,28 +127,20 @@ const Contente = () => {
 
         </div>
       </Row>
-    </Container>
+    </ContenteContainer>
   );
 };
 
-const ModalContent = ({ visible, handleClose }) => {
-  return (
-    <Container>
-      <Grid>
-        <GalleryImg />
-        <Contente />
-      </Grid>
-    </Container>
-  );
-};
+
 
 const GallerieContent = styled.div`
   display: flex;
+  padding: 1rem;
 
   & .current-img {
     border: 4px solid #c68787;
     border-radius: 10px;
-    max-height: 470px;
+    max-height: 100%;
     width: 70%;
     object-fit: cover;
   }
@@ -148,7 +167,7 @@ const GallerieContent = styled.div`
 `;
 
 const Container = styled.div`
-  padding: 2rem;
+  /* padding:1.5rem; */
   @media only screen and (max-width:500px) {
     padding: 1rem 0;
   }
@@ -156,7 +175,7 @@ const Container = styled.div`
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  @media only screen and (max-width:500px) {
+  @media only screen and (max-width:750px) {
     grid-template-columns: 1fr;
   }
 `;
@@ -305,5 +324,9 @@ const Btn = styled.div`
     }
   }
 `;
+
+const ContenteContainer = styled.div`
+  padding:1rem;
+`
 
 export default ModalContent;
