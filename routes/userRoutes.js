@@ -12,7 +12,8 @@ const {
   resetPassword,
   updatePassword,
   saveCompanyInformation,
-  saveBankInformation
+  saveBankInformation,
+  saveShippingAddress
 } = require('../controllers/userController')
 const { protect, admin, secure } = require('../middleware/authMiddleware')
 
@@ -31,5 +32,6 @@ router.post("/reset-password", resetPassword)
 router.post("/new-password/:token", updatePassword)
 router.route("/company").post(protect, saveCompanyInformation);
 router.route("/bank").post(protect, saveBankInformation);
+router.route("/shipping").post(protect, saveShippingAddress);
 
 module.exports = router

@@ -24,7 +24,7 @@ function CartComponent({location}) {
   };
 
   const handleCheckOut = () => {
-    history.push("/auth?redirect=checkout");
+    history.push("/auth?redirect=shipping");
   };
 
   // useEffect(() => {

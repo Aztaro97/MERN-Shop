@@ -346,6 +346,33 @@ const saveBankInformation = asyncHandler(async (req, res) => {
 
 
 
+// @desc    Save Shipping Address
+// @route   POST /api/users
+// @access  private
+const saveShippingAddress = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id);
+
+  if (user) {
+    user.shippindAddress = req.body.shippindAddress;
+
+    const userUpdate = await user.save();
+
+    res.status(200).json({
+      // _id: userUpdate._id,
+      shippindAddress: userUpdate.shippindAddress,
+      // token: generateToken(userUpdate._id),
+    });
+
+  } else {
+    res.status(400);
+    throw new Error("User not found");
+  }
+
+  
+});
+
+
+
 
 
 
@@ -365,5 +392,6 @@ module.exports = {
   resetPassword,
   updatePassword,
   saveCompanyInformation,
-  saveBankInformation
+  saveBankInformation,
+  saveShippingAddress
 };

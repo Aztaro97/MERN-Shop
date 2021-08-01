@@ -31,6 +31,7 @@
     "nodemailer": "^6.6.2",
     "nodemailer-sendgrid-transport": "^0.2.0",
     "path": "^0.12.7",
+    "stripe": "^8.167.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {

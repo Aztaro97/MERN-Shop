@@ -11,7 +11,7 @@ import CreateProductComponent from "./components/pagesScreens/products/createPro
 import ProductAndCompanyComponent from "./components/pagesScreens/productsAndCompany/tabs";
 import EditProductAndCompanyComponent from "./components/pagesScreens/EditProductsAndCompany/tabs";
 import CartComponent from "./components/pagesScreens/cart/cart";
-import CheckOutComponenet from "./components/pagesScreens/checkout/checkout";
+import ShippingComponenet from "./components/pagesScreens/checkout/shipping";
 import ThankComponenet from "./components/pagesScreens/checkout/thankPage";
 import RegisterComponenet from "./components/pagesScreens/auth/RegisterPage";
 import PayementStep from "./components/pagesScreens/checkout/completePayement";
@@ -20,6 +20,7 @@ import EcommerceHomeComponent from "./components/pagesScreens/e-commerce/homeECo
 import PaymentCompopnent from "./components/pagesScreens/checkout/payment";
 import pageNotFound from "./components/pagesScreens/pageNotFund"
 import Loading from "./components/Loader";
+import Strip from "./components/pagesScreens/checkout/stripe"
 import MapScreen from "./components/pagesScreens/checkout/googleMap/mapScreen"
 
 
@@ -27,7 +28,7 @@ function App() {
   return (
     <Router className="App">
       <GlobalStyle />
-      <NavBar />
+      {/* <NavBar /> */}
         <Switch>
           <Route exact path="/" component={HomeComponents} />
           <Route path="/auth" component={AuthComponents} />
@@ -37,13 +38,14 @@ function App() {
           <Route path="/e-commerce" component={EcommerceHomeComponent} />
           <Route path="/companies" component={CompanyListComponent} />
           <Route path="/cart" component={CartComponent} />
-          <Route path="/checkout" component={CheckOutComponenet} />
+          <Route path="/shipping" component={ShippingComponenet} />
           <Route path="/thank" component={ThankComponenet} />
           <Route path="/register" component={RegisterComponenet} />
           <Route path="/payement" component={PayementStep} />
           <Route path="/payment" component={PaymentCompopnent} />
           <Route path="/loader" component={Loading} />
           <Route path="/map" component={MapScreen} />
+          <Route path="/stripe" component={Strip} />
           <Route component={pageNotFound} />
         </Switch>
       {/* <Footer /> */}

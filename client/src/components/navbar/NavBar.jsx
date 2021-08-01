@@ -21,7 +21,7 @@ function NavBar() {
   }
 
   const ChangeNav = () => {    
-    if (window.scrollY >= 80) {
+    if (window.scrollY >= 40) {
       setScrollNav(true);
     } else {
       setScrollNav(false);

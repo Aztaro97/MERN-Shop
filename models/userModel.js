@@ -55,6 +55,20 @@ const userSchema = mongoose.Schema(
     urlImg:[{ type: String}],
 
 
+    // //////////////   SHIPPING ADDRESS   //////////////////
+    shippindAddress: { 
+      firstName: { type: String},
+      lastName: { type: String},
+      address: { type: String},
+      appartmentNumber: { type: String},
+      city: { type: String},
+      gouv: { type: String},
+      country: { type: String},
+      email: { type: String},
+      phoneNumber: { type:String}
+    },
+
+
 
     // /////////////////
     isAdmin: {

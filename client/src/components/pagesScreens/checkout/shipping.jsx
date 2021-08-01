@@ -1,16 +1,17 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Modal } from "antd";
-import { Link, useHistory } from "react-router-dom";
-import {useSelector} from "react-redux"
+import { useFormik } from "formik";
+import { Link, useHistory, Redirect } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import InputC from "../../InputComponents";
 import CheckBoxC from "../../CheckBoxComponent";
 import SelectC from "../../SelectComponents";
 import ButtonC from "../../ButtonComponeent";
+import { saveShippingAddress } from "../../../flux/actions/cartAction";
 
 // import MapComponent from "./map/getCurrentPosition";
 import MapComponent from "./googleMap/mapScreen";
-
 
 import piture from "../../../img/card_pic.png";
 
@@ -46,21 +47,55 @@ const countryList = [
 function Checkout() {
   const [visible, setVisible] = useState(false);
   const [localistion, setLocalistion] = useState({
-    city:"",
-    address:"",
-    cuntry:""
-  })
+    city: "",
+    address: "",
+    cuntry: "",
+  });
+
+  const dispatch = useDispatch();
+
+  const formik = useFormik({
+    initialValues: {
+      firstName: "",
+      lastName: "",
+      address: "",
+      appartmentNumber: "",
+      city: "",
+      gouv: "",
+      country: "",
+      email: "",
+      phoneNumber: ""
+    },
+    onSubmit: (values) => {
+      const body = JSON.stringify(values, null, 2);
+      dispatch(saveShippingAddress(body));
+      history.push("/payment")
+      console.log(body);
+    },
+  });
 
   const history = useHistory();
-  const {cartItems} = useSelector(state => state.cart)
+  const { shippingAddress } = useSelector((state) => state.cart);
+
+  // useEffect(() => {
+  //   if (shippingAddress.address) {
+  //     history.push("/payment")
+  //   }
+  // }, [shippingAddress])
+  // if (shippingAddress.address) {
+  //   history.push("/payment")
+  // }
+
   return (
     <Container>
       <Header>
-        <a href="#/" onClick={() => history.goBack()}>Back</a>
+        <a href="#/" onClick={() => history.goBack()}>
+          Back
+        </a>
         <h2>CHECK OUT</h2>
       </Header>
       <Grid>
-        <Form>
+        <Form onSubmit={formik.handleSubmit}>
           <Row>
             <Label htmlFor="email">Contact information</Label>
           </Row>
@@ -70,13 +105,15 @@ function Checkout() {
               name="email"
               id="email"
               placeholder="EMAIL OR PHONE NUMBER"
+              value={formik.email}
+              onChange={formik.handleChange}
             />
           </Row>
           <Row>
             <CheckBox>keep up to date on news and offers</CheckBox>
           </Row>
           <Row>
-            <Label name="adress" id="adress" placeholder="">
+            <Label name="address" id="address" placeholder="">
               Shipping address{" "}
             </Label>
           </Row>
@@ -84,33 +121,67 @@ function Checkout() {
             <div className="inputRow">
               <InputC
                 style={{ marginRight: ".3rem" }}
-                name="email"
-                id="email"
+                name="firstName"
+                id="firstName"
                 placeholder="FIRST NAME"
+                value={formik.firstName}
+                onChange={formik.handleChange}
               />
               <InputC
                 style={{ marginLeft: ".3rem" }}
-                name="email"
-                id="email"
+                name="lastName"
+                id="lastName"
                 placeholder="LAST NAME"
+                value={formik.lastName}
+                onChange={formik.handleChange}
               />
             </div>
           </Row>
           <Row>
-            <InputC name="email" id="email" placeholder="ADRESS" />
+            <InputC
+              name="address"
+              id="address"
+              placeholder="ADRESS"
+              value={formik.address}
+              onChange={formik.handleChange}
+            />
           </Row>
           <Row>
-            <InputC name="email" id="email" placeholder="APPARTMENT NO" />
+            <InputC
+              name="appartmentNumber"
+              id="appartmentNumber"
+              placeholder="APPARTMENT NO"
+              value={formik.appartmentNumber}
+              onChange={formik.handleChange}
+            />
           </Row>
           <Row>
             <div className="grid_input">
-              <InputC type="text" name="city" id="city" placeholder="CITY" />
+              <InputC
+                type="text"
+                name="city"
+                id="city"
+                placeholder="CITY"
+                value={formik.city}
+                onChange={formik.handleChange}
+              />
               <SelectC
+                name="gouv"
+                id="gouv"
                 className="gouvSelect"
                 options={gouvList}
                 placeholder="gouvernmate"
+                value={formik.gouv}
+                onChange={formik.handleChange}
               />
-              <SelectC options={countryList} placeholder="country" />
+              <SelectC
+                name="country"
+                id="country"
+                options={countryList}
+                placeholder="country"
+                value={formik.country}
+                onChange={formik.handleChange}
+              />
             </div>
           </Row>
           <Row>
@@ -129,16 +200,21 @@ function Checkout() {
               width={1000}
               footer={null}
             >
-              <MapComponent setLocalistion={setLocalistion} setVisible={setVisible} />
+              <MapComponent
+                setLocalistion={setLocalistion}
+                setVisible={setVisible}
+              />
             </Modal>
           </Row>
 
           <Row>
             <InputC
               type="number"
-              name="number"
-              id="number"
+              name="phoneNumber"
+              id="phoneNumber"
               placeholder="PHONE NUMBER"
+              value={formik.phoneNumber}
+              onChange={formik.handleChange}
             />
           </Row>
           <Row>
@@ -148,36 +224,40 @@ function Checkout() {
           </Row>
           <Row>
             <ButtonC type="submit">continue to payment</ButtonC>
-            <Link className="link" to="/cart" style={{textDecoration: "none"}}>
+            <Link
+              className="link"
+              to="/cart"
+              style={{ textDecoration: "none" }}
+            >
               Back To Cart
             </Link>
           </Row>
         </Form>
-        <SectionRight cartItems={cartItems} />
+        <SectionRight />
         {/* <MapComponent /> */}
       </Grid>
     </Container>
   );
 }
 
-const SectionRight = ({cartItems}) => {
+const SectionRight = () => {
+  const { cartItems } = useSelector((state) => state.cart);
   return (
     <ContainerCart>
-      {cartItems.length > 0 && (
-        cartItems.map(item => (
+      {cartItems.length > 0 &&
+        cartItems.map((item) => (
           <Card key={item._id}>
-          <div class="card__image">
-            <img src={piture} alt="" />
-            <p className="quantity">{item.qty}</p>
-          </div>
-          <div class="card__details">
-            <h1 class="card__title">{item.name}</h1>
-            <h1 class="card__price">{item.price} AED</h1>
-          </div>
-        </Card>
-        ))
-      )}
-      
+            <div class="card__image">
+              <img src={piture} alt="" />
+              <p className="quantity">{item.qty}</p>
+            </div>
+            <div class="card__details">
+              <h1 class="card__title">{item.name}</h1>
+              <h1 class="card__price">{item.price} AED</h1>
+            </div>
+          </Card>
+        ))}
+
       <hr />
       <form action="">
         <input type="text" placeholder="DISCOUNT CODE" />

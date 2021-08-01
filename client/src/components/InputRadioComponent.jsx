@@ -24,7 +24,8 @@ const Input = styled.input`
     border-radius: 50%;
     background-clip: content-box;
     padding: 3px;
-    margin-right: 5px;
+    padding-right: 5px;
+    cursor: pointer;
   }
   &:checked {
     background-color: var(--orange-color);
