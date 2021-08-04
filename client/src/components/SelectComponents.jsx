@@ -4,13 +4,14 @@ import styled from "styled-components";
 
 // const { Option } = Select;
 
-function SelectCOmponents({ options, placeholder, style, name, id , className, onChange}) {
+function SelectCOmponents({ value, options, placeholder, style, name, id , className, onChange}) {
   return (
     <SelectE
       name={name}
       id={id}
       style={style}
       className={className}
+      value={value}
       onChange={onChange}
       placeholder={placeholder}
     >

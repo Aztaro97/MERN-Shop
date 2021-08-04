@@ -11,10 +11,7 @@ import ButtonC from "../../ButtonComponeent";
 
 import picture from "../../../img/productimg.png";
 
-function CartComponent({location}) {
-
-  
-
+function CartComponent({ location }) {
   const { cartItems, error } = useSelector((state) => state.cart);
   const history = useHistory();
 

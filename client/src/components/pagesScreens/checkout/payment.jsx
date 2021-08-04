@@ -6,12 +6,14 @@ import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { saveShippingAddress } from "../../../flux/actions/cartAction";
 import InputRadio from "../../InputRadioComponent";
+import Loader from "../../Loader";
 
 import piture from "../../../img/card_pic.png";
 import InputComponents from "../../InputComponents";
 import CheckBoxComponent from "../../CheckBoxComponent";
 import SelectC from "../../SelectComponents";
 import MapComponent from "../checkout/map/getCurrentPosition";
+import StripePaymentContainer from "./stripe/stripeContainer";
 
 import {
   Container,
@@ -56,25 +58,24 @@ const countryList = [
 function Payment() {
   const [creditMethod, setCreditMethod] = useState("credit");
   const [sameShipping, setSameShipping] = useState("sameAdress");
+  const [subTotal, setSubTotal] = useState(Number);
 
   const history = useHistory();
   const dispatch = useDispatch();
-  const { shippingAddress } = useSelector((state) => state.cart);
+  const { loading, shippingAddress, cartItems } = useSelector(
+    (state) => state.cart
+  );
   const { userInfo } = useSelector((state) => state.userLogin);
 
-  const handleCompleteOrder = () => {};
+  const handleCompleteOrder = () => {
+    history.push("/thank");
+  };
 
   useEffect(() => {
     if (!userInfo) {
       history.push("/auth");
     }
-
-    
-    
-  },[ userInfo, shippingAddress])
-
-
-  
+  }, [userInfo, shippingAddress]);
 
   const onChangeRadiGroup = (e) => {
     console.log("radio checked", e.target.value);
@@ -86,152 +87,160 @@ function Payment() {
   };
 
   return (
-    <Container>
-      <Header>
-        <a href="#/" onClick={() => history.goBack()}>
-          Back
-        </a>
-        <h2>PAYEMENT</h2>
-      </Header>
-      <Grid>
-        <SectionLeft>
-          <Border>
-            <div className="row">
-              <div>
-                <h2>contact</h2>
-                <p>{shippingAddress.email}</p>
-              </div>
-              <Link className="link" to="/shipping">
-                Change
-              </Link>
-            </div>
-            <hr />
-            <div className="row">
-              <div>
-                <h2>address</h2>
-                <p>{shippingAddress.address}</p>
-              </div>
-              <Link className="link" to="/shipping">
-                Change
-              </Link>
-            </div>
-            <hr />
-            <div className="row">
-              <div className="price">
-                <h2>shipping cost</h2>
-                <p>aed 50.00</p>
-              </div>
-            </div>
-          </Border>
+    <>
+      {loading ? (
+        <Loader />
+      ) : (
+        <Container>
+          <Header>
+            <a href="#/" onClick={() => history.goBack()}>
+              Back
+            </a>
+            <h2>PAYEMENT</h2>
+          </Header>
+          <Grid>
+            <SectionLeft>
+              <Border>
+                <div className="row">
+                  <div>
+                    <h2>contact</h2>
+                    <p>{shippingAddress.email}</p>
+                  </div>
+                  <Link className="link" to="/shipping">
+                    Change
+                  </Link>
+                </div>
+                <hr />
+                <div className="row">
+                  <div>
+                    <h2>address</h2>
+                    <p>{shippingAddress.address}</p>
+                  </div>
+                  <Link className="link" to="/shipping">
+                    Change
+                  </Link>
+                </div>
+                <hr />
+                <div className="row">
+                  <div className="price">
+                    <h2>shipping cost</h2>
+                    <p>aed 50.00</p>
+                  </div>
+                </div>
+              </Border>
 
-          <div className="section_Type_Payment">
-            <h2>payment</h2>
-            <p>All transactions are secure and encrypted.</p>
-            <Border style={{ padding: "1rem 0px" }}>
-              <div className="radio-button">
-                <RadioB.Group
-                  className="radio-custom"
-                  value={creditMethod}
-                  onChange={onChangeRadiGroup}
-                >
-                  <Space
-                    className="radio-space"
-                    direction="vertical"
-                    style={{ gap: "0px", width: "100% " }}
-                  >
-                    <RadioB className="radio-item" value="credit">
-                      Credit Card
-                    </RadioB>
-                    <hr />
-                    <RadioB className="radio-item" value="cash">
-                      Cash on delivery
-                    </RadioB>
-                  </Space>
-                </RadioB.Group>
+              <div className="section_Type_Payment">
+                <h2>payment</h2>
+                <p>All transactions are secure and encrypted.</p>
+                <Border style={{ padding: "1rem 0px" }}>
+                  <div className="radio-button">
+                    <RadioB.Group
+                      className="radio-custom"
+                      value={creditMethod}
+                      onChange={onChangeRadiGroup}
+                    >
+                      <Space
+                        className="radio-space"
+                        direction="vertical"
+                        style={{ gap: "0px", width: "100% " }}
+                      >
+                        <RadioB className="radio-item" value="credit">
+                          Credit Card
+                        </RadioB>
+                        <hr />
+                        <RadioB className="radio-item" value="cash">
+                          Cash on delivery
+                        </RadioB>
+                      </Space>
+                    </RadioB.Group>
+                  </div>
+                </Border>
               </div>
-            </Border>
-          </div>
 
-          {creditMethod === "credit" ? (
-            <div className="section_payment_info">
-              <h2>payment information</h2>
-              <InputComponents type="text" placeholder="Card Number" />
+              {creditMethod === "credit" ? (
+                <div className="section_payment_info">
+                  <h2>payment information</h2>
+                  <StripePaymentContainer subTotal={subTotal} />
+                  {/* <InputComponents type="text" placeholder="Card Number" />
               <InputComponents type="text" placeholder="Full Name" />
               <InputComponents type="text" placeholder="MM/YY" />
               <InputComponents type="text" placeholder="CVC" />
               <CheckBoxComponent>
                 save this information for the next time
-              </CheckBoxComponent>
-            </div>
-          ) : null}
+              </CheckBoxComponent> */}
+                </div>
+              ) : null}
 
-          <div className="section_billing">
-            <h2>Billing Address</h2>
-            <p>Select the address that matches your card or payment method.</p>
-            <Border style={{ padding: "1rem 0px" }}>
-              <div className="radio-button">
-                <RadioB.Group
-                  className="radio-custom"
-                  value={sameShipping}
-                  onChange={handleShipingAddress}
-                >
-                  <Space
-                    className="radio-space"
-                    direction="vertical"
-                    style={{ gap: "0px", width: "100% " }}
-                  >
-                    <RadioB className="radio-item" value="sameAdress">
-                      Same as shipping address
-                    </RadioB>
-                    <hr />
-                    <RadioB className="radio-item" value="diffAdress">
-                      Use a different billing address
-                    </RadioB>
-                  </Space>
-                </RadioB.Group>
+              <div className="section_billing">
+                <h2>Billing Address</h2>
+                <p>
+                  Select the address that matches your card or payment method.
+                </p>
+                <Border style={{ padding: "1rem 0px" }}>
+                  <div className="radio-button">
+                    <RadioB.Group
+                      className="radio-custom"
+                      value={sameShipping}
+                      onChange={handleShipingAddress}
+                    >
+                      <Space
+                        className="radio-space"
+                        direction="vertical"
+                        style={{ gap: "0px", width: "100% " }}
+                      >
+                        <RadioB className="radio-item" value="sameAdress">
+                          Same as shipping address
+                        </RadioB>
+                        <hr />
+                        <RadioB className="radio-item" value="diffAdress">
+                          Use a different billing address
+                        </RadioB>
+                      </Space>
+                    </RadioB.Group>
+                  </div>
+                </Border>
               </div>
-            </Border>
-          </div>
 
-          {sameShipping !== "sameAdress" ? <SectionShippingAddress /> : null}
-        </SectionLeft>
-        <SectionRight />
-      </Grid>
-      <div className="submition_btn">
-        <ButtonC className="btn" onClick={handleCompleteOrder}>
-          Complete order
-        </ButtonC>
-        <Link to="/products" className="link_back">
-          back to information
-        </Link>
-      </div>
-    </Container>
+              {sameShipping !== "sameAdress" ? (
+                <SectionShippingAddress />
+              ) : null}
+            </SectionLeft>
+            <SectionRight cartItems={cartItems} />
+          </Grid>
+          <div className="submition_btn">
+            <ButtonC className="btn" onClick={handleCompleteOrder}>
+              Complete order
+            </ButtonC>
+            <Link to="/products" className="link_back">
+              back to information
+            </Link>
+          </div>
+        </Container>
+      )}
+    </>
   );
 }
 
-const SectionRight = () => {
+const SectionRight = ({ cartItems }) => {
+  //  Calculate function
+  const addDecimal = (num) => {
+    return (Math.round(num * 100) / 100).toFixed(2);
+  };
   return (
     <ContainerCart>
-      <Card>
-        <div class="card__image">
-          <img src={piture} alt="" />
-          <p className="quantity">2</p>
-        </div>
-        <div class="card__details">
-          <h1 class="card__title">Name of the Product</h1>
-          <h1 class="card__price">100.00 AED</h1>
-        </div>
-      </Card>
-      <Card>
-        <div class="card__image">
-          <img src={piture} alt="" />
-          <p className="quantity">2</p>
-        </div>
-        <div class="card__details">
-          <h1 class="card__title">Name of the Product</h1>
-          <h1 class="card__price">100.00 AED</h1>
-        </div>
-      </Card>
+      {cartItems.map((item, index) => (
+        <Card key={index}>
+          <div class="card__image">
+            <img src={piture} alt="" />
+            <p className="quantity">{item.qty}</p>
+          </div>
+          <div class="card__details">
+            <h1 class="card__title">{item.name}</h1>
+            <h1 class="card__price">{addDecimal(item.price)} AED</h1>
+          </div>
+        </Card>
+      ))}
+
       <hr />
       <form action="">
         <input type="text" placeholder="DISCOUNT CODE" />
@@ -240,7 +249,12 @@ const SectionRight = () => {
       <hr />
       <div className="solde">
         <h1>subtotal</h1>
-        <h1>aed 200.00</h1>
+        <h1>
+          aed{" "}
+          {cartItems
+            .reduce((acc, item) => acc + item.qty * item.price, 0)
+            .toFixed(2)}{" "}
+        </h1>
       </div>
       <div className="solde">
         <h1>shipping</h1>
@@ -249,7 +263,12 @@ const SectionRight = () => {
       <hr />
       <div className="solde">
         <h1>subtotal</h1>
-        <h1>aed 400.00</h1>
+        <h1>
+          aed{" "}
+          {cartItems
+            .reduce((acc, item) => acc + item.qty * item.price, 0)
+            .toFixed(2)}{" "}
+        </h1>
       </div>
     </ContainerCart>
   );

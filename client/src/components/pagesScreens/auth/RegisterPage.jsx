@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
 import {
   MdMail,
   GiPadlock,
@@ -10,29 +11,29 @@ import {
   FaFacebookF,
   FaInstagram,
   FaTwitter,
-  AiFillDelete
+  AiFillDelete,
 } from "react-icons/all";
 import { Link, useHistory } from "react-router-dom";
 import ImgCrop from "antd-img-crop";
 import { Upload } from "antd";
-import {register, registerCompanyInfo, registerBankInfo} from "../../../flux/actions/userAction"
-import {useFormik} from "formik";
+import {
+  register,
+  registerCompanyInfo,
+  registerBankInfo,
+} from "../../../flux/actions/userAction";
+import { useFormik } from "formik";
 import MainContainer from "../../MainContainer";
 import InputRadio from "../../InputRadioComponent";
 import ButtonC from "../../ButtonComponeent";
 import InputC from "../../InputComponents";
 import SelectC from "../../SelectComponents";
 
-
-
 function RegisterPage() {
-  const [typeUser, setTypeUser] = useState("");
-
-
+  const [typeUser, setTypeUser] = useState("company");
 
   const history = useHistory();
 
-  const handleClickRadio =  (e) => {
+  const handleClickRadio = (e) => {
     setTypeUser(e.target.value);
     console.log(e.target.value);
   };
@@ -40,27 +41,28 @@ function RegisterPage() {
     <MainContainer>
       <FormContainer>
         <Header>
-          <a href="#/" onClick={() => history.goBack()}>Back</a>
+          <a href="#/" onClick={() => history.goBack()}>
+            Back
+          </a>
           <div className="radio-button">
             <div>
               <InputRadio
+                required
                 value="company"
                 name="typeCpny"
                 id="company"
-                // checked
                 onChange={handleClickRadio}
-                  // onClick={handleClickRadio}
               />
               <label htmlFor="company">Comapny</label>
             </div>
 
             <div>
               <InputRadio
+                required
                 value="crafman"
                 name="typeCpny"
                 id="crafman"
                 onChange={handleClickRadio}
-                  // onClick={handleClickRadio}
               />
               <label htmlFor="crafman">Craftman</label>
             </div>
@@ -81,19 +83,19 @@ function RegisterPage() {
 }
 
 const UserForm = () => {
-const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const formik = useFormik({
-    initialValues:{
+    initialValues: {
       email: "",
       password: "",
     },
     onSubmit: (values) => {
       const body = JSON.stringify(values, null, 2);
-      console.log(body)
-      dispatch(register(body))
-    }
-  })
+      console.log(body);
+      dispatch(register(body));
+    },
+  });
   return (
     <Form onSubmit={formik.handleSubmit}>
       <h1>registration information</h1>
@@ -102,6 +104,7 @@ const dispatch = useDispatch();
           <div class="input-container">
             <MdMail class="icon" />
             <input
+              required
               class="input-field"
               type="email"
               placeholder="EMAIL"
@@ -111,11 +114,12 @@ const dispatch = useDispatch();
             />
           </div>
         </div>
-        
+
         <div className="row">
           <div class="input-container">
             <GiPadlock class="icon" />
             <input
+              required
               class="input-field"
               type="password"
               placeholder="PASSWORD"
@@ -129,6 +133,7 @@ const dispatch = useDispatch();
           <div class="input-container">
             <GiPadlock class="icon" />
             <input
+              required
               class="input-field"
               type="password"
               placeholder="RETYPE PASSWORD"
@@ -136,33 +141,38 @@ const dispatch = useDispatch();
             />
           </div>
         </div>
-        <ButtonC type="submit" style={{ marginLeft: "auto", marginBottom: 20 }}>save</ButtonC>
+        <ButtonC type="submit" style={{ marginLeft: "auto", marginBottom: 20 }}>
+          save
+        </ButtonC>
       </div>
     </Form>
   );
 };
 
-const CompanyInfo = ({typeUser}) => {
+const CompanyInfo = ({ typeUser }) => {
   // Finish State
   const [cellular, setCellular] = useState("");
   const [ListCellular, setListCellular] = useState([]);
 
-const dispatch = useDispatch();
+  const [hour, setHour] = useState({
+    from: "",
+    to: "",
+  });
+  const [ListHour, setListHour] = useState([]);
+
+  const dispatch = useDispatch();
 
   const formik = useFormik({
-    initialValues: { 
-      company: { 
-        name: "", 
-        type: "", 
+    initialValues: {
+      company: {
+        name: "",
+        type: typeUser,
         scopeBusiness: "",
         phoneNumber: ListCellular,
         location: "",
         email: "",
-        workHours: [{
-          from: "",
-          to: ""
-        }],
-        holidays: [],
+        workHours: ListHour,
+        holidays: "",
         about: "",
         services: "",
         videoLink: "",
@@ -170,22 +180,20 @@ const dispatch = useDispatch();
           facebook: "",
           insta: "",
           twitter: "",
-          whatsapp: ""
-        }
-
-      }
+          whatsapp: "",
+        },
+      },
     },
     onSubmit: (values) => {
-      formik.setFieldValue("company.type", typeUser)
+      formik.setFieldValue("company.type", typeUser);
       const body = JSON.stringify(values, null, 2);
+      // setfield(formik.company.type, typeUser)
 
-      dispatch(registerCompanyInfo(body))
-      
-      console.log(body)
-    }
-  })
+      dispatch(registerCompanyInfo(body));
 
-  
+      console.log(body);
+    },
+  });
 
   //  Cellular function
   const addCellular = (e) => {
@@ -194,12 +202,27 @@ const dispatch = useDispatch();
     setCellular("");
   };
   const deleteCellular = (itemIndex) => {
-    const newListCellular = ListCellular.filter((_, index) => index !== itemIndex);
+    const newListCellular = ListCellular.filter(
+      (_, index) => index !== itemIndex
+    );
     setListCellular(newListCellular);
     console.log(newListCellular);
-    console.log(ListCellular)
+    console.log(ListCellular);
   };
 
+  //  WorkHour function
+  const addHour = (e) => {
+    e.preventDefault();
+    ListHour.push(hour);
+    console.log(hour);
+    setHour({ from: "", to: "" });
+  };
+  const deleteHour = (itemIndex) => {
+    const newListCellular = ListHour.filter((_, index) => index !== itemIndex);
+    setListHour(newListCellular);
+    console.log(newListCellular);
+    console.log(ListHour);
+  };
 
   return (
     <Form onSubmit={formik.handleSubmit}>
@@ -208,21 +231,23 @@ const dispatch = useDispatch();
         <div className="grid">
           <div className="col">
             <div className="row">
-              <InputC 
-              type="text"
-              placeholder="COMPANY NAME" 
-              name="company.name" 
-              value={formik.values.company.name} 
-              onChange={formik.handleChange}
+              <InputC
+                required
+                type="text"
+                placeholder="COMPANY NAME"
+                name="company.name"
+                value={formik.values.company.name}
+                onChange={formik.handleChange}
               />
             </div>
             <div className="row">
-              <InputC 
-              type="text"
-              placeholder="COMPANY SCOPE OF BUSINESS" 
-              name="company.scopeBusiness"
-              value={formik.values.company.scopeBusiness} 
-              onChange={formik.handleChange}
+              <InputC
+                required
+                type="text"
+                placeholder="COMPANY SCOPE OF BUSINESS"
+                name="company.scopeBusiness"
+                value={formik.values.company.scopeBusiness}
+                onChange={formik.handleChange}
               />
             </div>
 
@@ -236,7 +261,7 @@ const dispatch = useDispatch();
                   placeholder="PHONE NUMBER"
                   name="company.phone"
                   value={cellular}
-                  onChange={e => setCellular(e.target.value)}
+                  onChange={(e) => setCellular(e.target.value)}
                 />
                 <ButtonC
                   style={{ padding: "1rem", marginLeft: 14 }}
@@ -247,18 +272,18 @@ const dispatch = useDispatch();
                 </ButtonC>
               </div>
               <Ul>
-                  {ListCellular.length > 0
-                    ? ListCellular.map((item, index) => (
-                        <li key={index}>
-                          <p>{item}</p>
-                          <AiFillDelete
-                            className="delete_icon"
-                            onClick={() => deleteCellular(index)}
-                          />
-                        </li>
-                      ))
-                    : null}
-                </Ul>
+                {ListCellular.length > 0
+                  ? ListCellular.map((item, index) => (
+                      <li key={index}>
+                        <p>{item}</p>
+                        <AiFillDelete
+                          className="delete_icon"
+                          onClick={() => deleteCellular(index)}
+                        />
+                      </li>
+                    ))
+                  : null}
+              </Ul>
             </div>
             <div className="row">
               <div class="input-container">
@@ -281,28 +306,65 @@ const dispatch = useDispatch();
               <div class="input-container">
                 <MdMail class="icon" />
                 <input
-                type="mail"
+                  required
+                  type="mail"
                   class="input-field"
-                  type="email"
                   placeholder="EMAIL"
                   name="company.email"
-                onChange={formik.handleChange}
+                  onChange={formik.handleChange}
                 />
               </div>
             </div>
             <div className="row">
               <h1>work hours</h1>
               <div className="time">
-                <InputC name="workHoursFrom" type="number" placeholder="FROM" />
-                <InputC name="workHoursTo" type="number" placeholder="TO" />
-                <ButtonC type="button" style={{ padding: "1rem" }}>
+                <InputC
+                  value={hour.from}
+                  type="number"
+                  placeholder="FROM"
+                  onChange={(e) => setHour({ from: e.target.value })}
+                />
+                <InputC
+                  value={hour.to}
+                  type="number"
+                  placeholder="TO"
+                  onChange={(e) => setHour({ to: e.target.value })}
+                />
+                <ButtonC
+                  type="button"
+                  style={{ padding: "1rem" }}
+                  onClick={addHour}
+                  disabled={ListHour.length > 1 ? true : false}
+                >
                   <GoPlus />
                 </ButtonC>
               </div>
+              <Ul>
+                {ListHour.length > 0
+                  ? ListHour.map((item, index) => (
+                      <li key={index}>
+                        <p>
+                          <span>From{item.from}</span> to {item.to}
+                        </p>
+                        <AiFillDelete
+                          className="delete_icon"
+                          onClick={() => deleteHour(index)}
+                        />
+                      </li>
+                    ))
+                  : null}
+              </Ul>
             </div>
             <div className="row">
               <h1>add holidays</h1>
-              <InputC type="text" name="holidays" placeholder="TYPE DAYS" />
+              <InputC
+                required
+                type="text"
+                name="company.holidays"
+                placeholder="TYPE DAYS"
+                value={formik.values.company.holidays}
+                onChange={formik.handleChange}
+              />
             </div>
           </div>
 
@@ -310,6 +372,7 @@ const dispatch = useDispatch();
             <div className="row">
               <h1>about company</h1>
               <TextArea
+                required
                 type="text"
                 style={{ height: 100 }}
                 name="company.about"
@@ -318,20 +381,23 @@ const dispatch = useDispatch();
             </div>
             <div className="row">
               <h1>our services</h1>
-              <TextArea type="text" 
-              style={{ height: 100 }} 
-              name="company.services"
-              value={formik.values.company.services}
-              onChange={formik.handleChange}
+              <TextArea
+                required
+                type="text"
+                style={{ height: 100 }}
+                name="company.services"
+                value={formik.values.company.services}
+                onChange={formik.handleChange}
               />
             </div>
             <div className="row">
               <h1>add video link</h1>
-              <InputC type="text" 
-              name="company.videoLink" 
-              placeholder="TYPE DAYS" 
-              value={formik.values.company.videoLink}
-              onChange={formik.handleChange}
+              <InputC
+                type="text"
+                name="company.videoLink"
+                placeholder="TYPE VIDEO LINK"
+                value={formik.values.company.videoLink}
+                onChange={formik.handleChange}
               />
             </div>
             <div className="row">
@@ -344,8 +410,24 @@ const dispatch = useDispatch();
               </div>
               <InputC
                 style={{ marginTop: 15 }}
-                name="company.mediaLink"
+                value={formik.values.company.mediaLink.facebook}
+                name="company.mediaLink.facebook"
                 placeholder="TYPE YOUR FACEBOOK LINK"
+                onChange={formik.handleChange}
+              />
+              <InputC
+                style={{ marginTop: 15 }}
+                name="company.mediaLink.insta"
+                value={formik.values.company.mediaLink.insta}
+                placeholder="TYPE YOUR INSTAGRAM LINK"
+                onChange={formik.handleChange}
+              />
+              <InputC
+                style={{ marginTop: 15 }}
+                value={formik.values.company.mediaLink.twitter}
+                name="company.mediaLink.twitter"
+                placeholder="TYPE YOUR TWITTER LINK"
+                onChange={formik.handleChange}
               />
             </div>
           </div>
@@ -375,39 +457,69 @@ const BankInfo = () => {
   const dispatch = useDispatch();
 
   const formik = useFormik({
-    initialValues: { 
+    initialValues: {
       bank: {
         name: "",
         branch: "",
         accountNumber: "",
         iban: "",
         swiftCode: "",
-        device: ""
-      }
+        device: "",
+      },
     },
     onSubmit: (values) => {
       const body = JSON.stringify(values, null, 2);
-      dispatch(registerBankInfo(body))
-    }
-  })
+      dispatch(registerBankInfo(body));
+    },
+  });
   return (
     <Form onSubmit={formik.handleSubmit}>
       <h1>bank information</h1>
       <div className="card">
         <div className="row">
-          <InputC name="bank.name" type="text" placeholder="BANK NAME" value={formik.values.bank.name} onChange={formik.handleChange} />
+          <InputC
+            name="bank.name"
+            type="text"
+            placeholder="BANK NAME"
+            value={formik.values.bank.name}
+            onChange={formik.handleChange}
+          />
         </div>
         <div className="row">
-          <InputC name="bank.branch" type="text" placeholder="BRANCH NAME" value={formik.values.bank.branch} onChange={formik.handleChange} />
+          <InputC
+            name="bank.branch"
+            type="text"
+            placeholder="BRANCH NAME"
+            value={formik.values.bank.branch}
+            onChange={formik.handleChange}
+          />
         </div>
         <div className="row">
-          <InputC name="bank.accountNumber" type="text" placeholder="ACCOUNT NUMBER" value={formik.values.bank.account} onChange={formik.handleChange} />
+          <InputC
+            name="bank.accountNumber"
+            type="text"
+            placeholder="ACCOUNT NUMBER"
+            value={formik.values.bank.account}
+            onChange={formik.handleChange}
+          />
         </div>
         <div className="row">
-          <InputC name="bank.iban" type="text" placeholder="IBAN" value={formik.values.bank.iban} onChange={formik.handleChange} />
+          <InputC
+            name="bank.iban"
+            type="text"
+            placeholder="IBAN"
+            value={formik.values.bank.iban}
+            onChange={formik.handleChange}
+          />
         </div>
         <div className="row">
-          <InputC name="bank.swiftCode" type="text" placeholder="SWIFT CODE" value={formik.values.bank.swiftCode} onChange={formik.handleChange} />
+          <InputC
+            name="bank.swiftCode"
+            type="text"
+            placeholder="SWIFT CODE"
+            value={formik.values.bank.swiftCode}
+            onChange={formik.handleChange}
+          />
         </div>
         <div className="row">
           <SelectC
@@ -416,7 +528,9 @@ const BankInfo = () => {
             type="text"
             placeholder="BANK NAME"
             value={formik.values.bank.device}
-            onChange={e => formik.setFieldValue("bank.device", e.target.value)}
+            onChange={(e) =>
+              formik.setFieldValue("bank.device", e.target.value)
+            }
           />
         </div>
         <div className="row">
@@ -430,11 +544,14 @@ const BankInfo = () => {
 };
 
 const GalleryPhotos = () => {
-  const [fileList, setFileList] = useState([{}]);
+  const { userInfo } = useSelector((state) => state.userLogin);
+
+  const [fileList, setFileList] = useState([]);
 
   const onChange = ({ fileList: newFileList }) => {
     setFileList(newFileList);
     console.log(fileList);
+    console.log(userInfo.token);
   };
   const onPreview = async (file) => {
     let src = file.url;
@@ -451,31 +568,53 @@ const GalleryPhotos = () => {
     const imgWindow = window.open(src);
     imgWindow.document.write(image.outerHTML);
   };
+
+  const handleSendImage = async (e) => {
+    e.preventDefault();
+    const config = {
+      headers: {
+        "content-type": "multipart/form-data",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+    let formdata = new FormData();
+    formdata.append("imgfiles", fileList[0].originFileObj);
+
+    const res = await axios.post("/api/upload/", formdata, config);
+
+    try {
+      console.log(userInfo);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return (
-    <Form>
+    <Form onSubmit={(e) => handleSendImage(e)}>
       <div className="row_galery">
         <h1>add photo for your company</h1>
         <div className="card">
-          <ImgCrop rotate>
-            <Upload
-              // style={{background:"red"}
-              listType="picture-card"
-              beforeUpload={() => false}
-              onChange={onChange}
-              onPreview={onPreview}
-              fileList={fileList}
-              name="image-files"
-            >
-              {fileList.length < 9 && (
-                <UploadIcon>
-                  <GoPlus size={30} />
-                </UploadIcon>
-              )}
-            </Upload>
-          </ImgCrop>
+          <Upload
+            // style={{background:"red"}
+            // action="/api/upload/"
+            listType="picture-card"
+            beforeUpload={() => false}
+            onChange={onChange}
+            onPreview={onPreview}
+            fileList={fileList}
+            name="imgfiles"
+          >
+            {fileList.length < 4 && (
+              <UploadIcon>
+                <GoPlus size={30} />
+              </UploadIcon>
+            )}
+          </Upload>
+
           <h5>COVER PHOTO</h5>
         </div>
       </div>
+      <button type="submit">Envoyer</button>
     </Form>
   );
 };
@@ -521,6 +660,7 @@ const Header = styled.div`
       & label {
         margin-bottom: 0;
         cursor: pointer;
+        padding-left: 5px;
       }
     }
   }
@@ -530,8 +670,8 @@ const FormContainer = styled.div`
   padding: 2rem;
 
   & .submittion_btn {
-    margin:2rem 0;
-    text-align:center;
+    margin: 2rem 0;
+    text-align: center;
     width: 100%;
   }
 `;
@@ -646,12 +786,10 @@ const TextArea = styled.textarea`
   }
 `;
 
-
-
 const Ul = styled.ul`
   list-style: none;
   /* padding-top: 1rem; */
-  padding-left: .7rem;
+  padding-left: 0.7rem;
   /* width: 1rem; */
 
   & li {

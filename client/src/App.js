@@ -9,6 +9,7 @@ import AuthComponents from "./components/pagesScreens/auth/authTab";
 import LoaderComponent from "./components/Loader";
 import CreateProductComponent from "./components/pagesScreens/products/createProduct";
 import ProductAndCompanyComponent from "./components/pagesScreens/productsAndCompany/tabs";
+import EditProductScreen from "./components/pagesScreens/EditProductsAndCompany/editProductScreen";
 import EditProductAndCompanyComponent from "./components/pagesScreens/EditProductsAndCompany/tabs";
 import CartComponent from "./components/pagesScreens/cart/cart";
 import ShippingComponenet from "./components/pagesScreens/checkout/shipping";
@@ -20,7 +21,7 @@ import EcommerceHomeComponent from "./components/pagesScreens/e-commerce/homeECo
 import PaymentCompopnent from "./components/pagesScreens/checkout/payment";
 import pageNotFound from "./components/pagesScreens/pageNotFund"
 import Loading from "./components/Loader";
-import Strip from "./components/pagesScreens/checkout/stripe"
+import Strip from "./components/pagesScreens/checkout/stripe/stripeContainer"
 import MapScreen from "./components/pagesScreens/checkout/googleMap/mapScreen"
 
 
@@ -28,13 +29,14 @@ function App() {
   return (
     <Router className="App">
       <GlobalStyle />
-      {/* <NavBar /> */}
+      <NavBar />
         <Switch>
           <Route exact path="/" component={HomeComponents} />
           <Route path="/auth" component={AuthComponents} />
           <Route path="/add-product" component={CreateProductComponent} />
           <Route path="/products" component={ProductAndCompanyComponent} />
-          <Route path="/edit-products" component={EditProductAndCompanyComponent} />
+          <Route path="/product/:id" component={EditProductScreen} />
+          <Route path="/myproducts" component={EditProductAndCompanyComponent} />
           <Route path="/e-commerce" component={EcommerceHomeComponent} />
           <Route path="/companies" component={CompanyListComponent} />
           <Route path="/cart" component={CartComponent} />

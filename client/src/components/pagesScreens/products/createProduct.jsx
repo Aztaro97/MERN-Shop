@@ -347,7 +347,7 @@ const FormRight = ({
         <Label>Add Photo for your Product</Label>
 
         <Upload
-          // action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+          action="/api/upload/"
           listType="picture-card"
           fileList={fileList}
           onPreview={handlePreview}

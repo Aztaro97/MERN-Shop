@@ -78,24 +78,24 @@ const productSchema = mongoose.Schema(
       // required: true,
       default: 0,
     },
-    variantColor: [
+    variantColor: 
       {
-        type: String,
+        type: Array,
+        // required: true,
+      }
+    ,
+    variantSize: 
+      {
+        type: Array,
         // required: true,
       },
-    ],
-    variantSize: [
+    
+    variantFinish: 
       {
-        type: Number,
+        type: Array,
         // required: true,
       },
-    ],
-    variantFinish: [
-      {
-        type: String,
-        // required: true,
-      },
-    ],
+   
     variantMaterial: [
       {
         type: String,

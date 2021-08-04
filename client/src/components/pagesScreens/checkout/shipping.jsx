@@ -44,7 +44,7 @@ const countryList = [
   },
 ];
 
-function Checkout() {
+function Checkout({history}) {
   const [visible, setVisible] = useState(false);
   const [localistion, setLocalistion] = useState({
     city: "",
@@ -74,16 +74,14 @@ function Checkout() {
     },
   });
 
-  const history = useHistory();
+  // const history = useHistory();
   const { shippingAddress } = useSelector((state) => state.cart);
 
-  // useEffect(() => {
-  //   if (shippingAddress.address) {
-  //     history.push("/payment")
-  //   }
-  // }, [shippingAddress])
-  // if (shippingAddress.address) {
-  //   history.push("/payment")
+  if (shippingAddress.address != null) {
+    history.push('/payment')
+  }
+  // } else if (!cart.paymentMethod) {
+  //   history.push('/payment')
   // }
 
   return (

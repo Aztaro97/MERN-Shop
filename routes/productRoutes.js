@@ -1,5 +1,5 @@
-const express = require('express')
-const router = express.Router()
+const express = require("express");
+const router = express.Router();
 const {
   getProducts,
   getProductById,
@@ -8,17 +8,23 @@ const {
   updateProduct,
   createProductReview,
   getTopProducts,
-} = require('../controllers/productController')
-const { protect, admin } = require('../middleware/authMiddleware');
-const upload = require("../utils/multer")
+  getMyProducts,
+  filterProducts
+} = require("../controllers/productController");
+const { protect, admin } = require("../middleware/authMiddleware");
+const upload = require("../utils/multer");
 
-router.route('/').get(getProducts).post(protect, createProduct)
-router.route('/:id/reviews').post(protect, createProductReview)
-router.get('/top', getTopProducts)
+
+
+router.route("/").get(getProducts).post(protect, createProduct);
+router.route("/:id/reviews").post(protect, createProductReview);
+router.route("/my").get(protect, getMyProducts);
+router.route("/search").post(filterProducts)
+router.get("/top", getTopProducts);
 router
-  .route('/:id')
+  .route("/:id")
   .get(getProductById)
-  .delete(protect, admin, deleteProduct)
-  .put(protect, updateProduct)
+  .delete(protect, deleteProduct)
+  .put(protect, updateProduct);
 
-module.exports = router
+module.exports = router;

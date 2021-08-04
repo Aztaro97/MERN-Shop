@@ -58,7 +58,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
 // @desc    Create a product
 // @route   POST /api/products
 // @access  Private/Admin
-const createProduct =   asyncHandler(async (req, res) => {
+const createProduct = asyncHandler(async (req, res) => {
   const imageList = [];
 
   const {
@@ -157,8 +157,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     product.varianFinish = varianFinish;
     product.varianMaterial = varianMaterial;
     product.united = united;
-    product.size = size
-
+    product.size = size;
 
     const updatedProduct = await product.save();
     res.json(updatedProduct);
@@ -218,6 +217,51 @@ const getTopProducts = asyncHandler(async (req, res) => {
   res.json(products);
 });
 
+// @desc    Fetch My products
+// @route   GET /api/myproducts/
+// @access  Private
+const getMyProducts = asyncHandler(async (req, res) => {
+  const products = await Product.find({ user: req.user }).populate("user");
+  res.status(200).json(products);
+  // const product = await Product.find({})
+
+  // if (product) {
+  //   res.json(product);
+  // } else {
+  //   res.status(404);
+  //   throw new Error("Product not found");
+  // }
+});
+
+// @desc    Filter products Search
+// @route   GET /api/products/search/
+// @access  Public
+const filterProducts = asyncHandler(async (req, res) => {
+ 
+
+    const brand = req.body.brand ? req.body.brand : null;
+    const variantColor = req.body.color ? req.body.color : {};
+    const variantSize = req.body.size != null ? req.body.size : {};
+    const priceItem = req.body.price ? req.body.price : {};
+
+    const products = await Product.find({
+      brand,
+      variantColor,
+      variantSize,
+      price: {"$lte": priceItem }
+    });
+
+    if (products) {
+      res.status(200).json({products})
+    } else {
+      res.status(404);
+      throw new Error("Product not found");
+    }
+
+
+
+});
+
 module.exports = {
   getProducts,
   getProductById,
@@ -226,4 +270,6 @@ module.exports = {
   updateProduct,
   createProductReview,
   getTopProducts,
+  getMyProducts,
+  filterProducts
 };

@@ -1,12 +1,15 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Slider, Image, Modal } from "antd";
-import {useSelector, useDispatch} from "react-redux"
+import { useSelector, useDispatch } from "react-redux";
+import { useFormik } from "formik";
 import SelectC from "../../SelectComponents";
-import {listProducts} from "../../../flux/actions/productAction"
+import {
+  listProducts,
+  filterProducts,
+} from "../../../flux/actions/productAction";
 import CardProduct from "./CardProduct";
-import Loader from "../../Loader"
-
+import Loader from "../../Loader";
 
 const Brand = () => {
   const OptionList = ["Iphone", "Samsumg", "Nokia"];
@@ -14,79 +17,147 @@ const Brand = () => {
 };
 
 const ViewProducts = () => {
+  const formik = useFormik({
+    initialValues: {
+      brand: "",
+      color: "",
+      size: Number,
+      price: "",
+    },
+    onSubmit: (values) => {
+      const body = JSON.stringify(values, null, 2);
+      dispatch(filterProducts(body));
+      console.log(body);
+    },
+  });
 
   const dispatch = useDispatch();
-  const {loading,error, products} = useSelector(state => state.productList)
+  const { loading, error, products } = useSelector(
+    (state) => state.productList
+  );
 
-  const brandList = [{title:"Electronic", value:"electronic"}, {title:"Cloth", value:"cloth"}, {title:"Food", value:"food"}];
-  const colorList = [{title:"Red", value:"red"}, {title:"Blue", value:"blue"}, {title:"White", value:"white"}];
-  const sizeList = [{title:"20", value:"20"}, {title:"30", value:"30"}, {title:"40", value:"40"}];
-
+  const brandList = [
+    { title: "-- Select Brand --", value: "" },
+    { title: "Electronic", value: "electronic" },
+    { title: "Cloth", value: "cloth" },
+    { title: "Sample brand", value: "Sample brand" },
+  ];
+  const colorList = [
+    { title: "-- Select color --", value: "" },
+    { title: "Red", value: "red" },
+    { title: "Blue", value: "blue" },
+    { title: "White", value: "white" },
+    { title: "Color1", value: "Color1" },
+  ];
+  const sizeList = [
+    { title: "-- Select size --", value: Number },
+    { title: "20", value: "20" },
+    { title: "25", value: "25" },
+    { title: "30", value: "30" },
+    { title: "40", value: "40" },
+  ];
 
   useEffect(() => {
     dispatch(listProducts());
-  }, [dispatch])
+  }, [dispatch]);
+
+  const handleChangeSlider = (value) => {
+    formik.setFieldValue("price", value);
+  };
+
 
   return (
     <Container>
       <Row>
-        <FilterForm>
-        <SelectC style={{maxWidth:"200px"}} placeholder="Brand" options={brandList} />
-        <SelectC style={{maxWidth:"200px"}} placeholder="Color" options={colorList} />
-        <SelectC style={{maxWidth:"200px"}} placeholder="Size" options={sizeList} />
-        <div className="slider">
-          <p>Price Less than Aed 500</p>
-          <SliderE defaultValue={30} onChange={(value) => console.log(value)} />
-        </div>
-        <button className="btn">Clear</button>
+        <FilterForm onSubmit={formik.handleSubmit}>
+          <SelectC
+            className="form_select"
+            placeholder="Brand"
+            name="formik.brand"
+            options={brandList}
+            value={formik.values.brand}
+            onChange={(e) => formik.setFieldValue("brand", e.target.value)}
+          />
+          <SelectC
+            className="form_select"
+            name="formik.color"
+            placeholder="Color"
+            options={colorList}
+            value={formik.values.color}
+            onChange={(e) => formik.setFieldValue("color", e.target.value)}
+          />
+          <SelectC
+            className="form_select"
+            name="formik.size"
+            placeholder="Size"
+            options={sizeList}
+            value={formik.values.size}
+            onChange={(e) => formik.setFieldValue("size", parseInt(e.target.value))}
+          />
+          <div className="form_select slider">
+            <p>Price Less than Aed 500</p>
+            <SliderE defaultValue={30} onChange={handleChangeSlider} max={500} min={2} />
+          </div>
+          <button type="submit" className="btn">
+            Clear
+          </button>
         </FilterForm>
       </Row>
       <Row>
-        <Grid>
-          {loading ?
-          (<Loader />) :
-          error ? ((<h1>Errorrrr du chargement {error} .....</h1>))
-          : (
+        <>
+          {loading ? (
+            <Loader />
+          ) : error ? (
+            <h1>Errorrrr du chargement {error} .....</h1>
+          ) : (
             <>
-            {products.map((product, index) => (
-              <div key={index}>
-                <CardProduct product={product} />
-              </div>
-            ))}
+              {products.length ? (
+                <Grid>
+                  {products.map((product, index) => (
+                    <div key={index} style={{ width: "100%" }}>
+                      <CardProduct product={product} />
+                    </div>
+                  ))}
+                </Grid>
+              ) : (
+                <h1>No matches found for your search</h1>
+              )}
             </>
-          )
-          }
-        </Grid>
+          )}
+        </>
       </Row>
     </Container>
   );
 };
 
 const Container = styled.div`
-  @media only screen and (max-width:1000px) {
-    padding:0 1rem
+  @media only screen and (max-width: 1000px) {
+    padding: 0 1rem;
   }
 `;
 const Row = styled.div`
   display: block;
   width: 100%;
   /* flex-direction: column; */
-
-  
 `;
 
-const FilterForm = styled.div`
+const FilterForm = styled.form`
   display: flex;
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  height:6rem;
+  height: 6rem;
+
+  & .form_select {
+    margin: 0 8px;
+    width: 400px;
+  }
 
   & .slider {
     display: flex;
     flex-direction: column;
 
-    & p{
+    & p {
       margin-bottom: 0;
     }
   }
@@ -101,10 +172,10 @@ const FilterForm = styled.div`
     }
   }
 
-  @media only screen and (max-width:768px) {
+  @media only screen and (max-width: 768px) {
     display: block;
     height: 100%;
-    & > * {
+    & > .form_select {
       margin-bottom: 1rem;
     }
   }
@@ -133,7 +204,6 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 1.5rem;
-  
 
   @media only screen and (max-width: 1000px) {
     grid-template-columns: repeat(2, 1fr);
@@ -142,8 +212,5 @@ const Grid = styled.div`
     grid-template-columns: repeat(1, 1fr);
   }
 `;
-
-
-
 
 export default ViewProducts;

@@ -142,13 +142,18 @@ const GallerieContent = styled.div`
     border-radius: 10px;
     max-height: 100%;
     width: 70%;
+    height: 460px;
     object-fit: cover;
+    @media only screen and (max-width:500px) {
+        height: 300px;
+      }
   }
 
   & .aside-img {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    width: 30%;
 
     & img {
       width: 100px;
@@ -159,7 +164,7 @@ const GallerieContent = styled.div`
       border: 4px solid #c68787;
       cursor: pointer;
       @media only screen and (max-width:500px) {
-        height: 80px;
+        height: 70px;
         margin-left: 5px;
       }
     }

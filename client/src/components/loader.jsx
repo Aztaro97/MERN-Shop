@@ -11,7 +11,8 @@ function LoaderComponent() {
 }
 
 const Loader = styled.div`
-    height:100vh;
+    height:40rem;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;

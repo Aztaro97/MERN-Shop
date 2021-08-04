@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { Link, Redirect } from "react-router-dom";
 import { FaUser, FaShoppingCart } from "react-icons/fa";
 import { Popover } from "antd";
-import {useDispatch, useSelector} from "react-redux";
-import {logout} from "../../flux/actions/userAction"
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../flux/actions/userAction";
 import MAinContainer from "../MainContainer";
 
 function NavBar() {
@@ -12,15 +12,15 @@ function NavBar() {
 
   const dispatch = useDispatch();
 
-  const {cartItems} = useSelector(state => state.cart)
+  const { cartItems } = useSelector((state) => state.cart);
 
-  const {userInfo} = useSelector(state => state.userLogin);
+  const { userInfo } = useSelector((state) => state.userLogin);
 
   const handleLogOut = () => {
     dispatch(logout());
-  }
+  };
 
-  const ChangeNav = () => {    
+  const ChangeNav = () => {
     if (window.scrollY >= 40) {
       setScrollNav(true);
     } else {
@@ -28,17 +28,15 @@ function NavBar() {
     }
   };
 
- 
-
   useEffect(() => {
-    window.addEventListener('scroll', ChangeNav);
+    window.addEventListener("scroll", ChangeNav);
   }, []);
 
   const ProfileContentLogin = (
     <Content>
-      <LinkP to="/companies">my profile</LinkP>
-      <LinkP to="/edit-products">my products</LinkP>
-      <LinkP to="/add-product">add more products</LinkP>
+      <LinkR href="/companies">my profile</LinkR>
+      <LinkR href="/myproducts">my products</LinkR>
+      <LinkR href="/add-product">add more products</LinkR>
 
       <LinkP className="btn_logOut" onClick={handleLogOut}>
         Log Out
@@ -47,7 +45,9 @@ function NavBar() {
   );
   const ProfileContentLogOut = (
     <Content>
-      <LinkP to="/auth" className="btn_signin" >Sign in</LinkP>
+      <LinkP to="/auth" className="btn_signin">
+        Sign in
+      </LinkP>
       {/* <LinkP to="/edit-products">my products</LinkP>
       <LinkP to="/add-product">add more products</LinkP> */}
 
@@ -74,7 +74,11 @@ function NavBar() {
         <NavItem>
           <NavLink to="/cart">
             <FaShoppingCart className="icon" />
-            {cartItems.length > 0 ? (<span className="count">{cartItems.length}</span>) : (<span className="count">0</span>)}
+            {cartItems.length > 0 ? (
+              <span className="count">{cartItems.length}</span>
+            ) : (
+              <span className="count">0</span>
+            )}
           </NavLink>
         </NavItem>
         <NavItem>
@@ -240,14 +244,16 @@ const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding:0 3rem;
+  padding: 0 3rem;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 99;
   background: ${({ scrollNav }) => (scrollNav ? "#fff" : "transparent")};
-  box-shadow: ${({ scrollNav }) => (scrollNav ? "0px 8px 5px 1px rgba(0,0,0,0.11)" : "none")}; 
-  transition: ${({ scrollNav }) => (scrollNav ? "background 0s ease-in-out" : "background .5s ease-in-out")}; 
+  box-shadow: ${({ scrollNav }) =>
+    scrollNav ? "0px 8px 5px 1px rgba(0,0,0,0.11)" : "none"};
+  transition: ${({ scrollNav }) =>
+    scrollNav ? "background 0s ease-in-out" : "background .5s ease-in-out"};
   @media only screen and (max-width: 995px) {
     padding-left: 1rem;
   }
@@ -345,6 +351,24 @@ const Content = styled.div`
   justify-content: space-between;
   z-index: 99999999;
 `;
+
+const LinkR = styled.a`
+  text-decoration: none;
+  border-radius: 10px;
+  border: 1px solid var(--orange-color);
+  color: var(--silver-color);
+  text-transform: uppercase;
+  padding: 0.5rem 1.5rem;
+  margin: 0.7rem 0;
+  text-align: center;
+  transition: 0.2s all ease-in;
+  &:hover {
+    color: #fff;
+    background: var(--orange-color);
+    text-decoration: none;
+  }
+`;
+
 const LinkP = styled(Link)`
   text-decoration: none;
   border-radius: 10px;

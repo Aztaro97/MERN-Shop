@@ -9,6 +9,7 @@ function InputComponents({
   value,
   onChange,
   style,
+  required
 }) {
   return (
     <Input
@@ -19,6 +20,7 @@ function InputComponents({
       value={value}
       onChange={onChange}
       style={style}
+      required={required}
     />
   );
 }

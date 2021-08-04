@@ -1,13 +1,38 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Tabs } from "antd";
 import styled from "styled-components";
+import {Redirect} from "react-router-dom"
 import MainContainer from "./../../MainContainer";
 import ViewProducts from "./viewProducts";
 import CompanyInfo from "./companyDetails";
+import { useSelector, useDispatch } from "react-redux";
+
+import { getCompanyDetails } from "../../../flux/actions/userAction";
+
 
 const { TabPane } = Tabs;
 
 function Tabulation() {
+
+  // const {products} = useSelector((state => state.products))
+
+  const { loading, user: {company} } = useSelector((state) => state.userDetails);
+  const { userInfo} = useSelector((state) => state.userLogin);
+  const dispatch = useDispatch();
+
+
+  useEffect(() => {
+    if (!company) {
+      dispatch(getCompanyDetails());
+    }
+  }, [getCompanyDetails]);
+
+  if (!userInfo) {
+    return (<Redirect to="/auth" />)
+  }
+
+
+  
   return (
     <MainContainer>
       <Tab>
@@ -16,7 +41,7 @@ function Tabulation() {
             <ViewProducts />
           </TabPane>
           <TabPane tab="Company Information" key="2">
-            <CompanyInfo />
+            <CompanyInfo company={company} />
           </TabPane>
         </TabsE>
       </Tab>

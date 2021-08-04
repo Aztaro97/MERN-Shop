@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from "styled-components"
 
-function ButtonComponeent({children, type, onClick, style, className}) {
+function ButtonComponeent({children, type, onClick, style, className, disabled}) {
     return (
-        <Button className={className} style={style} type={type} onClick={onClick}>
+        <Button className={className} style={style} type={type} onClick={onClick} disabled={disabled}>
             {children}
         </Button>
     )

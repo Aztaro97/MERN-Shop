@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import {useHistory} from "react-router-dom"
+import {useHistory, Link} from "react-router-dom"
+import {useSelector} from "react-redux"
 import ButtonC from "../../ButtonComponeent";
 import MainContainer from "../../MainContainer"
 
@@ -10,6 +11,10 @@ function ThankPage() {
 
   const history = useHistory();
 
+  const {shippingAddress, cartItems} = useSelector(state => state.cart);
+
+  console.log(shippingAddress)
+
   return (
     <MainContainer>
       <Header>
@@ -18,14 +23,14 @@ function ThankPage() {
       </Header>
       <Grid>
         <SectionLeft>
-          <h1>thank you rana</h1>
+          <h1>thank you {shippingAddress.firstName}</h1>
           <p>Your order is confirmed</p>
           <p>
             You’ll receive a confirmation email with your order number shortly.
           </p>
-          <ButtonC className="btn">Continue Shopping</ButtonC>
+          <Link to="/products" className="btn">Continue Shopping</Link>
         </SectionLeft>
-        <SectionRight />
+        <SectionRight cartItems={cartItems} />
       </Grid>
     </MainContainer>
   );
@@ -37,6 +42,7 @@ const SectionLeft = styled.div`
   & h1 {
       color: var(--orange-color);
       text-transform: uppercase;
+      font-size: 2rem;
   }
   & p {
       color: var(--silver-color);
@@ -45,34 +51,32 @@ const SectionLeft = styled.div`
   & .btn {
       position: relative;
       top: 3rem;
+      background-color: var(--orange-color);
+      color: #fff;
+      text-decoration: none;
+      &:hover {
+        opacity: .9;
+      }
   }
 `;
 
-const SectionRight = () => {
+const SectionRight = ({cartItems}) => {
   return (
     <ContainerCart>
-      <Card>
+      {cartItems.map((item, index) => (
+        <Card key={index}>
         <div class="card__image">
           <img src={piture} alt="" />
           <p className="quantity">2</p>
         </div>
         <div class="card__details">
-          <h1 class="card__title">Name of the Product</h1>
+          <h1 class="card__title">{item.name}</h1>
           <h1 class="card__price">100.00 AED</h1>
         </div>
       </Card>
-      <Card>
-        <div class="card__image">
-          <img src={piture} alt="" />
-          <p className="quantity">2</p>
-        </div>
-        <div class="card__details">
-          <h1 class="card__title">Name of the Product</h1>
-          <h1 class="card__price">100.00 AED</h1>
-        </div>
-      </Card>
+      ))}
       <hr />
-      <form action="">
+      {/* <form action="">
         <input type="text" placeholder="DISCOUNT CODE" />
         <ButtonC>apply</ButtonC>
       </form>
@@ -89,7 +93,7 @@ const SectionRight = () => {
       <div className="solde">
         <h1>subtotal</h1>
         <h1>aed 400.00</h1>
-      </div>
+      </div> */}
     </ContainerCart>
   );
 };

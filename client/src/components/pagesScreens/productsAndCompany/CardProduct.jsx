@@ -59,6 +59,7 @@ function Product({ product }) {
 const Card = styled.div`
   border: 1px solid var(--border-color);
   border-radius: 10px;
+  width: 100%;
   /* width: 300px; */
   & .img_card {
     & .ant-image {

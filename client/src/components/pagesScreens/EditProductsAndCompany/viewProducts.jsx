@@ -1,147 +1,114 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Slider, Image, Modal } from "antd";
+import { Slider, img, Modal } from "antd";
+import { ExclamationCircleOutlined } from "@ant-design/icons";
 import { RiDeleteBin5Fill } from "react-icons/ri";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import SelectC from "../../SelectComponents";
 import ModalContent from "./modalContent";
+import {
+  getMyProducts,
+  deleteProduct,
+} from "../../../flux/actions/productAction";
+import Loader from "../../Loader";
+import "./modal.css"
 
 import productImg from "../../../img/productimg.png";
 
-const Brand = () => {
-  const OptionList = ["Iphone", "Samsumg", "Nokia"];
-  return <SelectC placeholder="Brand">{OptionList}</SelectC>;
-};
+
+
+
+const { confirm } = Modal;
+
+
+
+
+
+
+
 
 const ViewProducts = () => {
   const [visible, setVisible] = useState(false);
+  const [productSelect, setProductSelect] = useState("");
+
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const { loading, products } = useSelector((state) => state.myProductDetails);
+
+  console.log(products);
+
+  useEffect(() => {
+    dispatch(getMyProducts());
+  }, [getMyProducts]);
+
+
+
+
+
+
+  const showConfirm = (productID) => {
+    confirm({
+      title: 'Do you Want to delete this product ?',
+      icon: <ExclamationCircleOutlined />,
+      okText: "Yes, I'm",
+      // style: {background:"red"},
+      // bodyStyle:{color:"red"},
+      // content: 'Some descriptions',
+      // okButtonProps: {background:"red"},
+      className: "modal_container",
+      onOk() {
+        dispatch(deleteProduct(productID));
+      },
+      onCancel() {
+        console.log('Cancel');
+      },
+    });
+  }
 
   return (
-    <Container>
-      <Row>
-        <Grid>
-          <Card>
-            <Image src={productImg} alt="" preview={false} />
-            <RiDeleteBin5Fill className="delete_icon" />
-            <div className="card-body">
-              <h2>product name</h2>
-              <p className="desc">description</p>
-              <hr />
-              <h2 className="price">
-                <span>60.00</span> dr
-              </h2>
-              <Button type="button">edit</Button>
-            </div>
-          </Card>
-          <Card>
-            <Image src={productImg} alt="" preview={false} />
-            <RiDeleteBin5Fill className="delete_icon" />
-            <div className="card-body">
-              <h2>product name</h2>
-              <p className="desc">description</p>
-              <hr />
-              <h2 className="price">
-                <span>60.00</span> dr
-              </h2>
-              <Button type="button">edit</Button>
-            </div>
-          </Card>
-          <Card>
-            <Image src={productImg} alt="" preview={false} />
-            <RiDeleteBin5Fill className="delete_icon" />
-            <div className="card-body">
-              <h2>product name</h2>
-              <p className="desc">description</p>
-              <hr />
-              <h2 className="price">
-                <span>60.00</span> dr
-              </h2>
-              <Button type="button">edit</Button>
-            </div>
-          </Card>
-          <Card>
-            <Image src={productImg} alt="" preview={false} />
-            <RiDeleteBin5Fill className="delete_icon" />
-            <div className="card-body">
-              <h2>product name</h2>
-              <p className="desc">description</p>
-              <hr />
-              <h2 className="price">
-                <span>60.00</span> dr
-              </h2>
-              <Button type="button">edit</Button>
-            </div>
-          </Card>
-          <Card>
-            <Image src={productImg} alt="" preview={false} />
-            <RiDeleteBin5Fill className="delete_icon" />
-            <div className="card-body">
-              <h2>product name</h2>
-              <p className="desc">description</p>
-              <hr />
-              <h2 className="price">
-                <span>60.00</span> dr
-              </h2>
-              <Button type="button">edit</Button>
-            </div>
-          </Card>
-          <Card>
-            <Image src={productImg} alt="" preview={false} />
-            <RiDeleteBin5Fill className="delete_icon" />
-            <div className="card-body">
-              <h2>product name</h2>
-              <p className="desc">description</p>
-              <hr />
-              <h2 className="price">
-                <span>60.00</span> dr
-              </h2>
-              <Button type="button">edit</Button>
-            </div>
-          </Card>
-          <Card>
-            <Image src={productImg} alt="" preview={false} />
-            <RiDeleteBin5Fill className="delete_icon" />
-            <div className="card-body">
-              <h2>product name</h2>
-              <p className="desc">description</p>
-              <hr />
-              <h2 className="price">
-                <span>60.00</span> dr
-              </h2>
-              <Button type="button">edit</Button>
-            </div>
-          </Card>
-          <Card>
-            <Image src={productImg} alt="" preview={false} />
-            <RiDeleteBin5Fill className="delete_icon" />
-            <div className="card-body">
-              <h2>product name</h2>
-              <p className="desc">description</p>
-              <hr />
-              <h2 className="price">
-                <span>60.00</span> dr
-              </h2>
-              <Button type="button">edit</Button>
-            </div>
-          </Card>
-          <Card>
-            <Image src={productImg} alt="" preview={false} />
-            <RiDeleteBin5Fill className="delete_icon" />
-            <div className="card-body">
-              <h2>product name</h2>
-              <p className="desc">description</p>
-              <hr />
-              <h2 className="price">
-                <span>60.00</span> dr
-              </h2>
-              <Button type="button">edit</Button>
-            </div>
-          </Card>
-        </Grid>
-        <Button className="save_btn" type="button">
-          save
-        </Button>
-      </Row>
-    </Container>
+    <>
+      {loading ? (
+        <Loader />
+      ) : (
+        <Container>
+          <Row>
+            <Grid>
+              {
+                products.map((product, index) => (
+                  <>
+                    <Card key={index}>
+                      <img src={productImg} alt="" />
+                      <RiDeleteBin5Fill
+                        className="delete_icon"
+                        onClick={() => showConfirm(product._id)}
+                      />
+                      <div className="card-body">
+                        <h2>{product.name}</h2>
+                        <p className="desc">description</p>
+                        <hr />
+                        <h2 className="price">
+                          <span>{product.price}</span> dr
+                        </h2>
+                        <Button
+                          type="button"
+                          onClick={() =>
+                            history.push(`/product/${product._id}`)
+                          }
+                        >
+                          edit
+                        </Button>
+                      </div>
+                    </Card>
+                  </>
+                ))
+              }
+            </Grid>
+          </Row>
+        </Container>
+      )}
+    </>
   );
 };
 
@@ -167,59 +134,6 @@ const Row = styled.div`
   }
 `;
 
-// const FilterForm = styled.div`
-//   display: flex;
-//   width: 100%;
-//   justify-content: space-between;
-//   align-items: center;
-//   height: 6rem;
-
-//   & .slider {
-//     display: flex;
-//     flex-direction: column;
-
-//     & p {
-//       margin-bottom: 0;
-//     }
-//   }
-
-//   & .btn {
-//     outline: none;
-//     border: none;
-//     background: var(--orange-color);
-//     color: #fff;
-//     &:hover {
-//       opacity: 0.9;
-//     }
-//   }
-
-//   @media only screen and (max-width: 768px) {
-//     display: block;
-//     height: 100%;
-//     & > * {
-//       margin-bottom: 1rem;
-//     }
-//   }
-// `;
-// const SliderE = styled(Slider)`
-//   /* background: red; */
-//   width: 200px;
-
-//   & .ant-slider-rail {
-//     background: var(--silver-color);
-//   }
-
-//   & .ant-slider-handle:hover {
-//     border-color: var(--orange-color);
-//   }
-
-//   & .ant-slider-track {
-//     background: var(--orange-color) !important;
-//   }
-//   & .ant-slider-handle {
-//     border: solid 2px var(--orange-color);
-//   }
-// `;
 const Grid = styled.div`
   width: 100%;
   display: grid;
@@ -227,7 +141,7 @@ const Grid = styled.div`
   grid-gap: 1.1rem;
 
   @media only screen and (max-width: 1000px) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
   @media only screen and (max-width: 637px) {
     grid-template-columns: repeat(1, 1fr);
@@ -275,35 +189,23 @@ const Card = styled.div`
   }
 
   & .delete_icon {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: var(--orange-color);
     position: relative;
     bottom: 12rem;
-    left: 12rem;
+    left: 7.5rem;
     z-index: 5;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     &:hover {
       transform: scale(1.2);
     }
-    
-    @media only screen and (max-width: 1000px) {
-      bottom: 12rem;
-      left: 22rem;
+
+    @media only screen and (max-width: 770px) {
+      bottom: 13.5rem;
     }
-    @media only screen and (max-width: 768px) {
-      bottom: 13rem;
-      left: 22rem;
-    }
-    @media only screen and (max-width: 425px) {
-      left: 24rem;
-    }
-    @media only screen and (max-width: 375px) {
-      left: 21rem;
-    }
-    @media only screen and (max-width: 320px) {
-      bottom: 13rem;
-      left: 17rem;
+    @media only screen and (max-width: 637px) {
+      left: 13rem;
     }
   }
 `;

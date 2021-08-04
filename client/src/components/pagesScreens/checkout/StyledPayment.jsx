@@ -266,12 +266,20 @@ export const Container = styled.div`
   padding: 5rem 0 3rem 0;
 
   & .submition_btn{
-    /* margin-top: 2rem; */
     padding:2rem .5rem;
     display: flex;
     align-items: center;
     & .btn {
       padding:.5rem .6rem;
+      &:hover {
+        color: #fff;
+      }
+    }
+    & .link_back {
+      text-decoration: none;
+      &:hover {
+        opacity: 0.9
+      }
     }
     @media only screen and (max-width: 768px) {
       padding:2rem .5rem;
