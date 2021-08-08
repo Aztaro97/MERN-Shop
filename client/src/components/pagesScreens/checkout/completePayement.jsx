@@ -1,13 +1,40 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styled from "styled-components";
 import ButtonC from "../../ButtonComponeent";
 import { Link, useHistory } from "react-router-dom";
+import {useSelector, useDispatch} from "react-redux";
+import {getOrderDetails} from "../../../flux/actions/orderAction";
+import {ORDER_PAY_RESET, ORDER_DELIVER_RESET} from "../../../flux/constants/orderConstants"
+import StripePayment from "../checkout/stripe/stripeContainer"
 
 import piture from "../../../img/card_pic.png";
 
 function CompletePayement() {
 
   const history = useHistory();
+  const dispatch = useDispatch();
+
+  const {shippingAddress} = useSelector(state => state.cart)
+  // const {shippingAddress} = useSelector(state => state.cart)
+  const { loading: loadingPay, success: successPay } = useSelector(state => state.orderPay)
+  const { loading: loadingDeliver, success: successDeliver } = useSelector((state) => state.orderDeliver);
+  const { order, loading,  error } = useSelector((state) => state.orderDetails);
+  const { userInfo } = useSelector((state) => state.userLogin);
+
+  
+
+  useEffect(() => {
+    if (!userInfo) {
+      history.push("/auth")
+    }
+    if (!order || successPay || successDeliver) {
+      dispatch({ type: ORDER_PAY_RESET })
+      dispatch({ type: ORDER_DELIVER_RESET })
+      dispatch(getOrderDetails())
+    }
+
+  }, [dispatch, userInfo])
+
 
   return (
     <Container>
@@ -21,20 +48,17 @@ function CompletePayement() {
             <div className="row">
               <div>
                 <h2>contact</h2>
-                <p>rana@aucode.com</p>
+                <p>{shippingAddress.email}</p>
               </div>
-              <Link className="link">Change</Link>
             </div>
             <hr />
             <div className="row">
               <div>
                 <h2>address</h2>
                 <p>
-                  15 Salah El Dien Street ,Sisis MArket , Egypt15 Salah El Dien
-                  Street ,Sisis MArket , Egypt
+                  {shippingAddress.address}, {shippingAddress.city},{shippingAddress.country}
                 </p>
               </div>
-              <Link className="link">Change</Link>
             </div>
           </Border>
           <Border>
@@ -49,12 +73,17 @@ function CompletePayement() {
               <p>aed 50.00</p>
             </div>
           </Border>
-          <div className="row">
+
+          <div>
+            <h4>Card Information</h4>
+            <StripePayment />
+          </div>
+          {/* <div className="row" style={{marginTop: 30}}>
             <ButtonC className="">submit</ButtonC>
             <Link to="/products" className="link_back" >
               back to payment
             </Link>
-          </div>
+          </div> */}
         </SectionLeft>
         <SectionRight />
       </Grid>
@@ -183,11 +212,7 @@ const SectionRight = () => {
           <h1 class="card__price">100.00 AED</h1>
         </div>
       </Card>
-      <hr />
-      <form action="">
-        <input type="text" placeholder="DISCOUNT CODE" />
-        <ButtonC>apply</ButtonC>
-      </form>
+      
       <hr />
       <div className="solde">
         <h1>subtotal</h1>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link, Redirect } from "react-router-dom";
-import { FaUser, FaShoppingCart } from "react-icons/fa";
+import { FaUser, FaShoppingCart, FaUserCog } from "react-icons/all";
 import { Popover } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../flux/actions/userAction";
@@ -34,8 +34,8 @@ function NavBar() {
 
   const ProfileContentLogin = (
     <Content>
-      <LinkR href="/companies">my profile</LinkR>
       <LinkR href="/myproducts">my products</LinkR>
+      <LinkR href="/myorder">my order</LinkR>
       <LinkR href="/add-product">add more products</LinkR>
 
       <LinkP className="btn_logOut" onClick={handleLogOut}>
@@ -48,18 +48,32 @@ function NavBar() {
       <LinkP to="/auth" className="btn_signin">
         Sign in
       </LinkP>
-      {/* <LinkP to="/edit-products">my products</LinkP>
-      <LinkP to="/add-product">add more products</LinkP> */}
-
-      {/* <LinkP className="btn_logOut">
-        Log in
-      </LinkP> */}
+    </Content>
+  );
+  const AdminContente = (
+    <Content>
+      <LinkR href="/admin/userlist">Users Lists</LinkR>
+      <LinkR href="/admin/productlist">Products Lists</LinkR>
+      <LinkR href="/admin/orderlist">Orders Lists</LinkR>
     </Content>
   );
   return (
     <Header scrollNav={scrollNav}>
       <Lang to="/arab">Arabic</Lang>
       <Nav>
+        {userInfo && userInfo.isAdmin && (
+          <NavItem>
+            <Popover
+              placement="bottomRight"
+              content={AdminContente}
+              trigger="hover"
+            >
+              <NavLink>
+                <FaUserCog className="icon" size={30} />
+              </NavLink>
+            </Popover>
+          </NavItem>
+        )}
         <NavItem>
           <Popover
             placement="bottomRight"

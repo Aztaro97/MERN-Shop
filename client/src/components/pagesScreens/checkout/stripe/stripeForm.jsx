@@ -8,9 +8,11 @@ import {
   CardExpiryElement,
 } from "@stripe/react-stripe-js";
 import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
 import { errorMessage } from "../../../message";
+import { payOrder, createOrder } from "../../../../flux/actions/orderAction";
 
 const CARD_OPTIONS = {
   iconStyle: "solid",
@@ -34,15 +36,32 @@ const CARD_OPTIONS = {
 };
 
 export default function PaymentForm() {
-  const [success, setSuccess] = useState(false);
+  const [paymentSuccess, setPaymentSuccess] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
 
-  const { shippingAddress, cartItems } = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+  const history = useHistory();
 
-  const totalPrice = cartItems
-    .reduce((acc, item) => acc + item.qty * item.price, 0)
-    .toFixed(2);
+  const { shippingAddress, cartItems } = useSelector((state) => state.cart);
+  const { loading, success, order } = useSelector((state) => state.orderCreate);
+
+  //   Calculate prices
+  const addDecimals = (num) => {
+    return (Math.round(num * 100) / 100).toFixed(2);
+  };
+
+  const itemsPrice = addDecimals(
+    cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)
+  );
+  const shippingPrice = addDecimals(itemsPrice > 100 ? 0 : 100);
+  const taxPrice = addDecimals(Number((0.15 * itemsPrice).toFixed(2)));
+
+  const totalPrice = (
+    Number(itemsPrice) +
+    Number(shippingPrice) +
+    Number(taxPrice)
+  ).toFixed(2);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -55,22 +74,33 @@ export default function PaymentForm() {
     if (!error) {
       try {
         const { id } = paymentMethod;
-
         const config = {
           headers: {
-            "Content-Type": "application/json",
-            // Authorization: `Bearer ${PUBLICK_API_KEY}`,
-          },
-        };
+            Authorization: `Bearer auth`,
+          }
+        }
 
         const response = await axios.post("/api/payment", {
-          amount: 1000,
-          id,
-        });
+          amount: totalPrice,
+          id
+        }, config);
 
-        if (response.data.success) {
+        if (response.data.paymentSuccess) {
           console.log("Successful payment");
-          setSuccess(true);
+          setPaymentSuccess(true);
+          payOrder(response.data);
+          dispatch(
+            createOrder({
+              orderItems: cartItems,
+              shippingAddress: shippingAddress,
+              paymentMethod: paymentMethod,
+              itemsPrice: itemsPrice,
+              shippingPrice: shippingPrice,
+              taxPrice: taxPrice,
+              totalPrice: totalPrice,
+            })
+          );
+          history.push("/thank");
         }
       } catch (error) {
         console.log("Error", error);
@@ -83,7 +113,7 @@ export default function PaymentForm() {
 
   return (
     <>
-      {!success ? (
+      {!paymentSuccess ? (
         <Form onSubmit={handleSubmit}>
           <Row>
             <CardNumberElement className="input_card" options={CARD_OPTIONS} />
@@ -97,7 +127,7 @@ export default function PaymentForm() {
             <CardCvcElement className="input_card" options={CARD_OPTIONS} />
           </Row>
           <button type="submit" disabled={!stripe}>
-            Pay {totalPrice} 
+            Pay {totalPrice}
           </button>
         </Form>
       ) : (

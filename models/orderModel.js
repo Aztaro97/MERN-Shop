@@ -1,48 +1,46 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const orderSchema = mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
-      required: true,
-      ref: 'User',
+      required: false,
+      ref: "User",
     },
     orderItems: [
       {
-        name: { type: String, required: true },
-        qty: { type: Number, required: true },
-        image: [{ type: String, required: true }],
-        price: { type: Number, required: true },
+        name: { type: String, required: false },
+        qty: { type: Number, required: false },
+        image: [{ type: String, required: false }],
+        price: { type: Number, required: false },
         product: {
           type: mongoose.Schema.Types.ObjectId,
-          required: true,
-          ref: 'Product',
+          required: false,
+          ref: "Product",
         },
       },
     ],
     shippingAddress: {
-        firstName: { type: String, required: true },
-        lastName: { type: String, required: true },
-      address: { type: String, required: true },
-      appartmentNumber: { type: String, required: true },
+      firstName: { type: String, required: false },
+      lastName: { type: String, required: false },
+      address: { type: String, required: false },
+      appartmentNumber: { type: String, required: false },
 
-      city: { type: String, required: true },
-      gouvernment: { type: String, required: true },
-      country: { type: String, required: true },
-      mapAdress: { type: String, required: true },
-      phoneNumber: { type: String, required: true },
-
-
+      city: { type: String, required: false },
+      gouvernment: { type: String, required: false },
+      country: { type: String, required: false },
+      mapAdress: { type: String, required: false },
+      phoneNumber: { type: String, required: false },
     },
     paymentMethod: {
       type: String,
-      required: true,
+      required: false,
     },
     paymentInfo: {
-        cardNumber: { type: String, required: true},
-        fullName: { type: String, required: true},
-        dateExpire: {type: Date, required: true},
-        cvcNumber: { type:Number, required: true}
+      cardNumber: { type: String, required: false },
+      fullName: { type: String, required: false },
+      dateExpire: { type: Date, required: false },
+      cvcNumber: { type: Number, required: false },
     },
     paymentResult: {
       id: { type: String },
@@ -52,22 +50,22 @@ const orderSchema = mongoose.Schema(
     },
     taxPrice: {
       type: Number,
-      required: true,
+      required: false,
       default: 0.0,
     },
     shippingPrice: {
       type: Number,
-      required: true,
+      required: false,
       default: 0.0,
     },
     totalPrice: {
       type: Number,
-      required: true,
+      required: false,
       default: 0.0,
     },
     isPaid: {
       type: Boolean,
-      required: true,
+      required: false,
       default: false,
     },
     paidAt: {
@@ -75,7 +73,7 @@ const orderSchema = mongoose.Schema(
     },
     isDelivered: {
       type: Boolean,
-      required: true,
+      required: false,
       default: false,
     },
     deliveredAt: {
@@ -85,8 +83,8 @@ const orderSchema = mongoose.Schema(
   {
     timestamps: true,
   }
-)
+);
 
-const Order = mongoose.model('Order', orderSchema)
+const Order = mongoose.model("Order", orderSchema);
 
-module.exports = Order
+module.exports = Order;

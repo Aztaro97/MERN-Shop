@@ -56,7 +56,7 @@ function CompanyList() {
   return (
     <Container>
       {/* <hr /> */}
-      <CarouselButton />
+      {/* <CarouselButton /> */}
       <CardContainer>
         <div className="card">
           <img className="card_img" src={company_pic1} alt="" />

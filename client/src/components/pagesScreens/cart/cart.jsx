@@ -58,9 +58,14 @@ function CartComponent({ location }) {
               <Row key={index}>
                 <Grid>
                   <div className="cart">
-                    <img src={picture} />
+                    <img src={picture} alt="" />
                     <div className="cart-name">
                       <h3>{item.name}</h3>
+                      {item.sizeSelected && (
+                        <h3 className="cart_size">
+                          Size : <span>{item.sizeSelected}</span>{" "}
+                        </h3>
+                      )}
                       <button
                         type="button"
                         onClick={() => handleRemoveCart(item.product)}
@@ -252,6 +257,15 @@ const Grid = styled.div`
         font-weight: 700;
         font-size: 0.9rem;
         letter-spacing: 1px;
+      }
+      & .cart_size {
+        color: var(--orange-color);
+        font-weight: 700;
+        margin-bottom: .9rem;
+        &.cart_size span {
+          /* color: #000 !important; */
+          font-weight: 700;
+        }
       }
 
       & button {

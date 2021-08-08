@@ -287,17 +287,22 @@ const FormRight = ({
   };
 
   const handleUpload = async (e) => {
-    // e.preventDefault();
-
     try {
-      let formData = new FormData();
-      // add one or more of your files in FormData
-      // again, the original file is located at the `originFileObj` key
-      formData.append("imgfiles", fileList[0].originFileObj);
+      const config = {
+        headers: {
+          "content-type": "multipart/form-data",
+          // Authorization: `Bearer ${userInfo.token}`,
+        },
+      };
 
-      const res = await axios.post("/api/upload", formData);
+      let formdata = new FormData();
+      for (var i = 0; i < fileList.length; i++) {
+        formdata.append("imgfiles", fileList[i].originFileObj);
+      }
 
-      console.log(res);
+      const res = await axios.post("/api/upload/company-images", formdata, config);
+
+      console.log(res.data);
     } catch (error) {
       console.log(error.message);
     }
@@ -347,14 +352,15 @@ const FormRight = ({
         <Label>Add Photo for your Product</Label>
 
         <Upload
-          action="/api/upload/"
-          listType="picture-card"
-          fileList={fileList}
-          onPreview={handlePreview}
-          onChange={handleUpload}
-          onRemove={() => console.log("Image remove")}
-          name="imgfiles"
-        >
+            listType="picture-card"
+            beforeUpload={() => false}
+            onChange={handleChange}
+            onPreview={handlePreview}
+            fileList={fileList}
+            name="imgfiles"
+            accept="image/png, image/jpeg, image/jpg"
+            multiple
+          >
           {fileList.length < 5 && (
             <UploadIcon>
               <GoPlus size={30} />

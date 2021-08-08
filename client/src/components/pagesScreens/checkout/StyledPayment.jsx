@@ -84,7 +84,7 @@ margin-bottom: 2rem;
 }
 `;
 
-export const SectionLeft = styled.div`
+export const SectionLeft = styled.form`
 padding: 2rem;
 
 & .section_shippindAdress {
@@ -140,8 +140,8 @@ padding: 2rem;
   margin-bottom: 0;
 }
 & .btn {
-  position: relative;
-  top: 3rem;
+  /* position: relative;
+  top: 3rem; */
 }
 & .row {
   display: flex;
@@ -269,13 +269,18 @@ export const Container = styled.div`
     padding:2rem .5rem;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     & .btn {
       padding:.5rem .6rem;
+      font-size: .8rem;
+      font-weight: 400;
+      letter-spacing: 2px;
       &:hover {
         color: #fff;
       }
     }
     & .link_back {
+      display: inline;
       text-decoration: none;
       &:hover {
         opacity: 0.9

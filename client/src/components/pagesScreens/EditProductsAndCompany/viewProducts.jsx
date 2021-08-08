@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Slider, img, Modal } from "antd";
+import { Modal } from "antd";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import SelectC from "../../SelectComponents";
 import ModalContent from "./modalContent";
 import {
@@ -12,21 +12,11 @@ import {
   deleteProduct,
 } from "../../../flux/actions/productAction";
 import Loader from "../../Loader";
-import "./modal.css"
+import "./modal.css";
 
 import productImg from "../../../img/productimg.png";
 
-
-
-
 const { confirm } = Modal;
-
-
-
-
-
-
-
 
 const ViewProducts = () => {
   const [visible, setVisible] = useState(false);
@@ -41,31 +31,22 @@ const ViewProducts = () => {
 
   useEffect(() => {
     dispatch(getMyProducts());
-  }, [getMyProducts]);
-
-
-
-
-
+  }, [dispatch, getMyProducts]);
 
   const showConfirm = (productID) => {
     confirm({
-      title: 'Do you Want to delete this product ?',
+      title: "Do you Want to delete this product ?",
       icon: <ExclamationCircleOutlined />,
       okText: "Yes, I'm",
-      // style: {background:"red"},
-      // bodyStyle:{color:"red"},
-      // content: 'Some descriptions',
-      // okButtonProps: {background:"red"},
       className: "modal_container",
       onOk() {
         dispatch(deleteProduct(productID));
       },
       onCancel() {
-        console.log('Cancel');
+        console.log("Cancel");
       },
     });
-  }
+  };
 
   return (
     <>
@@ -74,9 +55,19 @@ const ViewProducts = () => {
       ) : (
         <Container>
           <Row>
-            <Grid>
-              {
-                products.map((product, index) => (
+            {products.length === 0 ? (
+              <Empty>
+                <h1>You don't have any products</h1>
+                <p>
+                  To create a new product, please click on this{" "}
+                  <Link to="/add-product" className="btn">
+                    button
+                  </Link>
+                </p>
+              </Empty>
+            ) : (
+              <Grid>
+                {products.map((product, index) => (
                   <>
                     <Card key={index}>
                       <img src={productImg} alt="" />
@@ -102,9 +93,9 @@ const ViewProducts = () => {
                       </div>
                     </Card>
                   </>
-                ))
-              }
-            </Grid>
+                ))}
+              </Grid>
+            )}
           </Row>
         </Container>
       )}
@@ -140,8 +131,11 @@ const Grid = styled.div`
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 1.1rem;
 
-  @media only screen and (max-width: 1000px) {
+  @media only screen and (max-width: 1056px) {
     grid-template-columns: repeat(3, 1fr);
+  }
+  @media only screen and (max-width: 834px) {
+    grid-template-columns: repeat(2, 1fr);
   }
   @media only screen and (max-width: 637px) {
     grid-template-columns: repeat(1, 1fr);
@@ -151,6 +145,7 @@ const Grid = styled.div`
 const Card = styled.div`
   border: 1px solid var(--border-color);
   border-radius: 10px;
+  width: 230px;
   & img {
     display: block;
     width: 100%;
@@ -193,7 +188,7 @@ const Card = styled.div`
     color: var(--orange-color);
     position: relative;
     bottom: 12rem;
-    left: 7.5rem;
+    left: 11.5rem;
     z-index: 5;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
@@ -205,7 +200,7 @@ const Card = styled.div`
       bottom: 13.5rem;
     }
     @media only screen and (max-width: 637px) {
-      left: 13rem;
+      left: 13.5rem;
     }
   }
 `;
@@ -228,6 +223,22 @@ const Button = styled.button`
   &:hover {
     opacity: 0.8;
     color: #fff;
+  }
+`;
+
+const Empty = styled.div`
+  & p {
+    font-size: 1.2rem;
+    & .btn {
+      text-decoration: none;
+      color: #fff;
+      background: var(--orange-color);
+      padding: 0.2rem 1rem;
+      margin-left: 0.4rem;
+      &:hover {
+        opacity: 0.9;
+      }
+    }
   }
 `;
 export default ViewProducts;

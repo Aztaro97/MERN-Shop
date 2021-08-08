@@ -3,6 +3,7 @@ import styled from "styled-components";
 import {useHistory, Link} from "react-router-dom"
 import {useSelector} from "react-redux"
 import ButtonC from "../../ButtonComponeent";
+// import {createOrder} from "../../../flux/actions/orderAction"
 import MainContainer from "../../MainContainer"
 
 import piture from "../../../img/card_pic.png";

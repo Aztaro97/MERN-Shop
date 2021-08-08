@@ -10,13 +10,20 @@ import {
 } from "../../../flux/actions/productAction";
 import CardProduct from "./CardProduct";
 import Loader from "../../Loader";
+import Paginate from "../../pagination"
 
 const Brand = () => {
   const OptionList = ["Iphone", "Samsumg", "Nokia"];
   return <SelectC placeholder="Brand">{OptionList}</SelectC>;
 };
 
-const ViewProducts = () => {
+const ViewProducts = ({match}) => {
+
+  // const keyword = match.params.keyword
+
+  const pageNumber = match.params.pageNumber || 1
+
+
   const formik = useFormik({
     initialValues: {
       brand: "",
@@ -32,7 +39,7 @@ const ViewProducts = () => {
   });
 
   const dispatch = useDispatch();
-  const { loading, error, products } = useSelector(
+  const { loading, error, products, page, pages } = useSelector(
     (state) => state.productList
   );
 
@@ -58,8 +65,8 @@ const ViewProducts = () => {
   ];
 
   useEffect(() => {
-    dispatch(listProducts());
-  }, [dispatch]);
+    dispatch(listProducts(pageNumber ));
+  }, [dispatch, pageNumber]);
 
   const handleChangeSlider = (value) => {
     formik.setFieldValue("price", value);
@@ -125,6 +132,13 @@ const ViewProducts = () => {
             </>
           )}
         </>
+      </Row>
+      <Row style={{marginTop:"1rem"}}>
+      <Paginate
+            pages={pages}
+            page={page}
+            // keyword={keyword ? keyword : ''}
+          />
       </Row>
     </Container>
   );

@@ -8,13 +8,13 @@ import CompanyInfo from "./companyDetails";
 
 const { TabPane } = Tabs;
 
-function Tabulation() {
+function Tabulation({match}) {
   return (
     <MainContainer>
       <Tab>
         <TabsE defaultActiveKey="1" centered size="default">
           <TabPane tab="View Products" key="1">
-            <ViewProducts />
+            <ViewProducts match={match} />
           </TabPane>
           <TabPane tab="Company Information" key="2">
             <CompanyInfo />

@@ -4,7 +4,13 @@ import { Modal, Space } from "antd";
 import ButtonC from "../../ButtonComponeent";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { saveShippingAddress } from "../../../flux/actions/cartAction";
+import {
+  saveShippingAddress,
+  savePaymentMethod,
+} from "../../../flux/actions/cartAction";
+import { createOrder } from "../../../flux/actions/orderAction";
+import { ORDER_CREATE_RESET } from "../../../flux/constants/orderConstants";
+import { USER_DETAILS_RESET } from "../../../flux/constants/userConstants";
 import InputRadio from "../../InputRadioComponent";
 import Loader from "../../Loader";
 
@@ -13,7 +19,6 @@ import InputComponents from "../../InputComponents";
 import CheckBoxComponent from "../../CheckBoxComponent";
 import SelectC from "../../SelectComponents";
 import MapComponent from "../checkout/map/getCurrentPosition";
-import StripePaymentContainer from "./stripe/stripeContainer";
 
 import {
   Container,
@@ -56,7 +61,7 @@ const countryList = [
 ];
 
 function Payment() {
-  const [creditMethod, setCreditMethod] = useState("credit");
+  const [paymentMethod, setPaymentMethod] = useState("credit");
   const [sameShipping, setSameShipping] = useState("sameAdress");
   const [subTotal, setSubTotal] = useState(Number);
 
@@ -67,19 +72,60 @@ function Payment() {
   );
   const { userInfo } = useSelector((state) => state.userLogin);
 
-  const handleCompleteOrder = () => {
-    history.push("/thank");
+  //   Calculate prices
+  const addDecimals = (num) => {
+    return (Math.round(num * 100) / 100).toFixed(2);
   };
+
+  const itemsPrice = addDecimals(
+    cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)
+  );
+  const shippingPrice = addDecimals(itemsPrice > 100 ? 0 : 100);
+  const taxPrice = addDecimals(Number((0.15 * itemsPrice).toFixed(2)));
+
+  const totalPrice = (
+    Number(itemsPrice) +
+    Number(shippingPrice) +
+    Number(taxPrice)
+  ).toFixed(2);
+
+  const handlePlaceOrder = () => {
+    dispatch(savePaymentMethod(paymentMethod));
+
+    if (paymentMethod === "credit") {
+      history.push("/completepayment");
+    } else {
+      dispatch(
+        createOrder({
+          orderItems: cartItems,
+          shippingAddress: shippingAddress,
+          paymentMethod: paymentMethod,
+          itemsPrice: itemsPrice,
+          shippingPrice: shippingPrice,
+          taxPrice: taxPrice,
+          totalPrice: totalPrice,
+        })
+      );
+      history.push("/thank");
+    }
+  };
+
+  const { order, success, error } = useSelector((state) => state.orderCreate);
 
   useEffect(() => {
     if (!userInfo) {
       history.push("/auth");
     }
-  }, [userInfo, shippingAddress]);
+    if (success) {
+      history.push(`/order/${order._id}`);
+      dispatch({ type: USER_DETAILS_RESET });
+      dispatch({ type: ORDER_CREATE_RESET });
+    }
+  }, [dispatch, userInfo, shippingAddress, success]);
 
   const onChangeRadiGroup = (e) => {
     console.log("radio checked", e.target.value);
-    setCreditMethod(e.target.value);
+    setPaymentMethod(e.target.value);
   };
 
   const handleShipingAddress = (e) => {
@@ -99,7 +145,7 @@ function Payment() {
             <h2>PAYEMENT</h2>
           </Header>
           <Grid>
-            <SectionLeft>
+            <SectionLeft onSubmit={handlePlaceOrder}>
               <Border>
                 <div className="row">
                   <div>
@@ -136,7 +182,7 @@ function Payment() {
                   <div className="radio-button">
                     <RadioB.Group
                       className="radio-custom"
-                      value={creditMethod}
+                      value={paymentMethod}
                       onChange={onChangeRadiGroup}
                     >
                       <Space
@@ -156,20 +202,6 @@ function Payment() {
                   </div>
                 </Border>
               </div>
-
-              {creditMethod === "credit" ? (
-                <div className="section_payment_info">
-                  <h2>payment information</h2>
-                  <StripePaymentContainer subTotal={subTotal} />
-                  {/* <InputComponents type="text" placeholder="Card Number" />
-              <InputComponents type="text" placeholder="Full Name" />
-              <InputComponents type="text" placeholder="MM/YY" />
-              <InputComponents type="text" placeholder="CVC" />
-              <CheckBoxComponent>
-                save this information for the next time
-              </CheckBoxComponent> */}
-                </div>
-              ) : null}
 
               <div className="section_billing">
                 <h2>Billing Address</h2>
@@ -204,17 +236,18 @@ function Payment() {
               {sameShipping !== "sameAdress" ? (
                 <SectionShippingAddress />
               ) : null}
+
+              <div className="submition_btn">
+                <ButtonC type="submit" className="btn">
+                  place order
+                </ButtonC>
+                <Link to="/products" className="link_back">
+                  back to information
+                </Link>
+              </div>
             </SectionLeft>
             <SectionRight cartItems={cartItems} />
           </Grid>
-          <div className="submition_btn">
-            <ButtonC className="btn" onClick={handleCompleteOrder}>
-              Complete order
-            </ButtonC>
-            <Link to="/products" className="link_back">
-              back to information
-            </Link>
-          </div>
         </Container>
       )}
     </>

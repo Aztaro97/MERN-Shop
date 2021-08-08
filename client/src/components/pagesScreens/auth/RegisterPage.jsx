@@ -548,10 +548,11 @@ const GalleryPhotos = () => {
 
   const [fileList, setFileList] = useState([]);
 
-  const onChange = ({ fileList: newFileList }) => {
+  const fileObjets = [];
+
+  const handleChange = ({ fileList: newFileList }) => {
     setFileList(newFileList);
-    console.log(fileList);
-    console.log(userInfo.token);
+    console.log(fileObjets);
   };
   const onPreview = async (file) => {
     let src = file.url;
@@ -571,19 +572,22 @@ const GalleryPhotos = () => {
 
   const handleSendImage = async (e) => {
     e.preventDefault();
-    const config = {
-      headers: {
-        "content-type": "multipart/form-data",
-        Authorization: `Bearer ${userInfo.token}`,
-      },
-    };
-    let formdata = new FormData();
-    formdata.append("imgfiles", fileList[0].originFileObj);
-
-    const res = await axios.post("/api/upload/", formdata, config);
-
     try {
-      console.log(userInfo);
+      const config = {
+        headers: {
+          "content-type": "multipart/form-data",
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      };
+
+      let formdata = new FormData();
+      for (var i = 0; i < fileList.length; i++) {
+        formdata.append("imgfiles", fileList[i].originFileObj);
+      }
+
+      const res = await axios.post("/api/upload/company-images", formdata, config);
+
+      console.log(res.data);
     } catch (error) {
       console.log(error.message);
     }
@@ -595,14 +599,14 @@ const GalleryPhotos = () => {
         <h1>add photo for your company</h1>
         <div className="card">
           <Upload
-            // style={{background:"red"}
-            // action="/api/upload/"
             listType="picture-card"
             beforeUpload={() => false}
-            onChange={onChange}
+            onChange={handleChange}
             onPreview={onPreview}
             fileList={fileList}
             name="imgfiles"
+            accept="image/png, image/jpeg, image/jpg"
+            multiple
           >
             {fileList.length < 4 && (
               <UploadIcon>

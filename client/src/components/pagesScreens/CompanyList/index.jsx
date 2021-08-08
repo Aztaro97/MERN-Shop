@@ -15,15 +15,14 @@ function Tabulation() {
       <LandingPage />
       <Tab>
         <MainContainer style={{ marginTop: 0 }}>
-          <TabsE
-            defaultActiveKey="1"
-            centered
-            size="default"
-          >
+          <TabsE defaultActiveKey="1" centered size="default">
             <TabPane
               tab={
                 <span>
-                  <BsBuilding className="tab_icons" style={{ marginRight: ".6rem" }} />
+                  <BsBuilding
+                    className="tab_icons"
+                    style={{ marginRight: ".6rem" }}
+                  />
                   companies
                 </span>
               }
@@ -34,7 +33,10 @@ function Tabulation() {
             <TabPane
               tab={
                 <span>
-                  <FaUserTie className="tab_icons" style={{ marginRight: ".6rem" }} />
+                  <FaUserTie
+                    className="tab_icons"
+                    style={{ marginRight: ".6rem" }}
+                  />
                   craftman
                 </span>
               }
@@ -67,15 +69,15 @@ const TabsE = styled(Tabs)`
     text-transform: uppercase;
 
     & span .tab_icons {
-    font-size: 2rem;
-    border-right: 1px solid #fff;
-    padding-right:1rem;
-    @media only screen and (max-width:768px) {
-      font-size: 1rem;
-      border-right: none;
-      padding-right: 0;
+      font-size: 2rem;
+      border-right: 1px solid #fff;
+      padding-right: 1rem;
+      @media only screen and (max-width: 768px) {
+        font-size: 1rem;
+        border-right: none;
+        padding-right: 0;
+      }
     }
-  }
   }
 
   & .ant-tabs-tab:hover {
@@ -90,8 +92,6 @@ const TabsE = styled(Tabs)`
     background: var(--orange-color) !important;
     color: #fff;
   }
-
-  
 `;
 
 export default Tabulation;

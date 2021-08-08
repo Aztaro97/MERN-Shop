@@ -36,7 +36,8 @@ const userSchema = mongoose.Schema(
         insta:{ type: String},
         twitter:{ type: String},
         whatsapp:{ type: String},
-      }
+      },
+      urlImg:{ type: Array},
     },
 
 
@@ -50,9 +51,7 @@ const userSchema = mongoose.Schema(
       device: { type: String},
     },
 
-
-    //   ///////////   COMPANY PHOTOS
-    urlImg:[{ type: String}],
+    
 
 
     // //////////////   SHIPPING ADDRESS   //////////////////
