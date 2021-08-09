@@ -3,10 +3,15 @@ import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import MainContainer from "../../MainContainer";
-import { Upload } from "antd";
+import { Upload, Modal } from "antd";
 import { FaPlus, AiFillDelete, GoPlus } from "react-icons/all";
 import axios from "axios";
 import { createProduct } from "../../../flux/actions/productAction";
+import {
+  CountryDropdown,
+  RegionDropdown,
+  CountryRegionData,
+} from "react-country-region-selector";
 
 import {
   Card,
@@ -29,8 +34,7 @@ import {
 import InputC from "../../InputComponents";
 import ButtonC from "../../ButtonComponeent";
 import InputCheck from "../../CheckBoxComponent";
-
-
+import InputRadio from "../../InputRadioComponent";
 
 function AddProductScreen() {
   const [code, setCode] = useState("");
@@ -72,7 +76,7 @@ function AddProductScreen() {
   };
 
   const dispatch = useDispatch();
-  const {userInfo} = useSelector((state) => state.userLogin)
+  const { userInfo } = useSelector((state) => state.userLogin);
 
   const history = useHistory();
 
@@ -83,11 +87,11 @@ function AddProductScreen() {
   };
 
   if (!userInfo) {
-    history.push("/auth")
+    history.push("/auth");
   }
 
   // useEffect(() => {
-    
+
   // }, [userInfo])
 
   return (
@@ -132,10 +136,6 @@ function AddProductScreen() {
   );
 }
 
-
-
-
-
 const FormRight = ({
   handleProductCreate,
   setName,
@@ -148,7 +148,7 @@ const FormRight = ({
   setVariantFinish,
   setVariantMaterial,
   setVariantStyle,
-  setUnited
+  setUnited,
 }) => {
   const [showInput, setShowInput] = useState(false);
   const [showInput0, setShowInput0] = useState(false);
@@ -167,7 +167,6 @@ const FormRight = ({
   // Variant Size State
   const [variantSizeValue, setVariantSizeValue] = useState(Number);
   const [ListVariantSize, listSetVariantSize] = useState([]);
-
 
   // Finish State
   const [finish, setFinish] = useState("");
@@ -190,13 +189,13 @@ const FormRight = ({
     e.preventDefault();
     Listcolor.push(color);
     console.log(Listcolor);
-    setVariantColor(Listcolor)
+    setVariantColor(Listcolor);
     setColor("");
   };
   const deleteColor = (itemIndex) => {
     const newListColor = Listcolor.filter((_, index) => index !== itemIndex);
     listSetColor(newListColor);
-    setVariantColor(newListColor)
+    setVariantColor(newListColor);
     console.log(newListColor);
   };
 
@@ -205,13 +204,15 @@ const FormRight = ({
     e.preventDefault();
     ListVariantSize.push(variantSizeValue);
     console.log(ListVariantSize);
-    setVariantSize(ListVariantSize)
+    setVariantSize(ListVariantSize);
     setVariantSizeValue("");
   };
   const deleteVariantSize = (itemIndex) => {
-    const newListVariantSize = ListVariantSize.filter((_, index) => index !== itemIndex);
+    const newListVariantSize = ListVariantSize.filter(
+      (_, index) => index !== itemIndex
+    );
     listSetVariantSize(newListVariantSize);
-    setVariantSize(newListVariantSize)
+    setVariantSize(newListVariantSize);
     console.log(newListVariantSize);
   };
 
@@ -220,13 +221,13 @@ const FormRight = ({
     e.preventDefault();
     ListFinish.push(finish);
     console.log(ListFinish);
-    setVariantFinish(ListFinish)
+    setVariantFinish(ListFinish);
     setFinish("");
   };
   const deleteFinish = (itemIndex) => {
     const newListFinish = ListFinish.filter((_, index) => index !== itemIndex);
     setListFinish(newListFinish);
-    setVariantFinish(newListFinish)
+    setVariantFinish(newListFinish);
     console.log(newListFinish);
   };
 
@@ -235,7 +236,7 @@ const FormRight = ({
     e.preventDefault();
     ListMaterial.push(material);
     console.log(ListMaterial);
-    setVariantMaterial(ListMaterial)
+    setVariantMaterial(ListMaterial);
     setMaterial("");
   };
   const deleteMaterial = (itemIndex) => {
@@ -243,7 +244,7 @@ const FormRight = ({
       (_, index) => index !== itemIndex
     );
     setListMaterial(newListMaterial);
-    setVariantMaterial(newListMaterial)
+    setVariantMaterial(newListMaterial);
     console.log(newListMaterial);
   };
 
@@ -252,7 +253,7 @@ const FormRight = ({
     e.preventDefault();
     ListStyling.push(styling);
     console.log(ListStyling);
-    setVariantStyle=(ListStyling)
+    setVariantStyle = ListStyling;
     setStyling("");
   };
   const deleteStyling = (itemIndex) => {
@@ -260,7 +261,7 @@ const FormRight = ({
       (_, index) => index !== itemIndex
     );
     setListStyling(newListStyling);
-    setVariantStyle(newListStyling)
+    setVariantStyle(newListStyling);
     console.log(newListStyling);
   };
 
@@ -268,7 +269,7 @@ const FormRight = ({
   const addSizeValue = (e) => {
     e.preventDefault();
     ListSizeValue.push(sizeValue);
-    setUnited(ListSizeValue)
+    setUnited(ListSizeValue);
     console.log(ListSizeValue);
     setSizeValue("");
   };
@@ -277,7 +278,7 @@ const FormRight = ({
       (_, index) => index !== itemIndex
     );
     setListSizeValue(newListSizeValue);
-    setUnited(newListSizeValue)
+    setUnited(newListSizeValue);
     console.log(newListSizeValue);
   };
 
@@ -300,7 +301,11 @@ const FormRight = ({
         formdata.append("imgfiles", fileList[i].originFileObj);
       }
 
-      const res = await axios.post("/api/upload/company-images", formdata, config);
+      const res = await axios.post(
+        "/api/upload/company-images",
+        formdata,
+        config
+      );
 
       console.log(res.data);
     } catch (error) {
@@ -352,15 +357,15 @@ const FormRight = ({
         <Label>Add Photo for your Product</Label>
 
         <Upload
-            listType="picture-card"
-            beforeUpload={() => false}
-            onChange={handleChange}
-            onPreview={handlePreview}
-            fileList={fileList}
-            name="imgfiles"
-            accept="image/png, image/jpeg, image/jpg"
-            multiple
-          >
+          listType="picture-card"
+          beforeUpload={() => false}
+          onChange={handleChange}
+          onPreview={handlePreview}
+          fileList={fileList}
+          name="imgfiles"
+          accept="image/png, image/jpeg, image/jpg"
+          multiple
+        >
           {fileList.length < 5 && (
             <UploadIcon>
               <GoPlus size={30} />
@@ -419,7 +424,11 @@ const FormRight = ({
                     value={color}
                     onChange={(e) => setColor(e.target.value)}
                   />
-                  <button className="add_btn" onClick={addColor}>
+                  <button
+                    className="add_btn"
+                    onClick={addColor}
+                    disabled={!color && true}
+                  >
                     add
                   </button>
                 </div>
@@ -458,7 +467,11 @@ const FormRight = ({
                     value={variantSizeValue}
                     onChange={(e) => setVariantSizeValue(e.target.value)}
                   />
-                  <button className="add_btn" onClick={addVariantSize}>
+                  <button
+                    className="add_btn"
+                    disabled={!variantSizeValue && true}
+                    onClick={addVariantSize}
+                  >
                     add
                   </button>
                 </div>
@@ -497,7 +510,11 @@ const FormRight = ({
                     value={finish}
                     onChange={(e) => setFinish(e.target.value)}
                   />
-                  <button className="add_btn" onClick={addFinish}>
+                  <button
+                    className="add_btn"
+                    disabled={!finish && true}
+                    onClick={addFinish}
+                  >
                     add
                   </button>
                 </div>
@@ -536,7 +553,11 @@ const FormRight = ({
                     value={material}
                     onChange={(e) => setMaterial(e.target.value)}
                   />
-                  <button className="add_btn" onClick={addMaterial}>
+                  <button
+                    className="add_btn"
+                    onClick={addMaterial}
+                    disabled={!material && true}
+                  >
                     add
                   </button>
                 </div>
@@ -575,7 +596,11 @@ const FormRight = ({
                     value={styling}
                     onChange={(e) => setStyling(e.target.value)}
                   />
-                  <button className="add_btn" onClick={addStyling}>
+                  <button
+                    className="add_btn"
+                    onClick={addStyling}
+                    disabled={!styling && true}
+                  >
                     add
                   </button>
                 </div>
@@ -620,7 +645,11 @@ const FormRight = ({
                       value={sizeValue}
                       onChange={(e) => setSizeValue(e.target.value)}
                     />
-                    <button className="add_btn" onClick={addSizeValue}>
+                    <button
+                      className="add_btn"
+                      disabled={!sizeValue && true}
+                      onClick={addSizeValue}
+                    >
                       add
                     </button>
                   </div>
@@ -726,7 +755,25 @@ const ProductSection1 = ({ setCode }) => {
 };
 
 const RateSection = () => {
-  const handleSunmit = () => {};
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [listAddress, setListAddress] = useState([
+    { name: "", amount: 0, minprice: 0, maxprice: 0 },
+  ]);
+  const [address, setAddress] = useState({ name: "" });
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleAdd = () => {
+    listAddress.push(address);
+    setAddress({ name: "" });
+  };
+  const onSaveCondition = (item) => {
+    console.log(item);
+    setIsModalVisible(false);
+    console.log(listAddress);
+  };
   return (
     <>
       <Row>
@@ -735,7 +782,13 @@ const RateSection = () => {
       <Card>
         <Row>
           <Label for="RateName">Rate Name</Label>
-          <InputC type="text" name="RateName" id="RateName" name="RateName" />
+          <InputC
+            type="text"
+            name="RateName"
+            id="RateName"
+            value={address.name}
+            onChange={(e) => setAddress({ name: e.target.value })}
+          />
         </Row>
         <Row>
           <Label for="">Shipping To</Label>
@@ -745,34 +798,98 @@ const RateSection = () => {
             <p className="title">condition</p>
           </GridRow>
           <hr style={{ background: "#aaaaac", marginBottom: ".7rem" }} />
-          <GridRow>
-            <p>Dubai</p>
-            <p>free</p>
-            <p>ad 50.00</p>
-          </GridRow>
-          <GridRow>
-            <p>al sharqa</p>
-            <p>20</p>
-            <p>add condition</p>
-          </GridRow>
-          <GridRow>
-            <p>al fougera</p>
-            <p>20</p>
-            <p>add condition</p>
-          </GridRow>
-          <GridRow>
-            <p>al ain</p>
-            <p>0</p>
-            <p>add condition</p>
-          </GridRow>
+          {listAddress.length > 0 &&
+            listAddress.map((item, index) => (
+              <GridRow key={index}>
+                <p>{item.name}</p>
+                <p>
+                  {!item.minprice || item.minprice == 0
+                    ? "Free"
+                    : item.minprice}
+                </p>
+                <p>
+                  <span onClick={showModal} style={{ cursor: "pointer" }}>
+                    {!item.amount ? "Add condition" : item.amount}
+                  </span>
+                  <Modal
+                    visible={isModalVisible}
+                    onOk={() => setIsModalVisible(false)}
+                    onCancel={() => setIsModalVisible(false)}
+                    footer={false}
+                  >
+                    <ShippingModal>
+                      <h5>add condition</h5>
+                      <hr />
+                      <div className="price">
+                        <input
+                          type="number"
+                          name="minprice"
+                          id="minprice"
+                          placeholder="MINIMUN PRICE"
+                          value={item.minprice}
+                          onChange={(e) => (item.minprice = e.target.value)}
+                        />
+                        <input
+                          type="number"
+                          name="maxprice"
+                          id="maxprice"
+                          placeholder="MAXMUN PRICE"
+                          value={item.maxprice}
+                          onChange={(e) => (item.maxprice = e.target.value)}
+                        />
+                      </div>
+                      <hr />
+                      <div className="modal_radio">
+                        <div>
+                          <InputRadio
+                            required
+                            value="itemWeight"
+                            name="based_order"
+                            id="itemWeight"
+                          />
+                          <label htmlFor="itemWeight">
+                            based on item weight
+                          </label>
+                        </div>
+                        <div>
+                          <InputRadio
+                            required
+                            value="orderPrice"
+                            name="based_order"
+                            id="orderPrice"
+                          />
+                          <label htmlFor="orderPrice">
+                            based on item weight
+                          </label>
+                        </div>
+                      </div>
+                      <hr />
+                      <div className="save_btn">
+                        <button
+                          type="button"
+                          onClick={() => onSaveCondition(item)}
+                        >
+                          save
+                        </button>
+                      </div>
+                    </ShippingModal>
+                  </Modal>
+                </p>
+              </GridRow>
+            ))}
         </Row>
 
-        <ButtonC style={{ margin: "0 auto" }}>save</ButtonC>
+        <ButtonC
+          style={{ margin: "0 auto" }}
+          disabled={!address.name && true}
+          onClick={handleAdd}
+        >
+          save
+        </ButtonC>
       </Card>
     </>
   );
 };
-
 
 const ShippingSection = ({
   setShippingFrom,
@@ -783,6 +900,8 @@ const ShippingSection = ({
   // const [shippingFrom, setShippingFrom] = useState("");
   const [inputValu, setInputValu] = useState("");
   const [ListShippingTo, setListShippingTo] = useState([]);
+  const [country, setCountry] = useState("");
+  const [region, setRegion] = useState("");
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -792,6 +911,11 @@ const ShippingSection = ({
 
     // console.log(ListShippingTo);
   };
+
+  const onChangeCountry = (val) => {
+    setCountry(val)
+    console.log(region)
+  }
   return (
     <>
       <Row>
@@ -811,14 +935,26 @@ const ShippingSection = ({
         </Row>
         <Row>
           <Label for="ShippingTo">Shipping To</Label>
-          <InputC
+          <div>
+            <CountryDropdownCustomer
+              value={country}
+              onChange={val => onChangeCountry(val)}
+            />
+            <RegionDropdownCustomer
+              country={country}
+              value={region}
+              onChange={(val) => setRegion(val)}
+              defaultOptionLabel="Choose"
+            />
+          </div>
+          {/* <InputC
             type="text"
             name="ShippingTo"
             id="ShippingTo"
             name="ShippingTo"
             value={inputValu}
             onChange={(e) => setInputValu(e.target.value)}
-          />
+          /> */}
         </Row>
         <Row>
           {ListShippingTo &&
@@ -837,5 +973,93 @@ const ShippingSection = ({
     </>
   );
 };
+
+const ShippingModal = styled.div`
+  padding: 0.8rem;
+
+  & h5 {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    margin-bottom: 0;
+    font-size: 0.9rem;
+    color: var(--silver-color);
+  }
+  & hr {
+    outline: none;
+    border: none;
+    height: 0.5px;
+    margin: 4px 0 1rem 0;
+    background: var(--orange-color);
+  }
+  & .price {
+    display: flex;
+    justify-content: space-between;
+    margin: 1.5rem 0 2rem 0;
+    & input {
+      border: none;
+      border-bottom: 1px solid var(--silver-color);
+      width: 128px;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      &:focus {
+        border: none;
+        border-bottom: 1px solid var(--silver-color);
+        outline: none;
+      }
+    }
+  }
+  & .modal_radio {
+    margin: 1.5rem 0;
+    & div {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+      & label {
+        margin-bottom: 0;
+        padding-left: 6px;
+        text-transform: uppercase;
+        letter-spacing: 0px;
+        font-weight: 700;
+        color: var(--silver-color);
+        cursor: pointer;
+      }
+    }
+  }
+  & .save_btn {
+    margin: 1rem 0;
+    text-align: right;
+    & button {
+      text-align: center;
+      outline: none;
+      border: none;
+      color: #fff;
+      background: var(--orange-color);
+      padding: 6px 3rem;
+      text-transform: uppercase;
+      border-radius: 10px;
+      font-weight: 700;
+    }
+  }
+`;
+
+const CountryDropdownCustomer = styled(CountryDropdown)`
+  border: 1px solid var(--orange-color);
+  padding: 10px;
+  display: block;
+  margin-bottom: 1rem;
+  &:focus {
+    outline: none;
+    border: 1px solid var(--orange-color);
+  }
+`;
+const RegionDropdownCustomer = styled(RegionDropdown)`
+border: 1px solid var(--orange-color);
+  padding: 10px ;
+  display:block;
+  &:focus {
+    outline: none;
+  border: 1px solid var(--orange-color);
+`;
 
 export default AddProductScreen;

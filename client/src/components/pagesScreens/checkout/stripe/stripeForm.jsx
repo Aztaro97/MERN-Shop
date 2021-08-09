@@ -64,6 +64,7 @@ export default function PaymentForm() {
   ).toFixed(2);
 
   const handleSubmit = async (e) => {
+    console.log("click")
     e.preventDefault();
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
@@ -76,14 +77,19 @@ export default function PaymentForm() {
         const { id } = paymentMethod;
         const config = {
           headers: {
-            Authorization: `Bearer auth`,
-          }
-        }
+            "Authorization": `Bearer "pk_test_51JJfI4Bx9NV9CAAsS0Sm1gUcqk97vPCARN9vYWF3BLu6i7JXgWUet4silSZmxgbGF3w8641D9Rx249dcJ3uR9m9a00S1YXrmI3"`,
+          },
+        };
 
-        const response = await axios.post("/api/payment", {
-          amount: totalPrice,
-          id
-        }, config);
+        const response = await axios.post(
+          "/api/payment",
+          {
+            amount: totalPrice,
+            id,
+            payment_method: "pm_card_visa",
+          },
+          config
+        );
 
         if (response.data.paymentSuccess) {
           console.log("Successful payment");
@@ -108,6 +114,7 @@ export default function PaymentForm() {
     } else {
       console.log(error.message);
       errorMessage(error.message, 500);
+
     }
   };
 

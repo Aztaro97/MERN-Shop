@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 export const Header = styled.div`
+padding: 0 1rem;
   height: 5rem;
   width: 100%;
 
@@ -58,7 +59,8 @@ export const Card = styled.div`
       height: 2rem;
       border: 3px solid var(--background-color);
       outline: none;
-      border-radius: 10px 0 0 10px;
+      /* border-radius: 10px 0 0 10px; */
+      text-transform:uppercase;
       transition: all 0.3s;
       background: #fff;
       /* width: 100%; */
@@ -70,7 +72,7 @@ export const Card = styled.div`
       color: #fff;
       outline: none;
       padding: 5px 1rem;
-      border-radius: 0 10px 10px 0;
+      /* border-radius: 0 10px 10px 0; */
       text-transform: uppercase;
     }
   }
@@ -141,6 +143,7 @@ export const Link = styled.a`
   font-size: 0.8rem;
   margin-top: 0.7rem;
   &:hover {
+  text-decoration: none;
     color: var(--orange-color);
   }
 `;
@@ -174,18 +177,23 @@ export const Ul = styled.ul`
   list-style: none;
   padding-top: 1rem;
   padding-left: 0.7rem;
+  display: flex;
 
   & li {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    /* justify-content: space-between;
-    align-items: center; */
+    display: flex;
+    margin-left:5px;
+    background: #fff;
+    align-items: center;
+    border: .5px solid var(--orange-color);
+    padding: 2px 5px;;
+    
 
     & p {
       text-transform: capitalize;
       color: var(--orange-color);
       font-weight: 700;
       margin-bottom: 0;
+      margin-right:5px;
     }
 
     & .delete_icon {

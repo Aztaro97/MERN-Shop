@@ -41,7 +41,7 @@ const productSchema = mongoose.Schema(
         // required: true,
       },
     ],
-    rateShipping: [
+    shippingRate: [
       {
         ShippingAdress: {
           type: String,

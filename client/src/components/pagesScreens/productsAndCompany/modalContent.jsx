@@ -11,6 +11,7 @@ import {
   FaSnapchatGhost,
 } from "react-icons/fa";
 import { addToCart } from "../../../flux/actions/cartAction";
+import {warningMessage} from "../../message"
 
 import picture from "../../../img/Background.png";
 import picture1 from "../../../img/productimg.png";
@@ -58,8 +59,12 @@ const Contente = ({ product, setShowModal }) => {
   const dispatch = useDispatch();
 
   const addToCartHandler = (id, qty, size) => {
-    dispatch(addToCart(id, qty, size));
-    setShowModal(false);
+    if (!sizeSelected ) {
+      warningMessage("Select the size to add to cart", 10)
+    } else {
+      dispatch(addToCart(id, qty, size));
+      setShowModal(false);
+    }
   };
 
   return (
@@ -108,6 +113,7 @@ const Contente = ({ product, setShowModal }) => {
           <button
             type="button"
             className="btn"
+            // disabled={!sizeSelected && true}
             onClick={() =>
               addToCartHandler(product._id, qtyNumber, sizeSelected)
             }

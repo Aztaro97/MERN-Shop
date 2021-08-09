@@ -20,6 +20,7 @@ router.post("/", cors(), async (req, res) => {
 			amount,
 			currency: "AED",
 			description: "Spatula company",
+			// customer: "customer_id",
 			payment_method: "pm_card_visa",
 			confirm: true,
 			receipt_email: "aztaro97@gmail.com",
