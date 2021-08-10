@@ -37,8 +37,13 @@ import InputCheck from "../../CheckBoxComponent";
 import InputRadio from "../../InputRadioComponent";
 
 function AddProductScreen() {
+
+  const [selling, setSelling] = useState(false);
+  const [delivery, setDelivery] = useState(false);
+
+
+
   const [code, setCode] = useState("");
-  const [typeService, setTypeService] = useState("");
   const [shippingFrom, setShippingFrom] = useState("");
   const [shippingTo, setShippingTo] = useState([]);
   const [rateShipping, setrateShipping] = useState([{}]);
@@ -55,9 +60,15 @@ function AddProductScreen() {
   const [price, setPrice] = useState("");
   const [compareAtPrice, setCompareAtPrice] = useState("");
 
+
+
+  const [zone, setZone] = useState({});
+  const [arrayZone, setArrayZone] = useState([]);
+  // const arrayZone = []
+
   const body = {
     code,
-    typeService,
+    typeService:{selling:selling, delivery: delivery},
     shippingFrom,
     shippingTo,
     rateShipping,
@@ -104,14 +115,18 @@ function AddProductScreen() {
       </Header>
       <MainProductForm>
         <Col>
-          <ProductSection1 setCode={setCode} />
+          <ProductSection1 setCode={setCode} setSelling={setSelling} setDelivery={setDelivery} />
           <ShippingSection
             shippingFrom={shippingFrom}
             setShippingFrom={setShippingFrom}
             setShippingTo={setShippingTo}
             shippingTo={shippingTo}
+            zone={zone}
+            setZone={setZone}
+            setArrayZone={setArrayZone}
+            arrayZone={arrayZone}
           />
-          <RateSection />
+          <RateSection arrayZone={arrayZone} />
         </Col>
 
         {/* ////////////////////////   COLLUMN RIGHT   /////////// */}
@@ -329,12 +344,12 @@ const FormRight = ({
     imgWindow.document.write(image.outerHTML);
   };
 
-  const handleSubmit = (event) => {};
 
   return (
-    <div onSubmit={handleSubmit}>
+    <form onSubmit={handleProductCreate} >
       <Row>
         <InputC
+        required
           type="text"
           name="productName"
           id="productName"
@@ -701,16 +716,16 @@ const FormRight = ({
       <ButtonC
         type="submit"
         style={{ margin: "1.3rem auto 0" }}
-        onClick={handleProductCreate}
+        // onClick={}
       >
         save & share
       </ButtonC>
       <Link href="/add-product">ADD ANOTHER PRODUCT</Link>
-    </div>
+    </form>
   );
 };
 
-const ProductSection1 = ({ setCode }) => {
+const ProductSection1 = ({ setCode, setSelling, setDelivery }) => {
   return (
     <>
       <Row>
@@ -732,6 +747,7 @@ const ProductSection1 = ({ setCode }) => {
               type="checkbox"
               id="sellbyAU79CODE"
               name="sellbyAU79CODE"
+              onChange={(e) => setSelling(e.target.checked)}
             >
               sell by <span className="span">AU79CODE</span>
             </InputCheck>
@@ -744,6 +760,7 @@ const ProductSection1 = ({ setCode }) => {
               type="checkbox"
               id="DeliverywithAU79CODE"
               name="DeliverywithAU79CODE"
+              onChange={(e) => setDelivery(e.target.checked)}
             >
               Delivery with <span className="span">AU79CODE</span>
             </InputCheck>
@@ -754,7 +771,7 @@ const ProductSection1 = ({ setCode }) => {
   );
 };
 
-const RateSection = () => {
+const RateSection = ({arrayZone}) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [listAddress, setListAddress] = useState([
     { name: "", amount: 0, minprice: 0, maxprice: 0 },
@@ -763,6 +780,7 @@ const RateSection = () => {
 
   const showModal = () => {
     setIsModalVisible(true);
+    
   };
 
   const handleAdd = () => {
@@ -787,7 +805,8 @@ const RateSection = () => {
             name="RateName"
             id="RateName"
             value={address.name}
-            onChange={(e) => setAddress({ name: e.target.value })}
+            // onChange={(e) => setAddress({ name: e.target.value })}
+            onChange={(e) => console.log(arrayZone)}
           />
         </Row>
         <Row>
@@ -798,10 +817,10 @@ const RateSection = () => {
             <p className="title">condition</p>
           </GridRow>
           <hr style={{ background: "#aaaaac", marginBottom: ".7rem" }} />
-          {listAddress.length > 0 &&
-            listAddress.map((item, index) => (
+          {arrayZone.length > 0 &&
+            arrayZone.map((item, index) => (
               <GridRow key={index}>
-                <p>{item.name}</p>
+                <p>{item.city}</p>
                 <p>
                   {!item.minprice || item.minprice == 0
                     ? "Free"
@@ -896,26 +915,47 @@ const ShippingSection = ({
   setShippingTo,
   shippingFrom,
   shippingTo,
+  setZone,
+  zone,
+  setArrayZone,
+  arrayZone
 }) => {
   // const [shippingFrom, setShippingFrom] = useState("");
   const [inputValu, setInputValu] = useState("");
   const [ListShippingTo, setListShippingTo] = useState([]);
   const [country, setCountry] = useState("");
   const [region, setRegion] = useState("");
+  const [arraryRegionSelected, setArraryRegionSelected] = useState([]);
+  
 
-  const handleClick = (e) => {
+  // const arrayAllZone = []
+  // const listRegion = []
+
+  const handleCreateZone = (e) => {
     e.preventDefault();
     ListShippingTo.push(inputValu);
     setShippingTo(ListShippingTo);
     setInputValu("");
 
-    // console.log(ListShippingTo);
+
+    //   Zone Created
+    setZone({country, city:arraryRegionSelected })
+    setArrayZone([...arrayZone, {country, city:arraryRegionSelected }])
+    setCountry("")
+    setArraryRegionSelected([])
+
   };
 
   const onChangeCountry = (val) => {
-    setCountry(val)
-    console.log(region)
+    setCountry(val);
+  };
+
+  const handleSelectRegion = (val) => {
+    setRegion(val)
+    setArraryRegionSelected([...arraryRegionSelected, val])
   }
+
+
   return (
     <>
       <Row>
@@ -938,12 +978,12 @@ const ShippingSection = ({
           <div>
             <CountryDropdownCustomer
               value={country}
-              onChange={val => onChangeCountry(val)}
+              onChange={(val) => onChangeCountry(val)}
             />
             <RegionDropdownCustomer
               country={country}
               value={region}
-              onChange={(val) => setRegion(val)}
+              onChange={handleSelectRegion}
               defaultOptionLabel="Choose"
             />
           </div>
@@ -957,8 +997,8 @@ const ShippingSection = ({
           /> */}
         </Row>
         <Row>
-          {ListShippingTo &&
-            ListShippingTo.map((item, index) => (
+          {arraryRegionSelected &&
+            arraryRegionSelected.map((item, index) => (
               <RowCheck key={index}>
                 <InputCheck type="checkbox" id={item} name={item}>
                   {item}
@@ -966,7 +1006,7 @@ const ShippingSection = ({
               </RowCheck>
             ))}
         </Row>
-        <ButtonC style={{ margin: "0 auto" }} onClick={handleClick}>
+        <ButtonC style={{ margin: "0 auto" }} onClick={handleCreateZone}>
           save
         </ButtonC>
       </Card>
@@ -1054,12 +1094,13 @@ const CountryDropdownCustomer = styled(CountryDropdown)`
   }
 `;
 const RegionDropdownCustomer = styled(RegionDropdown)`
-border: 1px solid var(--orange-color);
+  border: 1px solid var(--orange-color);
   padding: 10px ;
   display:block;
   &:focus {
     outline: none;
   border: 1px solid var(--orange-color);
+  }
 `;
 
 export default AddProductScreen;

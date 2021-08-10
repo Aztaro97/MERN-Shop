@@ -30,7 +30,7 @@ export const MainProductForm = styled.div`
     display: block;
 
     & div:nth-child(1) {
-      margin-bottom: 1.3rem;
+      /* margin-bottom: 1.3rem; */
     }
   }
 `;

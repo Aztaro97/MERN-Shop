@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
@@ -33,10 +33,20 @@ function RegisterPage() {
 
   const history = useHistory();
 
+  const {userInfo} = useSelector((state => state.userLogin))
+
   const handleClickRadio = (e) => {
     setTypeUser(e.target.value);
     console.log(e.target.value);
   };
+
+  // useEffect(() => {
+  //   if (!userInfo) {
+  //     history.push("/auth")
+  //   }
+  // },[userInfo])
+
+
   return (
     <MainContainer>
       <FormContainer>
@@ -68,7 +78,7 @@ function RegisterPage() {
             </div>
           </div>
         </Header>
-        <UserForm />
+        {!userInfo && (<UserForm />) }
         <CompanyInfo typeUser={typeUser} />
         <BankInfo />
         <GalleryPhotos />
@@ -257,7 +267,7 @@ const CompanyInfo = ({ typeUser }) => {
                 <ImPhone class="icon" />
                 <input
                   class="input-field"
-                  type="number"
+                  type="tel"
                   placeholder="PHONE NUMBER"
                   name="company.phone"
                   value={cellular}
@@ -290,7 +300,7 @@ const CompanyInfo = ({ typeUser }) => {
                 <FaMapMarkerAlt class="icon" />
                 <input
                   class="input-field"
-                  type="text"
+                  type="url"
                   placeholder="LOCATION"
                   name="company.location"
                 />
@@ -320,13 +330,13 @@ const CompanyInfo = ({ typeUser }) => {
               <div className="time">
                 <InputC
                   value={hour.from}
-                  type="number"
+                  type="time"
                   placeholder="FROM"
                   onChange={(e) => setHour({ from: e.target.value })}
                 />
                 <InputC
                   value={hour.to}
-                  type="number"
+                  type="time"
                   placeholder="TO"
                   onChange={(e) => setHour({ to: e.target.value })}
                 />
@@ -393,7 +403,7 @@ const CompanyInfo = ({ typeUser }) => {
             <div className="row">
               <h1>add video link</h1>
               <InputC
-                type="text"
+                type="url"
                 name="company.videoLink"
                 placeholder="TYPE VIDEO LINK"
                 value={formik.values.company.videoLink}
@@ -409,6 +419,7 @@ const CompanyInfo = ({ typeUser }) => {
                 <ImPhone className="whatsapp" />
               </div>
               <InputC
+              type="url"
                 style={{ marginTop: 15 }}
                 value={formik.values.company.mediaLink.facebook}
                 name="company.mediaLink.facebook"
@@ -416,6 +427,7 @@ const CompanyInfo = ({ typeUser }) => {
                 onChange={formik.handleChange}
               />
               <InputC
+              type="url"
                 style={{ marginTop: 15 }}
                 name="company.mediaLink.insta"
                 value={formik.values.company.mediaLink.insta}
@@ -423,6 +435,7 @@ const CompanyInfo = ({ typeUser }) => {
                 onChange={formik.handleChange}
               />
               <InputC
+              type="url"
                 style={{ marginTop: 15 }}
                 value={formik.values.company.mediaLink.twitter}
                 name="company.mediaLink.twitter"

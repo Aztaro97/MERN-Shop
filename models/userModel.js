@@ -75,6 +75,11 @@ const userSchema = mongoose.Schema(
       required: true,
       default: false,
     },
+    typeUser: {
+      type: String,
+      required: true,
+      default: "customer",
+    },
     resetToken: {
       type: String,
       require: true,

@@ -29,7 +29,7 @@ import MapScreen from "./components/pagesScreens/checkout/googleMap/mapScreen";
 import OrderListComponent from "./components/pagesScreens/orders/orderList"
 import UserListComponent from "./components/pagesScreens/user/userList"
 import ProductListComponent from "./components/pagesScreens/products/productsList"
-
+import ProfileComponent from "./components/pagesScreens/user/profile/tabs"
 
 function App() {
   return (
@@ -48,6 +48,7 @@ function App() {
           <Route path="/companies" component={CompanyListComponent} />
           <Route path="/cart" component={CartComponent} />
           <Route path="/shipping" component={ShippingComponenet} />
+          <Route path="/profile/:id" component={ProfileComponent} />
           <Route path="/thank" component={ThankComponenet} />
           <Route path="/register" component={RegisterComponenet} />
           <Route path="/completepayment" component={PayementStep} />

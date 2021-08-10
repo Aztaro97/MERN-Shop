@@ -26,7 +26,7 @@ router
 router
   .route('/:id')
   .delete(protect, admin, deleteUser)
-  .get(protect, admin, getUserById)
+  .get( getUserById)
   .put(protect, admin, updateUser)
 router.post("/reset-password", resetPassword)
 router.post("/new-password/:token", updatePassword)

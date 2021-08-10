@@ -34,9 +34,22 @@ function NavBar() {
 
   const ProfileContentLogin = (
     <Content>
-      <LinkR href="/myproducts">my products</LinkR>
-      <LinkR href="/myorder">my order</LinkR>
-      <LinkR href="/add-product">add more products</LinkR>
+      {userInfo && (userInfo.typeUser === "merchant" || userInfo.isAdmin) ? (
+        <>
+          <LinkR href="/myproducts">my products</LinkR>
+          <LinkR href="/myorder">my order</LinkR>
+          <LinkR href="/add-product">add more products</LinkR>
+        </>
+      ) : (
+        <>
+          <LinkR
+            style={{ textTransform: "capitalize", letterSpacing: "1px" }}
+            href="/register"
+          >
+            Create your shop
+          </LinkR>
+        </>
+      )}
 
       <LinkP className="btn_logOut" onClick={handleLogOut}>
         Log Out
@@ -45,6 +58,12 @@ function NavBar() {
   );
   const ProfileContentLogOut = (
     <Content>
+      <LinkR
+        style={{ textTransform: "capitalize", letterSpacing: "1px" }}
+        href="/register"
+      >
+        Create your shop
+      </LinkR>
       <LinkP to="/auth" className="btn_signin">
         Sign in
       </LinkP>

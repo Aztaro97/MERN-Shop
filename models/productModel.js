@@ -28,7 +28,9 @@ const productSchema = mongoose.Schema(
       // required: true,
     },
     typeService: {
-      type: String,
+      selling: { type: Boolean, default: false },
+      delivery: { type: Boolean, default: false },
+
       // required: true,
     },
     shippingFrom: {
@@ -78,24 +80,20 @@ const productSchema = mongoose.Schema(
       // required: true,
       default: 0,
     },
-    variantColor: 
-      {
-        type: Array,
-        // required: true,
-      }
-    ,
-    variantSize: 
-      {
-        type: Array,
-        // required: true,
-      },
-    
-    variantFinish: 
-      {
-        type: Array,
-        // required: true,
-      },
-   
+    variantColor: {
+      type: Array,
+      // required: true,
+    },
+    variantSize: {
+      type: Array,
+      // required: true,
+    },
+
+    variantFinish: {
+      type: Array,
+      // required: true,
+    },
+
     variantMaterial: [
       {
         type: String,

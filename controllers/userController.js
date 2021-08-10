@@ -29,6 +29,7 @@ const authUser = asyncHandler(async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
+      typeUser: user.typeUser,
       isAdmin: user.isAdmin,
       token: generateToken(user._id),
     });
@@ -88,6 +89,7 @@ const registerUser = asyncHandler(async (req, res) => {
       name: user.name,
       email: user.email,
       isAdmin: user.isAdmin,
+      typeUser: user.typeUser,
       token: generateToken(user._id),
     });
   } else {
@@ -177,7 +179,12 @@ const getUserById = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id).select("-password");
 
   if (user) {
-    res.json(user);
+    res.json({
+      _id: user._id,
+      isAdmin:user.isAdmin,
+      company: user.company,
+      typeUser: user.typeUser
+    });
   } else {
     res.status(404);
     throw new Error("User not found");
@@ -301,12 +308,17 @@ const saveCompanyInformation = asyncHandler(async (req, res) => {
 
   if (user) {
     user.company = req.body.company;
+    user.typeUser = "merchant"
 
     const userUpdate = await user.save();
 
     res.json({
       _id: userUpdate._id,
+      name: userUpdate.name,
+      email: userUpdate.email,
+      isAdmin: userUpdate.isAdmin,
       company: userUpdate.company,
+      typeUser : userUpdate.typeUser,
       token: generateToken(userUpdate._id),
     });
 

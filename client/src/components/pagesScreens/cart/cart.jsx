@@ -38,72 +38,77 @@ function CartComponent({ location }) {
       </Header>
       {error && <h1>Error : {error}</h1>}
       <CartContent>
-        <Row>
-          <GridTop>
-            <p>product</p>
-            <p>price</p>
-            <p>quantity</p>
-            <p>total</p>
-          </GridTop>
-          <hr />
-        </Row>
-
         {cartItems.length === 0 ? (
-          <h1>
-            Cart item is Empty <Link to="/products">Go Shopping</Link>{" "}
-          </h1>
+          <EmptyCart>
+            <h5>Your Cart item is currently Empty</h5>
+            <Link className="link" to="/products">
+              Go Shopping <span className="arrow">&#8594;</span>
+            </Link>{" "}
+          </EmptyCart>
         ) : (
           <>
             {cartItems.map((item, index) => (
-              <Row key={index}>
-                <Grid>
-                  <div className="cart">
-                    <img src={picture} alt="" />
-                    <div className="cart-name">
-                      <h3>{item.name}</h3>
-                      {item.sizeSelected && (
-                        <h3 className="cart_size">
-                          Size : <span>{item.sizeSelected}</span>{" "}
-                        </h3>
-                      )}
-                      <button
-                        type="button"
-                        onClick={() => handleRemoveCart(item.product)}
-                      >
-                        <AiOutlineClose size={20} /> remove
-                      </button>
+              <>
+                <Row>
+                  <GridTop>
+                    <p>product</p>
+                    <p>price</p>
+                    <p>quantity</p>
+                    <p>total</p>
+                  </GridTop>
+                  <hr />
+                </Row>
+
+                <Row key={index}>
+                  <Grid>
+                    <div className="cart">
+                      <img src={picture} alt="" />
+                      <div className="cart-name">
+                        <h3>{item.name}</h3>
+                        {item.sizeSelected && (
+                          <h3 className="cart_size">
+                            Size : <span>{item.sizeSelected}</span>{" "}
+                          </h3>
+                        )}
+                        <button
+                          type="button"
+                          onClick={() => handleRemoveCart(item.product)}
+                        >
+                          <AiOutlineClose size={20} /> remove
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                  <p className="price">
-                    {" "}
-                    <span className="mobile_view">Price: </span> {item.price}{" "}
-                    AED
-                  </p>
-                  <Btn className="qty_btn">
-                    <button
-                      onClick={() =>
-                        dispatch(addToCart(item.product, item.qty - 1))
-                      }
-                    >
-                      -
-                    </button>
-                    <p>{item.qty}</p>
-                    <button
-                      onClick={() =>
-                        dispatch(addToCart(item.product, item.qty + 1))
-                      }
-                    >
-                      +
-                    </button>
-                  </Btn>
-                  <p>
-                    {" "}
-                    <span className="mobile_view">Total: </span>
-                    {item.price * item.qty} AED
-                  </p>
-                </Grid>
-                <hr />
-              </Row>
+                    <p className="price">
+                      {" "}
+                      <span className="mobile_view">Price: </span> {item.price}{" "}
+                      AED
+                    </p>
+                    <Btn className="qty_btn">
+                      <button
+                        onClick={() =>
+                          dispatch(addToCart(item.product, item.qty - 1))
+                        }
+                      >
+                        -
+                      </button>
+                      <p>{item.qty}</p>
+                      <button
+                        onClick={() =>
+                          dispatch(addToCart(item.product, item.qty + 1))
+                        }
+                      >
+                        +
+                      </button>
+                    </Btn>
+                    <p>
+                      {" "}
+                      <span className="mobile_view">Total: </span>
+                      {item.price * item.qty} AED
+                    </p>
+                  </Grid>
+                  <hr />
+                </Row>
+              </>
             ))}
           </>
         )}
@@ -261,7 +266,7 @@ const Grid = styled.div`
       & .cart_size {
         color: var(--orange-color);
         font-weight: 700;
-        margin-bottom: .9rem;
+        margin-bottom: 0.9rem;
         &.cart_size span {
           /* color: #000 !important; */
           font-weight: 700;
@@ -330,6 +335,29 @@ const Btn = styled.div`
     border: 1px solid var(--silver-color);
     cursor: pointer;
     font-size: 1.2rem;
+  }
+`;
+
+const EmptyCart = styled.div`
+  text-align: center;
+  position: relative;
+  top: 2rem;
+
+  & .link {
+    color: #fff;
+    background: var(--orange-color);
+    padding: 5px 3rem;
+    text-decoration: none;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 700;
+    &:hover {
+      opacity: 0.9;
+    }
+    & .arrow {
+      font-size: 1.5rem;
+      padding-left: 1rem;
+    }
   }
 `;
 
