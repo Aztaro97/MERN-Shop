@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import Slider from "react-slick";
-import { Link } from "react-router-dom";
-// import {Col, Row} from "re"
+import { Link, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getCraftmanList } from "../../../flux/actions/userAction";
+import Loader from "../../Loader";
+import { USER_LIST_RESET, CRAFTMAN_LIST_REQUEST } from "../../../flux/constants/userConstants";
 
 import company_pic1 from "../../../img/company_pic1.png";
 import company_pic2 from "../../../img/company_pic2.png";
@@ -53,103 +56,54 @@ const CarouselButton = () => {
 };
 
 function CraftManList() {
+  const params = useParams();
+  const dispatch = useDispatch();
+
+  const { loading, craftman } = useSelector((state) => state.craftmanList);
+
+  useEffect(() => {
+    dispatch({
+      type: CRAFTMAN_LIST_REQUEST
+    });
+    dispatch(getCraftmanList());
+
+    return () => {
+      dispatch({ type: USER_LIST_RESET });
+    };
+  }, [dispatch]);
+
   return (
-    <Container>
-      {/* <hr /> */}
-      {/* <CarouselButton /> */}
-      <CardContainer>
-        <div className="card">
-          <img className="card_img" src={company_pic2} alt="" />
-          <div className="card_body">
-            <h3>company name</h3>
-            <p>Subtitle data about the Company</p>
-            <hr />
-            <Link className="link">see more</Link>
-          </div>
-        </div>
-        <div className="card">
-          <img className="card_img" src={company_pic1} alt="" />
-          <div className="card_body">
-            <h3>company name</h3>
-            <p>Subtitle data about the Company</p>
-            <hr />
-            <Link className="link">see more</Link>
-          </div>
-        </div>
-        <div className="card">
-          <img className="card_img" src={company_pic4} alt="" />
-          <div className="card_body">
-            <h3>company name</h3>
-            <p>Subtitle data about the Company</p>
-            <hr />
-            <Link className="link">see more</Link>
-          </div>
-        </div>
-        <div className="card">
-          <img className="card_img" src={company_pic3} alt="" />
-          <div className="card_body">
-            <h3>company name</h3>
-            <p>Subtitle data about the Company</p>
-            <hr />
-            <Link className="link">see more</Link>
-          </div>
-        </div>
-        <div className="card">
-          <img className="card_img" src={company_pic2} alt="" />
-          <div className="card_body">
-            <h3>company name</h3>
-            <p>Subtitle data about the Company</p>
-            <hr />
-            <Link className="link">see more</Link>
-          </div>
-        </div>
-        <div className="card">
-          <img className="card_img" src={company_pic1} alt="" />
-          <div className="card_body">
-            <h3>company name</h3>
-            <p>Subtitle data about the Company</p>
-            <hr />
-            <Link className="link">see more</Link>
-          </div>
-        </div>
-        <div className="card">
-          <img className="card_img" src={company_pic4} alt="" />
-          <div className="card_body">
-            <h3>company name</h3>
-            <p>Subtitle data about the Company</p>
-            <hr />
-            <Link className="link">see more</Link>
-          </div>
-        </div>
-        <div className="card">
-          <img className="card_img" src={company_pic3} alt="" />
-          <div className="card_body">
-            <h3>company name</h3>
-            <p>Subtitle data about the Company</p>
-            <hr />
-            <Link className="link">see more</Link>
-          </div>
-        </div>
-        <div className="card">
-          <img className="card_img" src={company_pic4} alt="" />
-          <div className="card_body">
-            <h3>company name</h3>
-            <p>Subtitle data about the Company</p>
-            <hr />
-            <Link className="link">see more</Link>
-          </div>
-        </div>
-        <div className="card">
-          <img className="card_img" src={company_pic3} alt="" />
-          <div className="card_body">
-            <h3>company name</h3>
-            <p>Subtitle data about the Company</p>
-            <hr />
-            <Link className="link">see more</Link>
-          </div>
-        </div>
-      </CardContainer>
-    </Container>
+    <>
+      {loading ? (
+        <Loader />
+      ) : (
+        <Container>
+          {/* <hr /> */}
+          {/* <CarouselButton /> */}
+          <CardContainer>
+            <>
+              {craftman.users !== null && (
+                <>
+                  {craftman.users.map((user) => (
+                    <div className="card" key={user._id}>
+                      <img className="card_img" src={company_pic1} alt="" />
+                      <div className="card_body">
+                        <h3>{user.company.name}</h3>
+                        <p>{user.company.about}</p>
+                        <hr />
+                        <Link className="link" to={`profile/${user._id}`}>
+                          see more
+                        </Link>
+                      </div>
+                    </div>
+                  ))}
+                </>
+              )}
+            </>
+          </CardContainer>
+        </Container>
+      )}
+    </>
   );
 }
 
@@ -179,19 +133,17 @@ const SliderCarousel = styled(Slider)`
         background: var(--orange-color);
         color: #fff;
       }
-      
     }
   }
-  @media only screen and (max-width:940px) {
+  @media only screen and (max-width: 940px) {
     padding: 0 1rem;
     & div {
-        & button {
-            padding: 5px 1.6rem;
-            font-size: .7rem;
-        }
+      & button {
+        padding: 5px 1.6rem;
+        font-size: 0.7rem;
+      }
     }
-
-    }
+  }
 `;
 
 const CardContainer = styled.div`
@@ -201,6 +153,7 @@ const CardContainer = styled.div`
 
   .card {
     width: 100%;
+    box-shadow: var(--box-shadow-value);
     /* border-radius:1rem; */
     /* @media only screen and (max-width:1020px) {
             padding: 0 4rem;
@@ -252,13 +205,17 @@ const CardContainer = styled.div`
   }
 
   @media only screen and (max-width: 1020px) {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 1rem;
     padding: 0 15rem;
   }
-  @media only screen and (max-width: 667px) {
+  @media only screen and (max-width: 800px) {
+    grid-template-columns: 1fr 1fr;
+    padding: 0 10rem;
+  }
+  @media only screen and (max-width: 740px) {
     grid-template-columns: 1fr;
-    padding: 0 25rem;
+    padding: 0 1rem;
   }
 `;
 

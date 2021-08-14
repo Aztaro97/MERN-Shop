@@ -69,12 +69,12 @@ function RegisterPage() {
             <div>
               <InputRadio
                 required
-                value="crafman"
+                value="craftman"
                 name="typeCpny"
-                id="crafman"
+                id="craftman"
                 onChange={handleClickRadio}
               />
-              <label htmlFor="crafman">Craftman</label>
+              <label htmlFor="craftman">Craftman</label>
             </div>
           </div>
         </Header>

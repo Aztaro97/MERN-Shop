@@ -105,7 +105,7 @@ function CompanyDetails({ loading, company }) {
             </Col>
             <Col>
               <div className="container">
-                <img src={company.urlImg[0].url} alt="" className="bg-right" />
+                <img src={company.urlImg.length !== 0 ? company.urlImg[0].url : BgImg} alt="" className="bg-right" />
                 <ImageGallerie>
                   {
                     company.urlImg.map((item,index) => (

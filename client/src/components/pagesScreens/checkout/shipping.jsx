@@ -3,11 +3,13 @@ import styled from "styled-components";
 import { Modal } from "antd";
 import { useFormik } from "formik";
 import { Link, useHistory, Redirect } from "react-router-dom";
+import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import { useSelector, useDispatch } from "react-redux";
 import InputC from "../../InputComponents";
 import CheckBoxC from "../../CheckBoxComponent";
 import SelectC from "../../SelectComponents";
 import ButtonC from "../../ButtonComponeent";
+import { registerShippingInfo } from "../../../flux/actions/userAction";
 import { saveShippingAddress } from "../../../flux/actions/cartAction";
 
 // import MapComponent from "./map/getCurrentPosition";
@@ -44,7 +46,17 @@ const countryList = [
   },
 ];
 
-function Checkout({history}) {
+function Checkout({ history }) {
+  const [saveShippingCheck, setSaveShippingCheck] = useState(false);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [adress, setAddress] = useState("");
+  const [appartment, setAppartment] = useState("");
+  const [city, setCity] = useState("");
+  const [country, setCountry] = useState("");
+  const [region, setRegion] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [email, setEmail] = useState("");
   const [visible, setVisible] = useState(false);
   const [localistion, setLocalistion] = useState({
     city: "",
@@ -54,31 +66,33 @@ function Checkout({history}) {
 
   const dispatch = useDispatch();
 
-  const formik = useFormik({
-    initialValues: {
-      firstName: "",
-      lastName: "",
-      address: "",
-      appartmentNumber: "",
-      city: "",
-      gouv: "",
-      country: "",
-      email: "",
-      phoneNumber: ""
-    },
-    onSubmit: (values) => {
-      const body = JSON.stringify(values, null, 2);
-      dispatch(saveShippingAddress(body));
-      history.push("/payment")
-      console.log(body);
-    },
-  });
+  const shipping = {
+    firstName,
+    lastName,
+    adress,
+    appartment,
+    city,
+    country,
+    region,
+    phoneNumber,
+  };
+
+
+  const handleSubmit = () => {
+    if (saveShippingCheck) {
+      dispatch(registerShippingInfo(shipping));
+    }
+    dispatch(saveShippingAddress(shipping));
+    window.location.href = "/payment";
+    console.log(shipping);
+
+  }
 
   // const history = useHistory();
   const { shippingAddress } = useSelector((state) => state.cart);
 
   if (shippingAddress.address != null) {
-    history.push('/payment')
+    history.push("/payment");
   }
   // } else if (!cart.paymentMethod) {
   //   history.push('/payment')
@@ -93,18 +107,19 @@ function Checkout({history}) {
         <h2>CHECK OUT</h2>
       </Header>
       <Grid>
-        <Form onSubmit={formik.handleSubmit}>
+        <Form onSubmit={handleSubmit}>
           <Row>
             <Label htmlFor="email">Contact information</Label>
           </Row>
           <Row>
             <InputC
+              required
               style={{ marginBottom: ".5rem" }}
               name="email"
               id="email"
               placeholder="EMAIL OR PHONE NUMBER"
-              value={formik.email}
-              onChange={formik.handleChange}
+              value={email}
+              onChange={e => setEmail(e.target.value)}
             />
           </Row>
           <Row>
@@ -118,67 +133,68 @@ function Checkout({history}) {
           <Row>
             <div className="inputRow">
               <InputC
+                required
                 style={{ marginRight: ".3rem" }}
                 name="firstName"
                 id="firstName"
                 placeholder="FIRST NAME"
-                value={formik.firstName}
-                onChange={formik.handleChange}
+                value={firstName}
+                onChange={e => setFirstName(e.target.value)}
               />
               <InputC
+                required
                 style={{ marginLeft: ".3rem" }}
                 name="lastName"
                 id="lastName"
                 placeholder="LAST NAME"
-                value={formik.lastName}
-                onChange={formik.handleChange}
+                value={lastName}
+                onChange={e => setLastName(e.target.value)}
               />
             </div>
           </Row>
           <Row>
             <InputC
+              required
               name="address"
               id="address"
               placeholder="ADRESS"
-              value={formik.address}
-              onChange={formik.handleChange}
+              value={adress}
+              onChange={e => setAddress(e.target.value)}
             />
           </Row>
           <Row>
             <InputC
-              name="appartmentNumber"
-              id="appartmentNumber"
+              required
+              name="appartment"
+              id="appartment"
               placeholder="APPARTMENT NO"
-              value={formik.appartmentNumber}
-              onChange={formik.handleChange}
+              value={appartment}
+              onChange={e => setAppartment(e.target.value)}
             />
           </Row>
           <Row>
             <div className="grid_input">
               <InputC
+                required
                 type="text"
                 name="city"
                 id="city"
                 placeholder="CITY"
-                value={formik.city}
-                onChange={formik.handleChange}
+                value={city}
+                onChange={e => setCity(e.target.value)}
               />
-              <SelectC
-                name="gouv"
-                id="gouv"
-                className="gouvSelect"
-                options={gouvList}
-                placeholder="gouvernmate"
-                value={formik.gouv}
-                onChange={formik.handleChange}
-              />
-              <SelectC
+              <CountryDropdownCustom
+                required
                 name="country"
-                id="country"
-                options={countryList}
-                placeholder="country"
-                value={formik.country}
-                onChange={formik.handleChange}
+                value={country}
+                onChange={(val) => setCountry( val)}
+              />
+              <RegionDropdownCustom
+                required
+                name="region"
+                country={country}
+                value={region}
+                onChange={(val) => setRegion(val)}
               />
             </div>
           </Row>
@@ -207,16 +223,20 @@ function Checkout({history}) {
 
           <Row>
             <InputC
-              type="number"
+              required
+              type="tel"
               name="phoneNumber"
               id="phoneNumber"
               placeholder="PHONE NUMBER"
-              value={formik.phoneNumber}
-              onChange={formik.handleChange}
+              value={phoneNumber}
+              onChange={e => setPhoneNumber(e.target.value)}
             />
           </Row>
           <Row>
-            <CheckBox style={{ marginBottom: "1rem" }}>
+            <CheckBox
+              style={{ marginBottom: "1rem" }}
+              onChange={(e) => setSaveShippingCheck(e.target.checked)}
+            >
               Save this information for next time
             </CheckBox>
           </Row>
@@ -461,6 +481,34 @@ const Card = styled.div`
     @media only screen and (max-width: 1000px) {
       display: block;
     }
+  }
+`;
+
+const CountryDropdownCustom = styled(CountryDropdown)`
+  border: 3px solid var(--background-color);
+  color: var(--slider-color);
+  padding-left: 0.4rem;
+  max-width: 230px;
+  &:focus {
+    border: 3px solid var(--background-color);
+  }
+  &:focus-visible {
+    border: 3px solid var(--background-color);
+    outline: none;
+  }
+`;
+
+const RegionDropdownCustom = styled(RegionDropdown)`
+  border: 3px solid var(--background-color);
+  color: var(--slider-color);
+  padding-left: 0.4rem;
+  max-width: 230px;
+  &:focus {
+    border: 3px solid var(--background-color);
+  }
+  &:focus-visible {
+    border: 3px solid var(--background-color);
+    outline: none;
   }
 `;
 

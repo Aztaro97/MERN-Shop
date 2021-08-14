@@ -6,11 +6,12 @@ import { useFormik } from "formik";
 import SelectC from "../../SelectComponents";
 import {
   listProducts,
-  filterProducts,
+  filterAllProducts,
 } from "../../../flux/actions/productAction";
 import CardProduct from "./CardProduct";
 import Loader from "../../Loader";
 import Paginate from "../../pagination"
+import MainContainer from "../../MainContainer"
 
 const Brand = () => {
   const OptionList = ["Iphone", "Samsumg", "Nokia"];
@@ -33,7 +34,7 @@ const ViewProducts = ({match}) => {
     },
     onSubmit: (values) => {
       const body = JSON.stringify(values, null, 2);
-      dispatch(filterProducts(body));
+      dispatch(filterAllProducts(body));
       console.log(body);
     },
   });
@@ -74,7 +75,11 @@ const ViewProducts = ({match}) => {
 
 
   return (
-    <Container>
+    <MainContainer>
+      <Container>
+        <Row>
+          <h3 className="title">Shop :</h3>
+        </Row>
       <Row>
         <FilterForm onSubmit={formik.handleSubmit}>
           <SelectC
@@ -140,11 +145,13 @@ const ViewProducts = ({match}) => {
             // keyword={keyword ? keyword : ''}
           />
       </Row>
-    </Container>
+      </Container>
+    </MainContainer>
   );
 };
 
 const Container = styled.div`
+margin-top: 2rem;
   @media only screen and (max-width: 1000px) {
     padding: 0 1rem;
   }
@@ -152,7 +159,12 @@ const Container = styled.div`
 const Row = styled.div`
   display: block;
   width: 100%;
-  /* flex-direction: column; */
+
+  & .title {
+    font-weight: 700;
+    letter-spacing:1px;
+    text-decoration: underline;
+  }
 `;
 
 const FilterForm = styled.form`

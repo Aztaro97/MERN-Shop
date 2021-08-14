@@ -1,7 +1,7 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Image } from "antd";
-import { useDispatch} from "react-redux"
+import { useDispatch, useSelector } from "react-redux";
 import {
   FaPhoneAlt,
   FaMapMarkerAlt,
@@ -9,170 +9,161 @@ import {
   FaInstagram,
   FaTwitter,
 } from "react-icons/fa";
+import { useParams } from "react-router-dom";
 import { MdMail } from "react-icons/md";
+import Loader from "../../../Loader";
 
-
-
-import {getUserDetails} from "../../../../flux/actions/userAction"
+import { getUserDetails } from "../../../../flux/actions/userAction";
 import ButtonC from "../../../ButtonComponeent";
 import BgImg from "../../../../img/Background.png";
 
-const CompanyInfo = ({match}) => {
+const CompanyInfo = ({ loading, user, error }) => {
+  const { company } = user;
+  // const params = useParams();
 
-  const userId = match.params.id
+  // const userId = params.id;
 
-  const dispatch = useDispatch();
+  // const { loading, error, user } = useSelector((state) => state.userDetails);
 
-  useEffect(() => {
-    dispatch(getUserDetails(userId));
+  // const dispatch = useDispatch();
 
-  }, [userId])
+  // useEffect(() => {
+  //   if (user === null || user._id !== userId) {
+  //     dispatch(getUserDetails(userId));
+  //   }
+  // }, [dispatch, userId, user]);
 
   return (
     <>
-    <Grid>
-      <Col>
-        <img src={BgImg} alt="" />
-        <Container>
-          <Row>
-            <h1>company name</h1>
-            <p>Designing Comapny</p>
-            <hr />
-          </Row>
-          <Row>
-            <h1>about us</h1>
-            <p>
-              Interior design is the art and science of enhancing the interior
-              of a building to achieve a healthier and more aesthetically
-              pleasing the space. An interior designer is someone who plans,
-              researches, coordinates, and manages such enhancement projects.
-            </p>
-            <hr />
-          </Row>
-          <Row>
-            <h1>Our Services</h1>
-            <p>
-              Interior design is the art and science of enhancing the interior
-              of a building to achieve a healthier and more aesthetically
-              pleasing environment for the people using the space. An interior
-              designer is someone who plans, researches, coordinates, and
-              manages such enhancement projects.
-            </p>
-            <hr />
-          </Row>
-          <Row>
-            <h1>Contact us</h1>
-            <div className="info">
-              <FaPhoneAlt className="info-icon" />
-              <p>00123456789221</p>
-            </div>
-            <div className="info">
-              <FaMapMarkerAlt className="info-icon" />
-              <p>freedom Street</p>
-            </div>
-            <div className="info">
-              <MdMail className="info-icon" />
-              <p>info@companyname</p>
-            </div>
-            <hr />
-          </Row>
-          <Row>
-            <h1>Find us on</h1>
-            <div className="social-media">
-              <a href="#/">
-                <FaFacebookF className="facebook" />
-              </a>
-              <a href="#/">
-                <FaInstagram className="insta" />
-              </a>
-              <a href="#/">
-                <FaTwitter className="twitter" />
-              </a>
-            </div>
-            <hr />
-          </Row>
-          <Row>
-            <h1>Work hours</h1>
-            <p>Form 7.00 am to 5.00 pm all week day</p>
-            <p>Holiday on Friday</p>
-            <hr />
-          </Row>
-          <Row>
-            <ButtonC>Check video</ButtonC>
-          </Row>
-        </Container>
-      </Col>
-      <Col>
-        <div className="container">
-        <img src={BgImg} alt="" className="bg-right" />
-        <ImageGallerie>
-          <ImageA
-            src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-          />
-          <ImageA
-            src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-          />
-          <ImageA
-            src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1490&q=80"
-          />
-          <ImageA
-            src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-          />
-          <ImageA
-            src="https://images.unsplash.com/photo-1551836022-8b2858c9c69b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80"
-          />
-          <ImageA
-            src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-          />
-          <ImageA
-            src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80"
-          />
-          <ImageA
-            src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-          />
-          <ImageA
-            src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-          />
-          <ImageA
-            src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-          />
-          <ImageA
-            src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-          />
-          <ImageA
-            src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-          />
-          <ImageA
-            src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-          />
-          <ImageA
-            src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-          />
-          <ImageA
-            src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-          />
-          <ImageA
-            src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-          />
-          <ImageA
-            src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-          />
-          <ImageA
-            src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-          />
-        </ImageGallerie>
-        </div>
-      </Col>
-    </Grid>
+      {loading ? (
+        <Loader />
+      ) : error ? (
+        <h1>Errror : {error}</h1>
+      ) : (
+        <>
+          <Grid>
+            <Col>
+              <img
+                src={company.urlImg.length !== 0 ? company.urlImg : BgImg}
+                alt=""
+              />
+              <Container>
+                <Row>
+                  <h1>{company.name}</h1>
+                  <p>{company.scopeBusiness}</p>
+                  <hr />
+                </Row>
+                <Row>
+                  <h1>about us</h1>
+                  <p>{company.about}</p>
+                  <hr />
+                </Row>
+                <Row>
+                  <h1>Our Services</h1>
+                  <p>{company.services}</p>
+                  <hr />
+                </Row>
+                <Row>
+                  <h1>Contact us</h1>
+                  <div className="info">
+                    <FaPhoneAlt className="info-icon" />
+                    <p>{company.phoneNumber.join(" / ")}</p>
+                  </div>
+                  <div className="info">
+                    <FaMapMarkerAlt className="info-icon" />
+                    <p>freedom Street</p>
+                  </div>
+                  <div className="info">
+                    <MdMail className="info-icon" />
+                    <p>{company.email}</p>
+                  </div>
+                  <hr />
+                </Row>
+                {company.mediaLink && (
+                  <Row>
+                    <h1>Find us on</h1>
+                    <div className="social-media">
+                      {company.mediaLink.facebook && (
+                        <a
+                          href={company.mediaLink.facebook}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <FaFacebookF className="facebook" />
+                        </a>
+                      )}
+                      {company.mediaLink.insta && (
+                        <a
+                          href={company.mediaLink.insta}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <FaInstagram className="insta" />
+                        </a>
+                      )}
+                      {company.mediaLink.twitter && (
+                        <a
+                          href={company.mediaLink.twitter}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <FaTwitter className="twitter" />
+                        </a>
+                      )}
+                      {company.mediaLink.whatsapp && (
+                        <a
+                          href={company.mediaLink.twitter}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <FaTwitter className="twitter" />
+                        </a>
+                      )}
+                    </div>
+                    <hr />
+                  </Row>
+                )}
+                <Row>
+                  <h1>Work hours</h1>
+                  <p>Form 7.00 am to 5.00 pm all week day</p>
+                  <p>Holiday on {company.holidays}</p>
+                  <hr />
+                </Row>
+                {company.videoLink && (
+                  <Row>
+                    <a
+                      href={company.videoLink}
+                      className="video_link"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Check video
+                    </a>
+                  </Row>
+                )}
+              </Container>
+            </Col>
+            <Col>
+              <div className="container">
+                <img src={company.urlImg.length !== 0 ? company.urlImg[0].url : BgImg} alt="" className="bg-right" />
+                <ImageGallerie>
+                  {company.urlImg.map((item, index) => (
+                    <ImageA key={index} src={item.url} />
+                  ))}
+                </ImageGallerie>
+              </div>
+            </Col>
+          </Grid>
+        </>
+      )}
     </>
   );
-}
-
+};
 const Container = styled.div`
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 1rem 1rem 0;
-`
+`;
 
 const Grid = styled.div`
   display: grid;
@@ -181,17 +172,15 @@ const Grid = styled.div`
 
   @media only screen and (max-width: 1080px) {
     grid-template-columns: 1fr;
-    }
+  }
 `;
 const Col = styled.div`
-  
   .container {
     /* border: 1px solid #e9e6e6; */
     border-radius: 20px;
-    padding: 0 .7rem;
+    padding: 0 0.7rem;
 
     & img {
-      
     }
   }
 
@@ -206,10 +195,10 @@ const Col = styled.div`
     border-radius: 10px;
     object-fit: cover;
     @media only screen and (max-width: 1080px) {
-        height: 500px;
+      height: 500px;
     }
     @media only screen and (max-width: 768px) {
-        height: 300px;
+      height: 300px;
     }
   }
 `;
@@ -279,31 +268,38 @@ const Row = styled.div`
       }
     }
   }
+  & .video_link {
+    color: #fff;
+    text-decoration: none;
+    background: var(--orange-color);
+    padding: 0.5rem 3rem;
+    &:hover {
+      opacity: 0.9;
+    }
+  }
 `;
 
-
 const ImageGallerie = styled.div`
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-gap: 1rem;
-    /* height:30%; */
-    padding: .4rem 0;
-    margin-top: .4rem;
-    @media only screen and (max-width: 1000px) {
-        grid-template-columns: repeat(4, 1fr);
-    }
-    @media only screen and (max-width: 768px) {
-        grid-template-columns: repeat(2, 1fr);
-    }
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 1rem;
+  /* height:30%; */
+  padding: 0.4rem 0;
+  margin-top: 0.4rem;
+  @media only screen and (max-width: 1000px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media only screen and (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
 const ImageA = styled(Image)`
-    height: 100%;
+  height: 100%;
 
-    @media only screen and (max-width: 768px) {
-        border-radius: 10px;
-    }
-`
-  
+  @media only screen and (max-width: 768px) {
+    border-radius: 10px;
+  }
+`;
 
 export default CompanyInfo;

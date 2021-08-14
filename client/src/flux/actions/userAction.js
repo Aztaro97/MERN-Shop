@@ -30,7 +30,16 @@ import {
   USER_REGISTER_BANK_INFO_REQUEST,
   USER_REGISTER_BANK_INFO_SUCCESS,
   USER_REGISTER_BANK_INFO_FAIL,
+  USER_REGISTER_SHIPPING_INFO_REQUEST,
+  USER_REGISTER_SHIPPING_INFO_SUCCESS,
+  USER_REGISTER_SHIPPING_INFO_FAIL,
   USER_ADDRESS_MAP_CONFIRM,
+  COMPANY_LIST_REQUEST,
+  COMPANY_LIST_SUCCESS,
+  COMPANY_LIST_FAIL,
+  CRAFTMAN_LIST_REQUEST,
+  CRAFTMAN_LIST_SUCCESS,
+  CRAFTMAN_LIST_FAIL
 } from "../constants/userConstants";
 import { ORDER_LIST_MY_RESET } from "../constants/orderConstants";
 import { successMessage, warningMessage } from "../../components/message";
@@ -127,23 +136,23 @@ export const register = (body) => async (dispatch) => {
   }
 };
 
-export const getUserDetails = (id) => async (dispatch, getState) => {
+export const getUserDetails = (id) => async (dispatch) => {
   try {
     dispatch({
       type: USER_DETAILS_REQUEST,
     });
 
-    const {
-      userLogin: { userInfo },
-    } = getState();
+    // const {
+    //   userLogin: { userInfo },
+    // } = getState();
 
-    const config = {
-      headers: {
-        Authorization: `Bearer ${userInfo.token}`,
-      },
-    };
+    // const config = {
+    //   headers: {
+    //     Authorization: `Bearer ${userInfo.token}`,
+    //   },
+    // };
 
-    const { data } = await axios.get(`/api/users/${id}`, config);
+    const { data } = await axios.get(`/api/users/${id}`);
 
     dispatch({
       type: USER_DETAILS_SUCCESS,
@@ -430,6 +439,94 @@ export const registerBankInfo = (body) => async (dispatch, getState) => {
     });
   }
 };
+
+
+//   REGISTER SHIPPING ADDRESS
+export const registerShippingInfo = (body) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: USER_REGISTER_SHIPPING_INFO_REQUEST,
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.post("/api/users/shipping", body, config);
+
+    dispatch({
+      type: USER_REGISTER_SHIPPING_INFO_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    console.log(error);
+    warningMessage(error.message);
+    dispatch({
+      type: USER_REGISTER_SHIPPING_INFO_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+
+
+export const getCompanyList = () => async (dispatch) => {
+  try {
+    dispatch({
+      type: COMPANY_LIST_REQUEST
+    });
+
+    const { data } = await axios.get(`/api/users/company/${"company"}`);
+
+    dispatch({
+      type: COMPANY_LIST_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: COMPANY_LIST_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const getCraftmanList = () => async (dispatch) => {
+  try {
+    dispatch({
+      type: CRAFTMAN_LIST_REQUEST
+    });
+
+    const { data } = await axios.get(`/api/users/company/${"craftman"}`);
+
+    dispatch({
+      type: CRAFTMAN_LIST_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: CRAFTMAN_LIST_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+
 
 export const userAddressMapReducer = (state = {}, action) => {
   switch (action.type) {

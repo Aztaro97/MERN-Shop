@@ -151,13 +151,13 @@ const SlideOverlay = styled.div`
       outline: none;
       border: none;
       border-radius: 30px;
-      padding: 0.7rem 1.5rem;
+      padding: 0.8rem 2rem;
       background: var(--orange-color);
       text-transform: uppercase;
       color: #fff;
       position: relative;
       top: 1rem;
-      font-size: 1.1rem;
+      font-size: 1rem;
       cursor: pointer;
       z-index: 99999;
       &:hover {
@@ -188,11 +188,11 @@ const SlideOverlay = styled.div`
       text-decoration: none;
       background: var(--orange-color);
       border-radius: 30px;
-      padding: 0.5rem 1.5rem;
+      padding: 0.8rem 2rem;
       text-transform: uppercase;
       color: #fff;
       text-align: center;
-      font-size: 1.1rem;
+      font-size: 1rem;
 
       &:hover {
         opacity: 0.9;

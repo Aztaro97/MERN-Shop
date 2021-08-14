@@ -2,10 +2,13 @@ import React from 'react'
 import { Pagination } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import {Link} from "react-router-dom"
+import {useParams} from "react-router-dom"
 
 
 
 const Paginate = ({ pages, page, isAdmin = false, keyword = '' }) => {
+  const params = useParams()
+  const userId = params.id;
   return (
     pages > 1 && (
       <Pagination>
@@ -16,7 +19,8 @@ const Paginate = ({ pages, page, isAdmin = false, keyword = '' }) => {
               !isAdmin
                 ? keyword
                   ? `/search/${keyword}/page/${x + 1}`
-                  : `/products/page/${x + 1}`
+                  : `/profile/${userId}/page/${x + 1}`
+                  // : `/products/page/${x + 1}`
                 : `/admin/productlist/${x + 1}`
             }
           >
@@ -29,3 +33,6 @@ const Paginate = ({ pages, page, isAdmin = false, keyword = '' }) => {
 }
 
 export default Paginate
+
+
+// /profile/${userid}/${x + 1}

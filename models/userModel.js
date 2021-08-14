@@ -59,9 +59,9 @@ const userSchema = mongoose.Schema(
       firstName: { type: String},
       lastName: { type: String},
       address: { type: String},
-      appartmentNumber: { type: String},
+      appartment: { type: String},
       city: { type: String},
-      gouv: { type: String},
+      region: { type: String},
       country: { type: String},
       email: { type: String},
       phoneNumber: { type:String}

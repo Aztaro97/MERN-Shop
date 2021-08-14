@@ -8,7 +8,7 @@ import { GlobalStyle } from "./globalStyle";
 import AuthComponents from "./components/pagesScreens/auth/authTab";
 import LoaderComponent from "./components/Loader";
 import CreateProductComponent from "./components/pagesScreens/products/createProduct";
-import ProductAndCompanyComponent from "./components/pagesScreens/productsAndCompany/tabs";
+import ProductsShop from "./components/pagesScreens/AllproductsShop/viewProducts";
 import EditProductScreen from "./components/pagesScreens/EditProductsAndCompany/editProductScreen";
 import EditProductAndCompanyComponent from "./components/pagesScreens/EditProductsAndCompany/tabs";
 import CartComponent from "./components/pagesScreens/cart/cart";
@@ -40,14 +40,15 @@ function App() {
           <Route exact path="/" component={HomeComponents} />
           <Route path="/auth" component={AuthComponents} />
           <Route path="/add-product" component={CreateProductComponent} />
-          <Route path="/products/page/:pageNumber" component={ProductAndCompanyComponent} />
-          <Route path="/products" component={ProductAndCompanyComponent} />
+          <Route path="/products/page/:pageNumber" component={ProductsShop} />
+          <Route path="/products" component={ProductsShop} />
           <Route path="/product/:id" component={EditProductScreen} />
           <Route path="/myproducts" component={EditProductAndCompanyComponent} />
           <Route path="/e-commerce" component={EcommerceHomeComponent} />
           <Route path="/companies" component={CompanyListComponent} />
           <Route path="/cart" component={CartComponent} />
           <Route path="/shipping" component={ShippingComponenet} />
+          <Route path="/profile/:id/page/:pageNumber" component={ProfileComponent} />
           <Route path="/profile/:id" component={ProfileComponent} />
           <Route path="/thank" component={ThankComponenet} />
           <Route path="/register" component={RegisterComponenet} />

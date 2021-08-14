@@ -1,7 +1,7 @@
 import React from "react";
 import { Tabs } from "antd";
 import styled from "styled-components";
-import MainContainer from "./../../MainContainer";
+import MainContainer from "../../MainContainer";
 import ViewProducts from "./viewProducts";
 import CompanyInfo from "./companyDetails";
 // import {filterProducts} from 

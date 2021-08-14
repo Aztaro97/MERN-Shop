@@ -3,10 +3,11 @@ import styled from "styled-components";
 import { Slider, Image, Modal } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { useFormik } from "formik";
+import {useParams} from "react-router-dom"
 import SelectC from "../../../SelectComponents";
 import {
-  listProducts,
-  filterProducts,
+  getProductUserById,
+  filterProductsById,
 } from "../../../../flux/actions/productAction";
 import CardProduct from "./cardProducts";
 import Loader from "../../../Loader";
@@ -17,23 +18,24 @@ const Brand = () => {
   return <SelectC placeholder="Brand">{OptionList}</SelectC>;
 };
 
-const ViewProducts = ({match}) => {
+const ViewProducts = () => {
+  const params = useParams()
 
-  // const keyword = match.params.keyword
+  const userId = params.id
 
-  const pageNumber = match.params.pageNumber || 1
+  const pageNumber = params.pageNumber || 1
 
 
   const formik = useFormik({
     initialValues: {
       brand: "",
       color: "",
-      size: Number,
+      size: "",
       price: "",
     },
     onSubmit: (values) => {
       const body = JSON.stringify(values, null, 2);
-      dispatch(filterProducts(body));
+      dispatch(filterProductsById(body, userId));
       console.log(body);
     },
   });
@@ -55,6 +57,7 @@ const ViewProducts = ({match}) => {
     { title: "Blue", value: "blue" },
     { title: "White", value: "white" },
     { title: "Color1", value: "Color1" },
+    { title: "Color2", value: "Color2" },
   ];
   const sizeList = [
     { title: "-- Select size --", value: Number },
@@ -65,8 +68,8 @@ const ViewProducts = ({match}) => {
   ];
 
   useEffect(() => {
-    dispatch(listProducts(pageNumber ));
-  }, [dispatch, pageNumber]);
+    dispatch(getProductUserById(userId, pageNumber));
+  }, [dispatch,userId, pageNumber ]);
 
   const handleChangeSlider = (value) => {
     formik.setFieldValue("price", value);
@@ -99,7 +102,7 @@ const ViewProducts = ({match}) => {
             placeholder="Size"
             options={sizeList}
             value={formik.values.size}
-            onChange={(e) => formik.setFieldValue("size", parseInt(e.target.value))}
+            onChange={(e) => formik.setFieldValue("size", e.target.value)}
           />
           <div className="form_select slider">
             <p>Price Less than Aed 500</p>

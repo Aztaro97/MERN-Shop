@@ -6,12 +6,6 @@ const uploadToCloudinary = require("./../utils/cloudinary");
 // @route   GET /api/products
 // @access  Public
 const getProducts = asyncHandler(async (req, res) => {
-
-  // const products = await Product.find()
-
-  // res.status(200).json({products})
-
-
   const pageSize = 12;
   const page = Number(req.query.pageNumber) || 1;
 
@@ -224,27 +218,17 @@ const getTopProducts = asyncHandler(async (req, res) => {
 });
 
 // @desc    Fetch My products
-// @route   GET /api/myproducts/
+// @route   GET /api/products/my
 // @access  Private
 const getMyProducts = asyncHandler(async (req, res) => {
   const products = await Product.find({ user: req.user }).populate("user");
   res.status(200).json(products);
-  // const product = await Product.find({})
-
-  // if (product) {
-  //   res.json(product);
-  // } else {
-  //   res.status(404);
-  //   throw new Error("Product not found");
-  // }
 });
 
 // @desc    Filter products Search
 // @route   GET /api/products/search/
 // @access  Public
-const filterProducts = asyncHandler(async (req, res) => {
- 
-
+const filterAllProducts = asyncHandler(async (req, res) => {
     const brand = req.body.brand ? req.body.brand : null;
     const variantColor = req.body.color ? req.body.color : {};
     const variantSize = req.body.size != null ? req.body.size : {};
@@ -263,10 +247,65 @@ const filterProducts = asyncHandler(async (req, res) => {
       res.status(404);
       throw new Error("Product not found");
     }
-
-
-
 });
+
+
+
+
+
+// @desc    Filter products Search
+// @route   GET /api/products/:id/search/
+// @access  Public
+const filterProductsUser = asyncHandler(async (req, res) => {
+  const brand = req.body.brand ? req.body.brand : null;
+  const variantColor = req.body.color ? req.body.color : {};
+  const variantSize = req.body.size != null ? req.body.size : {};
+  const priceItem = req.body.price ? req.body.price : {};
+
+  const products = await Product.find({
+    user: req.params.id,
+    brand,
+    variantColor,
+    variantSize,
+    price: {"$lte": priceItem }
+  })
+
+  if (products) {
+    res.status(200).json({products})
+  } else {
+    res.status(404);
+    throw new Error("Product not found");
+  }
+});
+
+
+
+// @desc    Fetch user products
+// @route   GET /api/products/user/:id
+// @access  Public
+const getUserProducts = asyncHandler(async (req, res) => {
+  const pageSize = 8;
+  const page = Number(req.query.pageNumber) || 1;
+
+  const keyword = req.query.keyword
+    ? {
+        name: {
+          $regex: req.query.keyword,
+          $options: "i",
+        },
+      }
+    : {};
+
+  const count = await Product.countDocuments();
+  const products = await Product.find({user: req.params.id})
+    .limit(pageSize)
+    .skip(pageSize * (page - 1));
+
+    res.json({ products, page, pages: Math.ceil(count / pageSize) });
+});
+
+
+
 
 module.exports = {
   getProducts,
@@ -277,5 +316,7 @@ module.exports = {
   createProductReview,
   getTopProducts,
   getMyProducts,
-  filterProducts
+  filterAllProducts,
+  getUserProducts,
+  filterProductsUser
 };

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Modal, Space } from "antd";
 import ButtonC from "../../ButtonComponeent";
 import { Link, useHistory } from "react-router-dom";
+import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import { useSelector, useDispatch } from "react-redux";
 import {
   saveShippingAddress,
@@ -11,6 +12,7 @@ import {
 import { createOrder } from "../../../flux/actions/orderAction";
 import { ORDER_CREATE_RESET } from "../../../flux/constants/orderConstants";
 import { USER_DETAILS_RESET } from "../../../flux/constants/userConstants";
+import { registerShippingInfo } from "../../../flux/actions/userAction";
 import InputRadio from "../../InputRadioComponent";
 import Loader from "../../Loader";
 
@@ -61,6 +63,28 @@ const countryList = [
 ];
 
 function Payment() {
+  const [saveShippingCheck, setSaveShippingCheck] = useState(false);
+
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [adress, setAddress] = useState("");
+  const [appartment, setAppartment] = useState("");
+  const [city, setCity] = useState("");
+  const [country, setCountry] = useState("");
+  const [region, setRegion] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+
+  const shipping = {
+    firstName,
+    lastName,
+    adress,
+    appartment,
+    city,
+    country,
+    region,
+    phoneNumber,
+  };
+
   const [paymentMethod, setPaymentMethod] = useState("credit");
   const [sameShipping, setSameShipping] = useState("sameAdress");
   const [subTotal, setSubTotal] = useState(Number);
@@ -90,7 +114,11 @@ function Payment() {
   ).toFixed(2);
 
   const handlePlaceOrder = () => {
+    console.log("heced", saveShippingCheck);
     dispatch(savePaymentMethod(paymentMethod));
+    if (saveShippingCheck) {
+      dispatch(registerShippingInfo(shipping));
+    }
 
     if (paymentMethod === "credit") {
       history.push("/completepayment");
@@ -98,7 +126,7 @@ function Payment() {
       dispatch(
         createOrder({
           orderItems: cartItems,
-          shippingAddress: shippingAddress,
+          shippingAddress: sameShipping === "sameAdress" ? shippingAddress : shipping ,
           paymentMethod: paymentMethod,
           itemsPrice: itemsPrice,
           shippingPrice: shippingPrice,
@@ -234,7 +262,18 @@ function Payment() {
               </div>
 
               {sameShipping !== "sameAdress" ? (
-                <SectionShippingAddress />
+                <SectionShippingAddress
+                  shipping={shipping}
+                  setFirstName={setFirstName}
+                  setLastName={setLastName}
+                  setAddress={setAddress}
+                  setAppartment={setAppartment}
+                  setCity={setCity}
+                  setCountry={setCountry}
+                  setRegion={setRegion}
+                  setPhoneNumber={setPhoneNumber}
+                  setSaveShippingCheck={setSaveShippingCheck}
+                />
               ) : null}
 
               <div className="submition_btn">
@@ -307,48 +346,93 @@ const SectionRight = ({ cartItems }) => {
   );
 };
 
-const SectionShippingAddress = () => {
+const SectionShippingAddress = ({
+  shipping,
+  setFirstName,
+  setAddress,
+  setLastName,
+  setAppartment,
+  setCity,
+  setCountry,
+  setRegion,
+  setPhoneNumber,
+  setSaveShippingCheck,
+}) => {
   const [visible, setVisible] = useState(false);
-  const [check, setCheck] = useState(false);
   const [localistion, setLocalistion] = useState({
     city: "",
     address: "",
     cuntry: "",
   });
 
-  const dispatch = useDispatch();
-
-  const handleSaveCheck = () => {
-    if (check) {
-      dispatch(saveShippingAddress());
-    }
-  };
   return (
     <div className="section_shippindAdress">
       <div className="inputRow">
         <InputComponents
+        required
+          type="text"
           style={{ marginRight: ".3rem" }}
-          name="email"
-          id="email"
+          name="firstName"
+          id="firstName"
+          value={shipping.firstName}
+          onChange={(e) => setFirstName(e.target.value)}
           placeholder="FIRST NAME"
         />
         <InputComponents
+        required
+          type="text"
           style={{ marginLeft: ".3rem" }}
-          name="email"
-          id="email"
+          name="lastName"
+          id="lastName"
           placeholder="LAST NAME"
+          value={shipping.lastName}
+          onChange={(e) => setLastName(e.target.value)}
+
         />
       </div>
-      <InputComponents name="email" id="email" placeholder="ADRESS" />
-      <InputComponents name="email" id="email" placeholder="APPARTMENT NO" />
+      <InputComponents
+      required
+        type="text"
+        name="address"
+        id="address"
+        placeholder="ADRESS"
+        value={shipping.address}
+        onChange={(e) => setAddress(e.target.value)}
+
+      />
+      <InputComponents
+      required
+        type="text"
+        name="appartment"
+        id="appartment"
+        placeholder="APPARTMENT NO"
+        value={shipping.appartment}
+        onChange={(e) => setAppartment(e.target.value)}
+
+      />
       <div className="grid_input">
-        <InputComponents type="text" name="city" id="city" placeholder="CITY" />
-        <SelectC
-          className="gouvSelect"
-          options={gouvList}
-          placeholder="gouvernmate"
+        <InputComponents
+        required
+          type="text"
+          name="city"
+          id="city"
+          placeholder="CITY"
+          value={shipping.city}
+          onChange={(e) => setCity(e.target.value)}
+
         />
-        <SelectC options={countryList} placeholder="country" />
+        <CountryDropdownCustom
+        required
+          value={shipping.country}
+          onChange={(val) => setCountry(val)}
+
+        />
+        <RegionDropdownCustom
+        required
+          country={shipping.country}
+          value={shipping.region}
+          onChange={(val) => setRegion(val)}
+        />
       </div>
       <div className="map_container">
         <ButtonC
@@ -373,16 +457,49 @@ const SectionShippingAddress = () => {
         </Modal>
       </div>
       <InputComponents
-        type="number"
+      required
+        type="tel"
         name="number"
         id="number"
         placeholder="PHONE NUMBER"
+        value={shipping.phoneNumber}
+        onChange={(e) => setPhoneNumber(e.target.value)}
       />
-      <CheckBoxComponent>
+      <CheckBoxComponent
+        onClick={(e) => setSaveShippingCheck(e.target.checked)}
+      >
         save this information for the next time
       </CheckBoxComponent>
     </div>
   );
 };
+
+const CountryDropdownCustom = styled(CountryDropdown)`
+  border: 3px solid var(--background-color);
+  color: var(--slider-color);
+  padding-left: 0.4rem;
+  max-width: 230px;
+  &:focus {
+    border: 3px solid var(--background-color);
+  }
+  &:focus-visible {
+    border: 3px solid var(--background-color);
+    outline: none;
+  }
+`;
+
+const RegionDropdownCustom = styled(RegionDropdown)`
+  border: 3px solid var(--background-color);
+  color: var(--slider-color);
+  padding-left: 0.4rem;
+  max-width: 230px;
+  &:focus {
+    border: 3px solid var(--background-color);
+  }
+  &:focus-visible {
+    border: 3px solid var(--background-color);
+    outline: none;
+  }
+`;
 
 export default Payment;

@@ -31,34 +31,30 @@ import {
 import { logout } from "./userAction";
 import { successMessage, warningMessage } from "../../components/message";
 
-export const listProducts = (pageNumber = '') => async (dispatch) => {
-  try {
-    dispatch({ type: PRODUCT_LIST_REQUEST });
+export const listProducts =
+  (pageNumber = "") =>
+  async (dispatch) => {
+    try {
+      dispatch({ type: PRODUCT_LIST_REQUEST });
 
-    const { data } = await axios.get(
-      `/api/products?pageNumber=${pageNumber}`
-    )
+      const { data } = await axios.get(
+        `/api/products?pageNumber=${pageNumber}`
+      );
 
-    dispatch({
-      type: PRODUCT_LIST_SUCCESS,
-      payload: data,
-    });
-  } catch (error) {
-    dispatch({
-      type: PRODUCT_LIST_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    });
-  }
-};
-
-
-
-
-
-
+      dispatch({
+        type: PRODUCT_LIST_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: PRODUCT_LIST_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };
 
 export const listProductDetails = (id) => async (dispatch) => {
   try {
@@ -265,10 +261,9 @@ export const listTopProducts = () => async (dispatch) => {
 
 export const getMyProducts = () => async (dispatch, getState) => {
   try {
-
     const {
       userLogin: { userInfo },
-    } = getState()
+    } = getState();
 
     const config = {
       headers: {
@@ -288,29 +283,25 @@ export const getMyProducts = () => async (dispatch, getState) => {
       payload: data,
     });
 
-    localStorage.setItem('myProduct', JSON.stringify(data))
-    
+    localStorage.setItem("myProduct", JSON.stringify(data));
   } catch (error) {
     dispatch({
       type: MY_PRODUCT_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
-          : error.message
+          : error.message,
     });
   }
 };
 
-
-
-
-export const filterProducts = (body) => async (dispatch) => {
+export const filterAllProducts = (body) => async (dispatch) => {
   try {
     dispatch({ type: FILTER_PRODUCT_REQUEST });
 
     const config = {
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
     };
 
@@ -330,3 +321,62 @@ export const filterProducts = (body) => async (dispatch) => {
     });
   }
 };
+
+
+export const filterProductsById = (body, userID) => async (dispatch) => {
+  try {
+    dispatch({ type: FILTER_PRODUCT_REQUEST });
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const { data } = await axios.post(`/api/products/${userID}/search`, body, config);
+
+    dispatch({
+      type: FILTER_PRODUCT_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: FILTER_PRODUCT_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+
+
+export const getProductUserById =
+  (userId, pageNumber = "") =>
+  async (dispatch) => {
+    try {
+      dispatch({ type: PRODUCT_LIST_REQUEST });
+
+      const { data } = await axios.get(
+        `/api/products/user/${userId}?pageNumber=${pageNumber}`
+      );
+
+      // const { data } = await axios.get(
+      //   `/api/products?pageNumber=${pageNumber}`
+      // );
+
+      dispatch({
+        type: PRODUCT_LIST_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: PRODUCT_LIST_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };

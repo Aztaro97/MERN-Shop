@@ -387,17 +387,26 @@ const saveShippingAddress = asyncHandler(async (req, res) => {
 
 
 const getAllCompanies = asyncHandler(async (req, res) => {
-  const user = await User.find();
+  try {
+
+    const type = req.params.type
+
+
+    // const user = await User.find({company:{type: "company"}});
+  const user = await User.find({"company.type": type}).select("company , email");
 
   if (user) {
-    res.json({
-      _id: user._id,
-      company: user.company,
+    res.status(200).json({
+      users:user
     });
 
   } else {
     res.status(400);
     throw new Error("User not found");
+  }
+    
+  } catch (error) {
+    console.log(error)
   }
 })
 

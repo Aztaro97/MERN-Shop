@@ -25,7 +25,7 @@ function Tabulation() {
     if (!company) {
       dispatch(getCompanyDetails());
     }
-  }, [getCompanyDetails]);
+  }, [dispatch, getCompanyDetails]);
 
   if (!userInfo) {
     return (<Redirect to="/auth" />)

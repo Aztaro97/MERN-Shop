@@ -1,24 +1,40 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Tabs } from "antd";
 import styled from "styled-components";
+import {useParams} from "react-router-dom"
 import MainContainer from "./../../../MainContainer";
 import ViewProducts from "./viewProducts";
 import CompanyInfo from "./companyDetails";
+import {useDispatch, useSelector} from "react-redux"
+import { getUserDetails } from "../../../../flux/actions/userAction";
 // import {filterProducts} from 
 
 const { TabPane } = Tabs;
 
 const Tabulation = ({match}) => {
-    const userId = match.params.id
+
+  const params = useParams();
+
+  const userId = params.id;
+
+  const { loading, error, user } = useSelector((state) => state.userDetails);
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (user === null || user._id !== userId) {
+      dispatch(getUserDetails(userId));
+    }
+  }, [dispatch, userId, user]);
   return (
     <MainContainer>
       <Tab>
         <TabsE defaultActiveKey="1" centered size="default">
           <TabPane tab="View Products" key="1">
-            <ViewProducts match={match} />
+            <ViewProducts />
           </TabPane>
           <TabPane tab="Company Information" key="2">
-            <CompanyInfo match={match} />
+            <CompanyInfo loading={loading} user={user} error={error} />
           </TabPane>
         </TabsE>
       </Tab>
