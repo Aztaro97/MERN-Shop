@@ -1,21 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
 import { Modal } from "antd";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 import { useHistory } from "react-router-dom";
-import { MdDelete } from "react-icons/md";
+import { MdDelete, AiOutlineCheck, FaTimes } from "react-icons/all";
 import Loader from "../../Loader";
 import {
-  listProducts,
+  listProductsAdmin,
   deleteProduct,
+  setProductAllow,
 } from "../../../flux/actions/productAction";
 import MainContainer from "../../MainContainer";
+import Pagination from "../../pagination"
 
 const { confirm } = Modal;
 
 function ProductsListScreen({ match }) {
-  const pageNumber = match.params.pageNumber || 1;
+  const pageNumber = match.params.pageNumber || 1
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -47,13 +50,21 @@ function ProductsListScreen({ match }) {
     });
   };
 
+  const handleSetAllow = async (id) => {
+    dispatch(setProductAllow(id, true));
+  };
+
+  const handleSetNotAllow = async (id) => {
+    dispatch(setProductAllow(id, false));
+  };
+
   useEffect(() => {
     if (!userInfo || !userInfo.isAdmin) {
       history.push("/login");
     }
 
-    dispatch(listProducts("", pageNumber));
-  }, [dispatch, history, userInfo, , pageNumber]);
+    dispatch(listProductsAdmin("", pageNumber));
+  }, [dispatch, history, userInfo, pageNumber]);
 
   return (
     <MainContainer>
@@ -76,6 +87,7 @@ function ProductsListScreen({ match }) {
                   <th>name</th>
                   <th>price</th>
                   <th>brand</th>
+                  <th>Allow</th>
                   <th></th>
                 </tr>
               </thead>
@@ -86,6 +98,18 @@ function ProductsListScreen({ match }) {
                     <td>{product.name}</td>
                     <td>{product.price} dirham</td>
                     <td>{product.brand}</td>
+                    <td className="allow_btn">
+                      {product.allow && (
+                        <button onClick={() => handleSetNotAllow(product._id)}>
+                          <AiOutlineCheck className="allow_btn_accept" />  Accepted
+                        </button>
+                      )}
+                      {!product.allow && (
+                        <button onClick={() => handleSetAllow(product._id)} >
+                          <FaTimes className="allow_btn_refuse" /> Refused
+                        </button>
+                      )}
+                    </td>
                     <td>
                       <button
                         type="button"
@@ -101,6 +125,7 @@ function ProductsListScreen({ match }) {
             </Table>
           )}
         </Row>
+        <Pagination page={page} pages={pages} isAdmin={true} />
       </ProductContainer>
     </MainContainer>
   );
@@ -147,6 +172,22 @@ const Table = styled.table`
           border: none;
           padding: 1px 12px;
           font-size: 1.2rem;
+        }
+      }
+      & .allow_btn {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        & button {
+          outline: none;
+          border: none;
+          background: transparent;
+          & .allow_btn_accept {
+            color: green;
+          }
+          & .allow_btn_refuse {
+            color: red;
+          }
         }
       }
     }

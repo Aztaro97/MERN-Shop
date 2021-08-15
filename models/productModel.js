@@ -23,6 +23,11 @@ const productSchema = mongoose.Schema(
       // required: true,
       ref: "User",
     },
+    allow: {
+      type: Boolean,
+      // required: true,
+      default: false,
+    },
     code: {
       type: String,
       // required: true,
@@ -39,20 +44,25 @@ const productSchema = mongoose.Schema(
     },
     shippingTo: [
       {
-        type: String,
-        // required: true,
-      },
+        amount: { type: Number, default: 0 },
+        city: { type: Array },
+        country: { type: String },
+        maxprice: { type: String},
+        minprice: { type: String},
+        name: { type: String},
+        orderBased: { type: String},
+      }
     ],
-    shippingRate: [
-      {
-        ShippingAdress: {
-          type: String,
-          // required: true,
-        },
-        shippingPice: { type: Number, default: 0 },
-        // rateName: {type: String, required: true}
-      },
-    ],
+    // shippingRate: [
+    //   {
+    //     ShippingAdress: {
+    //       type: String,
+    //       // required: true,
+    //     },
+    //     shippingPice: { type: Number, default: 0 },
+    //     // rateName: {type: String, required: true}
+    //   },
+    // ],
     name: {
       type: String,
       // required: true,

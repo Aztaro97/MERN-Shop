@@ -136,7 +136,7 @@ const ViewProducts = () => {
           )}
         </>
       </Row>
-      <Row style={{marginTop:"1rem"}}>
+      <Row>
       <Paginate
             pages={pages}
             page={page}

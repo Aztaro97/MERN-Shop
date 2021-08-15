@@ -38,6 +38,7 @@ router.post("/", cors(), async (req, res) => {
 		})
 		console.log("Payment", payment)
 		res.json({
+			payment,
 			message: "Payment successful",
 			success: true
 		})

@@ -112,6 +112,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
       name: user.name,
       email: user.email,
       company: user.company,
+      shippindAddress: user.shippindAddress,
       urlImg: user.urlImg,
       isAdmin: user.isAdmin,
     });
@@ -361,7 +362,7 @@ const saveBankInformation = asyncHandler(async (req, res) => {
 
 
 // @desc    Save Shipping Address
-// @route   POST /api/users
+// @route   POST /api/users/shipping
 // @access  private
 const saveShippingAddress = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
@@ -374,15 +375,28 @@ const saveShippingAddress = asyncHandler(async (req, res) => {
     res.status(200).json({
       // _id: userUpdate._id,
       shippindAddress: userUpdate.shippindAddress,
-      // token: generateToken(userUpdate._id),
     });
 
   } else {
     res.status(400);
     throw new Error("User not found");
   }
+});
 
-  
+// @desc    Save Shipping Address
+// @route   GET /api/users/shippng
+// @access  private
+const getShippingAddress = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id);
+  if (user) {
+    res.status(200).json({
+      shippindAddress: user.shippindAddress,
+    });
+
+  } else {
+    res.status(400);
+    throw new Error("User not found");
+  }
 });
 
 
@@ -433,5 +447,6 @@ module.exports = {
   saveCompanyInformation,
   saveBankInformation,
   saveShippingAddress,
-  getAllCompanies
+  getAllCompanies,
+  getShippingAddress
 };

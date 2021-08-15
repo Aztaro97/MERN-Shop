@@ -37,11 +37,8 @@ import InputCheck from "../../CheckBoxComponent";
 import InputRadio from "../../InputRadioComponent";
 
 function AddProductScreen() {
-
   const [selling, setSelling] = useState(false);
   const [delivery, setDelivery] = useState(false);
-
-
 
   const [code, setCode] = useState("");
   const [shippingFrom, setShippingFrom] = useState("");
@@ -60,18 +57,16 @@ function AddProductScreen() {
   const [price, setPrice] = useState("");
   const [compareAtPrice, setCompareAtPrice] = useState("");
 
-
-
   const [zone, setZone] = useState({});
   const [arrayZone, setArrayZone] = useState([]);
   // const arrayZone = []
 
   const body = {
     code,
-    typeService:{selling:selling, delivery: delivery},
+    typeService: { selling: selling, delivery: delivery },
     shippingFrom,
-    shippingTo,
-    rateShipping,
+    shippingTo: arrayZone,
+    rateShipping: arrayZone,
     name,
     description,
     imageUrl,
@@ -115,7 +110,11 @@ function AddProductScreen() {
       </Header>
       <MainProductForm>
         <Col>
-          <ProductSection1 setCode={setCode} setSelling={setSelling} setDelivery={setDelivery} />
+          <ProductSection1
+            setCode={setCode}
+            setSelling={setSelling}
+            setDelivery={setDelivery}
+          />
           <ShippingSection
             shippingFrom={shippingFrom}
             setShippingFrom={setShippingFrom}
@@ -126,7 +125,7 @@ function AddProductScreen() {
             setArrayZone={setArrayZone}
             arrayZone={arrayZone}
           />
-          <RateSection arrayZone={arrayZone} />
+          <RateSection arrayZone={arrayZone} setArrayZone={setArrayZone} />
         </Col>
 
         {/* ////////////////////////   COLLUMN RIGHT   /////////// */}
@@ -344,12 +343,11 @@ const FormRight = ({
     imgWindow.document.write(image.outerHTML);
   };
 
-
   return (
-    <form onSubmit={handleProductCreate} >
+    <form onSubmit={handleProductCreate}>
       <Row>
         <InputC
-        required
+          required
           type="text"
           name="productName"
           id="productName"
@@ -476,7 +474,7 @@ const FormRight = ({
               <>
                 <div className="variant_add">
                   <input
-                    type="number"
+                    type="currency"
                     className="input"
                     placeholder="Enter size"
                     value={variantSizeValue}
@@ -519,7 +517,7 @@ const FormRight = ({
               <>
                 <div className="variant_add">
                   <input
-                    type="number"
+                    type="currency"
                     className="input"
                     placeholder="Enter finish"
                     value={finish}
@@ -689,7 +687,7 @@ const FormRight = ({
         <Row>
           <Label style={{ color: "#000" }}>size</Label>
           <InputC
-            type="number"
+            type="currency"
             placeholder="500 GRAM"
             onChange={(e) => setSize(e.target.value)}
           />
@@ -697,7 +695,7 @@ const FormRight = ({
             <div>
               <Label style={{ color: "#000" }}>price</Label>
               <InputC
-                type="number"
+                type="currency"
                 placeholder="AED 25.00"
                 onChange={(e) => setPrice(e.target.value)}
               />
@@ -705,7 +703,7 @@ const FormRight = ({
             <div>
               <Label style={{ color: "#000" }}>compare at price</Label>
               <InputC
-                type="number"
+                type="currency"
                 placeholder="AED 30.00"
                 onChange={(e) => setCompareAtPrice(e.target.value)}
               />
@@ -771,26 +769,47 @@ const ProductSection1 = ({ setCode, setSelling, setDelivery }) => {
   );
 };
 
-const RateSection = ({arrayZone}) => {
+const RateSection = ({ arrayZone, setArrayZone }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [listAddress, setListAddress] = useState([
-    { name: "", amount: 0, minprice: 0, maxprice: 0 },
-  ]);
-  const [address, setAddress] = useState({ name: "" });
+  const [min, setMin] = useState(null);
+  const [max, setMax] = useState(null);
+  const [amount, setAmount] = useState(null);
+  const [orderBased, setOrderBased] = useState("");
 
-  const showModal = () => {
+  const [indexarray, setIndexArray] = useState(null)
+  // const [min, setMin] = useState(null);
+  // const [min, setMin] = useState(null);
+  const [listAddress, setListAddress] = useState({
+    name: "",
+    amount: "",
+    minprice: null,
+    maxprice: null,
+    orderBased: "",
+  });
+  const [rateName, setRateName] = useState("");
+
+  const showModal = (index) => {
     setIsModalVisible(true);
-    
+    setIndexArray(index)
+    console.log(index)
   };
 
   const handleAdd = () => {
-    listAddress.push(address);
-    setAddress({ name: "" });
+    // listAddress.push(rateName);
   };
-  const onSaveCondition = (item) => {
-    console.log(item);
+  const onSaveCondition = (index) => {
+    console.log(index);
+    const newArray = [...arrayZone];
+
+    newArray[index].amount = amount;
+    newArray[index].minprice = min;
+    newArray[index].maxprice = max;
+    newArray[index].orderBased = orderBased;
+    setArrayZone(newArray);
     setIsModalVisible(false);
-    console.log(listAddress);
+    
+
+    console.log(arrayZone);
   };
   return (
     <>
@@ -804,9 +823,9 @@ const RateSection = ({arrayZone}) => {
             type="text"
             name="RateName"
             id="RateName"
-            value={address.name}
+            value={rateName}
             // onChange={(e) => setAddress({ name: e.target.value })}
-            onChange={(e) => console.log(arrayZone)}
+            onChange={(e) => setRateName(e.target.value)}
           />
         </Row>
         <Row>
@@ -819,16 +838,24 @@ const RateSection = ({arrayZone}) => {
           <hr style={{ background: "#aaaaac", marginBottom: ".7rem" }} />
           {arrayZone.length > 0 &&
             arrayZone.map((item, index) => (
-              <GridRow key={index}>
-                <p>{item.city}</p>
-                <p>
-                  {!item.minprice || item.minprice == 0
-                    ? "Free"
-                    : item.minprice}
+              <GridRow key={index} className={`Key number ${index}`}>
+                <p style={{ color: "var(--orange-color)" }}>
+                  {item.city.join(" / ")}
+                </p>
+                <p style={{ fontSize:".7rem" }}>
+                  {!item.amount || item.amount === null
+                    ? "Free shipping"
+                    : item.amount}
                 </p>
                 <p>
-                  <span onClick={showModal} style={{ cursor: "pointer" }}>
-                    {!item.amount ? "Add condition" : item.amount}
+                  <span onClick={() => showModal(index)} style={{ cursor: "pointer" }}>
+                    {!item.minprice ? (
+                      "Add condition"
+                    ) : (
+                      <> {item.minprice} {item.orderBased === "price" ? "AED" : "kg"} 
+                      
+                      </>
+                    )}
                   </span>
                   <Modal
                     visible={isModalVisible}
@@ -841,20 +868,31 @@ const RateSection = ({arrayZone}) => {
                       <hr />
                       <div className="price">
                         <input
-                          type="number"
+                          type="currency"
                           name="minprice"
                           id="minprice"
-                          placeholder="MINIMUN PRICE"
-                          value={item.minprice}
-                          onChange={(e) => (item.minprice = e.target.value)}
+                          min="0.00"
+                          placeholder="MINIMUN"
+                          value={min}
+                          onChange={(e) => setMin(e.target.value)}
                         />
                         <input
-                          type="number"
+                          type="currency"
                           name="maxprice"
                           id="maxprice"
-                          placeholder="MAXMUN PRICE"
-                          value={item.maxprice}
-                          onChange={(e) => (item.maxprice = e.target.value)}
+                          min="0.00"
+                          placeholder="MAXMUN"
+                          value={max}
+                          onChange={(e) => setMax(e.target.value)}
+                        />
+                        <input
+                          type="currency"
+                          name="amount"
+                          id="amount"
+                          placeholder="AMOUNT"
+                          value={amount}
+                          min="0.00"
+                          onChange={(e) => setAmount(e.target.value)}
                         />
                       </div>
                       <hr />
@@ -862,23 +900,26 @@ const RateSection = ({arrayZone}) => {
                         <div>
                           <InputRadio
                             required
-                            value="itemWeight"
-                            name="based_order"
+                            name="orderBased"
                             id="itemWeight"
+                            value="weight"
+                            onChange={(e) => setOrderBased(e.target.value)}
                           />
                           <label htmlFor="itemWeight">
-                            based on item weight
+                            based on item weight ( kg )
                           </label>
                         </div>
                         <div>
                           <InputRadio
                             required
-                            value="orderPrice"
-                            name="based_order"
+                            name="orderBased"
                             id="orderPrice"
+                            value="price"
+                            onChange={(e) => setOrderBased(e.target.value)}
+                            // onChange={(e) => setBased(e.target.value)}
                           />
                           <label htmlFor="orderPrice">
-                            based on item weight
+                            based on order price
                           </label>
                         </div>
                       </div>
@@ -886,7 +927,7 @@ const RateSection = ({arrayZone}) => {
                       <div className="save_btn">
                         <button
                           type="button"
-                          onClick={() => onSaveCondition(item)}
+                          onClick={() => onSaveCondition(indexarray)}
                         >
                           save
                         </button>
@@ -900,7 +941,7 @@ const RateSection = ({arrayZone}) => {
 
         <ButtonC
           style={{ margin: "0 auto" }}
-          disabled={!address.name && true}
+          disabled={!rateName && true}
           onClick={handleAdd}
         >
           save
@@ -918,7 +959,7 @@ const ShippingSection = ({
   setZone,
   zone,
   setArrayZone,
-  arrayZone
+  arrayZone,
 }) => {
   // const [shippingFrom, setShippingFrom] = useState("");
   const [inputValu, setInputValu] = useState("");
@@ -926,7 +967,6 @@ const ShippingSection = ({
   const [country, setCountry] = useState("");
   const [region, setRegion] = useState("");
   const [arraryRegionSelected, setArraryRegionSelected] = useState([]);
-  
 
   // const arrayAllZone = []
   // const listRegion = []
@@ -937,13 +977,22 @@ const ShippingSection = ({
     setShippingTo(ListShippingTo);
     setInputValu("");
 
-
     //   Zone Created
-    setZone({country, city:arraryRegionSelected })
-    setArrayZone([...arrayZone, {country, city:arraryRegionSelected }])
-    setCountry("")
-    setArraryRegionSelected([])
-
+    setZone({ country, city: arraryRegionSelected });
+    setArrayZone([
+      ...arrayZone,
+      {
+        country,
+        city: arraryRegionSelected,
+        name: "",
+        amount: null,
+        minprice: null,
+        maxprice: null,
+        orderBased: ""
+      },
+    ]);
+    setCountry("");
+    setArraryRegionSelected([]);
   };
 
   const onChangeCountry = (val) => {
@@ -951,10 +1000,9 @@ const ShippingSection = ({
   };
 
   const handleSelectRegion = (val) => {
-    setRegion(val)
-    setArraryRegionSelected([...arraryRegionSelected, val])
-  }
-
+    setRegion(val);
+    setArraryRegionSelected([...arraryRegionSelected, val]);
+  };
 
   return (
     <>
@@ -1095,11 +1143,11 @@ const CountryDropdownCustomer = styled(CountryDropdown)`
 `;
 const RegionDropdownCustomer = styled(RegionDropdown)`
   border: 1px solid var(--orange-color);
-  padding: 10px ;
-  display:block;
+  padding: 10px;
+  display: block;
   &:focus {
     outline: none;
-  border: 1px solid var(--orange-color);
+    border: 1px solid var(--orange-color);
   }
 `;
 

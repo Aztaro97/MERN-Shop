@@ -19,12 +19,42 @@ const getProducts = asyncHandler(async (req, res) => {
     : {};
 
   const count = await Product.countDocuments();
+  const products = await Product.find({allow:true})
+    .limit(pageSize)
+    .skip(pageSize * (page - 1));
+
+  res.json({ products, page, pages: Math.ceil(count / pageSize) });
+});
+
+
+
+
+// @desc    Fetch all products Admin
+// @route   GET /api/products/admin
+// @access  ADMIN
+const getProductsAdmin = asyncHandler(async (req, res) => {
+  const pageSize = 20;
+  const page = Number(req.query.pageNumber) || 1;
+
+  const keyword = req.query.keyword
+    ? {
+        name: {
+          $regex: req.query.keyword,
+          $options: "i",
+        },
+      }
+    : {};
+
+  const count = await Product.countDocuments();
   const products = await Product.find()
     .limit(pageSize)
     .skip(pageSize * (page - 1));
 
   res.json({ products, page, pages: Math.ceil(count / pageSize) });
 });
+
+
+
 
 // @desc    Fetch single product
 // @route   GET /api/products/:id
@@ -75,7 +105,7 @@ const createProduct = asyncHandler(async (req, res) => {
     service,
     shippingFrom,
     shippingTo,
-    rateShipping,
+    // rateShipping,
     variantColor,
     variantSize,
     variantFinish,
@@ -100,7 +130,6 @@ const createProduct = asyncHandler(async (req, res) => {
     service,
     shippingFrom,
     shippingTo,
-    rateShipping,
     variantColor,
     variantSize,
     variantFinish,
@@ -263,6 +292,7 @@ const filterProductsUser = asyncHandler(async (req, res) => {
   const priceItem = req.body.price ? req.body.price : {};
 
   const products = await Product.find({
+    allow: true,
     user: req.params.id,
     brand,
     variantColor,
@@ -297,13 +327,28 @@ const getUserProducts = asyncHandler(async (req, res) => {
     : {};
 
   const count = await Product.countDocuments();
-  const products = await Product.find({user: req.params.id})
+  const products = await Product.find({user: req.params.id, allow: true})
     .limit(pageSize)
     .skip(pageSize * (page - 1));
 
     res.json({ products, page, pages: Math.ceil(count / pageSize) });
 });
 
+
+// @desc    Allow products sell
+// @route   GET /api/products/:id
+// @access  Public
+const allowProductSell = asyncHandler(async (req, res) => {
+  const product = await Product.findById(req.params.id)
+
+  if (product) {
+    product.allow = req.body.permission;
+  }
+
+  await product.save();
+
+  res.status(200).json({message: "Product allow"})
+})
 
 
 
@@ -318,5 +363,7 @@ module.exports = {
   getMyProducts,
   filterAllProducts,
   getUserProducts,
-  filterProductsUser
+  filterProductsUser,
+  allowProductSell,
+  getProductsAdmin
 };

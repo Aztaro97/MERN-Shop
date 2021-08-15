@@ -11,6 +11,7 @@ import {
 } from "../../../flux/actions/cartAction";
 import { createOrder } from "../../../flux/actions/orderAction";
 import { ORDER_CREATE_RESET } from "../../../flux/constants/orderConstants";
+import { CART_CLEAR_ITEMS } from "../../../flux/constants/cartConstants";
 import { USER_DETAILS_RESET } from "../../../flux/constants/userConstants";
 import { registerShippingInfo } from "../../../flux/actions/userAction";
 import InputRadio from "../../InputRadioComponent";
@@ -33,41 +34,12 @@ import {
   RadioB,
 } from "./StyledPayment";
 
-const gouvList = [
-  {
-    title: "Abou dhabi",
-    value: "abu dhabi",
-  },
-  {
-    title: "Ajman",
-    value: "ajman",
-  },
-  {
-    title: "Dubai",
-    value: "dubai",
-  },
-];
-const countryList = [
-  {
-    title: "uae",
-    value: "uae",
-  },
-  {
-    title: "usa",
-    value: "usa",
-  },
-  {
-    title: "saudia",
-    value: "saudia",
-  },
-];
-
 function Payment() {
   const [saveShippingCheck, setSaveShippingCheck] = useState(false);
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [adress, setAddress] = useState("");
+  const [address, setAddress] = useState("");
   const [appartment, setAppartment] = useState("");
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
@@ -77,7 +49,7 @@ function Payment() {
   const shipping = {
     firstName,
     lastName,
-    adress,
+    address,
     appartment,
     city,
     country,
@@ -116,24 +88,31 @@ function Payment() {
   const handlePlaceOrder = () => {
     console.log("heced", saveShippingCheck);
     dispatch(savePaymentMethod(paymentMethod));
+    dispatch(saveShippingAddress(shipping));
     if (saveShippingCheck) {
       dispatch(registerShippingInfo(shipping));
     }
+    dispatch(
+      createOrder({
+        orderItems: cartItems,
+        shippingAddress:
+          sameShipping === "sameAdress" ? shippingAddress : shipping,
+        paymentMethod: paymentMethod,
+        itemsPrice: itemsPrice,
+        shippingPrice: shippingPrice,
+        taxPrice: taxPrice,
+        totalPrice: totalPrice,
+      })
+    );
 
     if (paymentMethod === "credit") {
       history.push("/completepayment");
     } else {
-      dispatch(
-        createOrder({
-          orderItems: cartItems,
-          shippingAddress: sameShipping === "sameAdress" ? shippingAddress : shipping ,
-          paymentMethod: paymentMethod,
-          itemsPrice: itemsPrice,
-          shippingPrice: shippingPrice,
-          taxPrice: taxPrice,
-          totalPrice: totalPrice,
-        })
-      );
+      dispatch({
+        type: CART_CLEAR_ITEMS,
+        // payload: data,
+      });
+      localStorage.removeItem("cartItems");
       history.push("/thank");
     }
   };
@@ -178,7 +157,9 @@ function Payment() {
                 <div className="row">
                   <div>
                     <h2>contact</h2>
-                    <p>{shippingAddress.email}</p>
+                    <p>
+                      {shippingAddress.email} , {shippingAddress.phoneNumber}
+                    </p>
                   </div>
                   <Link className="link" to="/shipping">
                     Change
@@ -188,7 +169,10 @@ function Payment() {
                 <div className="row">
                   <div>
                     <h2>address</h2>
-                    <p>{shippingAddress.address}</p>
+                    <p>
+                      {shippingAddress.address}, {shippingAddress.city} ,
+                      {shippingAddress.country}
+                    </p>
                   </div>
                   <Link className="link" to="/shipping">
                     Change
@@ -369,7 +353,7 @@ const SectionShippingAddress = ({
     <div className="section_shippindAdress">
       <div className="inputRow">
         <InputComponents
-        required
+          required
           type="text"
           style={{ marginRight: ".3rem" }}
           name="firstName"
@@ -379,7 +363,7 @@ const SectionShippingAddress = ({
           placeholder="FIRST NAME"
         />
         <InputComponents
-        required
+          required
           type="text"
           style={{ marginLeft: ".3rem" }}
           name="lastName"
@@ -387,48 +371,43 @@ const SectionShippingAddress = ({
           placeholder="LAST NAME"
           value={shipping.lastName}
           onChange={(e) => setLastName(e.target.value)}
-
         />
       </div>
       <InputComponents
-      required
+        required
         type="text"
         name="address"
         id="address"
         placeholder="ADRESS"
         value={shipping.address}
         onChange={(e) => setAddress(e.target.value)}
-
       />
       <InputComponents
-      required
+        required
         type="text"
         name="appartment"
         id="appartment"
         placeholder="APPARTMENT NO"
         value={shipping.appartment}
         onChange={(e) => setAppartment(e.target.value)}
-
       />
       <div className="grid_input">
         <InputComponents
-        required
+          required
           type="text"
           name="city"
           id="city"
           placeholder="CITY"
           value={shipping.city}
           onChange={(e) => setCity(e.target.value)}
-
         />
         <CountryDropdownCustom
-        required
+          required
           value={shipping.country}
           onChange={(val) => setCountry(val)}
-
         />
         <RegionDropdownCustom
-        required
+          required
           country={shipping.country}
           value={shipping.region}
           onChange={(val) => setRegion(val)}
@@ -457,7 +436,7 @@ const SectionShippingAddress = ({
         </Modal>
       </div>
       <InputComponents
-      required
+        required
         type="tel"
         name="number"
         id="number"

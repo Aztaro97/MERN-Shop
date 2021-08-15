@@ -39,7 +39,7 @@ import {
   COMPANY_LIST_FAIL,
   CRAFTMAN_LIST_REQUEST,
   CRAFTMAN_LIST_SUCCESS,
-  CRAFTMAN_LIST_FAIL
+  CRAFTMAN_LIST_FAIL,
 } from "../constants/userConstants";
 import { ORDER_LIST_MY_RESET } from "../constants/orderConstants";
 import { successMessage, warningMessage } from "../../components/message";
@@ -440,7 +440,6 @@ export const registerBankInfo = (body) => async (dispatch, getState) => {
   }
 };
 
-
 //   REGISTER SHIPPING ADDRESS
 export const registerShippingInfo = (body) => async (dispatch, getState) => {
   try {
@@ -478,12 +477,10 @@ export const registerShippingInfo = (body) => async (dispatch, getState) => {
   }
 };
 
-
-
 export const getCompanyList = () => async (dispatch) => {
   try {
     dispatch({
-      type: COMPANY_LIST_REQUEST
+      type: COMPANY_LIST_REQUEST,
     });
 
     const { data } = await axios.get(`/api/users/company/${"company"}`);
@@ -506,7 +503,7 @@ export const getCompanyList = () => async (dispatch) => {
 export const getCraftmanList = () => async (dispatch) => {
   try {
     dispatch({
-      type: CRAFTMAN_LIST_REQUEST
+      type: CRAFTMAN_LIST_REQUEST,
     });
 
     const { data } = await axios.get(`/api/users/company/${"craftman"}`);
@@ -525,8 +522,6 @@ export const getCraftmanList = () => async (dispatch) => {
     });
   }
 };
-
-
 
 export const userAddressMapReducer = (state = {}, action) => {
   switch (action.type) {

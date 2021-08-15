@@ -14,6 +14,7 @@ const {
   saveCompanyInformation,
   saveBankInformation,
   saveShippingAddress,
+  getShippingAddress,
   getAllCompanies,
 } = require("../controllers/userController");
 const { protect, admin, secure } = require("../middleware/authMiddleware");
@@ -39,6 +40,6 @@ router
   .post(protect, saveCompanyInformation)
   // .get(getAllCompanies)
 router.route("/bank").post(protect, saveBankInformation);
-router.route("/shipping").post(protect, saveShippingAddress);
+router.route("/shipping").post(protect, saveShippingAddress).get(admin, getShippingAddress);
 
 module.exports = router;

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { FaTimesCircle } from "react-icons/fa";
+import { FaTimesCircle, FcPaid } from "react-icons/all";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { listOrders } from "../../../flux/actions/orderAction";
@@ -50,18 +50,22 @@ function OrdersListScreen() {
                   <td>{order.totalPrice} dh</td>
                   <td>
                     {order.isPaid ? (
-                      order.paidAt.substring(0, 10)
+                      <>
+                        {" "}
+                        <FcPaid size={20} style={{ color: "green" }} />{" "}
+                        {order.paidAt.substring(0, 10)}{" "}
+                      </>
                     ) : (
                       <FaTimesCircle style={{ color: "#ff7979" }} />
                     )}
                   </td>
                   <td>
-                  {order.isDelivered ? (
-                    order.deliveredAt.substring(0, 10)
-                  ) : (
-                    <FaTimesCircle style={{ color: "#ff7979" }} />
-                  )}
-                </td>
+                    {order.isDelivered ? (
+                      order.deliveredAt.substring(0, 10)
+                    ) : (
+                      <FaTimesCircle style={{ color: "#ff7979" }} />
+                    )}
+                  </td>
                 </tr>
               ))}
             </tbody>

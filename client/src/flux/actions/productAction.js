@@ -56,6 +56,43 @@ export const listProducts =
     }
   };
 
+export const listProductsAdmin =
+  (keyword = '', pageNumber = "") =>
+  async (dispatch, getState) => {
+    try {
+      const {
+        userLogin: { userInfo },
+      } = getState();
+
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      };
+
+      dispatch({ type: PRODUCT_LIST_REQUEST });
+
+      const { data } = await axios.get(
+        `/api/products/admin?keyword=${keyword}&pageNumber=${pageNumber}`,
+        config
+      );
+
+      dispatch({
+        type: PRODUCT_LIST_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: PRODUCT_LIST_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };
+
 export const listProductDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST });
@@ -322,7 +359,6 @@ export const filterAllProducts = (body) => async (dispatch) => {
   }
 };
 
-
 export const filterProductsById = (body, userID) => async (dispatch) => {
   try {
     dispatch({ type: FILTER_PRODUCT_REQUEST });
@@ -333,7 +369,11 @@ export const filterProductsById = (body, userID) => async (dispatch) => {
       },
     };
 
-    const { data } = await axios.post(`/api/products/${userID}/search`, body, config);
+    const { data } = await axios.post(
+      `/api/products/${userID}/search`,
+      body,
+      config
+    );
 
     dispatch({
       type: FILTER_PRODUCT_SUCCESS,
@@ -349,8 +389,6 @@ export const filterProductsById = (body, userID) => async (dispatch) => {
     });
   }
 };
-
-
 
 export const getProductUserById =
   (userId, pageNumber = "") =>
@@ -378,5 +416,31 @@ export const getProductUserById =
             ? error.response.data.message
             : error.message,
       });
+    }
+  };
+
+export const setProductAllow =
+  (id, permission) => async (dispatch, getState) => {
+    try {
+      const {
+        userLogin: { userInfo },
+      } = getState();
+
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      };
+
+      const res = await axios.post(
+        `/api/products/${id}`,
+        { permission },
+        config
+      );
+
+      if (res) window.location.reload();
+    } catch (error) {
+      console.log(error.message);
     }
   };

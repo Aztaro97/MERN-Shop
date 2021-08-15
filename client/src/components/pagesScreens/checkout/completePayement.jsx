@@ -1,93 +1,107 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import ButtonC from "../../ButtonComponeent";
 import { Link, useHistory } from "react-router-dom";
-import {useSelector, useDispatch} from "react-redux";
-import {getOrderDetails} from "../../../flux/actions/orderAction";
-import {ORDER_PAY_RESET, ORDER_DELIVER_RESET} from "../../../flux/constants/orderConstants"
-import StripePayment from "../checkout/stripe/stripeContainer"
+import { useSelector, useDispatch } from "react-redux";
+import { getOrderDetails } from "../../../flux/actions/orderAction";
+import {
+  ORDER_PAY_RESET,
+  ORDER_DELIVER_RESET,
+} from "../../../flux/constants/orderConstants";
+import StripePayment from "../checkout/stripe/stripeContainer";
 
 import piture from "../../../img/card_pic.png";
+import LoaderComponent from "../../Loader";
 
 function CompletePayement() {
-
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const {shippingAddress} = useSelector(state => state.cart)
+  const { loading: loadingShipping, shippingAddress } = useSelector(
+    (state) => state.cart
+  );
   // const {shippingAddress} = useSelector(state => state.cart)
-  const { loading: loadingPay, success: successPay } = useSelector(state => state.orderPay)
-  const { loading: loadingDeliver, success: successDeliver } = useSelector((state) => state.orderDeliver);
-  const { order, loading,  error } = useSelector((state) => state.orderDetails);
+  const { loading: loadingPay, success: successPay } = useSelector(
+    (state) => state.orderPay
+  );
+  const { loading: loadingDeliver, success: successDeliver } = useSelector(
+    (state) => state.orderDeliver
+  );
+  const { order, loading, error } = useSelector((state) => state.orderCreate);
   const { userInfo } = useSelector((state) => state.userLogin);
-
-  
 
   useEffect(() => {
     if (!userInfo) {
-      history.push("/auth")
+      history.push("/auth");
     }
-    if (!order || successPay || successDeliver) {
-      dispatch({ type: ORDER_PAY_RESET })
-      dispatch({ type: ORDER_DELIVER_RESET })
-      dispatch(getOrderDetails())
-    }
-
-  }, [dispatch, userInfo])
-
+    // if (!order || successPay || successDeliver) {
+    //   dispatch({ type: ORDER_PAY_RESET });
+    //   dispatch({ type: ORDER_DELIVER_RESET });
+      // dispatch(getOrderDetails(order._id));
+    // }
+  }, [dispatch, userInfo]);
 
   return (
-    <Container>
-      <Header>
-        <a href="#/" onClick={() => history.goBack()}>Back</a>
-        <h2>COMPLETE PAYEMENT</h2>
-      </Header>
-      <Grid>
-        <SectionLeft>
-          <Border>
-            <div className="row">
-              <div>
-                <h2>contact</h2>
-                <p>{shippingAddress.email}</p>
-              </div>
-            </div>
-            <hr />
-            <div className="row">
-              <div>
-                <h2>address</h2>
-                <p>
-                  {shippingAddress.address}, {shippingAddress.city},{shippingAddress.country}
-                </p>
-              </div>
-            </div>
-          </Border>
-          <Border>
-            <div className="price">
-              <h2>shipping cost</h2>
-              <p>aed 50.00</p>
-            </div>
-          </Border>
-          <Border>
-            <div className="price">
-              <h2>shipping cost</h2>
-              <p>aed 50.00</p>
-            </div>
-          </Border>
+    <>
+      {loadingShipping || loading ? (
+        <LoaderComponent />
+      ) : (
+        <Container>
+          <Header>
+            <a href="#/" onClick={() => history.goBack()}>
+              Back
+            </a>
+            <h2>COMPLETE PAYEMENT</h2>
+          </Header>
+          <Grid>
+            <SectionLeft>
+              <Border>
+                <div className="row">
+                  <div>
+                    <h2>contact</h2>
+                    <p>{shippingAddress.email}</p>
+                  </div>
+                </div>
+                <hr />
+                <div className="row">
+                  <div>
+                    <h2>address</h2>
+                    <p>
+                      {shippingAddress.address}, {shippingAddress.city},
+                      {shippingAddress.country}
+                    </p>
+                  </div>
+                </div>
+              </Border>
+              <Border>
+                <div className="price">
+                  <h2>shipping cost</h2>
+                  <p>aed 50.00</p>
+                </div>
+              </Border>
+              <Border>
+                <div className="price">
+                  <h2>shipping cost</h2>
+                  <p>aed 50.00</p>
+                </div>
+              </Border>
 
-          <div>
-            <h4>Card Information</h4>
-            <StripePayment />
-          </div>
-          {/* <div className="row" style={{marginTop: 30}}>
-            <ButtonC className="">submit</ButtonC>
-            <Link to="/products" className="link_back" >
-              back to payment
-            </Link>
-          </div> */}
-        </SectionLeft>
-        <SectionRight />
-      </Grid>
-    </Container>
+              <div>
+                <h4>Card Information</h4>
+                <StripePayment />
+              </div>
+              {/* <div className="row" style={{marginTop: 30}}>
+          <ButtonC className="">submit</ButtonC>
+          <Link to="/products" className="link_back" >
+            back to payment
+          </Link>
+        </div> */}
+            </SectionLeft>
+            <SectionRight />
+          </Grid>
+        </Container>
+      )}
+    </>
   );
 }
 
@@ -212,7 +226,7 @@ const SectionRight = () => {
           <h1 class="card__price">100.00 AED</h1>
         </div>
       </Card>
-      
+
       <hr />
       <div className="solde">
         <h1>subtotal</h1>
@@ -240,7 +254,7 @@ const Container = styled.div`
 const Header = styled.div`
   height: 5rem;
   width: 100%;
-  padding:0 1rem;
+  padding: 0 1rem;
 
   & a {
     text-decoration: none;

@@ -13,6 +13,8 @@ import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { errorMessage } from "../../../message";
 import { payOrder, createOrder } from "../../../../flux/actions/orderAction";
+import { CART_CLEAR_ITEMS } from "../../../../flux/constants/cartConstants";
+import LoaderComponent from "../../../Loader";
 
 const CARD_OPTIONS = {
   iconStyle: "solid",
@@ -37,6 +39,7 @@ const CARD_OPTIONS = {
 
 export default function PaymentForm() {
   const [paymentSuccess, setPaymentSuccess] = useState(false);
+  const [numbercard, setnumbercar] = useState("");
   const stripe = useStripe();
   const elements = useElements();
 
@@ -44,7 +47,7 @@ export default function PaymentForm() {
   const history = useHistory();
 
   const { shippingAddress, cartItems } = useSelector((state) => state.cart);
-  const { loading, success, order } = useSelector((state) => state.orderCreate);
+  const { order, loading, error } = useSelector((state) => state.orderCreate);
 
   //   Calculate prices
   const addDecimals = (num) => {
@@ -63,87 +66,183 @@ export default function PaymentForm() {
     Number(taxPrice)
   ).toFixed(2);
 
+  // const handleSubmit = async (e) => {
+  //   console.log("click");
+  //   e.preventDefault();
+  //   const res = await stripe.createPaymentMethod({
+  //     type: "card",
+  //     card: elements.getElement(CardNumberElement),
+  //     billing_details: shippingAddress,
+  //   });
+
+  //   console.log(res)
+
+  // if (!error) {
+  //   try {
+  //     const { id } = paymentMethod;
+
+  //     const response = await axios.post("/api/payment", {
+  //       amount: totalPrice,
+  //       id,
+  //       payment_method: "pm_card_visa",
+  //     });
+
+  //     // const body = {
+  //     //   amount: totalPrice,
+  //     //   id,
+  //     //   // payment_method: "pm_card_visa",
+  //     //   paymentMethodType: "card",
+  //     //   currency: "eur"
+  //     // };
+
+  //     console.log(response)
+
+  //     // if (response.data.paymentSuccess) {
+  //     //   console.log("Successful payment");
+  //     //   setPaymentSuccess(true);
+  //     //   payOrder(response.data);
+  //     //   dispatch(
+  //     //     createOrder({
+  //     //       orderItems: cartItems,
+  //     //       shippingAddress: shippingAddress,
+  //     //       paymentMethod: paymentMethod,
+  //     //       itemsPrice: itemsPrice,
+  //     //       shippingPrice: shippingPrice,
+  //     //       taxPrice: taxPrice,
+  //     //       totalPrice: totalPrice,
+  //     //     })
+  //     //   );
+  //     //   history.push("/thank");
+  //     // }
+
+  //   } catch (error) {
+  //     console.log("Error", error);
+  //   }
+  // } else {
+  //   console.log(error.message);
+  //   errorMessage(error.message, 500);
+  // }
+  // };
+
   const handleSubmit = async (e) => {
-    console.log("click")
     e.preventDefault();
+    console.log("payment");
+    if (!stripe || !elements) {
+      return;
+    }
+
+    // ///  Check the payment valid
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card: elements.getElement(CardNumberElement),
       billing_details: shippingAddress,
     });
 
-    if (!error) {
-      try {
-        const { id } = paymentMethod;
-        const config = {
-          headers: {
-            "Authorization": `Bearer "pk_test_51JJfI4Bx9NV9CAAsS0Sm1gUcqk97vPCARN9vYWF3BLu6i7JXgWUet4silSZmxgbGF3w8641D9Rx249dcJ3uR9m9a00S1YXrmI3"`,
-          },
-        };
+    //  Create payment intent on the server
+    // if (!error) {
+    //   try {
+    //     const { id } = paymentMethod;
 
-        const response = await axios.post(
-          "/api/payment",
-          {
-            amount: totalPrice,
-            id,
-            payment_method: "pm_card_visa",
-          },
-          config
-        );
+    //     const response = await axios.post("/api/payment", {
+    //       amount: totalPrice,
+    //       id,
+    //       payment_method: "pm_card_visa",
+    //     });
 
-        if (response.data.paymentSuccess) {
-          console.log("Successful payment");
-          setPaymentSuccess(true);
-          payOrder(response.data);
-          dispatch(
-            createOrder({
-              orderItems: cartItems,
-              shippingAddress: shippingAddress,
-              paymentMethod: paymentMethod,
-              itemsPrice: itemsPrice,
-              shippingPrice: shippingPrice,
-              taxPrice: taxPrice,
-              totalPrice: totalPrice,
-            })
-          );
-          history.push("/thank");
-        }
-      } catch (error) {
-        console.log("Error", error);
-      }
-    } else {
-      console.log(error.message);
-      errorMessage(error.message, 500);
+    //   } catch (error) {
+    //     console.log("Error", error);
+    //   }
+    // } else {
+    //   console.log(error.message);
+    //   errorMessage(error.message, 500);
+    // }
 
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    console.log(parseInt(totalPrice));
+
+    const body = {
+      amount: 90000,
+      // id,
+      paymentMethodType: "card",
+    };
+
+    const response = await axios.post(
+      "/api/payment",
+      JSON.stringify(body),
+      config
+    );
+
+    if (response.data.success) {
+      console.log("Successful payment");
+      setPaymentSuccess(true);
+      payOrder(order._id, {
+        id: response.data.payment.id,
+        status: response.data.payment.status,
+        email_address: response.data.payment.receipt_email
+      });
+      dispatch({type: CART_CLEAR_ITEMS})
+
+      history.push("/thank");
+      console.log(response.data.payment);
     }
+
+    
+
+    // const res = await fetch("/api/payment", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     paymentMethodType: "card",
+    //     amount: 400
+    //   }),
+    // });
   };
 
   return (
     <>
-      {!paymentSuccess ? (
-        <Form onSubmit={handleSubmit}>
-          <Row>
-            <CardNumberElement className="input_card" options={CARD_OPTIONS} />
-          </Row>
-
-          <Row>
-            <CardExpiryElement className="input_card" options={CARD_OPTIONS} />
-          </Row>
-
-          <Row>
-            <CardCvcElement className="input_card" options={CARD_OPTIONS} />
-          </Row>
-          <button type="submit" disabled={!stripe}>
-            Pay {totalPrice}
-          </button>
-        </Form>
+      {loading ? (
+        <LoaderComponent />
       ) : (
-        <div>
-          <h2>
-            You just bought a sweet spatula congrats this is the best decision
-            of you're life
-          </h2>
-        </div>
+        <>
+          {!paymentSuccess ? (
+            <Form onSubmit={(e) => handleSubmit(e)}>
+              <Row>
+                <CardNumberElement
+                  className="input_card"
+                  options={CARD_OPTIONS}
+                />
+              </Row>
+
+              <Row>
+                <CardExpiryElement
+                  className="input_card"
+                  options={CARD_OPTIONS}
+                />
+              </Row>
+
+              <Row>
+                <CardCvcElement className="input_card" options={CARD_OPTIONS} />
+              </Row>
+              <button type="submit" disabled={!stripe}>
+                Pay {totalPrice}
+              </button>
+            </Form>
+          ) : (
+            <div>
+              <h2>
+                You just bought a sweet spatula congrats this is the best
+                decision of you're life
+              </h2>
+            </div>
+          )}
+        </>
       )}
     </>
   );

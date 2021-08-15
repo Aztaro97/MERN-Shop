@@ -23,7 +23,6 @@ import ListOrderScreen from "./components/pagesScreens/orders/ordersScreen"
 import CompleteOrder from "./components/pagesScreens/orders/placeOrder"
 import pageNotFound from "./components/pagesScreens/pageNotFund"
 import Loading from "./components/Loader";
-import Strip from "./components/pagesScreens/checkout/stripe/stripeContainer"
 import MapScreen from "./components/pagesScreens/checkout/googleMap/mapScreen";
 
 import OrderListComponent from "./components/pagesScreens/orders/orderList"
@@ -58,13 +57,13 @@ function App() {
           <Route path="/myorder" component={ListOrderScreen} />
           <Route path="/loader" component={Loading} />
           <Route path="/map" component={MapScreen} />
-          <Route path="/stripe" component={Strip} />
 
 
           {/*////////////////  ADMIN ROUTER  ///////////// */}
           <Route path="/admin/orderlist" component={OrderListComponent} exact/>
           <Route path="/admin/userlist" component={UserListComponent} exact/>
           <Route path="/admin/productlist" component={ProductListComponent} exact/>
+          <Route path="/admin/productlist/:pageNumber" component={ProductListComponent} exact/>
 
 
 

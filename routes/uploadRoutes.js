@@ -59,7 +59,37 @@ router.post("/", [protect, upload.array("image-files")], async (req, res) => {
   } catch (error) {
     console.log(error);
   }
-  // res.send(`/${req.file.path}`)
 });
+
+
+
+
+router.post("/products-images", [protect, upload.array("image-files")], async (req, res) => {
+  try {
+    const imgUrlList = [];
+    for (var i = 0; i < req.files.length; i++) {
+      var locaFilePath = req.files[i].path;
+      const result = await uploadToCloudinary(locaFilePath);
+      imgUrlList.push(result.url);
+    }
+
+    // res.status(200).json( {imgUrlList} );
+    const product = await Product.findOne({user: req.user._id})
+    if (product) {
+      product.imageUrl = imgUrlList;
+      product.save()
+      res.status(200).json({ product });
+
+    } else {
+      res.status(400).json("uSER NOT FOUND")
+    }
+
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+
+
 
 module.exports = router;

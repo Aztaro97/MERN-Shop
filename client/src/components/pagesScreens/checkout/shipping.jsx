@@ -50,7 +50,7 @@ function Checkout({ history }) {
   const [saveShippingCheck, setSaveShippingCheck] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [adress, setAddress] = useState("");
+  const [address, setAddress] = useState("");
   const [appartment, setAppartment] = useState("");
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
@@ -69,21 +69,24 @@ function Checkout({ history }) {
   const shipping = {
     firstName,
     lastName,
-    adress,
+    address,
     appartment,
     city,
     country,
     region,
     phoneNumber,
+    email
   };
 
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     if (saveShippingCheck) {
       dispatch(registerShippingInfo(shipping));
     }
     dispatch(saveShippingAddress(shipping));
-    window.location.href = "/payment";
+    history.push("/payment");
+    // window.location.assign = "/payment";
     console.log(shipping);
 
   }
@@ -91,12 +94,10 @@ function Checkout({ history }) {
   // const history = useHistory();
   const { shippingAddress } = useSelector((state) => state.cart);
 
-  if (shippingAddress.address != null) {
+  if (shippingAddress !== null) {
     history.push("/payment");
   }
-  // } else if (!cart.paymentMethod) {
-  //   history.push('/payment')
-  // }
+ 
 
   return (
     <Container>
@@ -158,7 +159,7 @@ function Checkout({ history }) {
               name="address"
               id="address"
               placeholder="ADRESS"
-              value={adress}
+              value={address}
               onChange={e => setAddress(e.target.value)}
             />
           </Row>
@@ -204,7 +205,7 @@ function Checkout({ history }) {
               style={{ width: "100%" }}
               onClick={() => setVisible(true)}
             >
-              Select ur localisation on map
+              Select your localisation on map
             </ButtonC>
             <Modal
               centered
