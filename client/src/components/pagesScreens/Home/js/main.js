@@ -1,4 +1,7 @@
-var bgImage = null;
+import $ from "jquery";
+
+(function() {
+    var bgImage = null;
 var lastImgIndex = 0;
 var introSliderTimer;
 var introTime;
@@ -441,3 +444,4 @@ function adsSlider() {
 
 
 }
+})()

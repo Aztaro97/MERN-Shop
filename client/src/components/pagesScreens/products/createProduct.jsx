@@ -40,6 +40,8 @@ function AddProductScreen() {
   const [selling, setSelling] = useState(false);
   const [delivery, setDelivery] = useState(false);
 
+  const [fileList, setFileList] = useState([]);
+
   const [code, setCode] = useState("");
   const [shippingFrom, setShippingFrom] = useState("");
   const [shippingTo, setShippingTo] = useState([]);
@@ -86,10 +88,27 @@ function AddProductScreen() {
 
   const history = useHistory();
 
-  const handleProductCreate = (e) => {
-    e.preventDefault();
-    console.log(body);
-    dispatch(createProduct(body));
+  const handleProductCreate = async (e) => {
+    try {
+      e.preventDefault();
+      console.log(body);
+      dispatch(createProduct(body));
+      const config = {
+        headers: {
+          "content-type": "multipart/form-data",
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      };
+
+      let formdata = new FormData();
+      for (var i = 0; i < fileList.length; i++) {
+        formdata.append("imgfiles", fileList[i].originFileObj);
+      }
+      const res = await axios.post("/api/upload/products-images", formdata, config);
+      console.log(res)
+    } catch (error) {
+      console.log(error.message)
+    }
   };
 
   if (!userInfo) {
@@ -108,7 +127,7 @@ function AddProductScreen() {
         </a>
         <h2>Add your products</h2>
       </Header>
-      <MainProductForm>
+      <MainProductForm onSubmit={handleProductCreate}>
         <Col>
           <ProductSection1
             setCode={setCode}
@@ -143,6 +162,8 @@ function AddProductScreen() {
             setVariantMaterial={setVariantMaterial}
             setVariantStyle={setVariantStyle}
             setUnited={setUnited}
+            fileList={fileList}
+            setFileList={setFileList}
           />
         </Col>
       </MainProductForm>
@@ -163,6 +184,8 @@ const FormRight = ({
   setVariantMaterial,
   setVariantStyle,
   setUnited,
+  fileList,
+  setFileList
 }) => {
   const [showInput, setShowInput] = useState(false);
   const [showInput0, setShowInput0] = useState(false);
@@ -172,7 +195,7 @@ const FormRight = ({
   const [showInput4, setShowInput4] = useState(false);
 
   // const [isModalVisible, setIsModalVisible] = useState(false);
-  const [fileList, setFileList] = useState([]);
+  // const [fileList, setFileList] = useState([]);
 
   // Color State
   const [color, setColor] = useState("");
@@ -344,7 +367,7 @@ const FormRight = ({
   };
 
   return (
-    <form onSubmit={handleProductCreate}>
+    <div>
       <Row>
         <InputC
           required
@@ -719,7 +742,7 @@ const FormRight = ({
         save & share
       </ButtonC>
       <Link href="/add-product">ADD ANOTHER PRODUCT</Link>
-    </form>
+    </div>
   );
 };
 
@@ -776,22 +799,14 @@ const RateSection = ({ arrayZone, setArrayZone }) => {
   const [amount, setAmount] = useState(null);
   const [orderBased, setOrderBased] = useState("");
 
-  const [indexarray, setIndexArray] = useState(null)
-  // const [min, setMin] = useState(null);
-  // const [min, setMin] = useState(null);
-  const [listAddress, setListAddress] = useState({
-    name: "",
-    amount: "",
-    minprice: null,
-    maxprice: null,
-    orderBased: "",
-  });
+  const [indexarray, setIndexArray] = useState(null);
+ 
   const [rateName, setRateName] = useState("");
 
   const showModal = (index) => {
     setIsModalVisible(true);
-    setIndexArray(index)
-    console.log(index)
+    setIndexArray(index);
+    console.log(index);
   };
 
   const handleAdd = () => {
@@ -807,7 +822,10 @@ const RateSection = ({ arrayZone, setArrayZone }) => {
     newArray[index].orderBased = orderBased;
     setArrayZone(newArray);
     setIsModalVisible(false);
-    
+    setMin(null)
+    setMax(null)
+    setAmount(null)
+    setOrderBased("")
 
     console.log(arrayZone);
   };
@@ -842,18 +860,23 @@ const RateSection = ({ arrayZone, setArrayZone }) => {
                 <p style={{ color: "var(--orange-color)" }}>
                   {item.city.join(" / ")}
                 </p>
-                <p style={{ fontSize:".7rem" }}>
+                <p style={{ fontSize: ".7rem" }}>
                   {!item.amount || item.amount === null
                     ? "Free shipping"
                     : item.amount}
                 </p>
                 <p>
-                  <span onClick={() => showModal(index)} style={{ cursor: "pointer" }}>
+                  <span
+                    onClick={() => showModal(index)}
+                    style={{ cursor: "pointer" }}
+                  >
                     {!item.minprice ? (
                       "Add condition"
                     ) : (
-                      <> {item.minprice} {item.orderBased === "price" ? "AED" : "kg"} 
-                      
+                      <>
+                        {" "}
+                        {item.minprice}{" "}
+                        {item.orderBased === "price" ? "AED" : "kg"}
                       </>
                     )}
                   </span>
@@ -868,6 +891,7 @@ const RateSection = ({ arrayZone, setArrayZone }) => {
                       <hr />
                       <div className="price">
                         <input
+                        required
                           type="currency"
                           name="minprice"
                           id="minprice"
@@ -886,6 +910,7 @@ const RateSection = ({ arrayZone, setArrayZone }) => {
                           onChange={(e) => setMax(e.target.value)}
                         />
                         <input
+                        required
                           type="currency"
                           name="amount"
                           id="amount"
@@ -926,6 +951,7 @@ const RateSection = ({ arrayZone, setArrayZone }) => {
                       <hr />
                       <div className="save_btn">
                         <button
+                        disabled={(!min || !orderBased || !amount) && (true) }
                           type="button"
                           onClick={() => onSaveCondition(indexarray)}
                         >
@@ -988,7 +1014,7 @@ const ShippingSection = ({
         amount: null,
         minprice: null,
         maxprice: null,
-        orderBased: ""
+        orderBased: "",
       },
     ]);
     setCountry("");

@@ -1,8 +1,18 @@
-import React from "react";
+import React, {useEffect} from  "react";
 import styled from "styled-components";
 import MainContainer from "../../MainContainer";
+import {useDispatch, useSelector } from "react-redux"
+import {listMyOrders} from "../../../flux/actions/orderAction"
 
 function OrdersScreen() {
+
+  const dispatch = useDispatch();
+
+  const { loading: loadingOrders, error: errorOrders, orders } = useSelector((state) => state.orderListMy)
+
+  useEffect(() => {
+    dispatch(listMyOrders())
+  }, [dispatch])
   return (
     <MainContainer>
       <OrderContainer>

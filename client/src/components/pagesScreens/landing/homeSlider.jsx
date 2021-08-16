@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
@@ -42,8 +42,9 @@ const HomeSection = () => {
         </button>
       );
     },
-  
   };
+
+  useEffect(() => {}, [Slider]);
   return (
     <div>
       <Slider {...settings}>
@@ -88,8 +89,7 @@ const HomeSection = () => {
 
 const Slide = styled.div`
   & .bg1 {
-    background-image: url(${bg_landing1}),  linear-gradient(#1a0313, #070404);
-    
+    background-image: url(${bg_landing1}), linear-gradient(#1a0313, #070404);
   }
 
   & .bg2 {
@@ -103,11 +103,10 @@ const Slide = styled.div`
     background-position: center;
     background-size: cover;
     background-origin: content-box;
-    
 
     display: flex;
     align-items: flex-end;
-    @media only screen and (max-width:768px) {
+    @media only screen and (max-width: 768px) {
       height: 400px;
     }
   }
@@ -165,17 +164,17 @@ const SlideOverlay = styled.div`
       }
     }
 
-    @media only screen and (max-width:768px) {
+    @media only screen and (max-width: 768px) {
       bottom: 6rem;
       padding-right: 1rem;
       & h1 {
         font-size: 1.4rem;
       }
       & p {
-        font-size: .8rem;
+        font-size: 0.8rem;
       }
       & .link1 {
-        font-size: .8rem;
+        font-size: 0.8rem;
       }
     }
   }

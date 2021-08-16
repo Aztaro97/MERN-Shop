@@ -19,7 +19,7 @@ const getProducts = asyncHandler(async (req, res) => {
     : {};
 
   const count = await Product.countDocuments();
-  const products = await Product.find({allow:true})
+  const products = await Product.find({allow:false}).populate("user", ["email","company"])
     .limit(pageSize)
     .skip(pageSize * (page - 1));
 
@@ -89,7 +89,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
 // @route   POST /api/products
 // @access  Private/Admin
 const createProduct = asyncHandler(async (req, res) => {
-  const imageList = [];
+  // const imageList = [];
 
   const {
     code,
@@ -121,7 +121,7 @@ const createProduct = asyncHandler(async (req, res) => {
     name,
     price,
     compareAtPrice,
-    imageUrl: imageList,
+    // imageUrl: [],
     brand,
     category,
     countInStock,
@@ -250,7 +250,7 @@ const getTopProducts = asyncHandler(async (req, res) => {
 // @route   GET /api/products/my
 // @access  Private
 const getMyProducts = asyncHandler(async (req, res) => {
-  const products = await Product.find({ user: req.user }).populate("user");
+  const products = await Product.find({ user: req.user }).populate("user", ["company"]);
   res.status(200).json(products);
 });
 

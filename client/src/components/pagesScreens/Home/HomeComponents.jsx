@@ -11,11 +11,11 @@ import "./css/owl.carousel.min.css";
 import "./css/owl.theme.default.min.css";
 import "./css/animate.min.css";
 
-// import "../../js/main"
-// import "../../js/jquery-3.5.1.slim.min.js"
-// import "../../js/bootstrap.min.js"
-// import "../../js/owl.carousel.min.js"
-// import "../../js/popper.min.js"
+// import "./js/main"
+// import "./js/jquery-3.5.1.slim.min.js"
+// import "./js/bootstrap.min.js"
+// import "./js/owl.carousel.min.js"
+// import "./js/popper.min.js"
 
 
 function HomeComponents() {

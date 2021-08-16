@@ -28,6 +28,8 @@ function NavBar() {
     }
   };
 
+  
+
   useEffect(() => {
     window.addEventListener("scroll", ChangeNav);
   }, []);
@@ -78,7 +80,7 @@ function NavBar() {
   );
   return (
     <Header scrollNav={scrollNav}>
-      <Lang to="/arab">Arabic</Lang>
+      <Lang href="/">Arabic</Lang>
       <Nav>
         {userInfo && userInfo.isAdmin && (
           <NavItem>
@@ -361,7 +363,7 @@ const NavLink = styled(Link)`
     color: var(--orange-color);
   }
 `;
-const Lang = styled(Link)`
+const Lang = styled.a`
   text-decoration: none;
   border: 1px solid var(--orange-color);
   color: var(--silver-color);

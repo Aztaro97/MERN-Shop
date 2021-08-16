@@ -21,7 +21,7 @@ padding: 0 1rem;
     margin-bottom: 0;
   }
 `;
-export const MainProductForm = styled.div`
+export const MainProductForm = styled.form`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 2rem;

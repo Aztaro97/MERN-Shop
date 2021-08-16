@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./landing.css";
 
 import HomeSlider from "./homeSlider"
@@ -7,6 +7,10 @@ import HomeSlider from "./homeSlider"
 
 
 function LandingPage() {
+
+  useEffect(()=> {
+
+  }, [HomeSlider])
   return (
     <div className="LandinghomePages">
       <div class="navDiv" id="navpoints">
