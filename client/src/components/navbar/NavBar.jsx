@@ -2,10 +2,16 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link, Redirect } from "react-router-dom";
 import { FaUser, FaShoppingCart, FaUserCog } from "react-icons/all";
-import { Popover } from "antd";
+import { Popover, Dropdown, Menu } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../flux/actions/userAction";
 import MAinContainer from "../MainContainer";
+import { DownOutlined } from "@ant-design/icons";
+
+//   Logo Import State
+import Logo_SVG from "../../img/logo.svg";
+
+const { SubMenu } = Menu;
 
 function NavBar() {
   const [scrollNav, setScrollNav] = useState(false);
@@ -27,8 +33,6 @@ function NavBar() {
       setScrollNav(false);
     }
   };
-
-  
 
   useEffect(() => {
     window.addEventListener("scroll", ChangeNav);
@@ -78,9 +82,36 @@ function NavBar() {
       <LinkR href="/admin/orderlist">Orders Lists</LinkR>
     </Content>
   );
+
+  const marketingMenu = (
+    <Menu>
+      <Menu.Item>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.antgroup.com"
+        >
+          1st menu item
+        </a>
+      </Menu.Item>
+      <Menu.Item>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.antgroup.com"
+        >
+          1st menu item
+        </a>
+      </Menu.Item>
+    </Menu>
+  );
+
   return (
     <Header scrollNav={scrollNav}>
       <Lang href="/">Arabic</Lang>
+      <Logo href="/">
+        <img src={Logo_SVG} alt="" />
+      </Logo>
       <Nav>
         {userInfo && userInfo.isAdmin && (
           <NavItem>
@@ -159,7 +190,7 @@ function NavBar() {
                       Advertising
                     </a>
                   </li>
-                  <li>
+                  {/* <li>
                     <a
                       href="#"
                       onClick="menuToggling()"
@@ -167,7 +198,41 @@ function NavBar() {
                     >
                       marketing
                     </a>
-                  </li>
+                  </li> */}
+
+                  <DropMenu
+                    style={{
+                      background: "transparent",
+                      color: "#fff",
+                      textAlign: "center",
+                      fontSize: "1rem",
+                      marginbottom: "5px",
+                      position: "relative",
+                      bottom: "10px",
+                      left: "10px"
+                    }}
+                    className="dropMenu"
+                    // onClick={this.handleClick}
+                    // style={{ width: 256 }}
+                    // defaultSelectedKeys={["1"]}
+                    // defaultOpenKeys={["sub1"]}
+                    title="Marketing ddd"
+                    mode="vertical"
+                    trigger="click"
+                  >
+                    <SubMenu
+                      key="sub4"
+                      title="MARKETING"
+                      style={{ color: "#93a3b3", textAlign: "center"}}
+                    >
+                      <Menu.Item title="opps" key="9">
+                        Option 9
+                      </Menu.Item>
+                      <Menu.Item key="10">Option 10</Menu.Item>
+                      <Menu.Item key="11">Option 11</Menu.Item>
+                      <Menu.Item key="12">Option 12</Menu.Item>
+                    </SubMenu>
+                  </DropMenu>
                   <li>
                     <a
                       href="/e-commerce"
@@ -183,7 +248,7 @@ function NavBar() {
                       onClick="menuToggling()"
                       className="subLink text-uppercase weight-500"
                     >
-                      Pos
+                      Delivery
                     </a>
                   </li>
                   <li>
@@ -192,7 +257,7 @@ function NavBar() {
                       onClick="menuToggling()"
                       className="subLink text-uppercase weight-500"
                     >
-                      Print
+                      Payment Method
                     </a>
                   </li>
                   <li>
@@ -436,4 +501,38 @@ const LinkP = styled(Link)`
     /* margin:2rem 0 */
   }
 `;
+
+const Logo = styled.div`
+  position: relative;
+  top: 0px;
+  z-index: 999999999999;
+  & img {
+    width: 3.5rem;
+  }
+`;
+
+const DropMenu = styled(Menu)`
+  background: var(--orange-color);
+  color: #93a3b3;
+  border: none;
+  /* :hover {
+    color: red;
+  } */
+  & .ant-menu-submenu .ant-menu-submenu-title {
+    &:hover {
+      color: red;
+    }
+  }
+
+  & .ant-menu-submenu-expand-icon, .ant-menu-submenu-arrow {
+    color: #93a3b3;
+  }
+
+
+  /* Menu Vertical */
+  & .ant-menu-submenu-vertical {
+
+  }
+
+`
 export default NavBar;

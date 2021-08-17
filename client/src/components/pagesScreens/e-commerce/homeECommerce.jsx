@@ -323,7 +323,7 @@ const Card = styled.div`
   box-shadow: var(--box-shadow-value);
   & .card_img {
     width: 100%;
-    /* height:12.5rem; */
+    height:12.5rem;
     object-fit: cover;
     /* border-radius: 1rem 1rem 0 0; */
   }

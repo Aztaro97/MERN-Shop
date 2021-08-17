@@ -95,7 +95,7 @@ function Checkout({ history }) {
   const { shippingAddress } = useSelector((state) => state.cart);
 
   if (shippingAddress !== null) {
-    history.push("/payment");
+    // history.push("/payment");
   }
  
 

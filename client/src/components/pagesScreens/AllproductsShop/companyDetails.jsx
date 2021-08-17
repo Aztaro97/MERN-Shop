@@ -176,7 +176,7 @@ const Col = styled.div`
     padding: 0 .7rem;
 
     & img {
-      
+      max-height:38rem;
     }
   }
 
