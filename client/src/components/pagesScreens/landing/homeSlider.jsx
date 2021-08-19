@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
+import { useSelector, useDispatch } from "react-redux";
+import { createProduct } from "../../../flux/actions/productAction";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import bg_landing1 from "../../../img/bg_landing.png";
 
@@ -44,7 +46,10 @@ const HomeSection = () => {
     },
   };
 
-  useEffect(() => {}, [Slider]);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  useEffect(() => {}, []);
   return (
     <div>
       <Slider {...settings}>
@@ -60,7 +65,7 @@ const HomeSection = () => {
                   Our marketing strategies for getting your website publicized
                   give effective results, there are no excuses, It's that simple
                 </p>
-                <Link to="/register" className="link1">
+                <Link className="link1" to="/register">
                   Get Your Commercial page Free
                 </Link>
               </div>
@@ -75,7 +80,7 @@ const HomeSection = () => {
           <div className="bg_image bg2">
             <SlideOverlay>
               <div className="btn_link">
-                <Link to="/register" className="link2">
+                <Link className="link2" to="/register">
                   register
                 </Link>
               </div>

@@ -133,7 +133,7 @@ function HomeComponents() {
                   </div>
                 </div>
                 {/* <!-- clicking points equal slider number  --> */}
-                <div class="pagers" id="introSlidersPagers">
+                {/* <div class="pagers" id="introSlidersPagers">
                   <div class="pager active">
                     <span></span>
                   </div>
@@ -143,7 +143,7 @@ function HomeComponents() {
                   <div class="pager">
                     <span></span>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </section>

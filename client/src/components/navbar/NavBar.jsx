@@ -1,26 +1,40 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import { FaUser, FaShoppingCart, FaUserCog } from "react-icons/all";
-import { Popover, Dropdown, Menu } from "antd";
+import { Popover, Menu } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../flux/actions/userAction";
-import MAinContainer from "../MainContainer";
-import { DownOutlined } from "@ant-design/icons";
+import {createProduct} from "../../flux/actions/productAction"
+import { useTranslation } from "react-i18next";
+import i18next from "i18next"
+
+
+import "./navbar.css";
 
 //   Logo Import State
 import Logo_SVG from "../../img/logo.svg";
 
 const { SubMenu } = Menu;
 
+
 function NavBar() {
+  const { t } = useTranslation();
   const [scrollNav, setScrollNav] = useState(false);
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const { cartItems } = useSelector((state) => state.cart);
 
   const { userInfo } = useSelector((state) => state.userLogin);
+
+  const {
+    loading: loadingCreate,
+    error: errorCreate,
+    success: successCreate,
+    product: createdProduct,
+  } = useSelector((state) => state.productCreate)
 
   const handleLogOut = () => {
     dispatch(logout());
@@ -34,9 +48,20 @@ function NavBar() {
     }
   };
 
+  const handleCreateProduct = () => {
+    if (userInfo) {
+      history.push("/auth")
+    }
+    dispatch(createProduct())
+  }
+
   useEffect(() => {
     window.addEventListener("scroll", ChangeNav);
-  }, []);
+
+    if (successCreate) {
+      history.push(`/add-product/${createdProduct._id}`)
+    }
+  }, [successCreate, history]);
 
   const ProfileContentLogin = (
     <Content>
@@ -44,7 +69,7 @@ function NavBar() {
         <>
           <LinkR href="/myproducts">my products</LinkR>
           <LinkR href="/myorder">my order</LinkR>
-          <LinkR href="/add-product">add more products</LinkR>
+          <LinkR onClick={handleCreateProduct} >add more products</LinkR>
         </>
       ) : (
         <>
@@ -77,7 +102,7 @@ function NavBar() {
   );
   const AdminContente = (
     <Content>
-      <LinkR href="/admin/userlist">Users Lists</LinkR>
+      <LinkR href="/admin/userlist">Users Lists {t("welcome_message")} </LinkR>
       <LinkR href="/admin/productlist">Products Lists</LinkR>
       <LinkR href="/admin/orderlist">Orders Lists</LinkR>
     </Content>
@@ -106,9 +131,13 @@ function NavBar() {
     </Menu>
   );
 
+  const handleChangeLang = () => {
+    i18next.changeLanguage('en')
+  }
+
   return (
     <Header scrollNav={scrollNav}>
-      <Lang href="/">Arabic</Lang>
+      <Lang href="/" onClick={handleChangeLang} >Arabic</Lang>
       <Logo href="/">
         <img src={Logo_SVG} alt="" />
       </Logo>
@@ -177,63 +206,82 @@ function NavBar() {
                 <a
                   onClick="homePage(1)"
                   className="itemLink text-uppercase weight-600"
+                  href="#/"
                 >
                   Services
                 </a>
                 <ul className="subLinks">
                   <li>
                     <a
-                      href="#"
+                      href="#/"
                       onClick="menuToggling()"
                       className="subLink text-uppercase weight-500"
                     >
                       Advertising
                     </a>
                   </li>
-                  {/* <li>
-                    <a
-                      href="#"
-                      onClick="menuToggling()"
-                      className="subLink text-uppercase weight-500"
-                    >
-                      marketing
-                    </a>
-                  </li> */}
 
                   <DropMenu
                     style={{
                       background: "transparent",
-                      color: "#fff",
                       textAlign: "center",
                       fontSize: "1rem",
-                      marginbottom: "5px",
+                      margin: "0",
                       position: "relative",
-                      bottom: "10px",
-                      left: "10px"
+                      // bottom: "10px",
+                      left: "10px",
                     }}
                     className="dropMenu"
-                    // onClick={this.handleClick}
-                    // style={{ width: 256 }}
-                    // defaultSelectedKeys={["1"]}
-                    // defaultOpenKeys={["sub1"]}
-                    title="Marketing ddd"
                     mode="vertical"
                     trigger="click"
                   >
                     <SubMenu
-                      key="sub4"
+                      key="MARKETING"
                       title="MARKETING"
-                      style={{ color: "#93a3b3", textAlign: "center"}}
+                      style={{
+                        color: "#93a3b3",
+                        textAlign: "center",
+                        background: "transparent",
+                        margin: "0",
+                        padding: "0"
+                      }}
+                      popupClassName="SubMenu"
                     >
-                      <Menu.Item title="opps" key="9">
-                        Option 9
+                      <Menu.Item key="1">
+                        <a href="#/" className="menu_item_link">
+                          E-marketing
+                        </a>
                       </Menu.Item>
-                      <Menu.Item key="10">Option 10</Menu.Item>
-                      <Menu.Item key="11">Option 11</Menu.Item>
-                      <Menu.Item key="12">Option 12</Menu.Item>
+                      <Menu.Item key="2">
+                        <a href="#/" className="menu_item_link">
+                          Outdoor marketing
+                        </a>
+                      </Menu.Item>
+                    </SubMenu>
+                    <SubMenu
+                      key="ECOMMERCE"
+                      title="ECOMMERCE"
+                      style={{
+                        color: "#93a3b3",
+                        textAlign: "center",
+                        background: "transparent",
+                        margin: "0",
+                      }}
+                      popupClassName="SubMenu"
+                    >
+                      <Menu.Item key="3">
+                        <a href="/e-commerce" className="menu_item_link">
+                          Delivery
+                        </a>
+                      </Menu.Item>
+                      <Menu.Item key="4">
+                        <a href="#/" className="menu_item_link">
+                         Payment
+                        </a>
+                      </Menu.Item>
                     </SubMenu>
                   </DropMenu>
-                  <li>
+                  {/* <li>
                     <a
                       href="/e-commerce"
                       onClick="menuToggling()"
@@ -241,28 +289,28 @@ function NavBar() {
                     >
                       E-commerce
                     </a>
-                  </li>
+                  </li> */}
                   <li>
                     <a
                       href="./pos.html"
                       onClick="menuToggling()"
                       className="subLink text-uppercase weight-500"
                     >
-                      Delivery
+                      Production
                     </a>
                   </li>
                   <li>
                     <a
-                      href="#"
+                      href="#/"
                       onClick="menuToggling()"
                       className="subLink text-uppercase weight-500"
                     >
-                      Payment Method
+                      Design
                     </a>
                   </li>
                   <li>
                     <a
-                      href="#"
+                      href="#/"
                       onClick="menuToggling()"
                       className="subLink text-uppercase weight-500"
                     >
@@ -271,25 +319,7 @@ function NavBar() {
                   </li>
                   <li>
                     <a
-                      href="#"
-                      onClick="menuToggling()"
-                      className="subLink text-uppercase weight-500"
-                    >
-                      design
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      onClick="menuToggling()"
-                      className="subLink text-uppercase weight-500"
-                    >
-                      Delivery
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
+                      href="#/"
                       onClick="menuToggling()"
                       className="subLink text-uppercase weight-500"
                     >
@@ -304,6 +334,7 @@ function NavBar() {
                 <a
                   onClick="homePage(2)"
                   className="itemLink text-uppercase weight-600"
+                  href="#/"
                 >
                   About Us
                 </a>
@@ -314,6 +345,7 @@ function NavBar() {
                 <a
                   onClick="homePage(3)"
                   className="itemLink text-uppercase weight-600"
+                  href="/contact-us/"
                 >
                   Contact Us
                 </a>
@@ -515,24 +547,29 @@ const DropMenu = styled(Menu)`
   background: var(--orange-color);
   color: #93a3b3;
   border: none;
-  /* :hover {
-    color: red;
-  } */
-  & .ant-menu-submenu .ant-menu-submenu-title {
-    &:hover {
-      color: red;
+
+  & .ant-menu-submenu-title:hover {
+    & .ant-menu-title-content {
+      color: var(--orange-color);
+    }
+    & .ant-menu-submenu-arrow::before,
+    .ant-menu-submenu-arrow::after {
+      background: var(--orange-color);
     }
   }
 
-  & .ant-menu-submenu-expand-icon, .ant-menu-submenu-arrow {
-    color: #93a3b3;
-  }
-
-
   /* Menu Vertical */
-  & .ant-menu-submenu-vertical {
-
+  & .ant-menu-submenu-vertical .ant-menu-submenu-open.ant-menu-submenu-active {
+    background: red;
   }
 
-`
+  /* & .ant-menu-submenu ant-menu-submenu-vertical ant-menu-submenu-open ant-menu-submenu-active */
+`;
+
+const SubMenuCustom = styled(SubMenu)`
+  &.SubMenu {
+    background: red;
+    display: none;
+  }
+`;
 export default NavBar;

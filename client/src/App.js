@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NavBar from "./components/navbar/NavBar";
 import Footer from "./components/footer/Footer";
 import HomeComponents from "./components/pagesScreens/Home/HomeComponents";
+import ContactUsComponents from "./components/pagesScreens/contact/contact";
 import { GlobalStyle } from "./globalStyle";
 import AuthComponents from "./components/pagesScreens/auth/authTab";
 import LoaderComponent from "./components/Loader";
@@ -37,8 +38,9 @@ function App() {
       <NavBar />
         <Switch>
           <Route exact path="/" component={HomeComponents} />
+          <Route exact path="/contact-us" component={ContactUsComponents} />
           <Route path="/auth" component={AuthComponents} />
-          <Route path="/add-product" component={CreateProductComponent} />
+          <Route path="/add-product/:id" component={CreateProductComponent} />
           <Route path="/products/page/:pageNumber" component={ProductsShop} />
           <Route path="/products" component={ProductsShop} />
           <Route path="/product/:id" component={EditProductScreen} />

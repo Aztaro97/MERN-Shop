@@ -11,7 +11,7 @@ import {
   FaSnapchatGhost,
 } from "react-icons/fa";
 import { addToCart } from "../../../../flux/actions/cartAction";
-import {warningMessage} from "../../../message"
+import { warningMessage } from "../../../message";
 
 import picture from "../../../../img/Background.png";
 import picture1 from "../../../../img/productimg.png";
@@ -28,7 +28,7 @@ const ModalContent = ({ product, setShowModal }) => {
 };
 
 const GalleryImg = ({ product }) => {
-  const [currentImg, setCurrentImg] = useState(picture);
+  const [currentImg, setCurrentImg] = useState(product.imageUrl[0].url);
 
   const hanleClick = (e) => {
     console.log(e.target.src);
@@ -38,10 +38,9 @@ const GalleryImg = ({ product }) => {
     <GallerieContent>
       <img className="current-img" src={currentImg} alt="" />
       <div className="aside-img">
-        <img src={picture1} alt="" onClick={hanleClick} />
-        <img src={picture} alt="" onClick={hanleClick} />
-        <img src={picture} alt="" onClick={hanleClick} />
-        <img src={picture} alt="" onClick={hanleClick} />
+        {product.imageUrl.slice(0, 4).map((image, index) => (
+          <img key={index} src={image.url} alt="" onClick={hanleClick} />
+        ))}
       </div>
     </GallerieContent>
   );
@@ -59,8 +58,8 @@ const Contente = ({ product, setShowModal }) => {
   const dispatch = useDispatch();
 
   const addToCartHandler = (id, qty, size) => {
-    if (!sizeSelected ) {
-      warningMessage("Select the size to add to cart", 10)
+    if (!sizeSelected) {
+      warningMessage("Select the size to add to cart", 10);
     } else {
       dispatch(addToCart(id, qty, size));
       setShowModal(false);
@@ -162,7 +161,7 @@ const GallerieContent = styled.div`
     max-height: 100%;
     width: 70%;
     height: 460px;
-    object-fit: cover;
+    object-fit: contain;
     @media only screen and (max-width: 500px) {
       height: 300px;
     }
@@ -171,7 +170,6 @@ const GallerieContent = styled.div`
   & .aside-img {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     width: 30%;
 
     & img {
@@ -182,6 +180,7 @@ const GallerieContent = styled.div`
       border-radius: 10px;
       border: 4px solid #c68787;
       cursor: pointer;
+      margin-bottom: 4px;
       @media only screen and (max-width: 500px) {
         height: 70px;
         margin-left: 5px;

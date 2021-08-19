@@ -62,7 +62,7 @@ function CartComponent({ location }) {
                 <Row key={index}>
                   <Grid>
                     <div className="cart">
-                      <img src={picture} alt="" />
+                      <img src={item.image ? item.image : picture} alt="" />
                       <div className="cart-name">
                         <h3>{item.name}</h3>
                         {item.sizeSelected && (

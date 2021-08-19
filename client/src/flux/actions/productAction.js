@@ -29,7 +29,11 @@ import {
   FILTER_PRODUCT_FAIL,
 } from "../constants/productConstants";
 import { logout } from "./userAction";
-import { successMessage, warningMessage } from "../../components/message";
+import {
+  errorMessage,
+  successMessage,
+  warningMessage,
+} from "../../components/message";
 
 export const listProducts =
   (pageNumber = "") =>
@@ -57,7 +61,7 @@ export const listProducts =
   };
 
 export const listProductsAdmin =
-  (keyword = '', pageNumber = "") =>
+  (keyword = "", pageNumber = "") =>
   async (dispatch, getState) => {
     try {
       const {
@@ -154,7 +158,7 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
   }
 };
 
-export const createProduct = (body) => async (dispatch, getState) => {
+export const createProduct = () => async (dispatch, getState) => {
   try {
     dispatch({
       type: PRODUCT_CREATE_REQUEST,
@@ -171,8 +175,8 @@ export const createProduct = (body) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.post(`/api/products`, body, config);
-    successMessage("Product Created");
+    const { data } = await axios.post(`/api/products`, {}, config);
+    // successMessage("Product Created");
 
     dispatch({
       type: PRODUCT_CREATE_SUCCESS,
@@ -190,7 +194,7 @@ export const createProduct = (body) => async (dispatch, getState) => {
       type: PRODUCT_CREATE_FAIL,
       payload: message,
     });
-    warningMessage(message);
+    // warningMessage(message);
   }
 };
 
@@ -216,6 +220,7 @@ export const updateProduct = (product) => async (dispatch, getState) => {
       product,
       config
     );
+    successMessage("Product Create");
 
     dispatch({
       type: PRODUCT_UPDATE_SUCCESS,
@@ -234,6 +239,7 @@ export const updateProduct = (product) => async (dispatch, getState) => {
       type: PRODUCT_UPDATE_FAIL,
       payload: message,
     });
+    errorMessage(message);
   }
 };
 
@@ -444,3 +450,34 @@ export const setProductAllow =
       console.log(error.message);
     }
   };
+
+export const destroyImages = (imagesUrl) => async (dispatch, getState) => {
+  try {
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+    console.log(imagesUrl);
+
+    const res = await axios.post(`/api/upload/destroy/`, {imagesUrl}, config);
+    console.log(res)
+    dispatch({
+      type: "IMAGE DELETED FROM CLOUDINARY",
+    });
+
+    // localStorage.setItem("cartItems", JSON.stringify(data));
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    // console.log(message);
+    errorMessage(message)
+  }
+};

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import MainContainer from "../../MainContainer";
 import { Upload, Modal } from "antd";
 import { FaPlus, AiFillDelete, GoPlus } from "react-icons/all";
 import axios from "axios";
-import { createProduct } from "../../../flux/actions/productAction";
+import { updateProduct } from "../../../flux/actions/productAction";
 import {
   CountryDropdown,
   RegionDropdown,
@@ -37,6 +37,9 @@ import InputCheck from "../../CheckBoxComponent";
 import InputRadio from "../../InputRadioComponent";
 
 function AddProductScreen() {
+  const params = useParams();
+  const productId = params.id;
+
   const [selling, setSelling] = useState(false);
   const [delivery, setDelivery] = useState(false);
 
@@ -64,6 +67,7 @@ function AddProductScreen() {
   // const arrayZone = []
 
   const body = {
+    _id: productId,
     code,
     typeService: { selling: selling, delivery: delivery },
     shippingFrom,
@@ -92,7 +96,7 @@ function AddProductScreen() {
     try {
       e.preventDefault();
       console.log(body);
-      dispatch(createProduct(body));
+      dispatch(updateProduct(body));
       const config = {
         headers: {
           "content-type": "multipart/form-data",
@@ -104,7 +108,7 @@ function AddProductScreen() {
       for (var i = 0; i < fileList.length; i++) {
         formdata.append("imgfiles", fileList[i].originFileObj);
       }
-      const res = await axios.post("/api/upload/products-images", formdata, config);
+      const res = await axios.post(`/api/upload/product/${productId}`, formdata, config);
       console.log(res)
     } catch (error) {
       console.log(error.message)
@@ -202,7 +206,7 @@ const FormRight = ({
   const [Listcolor, listSetColor] = useState([]);
 
   // Variant Size State
-  const [variantSizeValue, setVariantSizeValue] = useState(Number);
+  const [variantSizeValue, setVariantSizeValue] = useState("");
   const [ListVariantSize, listSetVariantSize] = useState([]);
 
   // Finish State
@@ -374,7 +378,6 @@ const FormRight = ({
           type="text"
           name="productName"
           id="productName"
-          name="productName"
           placeholder="PRODUCT NAME"
           onChange={(e) => setName(e.target.value)}
         />
@@ -384,7 +387,6 @@ const FormRight = ({
           type="text"
           name="descript"
           id="descript"
-          name="descript"
           placeholder="Describe your Product"
           onChange={(e) => setDescription(e.target.value)}
         />
@@ -497,7 +499,7 @@ const FormRight = ({
               <>
                 <div className="variant_add">
                   <input
-                    type="currency"
+                    type="text"
                     className="input"
                     placeholder="Enter size"
                     value={variantSizeValue}

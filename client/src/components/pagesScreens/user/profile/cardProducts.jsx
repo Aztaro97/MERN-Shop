@@ -12,7 +12,7 @@ function Product({ product }) {
   return (
     <Card>
       <div className="img_card">
-        <Image src={productImg} alt="" preview={true} />
+        <Image src={product.imageUrl.length > 0 ? product.imageUrl[0].url : productImg} alt="" preview={true} />
       </div>
       <div className="card-body">
         <TextTruncate

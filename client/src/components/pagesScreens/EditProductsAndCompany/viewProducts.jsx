@@ -10,6 +10,7 @@ import ModalContent from "./modalContent";
 import {
   getMyProducts,
   deleteProduct,
+  destroyImages,
 } from "../../../flux/actions/productAction";
 import Loader from "../../Loader";
 import "./modal.css";
@@ -25,7 +26,9 @@ const ViewProducts = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const { loading, products } = useSelector((state) => state.myProductDetails);
+  const { loading, error, products } = useSelector(
+    (state) => state.myProductDetails
+  );
 
   console.log(products);
 
@@ -33,14 +36,17 @@ const ViewProducts = () => {
     dispatch(getMyProducts());
   }, [dispatch, getMyProducts]);
 
-  const showConfirm = (productID) => {
+  const showConfirm = (productID, images) => {
+    console.log(images);
     confirm({
       title: "Do you Want to delete this product ?",
       icon: <ExclamationCircleOutlined />,
       okText: "Yes, I'm",
       className: "modal_container",
       onOk() {
+        
         dispatch(deleteProduct(productID));
+        dispatch(destroyImages(images));
       },
       onCancel() {
         console.log("Cancel");
@@ -52,10 +58,12 @@ const ViewProducts = () => {
     <>
       {loading ? (
         <Loader />
+      ) : error ? (
+        <h1>Error: {error}</h1>
       ) : (
         <Container>
           <Row>
-            {products.length === 0 ? (
+            {products.length < 0 ? (
               <Empty>
                 <h1>You don't have any products</h1>
                 <p>
@@ -70,10 +78,19 @@ const ViewProducts = () => {
                 {products.map((product, index) => (
                   <>
                     <Card key={index}>
-                      <img src={productImg} alt="" />
+                      <img
+                        src={
+                          product.imageUrl.length > 0
+                            ? product.imageUrl[0].url
+                            : productImg
+                        }
+                        alt=""
+                      />
                       <RiDeleteBin5Fill
                         className="delete_icon"
-                        onClick={() => showConfirm(product._id)}
+                        onClick={() =>
+                          showConfirm(product._id, product.imageUrl)
+                        }
                       />
                       <div className="card-body">
                         <h2>{product.name}</h2>

@@ -6,7 +6,7 @@ const uploadToCloudinary = require("./../utils/cloudinary");
 // @route   GET /api/products
 // @access  Public
 const getProducts = asyncHandler(async (req, res) => {
-  const pageSize = 12;
+  const pageSize = 8;
   const page = Number(req.query.pageNumber) || 1;
 
   const keyword = req.query.keyword
@@ -18,7 +18,7 @@ const getProducts = asyncHandler(async (req, res) => {
       }
     : {};
 
-  const count = await Product.countDocuments();
+  const count = await Product.countDocuments({allow:false});
   const products = await Product.find({allow:false}).populate("user", ["email","company"])
     .limit(pageSize)
     .skip(pageSize * (page - 1));
@@ -89,68 +89,102 @@ const deleteProduct = asyncHandler(async (req, res) => {
 // @route   POST /api/products
 // @access  Private/Admin
 const createProduct = asyncHandler(async (req, res) => {
-  // const imageList = [];
-
-  const {
-    code,
-    typeService,
-    name,
-    price,
-    compareAtPrice,
-    brand,
-    category,
-    countInStock,
-    numReviews,
-    description,
-    service,
-    shippingFrom,
-    shippingTo,
-    // rateShipping,
-    variantColor,
-    variantSize,
-    variantFinish,
-    variantMaterial,
-    variantStyle,
-    united,
-    size,
-  } = req.body;
   const product = new Product({
     user: req.user._id,
-    code,
-    typeService,
-    name,
-    price,
-    compareAtPrice,
-    // imageUrl: [],
-    brand,
-    category,
-    countInStock,
-    numReviews,
-    description,
-    service,
-    shippingFrom,
-    shippingTo,
-    variantColor,
-    variantSize,
-    variantFinish,
-    variantMaterial,
-    variantStyle,
-    united,
-    size,
+    code:"",
+    typeService: "",
+    name: "",
+    price: "",
+    compareAtPrice: "",
+    // imageUrl: []: "",
+    brand: "",
+    category: "",
+    countInStock: "",
+    numReviews: "",
+    description: "",
+    service: "",
+    shippingFrom: "",
+    shippingTo: {},
+    variantColor: "",
+    variantSize: "",
+    variantFinish: "",
+    variantMaterial: "",
+    variantStyle: "",
+    united: "",
+    size: "",
   });
 
   const createdProduct = await product.save();
   res.status(201).json(createdProduct);
 });
 
+
+// // @desc    Create a product
+// // @route   POST /api/products
+// // @access  Private/Admin
+// const createProduct = asyncHandler(async (req, res) => {
+//   const {
+//     code,
+//     typeService,
+//     name,
+//     price,
+//     compareAtPrice,
+//     brand,
+//     category,
+//     countInStock,
+//     numReviews,
+//     description,
+//     service,
+//     shippingFrom,
+//     shippingTo,
+//     // rateShipping,
+//     variantColor,
+//     variantSize,
+//     variantFinish,
+//     variantMaterial,
+//     variantStyle,
+//     united,
+//     size,
+//   } = req.body;
+//   const product = new Product({
+//     user: req.user._id,
+//     code,
+//     typeService,
+//     name,
+//     price,
+//     compareAtPrice,
+//     // imageUrl: [],
+//     brand,
+//     category,
+//     countInStock,
+//     numReviews,
+//     description,
+//     service,
+//     shippingFrom,
+//     shippingTo,
+//     variantColor,
+//     variantSize,
+//     variantFinish,
+//     variantMaterial,
+//     variantStyle,
+//     united,
+//     size,
+//   });
+
+//   const createdProduct = await product.save();
+//   res.status(201).json(createdProduct);
+// });
+
 // @desc    Update a product
 // @route   PUT /api/products/:id
 // @access  Private
 const updateProduct = asyncHandler(async (req, res) => {
   const {
+    code,
+    typeService,
     name,
     price,
-    imageUrl,
+    compareAtPrice,
     brand,
     category,
     countInStock,
@@ -158,11 +192,11 @@ const updateProduct = asyncHandler(async (req, res) => {
     service,
     shippingFrom,
     shippingTo,
-    rateShipping,
-    varianColor,
-    varianSize,
-    varianFinish,
-    varianMaterial,
+    variantColor,
+    variantSize,
+    variantFinish,
+    variantMaterial,
+    variantStyle,
     united,
     size,
   } = req.body;
@@ -170,21 +204,23 @@ const updateProduct = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id);
 
   if (product) {
+    product.code = code,
+    product.typeService = typeService,
     product.name = name;
     product.price = price;
+    product.compareAtPrice = compareAtPrice;
     product.description = description;
-    product.imageUrl = imageUrl;
     product.brand = brand;
     product.category = category;
     product.countInStock = countInStock;
     product.service = service;
     product.shippingFrom = shippingFrom;
     product.shippingTo = shippingTo;
-    product.rateShipping = rateShipping;
-    product.variacolor = varianColor;
-    product.varianSize = varianSize;
-    product.varianFinish = varianFinish;
-    product.varianMaterial = varianMaterial;
+    product.variantColor = variantColor;
+    product.variantSize = variantSize;
+    product.variantFinish = variantFinish;
+    product.variantMaterial = variantMaterial;
+    product.variantStyle = variantStyle;
     product.united = united;
     product.size = size;
 
@@ -326,7 +362,7 @@ const getUserProducts = asyncHandler(async (req, res) => {
       }
     : {};
 
-  const count = await Product.countDocuments();
+  const count = await Product.countDocuments({user: req.params.id, allow: true});
   const products = await Product.find({user: req.params.id, allow: true})
     .limit(pageSize)
     .skip(pageSize * (page - 1));

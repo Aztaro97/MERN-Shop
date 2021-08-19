@@ -1,8 +1,43 @@
 import React from "react";
 import styled from "styled-components";
-// import { Pagination } from "react-bootstrap";
-import {  } from "react-router-dom";
+// import { Pagination } from "antd";
+import { useHistory } from "react-router-dom";
 import { useParams, NavLink } from "react-router-dom";
+
+// const Paginate = ({ pages, page, isAdmin = false, keyword = "" }) => {
+//   const history = useHistory();
+//   const elementsPerPage = 2;
+//   const offset = 0
+//   const currentPageElements = [];
+//   const pagesCount = 1;
+//   const totalElementsCount = 0;
+
+//   const handlePageClick = () => {
+
+//     const currentPage = pages - 1;
+//     const offset = currentPage * elementsPerPage;
+//     history.push(`/product/${offset}`)
+
+//   };
+//   const currentPageElements  = () => {
+
+//   }
+//   return (
+//     pages > 1 && (
+//       <Pagination
+//         defaultCurrent={1}
+//         onChange={handlePageClick}
+//         size="small"
+//         total={pages}
+//         showTotal={(total, range) =>
+//           `${range[0]}-${range[1]} of ${total} items`
+//         }
+//         pageSize={elementsPerPage}
+//         showSizeChanger={false}
+//       />
+//     )
+//   );
+// };
 
 const Paginate = ({ pages, page, isAdmin = false, keyword = "" }) => {
   const params = useParams();
@@ -22,19 +57,18 @@ const Paginate = ({ pages, page, isAdmin = false, keyword = "" }) => {
             key={x + 1}
             to={
               !isAdmin
-                ? keyword
-                  ? `/search/${keyword}/page/${x + 1}`
-                  : `/profile/${userId}/page/${x + 1}`
-                : // : `/products/page/${x + 1}`
-                  `/admin/productlist/${x + 1}`
+                ? userId
+                  ? `/profile/${userId}/page/${x + 1}`
+                  : `/products/page/${x + 1}`
+                : `/admin/productlist/${x + 1}`
             }
           >
             {x + 1}
             {/* <button
               className="btn active"
-              
+
             >
-              
+
             </button> */}
           </LinkC>
         ))}

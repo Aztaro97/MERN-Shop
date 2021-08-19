@@ -66,7 +66,7 @@ const ViewProducts = ({match}) => {
   ];
 
   useEffect(() => {
-    dispatch(listProducts(pageNumber ));
+    dispatch(listProducts(pageNumber));
   }, [dispatch, pageNumber]);
 
   const handleChangeSlider = (value) => {
@@ -78,7 +78,7 @@ const ViewProducts = ({match}) => {
     <MainContainer>
       <Container>
         <Row>
-          <h3 className="title">Shop :</h3>
+          <h3 className="title">Products Shop :</h3>
         </Row>
       <Row>
         <FilterForm onSubmit={formik.handleSubmit}>

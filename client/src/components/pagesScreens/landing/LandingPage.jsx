@@ -1,4 +1,5 @@
 import React, {useEffect} from "react";
+
 import "./landing.css";
 
 import HomeSlider from "./homeSlider"
