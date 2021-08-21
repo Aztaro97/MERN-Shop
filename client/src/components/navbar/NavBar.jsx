@@ -5,22 +5,20 @@ import { FaUser, FaShoppingCart, FaUserCog } from "react-icons/all";
 import { Popover, Menu } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../flux/actions/userAction";
-import {createProduct} from "../../flux/actions/productAction"
+import { createProduct } from "../../flux/actions/productAction";
 import { useTranslation } from "react-i18next";
-import i18next from "i18next"
-
+import SelectLangue from "./SelectLangButton";
+import ToggleMenu from "./toggleMenu";
 
 import "./navbar.css";
 
 //   Logo Import State
 import Logo_SVG from "../../img/logo.svg";
 
-const { SubMenu } = Menu;
-
-
 function NavBar() {
   const { t } = useTranslation();
   const [scrollNav, setScrollNav] = useState(false);
+  const [showToggleMenu, setShowToggleMenu] = useState(false);
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -34,7 +32,7 @@ function NavBar() {
     error: errorCreate,
     success: successCreate,
     product: createdProduct,
-  } = useSelector((state) => state.productCreate)
+  } = useSelector((state) => state.productCreate);
 
   const handleLogOut = () => {
     dispatch(logout());
@@ -50,16 +48,16 @@ function NavBar() {
 
   const handleCreateProduct = () => {
     if (userInfo) {
-      history.push("/auth")
+      history.push("/auth");
     }
-    dispatch(createProduct())
-  }
+    dispatch(createProduct());
+  };
 
   useEffect(() => {
     window.addEventListener("scroll", ChangeNav);
 
     if (successCreate) {
-      history.push(`/add-product/${createdProduct._id}`)
+      history.push(`/add-product/${createdProduct._id}`);
     }
   }, [successCreate, history]);
 
@@ -67,9 +65,9 @@ function NavBar() {
     <Content>
       {userInfo && (userInfo.typeUser === "merchant" || userInfo.isAdmin) ? (
         <>
-          <LinkR href="/myproducts">my products</LinkR>
-          <LinkR href="/myorder">my order</LinkR>
-          <LinkR onClick={handleCreateProduct} >add more products</LinkR>
+          <LinkR href="/myproducts"> {t("my_products")} </LinkR>
+          <LinkR href="/myorder">{t("my_order")}</LinkR>
+          <LinkR onClick={handleCreateProduct}>{t("add_more_products")}</LinkR>
         </>
       ) : (
         <>
@@ -77,13 +75,13 @@ function NavBar() {
             style={{ textTransform: "capitalize", letterSpacing: "1px" }}
             href="/register"
           >
-            Create your shop
+           {t("create_your_shop")}
           </LinkR>
         </>
       )}
 
       <LinkP className="btn_logOut" onClick={handleLogOut}>
-        Log Out
+      {t("logout")}
       </LinkP>
     </Content>
   );
@@ -93,18 +91,18 @@ function NavBar() {
         style={{ textTransform: "capitalize", letterSpacing: "1px" }}
         href="/register"
       >
-        Create your shop
+        {t("create_your_shop")}
       </LinkR>
       <LinkP to="/auth" className="btn_signin">
-        Sign in
+      {t("logout")}
       </LinkP>
     </Content>
   );
   const AdminContente = (
     <Content>
-      <LinkR href="/admin/userlist">Users Lists {t("welcome_message")} </LinkR>
-      <LinkR href="/admin/productlist">Products Lists</LinkR>
-      <LinkR href="/admin/orderlist">Orders Lists</LinkR>
+      <LinkR href="/admin/userlist">{t("users_lists")}</LinkR>
+      <LinkR href="/admin/productlist">{t("products_lists")}</LinkR>
+      <LinkR href="/admin/orderlist">{t("orders_lists")}</LinkR>
     </Content>
   );
 
@@ -131,17 +129,15 @@ function NavBar() {
     </Menu>
   );
 
-  const handleChangeLang = () => {
-    i18next.changeLanguage('en')
-  }
-
   return (
     <Header scrollNav={scrollNav}>
-      <Lang href="/" onClick={handleChangeLang} >Arabic</Lang>
       <Logo href="/">
-        <img src={Logo_SVG} alt="" />
+        <img src={Logo_SVG} alt="" /> au79code
       </Logo>
+      {/* <Lang href="/" onClick={handleChangeLang} >{t("language")}</Lang> */}
+
       <Nav>
+        <SelectLangue />
         {userInfo && userInfo.isAdmin && (
           <NavItem>
             <Popover
@@ -177,7 +173,11 @@ function NavBar() {
           </NavLink>
         </NavItem>
         <NavItem>
-          <NavLink className="menuButton menuBtn">
+          <ToggleBtn
+            showToggleMenu={showToggleMenu}
+            className="menuButton"
+            onClick={() => setShowToggleMenu(!showToggleMenu)}
+          >
             <span></span>
             <span></span>
             <span></span>
@@ -187,182 +187,9 @@ function NavBar() {
             <span></span>
             <span></span>
             <span></span>
-          </NavLink>
+          </ToggleBtn>
         </NavItem>
-        <nav className="toggleMenu" id="menu">
-          <div className="row">
-            <div className="col">
-              <div className="item">
-                <button
-                  onClick="homePage(0)"
-                  className="btn itemLink text-uppercase weight-600"
-                >
-                  Home
-                </button>
-              </div>
-            </div>
-            <div className="col">
-              <div className="item">
-                <a
-                  onClick="homePage(1)"
-                  className="itemLink text-uppercase weight-600"
-                  href="#/"
-                >
-                  Services
-                </a>
-                <ul className="subLinks">
-                  <li>
-                    <a
-                      href="#/"
-                      onClick="menuToggling()"
-                      className="subLink text-uppercase weight-500"
-                    >
-                      Advertising
-                    </a>
-                  </li>
-
-                  <DropMenu
-                    style={{
-                      background: "transparent",
-                      textAlign: "center",
-                      fontSize: "1rem",
-                      margin: "0",
-                      position: "relative",
-                      // bottom: "10px",
-                      left: "10px",
-                    }}
-                    className="dropMenu"
-                    mode="vertical"
-                    trigger="click"
-                  >
-                    <SubMenu
-                      key="MARKETING"
-                      title="MARKETING"
-                      style={{
-                        color: "#93a3b3",
-                        textAlign: "center",
-                        background: "transparent",
-                        margin: "0",
-                        padding: "0"
-                      }}
-                      popupClassName="SubMenu"
-                    >
-                      <Menu.Item key="1">
-                        <a href="#/" className="menu_item_link">
-                          E-marketing
-                        </a>
-                      </Menu.Item>
-                      <Menu.Item key="2">
-                        <a href="#/" className="menu_item_link">
-                          Outdoor marketing
-                        </a>
-                      </Menu.Item>
-                    </SubMenu>
-                    <SubMenu
-                      key="ECOMMERCE"
-                      title="ECOMMERCE"
-                      style={{
-                        color: "#93a3b3",
-                        textAlign: "center",
-                        background: "transparent",
-                        margin: "0",
-                      }}
-                      popupClassName="SubMenu"
-                    >
-                      <Menu.Item key="3">
-                        <a href="/e-commerce" className="menu_item_link">
-                          Delivery
-                        </a>
-                      </Menu.Item>
-                      <Menu.Item key="4">
-                        <a href="#/" className="menu_item_link">
-                         Payment
-                        </a>
-                      </Menu.Item>
-                    </SubMenu>
-                  </DropMenu>
-                  {/* <li>
-                    <a
-                      href="/e-commerce"
-                      onClick="menuToggling()"
-                      className="subLink text-uppercase weight-500"
-                    >
-                      E-commerce
-                    </a>
-                  </li> */}
-                  <li>
-                    <a
-                      href="./pos.html"
-                      onClick="menuToggling()"
-                      className="subLink text-uppercase weight-500"
-                    >
-                      Production
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#/"
-                      onClick="menuToggling()"
-                      className="subLink text-uppercase weight-500"
-                    >
-                      Design
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#/"
-                      onClick="menuToggling()"
-                      className="subLink text-uppercase weight-500"
-                    >
-                      Photography
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#/"
-                      onClick="menuToggling()"
-                      className="subLink text-uppercase weight-500"
-                    >
-                      Programming
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="col">
-              <div className="item">
-                <a
-                  onClick="homePage(2)"
-                  className="itemLink text-uppercase weight-600"
-                  href="#/"
-                >
-                  About Us
-                </a>
-              </div>
-            </div>
-            <div className="col">
-              <div className="item">
-                <a
-                  onClick="homePage(3)"
-                  className="itemLink text-uppercase weight-600"
-                  href="/contact-us/"
-                >
-                  Contact Us
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="menuShapes">
-            <div className="a a1"></div>
-            <div className="a a2"></div>
-            <div className="a a3"></div>
-            <div className="a a4"></div>
-            <div className="s s1"></div>
-            <div className="s s2"></div>
-            <div className="s s3"></div>
-            <div className="s s4"></div>
-          </div>
-        </nav>
+        <ToggleMenu open={showToggleMenu} />
       </Nav>
     </Header>
   );
@@ -413,37 +240,7 @@ const NavLink = styled(Link)`
   & .icon {
     font-size: 1.4rem;
   }
-  &.menuButton {
-    position: absolute;
-    top: -1rem;
-    width: 44px;
-    height: 44px;
-    padding: 5px;
-    text-align: center;
-    font-size: 0;
-    border: none;
-    background: none;
-    z-index: 12;
-    perspective: 500px;
-    border: 1px solid #cccccc;
-    transition: 0.2s;
-    z-index: 200;
-    background: #fff;
-    @media only screen and (max-width: 995px) {
-      right: -0.7rem;
-    }
-  }
-  &.menuButton span {
-    display: inline-block;
-    margin: 3px;
-    width: 4px;
-    height: 4px;
-    background: #c68787;
-    transition: 0.8s;
-  }
-  &.menuButton:hover {
-    background: #f7f7f7;
-  }
+
   & .count {
     position: relative;
     bottom: 1rem;
@@ -534,42 +331,56 @@ const LinkP = styled(Link)`
   }
 `;
 
-const Logo = styled.div`
+const Logo = styled.a`
   position: relative;
+  text-decoration: none;
+   color: var(--silver-color);
+   text-transform: uppercase;
+   font-weight: 700;
   top: 0px;
   z-index: 999999999999;
   & img {
-    width: 3.5rem;
+    width: 3rem;
+  }
+  &:hover {
+    text-decoration: none;
+    color: #000;
   }
 `;
 
-const DropMenu = styled(Menu)`
-  background: var(--orange-color);
-  color: #93a3b3;
+const ToggleBtn = styled.div`
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  padding: 5px;
+  text-align: center;
+  font-size: 0;
   border: none;
-
-  & .ant-menu-submenu-title:hover {
-    & .ant-menu-title-content {
-      color: var(--orange-color);
-    }
-    & .ant-menu-submenu-arrow::before,
-    .ant-menu-submenu-arrow::after {
-      background: var(--orange-color);
-    }
+  background: none;
+  /* z-index: 12; */
+  perspective: 500px;
+  border: 1px solid #cccccc;
+  transition: 0.4s;
+  z-index: 200;
+  background: #fff;
+  transform: ${({ showToggleMenu }) => showToggleMenu && "rotate(45deg)"};
+  z-index: ${({ showToggleMenu }) => showToggleMenu && "99999999999"};
+  position: ${({ showToggleMenu }) => showToggleMenu && "relative"};
+  /* @media only screen and (max-width: 995px) {
+    right: -0.7rem;
+  } */
+  &:hover {
+    background: #f7f7f7;
   }
 
-  /* Menu Vertical */
-  & .ant-menu-submenu-vertical .ant-menu-submenu-open.ant-menu-submenu-active {
-    background: red;
+  & span {
+    display: inline-block;
+    margin: 3px;
+    width: 4px;
+    height: 4px;
+    background: #c68787;
+    transition: 0.8s;
   }
-
-  /* & .ant-menu-submenu ant-menu-submenu-vertical ant-menu-submenu-open ant-menu-submenu-active */
 `;
 
-const SubMenuCustom = styled(SubMenu)`
-  &.SubMenu {
-    background: red;
-    display: none;
-  }
-`;
 export default NavBar;

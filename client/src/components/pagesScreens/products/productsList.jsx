@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import axios from "axios";
+import {useTranslation} from "react-i18next"
 import { Modal } from "antd";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 import { useHistory } from "react-router-dom";
@@ -18,6 +18,7 @@ import Pagination from "../../pagination"
 const { confirm } = Modal;
 
 function ProductsListScreen({ match }) {
+  const {t} = useTranslation()
   const pageNumber = match.params.pageNumber || 1
 
   const dispatch = useDispatch();
@@ -70,7 +71,7 @@ function ProductsListScreen({ match }) {
     <MainContainer>
       <ProductContainer>
         <Row>
-          <h3>all products lists</h3>
+          <h3>{t("product_list.title")}</h3>
         </Row>
         <Row>
           {loadingDelete && <Loader />}

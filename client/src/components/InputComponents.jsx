@@ -33,10 +33,10 @@ const Input = styled.input`
   list-style: none;
   width: 100%;
   min-width: 0;
-  padding: 6px 11px;
+  padding: 5px 11px;
   color: var(--silver-color);
-  font-size: 0.8rem;
-  height: 3rem;
+  font-size: 0.6rem;
+  height: 2.5rem;
   border: 3px solid var(--background-color);
   outline: none;
   border-radius: 10px;
@@ -45,8 +45,8 @@ const Input = styled.input`
   letter-spacing: 2px;
 
   &:focus {
-    border-color: var(--orange-color);
-    border-right-width: 0.3px !important;
+    /* border-color: var(--orange-color); */
+    /* border-right-width: 0.3px !important; */
     outline: none;
     box-shadow: 0 0 0 0.5px var(--background-color);
     background: #fff;

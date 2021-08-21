@@ -287,10 +287,10 @@ const SectionRight = () => {
         <h1>subtotal</h1>
         <h1>aed 200.00</h1>
       </div>
-      <div className="solde">
+      {/* <div className="solde">
         <h1>shipping</h1>
         <h1>aed 0.00</h1>
-      </div>
+      </div> */}
       <hr />
       <div className="solde">
         <h1>subtotal</h1>

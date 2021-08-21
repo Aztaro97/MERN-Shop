@@ -5,6 +5,7 @@ import {Redirect} from "react-router-dom"
 import MainContainer from "./../../MainContainer";
 import ViewProducts from "./viewProducts";
 import CompanyInfo from "./companyDetails";
+import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
 
 import { getCompanyDetails } from "../../../flux/actions/userAction";
@@ -13,6 +14,7 @@ import { getCompanyDetails } from "../../../flux/actions/userAction";
 const { TabPane } = Tabs;
 
 function Tabulation() {
+  const {t} = useTranslation();
 
   // const {products} = useSelector((state => state.products))
 
@@ -37,10 +39,10 @@ function Tabulation() {
     <MainContainer>
       <Tab>
         <TabsE defaultActiveKey="1" centered size="default">
-          <TabPane tab="View Products" key="1">
+          <TabPane tab={t("view_products")} key="1">
             <ViewProducts />
           </TabPane>
-          <TabPane tab="Company Information" key="2">
+          <TabPane tab={t("company_info")} key="2">
             <CompanyInfo company={company} />
           </TabPane>
         </TabsE>

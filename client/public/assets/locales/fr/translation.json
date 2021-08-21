@@ -1,0 +1,37 @@
+{
+    "app_title": "Titre",
+    "language": "Language",
+    "name": "Français",
+    "welcome_message": "Bienvenue à au79code",
+    
+    "product_list": {
+      "title":"Tous les produits"
+    },
+    "nav_home":"Accueil",
+    "nav_services":"Services",
+    "nav_about":"A propos",
+    "nav_contact":"Contact",
+    "adv_service": "ADVERTISEMENT",
+    "mark_service": "MARKETING",
+    "eco_service": "E-COMMERCE",
+    "prod_service": "PRODUCTION",
+    "design_service": "CONCEPTION",
+    "photo_service": "PHOTOGRAPHIE",
+    "prog_service": "PROGRAMMATION",
+    "e_marketing": "E-MARKETING",
+    "out_marketing": "COMMERCIALISATION",
+    "delivery":"livraison",
+    "payment":"Paiement",
+    "view_products":"Voir produits",
+    "company_info": "Informations sur la compagnie",
+    "my_products": "mes produits",
+    "my_order": "mes commandes",
+    "add_more_products": "ADD MORE PRODUCTS",
+    "users_lists": "listes des utilisateurs",
+    "products_lists":"listes des produits",
+    "orders_lists": "listes des commandes",
+    "logout":"Se déconnecter",
+    "signin":"s'identifier",
+    "create_your_shop":"Créez votre boutique",
+  }
+  

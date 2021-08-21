@@ -33,7 +33,7 @@ function RegisterPage() {
 
   const history = useHistory();
 
-  const {userInfo} = useSelector((state => state.userLogin))
+  const { userInfo } = useSelector((state) => state.userLogin);
 
   const handleClickRadio = (e) => {
     setTypeUser(e.target.value);
@@ -45,7 +45,6 @@ function RegisterPage() {
   //     history.push("/auth")
   //   }
   // },[userInfo])
-
 
   return (
     <MainContainer>
@@ -78,7 +77,7 @@ function RegisterPage() {
             </div>
           </div>
         </Header>
-        {!userInfo && (<UserForm />) }
+        {!userInfo && <UserForm />}
         <CompanyInfo typeUser={typeUser} />
         <BankInfo />
         <GalleryPhotos />
@@ -111,11 +110,11 @@ const UserForm = () => {
       <h1>registration information</h1>
       <div className="card">
         <div className="row">
-          <div class="input-container">
-            <MdMail class="icon" />
+          <div className="input-container">
+            <MdMail className="icon" />
             <input
               required
-              class="input-field"
+              className="input-field"
               type="email"
               placeholder="EMAIL"
               name="email"
@@ -126,11 +125,11 @@ const UserForm = () => {
         </div>
 
         <div className="row">
-          <div class="input-container">
-            <GiPadlock class="icon" />
+          <div className="input-container">
+            <GiPadlock className="icon" />
             <input
               required
-              class="input-field"
+              className="input-field"
               type="password"
               placeholder="PASSWORD"
               name="password"
@@ -140,11 +139,11 @@ const UserForm = () => {
           </div>
         </div>
         <div className="row">
-          <div class="input-container">
-            <GiPadlock class="icon" />
+          <div className="input-container">
+            <GiPadlock className="icon" />
             <input
               required
-              class="input-field"
+              className="input-field"
               type="password"
               placeholder="RETYPE PASSWORD"
               name="password2"
@@ -263,10 +262,10 @@ const CompanyInfo = ({ typeUser }) => {
 
             <div className="row">
               <h1>contact us</h1>
-              <div class="input-container">
-                <ImPhone class="icon" />
+              <div className="input-container">
+                <ImPhone className="icon" />
                 <input
-                  class="input-field"
+                  className="input-field"
                   type="tel"
                   placeholder="PHONE NUMBER"
                   name="company.phone"
@@ -296,10 +295,10 @@ const CompanyInfo = ({ typeUser }) => {
               </Ul>
             </div>
             <div className="row">
-              <div class="input-container">
-                <FaMapMarkerAlt class="icon" />
+              <div className="input-container">
+                <FaMapMarkerAlt className="icon" />
                 <input
-                  class="input-field"
+                  className="input-field"
                   type="url"
                   placeholder="LOCATION"
                   name="company.location"
@@ -313,12 +312,12 @@ const CompanyInfo = ({ typeUser }) => {
               </div>
             </div>
             <div className="row">
-              <div class="input-container">
-                <MdMail class="icon" />
+              <div className="input-container">
+                <MdMail className="icon" />
                 <input
                   required
                   type="mail"
-                  class="input-field"
+                  className="input-field"
                   placeholder="EMAIL"
                   name="company.email"
                   onChange={formik.handleChange}
@@ -342,7 +341,7 @@ const CompanyInfo = ({ typeUser }) => {
                 />
                 <ButtonC
                   type="button"
-                  style={{ padding: "1rem" }}
+                  style={{ padding: "0rem" }}
                   onClick={addHour}
                   disabled={ListHour.length > 1 ? true : false}
                 >
@@ -419,7 +418,7 @@ const CompanyInfo = ({ typeUser }) => {
                 <ImPhone className="whatsapp" />
               </div>
               <InputC
-              type="url"
+                type="url"
                 style={{ marginTop: 15 }}
                 value={formik.values.company.mediaLink.facebook}
                 name="company.mediaLink.facebook"
@@ -427,7 +426,7 @@ const CompanyInfo = ({ typeUser }) => {
                 onChange={formik.handleChange}
               />
               <InputC
-              type="url"
+                type="url"
                 style={{ marginTop: 15 }}
                 name="company.mediaLink.insta"
                 value={formik.values.company.mediaLink.insta}
@@ -435,7 +434,7 @@ const CompanyInfo = ({ typeUser }) => {
                 onChange={formik.handleChange}
               />
               <InputC
-              type="url"
+                type="url"
                 style={{ marginTop: 15 }}
                 value={formik.values.company.mediaLink.twitter}
                 name="company.mediaLink.twitter"
@@ -445,8 +444,9 @@ const CompanyInfo = ({ typeUser }) => {
             </div>
           </div>
         </div>
+        <ButtonC style={{ margin:"10px auto 10px 0"}}type="submit">Save</ButtonC>
       </div>
-      <ButtonC type="submit">Save</ButtonC>
+      
     </Form>
   );
 };
@@ -598,7 +598,11 @@ const GalleryPhotos = () => {
         formdata.append("imgfiles", fileList[i].originFileObj);
       }
 
-      const res = await axios.post("/api/upload/company-images", formdata, config);
+      const res = await axios.post(
+        "/api/upload/company-images",
+        formdata,
+        config
+      );
 
       console.log(res.data);
     } catch (error) {
@@ -697,7 +701,7 @@ const Form = styled.form`
   margin-bottom: 2rem;
   & h1 {
     text-transform: uppercase;
-    font-size: 1.3rem;
+    font-size: 1rem;
     font-weight: 700;
   }
   & .card {
@@ -716,6 +720,9 @@ const Form = styled.form`
 
     & .row {
       padding: 0.5rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
       .time {
         display: grid;
@@ -755,15 +762,16 @@ const Form = styled.form`
       }
 
       & .input-container {
-        display: -ms-flexbox; /* IE10 */
+        /* display: flexIE10 */
         display: flex;
         width: 100%;
         margin-bottom: 15px;
         border-radius: 20px;
-        height: 3rem;
+        height: 2.5rem;
 
         & .icon {
           padding: 0.6rem;
+          font-size: 2px;
           background: var(--orange-color);
           color: white;
           min-width: 3.12rem;
@@ -773,13 +781,15 @@ const Form = styled.form`
         }
         & .input-field {
           width: 100%;
-          padding: 10px;
+          padding-left: 10px;
           outline: none;
           border: 2px solid var(--orange-color);
           border-radius: 0 10px 10px 0;
+          font-size: 0.7rem;
+          height: 2.5rem;
         }
         & .input-field:focus {
-          box-shadow: 0 0 0 2px var(--orange-color);
+          /* box-shadow: 0 0 0 2px var(--orange-color); */
         }
       }
     }

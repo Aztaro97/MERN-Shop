@@ -1,7 +1,37 @@
 {
     "app_title": "عنوان",
     "language": "اللغة",
-    "welcome_message": "اهلا بكم",
-    "days_since_release": "لقد مرت {{number_of_days}} أيام على إصدار هذا الفيديو"
+    "name": "العربية",
+    "welcome_message": "Au79code مرحبًا بك في ",
+    "product_list": {
+      "title":"جميع قوائم المنتجات"
+    },
+    "nav_home":"الرئيسية",
+    "nav_services":"لخدمات",
+    "nav_about":"نبذة عنا",
+    "nav_contact":" اتصل بنا",
+    "adv_service": "إعلان",
+    "mark_service": "تسويق",
+    "eco_service": "التجارة الإلكترونية",
+    "prod_service": "إنتاج",
+    "design_service": "التصميم",
+    "photo_service": "التصوير",
+    "prog_service": "برمجة",
+    "e_marketing": "التسويق الإلكتروني",
+    "out_marketing": "التسويق الخارجي",
+    "delivery":"توصيل",
+    "payment":"قسط",
+    "view_products":"مشاهدة المنتجات",
+    "company_info": "معلومات الشركة",
+    "my_products": "منتجاتي",
+    "my_order": "طلبي",
+    "add_more_products": "أضف المزيد من المنتجات",
+    "users_lists": "قوائم المستخدمين",
+    "products_lists":"قوائم المنتجات",
+    "orders_lists": "قوائم الطلبات",
+    "logout":"تسجيل خروج",
+    "signin":"تسجيل الدخول",
+    "create_your_shop":"أنشئ متجرك"
+    
   }
   

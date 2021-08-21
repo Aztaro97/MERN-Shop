@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Radio } from "antd";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
@@ -28,15 +28,22 @@ const ModalContent = ({ product, setShowModal }) => {
 };
 
 const GalleryImg = ({ product }) => {
-  const [currentImg, setCurrentImg] = useState(product.imageUrl[0].url);
+  const [currentImg, setCurrentImg] = useState("");
 
   const hanleClick = (e) => {
     console.log(e.target.src);
     setCurrentImg(e.target.src);
   };
+
+  useEffect(() => {
+    if (product.imageUrl.length > 0) {
+      setCurrentImg(product.imageUrl[0].url)
+    }
+  },[])
+
   return (
     <GallerieContent>
-      <img className="current-img" src={currentImg} alt="" />
+      <img className="current-img" src={product.imageUrl.length > 0 ? currentImg : picture1 } alt="" />
       <div className="aside-img">
         {product.imageUrl.slice(0, 4).map((image, index) => (
           <img key={index} src={image.url} alt="" onClick={hanleClick} />

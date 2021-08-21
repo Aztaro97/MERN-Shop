@@ -1,7 +1,37 @@
 {
     "app_title": "Title",
     "language": "Language",
-    "welcome_message": "Welcome",
-    "days_since_release": "it's been {{number_of_days}} days since this video was released"
+    "name": "English",
+    "welcome_message": "Welcome to au79code",
+    "product_list": {
+      "title":"ALL PRODUCTS LISTS"
+    },
+    "nav_home":"Home",
+    "nav_services":"Services",
+    "nav_about":"About",
+    "nav_contact":"Contact Us",
+    "adv_service": "ADVERTISING",
+    "mark_service": "MARKETING",
+    "eco_service": "E-COMMERCE",
+    "prod_service": "PRODUCTION",
+    "design_service": "DESIGN",
+    "photo_service": "PHOTOGRAPHY",
+    "prog_service": "PROGRAMMING",
+    "e_marketing": "E-marketing",
+    "out_marketing": "OUT MARKETING",
+    "delivery":"Delivery",
+    "payment":"Payment",
+    "view_products":"View products",
+    "company_info": "Company Information",
+    "my_products": "my products",
+    "my_order": "my order",
+    "add_more_products": "ADD MORE PRODUCTS",
+    "users_lists": "users lists",
+    "products_lists":"products lists",
+    "orders_lists": "orders lists",
+    "logout":"log out",
+    "signin":"sign in",
+    "create_your_shop":"Create your shop"
+
   }
   

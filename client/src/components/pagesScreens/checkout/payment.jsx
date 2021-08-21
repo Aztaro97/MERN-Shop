@@ -36,6 +36,7 @@ import {
 
 function Payment() {
   const [saveShippingCheck, setSaveShippingCheck] = useState(false);
+  const [index, setIndex] = useState("");
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -67,6 +68,26 @@ function Payment() {
     (state) => state.cart
   );
   const { userInfo } = useSelector((state) => state.userLogin);
+
+  // Calculate Shipping Cost
+  const shippingOptions = cartItems[0].shippingOptions;
+  
+  const ShippingCostCalculate = () => {
+    const options =  shippingOptions.map((shipping) => {
+      // const shippingDetails = shippingOptions.indexOf( city.map(region => region === shippingAddress.region) );
+      // const shippingDetails = shipping.indexOf(city === shippingAddress.region);
+      return shipping.city
+    });
+
+    const array = [{city:"hell"}, {city:"hhrr"}, {city:"moussa"}]
+    const region = array.indexOf({city: "moussa"});
+    console.log({Index : region })
+  };
+
+  
+  if (!loading)  {
+    ShippingCostCalculate()
+  }
 
   //   Calculate prices
   const addDecimals = (num) => {
@@ -128,6 +149,7 @@ function Payment() {
       dispatch({ type: USER_DETAILS_RESET });
       dispatch({ type: ORDER_CREATE_RESET });
     }
+    // ShippingCostCalculate();
   }, [dispatch, userInfo, shippingAddress, success]);
 
   const onChangeRadiGroup = (e) => {

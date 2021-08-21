@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle `
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-    * {
+    *, *::after, *::before {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
@@ -11,7 +11,8 @@ export const GlobalStyle = createGlobalStyle `
 
     body, html {
         font-size: 16px;
-        margin: 0 auto;
+        margin: 0;
+        padding: 0;
         /* background: #000; */
 
         @media only screen and (max-width: 768px) {

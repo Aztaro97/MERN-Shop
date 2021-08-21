@@ -2095,49 +2095,25 @@ footer .homeContact .homeTitle h2 {
     background: #fff; */
 }
 
-.menuBtn span {
+/* .menuBtn span {
     display: inline-block;
     margin: 3px;
     width: 4px;
     height: 4px;
     background: #c68787;
     transition: .8s;
-}
+} */
 
 
 /* .menuBtn:hover, */
 
-.menuBtn.open {
-    transform: rotate(45deg);
-    transition-delay: .2s
-}
+
 
 
 /* .menuBtn:hover span, */
 
-.menuBtn.open span {
-    animation: menuBtnAnim .4s
-}
 
-.toggleMenu.open {
-    opacity: 1;
-    visibility: visible;
-}
 
-.toggleMenu {
-    position: fixed;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    z-index: 100;
-    background: rgba(11, 27, 52, .94);
-    padding: 5% 15% 40px;
-    width: 100vw;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity ease .5s;
-}
 
 .toggleMenu .itemLink {
     width: 10vw;
@@ -3911,11 +3887,7 @@ footer .homeContact .homeTitle h2 {
         right: 25px;
         top: 115px;
     }
-    .menuBtn {
-        position: absolute;
-        top: 15px;
-        right: 10px;
-    }
+   
     .langBtn {
         margin: 25px 20px 5px;
     }
@@ -4396,13 +4368,13 @@ footer .homeContact .homeTitle h2 {
     .pos-register .row {
         min-height: 0px;
     }
-    .menuBtn {
+    /* .menuBtn {
         width: 40px;
         height: 40px;
-    }
-    .menuBtn span {
+    } */
+    /* .menuBtn span {
         margin: 2px;
-    }
+    } */
     .btn-lg {
         padding-top: 5px !important;
         padding-bottom: 5px !important;

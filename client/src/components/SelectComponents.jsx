@@ -28,8 +28,8 @@ const SelectE = styled.select`
   text-transform: uppercase;
   border: 3px solid var(--background-color);
   color: var(--silver-color);
-  font-size: 14px;
-  height: 3rem;
+  font-size: 0.6rem;
+  height: 2.5rem;
   outline: none;
   border-radius: 10px;
   transition: all 0.3s;
