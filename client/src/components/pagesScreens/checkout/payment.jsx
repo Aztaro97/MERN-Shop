@@ -36,7 +36,7 @@ import {
 
 function Payment() {
   const [saveShippingCheck, setSaveShippingCheck] = useState(false);
-  const [index, setIndex] = useState("");
+  // const [indexShip, setIndexShip] = useState(Number);
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -46,6 +46,11 @@ function Payment() {
   const [country, setCountry] = useState("");
   const [region, setRegion] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+
+  const [paymentMethod, setPaymentMethod] = useState("credit");
+  const [sameShipping, setSameShipping] = useState("sameAdress");
+  const [subTotal, setSubTotal] = useState(Number);
+  let ShippingCost = 0;
 
   const shipping = {
     firstName,
@@ -58,36 +63,12 @@ function Payment() {
     phoneNumber,
   };
 
-  const [paymentMethod, setPaymentMethod] = useState("credit");
-  const [sameShipping, setSameShipping] = useState("sameAdress");
-  const [subTotal, setSubTotal] = useState(Number);
-
   const history = useHistory();
   const dispatch = useDispatch();
   const { loading, shippingAddress, cartItems } = useSelector(
     (state) => state.cart
   );
   const { userInfo } = useSelector((state) => state.userLogin);
-
-  // Calculate Shipping Cost
-  const shippingOptions = cartItems[0].shippingOptions;
-  
-  const ShippingCostCalculate = () => {
-    const options =  shippingOptions.map((shipping) => {
-      // const shippingDetails = shippingOptions.indexOf( city.map(region => region === shippingAddress.region) );
-      // const shippingDetails = shipping.indexOf(city === shippingAddress.region);
-      return shipping.city
-    });
-
-    const array = [{city:"hell"}, {city:"hhrr"}, {city:"moussa"}]
-    const region = array.indexOf({city: "moussa"});
-    console.log({Index : region })
-  };
-
-  
-  if (!loading)  {
-    ShippingCostCalculate()
-  }
 
   //   Calculate prices
   const addDecimals = (num) => {
@@ -97,14 +78,41 @@ function Payment() {
   const itemsPrice = addDecimals(
     cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)
   );
-  const shippingPrice = addDecimals(itemsPrice > 100 ? 0 : 100);
+  // const shippingPrice = addDecimals(itemsPrice > 100 ? 0 : 100);
   const taxPrice = addDecimals(Number((0.15 * itemsPrice).toFixed(2)));
 
-  const totalPrice = (
-    Number(itemsPrice) +
-    Number(shippingPrice) +
-    Number(taxPrice)
-  ).toFixed(2);
+  const totalPrice = (Number(itemsPrice) + Number(ShippingCost)).toFixed(2);
+
+  // Calculate Shipping Cost
+
+
+//   Function to get All shipping Cost
+  const ShippingCostCalculate = () => {
+    // Loop Cart Item
+    for (let i = 0; i < cartItems.length; i++) {
+      // Loop city and get shipping amount
+      for (let j = 0; j < cartItems[i].shippingOptions.length; j++) {
+        const index = cartItems[i].shippingOptions[j].city.indexOf(
+          shippingAddress.region
+        );
+        if (index !== -1) {
+          console.log("Index Trouver = ", j);
+          ShippingCost = ShippingCost + cartItems[i].shippingOptions[j].amount;
+        }
+      }
+    }
+  };
+
+  //   CALCULATE TOTAL PRICE AND SHIPPING PRICE
+  // // const totalPrice = cartItems
+  //   .reduce((acc, item) => acc + item.qty * item.price, 0)
+  //   .toFixed(2);
+
+  if (!loading) {
+    ShippingCostCalculate();
+    // ShippingCost = shippingOptions[indexShip].amount;
+    console.log(ShippingCost);
+  }
 
   const handlePlaceOrder = () => {
     console.log("heced", saveShippingCheck);
@@ -120,8 +128,8 @@ function Payment() {
           sameShipping === "sameAdress" ? shippingAddress : shipping,
         paymentMethod: paymentMethod,
         itemsPrice: itemsPrice,
-        shippingPrice: shippingPrice,
-        taxPrice: taxPrice,
+        shippingPrice: ShippingCost,
+        // taxPrice: taxPrice,
         totalPrice: totalPrice,
       })
     );
@@ -193,7 +201,7 @@ function Payment() {
                     <h2>address</h2>
                     <p>
                       {shippingAddress.address}, {shippingAddress.city} ,
-                      {shippingAddress.country}
+                      {shippingAddress.region} /{shippingAddress.country}
                     </p>
                   </div>
                   <Link className="link" to="/shipping">
@@ -291,7 +299,11 @@ function Payment() {
                 </Link>
               </div>
             </SectionLeft>
-            <SectionRight cartItems={cartItems} />
+            <SectionRight
+              cartItems={cartItems}
+              ShippingCost={ShippingCost}
+              totalPrice={totalPrice}
+            />
           </Grid>
         </Container>
       )}
@@ -299,7 +311,7 @@ function Payment() {
   );
 }
 
-const SectionRight = ({ cartItems }) => {
+const SectionRight = ({ cartItems, ShippingCost, totalPrice }) => {
   //  Calculate function
   const addDecimal = (num) => {
     return (Math.round(num * 100) / 100).toFixed(2);
@@ -309,7 +321,7 @@ const SectionRight = ({ cartItems }) => {
       {cartItems.map((item, index) => (
         <Card key={index}>
           <div class="card__image">
-            <img src={piture} alt="" />
+            <img src={item.image} alt="" />
             <p className="quantity">{item.qty}</p>
           </div>
           <div class="card__details">
@@ -336,16 +348,17 @@ const SectionRight = ({ cartItems }) => {
       </div>
       <div className="solde">
         <h1>shipping</h1>
-        <h1>aed 0.00</h1>
+        <h1>aed {ShippingCost}</h1>
       </div>
       <hr />
       <div className="solde">
-        <h1>subtotal</h1>
+        <h1>total</h1>
         <h1>
           aed{" "}
-          {cartItems
-            .reduce((acc, item) => acc + item.qty * item.price, 0)
-            .toFixed(2)}{" "}
+          {(
+            cartItems.reduce((acc, item) => acc + item.qty * item.price, 0) +
+            ShippingCost
+          ).toFixed(2)}{" "}
         </h1>
       </div>
     </ContainerCart>

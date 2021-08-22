@@ -163,7 +163,7 @@ const Row = styled.div`
   & .title {
     font-weight: 700;
     letter-spacing:1px;
-    text-decoration: underline;
+    /* text-decoration: underline; */
   }
 `;
 

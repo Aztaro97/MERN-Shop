@@ -1,23 +1,24 @@
 import React from "react";
 import { Popover, Menu } from "antd";
-import {useTranslation} from "react-i18next"
+import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 
 const { SubMenu } = Menu;
 
 function ToggleMenu({ open }) {
-  const {t} = useTranslation()
+  const { t } = useTranslation();
   return (
     <Nav open={open} className="toggleMenu open" id="menu">
       <div className="row">
         <div className="col">
           <div className="item">
-            <button
-              onClick="homePage(0)"
+            <a
+              href="/"
+              // onClick={() => (document.location.href = "/")}
               className="btn itemLink text-uppercase weight-600"
             >
               {t("nav_home")}
-            </button>
+            </a>
           </div>
         </div>
         <div className="col">
@@ -27,7 +28,7 @@ function ToggleMenu({ open }) {
               className="itemLink text-uppercase weight-600"
               href="#/"
             >
-               {t("nav_services")}
+              {t("nav_services")}
             </a>
             <ul className="subLinks">
               <li>
@@ -68,12 +69,12 @@ function ToggleMenu({ open }) {
                 >
                   <Menu.Item key="1">
                     <a href="#/" className="menu_item_link">
-                    {t("e_marketing")}
+                      {t("e_marketing")}
                     </a>
                   </Menu.Item>
                   <Menu.Item key="2">
                     <a href="#/" className="menu_item_link">
-                    {t("out_marketing")}
+                      {t("out_marketing")}
                     </a>
                   </Menu.Item>
                 </SubMenu>
@@ -90,12 +91,12 @@ function ToggleMenu({ open }) {
                 >
                   <Menu.Item key="3">
                     <a href="/e-commerce" className="menu_item_link">
-                    {t("delivery")}
+                      {t("delivery")}
                     </a>
                   </Menu.Item>
                   <Menu.Item key="4">
                     <a href="#/" className="menu_item_link">
-                    {t("payment")}
+                      {t("payment")}
                     </a>
                   </Menu.Item>
                 </SubMenu>
@@ -115,7 +116,7 @@ function ToggleMenu({ open }) {
                   onClick="menuToggling()"
                   className="subLink text-uppercase weight-500"
                 >
-                   {t("prod_service")}
+                  {t("prod_service")}
                 </a>
               </li>
               <li>
@@ -124,7 +125,7 @@ function ToggleMenu({ open }) {
                   onClick="menuToggling()"
                   className="subLink text-uppercase weight-500"
                 >
-                {t("design_service")}
+                  {t("design_service")}
                 </a>
               </li>
               <li>
@@ -142,7 +143,7 @@ function ToggleMenu({ open }) {
                   onClick="menuToggling()"
                   className="subLink text-uppercase weight-500"
                 >
-                   {t("prog_service")}
+                  {t("prog_service")}
                 </a>
               </li>
             </ul>
@@ -151,18 +152,18 @@ function ToggleMenu({ open }) {
         <div className="col">
           <div className="item">
             <a
-              onClick="homePage(2)"
+              // onClick="homePage(2)"
               className="itemLink text-uppercase weight-600"
-              href="#/"
+              href="/about"
             >
-             {t("nav_about")}
+              {t("nav_about")}
             </a>
           </div>
         </div>
         <div className="col">
           <div className="item">
             <a
-              onClick="homePage(3)"
+              // onClick="homePage(3)"
               className="itemLink text-uppercase weight-600"
               href="/contact-us/"
             >
@@ -198,14 +199,14 @@ const Nav = styled.nav`
   opacity: 0;
   visibility: hidden;
   transition: opacity ease 0.5s;
-  transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(-100%)'};
-  transition-delay: ${ ({open}) => open && ".2s"};
-  visibility: ${ ({open}) => open && "visible"};
-  opacity: ${ ({open}) => open && "1"};
+  transform: ${({ open }) => (open ? "translateX(0)" : "translateX(-100%)")};
+  transition-delay: ${({ open }) => open && ".2s"};
+  visibility: ${({ open }) => open && "visible"};
+  opacity: ${({ open }) => open && "1"};
   transition: transform 0.3s ease-in-out;
 
   & span {
-    animation: ${ ({open}) => open && "menuBtnAnim .4s"};
+    animation: ${({ open }) => open && "menuBtnAnim .4s"};
   }
 `;
 

@@ -47,18 +47,17 @@ function CartComponent({ location }) {
           </EmptyCart>
         ) : (
           <>
+            <Row>
+              <GridTop>
+                <p>product</p>
+                <p>price</p>
+                <p>quantity</p>
+                <p>total</p>
+              </GridTop>
+              <hr />
+            </Row>
             {cartItems.map((item, index) => (
               <>
-                <Row>
-                  <GridTop>
-                    <p>product</p>
-                    <p>price</p>
-                    <p>quantity</p>
-                    <p>total</p>
-                  </GridTop>
-                  <hr />
-                </Row>
-
                 <Row key={index}>
                   <Grid>
                     <div className="cart">

@@ -344,7 +344,8 @@ const Logo = styled.a`
   }
   &:hover {
     text-decoration: none;
-    color: #000;
+    opacity: 0.9;
+    color: var(--silver-color);
   }
 `;
 

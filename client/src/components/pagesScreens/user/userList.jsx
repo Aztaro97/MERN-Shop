@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { Modal } from "antd";
+import {useTranslation} from "react-i18next"
 import { useHistory } from "react-router-dom";
 import { MdDelete, FaCheckCircle, FaTimesCircle } from "react-icons/all";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
@@ -13,6 +14,7 @@ import LoaderComponent from "../../Loader";
 const { confirm } = Modal;
 
 function UserListScreen() {
+  const {t} = useTranslation()
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -48,7 +50,7 @@ function UserListScreen() {
     <MainContainer>
       <UserContainer>
         <Row>
-          <h3>all users lists</h3>
+          <h3>{t("all_user_lists")}</h3>
         </Row>
         {loading ? (
           <LoaderComponent />

@@ -31,7 +31,8 @@
     "orders_lists": "orders lists",
     "logout":"log out",
     "signin":"sign in",
-    "create_your_shop":"Create your shop"
+    "create_your_shop":"Create your shop",
+    "all_user_lists": "all users lists"
 
   }
   

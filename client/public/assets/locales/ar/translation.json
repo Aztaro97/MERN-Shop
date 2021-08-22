@@ -31,7 +31,9 @@
     "orders_lists": "قوائم الطلبات",
     "logout":"تسجيل خروج",
     "signin":"تسجيل الدخول",
-    "create_your_shop":"أنشئ متجرك"
+    "create_your_shop":"أنشئ متجرك",
+    "all_user_lists": "جميع قوائم المستخدمين"
+
     
   }
   

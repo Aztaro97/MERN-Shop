@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import {useTranslation} from "react-i18next"
-import { Modal } from "antd";
+import { Modal, Image } from "antd";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 import { useHistory } from "react-router-dom";
 import { MdDelete, AiOutlineCheck, FaTimes } from "react-icons/all";
@@ -84,30 +84,51 @@ function ProductsListScreen({ match }) {
             <Table>
               <thead>
                 <tr>
-                  <th>id</th>
+                  
                   <th>name</th>
                   <th>price</th>
+                  <th>images</th>
                   <th>brand</th>
-                  <th>Allow</th>
+                  <th>Company Name / Personnel</th>
+                  <th>Email</th>
+                  <th>Action</th>
                   <th></th>
                 </tr>
               </thead>
               <tbody>
                 {products.map((product) => (
                   <tr key={product._id}>
-                    <td>{product._id}</td>
+                   
                     <td>{product.name}</td>
                     <td>{product.price} dirham</td>
+                    <td>
+                      <div className="images_lists">
+                      {product.imageUrl.map( img => (<Image className="img" src={img.url} />) )
+                    
+                  }
+                      </div>
+                    </td>
                     <td>{product.brand}</td>
+                    <td>{product.user.company.name}</td>
+                    <td>
+
+                    <a
+                    style={{fontSize:".7rem",textTransform:"lowercase"}}
+                      href={`mailto:${product.user.email}`}
+                    >
+                      {product.user.email}
+                    </a>
+                    
+                    </td>
                     <td className="allow_btn">
                       {product.allow && (
                         <button onClick={() => handleSetNotAllow(product._id)}>
-                          <AiOutlineCheck className="allow_btn_accept" />  Accepted
+                          <AiOutlineCheck className="allow_btn_accept" />  Accept
                         </button>
                       )}
                       {!product.allow && (
                         <button onClick={() => handleSetAllow(product._id)} >
-                          <FaTimes className="allow_btn_refuse" /> Refused
+                          <FaTimes className="allow_btn_refuse" /> Refuse
                         </button>
                       )}
                     </td>
@@ -156,6 +177,7 @@ const Table = styled.table`
         text-transform: uppercase;
         font-weight: 700;
         color: #fff;
+        font-size: .8rem;
       }
     }
   }
@@ -166,6 +188,7 @@ const Table = styled.table`
         border: 1px solid rgba(0, 0, 0, 0.05);
         padding: 10px;
         text-transform: uppercase;
+        font-size: .8rem;
         & .delete_btn {
           outline: none;
           background: #eb4d4b;
@@ -173,6 +196,17 @@ const Table = styled.table`
           border: none;
           padding: 1px 12px;
           font-size: 1.2rem;
+        }
+        & .images_lists {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          & .img {
+            height:70px;
+            width: 70px;
+            margin: 0 5px;
+          }
+
         }
       }
       & .allow_btn {

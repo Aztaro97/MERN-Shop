@@ -37,7 +37,7 @@ function CompletePayement() {
     // if (!order || successPay || successDeliver) {
     //   dispatch({ type: ORDER_PAY_RESET });
     //   dispatch({ type: ORDER_DELIVER_RESET });
-      // dispatch(getOrderDetails(order._id));
+    // dispatch(getOrderDetails(order._id));
     // }
   }, [dispatch, userInfo]);
 
@@ -76,13 +76,13 @@ function CompletePayement() {
               <Border>
                 <div className="price">
                   <h2>shipping cost</h2>
-                  <p>aed 50.00</p>
+                  <p>aed {order.shippingPrice}</p>
                 </div>
               </Border>
               <Border>
                 <div className="price">
-                  <h2>shipping cost</h2>
-                  <p>aed 50.00</p>
+                  <h2>Total price</h2>
+                  <p>aed {order.totalPrice}</p>
                 </div>
               </Border>
 
@@ -204,42 +204,42 @@ const SectionLeft = styled.div`
 `;
 
 const SectionRight = () => {
+  const { cartItems } = useSelector((state) => state.cart);
+  const { order, loading, error } = useSelector((state) => state.orderCreate);
   return (
     <ContainerCart>
-      <Card>
-        <div class="card__image">
-          <img src={piture} alt="" />
-          <p className="quantity">2</p>
-        </div>
-        <div class="card__details">
-          <h1 class="card__title">Name of the Product</h1>
-          <h1 class="card__price">100.00 AED</h1>
-        </div>
-      </Card>
-      <Card>
-        <div class="card__image">
-          <img src={piture} alt="" />
-          <p className="quantity">2</p>
-        </div>
-        <div class="card__details">
-          <h1 class="card__title">Name of the Product</h1>
-          <h1 class="card__price">100.00 AED</h1>
-        </div>
-      </Card>
+      {cartItems.length > 0 &&
+        cartItems.map((item) => (
+          <Card key={item._id}>
+            <div class="card__image">
+              <img src={item.image} alt="" />
+              <p className="quantity">{item.qty}</p>
+            </div>
+            <div class="card__details">
+              <h1 class="card__title">{item.name}</h1>
+              <h1 class="card__price">{item.price} AED</h1>
+            </div>
+          </Card>
+        ))}
 
       <hr />
       <div className="solde">
         <h1>subtotal</h1>
-        <h1>aed 200.00</h1>
+        <h1>
+          aed{" "}
+          {cartItems
+            .reduce((acc, item) => acc + item.qty * item.price, 0)
+            .toFixed(2)}{" "}
+        </h1>
       </div>
       <div className="solde">
         <h1>shipping</h1>
-        <h1>aed 0.00</h1>
+        <h1>aed {order.shippingPrice}</h1>
       </div>
       <hr />
       <div className="solde">
         <h1>subtotal</h1>
-        <h1>aed 400.00</h1>
+        <h1>aed {order.totalPrice}</h1>
       </div>
     </ContainerCart>
   );

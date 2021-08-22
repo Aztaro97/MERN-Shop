@@ -46,7 +46,7 @@ const getProductsAdmin = asyncHandler(async (req, res) => {
     : {};
 
   const count = await Product.countDocuments();
-  const products = await Product.find()
+  const products = await Product.find().populate("user", ["email","company"])
     .limit(pageSize)
     .skip(pageSize * (page - 1));
 

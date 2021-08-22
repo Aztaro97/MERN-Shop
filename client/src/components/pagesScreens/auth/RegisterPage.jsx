@@ -73,7 +73,7 @@ function RegisterPage() {
                 id="craftman"
                 onChange={handleClickRadio}
               />
-              <label htmlFor="craftman">Craftman</label>
+              <label htmlFor="craftman">Personnel</label>
             </div>
           </div>
         </Header>

@@ -231,7 +231,7 @@ export default function PaymentForm() {
                 <CardCvcElement className="input_card" options={CARD_OPTIONS} />
               </Row>
               <button type="submit" disabled={!stripe}>
-                Pay {totalPrice}
+                Pay {order.totalPrice} AED
               </button>
             </Form>
           ) : (
@@ -272,9 +272,10 @@ const Form = styled.form`
   & button {
     outline: none;
     border: 1px solid var(--background-color);
+    border-radius: 10px;
     background: var(--orange-color);
     color: #fff;
-    padding: 4px;
+    padding: 6px;
     font-weight: 700;
   }
 `;
