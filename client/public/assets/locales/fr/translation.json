@@ -33,7 +33,55 @@
     "logout":"Se déconnecter",
     "signin":"s'identifier",
     "create_your_shop":"Créez votre boutique",
-    "all_user_lists": "listes de tous les utilisateurs"
+    "all_user_lists": "listes de tous les utilisateurs",
+
+
+    "email_placeholder": "EMAIL",
+    "password_placeholder": "MOT DE PASSE",
+    "retype_placeholder": "RETAPER LE MOT DE PASSE",
+    "company_name_placeholder": "NOM DE LA COMPANY",
+    "scope__placeholder": "CHAMP D'ACTIVITÉ",
+    "expiry_placeholder": "DATE D'EXPIRATION",
+    "phone_number_placeholder": "NUMÉRO DE TÉLÉPHONE",
+    "location_placeholder": "LOCALISATION",
+    "from_placeholder": "DE",
+    "to_placeholder": "À",
+    "type_day_placeholder": "ENTREZ LES JOURS",
+    "type_video_link_placeholder": "ENTREZ LIEN DE LA VIDEO",
+    "type_facebook_placeholder": "ENTREZ LIEN DU FACEBOOK",
+    "type_insta_placeholder": "ENTREZ LIEN DU INSTAGRAM ",
+    "type_twitter_placeholder": "ENTREZ LIEN DU TWITTER ",
+    "bank_branch_placeholder": "LA BRANCH DE LA BANQUE",
+    "bank_name_placeholder": "NOM DE LA BANQUE",
+    "acc_number_placeholder": "NUMÉRO DE COMPTE",
+    "iban_placeholder": "IBAN",
+    "swift_placeholder": "SWIFT",
+    "currrency_placeholder": "DEVISE",
+
+
+
+
+    "company": "compagnie",
+    "personnel": "personnel",
+    "our_services": "NOS SERVICES",
+    "work_hours": "LES Heures du travail",
+    "add_video_link": "AJOUTER UN LIEN VIDÉO",
+    "add_your_page": "AJOUTER LE LIEN DE VOS PAGES",
+    "add_holidays": "AJOUTER LES JOURS FÉRIE",
+    "bank_info": "INFORMATIONS BANCAIRES",
+    "add_photo_for_your": "AJOUTER DES PHOTOS POUR L'ENTREPRISE",
+    "save": "enregistrer",
+    "save_and_continue": "Sauvegarder et continuer",
+    "upload_all": "télécharger tout",
+    "cover_photo": "COVER PHOTO",
+    "about_company": "À propos de la société",
+    "registration_info": "INFORMATION D'INSCRIPTION",
+
+    "back":"Arrière",
+    "login": "CONNEXION",
+    "register": "S'INSCRIRE",
+    "registration": "ENREGISTREMENT",
+    "forget_password": "MOT DE PASSE OUBLIÉ"
 
   }
   

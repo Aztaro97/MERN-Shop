@@ -54,7 +54,7 @@ function SelectLangButton() {
       ) : currentLanguageCode === "ar" ? (<>
         <span
           style={{ paddingRight: "40px" }}
-          className={`flag-icon flag-icon-sa`}
+          className={`flag-icon flag-icon-ae`}
         >
           
         </span>
@@ -97,6 +97,10 @@ const SelectC = styled(Select)`
   /* border: 1px solid red; */
   /* border: 1px solid var(--orange-color); */
   border-radius: 80px;
+  @media only screen and (max-width: 380px ) {
+    width: 90px !important;
+    padding: 2px;
+  }
 
   & .ant-select-selector {
     border: 1px solid var(--orange-color) !important;

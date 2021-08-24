@@ -9,7 +9,8 @@ function InputComponents({
   value,
   onChange,
   style,
-  required
+  required,
+  className
 }) {
   return (
     <Input
@@ -21,6 +22,7 @@ function InputComponents({
       onChange={onChange}
       style={style}
       required={required}
+      className={className}
     />
   );
 }
@@ -34,12 +36,11 @@ const Input = styled.input`
   width: 100%;
   min-width: 0;
   padding: 5px 11px;
-  color: var(--silver-color);
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   height: 2.5rem;
-  border: 3px solid var(--background-color);
+  border: 2px solid var(--background-color);
   outline: none;
-  border-radius: 10px;
+  border-radius: 5px;
   transition: all 0.3s;
   background: #fff;
   letter-spacing: 2px;

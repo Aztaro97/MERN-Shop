@@ -18,7 +18,7 @@ const Button = styled.button`
     padding: .3rem 3.5rem;
     border: none;
     font-weight: 700;
-    border-radius: 10px;
+    border-radius: 5px;
     min-width: 0;
     display: flex;
     justify-content: center;

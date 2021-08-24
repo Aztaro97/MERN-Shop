@@ -7,8 +7,10 @@ import { useFormik } from "formik";
 import { register } from "../../../flux/actions/userAction";
 import { successMessage, errorMessage } from "../../message";
 import { useDispatch, useSelector } from "react-redux";
+import {useTranslation} from "react-i18next"
 
 function Register() {
+  const {t} = useTranslation();
   const [errorPwd, setErrorPwd] = useState(false);
 
   const dispatch = useDispatch();
@@ -53,7 +55,7 @@ function Register() {
             type="email"
             name="email"
             id="email"
-            placeholder="EMAIL"
+            placeholder={t("email_placeholder")}
             onChange={formik.handleChange}
             value={formik.values.email}
           />
@@ -66,7 +68,7 @@ function Register() {
             type="password"
             name="password"
             id="password"
-            placeholder="PASSWORD "
+            placeholder={t("password_placeholder")}
             onChange={formik.handleChange}
             value={formik.values.password}
           />
@@ -81,7 +83,7 @@ function Register() {
             id="password2"
             onChange={formik.handleChange}
             value={formik.values.password2}
-            placeholder="RETYPE PASSWORD"
+            placeholder={t("retype_placeholder")}
           />
         </Row>
         {errorPwd ? (

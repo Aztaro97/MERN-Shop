@@ -6,10 +6,12 @@ import {useDispatch, useSelector} from "react-redux"
 import MainContainer from "./../../MainContainer";
 import LoginComponent from "./loginTab";
 import RegisterComponent from "./RegisterTab";
+import {useTranslation} from "react-i18next"
 
 const { TabPane } = Tabs;
 
 function AuthTabPage({location}) {
+  const {t} = useTranslation();
 
   const redirect = location.search ? location.search.split('=')[1] : "/"
 
@@ -30,10 +32,10 @@ function AuthTabPage({location}) {
     <AuthTab>
       <MainContainer>
         <TabsE defaultActiveKey="1" centered size="default">
-          <TabPaneE tab="LOGIN" key="1">
+          <TabPaneE tab={t("login")} key="1">
             <LoginComponent />
           </TabPaneE>
-          <TabPaneE tab="REGISTRATION" key="2">
+          <TabPaneE tab={t("registration")} key="2">
             <RegisterComponent />
           </TabPaneE>
         </TabsE>
@@ -52,6 +54,9 @@ const AuthTab = styled.div`
 const TabsE = styled(Tabs)`
   color: var(--silver-color);
   font-weight: 700;
+  & .ant-tabs-tab {
+    margin: 0 10px;
+  }
 
   & .ant-tabs-tab:hover {
     color: var(--orange-color) !important;

@@ -37,13 +37,17 @@ const GalleryImg = ({ product }) => {
 
   useEffect(() => {
     if (product.imageUrl.length > 0) {
-      setCurrentImg(product.imageUrl[0].url)
+      setCurrentImg(product.imageUrl[0].url);
     }
-  },[])
+  }, []);
 
   return (
     <GallerieContent>
-      <img className="current-img" src={product.imageUrl.length > 0 ? currentImg : picture1 } alt="" />
+      <img
+        className="current-img"
+        src={product.imageUrl.length > 0 ? currentImg : picture1}
+        alt=""
+      />
       <div className="aside-img">
         {product.imageUrl.slice(1, 5).map((image, index) => (
           <img key={index} src={image.url} alt="" onClick={hanleClick} />
@@ -55,7 +59,7 @@ const GalleryImg = ({ product }) => {
 
 const Contente = ({ product, setShowModal }) => {
   const [qtyNumber, setQtyNumber] = useState(1);
-  const [sizeSelected, setSizeSelected] = useState(null);
+  const [sizeSelected, setSizeSelected] = useState("");
 
   const handleSizeSelected = (e) => {
     setSizeSelected(e.target.value);
@@ -73,11 +77,16 @@ const Contente = ({ product, setShowModal }) => {
     }
   };
 
+  const sharingUrl = window.location.href
+
   return (
     <ContenteContainer>
       <Row>
         <h1>{product.name}</h1>
         <p style={{ marginBottom: "10px" }}>{product.description}</p>
+        <h5 className="merchant_name">
+          Product Selling by : <span>{product.user.company.name}</span>{" "}
+        </h5>
       </Row>
       <Row>
         <div className="productDetail">
@@ -86,15 +95,18 @@ const Contente = ({ product, setShowModal }) => {
               <h2>size</h2>
               <div className="select-size">
                 <Radio.Group
-                  defaultValue="a"
+                  defaultValue={sizeSelected}
                   buttonStyle="solid"
-                  className="radio-group-container"
                   onChange={handleSizeSelected}
                 >
                   {product.variantSize.map((size, index) => (
-                    <Radio.Button value={size} key={index}>
+                    <RadioButton
+                      value={size}
+                      key={index}
+                      className="radio-group-container"
+                    >
                       {size}
-                    </Radio.Button>
+                    </RadioButton>
                   ))}
                 </Radio.Group>
               </div>
@@ -132,10 +144,10 @@ const Contente = ({ product, setShowModal }) => {
           <div className="social-media">
             <p>Share:</p>
             <div className="link-list">
-              <a className="media-link" href="#/">
+              <a className="media-link" href="#/" target="_blank">
                 <FaTumblr className="icon" />
               </a>
-              <a className="media-link" href="#/">
+              <a className="media-link" href={`whatsapp://send?text=${sharingUrl}`} target="_blank"  rel="noreferrer" >
                 <FaWhatsapp className="icon" />
               </a>
               <a className="media-link" href="#/">
@@ -147,7 +159,7 @@ const Contente = ({ product, setShowModal }) => {
               <a className="media-link" href="#/">
                 <FaSnapchatGhost className="icon" />
               </a>
-              <a className="media-link" href="#/">
+              <a className="media-link" href={`https://www.facebook.com/sharer/sharer.php?u=${sharingUrl}`} target="_blank"  rel="noreferrer">
                 <FaFacebookF className="icon" />
               </a>
             </div>
@@ -223,6 +235,15 @@ const Row = styled.div`
     font-size: 0.9rem;
   }
 
+  & .merchant_name {
+    font-size: 1rem;
+    font-weight: 700;
+    & span {
+      color: var(--jungle-color);
+      text-transform: uppercase;
+    }
+  }
+
   & .price {
     color: var(--jungle-color);
     font-size: 1.3rem;
@@ -236,7 +257,7 @@ const Row = styled.div`
       margin: 1rem 0;
       & h2 {
         color: var(--orange-color);
-        font-size: 1.5rem;
+        font-size: 1rem;
         font-weight: 700;
         letter-spacing: 2px;
         text-transform: uppercase;
@@ -375,6 +396,23 @@ const Btn = styled.div`
 
 const ContenteContainer = styled.div`
   padding: 1rem;
+`;
+
+const RadioButton = styled(Radio.Button)`
+  border-color: var(--orange-color) !important ;
+  &:hover {
+    color: #111 !important
+  }
+  & .ant-radio-button-checked  {
+    background: var(--orange-color);
+  }
+  & .ant-radio-button-checked .ant-radio-button-inner:after {
+    background-color: var(--orange-color);
+  }
+  & .ant-radio-button:hover .ant-radio-button-inner {
+    border-color: var(--orange-color);
+    color: #fff;
+  }
 `;
 
 export default ModalContent;

@@ -4,10 +4,12 @@ import InputComponents from "../../InputComponents";
 import ButtonComponeent from "../../ButtonComponeent";
 import { Link, useHistory } from "react-router-dom";
 import { useFormik } from "formik";
+import {useTranslation} from "react-i18next"
 import {useDispatch} from "react-redux"
 import {login} from "../../../flux/actions/userAction"
 
 function LoginForm() {
+  const {t} = useTranslation();
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
@@ -17,6 +19,7 @@ function LoginForm() {
     onSubmit:async (values) => {
       const body = JSON.stringify(values, null, 2);
       dispatch(login(body));
+      formik.setFieldValue("email", "")
       formik.setFieldValue("password", "")
     },
   });
@@ -28,7 +31,7 @@ function LoginForm() {
             type="email"
             name="email"
             id="email"
-            placeholder="EMAIL"
+            placeholder={t("email_placeholder")}
             onChange={formik.handleChange}
             value={formik.values.email}
           />
@@ -39,14 +42,14 @@ function LoginForm() {
             type="password"
             name="password"
             id="password"
-            placeholder="PASSWORD"
+            placeholder={t("password_placeholder")}
             onChange={formik.handleChange}
             value={formik.values.password}
           />
         </Row>
         <Row>
-          <LinkE>forgot your password</LinkE>
-          <ButtonComponeent type="submit">login</ButtonComponeent>
+          <LinkE to="/forgot-password">{t("forget_password")}</LinkE>
+          <ButtonComponeent type="submit">{t("login")}</ButtonComponeent>
         </Row>
       </Form>
     </Containber>
@@ -80,7 +83,8 @@ const LinkE = styled(Link)`
   font-size: 0.8rem;
 
   &:hover {
-    color: #747d8c;
+    color: var(--orange-color);
+    text-decoration:none;
   }
   @media only screen and (max-width: 653px) {
     font-size: 0.6rem;

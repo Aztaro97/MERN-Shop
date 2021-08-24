@@ -48,7 +48,9 @@ const ViewProducts = ({match}) => {
     { title: "-- Select Brand --", value: "" },
     { title: "Electronic", value: "electronic" },
     { title: "Cloth", value: "cloth" },
-    { title: "Sample brand", value: "Sample brand" },
+    { title: "Fruits", value: "Fruits" },
+    { title: "Fourniture", value: "Fourniture" },
+    { title: "Cosmetic", value: "Cosmetic" },
   ];
   const colorList = [
     { title: "-- Select color --", value: "" },
@@ -185,6 +187,7 @@ const FilterForm = styled.form`
 
     & p {
       margin-bottom: 0;
+      font-size: .9rem;
     }
   }
 
@@ -199,10 +202,21 @@ const FilterForm = styled.form`
   }
 
   @media only screen and (max-width: 768px) {
-    display: block;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     height: 100%;
-    & > .form_select {
-      margin-bottom: 1rem;
+    margin-bottom: 1rem;
+    & .form_select {
+      margin:0 0 1rem 0;
+      max-width: 150px;
+    }
+    @media only screen and (max-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+      & .form_select {
+      margin-bottom: .5rem;
+      max-width: 150px;
+      
+    }
     }
   }
 `;
@@ -223,6 +237,9 @@ const SliderE = styled(Slider)`
   }
   & .ant-slider-handle {
     border: solid 2px var(--orange-color);
+  }
+  @media only screen and (max-width: 1000px) {
+    width: 150px;
   }
 `;
 const Grid = styled.div`

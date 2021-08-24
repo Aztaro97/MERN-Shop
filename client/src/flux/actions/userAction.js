@@ -40,9 +40,15 @@ import {
   CRAFTMAN_LIST_REQUEST,
   CRAFTMAN_LIST_SUCCESS,
   CRAFTMAN_LIST_FAIL,
+  RESET_PASSWORD_SUCCESS,
+  RESET_PASSWORD_FAIL,
 } from "../constants/userConstants";
 import { ORDER_LIST_MY_RESET } from "../constants/orderConstants";
-import { successMessage, warningMessage } from "../../components/message";
+import {
+  errorMessage,
+  successMessage,
+  warningMessage,
+} from "../../components/message";
 
 export const login = (body) => async (dispatch) => {
   try {
@@ -529,5 +535,28 @@ export const userAddressMapReducer = (state = {}, action) => {
       return { address: action.payload };
     default:
       return state;
+  }
+};
+
+export const resetPassword = (email) => async (dispatch) => {
+  try {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    await axios.post("/api/users/reset-password", { email }, config);
+    dispatch({ type: RESET_PASSWORD_SUCCESS });
+    successMessage("Un message à été envoyé à votre email", 2000);
+  } catch (error) {
+    dispatch({
+      type: RESET_PASSWORD_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+    errorMessage(error);
   }
 };

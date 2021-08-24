@@ -24,9 +24,6 @@ function CartComponent({ location }) {
     history.push("/auth?redirect=shipping");
   };
 
-  // useEffect(() => {
-  //   if (user)
-  // }, [redirect]);
 
   return (
     <Container>

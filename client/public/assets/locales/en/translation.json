@@ -32,7 +32,55 @@
     "logout":"log out",
     "signin":"sign in",
     "create_your_shop":"Create your shop",
-    "all_user_lists": "all users lists"
+    "all_user_lists": "all users lists",
+
+
+    "email_placeholder": "EMAIL",
+    "password_placeholder": "PASSWORD",
+    "retype_placeholder": "RETYPE PASSWORD",
+    "company_name_placeholder": "COMPANY NAME",
+    "scope__placeholder": "SCOPE OF BUSINESS",
+    "expiry_placeholder": "EXPIRY DATE",
+    "phone_number_placeholder": "PHONE NUMBER",
+    "location_placeholder": "LOCATION",
+    "from_placeholder": "FROM",
+    "to_placeholder": "TO",
+    "type_day_placeholder": "TYPE DAYS",
+    "type_video_link_placeholder": "TYPE VIDEO LINK",
+    "type_facebook_placeholder": "TYPE FACEBOOK LINK",
+    "type_insta_placeholder": "TYPE INSTAGRAM LINK",
+    "type_twitter_placeholder": "TYPE TWITTER LINK",
+    "bank_branch_placeholder": "BANK NAME",
+    "bank_name_placeholder": "BANK NAME",
+    "acc_number_placeholder": "ACCOUNT NUMBER",
+    "iban_placeholder": "IBAN",
+    "swift_placeholder": "SWIFT",
+    "currrency_placeholder": "CURRENCY",
+
+
+
+
+    "company": "company",
+    "personnel": "personnel",
+    "our_services": "OUR SERVICES",
+    "work_hours": "work hours",
+    "add_video_link": "ADD VIDEO LINK",
+    "add_your_page": "ADD LINK OF YOUR PAGES",
+    "bank_info": "BANK INFORMATION",
+    "add_photo_for_your": "ADD PHOTO FOR YOUR COMPANY",
+    "save": "save",
+    "save_and_continue": "save and continue",
+    "upload_all": "upload all",
+    "cover_photo": "COVER PHOTO",
+    "about_company": "about company",
+    "registration_info": "REGISTRATION INFORMATION",
+
+    "back":"Back",
+    "login": "LOGIN",
+    "register": "REGISTER",
+    "registration": "REGISTRATION",
+    "forget_password": "FORGET PASSWORD"
+
 
   }
   

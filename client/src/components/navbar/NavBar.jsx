@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Link, Redirect, useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { FaUser, FaShoppingCart, FaUserCog } from "react-icons/all";
 import { Popover, Menu } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../flux/actions/userAction";
 import { createProduct } from "../../flux/actions/productAction";
 import { useTranslation } from "react-i18next";
+import cookies from "js-cookie"
 import SelectLangue from "./SelectLangButton";
 import ToggleMenu from "./toggleMenu";
 
@@ -26,6 +27,8 @@ function NavBar() {
   const { cartItems } = useSelector((state) => state.cart);
 
   const { userInfo } = useSelector((state) => state.userLogin);
+
+  
 
   const {
     loading: loadingCreate,
@@ -71,6 +74,7 @@ function NavBar() {
         </>
       ) : (
         <>
+        <LinkR href="/myorder">{t("my_order")}</LinkR>
           <LinkR
             style={{ textTransform: "capitalize", letterSpacing: "1px" }}
             href="/register"
@@ -94,7 +98,7 @@ function NavBar() {
         {t("create_your_shop")}
       </LinkR>
       <LinkP to="/auth" className="btn_signin">
-      {t("logout")}
+      {t("login")}
       </LinkP>
     </Content>
   );
@@ -129,10 +133,12 @@ function NavBar() {
     </Menu>
   );
 
+  const currentLanguageCode = cookies.get("i18next")
+
   return (
     <Header scrollNav={scrollNav}>
       <Logo href="/">
-        <img src={Logo_SVG} alt="" /> au79code
+        <img src={Logo_SVG} alt="" /> <span>au 79 code</span>
       </Logo>
       {/* <Lang href="/" onClick={handleChangeLang} >{t("language")}</Lang> */}
 
@@ -163,7 +169,7 @@ function NavBar() {
           </Popover>
         </NavItem>
         <NavItem>
-          <NavLink to="/cart">
+          <NavLink to="/cart" currentLanguageCode={currentLanguageCode}>
             <FaShoppingCart className="icon" />
             {cartItems.length > 0 ? (
               <span className="count">{cartItems.length}</span>
@@ -215,6 +221,7 @@ const Header = styled.header`
     scrollNav ? "background 0s ease-in-out" : "background .5s ease-in-out"};
   @media only screen and (max-width: 995px) {
     padding-left: 1rem;
+    padding: 0 1rem;
   }
 `;
 const Nav = styled.ul`
@@ -233,6 +240,9 @@ const Nav = styled.ul`
 `;
 const NavItem = styled.li`
   margin: 0 1rem;
+  @media only screen and (max-width: 995px) {
+    margin: 0 .4rem;
+  }
 `;
 const NavLink = styled(Link)`
   text-decoration: none;
@@ -244,7 +254,8 @@ const NavLink = styled(Link)`
   & .count {
     position: relative;
     bottom: 1rem;
-    right: 0.4rem;
+    /* right: 0.4rem; */
+    right: ${({ currentLanguageCode }) => currentLanguageCode === "ar" ? "-.3rem" : ".4rem"};
     background: var(--orange-color);
     color: #fff;
     padding: 6px;
@@ -255,20 +266,6 @@ const NavLink = styled(Link)`
   }
   &:hover {
     color: var(--orange-color);
-  }
-`;
-const Lang = styled.a`
-  text-decoration: none;
-  border: 1px solid var(--orange-color);
-  color: var(--silver-color);
-  padding: 0.3rem 2rem;
-  border-radius: 30px;
-  transition: 0.3s all ease-in-out;
-  letter-spacing: 3px;
-  &:hover {
-    color: #fff;
-    background: var(--orange-color);
-    text-decoration: none;
   }
 `;
 
@@ -334,9 +331,12 @@ const LinkP = styled(Link)`
 const Logo = styled.a`
   position: relative;
   text-decoration: none;
-   color: var(--silver-color);
+   
+  span {
+    color: var(--silver-color);
    text-transform: uppercase;
    font-weight: 700;
+  }
   top: 0px;
   z-index: 999999999999;
   & img {
@@ -346,6 +346,11 @@ const Logo = styled.a`
     text-decoration: none;
     opacity: 0.9;
     color: var(--silver-color);
+  }
+  @media only screen and (max-width: 560px) {
+   span {
+     display: none;
+   }
   }
 `;
 
@@ -367,9 +372,6 @@ const ToggleBtn = styled.div`
   transform: ${({ showToggleMenu }) => showToggleMenu && "rotate(45deg)"};
   z-index: ${({ showToggleMenu }) => showToggleMenu && "99999999999"};
   position: ${({ showToggleMenu }) => showToggleMenu && "relative"};
-  /* @media only screen and (max-width: 995px) {
-    right: -0.7rem;
-  } */
   &:hover {
     background: #f7f7f7;
   }

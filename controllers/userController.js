@@ -58,20 +58,239 @@ const registerUser = asyncHandler(async (req, res) => {
     subject: "Welcome to Au79Code",
     html: `
     <body>
-    <div style="width:100%; padding:4rem 0;">
-    <div style="border:3px solid #fff; padding:4rem 5rem; background:#ECEEF1; font-family: sans-serif; max-width:38rem;margin:0 auto">
-        <a href="https://www.au79code.com/" style="text-align:center;font-size:2rem;display:flex;justify-content: center;text-decoration:none;color:#000;margin-bottom: 1rem;">Welcome to Au79Code</a>
-        <div style="padding:4rem; background: #fff; margin: auto;text-align: center;">
-            <h2 style="color: #696868;">Wecome</h2>
-            <p style="margin-bottom:3rem;font-weight:700;color: #8E8E8E;">Thanks for Registering to au79code, click in this link to sign in in your account</p>
-            <a href=https://www.au79code.com/ style="text-decoration: none; color: #fff; background: #54BBFB;padding:1rem 4rem; font-size: 1.2rem;border-radius: 10px;font-weight: 700;display: block;max-width:30rem;margin:auto;" >Link</a>
-            <p style="color:#8E8E8E;font-weight: 700; margin-top: 3rem;font-size:.9rem;">Donec rutrum congue leo eget malesuada. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Nulla quis lorem ut libero malesuada feugiat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia</p>
-        </div>
+    <style>
+    @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css");
+  </style>
+  <div style="width: 100%; padding: 0.5rem 0">
+    <div
+      style="
+        border: 3px solid #fff;
+        padding: 1rem;
+        background: #eceef1;
+        font-family: sans-serif;
+        max-width: 38rem;
+      "
+    >
+      <a
+        href="https://www.au79code.com/"
+        style="
+          text-align: center;
+          font-size: 2rem;
+          display: flex;
+          justify-content: center;
+          text-decoration: none;
+          color: #000;
+          margin-bottom: 1rem;
+        "
+        target="_blank"
+      >
+        <img
+          src="https://res.cloudinary.com/tarositeweb/image/upload/v1629724171/logo_tnw2pq.svg"
+          alt=""
+          width="50"
+        />
+      </a>
+      <div
+        style="
+          padding: 1rem;
+          background: #fff;
+          margin: auto;
+          text-align: center;
+        "
+      >
+        <h2 style="color: #696868; font-size: 1rem">Wecome to au79code</h2>
+        <p
+          style="
+            margin-bottom: 1rem;
+            font-weight: 700;
+            color: #8e8e8e;
+            font-size: 0.7rem;
+          "
+        >
+          Thanks for Registering to au79code, click in this link to sign in in
+          your account
+        </p>
+        <a
+          href="https://www.au79code.com/auth"
+          style="
+            text-decoration: none;
+            color: #fff;
+            background: #54bbfb;
+            padding: 0.6rem 4rem;
+            font-size: 0.9rem;
+            border-radius: 10px;
+            font-weight: 700;
+            display: block;
+            width: 100px;
+            margin: auto;
+          "
+          >Link</a
+        >
+        <p
+          style="
+            color: #8e8e8e;
+            font-weight: 700;
+            margin-top: 0.6rem;
+            font-size: 0.7rem;
+          "
+        >
+          Donec rutrum congue leo eget malesuada. Quisque velit nisi, pretium
+          ut lacinia in, elementum id enim. Nulla quis lorem ut libero
+          malesuada feugiat. Vestibulum ante ipsum primis in faucibus orci
+          luctus et ultrices posuere cubilia
+        </p>
+      </div>
     </div>
-</div>
+  </div>
+  <table
+    style="
+      width: 100%;
+      font-size: 10pt;
+      font-family: Arial, sans-serif;
+      background: #0b1b34;
+      padding: 10px;
+    "
+    cellpadding="0"
+    cellspacing="0"
+    border="0"
+  >
+    <tbody>
+      <tr>
+        <td>
+          <section style="color: #93a3b3; font-family: Arial">
+            <h2 style="color: #c68787; margin: 5px 0 2px 0">To visit us</h2>
+            <p style="margin: 1px 0">
+              If you want to visit us
+              <span style="display: block; margin: 4px 0"
+                >talk about a project</span
+              >
+              or just have a coffee
+            </p>
 
-
-    
+            <p>
+              Near 41B Street
+              <br />Al Rashidiya - Dubai
+            </p>
+            <p style="margin: 0">
+              +97142839983 <br />
+              +971504366696
+            </p>
+          </section>
+          <section>
+            <h2 style="color: #c68787; margin: 5px 0 2px 0">Follow us</h2>
+            <div
+              style="
+                font-family: Arial;
+                display: flex;
+                flex-wrap: wrap;
+                margin: 0;
+                padding: 0;
+              "
+            >
+              <a
+                href="https://api.whatsapp.com/send?phone=+971567957775"
+                target="__blank"
+                style="
+                  text-decoration: none;
+                  background: #93a3b3;
+                  padding: 0px;
+                  margin-left: 5px;
+                  color: #fff;
+                "
+              >
+                <i
+                  style="font-size: 30px; background: #000"
+                  class="fab fa-whatsapp-square"
+                ></i>
+              </a>
+              <a
+                href="https://www.instagram.com/au_79_code/"
+                target="__blank"
+                style="
+                  text-decoration: none;
+                  background: #93a3b3;
+                  padding: 0px;
+                  margin-left: 5px;
+                  color: #fff;
+                "
+              >
+                <i
+                  class="fab fa-instagram-square grayBlueColor"
+                  style="font-size: 30px; background: #000"
+                ></i>
+              </a>
+              <a
+                href="https://twitter.com/79_code"
+                target="__blank"
+                style="
+                  text-decoration: none;
+                  background: #93a3b3;
+                  padding: 0px;
+                  margin-left: 5px;
+                  color: #fff;
+                "
+              >
+                <i
+                  class="fab fa-twitter-square grayBlueColor"
+                  style="font-size: 30px; background: #000"
+                ></i>
+              </a>
+              <a
+                href="https://www.snapchat.com/add/au79code"
+                target="__blank"
+                style="
+                  text-decoration: none;
+                  background: #93a3b3;
+                  padding: 0px;
+                  margin-left: 5px;
+                  color: #fff;
+                "
+              >
+                <i
+                  class="fab fa-snapchat-square grayBlueColor"
+                  style="font-size: 30px; background: #000"
+                ></i>
+              </a>
+              <a
+                href="https://www.facebook.com/pages/category/Marketing-Agency/AU-79-CODE-103505425005079/"
+                target="__blank"
+                style="
+                  text-decoration: none;
+                  background: #93a3b3;
+                  padding: 0px;
+                  margin-left: 5px;
+                  color: #fff;
+                "
+              >
+                <i
+                  class="fab fa-facebook-square grayBlueColor"
+                  style="font-size: 30px; background: #000"
+                ></i>
+              </a>
+            </div>
+          </section>
+        </td>
+        <td style="display: flex; align-items: center">
+          <a
+            style="transform: rotate(45deg); margin-top: 40px"
+            href="https://goo.gl/maps/YApX2Y5EJPLkzmgA6"
+            target="_blank"
+            alt=""
+            rel="noreferrer"
+          >
+            <iframe
+              title="AU79CODE Location"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7218.432955814597!2d55.385108200000005!3d25.229632700000014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m3!3e6!4m0!4m0!5e0!3m2!1sen!2sae!4v1629292534309!5m2!1sen!2sae"
+              width="90"
+              height="90"
+              allowfullscreen=""
+              loading="lazy"
+            ></iframe>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
     </body>
     `,
   });
@@ -97,8 +316,6 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new Error("Invalid user data");
   }
 });
-
-
 
 // @desc    Get user profile
 // @route   GET /api/users/profile
@@ -182,9 +399,9 @@ const getUserById = asyncHandler(async (req, res) => {
   if (user) {
     res.json({
       _id: user._id,
-      isAdmin:user.isAdmin,
+      isAdmin: user.isAdmin,
       company: user.company,
-      typeUser: user.typeUser
+      typeUser: user.typeUser,
     });
   } else {
     res.status(404);
@@ -294,13 +511,6 @@ const updatePassword = asyncHandler(async (req, res, next) => {
   }
 });
 
-
-
-
-
-
-
-
 // @desc    Save Company Information
 // @route   POST /api/users
 // @access  private
@@ -309,7 +519,7 @@ const saveCompanyInformation = asyncHandler(async (req, res) => {
 
   if (user) {
     user.company = req.body.company;
-    user.typeUser = "merchant"
+    user.typeUser = "merchant";
 
     const userUpdate = await user.save();
 
@@ -319,20 +529,14 @@ const saveCompanyInformation = asyncHandler(async (req, res) => {
       email: userUpdate.email,
       isAdmin: userUpdate.isAdmin,
       company: userUpdate.company,
-      typeUser : userUpdate.typeUser,
+      typeUser: userUpdate.typeUser,
       token: generateToken(userUpdate._id),
     });
-
   } else {
     res.status(400);
     throw new Error("User not found");
   }
-
-  
 });
-
-
-
 
 // @desc    Save Bank Information
 // @route   POST /api/users
@@ -350,16 +554,11 @@ const saveBankInformation = asyncHandler(async (req, res) => {
       bank: userUpdate.bank,
       token: generateToken(userUpdate._id),
     });
-
   } else {
     res.status(400);
     throw new Error("User not found");
   }
-
-  
 });
-
-
 
 // @desc    Save Shipping Address
 // @route   POST /api/users/shipping
@@ -376,7 +575,6 @@ const saveShippingAddress = asyncHandler(async (req, res) => {
       // _id: userUpdate._id,
       shippindAddress: userUpdate.shippindAddress,
     });
-
   } else {
     res.status(400);
     throw new Error("User not found");
@@ -392,46 +590,33 @@ const getShippingAddress = asyncHandler(async (req, res) => {
     res.status(200).json({
       shippindAddress: user.shippindAddress,
     });
-
   } else {
     res.status(400);
     throw new Error("User not found");
   }
 });
 
-
 const getAllCompanies = asyncHandler(async (req, res) => {
   try {
-
-    const type = req.params.type
-
+    const type = req.params.type;
 
     // const user = await User.find({company:{type: "company"}});
-  const user = await User.find({"company.type": type}).select("company , email");
+    const user = await User.find({ "company.type": type }).select(
+      "company , email"
+    );
 
-  if (user) {
-    res.status(200).json({
-      users:user
-    });
-
-  } else {
-    res.status(400);
-    throw new Error("User not found");
-  }
-    
+    if (user) {
+      res.status(200).json({
+        users: user,
+      });
+    } else {
+      res.status(400);
+      throw new Error("User not found");
+    }
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-})
-
-
-
-
-
-
-
-
-
+});
 
 module.exports = {
   authUser,
@@ -448,5 +633,5 @@ module.exports = {
   saveBankInformation,
   saveShippingAddress,
   getAllCompanies,
-  getShippingAddress
+  getShippingAddress,
 };

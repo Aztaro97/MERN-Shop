@@ -25,6 +25,7 @@ import CompleteOrder from "./components/pagesScreens/orders/placeOrder"
 import pageNotFound from "./components/pagesScreens/pageNotFund"
 import Loading from "./components/Loader";
 import MapScreen from "./components/pagesScreens/checkout/googleMap/mapScreen";
+import ResetPasswordPage from "./components/pagesScreens/resetPasswordPage"
 
 import OrderListComponent from "./components/pagesScreens/orders/orderList"
 import UserListComponent from "./components/pagesScreens/user/userList"
@@ -59,6 +60,7 @@ function App() {
           <Route path="/myorder" component={ListOrderScreen} />
           <Route path="/loader" component={Loading} />
           <Route path="/map" component={MapScreen} />
+          <Route path="/forgot-password" component={ResetPasswordPage} />
 
 
           {/*////////////////  ADMIN ROUTER  ///////////// */}
