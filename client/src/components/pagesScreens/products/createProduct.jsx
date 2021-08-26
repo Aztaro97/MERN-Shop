@@ -6,7 +6,7 @@ import MainContainer from "../../MainContainer";
 import { Upload, Modal } from "antd";
 import { FaPlus, AiFillDelete, GoPlus } from "react-icons/all";
 import axios from "axios";
-import { updateProduct } from "../../../flux/actions/productAction";
+import { updateProduct, createProduct } from "../../../flux/actions/productAction";
 import {
   CountryDropdown,
   RegionDropdown,
@@ -370,6 +370,23 @@ const FormRight = ({
     imgWindow.document.write(image.outerHTML);
   };
 
+  const history = useHistory();
+
+  const {
+    loading,
+    error,
+    success,
+    product: createdProduct,
+  } = useSelector((state) => state.productCreate);
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (success) {
+      window.location.href = `/add-product/${createdProduct._id}`
+    }
+  }, [success, history, createdProduct])
+
   return (
     <div>
       <Row>
@@ -384,6 +401,7 @@ const FormRight = ({
       </Row>
       <Row>
         <TextArea
+        required
           type="text"
           name="descript"
           id="descript"
@@ -713,23 +731,25 @@ const FormRight = ({
           <Label style={{ color: "#000" }}>size</Label>
           <InputC
             type="currency"
-            placeholder="500 GRAM"
+            placeholder="0.00 GRAM"
             onChange={(e) => setSize(e.target.value)}
           />
           <Column>
             <div>
               <Label style={{ color: "#000" }}>price</Label>
               <InputC
+              required
                 type="currency"
-                placeholder="AED 25.00"
+                placeholder="AED 0.00"
                 onChange={(e) => setPrice(e.target.value)}
               />
             </div>
             <div>
               <Label style={{ color: "#000" }}>compare at price</Label>
               <InputC
+              
                 type="currency"
-                placeholder="AED 30.00"
+                placeholder="AED 0.00"
                 onChange={(e) => setCompareAtPrice(e.target.value)}
               />
             </div>
@@ -743,7 +763,7 @@ const FormRight = ({
       >
         save & share
       </ButtonC>
-      <Link href="/add-product">ADD ANOTHER PRODUCT</Link>
+      <Link onClick={() => dispatch(createProduct()) } >ADD ANOTHER PRODUCT</Link>
     </div>
   );
 };
@@ -752,7 +772,7 @@ const ProductSection1 = ({ setCode, setSelling, setDelivery }) => {
   return (
     <>
       <Row>
-        <Label>Creat code</Label>
+        <Label>Creat code ( optional ) </Label>
         <InputC
           type="text"
           name=""
@@ -1041,11 +1061,10 @@ const ShippingSection = ({
         <Row>
           <Label for="RateName">Shipping From</Label>
           <InputC
+          required
             type="text"
             name="RateName"
             id="RateName"
-            name="RateName"
-            // value={shippingFrom}
             onChange={(e) => setShippingFrom(e.target.value)}
           />
         </Row>

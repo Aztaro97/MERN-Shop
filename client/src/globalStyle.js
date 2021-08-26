@@ -18,6 +18,9 @@ export const GlobalStyle = createGlobalStyle `
         @media only screen and (max-width: 768px) {
             font-size: 14px;
         }
+        @media only screen and (max-width: 425px) {
+            font-size: 12px;
+        }
     } 
 
     

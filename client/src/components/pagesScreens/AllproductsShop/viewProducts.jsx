@@ -30,7 +30,7 @@ const ViewProducts = ({match}) => {
       brand: "",
       color: "",
       size: Number,
-      price: "",
+      price: 0,
     },
     onSubmit: (values) => {
       const body = JSON.stringify(values, null, 2);
@@ -46,11 +46,17 @@ const ViewProducts = ({match}) => {
 
   const brandList = [
     { title: "-- Select Brand --", value: "" },
-    { title: "Electronic", value: "electronic" },
+    { title: "Beauty", value: "Beauty" },
     { title: "Cloth", value: "cloth" },
-    { title: "Fruits", value: "Fruits" },
-    { title: "Fourniture", value: "Fourniture" },
     { title: "Cosmetic", value: "Cosmetic" },
+    { title: "Electronic", value: "electronic" },
+    { title: "Fourniture", value: "Fourniture" },
+    { title: "Fruits", value: "Fruits" },
+    { title: "Handcraft", value: "Handcraft" },
+    { title: "Jewelry", value: "Jewelry" },
+    { title: "Painting", value: "Painting" },
+    { title: "Photography", value: "Photography" },
+    { title: "Grocerie", value: "Grocerie" },   
   ];
   const colorList = [
     { title: "-- Select color --", value: "" },
@@ -110,7 +116,7 @@ const ViewProducts = ({match}) => {
           />
           <div className="form_select slider">
             <p>Price Less than Aed 500</p>
-            <SliderE defaultValue={30} onChange={handleChangeSlider} max={500} min={2} />
+            <SliderE defaultValue={formik.values.price} onChange={handleChangeSlider} max={500} min={2} />
           </div>
           <button type="submit" className="btn">
             Clear

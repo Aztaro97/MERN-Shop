@@ -37,34 +37,39 @@ function OrdersScreen() {
                 </tr>
               </thead>
               <tbody>
-                {orders.map((order) => (
-                  <tr key={order._id}>
-                    <td>{order._id}</td>
-                    <td>{order.createdAt.substring(0, 10)}</td>
-                    <td>{order.totalPrice} dh</td>
-                    {/* <td>{order.user && order.user.name}</td> */}
-                    
-                    <td>
-                      {order.isPaid ? (
-                        <>
-                          {" "}
-                          <FcPaid size={20} style={{ color: "green" }} />{" "}
-                          {order.paidAt.substring(0, 10)}{" "}
-                        </>
-                      ) : (
-                        <FaTimesCircle style={{ color: "#ff7979" }} />
-                      )}
-                    </td>
-                    <td>
-                      {order.isDelivered ? (
-                        order.deliveredAt.substring(0, 10)
-                      ) : (
-                        <FaTimesCircle style={{ color: "#ff7979" }} />
-                      )}
-                    </td>
-                  </tr>
-                ))}
-                
+                {orders.length === 0 ? (
+                  <div className="Empty_content">
+                      <h1>You have not placed any orders in past three months</h1>
+                     </div>
+                ) : (
+                  orders.map((order) => (
+                    <tr key={order._id}>
+                      <td>{order._id}</td>
+                      <td>{order.createdAt.substring(0, 10)}</td>
+                      <td>{order.totalPrice} dh</td>
+                      {/* <td>{order.user && order.user.name}</td> */}
+
+                      <td>
+                        {order.isPaid ? (
+                          <>
+                            {" "}
+                            <FcPaid size={20} style={{ color: "green" }} />{" "}
+                            {order.paidAt.substring(0, 10)}{" "}
+                          </>
+                        ) : (
+                          <FaTimesCircle style={{ color: "#ff7979" }} />
+                        )}
+                      </td>
+                      <td>
+                        {order.isDelivered ? (
+                          order.deliveredAt.substring(0, 10)
+                        ) : (
+                          <FaTimesCircle style={{ color: "#ff7979" }} />
+                        )}
+                      </td>
+                    </tr>
+                  ))
+                )}
               </tbody>
             </Table>
           </OrderContainer>
@@ -75,6 +80,7 @@ function OrdersScreen() {
 }
 
 const OrderContainer = styled.div`
+  padding: 0 1rem;
   & h3 {
     text-align: center;
     text-transform: uppercase;
@@ -103,6 +109,13 @@ const Table = styled.table`
         padding: 10px;
         text-transform: uppercase;
       }
+    }
+  }
+
+  & .Empty_content {
+    text-align: center;
+    & h1 {
+      font-size: 1.6rem;
     }
   }
 `;

@@ -62,7 +62,7 @@ function NavBar() {
     if (successCreate) {
       history.push(`/add-product/${createdProduct._id}`);
     }
-  }, [successCreate, history]);
+  }, [successCreate, history, createdProduct]);
 
   const ProfileContentLogin = (
     <Content>

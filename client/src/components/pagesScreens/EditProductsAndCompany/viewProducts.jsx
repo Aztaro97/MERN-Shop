@@ -11,6 +11,7 @@ import {
   getMyProducts,
   deleteProduct,
   destroyImages,
+  createProduct
 } from "../../../flux/actions/productAction";
 import Loader from "../../Loader";
 import "./modal.css";
@@ -29,12 +30,23 @@ const ViewProducts = () => {
   const { loading, error, products } = useSelector(
     (state) => state.myProductDetails
   );
+  const {
+    loading: loadingCreate,
+    error: errorCreate,
+    success: successCreate,
+    product: createdProduct,
+  } = useSelector((state) => state.productCreate);
 
   console.log(products);
 
   useEffect(() => {
     dispatch(getMyProducts());
-  }, [dispatch, getMyProducts]);
+    
+    if (successCreate) {
+      history.push(`/add-product/${createdProduct._id}`);
+    }
+
+  }, [dispatch, getMyProducts, createdProduct, history]);
 
   const showConfirm = (productID, images) => {
     console.log(images);
@@ -63,12 +75,12 @@ const ViewProducts = () => {
       ) : (
         <Container>
           <Row>
-            {products.length < 0 ? (
+            {!products.length ? (
               <Empty>
                 <h1>You don't have any products</h1>
                 <p>
                   To create a new product, please click on this{" "}
-                  <Link to="/add-product" className="btn">
+                  <Link className="btn" onClick={() => dispatch(createProduct()) }>
                     button
                   </Link>
                 </p>

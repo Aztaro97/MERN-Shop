@@ -1,4 +1,4 @@
-/* Created by Mohamed Elshamhout  */
+Created by Mohamed Elshamhout 
 
 
 /*
@@ -2195,7 +2195,7 @@ footer .homeContact .homeTitle h2 {
 }
 
 .toggleMenu .item:hover .subLinks li {
-    max-height: 32px;
+    /* max-height: 32px; */
 }
 
 @keyframes turn {

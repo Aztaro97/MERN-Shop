@@ -1,18 +1,11 @@
-.SubMenu {
-  /* position: relative; */
-  /* left: 420; */
-  /* padding:4px 0; */
+/* .SubMenu {
 }
 .SubMenu .ant-menu-vertical {
   background: transparent;
 }
 .SubMenu .ant-menu-vertical .ant-menu-item {
-  /* background: "#0b1b34"; */
   margin: 0;
   padding: 0;
-  /* height:30px;
-  line-height: 30px; */
-  
 }
 
 .SubMenu .menu_item_link {
@@ -24,7 +17,4 @@
   color: var(--orange-color);
 }
 .SubMenu .ant-menu-submenu-title {
-  /* height:100px;
-  line-height: 100px; */
-  /* padding-top:3px; */
-}
+} */

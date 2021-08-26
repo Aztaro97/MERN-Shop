@@ -2,6 +2,7 @@ import React from "react";
 import { Popover, Menu } from "antd";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+import { FiChevronDown } from "react-icons/fi";
 
 const { SubMenu } = Menu;
 
@@ -30,7 +31,7 @@ function ToggleMenu({ open }) {
             >
               {t("nav_services")}
             </a>
-            <ul className="subLinks">
+            <SubLinks className="subLinks">
               <li>
                 <a
                   href="#/"
@@ -40,76 +41,42 @@ function ToggleMenu({ open }) {
                   {t("adv_service")}
                 </a>
               </li>
+              <li className="navItem">
+                <a
+                  href="#/"
+                  // onClick="menuToggling()"
+                  className="subLink text-uppercase weight-500"
+                >
+                  MARKETING <FiChevronDown />
+                </a>
+                <ul className="sub__nav">
+                  <li>
+                    <a href="#/">{t("e_marketing")}</a>
+                  </li>
+                  <li>
+                    <a href="#/">{t("out_marketing")}</a>
+                  </li>
+                </ul>
+              </li>
 
-              <DropMenu
-                style={{
-                  background: "transparent",
-                  textAlign: "center",
-                  fontSize: "1rem",
-                  margin: "0",
-                  position: "relative",
-                  // bottom: "10px",
-                  left: "10px",
-                }}
-                className="dropMenu"
-                mode="vertical"
-                trigger="click"
-              >
-                <SubMenu
-                  key="MARKETING"
-                  title={t("mark_service")}
-                  style={{
-                    color: "#93a3b3",
-                    textAlign: "center",
-                    background: "transparent",
-                    margin: "0",
-                    padding: "0",
-                  }}
-                  popupClassName="SubMenu"
+              <li className="navItem">
+                <a
+                  href="#/"
+                  // onClick="menuToggling()"
+                  className="subLink text-uppercase weight-500"
                 >
-                  <Menu.Item key="1">
-                    <a href="#/" className="menu_item_link">
-                      {t("e_marketing")}
-                    </a>
-                  </Menu.Item>
-                  <Menu.Item key="2">
-                    <a href="#/" className="menu_item_link">
-                      {t("out_marketing")}
-                    </a>
-                  </Menu.Item>
-                </SubMenu>
-                <SubMenu
-                  key="ECOMMERCE"
-                  title={t("eco_service")}
-                  style={{
-                    color: "#93a3b3",
-                    textAlign: "center",
-                    background: "transparent",
-                    margin: "0",
-                  }}
-                  popupClassName="SubMenu"
-                >
-                  <Menu.Item key="3">
-                    <a href="/e-commerce" className="menu_item_link">
-                      {t("delivery")}
-                    </a>
-                  </Menu.Item>
-                  <Menu.Item key="4">
-                    <a href="#/" className="menu_item_link">
-                      {t("payment")}
-                    </a>
-                  </Menu.Item>
-                </SubMenu>
-              </DropMenu>
-              {/* <li>
-                    <a
-                      href="/e-commerce"
-                      onClick="menuToggling()"
-                      className="subLink text-uppercase weight-500"
-                    >
-                      E-commerce
-                    </a>
-                  </li> */}
+                  ECOMMERCE <FiChevronDown />
+                </a>
+                <ul className="sub__nav">
+                  <li>
+                    <a href="/e-commerce"> {t("delivery")}</a>
+                  </li>
+                  <li>
+                    <a href="#/">{t("payment")}</a>
+                  </li>
+                </ul>
+              </li>
+
               <li>
                 <a
                   href="./pos.html"
@@ -146,7 +113,7 @@ function ToggleMenu({ open }) {
                   {t("prog_service")}
                 </a>
               </li>
-            </ul>
+            </SubLinks>
           </div>
         </div>
         <div className="col">
@@ -210,33 +177,22 @@ const Nav = styled.nav`
   }
 `;
 
-const DropMenu = styled(Menu)`
-  background: var(--orange-color);
-  color: #93a3b3;
-  border: none;
-
-  & .ant-menu-submenu-title:hover {
-    & .ant-menu-title-content {
-      color: var(--orange-color);
-    }
-    & .ant-menu-submenu-arrow::before,
-    .ant-menu-submenu-arrow::after {
-      background: var(--orange-color);
-    }
+const SubLinks = styled.ul`
+  & li.navItem:hover {
+    max-height: 200px !important;
+    transition: 0.3s all ease-in-out;
   }
-
-  /* Menu Vertical */
-  & .ant-menu-submenu-vertical .ant-menu-submenu-open.ant-menu-submenu-active {
-    background: red;
+  & .sub__nav {
+    z-index: 9999;
   }
-
-  /* & .ant-menu-submenu ant-menu-submenu-vertical ant-menu-submenu-open ant-menu-submenu-active */
-`;
-
-const SubMenuCustom = styled(SubMenu)`
-  &.SubMenu {
-    background: red;
-    display: none;
+  & .sub__nav a {
+    color: #93a3b3;
+    font-size: 0.8rem;
+    text-transform: capitalize;
+  }
+  & .sub__nav a:hover {
+    text-decoration: none;
+    color: var(--orange-color);
   }
 `;
 
