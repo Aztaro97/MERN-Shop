@@ -1,5 +1,4 @@
-import React from "react";
-import MainContainer from "../MainContainer";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import {
   FaFacebook,
@@ -9,25 +8,29 @@ import {
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-function Footer() {
+function FooterScrren() {
+  const currentPage = document.location.pathname;
+
+  console.log(currentPage);
+
   return (
-    <FooterContent>
-      <MainContainer>
+    <Footer currentPage={currentPage}>
+      <Container>
         <Header>
           <p>Get connected with us on socials networks !</p>
           <Social>
-            <LinkM href="#">
+            <a href="#/" className="link" target="_blank">
               <FaFacebook className="icon" />
-            </LinkM>
-            <LinkM href="#">
+            </a>
+            <a href="#/" className="link" target="_blank">
               <FaTwitter className="icon" />
-            </LinkM>
-            <LinkM href="#">
+            </a>
+            <a href="#/" className="link" target="_blank">
               <FaLinkedinIn className="icon" />
-            </LinkM>
-            <LinkM href="#">
+            </a>
+            <a href="#/" className="link" target="_blank">
               <FaInstagram className="icon" />
-            </LinkM>
+            </a>
           </Social>
         </Header>
         <hr />
@@ -52,43 +55,42 @@ function Footer() {
           </Col>
         </Grid>
         <hr />
-        <h4 style={{margin:0}}>
+        <p className="copyright">
           Copyright &copy; 2021. <span>au79code.</span> All Rights Reserved{" "}
-        </h4>
-      </MainContainer>
-    </FooterContent>
+        </p>
+      </Container>
+    </Footer>
   );
 }
 
-const FooterContent = styled.footer`
-  /* position:absolute;
-    bottom:0; */
+const Footer = styled.footer`
+
+  
+
   width: 100%;
-  background: var(--background-color);
+  color: #fff;
+  background: var(--dark-color);
+  margin-top: 2rem;
+  display: ${({ currentPage }) => (currentPage === "/" ? "none" : "block")}  };
 
   & h4 {
     text-align: center;
     padding-bottom: 1rem;
-    color: #7f8c8d;
+    color: #fff;
     letter-spacing: 1px;
   }
   & h4 span {
-    /* color: #000; */
+    color: #fff;
     font-weight: 700;
     text-transform: uppercase;
   }
-  & hr {
-    margin-bottom: 1rem;
-    background: #777777;
-    height: 0.1px;
-    border: none;
-    outline: none;
-  }
+  
+  
 `;
 
 const Header = styled.div`
-  color: #000;
-  padding: 1.5rem 0;
+  color: #fff;
+  padding: .8rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -102,21 +104,25 @@ const Header = styled.div`
 const Social = styled.div`
   display: flex;
   align-items: center;
-`;
-const LinkM = styled.a`
-  text-decoration: none;
-  color: #000;
+
+  & .link {
+    text-decoration: none;
+  color: #fff;
   transition: all 0.3s ease-in-out;
+  padding: .4rem;
   & .icon {
-    margin-left: 1.3rem;
+    /* padding: .1rem; */
     font-size: 1.6rem;
   }
   &:hover {
-    transform: scale(1.3);
-    color: #000;
+    transform: translateY(-10px);
+    color: #fff;
     opacity: 0.9;
   }
+  }
+
 `;
+
 
 const Grid = styled.div`
   display: flex;
@@ -142,12 +148,35 @@ const Col = styled.div`
 `;
 const LinkR = styled(Link)`
   text-decoration: none;
-  color: #7f8c8d;
+  color: #fff;
   display: block;
   font-size: 1rem;
   &:hover {
-    color: #000;
+    opacity: 0.9;
+    text-decoration: none;
+    color: var(--orange-color);
   }
 `;
 
-export default Footer;
+const Container = styled.div`
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1rem 0;
+
+  & .copyright {
+    text-align: center;
+    & span {
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+  }
+  & hr {
+    margin-bottom: 1rem;
+    height: 0.1px;
+    border: none;
+    outline: none;
+    background-color:#ffffff58;
+  }
+`;
+
+export default FooterScrren;

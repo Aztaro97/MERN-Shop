@@ -73,7 +73,7 @@ function App() {
 
           <Route component={pageNotFound} />
         </Switch>
-      {/* <Footer /> */}
+      <Footer />
     </Router>
   );
 }

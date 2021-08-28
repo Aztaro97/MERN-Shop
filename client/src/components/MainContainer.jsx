@@ -9,15 +9,12 @@ function MainContainer({children, style}) {
     )
 }
 
-const Container = styled.div`
+const Container = styled.main`
     max-width:var(--max-width);
     margin: 7rem auto 0;
-    /* @media only screen and (max-width:2500px) {
-        padding: 0 4rem;
-    }
-    @media only screen and (max-width:890px) {
-        padding: 0 1rem;
-    } */
+    padding-bottom: 2.5rem;
+
+
 `
 
 export default MainContainer;

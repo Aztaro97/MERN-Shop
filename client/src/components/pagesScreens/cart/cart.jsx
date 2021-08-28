@@ -26,7 +26,7 @@ function CartComponent({ location }) {
 
 
   return (
-    <Container>
+    <MainContainer>
       <Header>
         <a href="#/" onClick={() => history.goBack()}>
           Back
@@ -135,7 +135,7 @@ function CartComponent({ location }) {
           </>
         )}
       </CartContent>
-    </Container>
+    </MainContainer>
   );
 }
 

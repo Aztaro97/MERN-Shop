@@ -1,11 +1,12 @@
 import React from "react";
-import styled from "styled-components"
+import styled from "styled-components";
+import MainContainer from "../../MainContainer"
 
 import "./contact.css";
 
 function Contact() {
   return (
-    <Container>
+    <MainContainer>
       <section class="homeContact">
         <div class="container">
           <div class="row">
@@ -127,12 +128,10 @@ function Contact() {
           </div>
         </div>
       </section>
-    </Container>
+    </MainContainer>
   );
 }
 
-const Container = styled.div`
-    margin-top: 3rem;
-`
+
 
 export default Contact;

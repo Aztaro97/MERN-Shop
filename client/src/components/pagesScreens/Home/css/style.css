@@ -56,17 +56,17 @@ SFCompactText-Bold / SFCompactText-Medium / SFCompactText-Regular
     font-weight: 500;
 }
 
-.mainColor {
+/* .mainColor {
     color: #0b1b34 !important;
-}
+} */
 
 .secColor {
     color: #c68787 !important;
 }
 
-.thirdColor {
+/* .thirdColor {
     color: #49c4d3 !important;
-}
+} */
 
 .grayColor {
     color: #cccccc !important;
@@ -114,7 +114,7 @@ SFCompactText-Bold / SFCompactText-Medium / SFCompactText-Regular
 
 .largestTitle {
     /* font-size: 38px; */
-    font-size: 45px;
+    /* font-size: 45px; */
 }
 
 .customBorder {
@@ -145,12 +145,7 @@ SFCompactText-Bold / SFCompactText-Medium / SFCompactText-Regular
     right: -7px;
 }
 
-.weSpan {
-    font-family: weFont;
-    /* font-size: 100px; */
-    font-size: 115px;
-    line-height: 75px;
-}
+
 
 .largeTitle {
     font-size: 28px;
@@ -180,12 +175,12 @@ body {
     min-height: 100vh;
 }
 
-main {
+/* main {
     background: #fff;
     position: relative;
     z-index: 1;
     box-shadow: 0px 7px 16px -1px rgb(0 0 0);
-}
+} */
 
 .btn {
     box-shadow: none !important;
@@ -396,6 +391,7 @@ main {
     background-image: url(./../img/back1.png);
     background-position: center center;
     background-size: cover;
+    /* background-repeat: no-repeat; */
 }
 
 .introSlider .container {
@@ -2049,15 +2045,7 @@ main {
 
 /* Start styling footer  */
 
-footer {
-    background: #0b1b34;
-    position: sticky;
-    top: auto;
-    right: 0;
-    bottom: 0px;
-    left: 0;
-    z-index: 0;
-}
+
 
 footer .homeContact {
     overflow-y: hidden;
@@ -4456,11 +4444,11 @@ footer .homeContact .homeTitle h2 {
     .outMarketing .topImg img {
         height: auto;
     }
-    .marketing .largestTitle,
+    /* .marketing .largestTitle,
     .outMarketing .largestTitle {
         font-size: 14px;
         font-weight: 500 !important;
-    }
+    } */
     .marketing .topImg,
     .outMarketing .topImg {
         max-height: none;

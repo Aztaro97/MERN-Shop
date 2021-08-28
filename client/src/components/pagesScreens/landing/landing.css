@@ -228,12 +228,7 @@ body {
     min-height: 100vh;
 }
 
-main {
-    background: #fff;
-    position: relative;
-    z-index: 1;
-    box-shadow: 0px 7px 16px -1px rgb(0 0 0);
-}
+
 
 .btn {
     box-shadow: none !important;
@@ -1489,7 +1484,6 @@ main {
     max-width: 48vh;
     max-height: 48vh;
     margin-top: 90px;
-    /* margin-left: 90px; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2105,15 +2099,7 @@ main {
 
 /* Start styling footer  */
 
-footer {
-    background: #0b1b34;
-    position: sticky;
-    top: auto;
-    right: 0;
-    bottom: 0px;
-    left: 0;
-    z-index: 0;
-}
+
 
 footer .homeContact {
     overflow-y: hidden;

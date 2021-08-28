@@ -200,10 +200,7 @@ function NavBar() {
     </Header>
   );
 }
-const Hr = styled.div`
-  background: #cecece;
-  height: 0.1px;
-`;
+
 const Header = styled.header`
   height: 80px;
   display: flex;

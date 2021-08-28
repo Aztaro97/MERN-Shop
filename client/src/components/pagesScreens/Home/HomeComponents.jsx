@@ -1,11 +1,11 @@
 import React from "react";
+import styled from "styled-components";
 
-// import OwlCarousel from 'react-owl-carousel';  
-// import 'owl.carousel/dist/assets/owl.carousel.css';  
-// import 'owl.carousel/dist/assets/owl.theme.default.css';  
+// import OwlCarousel from 'react-owl-carousel';
+// import 'owl.carousel/dist/assets/owl.carousel.css';
+// import 'owl.carousel/dist/assets/owl.theme.default.css';
 
-
-import "./css/style.css"
+import "./css/style.css";
 import "./css/bootstrap.min.css";
 import "./css/owl.carousel.min.css";
 import "./css/owl.theme.default.min.css";
@@ -17,11 +17,10 @@ import "./css/animate.min.css";
 // import "./js/owl.carousel.min.js"
 // import "./js/popper.min.js"
 
-
 function HomeComponents() {
   return (
     <>
-      <main>
+      <MainStyling>
         <div class="homePages">
           {/* <!-- points for change internal home pages  --> */}
           <div class="navDiv" id="navpoints">
@@ -81,8 +80,8 @@ function HomeComponents() {
                     <img alt="" src="img/1.png" />
                     <div class="myImg"></div>
                     <div class="caption animate__animated">
-                      <h2 class="largestTitle thirdColor">
-                        <span class="mainColor weSpan">We</span>PROFESSIONAL
+                      <h2 class="largestTitle">
+                        <span class="weSpan">We</span>PROFESSIONAL
                       </h2>
                       <h3 class="largeTitle mainColor">
                         Technology, Digital Software and Applications Company
@@ -102,7 +101,7 @@ function HomeComponents() {
                     <div class="myImg"> </div>
                     <div class="caption animate__animated ">
                       <h2 class="largestTitle thirdColor">
-                        <span class="mainColor weSpan">We</span>GTREAT
+                        <span class="weSpan">We</span>GTREAT
                       </h2>
                       <h3 class="largeTitle mainColor">
                         Responsive & Strong Competitive People
@@ -120,11 +119,11 @@ function HomeComponents() {
                     <div class="myImg"> </div>
                     <div class="caption animate__animated ">
                       <h2 class="largestTitle thirdColor">
-                        <span class="mainColor weSpan">We</span>
+                        <span class="weSpan">We</span>
                         <p class="grayColor normalText">Are More Than An</p>
                         Agency
                       </h2>
-                      <h3 class="largeTitle mainColor">
+                      <h3 class="largeTitle">
                         ,Print, outdoor advertising & online, <br /> unique
                         designs, fresh ideas .. etc
                       </h3>
@@ -520,9 +519,27 @@ function HomeComponents() {
             </div>
           </section>
         </div>
-      </main>
+      </MainStyling>
     </>
   );
 }
+
+const MainStyling = styled.div`
+  & section.page {
+    & .largestTitle {
+      /* font-size: 14px; */
+        font-weight: 500 !important;
+     & .weSpan {
+      color: #0b1b34;
+      font-family: weFont;
+      font-size: 115px;
+      line-height: 75px;
+      & span {
+        color: var(--jungle-color) !important;
+      }
+    }
+    }
+  }
+`;
 
 export default HomeComponents;
