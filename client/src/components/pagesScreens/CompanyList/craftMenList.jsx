@@ -207,15 +207,14 @@ const CardContainer = styled.div`
   @media only screen and (max-width: 1020px) {
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 1rem;
-    padding: 0 15rem;
   }
   @media only screen and (max-width: 800px) {
     grid-template-columns: 1fr 1fr;
-    padding: 0 10rem;
+    /* padding: 0 10rem; */
   }
-  @media only screen and (max-width: 740px) {
+  @media only screen and (max-width: 500px) {
     grid-template-columns: 1fr;
-    padding: 0 1rem;
+    /* padding: 0 1rem; */
   }
 `;
 

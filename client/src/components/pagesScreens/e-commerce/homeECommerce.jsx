@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import LandingPage from "../landing/LandingPage";
+import MainContainer from "../../MainContainer"
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import {
@@ -34,7 +35,7 @@ function HomeECommerce() {
   return (
     <>
       <LandingPage />
-      <Container>
+      <MainContainer>
         <Section1>
           <h3>Share your company with</h3>
           <h1>our E-Commerce service</h1>
@@ -141,7 +142,7 @@ function HomeECommerce() {
             see more
           </Link>
         </CardSection>
-      </Container>
+      </MainContainer>
     </>
   );
 }

@@ -29,8 +29,8 @@ const ViewProducts = ({match}) => {
     initialValues: {
       brand: "",
       color: "",
-      size: Number,
-      price: 0,
+      size: null,
+      price: 1,
     },
     onSubmit: (values) => {
       const body = JSON.stringify(values, null, 2);
@@ -116,7 +116,7 @@ const ViewProducts = ({match}) => {
           />
           <div className="form_select slider">
             <p>Price Less than Aed 500</p>
-            <SliderE defaultValue={formik.values.price} onChange={handleChangeSlider} max={500} min={2} />
+            <SliderE value={formik.values.price}  onChange={handleChangeSlider} max={500} min={2} />
           </div>
           <button type="submit" className="btn">
             Clear

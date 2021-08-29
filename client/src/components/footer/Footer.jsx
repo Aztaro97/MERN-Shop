@@ -37,21 +37,21 @@ function FooterScrren() {
         <Grid>
           <Col>
             <h1>Sitemap</h1>
-            <LinkR to="/">Home</LinkR>
-            <LinkR to="/shop">Shop</LinkR>
-            <LinkR to="/contact">Contact</LinkR>
+            <LinkR href="/">Home</LinkR>
+            <LinkR href="/shop">Shop</LinkR>
+            <LinkR href="/contact">Contact</LinkR>
           </Col>
           <Col>
             <h1>Informations</h1>
-            <LinkR to="/about">About</LinkR>
-            <LinkR to="/shop">Shop</LinkR>
-            {/* <LinkR to="/">Contact</LinkR> */}
+            <LinkR href="/about">About</LinkR>
+            <LinkR href="/shop">Shop</LinkR>
+            {/* <LinkR href="/">Contact</LinkR> */}
           </Col>
           <Col>
             <h1>Your Account</h1>
-            <LinkR to="/register">Register</LinkR>
-            <LinkR to="/login">Login</LinkR>
-            <LinkR to="/shopping">Shopping Details</LinkR>
+            <LinkR href="/register">Register</LinkR>
+            <LinkR href="/login">Login</LinkR>
+            <LinkR href="/shopping">Shopping Details</LinkR>
           </Col>
         </Grid>
         <hr />
@@ -64,9 +64,7 @@ function FooterScrren() {
 }
 
 const Footer = styled.footer`
-
-  
-
+position: absolute;
   width: 100%;
   color: #fff;
   background: var(--dark-color);
@@ -83,6 +81,10 @@ const Footer = styled.footer`
     color: #fff;
     font-weight: 700;
     text-transform: uppercase;
+  }
+
+  @media only screen and (max-width: 1040px) {
+    padding: 0 2rem;
   }
   
   
@@ -141,12 +143,13 @@ const Col = styled.div`
     margin-bottom: 0.4rem;
     font-weight: 700;
     font-size: 1.3rem;
+    color: #fff;
   }
   @media only screen and (max-width: 990px) {
     margin-bottom: 1rem;
   }
 `;
-const LinkR = styled(Link)`
+const LinkR = styled.a`
   text-decoration: none;
   color: #fff;
   display: block;
