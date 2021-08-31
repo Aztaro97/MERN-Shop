@@ -19,8 +19,12 @@ import {
   ORDER_DELIVER_FAIL,
   ORDER_DELIVER_SUCCESS,
   ORDER_DELIVER_REQUEST,
+  ORDER_DELETE_FAIL,
+  ORDER_DELETE_SUCCESS,
+  ORDER_DELETE_REQUEST
 } from "../constants/orderConstants";
 import { logout } from "./userAction";
+import {successMessage} from "../../components/message"
 
 export const createOrder = (order) => async (dispatch, getState) => {
   try {
@@ -97,6 +101,50 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
     });
   }
 };
+
+export const deleteOrderDetails = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: ORDER_DELETE_REQUEST,
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.delete(`/api/orders/${id}`, config);
+
+    dispatch({
+      type: ORDER_DELETE_SUCCESS,
+      // payload: data,
+    });
+
+    successMessage("Order Deleted Succefull", 100);
+    window.history.back();
+
+
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    if (message === "Not authorized, token failed") {
+      dispatch(logout());
+    }
+    dispatch({
+      type: ORDER_DELETE_FAIL,
+      payload: message,
+    });
+  }
+};
+
+
 
 export const payOrder =
   (orderId, paymentResult) => async (dispatch, getState) => {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
@@ -497,15 +497,15 @@ const BankInfo = () => {
       value: "",
     },
     {
-      title: "Dirham Emirates",
+      title: "Dirham Emirates ( dh )",
       value: "dirham",
     },
     {
-      title: "Dollar US",
+      title: "Dollar US ( $ )",
       value: "dollar",
     },
     {
-      title: "Euro",
+      title: "Euro ( ss)",
       value: "euro",
     },
   ];

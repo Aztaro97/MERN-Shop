@@ -18,6 +18,11 @@ const orderSchema = mongoose.Schema(
           required: false,
           ref: "Product",
         },
+        merchant: { 
+          name: { type: String, required: false },
+          email: { type: String, required: false },
+          phoneNumber: { type: Array, required: false },
+         }
       },
     ],
     shippingAddress: {
@@ -27,7 +32,7 @@ const orderSchema = mongoose.Schema(
       appartmentNumber: { type: String, required: false },
 
       city: { type: String, required: false },
-      gouvernment: { type: String, required: false },
+      region: { type: String, required: false },
       country: { type: String, required: false },
       mapAdress: { type: String, required: false },
       phoneNumber: { type: String, required: false },

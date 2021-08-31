@@ -45,7 +45,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
 const getOrderById = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id).populate(
     'user',
-    'name email'
+    ['email', 'company']
   )
 
   if (order) {
@@ -55,6 +55,24 @@ const getOrderById = asyncHandler(async (req, res) => {
     throw new Error('Order not found')
   }
 })
+
+
+//  @desc Delete Order By id 
+//  @route Delete /api/order/:id
+//  @Access Privateconst 
+const deleteOrderById = asyncHandler(async (req, res) => {
+  const order = await Order.findById(req.params.id)
+
+  if (order) {
+    await order.remove();
+    res.status(200).json({Msg: "Order Deleted"});
+  } else {
+    res.status(404).json({Msg: "Order Not Fund"});
+  }
+
+})
+
+
 
 // @desc    Update order to paid
 // @route   GET /api/orders/:id/pay
@@ -67,9 +85,9 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
     order.paidAt = Date.now()
     order.paymentResult = {
       id: req.body.id,
-      // status: req.body.payment.status,
+      status: req.body.status,
       update_time: req.body.update_time,
-      // email_address: req.body.payment.receipt_email,
+      email_address: req.body.email_address,
     }
 
     const updatedOrder = await order.save()
@@ -112,7 +130,7 @@ const getMyOrders = asyncHandler(async (req, res) => {
 // @route   GET /api/orders
 // @access  Private/Admin
 const getOrders = asyncHandler(async (req, res) => {
-  const orders = await Order.find({}).populate('user', 'id name')
+  const orders = await Order.find({}).populate('user', ['email'])
   res.json(orders)
 })
 
@@ -123,4 +141,5 @@ module.exports = {
   updateOrderToDelivered,
   getMyOrders,
   getOrders,
+  deleteOrderById
 }

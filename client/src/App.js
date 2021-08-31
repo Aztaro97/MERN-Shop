@@ -28,9 +28,20 @@ import MapScreen from "./components/pagesScreens/checkout/googleMap/mapScreen";
 import ResetPasswordPage from "./components/pagesScreens/resetPasswordPage"
 
 import OrderListComponent from "./components/pagesScreens/orders/orderList"
+import OrderDetailsComponent from "./components/pagesScreens/orders/orderDetails"
 import UserListComponent from "./components/pagesScreens/user/userList"
 import ProductListComponent from "./components/pagesScreens/products/productsList"
 import ProfileComponent from "./components/pagesScreens/user/profile/tabs"
+
+// /////////////////   Marketing Component   ///////////////
+import EMarketingComponent from "./components/pagesScreens/marketing/eMarketingScreen"
+import OutMarketingComponent from "./components/pagesScreens/marketing/outDoorMarketing";
+
+// /////////////////  ADVERSITING COMPONENT  //////////////
+import AdversitingComponent from "./components/pagesScreens/adversiting/adversiting";
+
+// ////////////////  Design Component    /////////////////////
+import DesignComponent from "./components/pagesScreens/design/designScreen"
 
 function App() {
   return (
@@ -63,11 +74,25 @@ function App() {
           <Route path="/forgot-password" component={ResetPasswordPage} />
 
 
+          {/* /////////////////////   Markeing Router   ///////////////////// */}
+          <Route path="/marketing"  component={EMarketingComponent} />
+          <Route path="/out-marketing"  component={OutMarketingComponent} />
+
+          {/* ///////////////////   ADVERSITING ROUTER  /////////////////// */}
+          <Route path="/adversiting"  component={AdversitingComponent} />
+
+          {/* ////////////////////    DESIGNPAGE ROUTER   ////////////////// */}
+          <Route path="/design"  component={DesignComponent} />
+
+
+
+
           {/*////////////////  ADMIN ROUTER  ///////////// */}
           <Route path="/admin/orderlist" component={OrderListComponent} exact/>
           <Route path="/admin/userlist" component={UserListComponent} exact/>
           <Route path="/admin/productlist" component={ProductListComponent} exact/>
           <Route path="/admin/productlist/:pageNumber" component={ProductListComponent} exact/>
+          <Route path="/admin/order/:orderId" component={OrderDetailsComponent} exact/>
 
 
 

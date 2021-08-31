@@ -76,7 +76,7 @@ function CompletePayement() {
               <Border>
                 <div className="price">
                   <h2>shipping cost</h2>
-                  <p>aed {order.shippingPrice}</p>
+                  {/* <p>aed {order.shippingPrice}</p> */}
                 </div>
               </Border>
               <Border>

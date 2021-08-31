@@ -1,0 +1,422 @@
+/* start outdoor Marketing style */
+
+.outMarketing .topLinks {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 60px;
+  margin: 0px 170px;
+  height: 31px;
+  z-index: 10;
+}
+
+.outMarketing .topLinks a {
+  text-decoration: none !important;
+  color: #fff;
+  margin: 0px 20px;
+}
+
+.outMarketing .topLinks a.active {
+  color: #0b1b34;
+}
+
+.outMarketing .topImg .imgCover {
+  /* height: 100vh; */
+  overflow: hidden;
+}
+
+.outMarketing .topImg img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.outMarketing .topImg {
+  /* max-height: 100vh; */
+  position: relative;
+}
+
+.outMarketing .topImg:after {
+  content: "";
+  height: 20vh;
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 3;
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 1) 5%,
+    rgba(255, 255, 255, 0.85) 36%,
+    rgba(255, 255, 255, 0.65) 65%,
+    rgba(255, 255, 255, 0) 120%
+  );
+}
+
+.outMarketing .topImg .caption {
+  position: absolute;
+  bottom: 15vh;
+  left: 8%;
+  z-index: 10;
+  width: 50%;
+}
+
+.outMarketing .topImg .caption h2 {
+  margin: 0px;
+}
+
+.outMarketing .topImg .caption p {
+  margin: 8px 0px 0px;
+  line-height: normal;
+}
+
+.outMarketing .topImg .marketingSelect {
+  background: #fff;
+  height: 46px;
+  border-radius: 25px;
+  max-width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: visible;
+  margin-inline-start: -30px;
+  margin-top: 36px;
+  /* overflow: hidden; */
+}
+
+.outMarketing .marketingSelect .dropdown {
+  height: 100%;
+  width: 100%;
+}
+
+.outMarketing .marketingSelect .btn {
+  height: 100%;
+}
+
+.outMarketing .marketingSelect .dropdown .btn {
+  width: 100%;
+  text-align: start;
+  padding: 0px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #93a3b3;
+}
+
+.outMarketing .marketingSelect .dropdown-toggle::after {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #49c4d3;
+  transform: rotate(45deg);
+  border-top: 0px;
+  border-left: 0px;
+  margin-top: -6px;
+}
+
+.outMarketing .marketingSelect > .btn {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  flex-shrink: 0;
+}
+
+.outMarketing .dropdown-menu .dropdown-item {
+  background-color: transparent !important;
+}
+
+.outMarketing .dropdown-menu .dropdown-item:hover {
+  color: #49c4d3;
+}
+
+.outMarketing .exAdvs {
+  padding-bottom: 125px;
+  background-image: url(../../../img/pictures/dots1.png);
+  background-position: 91% 5%;
+  background-repeat: no-repeat;
+  background-size: auto 110%;
+}
+
+.outMarketing .exAdvs .customBorder {
+  margin-inline-start: 0px !important;
+}
+
+.outMarketing .exAdvs .textContent {
+  width: 750px;
+  max-width: 90%;
+  margin: auto;
+}
+
+.outMarketing .serRow {
+  width: 950px;
+  max-width: 100%;
+  margin: auto;
+}
+
+.outMarketing .serRow .service {
+  width: 195px;
+  max-width: 100%;
+  background-color: #fff;
+  padding: 30px 16px;
+  border-radius: 25px;
+  text-decoration: none;
+  margin: 15px;
+  box-shadow: 0px 0px 20px 0px rgb(175 211 216 / 48%);
+  display: inline-block;
+  transition: transform 0.65s ease;
+}
+
+.outMarketing .serRow .service:hover {
+  transform: scale(0.9, 0.9);
+}
+
+.outMarketing .serRow .col:nth-child(2) .service {
+  margin-top: 28%;
+}
+
+.outMarketing .serRow .seoImg {
+  max-width: 100%;
+  margin: auto;
+}
+
+/* ledScreen  */
+
+.outMarketing .ledScreen .shape {
+  width: 90%;
+  margin-top: -115px;
+}
+
+.outMarketing .ledScreen {
+  position: relative;
+  padding: 80px 0px;
+  margin-top: -45px;
+}
+
+.outMarketing .ledScreen .textContent {
+  padding-inline-end: 17%;
+}
+
+.outMarketing .ledScreen .bgGrediant {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  overflow: hidden;
+}
+
+.outMarketing .ledScreen .bgGrediant:before {
+  content: "";
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  right: -25%;
+  left: -25%;
+  background: linear-gradient(
+    to bottom,
+    rgba(91, 185, 198, 1) 0%,
+    rgba(91, 185, 198, 1) 1%,
+    rgba(33, 127, 140, 1) 28%,
+    rgba(29, 24, 74, 1) 99%,
+    rgba(29, 24, 74, 1) 100%
+  );
+  width: 150%;
+  border-radius: 50%;
+}
+
+.outMarketing .customBorder {
+  margin-inline-start: 8px;
+}
+
+/* ledScreen2  */
+
+.outMarketing .ledScreen2 .bgGrediant {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  overflow: hidden;
+}
+
+.outMarketing .ledScreen2 .bgGrediant:before {
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background-image: url(../../../img/pictures/outDots1.png);
+  background-position: 43% -30%;
+  background-repeat: no-repeat;
+  background-size: auto 50%;
+}
+
+.outMarketing .ledScreen2 .bgGrediant:after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background-image: url(../../../img/pictures/outDots2.png);
+  background-position: 34% 129%;
+  background-repeat: no-repeat;
+  background-size: auto 50%;
+}
+
+.outMarketing .ledScreen2 .shape {
+  width: 90%;
+  margin-top: -115px;
+}
+
+.outMarketing .ledScreen2 .socialText {
+  text-align: end;
+}
+
+.outMarketing .ledScreen2 {
+  position: relative;
+  padding: 170px 0px 65px;
+}
+
+.outMarketing .ledScreen2 .textContent {
+  padding-inline-start: 17%;
+}
+
+/* billboard  */
+
+.outMarketing .billboard .shape {
+  width: 90%;
+  margin-top: -115px;
+}
+
+.outMarketing .billboard {
+  position: relative;
+  padding: 80px 0px;
+  margin-bottom: 0px;
+  display: inline-block;
+}
+
+.outMarketing .billboard .textContent {
+  padding-inline-end: 17%;
+}
+
+.outMarketing .billboard .bgGrediant {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  overflow: hidden;
+}
+
+.outMarketing .billboard .bgGrediant:before {
+  content: "";
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  right: -25%;
+  left: -25%;
+  background: #ebebeb;
+  box-shadow: 0px 0px 20px 0px rgb(175 211 216 / 45%);
+  width: 150%;
+  border-radius: 50%;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+/* End outdoor Marketing style */
+
+/* ////////////////////////////////////////////////////// */
+
+/* ///////////////* start media query /////////////////// */
+
+/* ////////////////////////////////////////////////////// */
+
+@media only screen and (max-width: 1350px) {
+  .marketing .marServices {
+    background-position: calc(100% - 100px);
+  }
+}
+
+@media only screen and (max-width: 1320px) {
+  .marketing .marServices {
+    background-position: calc(100% - 50px);
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+  .outMarketing .ledScreen2 .bgGrediant:before {
+    background-position: 45% -8%;
+    background-size: auto 40%;
+  }
+  .outMarketing .ledScreen2 .bgGrediant:after {
+    background-position: 34% 122%;
+    background-size: auto 40%;
+  }
+  .outMarketing .exAdvs {
+    background-position: 96% 5%;
+    background-size: auto 100%;
+  }
+}
+
+@media only screen and (max-width: 1199px) {
+  .marketing .marketingSelect > .btn,
+  .outMarketing .marketingSelect > .btn {
+    font-size: 17px;
+    line-height: 46px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+  .marketing .marketingSelect .dropdown .btn,
+  .outMarketing .marketingSelect .dropdown .btn {
+    padding: 0px 25px;
+    font-size: 17px;
+  }
+  .marketing .marketingSelect .dropdown-toggle::after,
+  .outMarketing .marketingSelect .dropdown-toggle::after {
+    width: 14px;
+    height: 14px;
+  }
+  .marketing .dropdown-item,
+  .outMarketing .dropdown-item {
+    font-size: 15px;
+  }
+  .marketing .socialMedia {
+    padding: 60px 0px;
+  }
+  .marketing .topLinks a,
+  .outMarketing .topLinks a {
+    margin: 0px 15px;
+  }
+  .marketing .topLinks,
+  .outMarketing .topLinks {
+    margin: 0px 150px;
+  }
+  .adsSlider .next {
+    right: 5em;
+  }
+  .adsSlider .prev {
+    left: 5em;
+  }
+  .marketing .increaseCustomers {
+    background-image: none;
+  }
+  .outMarketing .exAdvs {
+    background-image: none;
+  }
+  .outMarketing .ledScreen2 .bgGrediant {
+    display: none;
+  }
+  .outMarketing .ledScreen2 {
+    padding: 100px 0px 30px;
+    margin-top: -50px;
+  }
+  .outMarketing .ledScreen2 .shape {
+    margin-top: -40px;
+  }
+}

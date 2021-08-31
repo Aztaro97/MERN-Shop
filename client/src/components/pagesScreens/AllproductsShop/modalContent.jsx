@@ -68,11 +68,11 @@ const Contente = ({ product, setShowModal }) => {
 
   const dispatch = useDispatch();
 
-  const addToCartHandler = (id, qty, size) => {
+  const addToCartHandler = (id, qty, size, merchant) => {
     if (!sizeSelected) {
       warningMessage("Select the size to add to cart", 10);
     } else {
-      dispatch(addToCart(id, qty, size));
+      dispatch(addToCart(id, qty, size, merchant));
       setShowModal(false);
     }
   };
@@ -133,7 +133,7 @@ const Contente = ({ product, setShowModal }) => {
             className="btn"
             // disabled={!sizeSelected && true}
             onClick={() =>
-              addToCartHandler(product._id, qtyNumber, sizeSelected)
+              addToCartHandler(product._id, qtyNumber, sizeSelected, product.user.company)
             }
           >
             add to cart

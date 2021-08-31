@@ -126,7 +126,6 @@ export default function PaymentForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("payment");
     if (!stripe || !elements) {
       return;
     }
@@ -139,57 +138,60 @@ export default function PaymentForm() {
     });
 
     //  Create payment intent on the server
-    // if (!error) {
-    //   try {
-    //     const { id } = paymentMethod;
+    if (!error) {
+      try {
+        const { id } = paymentMethod;
 
-    //     const response = await axios.post("/api/payment", {
-    //       amount: totalPrice,
-    //       id,
-    //       payment_method: "pm_card_visa",
-    //     });
+        const response = await axios.post("/api/payment", {
+          amount: totalPrice,
+          id,
+          payment_method: "pm_card_visa",
+        });
 
-    //   } catch (error) {
-    //     console.log("Error", error);
-    //   }
-    // } else {
-    //   console.log(error.message);
-    //   errorMessage(error.message, 500);
-    // }
 
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
 
-    console.log(parseInt(totalPrice));
-
-    const body = {
-      amount: 90000,
-      // id,
-      paymentMethodType: "card",
-    };
-
-    const response = await axios.post(
-      "/api/payment",
-      JSON.stringify(body),
-      config
-    );
-
-    if (response.data.success) {
-      console.log("Successful payment");
-      setPaymentSuccess(true);
-      payOrder(order._id, {
-        id: response.data.payment.id,
-        status: response.data.payment.status,
-        email_address: response.data.payment.receipt_email
-      });
-      dispatch({type: CART_CLEAR_ITEMS})
-
-      history.push("/thank");
-      console.log(response.data.payment);
+      } catch (error) {
+        console.log("Error", error);
+      }
+    } else {
+      // console.log(error.message);
+      // errorMessage(error.message, 500);
+      console.log("error")
     }
+
+    // const config = {
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    // };
+
+
+    // const body = {
+    //   amount: 90000,
+    //   // id,
+    //   paymentMethodType: "card",
+    // };
+
+    // const response = await axios.post(
+    //   "/api/payment",
+    //   JSON.stringify(body),
+    //   config
+    // );
+
+    // if (response.data.success) {
+    //   console.log("Successful payment");
+    //   setPaymentSuccess(true);
+    //   payOrder(order._id, {
+    //     id: response.data.payment.id,
+    //     status: response.data.payment.status,
+    //     email_address: response.data.payment.receipt_email
+    //   });
+    //   dispatch({type: CART_CLEAR_ITEMS})
+
+    //   history.push("/thank");
+    //   console.log(response.data.payment);
+    //   console.log(order._id)
+    // }
 
     
 

@@ -2,11 +2,17 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Select } from "antd";
-import { FaTimesCircle, ImCreditCard, GrView, GrDeliver, FaMoneyBillAlt } from "react-icons/all";
+import {
+  FaTimesCircle,
+  ImCreditCard,
+  GrView,
+  GrDeliver,
+  FaMoneyBillAlt,
+} from "react-icons/all";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { listOrders, deliverOrder } from "../../../flux/actions/orderAction";
-import MainContainer from "../../MainContainer";
+// import MainContainer from "../../MainContainer";
 import Loader from "../../Loader";
 
 const { Option } = Select;
@@ -40,7 +46,7 @@ function OrdersListScreen() {
     }
   }, [dispatch, history, userInfo, listOrders]);
   return (
-    <MainContainer>
+    <>
       <OrderContainer>
         <h3>all orders lists</h3>
         {loading ? (
@@ -52,7 +58,7 @@ function OrdersListScreen() {
             <thead>
               <tr>
                 <th>order number</th>
-                <th>user</th>
+                <th>customer name</th>
                 <th>date</th>
                 <th>total</th>
                 <th>paid</th>
@@ -66,7 +72,12 @@ function OrdersListScreen() {
               {orders.map((order) => (
                 <tr key={order._id}>
                   <td>{order._id}</td>
-                  <td>{order.user && order.user.name}</td>
+                  <td>
+                    {order.shippingAddress &&
+                      order.shippingAddress.firstName +
+                        " " +
+                        order.shippingAddress.lastName}
+                  </td>
                   <td>{order.createdAt.substring(0, 10)}</td>
                   <td>{order.totalPrice} dh</td>
                   <td>
@@ -87,17 +98,17 @@ function OrdersListScreen() {
                   <td>
                     {order.paymentMethod === "credit" ? (
                       // order.deliveredAt.substring(0, 10)
-                      <div className="order_status_devd">
-                        cash <ImCreditCard />
+                      <div className="payment_credit">
+                        <span>credit card</span> <ImCreditCard />
                       </div>
                     ) : (
-                      <div className="order_status_devd">
-                      card <FaMoneyBillAlt />
-                    </div>
+                      <div className="payment_cash">
+                        <span>cash on delivery</span> <FaMoneyBillAlt />
+                      </div>
+
                       // <FaTimesCircle style={{ color: "#ff7979" }} />
                     )}
                   </td>
-
 
                   <td>
                     {order.isDelivered ? (
@@ -113,8 +124,8 @@ function OrdersListScreen() {
                     )}
                   </td>
                   <td>
-                    <Link to="#" className="view_link">
-                      <GrView className="icon" />
+                    <Link to={`/admin/order/${order._id}`} className="view_link">
+                      <span>view</span> <GrView className="icon" />
                     </Link>
                   </td>
                   <td>
@@ -140,12 +151,14 @@ function OrdersListScreen() {
           </Table>
         )}
       </OrderContainer>
-    </MainContainer>
+    </>
   );
 }
 
 const OrderContainer = styled.div`
-  padding: 0 10px;
+  margin: 7rem auto 0;
+  max-width: 2000px;
+  padding: 0 1rem;
   & h3 {
     text-align: center;
     text-transform: uppercase;
@@ -163,7 +176,7 @@ const Table = styled.table`
         text-transform: uppercase;
         /* font-weight: 700; */
         color: #fff;
-        font-size: .8rem;
+        font-size: 0.8rem;
       }
     }
   }
@@ -173,15 +186,16 @@ const Table = styled.table`
       & td {
         border: 1px solid rgba(0, 0, 0, 0.05);
         padding: 10px;
-        font-size: .8rem;
+        font-size: 0.8rem;
         /* text-transform: uppercase; */
       }
     }
   }
 
   & .order_status_new,
-  .order_status_devd {
-    background: #fab1a0;
+  .order_status_devd,
+  .payment_cash,
+  .payment_credit {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -190,20 +204,46 @@ const Table = styled.table`
       margin-bottom: 0;
       text-transform: capitalize;
       padding: 4px 10px;
-      color: #222;
-      font-size: .8rem;
+      font-size: 0.8rem;
     }
   }
   & .order_status_devd {
     background: #7dd8be94;
     & p {
       color: #058d8b;
+      color: #222;
+    }
+  }
+  & .order_status_new {
+    background: #fab1a0;
+    & p {
+      color: #111;
+    }
+  }
+  .payment_cash {
+    background: #b2bec3;
+    padding: 4px 0;
+    & span {
+      color: #222;
+      margin-right: 5px;
+      text-transform: uppercase;
+    }
+  }
+  .payment_credit {
+    background: #2d3436;
+    padding: 4px 0;
+    color: #fff;
+    & span {
+      color: #fff;
+      margin-right: 5px;
+      text-transform: uppercase;
     }
   }
 
-  & .view_link .icon {
-    &:hover {
-      color: var(--orange-color);
+  & .view_link {
+    text-decoration: none;
+    color: var(--orange-color);
+    & span {
     }
   }
 `;

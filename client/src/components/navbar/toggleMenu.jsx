@@ -34,7 +34,7 @@ function ToggleMenu({ open }) {
             <SubLinks className="subLinks">
               <li>
                 <a
-                  href="#/"
+                  href="/adversiting"
                   onClick="menuToggling()"
                   className="subLink text-uppercase weight-500"
                 >
@@ -51,10 +51,10 @@ function ToggleMenu({ open }) {
                 </a>
                 <ul className="sub__nav">
                   <li>
-                    <a href="#/">{t("e_marketing")}</a>
+                    <a href="/marketing">{t("e_marketing")}</a>
                   </li>
                   <li>
-                    <a href="#/">{t("out_marketing")}</a>
+                    <a href="/out-marketing">{t("out_marketing")}</a>
                   </li>
                 </ul>
               </li>
@@ -88,7 +88,7 @@ function ToggleMenu({ open }) {
               </li>
               <li>
                 <a
-                  href="#/"
+                  href="/design"
                   onClick="menuToggling()"
                   className="subLink text-uppercase weight-500"
                 >

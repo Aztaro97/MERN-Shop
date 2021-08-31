@@ -1,12 +1,16 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import {
-  FaFacebook,
+  FaWhatsapp,
+  FaTumblr,
+  FaSnapchatGhost,
   FaTwitter,
-  FaLinkedinIn,
+  FaFacebookF,
   FaInstagram,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
+
+import "./footer.css";
 
 function FooterScrren() {
   const currentPage = document.location.pathname;
@@ -15,50 +19,85 @@ function FooterScrren() {
 
   return (
     <Footer currentPage={currentPage}>
-      <Container>
-        <Header>
-          <p>Get connected with us on socials networks !</p>
-          <Social>
-            <a href="#/" className="link" target="_blank">
-              <FaFacebook className="icon" />
-            </a>
-            <a href="#/" className="link" target="_blank">
-              <FaTwitter className="icon" />
-            </a>
-            <a href="#/" className="link" target="_blank">
-              <FaLinkedinIn className="icon" />
-            </a>
-            <a href="#/" className="link" target="_blank">
-              <FaInstagram className="icon" />
-            </a>
-          </Social>
-        </Header>
-        <hr />
-        <Grid>
-          <Col>
-            <h1>Sitemap</h1>
-            <LinkR href="/">Home</LinkR>
-            <LinkR href="/shop">Shop</LinkR>
-            <LinkR href="/contact">Contact</LinkR>
-          </Col>
-          <Col>
-            <h1>Informations</h1>
-            <LinkR href="/about">About</LinkR>
-            <LinkR href="/shop">Shop</LinkR>
-            {/* <LinkR href="/">Contact</LinkR> */}
-          </Col>
-          <Col>
-            <h1>Your Account</h1>
-            <LinkR href="/register">Register</LinkR>
-            <LinkR href="/login">Login</LinkR>
-            <LinkR href="/shopping">Shopping Details</LinkR>
-          </Col>
-        </Grid>
-        <hr />
-        <p className="copyright">
-          Copyright &copy; 2021. <span>au79code.</span> All Rights Reserved{" "}
-        </p>
-      </Container>
+      {/* <!-- contact us section  --> */}
+      <section className="homeContact page ">
+        <div className="container">
+          {/* <!-- <div className="homeTitle">
+                    <h2 className="largeTitle text-uppercase weight-600 primaryColor">Contact Us</h2>
+                </div> --> */}
+          <div className="row">
+            <div className="col-12 col-md-6  col-lg-5 p-3 pl-5 order-12 order-md-1">
+              <h3 className="secColor weight-500 mediumTitle">To visit us</h3>
+              <p className="grayBlueColor weight-400 normalText">
+                If you want to visit us <br /> talk about a project or <br />{" "}
+                just have a coffee
+              </p>
+              <p className="grayBlueColor weight-500 mediumText mt-3 mb-2">
+                Near 41B Street
+                <br /> Al Rashidiya - Dubai
+              </p>
+              <a href="tel:+97142839983" className="grayBlueColor weight-500 mediumText mt-3 mb-0">
+                +97142839983
+              </a> <br />
+              <a href="tel:+971504366696" className="grayBlueColor weight-500 mediumText ">
+                +971504366696
+              </a>
+              {/* <!-- follow us div  --> */}
+              <div className="followUs mt-4">
+                <h3 className="secColor weight-500 mediumTitle">Follow us</h3>
+                <div className="group">
+                  {/* <!-- Repeating link  --> */}
+                  <a href="#/" className="btn media_link">
+                    <FaTumblr className="icon" />
+                  </a>
+                  {/* <!-- Repeating link  --> */}
+                  <a href="#/" className="btn media_link">
+                    <FaWhatsapp className="icon" />
+                  </a>
+                  {/* <!-- Repeating link  --> */}
+                  <a href="#/" className="btn media_link">
+                    <FaInstagram className="icon" />
+                  </a>
+                  {/* <!-- Repeating link  --> */}
+                  <a href="#/" className="btn media_link">
+                    <FaTwitter className="icon" />
+                  </a>
+                  {/* <!-- Repeating link  --> */}
+                  <a href="#/" className="btn media_link">
+                    <FaSnapchatGhost className="icon" />
+                  </a>
+                  {/* <!-- Repeating link  --> */}
+                  <a href="#/" className="btn media_link">
+                    <FaFacebookF className="icon" />
+                  </a>
+                </div>
+              </div>
+              <div className="mt-4">
+                <h3 className="secColor weight-500 mediumTitle">Contact US</h3>
+                <p className="grayBlueColor weight-400 normalText">
+                  You Have a question
+                  <br /> a request for information, a project{" "}
+                </p>
+                <a href="/contact-us" className="btn sec-outline-btn">
+                  WRITE US
+                </a>
+              </div>
+            </div>
+            <div className="col-12 col-md-6  col-lg-7  order-1 order-md-12">
+              {/* <!-- link for going to external map  --> */}
+              <a className="mapContent" href="https://goo.gl/maps/eKtFdn7NEEZSxoty8" target="_blank"  rel="noreferrer" >
+                {/* <!-- png square img  (preferred 737 * 737 px) --> */}
+                <img className="mapImg" src="./img/map.png" alt="" />
+                <div className="corners">
+                  <div className="corner"></div>
+                  <div className="corner"></div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div className="copyRights">AU79CODE &copy; All rights reserved</div>
     </Footer>
   );
 }
@@ -68,7 +107,7 @@ position: absolute;
   width: 100%;
   color: #fff;
   background: var(--dark-color);
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
   display: ${({ currentPage }) => (currentPage === "/" ? "none" : "block")}  };
 
   & h4 {
@@ -83,103 +122,29 @@ position: absolute;
     text-transform: uppercase;
   }
 
+  & .media_link {
+
+    & .icon {
+    color: #111;
+    background: #93a3b3 ;
+    padding: 4px;
+    font-size: 2rem;
+    transition: all .3s ease-in-out;
+    &:hover {
+      background: #fff;
+      transform: scale(1.3);
+    }
+  }
+  }
+
+
+
+
   @media only screen and (max-width: 1040px) {
     padding: 0 2rem;
   }
   
   
-`;
-
-const Header = styled.div`
-  color: #fff;
-  padding: .8rem 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  & p {
-    margin-bottom: 0;
-    font-size: 1rem;
-  }
-`;
-
-const Social = styled.div`
-  display: flex;
-  align-items: center;
-
-  & .link {
-    text-decoration: none;
-  color: #fff;
-  transition: all 0.3s ease-in-out;
-  padding: .4rem;
-  & .icon {
-    /* padding: .1rem; */
-    font-size: 1.6rem;
-  }
-  &:hover {
-    transform: translateY(-10px);
-    color: #fff;
-    opacity: 0.9;
-  }
-  }
-
-`;
-
-
-const Grid = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding-bottom: 1.7rem;
-
-  @media only screen and (max-width: 990px) {
-    display: block;
-  }
-`;
-const Col = styled.div`
-  /* display:flex; 
-     flex-direction: column; */
-
-  & h1 {
-    margin-bottom: 0.4rem;
-    font-weight: 700;
-    font-size: 1.3rem;
-    color: #fff;
-  }
-  @media only screen and (max-width: 990px) {
-    margin-bottom: 1rem;
-  }
-`;
-const LinkR = styled.a`
-  text-decoration: none;
-  color: #fff;
-  display: block;
-  font-size: 1rem;
-  &:hover {
-    opacity: 0.9;
-    text-decoration: none;
-    color: var(--orange-color);
-  }
-`;
-
-const Container = styled.div`
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 1rem 0;
-
-  & .copyright {
-    text-align: center;
-    & span {
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-  }
-  & hr {
-    margin-bottom: 1rem;
-    height: 0.1px;
-    border: none;
-    outline: none;
-    background-color:#ffffff58;
-  }
 `;
 
 export default FooterScrren;
