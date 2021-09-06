@@ -1,19 +1,19 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import LandingPage from "../landing/LandingPage";
-import MainContainer from "../../MainContainer"
+import MainContainer from "../../MainContainer";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { Fade, Slide } from "react-reveal";
 import {
   getCompanyList,
   getCraftmanList,
 } from "../../../flux/actions/userAction";
 import Loader from "../../Loader";
+import "./ecommerce.css";
 
 import svg1 from "../../../img/svg1.svg";
 import bg_rounded from "../../../img/bg_rounded.svg";
-import content_img from "../../../img/social_media_content.png";
-import svg_right from "../../../img/social_img.png";
 
 import compayn_pic from "../../../img/company_pic2.png";
 
@@ -35,8 +35,9 @@ function HomeECommerce() {
   return (
     <>
       <LandingPage />
-      <MainContainer>
-        <Section1>
+
+      <Section1>
+        <Fade top>
           <h3>Share your company with</h3>
           <h1>our E-Commerce service</h1>
           <hr />
@@ -46,7 +47,9 @@ function HomeECommerce() {
             1500s, when an unknown printer took a galley of type and scrambled
             it to make a type specimen book
           </p>
+        </Fade>
 
+        <Slide left cascade>
           <div className="content">
             <div className="svg_img">
               <img src={svg1} alt="" />
@@ -60,100 +63,172 @@ function HomeECommerce() {
               </p>
             </div>
           </div>
-        </Section1>
-        <SocialSection>
-          <div className="grid">
-            <img src={content_img} alt="" className="svg_left" />
-            <img src={svg_right} alt="" className="svg_right" />
-          </div>
-        </SocialSection>
-        <CardSection>
-          <h4>companies for you</h4>
-          {loading ? (
-            <Loader />
-          ) : (
-            <GridCard>
-              {company.users !== null && (
-                <>
-                  {company.users.slice(0, 4).map((user) => (
-                    <Card>
-                      <img
-                        className="card_img"
-                        src={
-                          user.company.urlImg.length !== 0
-                            ? user.company.urlImg[0].url
-                            : compayn_pic
-                        }
-                        alt=""
-                      />
-                      <div className="card_body">
-                        <h3>{user.company.name}</h3>
-                        <p>{user.company.about}</p>
-                        <hr />
-                        <Link className="link" to={`profile/${user._id}`}>
-                          see more
-                        </Link>
-                      </div>
-                    </Card>
-                  ))}
-                </>
-              )}
-            </GridCard>
-          )}
-          <Link className="link" to="/companies">
-            see more
-          </Link>
-        </CardSection>
+        </Slide>
+      </Section1>
 
-        <CardSection>
-          <h4>craftman for you</h4>
-          {loadingCraft ? (
-            <Loader />
-          ) : (
-            <GridCard>
-              {craftman.users !== null && (
-                <>
-                  {craftman.users.slice(0, 4).map((user) => (
-                    <Card>
-                      <img
-                        className="card_img"
-                        src={
-                          user.company.urlImg.length !== 0
-                            ? user.company.urlImg[0].url
-                            : compayn_pic
-                        }
-                        alt=""
-                      />
-                      <div className="card_body">
-                        <h3>{user.company.name}</h3>
-                        <p>{user.company.about}</p>
-                        <hr />
-                        <Link className="link" to={`profile/${user._id}`}>
-                          see more
-                        </Link>
-                      </div>
-                    </Card>
-                  ))}
-                </>
-              )}
-            </GridCard>
-          )}
-          <Link className="link" to="/companies">
-            see more
-          </Link>
-        </CardSection>
-      </MainContainer>
+      {/* <!-- Social Media container  --> */}
+      <div className="socialMedia" id="socialMediaContent">
+        <div className="bgGrediant">
+          <div className="row no-gutters">
+            <div className="col-12 col-md-5">
+              <div className="socialText">
+                <img src="./img/shape1.png" className="shape" alt="" />
+                <div className="contente">
+                  <p className="thirdColor mediumText weight-400 text-uppercase mb-0 mb-lg-1">
+                    Be The Attentionence
+                  </p>
+                  <h2 className="secColor largestTitle weight-600  text-uppercase mb-0 mb-lg-2">
+                    Social Media
+                  </h2>
+                  <div className="customBorder"></div>
+                  <p className="weight-400 normalText grayBlueColor">
+                    Increase your company's monthly leads by 327% with our
+                    expert on social media promotion
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="col-12 col-md-7">
+              <div className="popSocial">
+                <p className="largeText weight-500 thirdColor text-uppercase ">
+                  how
+                </p>
+                <p className="largeTitle weight-600 whiteColor text-uppercase">
+                  to make your ad
+                </p>
+                <a
+                  className="btn text-uppercase"
+                  type="button"
+                  href="#/"
+                  style={{ width: "auto" }}
+                >
+                  easy and fast
+                </a>
+                <div className="socials">
+                  <div className="item">
+                    <a href="/#" className="btn" type="button">
+                      <img src="./img/share.png" alt="" width="10" />
+                      <span className="social_btn">share</span>
+                    </a>
+                  </div>
+                  <div className="item">
+                    <a href="/#" className="btn" type="button">
+                      <img src="./img/profile3.png" alt="" />
+                      <span className="social_btn">register</span>
+                    </a>
+                  </div>
+
+                  <div className="item">
+                    <a href="/#" className="btn" type="button">
+                      <img src="./img/file.png" alt="" />
+                      <span className="social_btn">file data</span>
+                    </a>
+                  </div>
+                  {/* <div className="item">
+                  <a href="/#" className="btn" type="button">
+                    <img src="./img/s4.png" alt="" />
+                  </a>
+                </div> */}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* <SocialSection>
+        <div className="grid">
+          <img src={content_img} alt="" className="svg_left" />
+          <img src={svg_right} alt="" className="svg_right" />
+        </div>
+      </SocialSection> */}
+      <CardSection>
+        <h4>companies for you</h4>
+        {loading ? (
+          <Loader />
+        ) : (
+          <GridCard>
+            {company.users !== null && (
+              <>
+                {company.users.slice(0, 4).map((user) => (
+                  <Fade right cascade>
+                  <Card>
+                    <img
+                      className="card_img"
+                      src={
+                        user.company.urlImg.length !== 0
+                          ? user.company.urlImg[0].url
+                          : compayn_pic
+                      }
+                      alt=""
+                    />
+                    <div className="card_body">
+                      <h3>{user.company.name}</h3>
+                      <p>{user.company.about}</p>
+                      <hr />
+                      <Link className="link" to={`profile/${user._id}`}>
+                        see more
+                      </Link>
+                    </div>
+                  </Card>
+                  </Fade>
+                ))}
+              </>
+            )}
+          </GridCard>
+        )}
+        <Link className="link" to="/companies">
+          see more
+        </Link>
+      </CardSection>
+
+      <CardSection>
+        <h4>craftman for you</h4>
+        {loadingCraft ? (
+          <Loader />
+        ) : (
+          <GridCard>
+            {craftman.users !== null && (
+              <>
+                {craftman.users.slice(0, 4).map((user) => (
+                   <Fade left cascade>
+                  <Card>
+                    <img
+                      className="card_img"
+                      src={
+                        user.company.urlImg.length !== 0
+                          ? user.company.urlImg[0].url
+                          : compayn_pic
+                      }
+                      alt=""
+                    />
+                    <div className="card_body">
+                      <h3>{user.company.name}</h3>
+                      <p>{user.company.about}</p>
+                      <hr />
+                      <Link className="link" to={`profile/${user._id}`}>
+                        see more
+                      </Link>
+                    </div>
+                  </Card>
+                  </Fade>
+                ))}
+              </>
+            )}
+          </GridCard>
+        )}
+        <Link className="link" to="/companies">
+          see more
+        </Link>
+      </CardSection>
     </>
   );
 }
 
-const Container = styled.div`
-  margin: 0;
-  padding: 0;
-`;
 const Section1 = styled.section`
-  margin-top: 2rem;
-  padding: 2rem 6rem;
+  max-width: var(--max-width);
+  margin: 1rem auto 0;
+  padding: 0rem 6rem 2rem;
   text-align: center;
 
   & h3 {
@@ -243,20 +318,21 @@ const SocialSection = styled.section`
     rgba(29, 24, 74, 1) 100%
   );
   /* background-image: url(${bg_rounded}); */
-  border-radius: 30%;
+  /* border-radius: 30%; */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   background-origin: content-box;
   width: 100%;
-  height: 31.25rem;
   margin-top: 5rem;
+  padding: 1rem 0;
 
   & .grid {
     display: flex;
     justify-content: space-between;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 2rem;
+    flex-wrap: wrap;
+    /* grid-template-columns: 1fr 1fr;
+    grid-gap: 2rem; */
 
     & .svg_left {
       width: 28.125rem;
@@ -269,33 +345,30 @@ const SocialSection = styled.section`
       }
     }
     & .svg_right {
-      width: 20rem;
       height: 20rem;
-      position: relative;
-      right: 4rem;
-      top: 5rem;
-      @media only screen and (max-width: 768px) {
+      display: block;
+      text-align: end;
+      @media only screen and (max-width: 655px) {
         width: 15rem;
         height: 15rem;
-        right: -8rem;
-        top: -2rem;
+        /* right: -8rem;
+        top: -2rem; */
       }
     }
     @media only screen and (max-width: 640px) {
-      display: block;
+      grid-template-columns: 1fr;
     }
   }
 
   @media only screen and (max-width: 768px) {
-    height: 35rem;
     background-position: inherit;
-    border-radius: 0;
   }
 `;
 
 const CardSection = styled.div`
   margin: 4rem auto;
-  max-width: 1000px;
+  max-width: var(--max-width);
+  padding:0 1.5rem;
 
   & h4 {
     font-size: 1.4rem;
@@ -325,7 +398,7 @@ const Card = styled.div`
   box-shadow: var(--box-shadow-value);
   & .card_img {
     width: 100%;
-    height:12.5rem;
+    height: 12.5rem;
     object-fit: cover;
     /* border-radius: 1rem 1rem 0 0; */
   }

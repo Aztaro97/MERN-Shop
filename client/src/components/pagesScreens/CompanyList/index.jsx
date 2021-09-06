@@ -14,7 +14,7 @@ function Tabulation() {
     <>
       <LandingPage />
       <Tab>
-        <MainContainer style={{ marginTop: 0 }}>
+        <MainContainer style={{ marginTop: 0, paddingTop: 30 }}>
           <TabsE defaultActiveKey="1" centered size="default">
             <TabPane
               tab={

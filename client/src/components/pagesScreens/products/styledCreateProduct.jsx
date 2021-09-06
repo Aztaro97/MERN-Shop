@@ -25,6 +25,7 @@ export const MainProductForm = styled.form`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 2rem;
+  padding-bottom: 3rem;
 
   @media only screen and (max-width: 768px) {
     display: block;

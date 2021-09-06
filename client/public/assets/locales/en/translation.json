@@ -79,7 +79,26 @@
     "login": "LOGIN",
     "register": "REGISTER",
     "registration": "REGISTRATION",
-    "forget_password": "FORGET PASSWORD"
+    "forget_password": "FORGET PASSWORD",
+
+    "date":"date",
+    "custom_name": "custom name",
+    "order_number":"order number",
+    "paid":"paid",
+    "total":"total",
+    "payment_method":"payment method",
+    "status_order": "status order",
+    "detail":"detail",
+    "actions":"actions",
+
+    "all_orders_lists":"all order lists",
+    "view":"view",
+    "delivered":"delivered",
+    "cash_on_delivery":"cash on delivery",
+    "credit_card":"credit card",
+    "new_order":"new order",
+    "select":"select",
+    "delete":"delete"
 
 
   }

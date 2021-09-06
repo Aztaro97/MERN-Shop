@@ -18,6 +18,11 @@ footer .followUs .group .btn:hover i {
 footer .homeContact .homeTitle h2 {
     color: #fff !important;
 }
+footer .homeContact .mapContent {
+    width: 300px;
+    height: 300px;
+    margin-top: 70px;
+}
 
 .menuBtn {
     /* position: absolute;

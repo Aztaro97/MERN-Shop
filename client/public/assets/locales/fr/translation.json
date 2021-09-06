@@ -81,7 +81,26 @@
     "login": "CONNEXION",
     "register": "S'INSCRIRE",
     "registration": "ENREGISTREMENT",
-    "forget_password": "MOT DE PASSE OUBLIÉ"
+    "forget_password": "MOT DE PASSE OUBLIÉ",
+
+    "date":"date",
+    "custom_name": "nom du client",
+    "order_number":"numéro de commande",
+    "paid":"payé",
+    "total":"total",
+    "payment_method":"mode de paiement",
+    "status_order": "Commande",
+    "detail":"détail",
+    "actions":"Actions",
+
+    "all_orders_lists":"Listes des commandes",
+    "view":"voir",
+    "delivered":"livré",
+    "cash_on_delivery":"paiement à la livraison",
+    "credit_card":"carte de crédit",
+    "new_order":"nouvel commande",
+    "select":"sélectionner",
+    "delete":"supprimer"
 
   }
   

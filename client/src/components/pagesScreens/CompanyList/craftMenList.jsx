@@ -3,9 +3,13 @@ import styled from "styled-components";
 import Slider from "react-slick";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import TextTruncate from "react-text-truncate";
 import { getCraftmanList } from "../../../flux/actions/userAction";
 import Loader from "../../Loader";
-import { USER_LIST_RESET, CRAFTMAN_LIST_REQUEST } from "../../../flux/constants/userConstants";
+import {
+  USER_LIST_RESET,
+  CRAFTMAN_LIST_REQUEST,
+} from "../../../flux/constants/userConstants";
 
 import company_pic1 from "../../../img/company_pic1.png";
 import company_pic2 from "../../../img/company_pic2.png";
@@ -63,7 +67,7 @@ function CraftManList() {
 
   useEffect(() => {
     dispatch({
-      type: CRAFTMAN_LIST_REQUEST
+      type: CRAFTMAN_LIST_REQUEST,
     });
     dispatch(getCraftmanList());
 
@@ -89,7 +93,12 @@ function CraftManList() {
                       <img className="card_img" src={company_pic1} alt="" />
                       <div className="card_body">
                         <h3>{user.company.name}</h3>
-                        <p>{user.company.about}</p>
+                        <TextTruncate
+                          line={2}
+                          element="p"
+                          truncateText="…"
+                          text={user.company.about}
+                        />
                         <hr />
                         <Link className="link" to={`profile/${user._id}`}>
                           see more
@@ -161,7 +170,7 @@ const CardContainer = styled.div`
 
     & .card_img {
       width: 100%;
-      height:12.5rem;
+      height: 12.5rem;
       object-fit: cover;
       /* border-radius: 1rem 1rem 0 0; */
     }

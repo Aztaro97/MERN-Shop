@@ -5,12 +5,9 @@ import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getCompanyList } from "../../../flux/actions/userAction";
 import Loader from "../../Loader";
-import {USER_LIST_RESET} from "../../../flux/constants/userConstants"
+import TextTruncate from "react-text-truncate";
 
-import company_pic1 from "../../../img/company_pic1.png";
 import company_pic2 from "../../../img/company_pic2.png";
-import company_pic3 from "../../../img/company_pic3.png";
-import company_pic4 from "../../../img/company_pic4.png";
 
 const CarouselButton = () => {
   const settings = {
@@ -60,7 +57,6 @@ const CompanyList = () => {
   const dispatch = useDispatch();
 
   const { loading, company } = useSelector((state) => state.companyList);
-  
 
   useEffect(() => {
     dispatch(getCompanyList());
@@ -74,16 +70,33 @@ const CompanyList = () => {
           {/* <hr /> */}
           {/* <CarouselButton /> */}
           <CardContainer>
-            {company.users  && (
+            {company.users && (
               <>
                 {company.users.map((user) => (
                   <div className="card" key={user._id}>
-                    <img className="card_img" src={user.company.urlImg.length !== 0 ? user.company.urlImg[0].url : company_pic2 } alt="" />
+                    <img
+                      className="card_img"
+                      src={
+                        user.company.urlImg.length !== 0
+                          ? user.company.urlImg[0].url
+                          : company_pic2
+                      }
+                      alt=""
+                    />
                     <div className="card_body">
                       <h3>{user.company.name}</h3>
-                      <p>{user.company.about}</p>
+                      <TextTruncate
+                        line={2}
+                        element="p"
+                        truncateText="…"
+                        text={user.company.about}
+                        // textTruncateChild={<a href="#">Read on</a>}
+                      />
+                      {/* <p>{user.company.about}</p> */}
                       <hr />
-                      <Link className="link" to={`profile/${user._id}`}>see more</Link>
+                      <Link className="link" to={`profile/${user._id}`}>
+                        see more
+                      </Link>
                     </div>
                   </div>
                 ))}
@@ -142,7 +155,6 @@ const CardContainer = styled.div`
   grid-gap: 1rem;
   /* margin-left: auto;
   margin-right: auto; */
-  
 
   .card {
     width: 100%;
@@ -150,7 +162,7 @@ const CardContainer = styled.div`
 
     & .card_img {
       width: 100%;
-      height:12.5rem;
+      height: 12.5rem;
       object-fit: cover;
       /* border-radius: 1rem 1rem 0 0; */
     }

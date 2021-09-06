@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import {useTranslation} from "react-i18next"
-import { Modal, Image } from "antd";
-import { ExclamationCircleOutlined } from "@ant-design/icons";
+import { useTranslation } from "react-i18next";
+import { Modal, Image, Select, Menu, Dropdown, Button } from "antd";
+import {
+  ExclamationCircleOutlined,
+  DownOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 import { useHistory } from "react-router-dom";
 import { MdDelete, AiOutlineCheck, FaTimes } from "react-icons/all";
 import Loader from "../../Loader";
@@ -13,13 +17,14 @@ import {
   setProductAllow,
 } from "../../../flux/actions/productAction";
 import MainContainer from "../../MainContainer";
-import Pagination from "../../pagination"
+import Pagination from "../../pagination";
 
 const { confirm } = Modal;
+const { Option } = Select;
 
 function ProductsListScreen({ match }) {
-  const {t} = useTranslation()
-  const pageNumber = match.params.pageNumber || 1
+  const { t } = useTranslation();
+  const pageNumber = match.params.pageNumber || 1;
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -59,6 +64,18 @@ function ProductsListScreen({ match }) {
     dispatch(setProductAllow(id, false));
   };
 
+  function handleMenuClick(e, productId) {
+    if (e.key === "accept") {
+      dispatch(setProductAllow(productId, true));
+    } 
+    if (e.key === "refuse") {
+      dispatch(setProductAllow(productId, false));
+    }
+
+  }
+
+  // const menu =;
+
   useEffect(() => {
     if (!userInfo || !userInfo.isAdmin) {
       history.push("/login");
@@ -84,13 +101,13 @@ function ProductsListScreen({ match }) {
             <Table>
               <thead>
                 <tr>
-                  
                   <th>name</th>
                   <th>price</th>
                   <th>images</th>
                   <th>brand</th>
                   <th>Company Name / Personnel</th>
                   <th>Email</th>
+                  <th>status</th>
                   <th>Action</th>
                   <th></th>
                 </tr>
@@ -98,39 +115,65 @@ function ProductsListScreen({ match }) {
               <tbody>
                 {products.map((product) => (
                   <tr key={product._id}>
-                   
                     <td>{product.name}</td>
                     <td>{product.price} dirham</td>
                     <td>
                       <div className="images_lists">
-                      {product.imageUrl.map( img => (<Image className="img" src={img.url} />) )
-                    
-                  }
+                        {product.imageUrl.map((img) => (
+                          <Image className="img" src={img.url} />
+                        ))}
                       </div>
                     </td>
                     <td>{product.brand}</td>
                     <td>{product.user.company.name}</td>
                     <td>
-
-                    <a
-                    style={{fontSize:".7rem",textTransform:"lowercase"}}
-                      href={`mailto:${product.user.email}`}
-                    >
-                      {product.user.email}
-                    </a>
-                    
+                      <a
+                        style={{
+                          fontSize: ".7rem",
+                          textTransform: "lowercase",
+                        }}
+                        href={`mailto:${product.user.email}`}
+                      >
+                        {product.user.email}
+                      </a>
                     </td>
-                    <td className="allow_btn">
+                    <td className="status">
                       {product.allow && (
-                        <button onClick={() => handleSetNotAllow(product._id)}>
-                          <AiOutlineCheck className="allow_btn_accept" />  Accept
-                        </button>
+                        <p>
+                          Accepted
+                          <AiOutlineCheck className="allow_btn_accept" />{" "}
+                          
+                        </p>
                       )}
                       {!product.allow && (
-                        <button onClick={() => handleSetAllow(product._id)} >
-                          <FaTimes className="allow_btn_refuse" /> Refuse
-                        </button>
+                        <p>
+                          Refused
+                          <FaTimes className="allow_btn_refuse" /> 
+                        </p>
                       )}
+                    </td>
+                    <td>
+                      <Dropdown
+                        overlay={
+                          <Menu
+                            onClick={(e) => handleMenuClick(e, product._id)}
+                          >
+                            <Menu.Item key="accept">accept</Menu.Item>
+                            <Menu.Item key="refuse">refuse</Menu.Item>
+                          </Menu>
+                        }
+                        trigger={["click"]}
+                      >
+                        <a
+                          href="#/"
+                          className="action_btn"
+                          onClick={(e) => e.preventDefault()}
+                        >
+                          select
+                          <DownOutlined style={{ paddingLeft: 2 }} />
+                        </a>
+                      </Dropdown>
+                      ,
                     </td>
                     <td>
                       <button
@@ -177,7 +220,7 @@ const Table = styled.table`
         text-transform: uppercase;
         font-weight: 700;
         color: #fff;
-        font-size: .8rem;
+        font-size: 0.8rem;
       }
     }
   }
@@ -188,7 +231,7 @@ const Table = styled.table`
         border: 1px solid rgba(0, 0, 0, 0.05);
         padding: 10px;
         text-transform: uppercase;
-        font-size: .8rem;
+        font-size: 0.8rem;
         & .delete_btn {
           outline: none;
           background: #eb4d4b;
@@ -202,26 +245,38 @@ const Table = styled.table`
           justify-content: center;
           align-items: center;
           & .img {
-            height:70px;
+            height: 70px;
             width: 70px;
             margin: 0 5px;
           }
-
+        }
+        & .action_btn {
+          display: flex;
+          align-items: center;
+          color: #111;
+          position: relative;
+          top:11px;
+          &:hover {
+            text-decoration: none;
+            opacity: 0.9;
+          }
         }
       }
-      & .allow_btn {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        & button {
-          outline: none;
-          border: none;
+      & .status {
+        & p {
+          display: flex;
+          text-transform: capitalize;
           background: transparent;
+          margin-bottom: 0;
           & .allow_btn_accept {
             color: green;
+            font-size: 1rem;
+            margin-left: 2px;
           }
           & .allow_btn_refuse {
             color: red;
+            font-size: 1rem;
+            margin-left: 2px;
           }
         }
       }

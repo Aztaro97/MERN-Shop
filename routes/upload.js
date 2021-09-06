@@ -82,7 +82,7 @@ router.post(
 
       await user.save();
 
-      res.status(200).json({ results: user.company.urlImg });
+      res.status(200).json({ results: user.company.urlImg, msg: "The images saved successfuly" });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }

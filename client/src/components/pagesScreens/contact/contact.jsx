@@ -1,5 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+import {
+  FaWhatsapp,
+  FaTumblr,
+  FaSnapchatGhost,
+  FaTwitter,
+  FaFacebookF,
+  FaInstagram,
+} from "react-icons/fa";
 import MainContainer from "../../MainContainer"
 
 import "./contact.css";
@@ -29,48 +37,27 @@ function Contact() {
                 <h3 class="secColor weight-500 mediumTitle">Follow us</h3>
                 <div class="group">
                   {/* <!-- Repeating link  --> */}
-                  <a href="facebook.com" class="btn" target="__blank">
-                    <i class="fab fa-tumblr-square grayBlueColor"></i>
+                  {/* <a href="#/" className="btn media_link">
+                    <FaTumblr className="icon" />
+                  </a> */}
+                  <a href="https://api.whatsapp.com/send?phone=+971567957775" className="btn media_link" target="_blank" rel="noreferrer">
+                    <FaWhatsapp className="icon" />
                   </a>
                   {/* <!-- Repeating link  --> */}
-                  <a
-                    href="https://api.whatsapp.com/send?phone=+971567957775"
-                    class="btn"
-                    target="__blank"
-                  >
-                    <i class="fab fa-whatsapp-square grayBlueColor"></i>
+                  <a href="https://www.instagram.com/au_79_code/" className="btn media_link" target="_blank" rel="noreferrer">
+                    <FaInstagram className="icon" />
                   </a>
                   {/* <!-- Repeating link  --> */}
-                  <a
-                    href="https://www.instagram.com/au_79_code/"
-                    class="btn"
-                    target="__blank"
-                  >
-                    <i class="fab fa-instagram-square grayBlueColor"></i>
+                  <a href="https://twitter.com/79_code" className="btn media_link" target="_blank" rel="noreferrer">
+                    <FaTwitter className="icon" />
                   </a>
                   {/* <!-- Repeating link  --> */}
-                  <a
-                    href="https://twitter.com/79_code"
-                    class="btn"
-                    target="__blank"
-                  >
-                    <i class="fab fa-twitter-square grayBlueColor"></i>
+                  <a href="https://www.snapchat.com/add/au79code" className="btn media_link" target="_blank" rel="noreferrer">
+                    <FaSnapchatGhost className="icon" />
                   </a>
                   {/* <!-- Repeating link  --> */}
-                  <a
-                    href="https://www.snapchat.com/add/au79code"
-                    class="btn"
-                    target="__blank"
-                  >
-                    <i class="fab fa-snapchat-square grayBlueColor"></i>
-                  </a>
-                  {/* <!-- Repeating link  --> */}
-                  <a
-                    href="https://www.facebook.com/pages/category/Marketing-Agency/AU-79-CODE-103505425005079/"
-                    class="btn"
-                    target="__blank"
-                  >
-                    <i class="fab fa-facebook-square grayBlueColor"></i>
+                  <a href="https://www.facebook.com/pages/category/Marketing-Agency/AU-79-CODE-103505425005079/" className="btn media_link" target="_blank" rel="noreferrer">
+                    <FaFacebookF className="icon" />
                   </a>
                 </div>
               </div>
@@ -80,7 +67,7 @@ function Contact() {
                   You Have a question
                   <br /> a request for information, a project{" "}
                 </p>
-                <a href="#" class="btn sec-outline-btn">
+                <a href="#/" class="btn sec-outline-btn">
                   WRITE US
                 </a>
                 <form

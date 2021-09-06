@@ -1,0 +1,456 @@
+
+
+.socialMedia .shape {
+    width: 100%;
+    margin-top: -115px;
+}
+.socialMedia {
+    position: relative;
+    padding: 80px 0px;
+    /* background-image: url(../../../img/pictures/roundBg.png);
+    background-size: 100% 100%;
+    background-position: center; */
+}
+
+
+/* start Marketing style  */
+
+.topLinks {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 60px;
+    margin: 0px 170px;
+    height: 31px;
+    z-index: 2;
+}
+
+.topLinks a {
+    text-decoration: none !important;
+    color: #fff;
+    margin: 0px 20px;
+}
+
+.topLinks a.active {
+    color: #0b1b34;
+}
+
+.topImg .imgCover {
+    /* height: 100vh; */
+    overflow: hidden;
+}
+
+.topImg img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.topImg {
+    /* max-height: 100vh; */
+    position: relative;
+}
+
+.topImg:after {
+    content: '';
+    height: 25vh;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 3;
+    background: linear-gradient(to top, rgba(255, 255, 255, 1) 16%, rgba(255, 255, 255, 0.7) 50%, rgba(255, 255, 255, 0) 100%);
+}
+
+.topImg .caption {
+    position: absolute;
+    bottom: 15vh;
+    left: 8%;
+    z-index: 10;
+    width: 50%;
+}
+
+.topImg .caption h2 {
+    margin: 0px;
+}
+
+.topImg .caption p {
+    margin: 8px 0px 0px;
+    line-height: normal;
+}
+
+.topImg .marketingSelect {
+    background: #fff;
+    height: 46px;
+    border-radius: 25px;
+    max-width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: visible;
+    margin-inline-start: -30px;
+    margin-top: 36px;
+    /* overflow: hidden; */
+}
+
+.marketingSelect .dropdown {
+    height: 100%;
+    width: 100%;
+}
+
+.marketingSelect .btn {
+    height: 100%;
+}
+
+.marketingSelect .dropdown .btn {
+    width: 100%;
+    text-align: start;
+    padding: 0px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #93a3b3;
+}
+
+.marketingSelect .dropdown-toggle::after {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #49c4d3;
+    transform: rotate(45deg);
+    border-top: 0px;
+    border-left: 0px;
+    margin-top: -6px;
+}
+
+.marketingSelect>.btn {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    flex-shrink: 0;
+}
+
+.dropdown-menu .dropdown-item {
+    background-color: transparent !important;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    color: #49c4d3;
+}
+
+.marServices {
+    background-image: url(../../../img/pictures/dots1.png);
+    background-position: calc(100% - 125px);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.marServices .textContent {
+    width: 750px;
+    max-width: 90%;
+    margin: auto;
+}
+
+.serRow {
+    width: 950px;
+    max-width: 100%;
+    margin: auto;
+}
+
+.serRow .service {
+    width: 195px;
+    max-width: 100%;
+    background-color: #fff;
+    padding: 16px;
+    border-radius: 25px;
+    text-decoration: none;
+    margin: 15px;
+    box-shadow: 0px 0px 20px 0px rgb(175 211 216 / 48%);
+    display: inline-block;
+    transition: transform .65s ease;
+}
+
+.serRow .service:hover {
+    transform: scale(.9, .9);
+}
+
+.marServices .service p {
+    margin: 0px;
+    font-size: 15px;
+    height: 66px;
+    line-height: 22px;
+    overflow: hidden;
+}
+
+.marServices .service .seoImg {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    transform: rotate(0deg);
+    transition: .85s transform ease;
+}
+
+.serRow .service:hover .seoImg {
+    transform: rotate(360deg);
+}
+
+.marServices .service .arrowIcon {
+    width: 25px;
+    margin-top: 8px;
+}
+
+.socialMedia .shape {
+    width: 100%;
+    margin-top: -115px;
+}
+
+.socialMedia {
+    position: relative;
+    padding: 80px 0px;
+    /* background-image: url(../../../img/pictures/roundBg.png);
+    background-size: 100% 100%;
+    background-position: center; */
+}
+
+/* .bgGrediant {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    overflow: hidden;
+} */
+
+.bgGrediant {
+    /* content: ''; */
+    height: 100%;
+    /* position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right: -25%;
+    left: -25%; */
+    background: linear-gradient(to bottom, rgba(91, 185, 198, 1) 0%, rgba(91, 185, 198, 1) 1%, rgba(33, 127, 140, 1) 28%, rgba(29, 24, 74, 1) 99%, rgba(29, 24, 74, 1) 100%);
+    width: 100%;
+    border-radius: 20%;
+    padding: 5rem 0;
+    overflow: hidden;
+}
+
+.popSocial {
+    width: 36vw;
+    height: 36vw;
+    margin: auto;
+    text-align: center;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    background: url(../../../img/pictures/dots2.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+/* .popSocial:before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    width: 100%;
+    height: 100%; 
+} */
+
+.popSocial>.btn {
+    background: #c68787;
+    color: #fff;
+    border-radius: 30px;
+    height: 45px;
+    padding: 0px 10px;
+    line-height: 45px;
+    font-size: 14px;
+    font-weight: 400;
+    width: 100px;
+    margin: 10px auto 0px;
+    box-shadow: 0px 0px 20px 2px rgba(198, 135, 135, 65%) !important;
+}
+
+.popSocial p {
+    margin: 0px;
+    display: block;
+}
+
+.popSocial .largeText {
+    line-height: 20px;
+}
+
+.socialText>div {
+    padding: 45px 10px 10px;
+    padding-inline-start: 70px;
+    position: absolute;
+    top: 0px;
+    width: 420px;
+}
+
+.socialText h2,
+.socialText .mediumText {
+    white-space: nowrap;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.socialText .normalText {
+    max-height: 75px;
+    line-height: 25px;
+    overflow: hidden;
+}
+
+.socialText .customBorder {
+    margin-inline-start: 10px;
+}
+
+.socials a {
+    position: relative;
+    z-index: 1;
+    background: transparent !important;
+}
+
+.socials a img {
+    width: 150px;
+    height: 150px;
+    transform: scale(1, 1);
+    transition: transform 1s ease;
+    background: transparent !important;
+}
+
+.socials a:hover img {
+    transform: scale(.85, .85);
+    background: transparent !important;
+}
+
+.socials .item {
+    display: inline-block;
+    position: absolute;
+}
+
+.socials .item:nth-child(1) {
+    top: 10%;
+    left: -10%;
+}
+
+.socials .item:nth-child(2) {
+    top: 10%;
+    right: -10%;
+}
+
+.socials .item:nth-child(3) {
+    bottom: -5%;
+    left: 5%;
+}
+
+.socials .item:nth-child(4) {
+    bottom: 5%;
+    right: -5%;
+}
+
+.socials .item:after {
+    content: '';
+    position: absolute;
+    background-image: url(../../../img/pictures/socialBg.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 125px;
+    height: 125px;
+    z-index: 0;
+}
+
+.socials .item:nth-child(1):after {
+    left: -25px;
+    transform: rotate(260deg);
+}
+
+.socials .item:nth-child(2):after {
+    left: 0px;
+    top: -30px;
+}
+
+.socials .item:nth-child(3):after {
+    left: -45px;
+    bottom: 20px;
+    transform: rotate(-100deg);
+}
+
+.socials .item:nth-child(4):after {
+    right: 0px;
+    bottom: -15px;
+    transform: rotate(-10deg);
+}
+
+.socials .social_btn {
+    display: block;
+    color: #fff;
+    padding: 4px 8px;
+    background: var(--orange-color);
+    border-radius:10px;
+    text-transform: uppercase;
+    transform: scale(1, 1);
+    transition: transform 1s ease;
+    font-size: .9rem;
+}
+.socials a:hover .social_btn {
+    transform: scale(.85, .85);
+}
+
+@media only screen and (max-width: 991px) {
+    .popSocial {
+        margin-right: 0;
+    }
+    .socialMedia .socialText img {
+        display: none;
+    }
+    .socialMedia .socialText .contente {
+        /* display: none; */
+        display: block;
+    }
+
+    .socialMedia {
+        padding: 45px 0px;
+    }
+    .socialMedia .shape {
+        /* width: 335px; */
+        margin-top: -68px;
+    }
+    .socialText>div {
+        width: 300px;
+        padding: 10px 40px 10px;
+        padding-inline-start: 25px;
+    }
+    .socials a img {
+        width: 70px;
+        height: 70px;
+    }
+    .socials .item:after {
+        width: 70px;
+        height: 70px;
+    }
+    .socials .item:nth-child(1):after {
+        left: -6px;
+    }
+    .socials .item:nth-child(2):after {
+        top: -8px;
+    }
+    .socials .item:nth-child(3):after {
+        left: -10px;
+        bottom: 8px;
+    }
+    .socials .item:nth-child(4):after {
+        right: 10px;
+        bottom: 0px;
+    }
+    .socials .social_btn {
+        font-size: .6rem;
+    }
+}

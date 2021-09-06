@@ -77,7 +77,26 @@
     "register": "تسجيل",
     "login": "تسجيل الدخول",
     "registration": "التسجيل",
-    "forget_password": "نسيت كلمة المرور"
+    "forget_password": "نسيت كلمة المرور",
+
+    "date":"تاريخ",
+    "custom_name": "اسم مخصص",
+    "order_number":"رقم الأمر",
+    "paid":"دفع",
+    "total":"المجموع",
+    "payment_method":"طريقة الدفع او السداد",
+    "status_order": "ترتيب الحالة",
+    "detail":"التفاصيل",
+    "actions":"أجراءات",
+
+    "all_orders_lists":"كل قوائم الطلبات",
+    "view":"عرض",
+    "delivered":"تم التوصيل",
+    "cash_on_delivery":"الدفع عند الاستلام",
+    "credit_card":"بطاقة ائتمان",
+    "new_order":"طلب جديد",
+    "select":"تحديد",
+    "delete":"حذف"
 
     
   }

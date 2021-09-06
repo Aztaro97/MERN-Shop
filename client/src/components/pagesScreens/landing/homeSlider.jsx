@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import { useSelector, useDispatch } from "react-redux";
 import { createProduct } from "../../../flux/actions/productAction";
 import styled from "styled-components";
+import { Zoom } from "react-reveal";
 import { Link, useHistory } from "react-router-dom";
 
 import bg_landing1 from "../../../img/bg_landing.png";
@@ -46,9 +47,6 @@ const HomeSection = () => {
     },
   };
 
-  const dispatch = useDispatch();
-  const history = useHistory();
-
   useEffect(() => {}, []);
   return (
     <div>
@@ -57,14 +55,18 @@ const HomeSection = () => {
           <div className="bg_image bg1">
             <SlideOverlay>
               <div>
-                <h1>
-                  <span>We</span>are the best e-marketing companies in dubai,
-                  uae.
-                </h1>
+                <Zoom>
+                  <h1>
+                    <span>We</span>are the best e-marketing companies in dubai,
+                    uae.
+                  </h1>
+                
                 <p>
                   Our marketing strategies for getting your website publicized
                   give effective results, there are no excuses, It's that simple
                 </p>
+                
+                </Zoom>
                 <Link className="link1" to="/register">
                   Get Your Commercial page Free
                 </Link>
@@ -93,8 +95,15 @@ const HomeSection = () => {
 };
 
 const Slide = styled.div`
+  height: 1000px;
+  width: 100%;
   & .bg1 {
-    background-image: url(${bg_landing1}), linear-gradient(#1a0313, #070404);
+    background-image: linear-gradient(
+        90deg,
+        rgba(55, 55, 55, 0.6306897759103641) 100%,
+        rgba(191, 191, 191, 0.6558998599439776) 100%
+      ),
+      url(${bg_landing1});
   }
 
   & .bg2 {
@@ -102,7 +111,7 @@ const Slide = styled.div`
   }
 
   & .bg_image {
-    height: 1000px;
+    height: 100%;
     width: 100%;
     background-repeat: no-repeat;
     background-position: center;
@@ -111,46 +120,44 @@ const Slide = styled.div`
 
     display: flex;
     align-items: flex-end;
-    @media only screen and (max-width: 768px) {
-      height: 400px;
-    }
+  }
+  @media only screen and (max-width: 768px) {
+    height: 400px;
   }
 `;
 
 const SlideOverlay = styled.div`
-  /* position: absolute;
-  top: 50%;
-  right: 50%; */
   margin-left: 2rem;
-  /* width: 100%; */
 
   & div {
     position: relative;
     bottom: 6rem;
-    padding-right: 9rem;
+    /* padding-right: 9rem; */
+    width: 80%;
     z-index: 99999999;
     & h1 {
       color: #49c4d3;
       margin: 0;
       font-weight: 700;
       text-transform: uppercase;
-      font-size: 2rem;
+      font-size: 2.81rem;
 
       & span {
         color: #c68787;
         display: block;
         text-transform: capitalize;
-        /* font-weight: 700; */
-        font-size: 3rem;
+        font-size: 7.8rem;
         font-family: weFont, sans-serif;
       }
     }
     & p {
       color: #fff;
-      margin-bottom: 0;
-      font-size: 1.3em;
+      /* margin-bottom: 0; */
+      margin: 5px 0;
+      font-size: 1.25em;
     }
     & .link1 {
+      display: block;
       text-decoration: none;
       outline: none;
       border: none;
@@ -159,8 +166,9 @@ const SlideOverlay = styled.div`
       background: var(--orange-color);
       text-transform: uppercase;
       color: #fff;
-      position: relative;
-      top: 1rem;
+      width: 400px;
+      text-align: center;
+      margin: 10px 0;
       font-size: 1rem;
       cursor: pointer;
       z-index: 99999;
@@ -180,6 +188,7 @@ const SlideOverlay = styled.div`
       }
       & .link1 {
         font-size: 0.8rem;
+        width: 260px;
       }
     }
   }

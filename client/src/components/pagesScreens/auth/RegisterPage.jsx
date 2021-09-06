@@ -16,6 +16,7 @@ import {
 import { Link, useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Upload, Radio, DatePicker } from "antd";
+import ImgCrop from "antd-img-crop";
 import {
   register,
   registerCompanyInfo,
@@ -28,6 +29,7 @@ import ButtonC from "../../ButtonComponeent";
 import InputC from "../../InputComponents";
 import SelectC from "../../SelectComponents";
 import Ratio from "../../antRatio";
+import { successMessage } from "../../message";
 
 function RegisterPage() {
   const { t } = useTranslation();
@@ -53,7 +55,7 @@ function RegisterPage() {
       <FormContainer>
         <Header>
           <a href="#/" onClick={() => history.goBack()}>
-          {t("back")}
+            {t("back")}
           </a>
           <div className="radio_container">
             <Radio.Group onChange={handleClickRadio} value={typeUser}>
@@ -139,7 +141,7 @@ const UserForm = () => {
           </div>
         </div>
         <ButtonC type="submit" style={{ marginLeft: "auto", marginBottom: 20 }}>
-        {t("save")}
+          {t("save")}
         </ButtonC>
       </div>
     </Form>
@@ -241,7 +243,7 @@ const CompanyInfo = ({ typeUser }) => {
           <div className="col">
             <div className="row">
               <InputC
-              style={{textTransform: "uppercase"}}
+                style={{ textTransform: "uppercase" }}
                 required
                 type="text"
                 placeholder={`${typeUser} NAME`}
@@ -254,7 +256,7 @@ const CompanyInfo = ({ typeUser }) => {
               <InputC
                 required
                 type="text"
-                style={{textTransform: "uppercase"}}
+                style={{ textTransform: "uppercase" }}
                 placeholder={`${typeUser} SCOPE OF BUSINESS`}
                 name="company.scopeBusiness"
                 value={formik.values.company.scopeBusiness}
@@ -446,7 +448,7 @@ const CompanyInfo = ({ typeUser }) => {
                 onChange={formik.handleChange}
               />
             </div>
-            <div className="row" style={{display:"block"}}>
+            <div className="row" style={{ display: "block" }}>
               <h1>{t("add_your_page")}</h1>
               <div className="social-media">
                 <FaFacebookF className="facebook" />
@@ -482,7 +484,7 @@ const CompanyInfo = ({ typeUser }) => {
           </div>
         </div>
         <ButtonC style={{ margin: "10px auto 10px 0" }} type="submit">
-        {t("save")}
+          {t("save")}
         </ButtonC>
       </div>
     </Form>
@@ -591,7 +593,7 @@ const BankInfo = () => {
         </div>
         <div className="row">
           <ButtonC style={{ marginLeft: "auto" }} type="submit">
-          {t("save")}
+            {t("save")}
           </ButtonC>
         </div>
       </div>
@@ -605,11 +607,10 @@ const GalleryPhotos = () => {
 
   const [fileList, setFileList] = useState([]);
 
-  const fileObjets = [];
 
-  const handleChange = ({ fileList: newFileList }) => {
+  const handleChangeImage = ({ fileList: newFileList }) => {
     setFileList(newFileList);
-    console.log(fileObjets);
+    console.log(newFileList);
   };
   const onPreview = async (file) => {
     let src = file.url;
@@ -648,7 +649,8 @@ const GalleryPhotos = () => {
         config
       );
 
-      console.log(res.data);
+      successMessage(res.data.msg)
+
     } catch (error) {
       console.log(error.message);
     }
@@ -659,28 +661,31 @@ const GalleryPhotos = () => {
       <div className="row_galery">
         <h1>{t("add_photo_for_your")}</h1>
         <div className="card">
-          <Upload
-            listType="picture-card"
-            beforeUpload={() => false}
-            onChange={handleChange}
-            onPreview={onPreview}
-            fileList={fileList}
-            name="imgfiles"
-            accept="image/png, image/jpeg, image/jpg"
-            multiple
-          >
-            {fileList.length < 4 && (
-              <UploadIcon>
-                <GoPlus size={30} />
-              </UploadIcon>
-            )}
-          </Upload>
+          <ImgCrop >
+            <Upload
+            action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+              listType="picture-card"
+              beforeUpload={() => true}
+              onChange={handleChangeImage}
+              onPreview={onPreview}
+              fileList={fileList}
+              name="imgfiles"
+              accept="image/png, image/jpeg, image/jpg"
+              multiple
+            >
+              {fileList.length < 4 && (
+                <UploadIcon>
+                  <GoPlus size={30} />
+                </UploadIcon>
+              )}
+            </Upload>
+          </ImgCrop>
 
           <p style={{ fontSize: ".8rem" }}> {t("cover_photo")}</p>
         </div>
       </div>
       <ButtonC style={{ marginTop: "10px" }} type="submit">
-      {t("upload_all")}
+        {t("upload_all")}
       </ButtonC>
     </Form>
   );
@@ -759,7 +764,7 @@ const Form = styled.form`
       & .social-media {
         display: flex;
         width: 200px;
-        justify-content:space-between;
+        justify-content: space-between;
         color: #fff;
         & .facebook {
           border-radius: 50%;
@@ -810,7 +815,7 @@ const Form = styled.form`
         }
         & .input-field {
           width: 100%;
-          padding:0 10px;
+          padding: 0 10px;
           outline: none;
           border: 2px solid var(--orange-color);
           /* border-radius: 0 5px 5px 0; */

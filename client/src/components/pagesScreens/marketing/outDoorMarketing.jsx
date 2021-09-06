@@ -85,7 +85,7 @@ function OutDoorMarketing() {
               <div className="col col-sm-6 col-md-4">
                 <a className="service" href="#ledScreen">
                   <img className="seoImg" src="./img/out1.png" alt="" />
-                  <h3 className="largeText weight-500 mainColor my-2 text-center text-uppercase">
+                  <h3 className="largeText weight-500 my-2 text-center text-uppercase">
                     LED SCREEN
                   </h3>
                   <img className="arrowIcon" src="./img/blueAr.png" alt="" />
@@ -94,7 +94,7 @@ function OutDoorMarketing() {
               <div className="col col-sm-6 col-md-4">
                 <a className="service" href="#ledScreen2">
                   <img className="seoImg" src="./img/out2.png" alt="" />
-                  <h3 className="largeText weight-500 mainColor my-2 text-center text-uppercase">
+                  <h3 className="largeText weight-500 my-2 text-center text-uppercase">
                     MUPI
                   </h3>
                   <img className="arrowIcon" src="./img/blueAr.png" alt=""/>
@@ -103,7 +103,7 @@ function OutDoorMarketing() {
               <div className="col col-sm-6 col-md-4">
                 <a className="service" href="#billboard">
                   <img className="seoImg" src="./img/out3.png" alt=""/>
-                  <h3 className="largeText weight-500 mainColor my-2 text-center text-uppercase">
+                  <h3 className="largeText weight-500 my-2 text-center text-uppercase">
                     billboard
                   </h3>
                   <img className="arrowIcon" src="./img/blueAr.png" alt=""/>

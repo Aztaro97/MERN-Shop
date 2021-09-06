@@ -72,14 +72,14 @@ function ToggleMenu({ open }) {
                     <a href="/e-commerce"> {t("delivery")}</a>
                   </li>
                   <li>
-                    <a href="#/">{t("payment")}</a>
+                    <a href="/pageScreen">{t("payment")}</a>
                   </li>
                 </ul>
               </li>
 
               <li>
                 <a
-                  href="./pos.html"
+                  href="/production"
                   onClick="menuToggling()"
                   className="subLink text-uppercase weight-500"
                 >
@@ -97,7 +97,7 @@ function ToggleMenu({ open }) {
               </li>
               <li>
                 <a
-                  href="#/"
+                  href="/photography"
                   onClick="menuToggling()"
                   className="subLink text-uppercase weight-500"
                 >
@@ -106,7 +106,7 @@ function ToggleMenu({ open }) {
               </li>
               <li>
                 <a
-                  href="#/"
+                  href="/programming"
                   onClick="menuToggling()"
                   className="subLink text-uppercase weight-500"
                 >

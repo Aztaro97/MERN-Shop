@@ -11,6 +11,7 @@ import {
 } from "react-icons/fa";
 
 import "./footer.css";
+import MapImg from "../../img/pictures/map.png"
 
 function FooterScrren() {
   const currentPage = document.location.pathname;
@@ -47,27 +48,27 @@ function FooterScrren() {
                 <h3 className="secColor weight-500 mediumTitle">Follow us</h3>
                 <div className="group">
                   {/* <!-- Repeating link  --> */}
-                  <a href="#/" className="btn media_link">
+                  {/* <a href="" className="btn media_link">
                     <FaTumblr className="icon" />
-                  </a>
+                  </a> */}
                   {/* <!-- Repeating link  --> */}
-                  <a href="#/" className="btn media_link">
+                  <a href="https://api.whatsapp.com/send?phone=+971567957775" className="btn media_link" target="_blank" rel="noreferrer">
                     <FaWhatsapp className="icon" />
                   </a>
                   {/* <!-- Repeating link  --> */}
-                  <a href="#/" className="btn media_link">
+                  <a href="https://www.instagram.com/au_79_code/" className="btn media_link" target="_blank" rel="noreferrer">
                     <FaInstagram className="icon" />
                   </a>
                   {/* <!-- Repeating link  --> */}
-                  <a href="#/" className="btn media_link">
+                  <a href="https://twitter.com/79_code" className="btn media_link" target="_blank" rel="noreferrer">
                     <FaTwitter className="icon" />
                   </a>
                   {/* <!-- Repeating link  --> */}
-                  <a href="#/" className="btn media_link">
+                  <a href="https://www.snapchat.com/add/au79code" className="btn media_link" target="_blank" rel="noreferrer">
                     <FaSnapchatGhost className="icon" />
                   </a>
                   {/* <!-- Repeating link  --> */}
-                  <a href="#/" className="btn media_link">
+                  <a href="https://www.facebook.com/pages/category/Marketing-Agency/AU-79-CODE-103505425005079/" className="btn media_link" target="_blank" rel="noreferrer">
                     <FaFacebookF className="icon" />
                   </a>
                 </div>
@@ -87,7 +88,7 @@ function FooterScrren() {
               {/* <!-- link for going to external map  --> */}
               <a className="mapContent" href="https://goo.gl/maps/eKtFdn7NEEZSxoty8" target="_blank"  rel="noreferrer" >
                 {/* <!-- png square img  (preferred 737 * 737 px) --> */}
-                <img className="mapImg" src="./img/map.png" alt="" />
+                <img className="mapImg" src={MapImg} alt="" />
                 <div className="corners">
                   <div className="corner"></div>
                   <div className="corner"></div>

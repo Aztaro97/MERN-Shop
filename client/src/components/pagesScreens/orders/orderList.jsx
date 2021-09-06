@@ -9,6 +9,7 @@ import {
   GrDeliver,
   FaMoneyBillAlt,
 } from "react-icons/all";
+import {useTranslation} from "react-i18next"
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { listOrders, deliverOrder } from "../../../flux/actions/orderAction";
@@ -22,6 +23,8 @@ function OrdersListScreen() {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  const {t} = useTranslation()
+
   const { userInfo } = useSelector((state) => state.userLogin);
   const { loading, error, orders } = useSelector((state) => state.orderList);
 
@@ -34,9 +37,7 @@ function OrdersListScreen() {
     }
   };
 
-  const handleSetDelivered = (id) => {
-    console.log(id);
-  };
+
 
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
@@ -48,7 +49,7 @@ function OrdersListScreen() {
   return (
     <>
       <OrderContainer>
-        <h3>all orders lists</h3>
+        <h3>{t("all_orders_lists")}</h3>
         {loading ? (
           <Loader />
         ) : error ? (
@@ -57,15 +58,15 @@ function OrdersListScreen() {
           <Table>
             <thead>
               <tr>
-                <th>order number</th>
-                <th>customer name</th>
-                <th>date</th>
-                <th>total</th>
-                <th>paid</th>
-                <th>Payment Method</th>
-                <th>Status order</th>
-                <th>Details</th>
-                <th>Actions</th>
+                <th>{t("order_number")}</th>
+                <th>{t("custom_name")}</th>
+                <th>{t("date")}</th>
+                <th>{t("total")}</th>
+                <th>{t("paid")}</th>
+                <th>{t("payment_method")}</th>
+                <th>{t("status_order")}</th>
+                <th>{t("detail")}</th>
+                <th>{t("actions")}</th>
               </tr>
             </thead>
             <tbody>
@@ -87,7 +88,7 @@ function OrdersListScreen() {
                         <FcPaid size={20} style={{ color: "green" }} />{" "}
                         {order.paidAt.substring(0, 10)}{" "} */}
                         <div className="order_status_devd">
-                          <p>Paid</p>
+                          <p>{t("paid")}</p>
                         </div>
                       </>
                     ) : (
@@ -99,11 +100,11 @@ function OrdersListScreen() {
                     {order.paymentMethod === "credit" ? (
                       // order.deliveredAt.substring(0, 10)
                       <div className="payment_credit">
-                        <span>credit card</span> <ImCreditCard />
+                        <span>{t("credit_card")}</span> <ImCreditCard />
                       </div>
                     ) : (
                       <div className="payment_cash">
-                        <span>cash on delivery</span> <FaMoneyBillAlt />
+                        <span>{t("cash_on_delivery")}</span> <FaMoneyBillAlt />
                       </div>
 
                       // <FaTimesCircle style={{ color: "#ff7979" }} />
@@ -114,35 +115,34 @@ function OrdersListScreen() {
                     {order.isDelivered ? (
                       // order.deliveredAt.substring(0, 10)
                       <div className="order_status_devd">
-                        <p>Delivered</p>
+                        <p>{t("delivered")}</p>
                       </div>
                     ) : (
                       <div className="order_status_new">
-                        <p>new order</p>
+                        <p>{t("new_order")}</p>
                       </div>
                       // <FaTimesCircle style={{ color: "#ff7979" }} />
                     )}
                   </td>
                   <td>
                     <Link to={`/admin/order/${order._id}`} className="view_link">
-                      <span>view</span> <GrView className="icon" />
+                      <span>{t("view")}</span> <GrView className="icon" />
                     </Link>
                   </td>
                   <td>
                     <Select
-                      defaultValue="Select"
+                      defaultValue={t("select")}
                       style={{ width: 120 }}
-                      // allowClear
                       onChange={(e) =>
                         handleAction({ value: e }, { order: order })
                       }
                     >
                       <Option value="accept">
-                        Delivered{" "}
+                        {t("delivered")}{" "}
                         <GrDeliver style={{ color: "#00b894 !impotant" }} />
                       </Option>
                       {/* <Option value="reject">Reject</Option> */}
-                      <Option value="delete">Delete</Option>
+                      <Option value="delete">{t("delete")}</Option>
                     </Select>
                   </td>
                 </tr>

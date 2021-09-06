@@ -432,7 +432,7 @@ function EMarketingScreen() {
                 <div className="col col-6 col-sm-4 col-md-3">
                   <a href="#/" className="feature">
                     <img alt="" src="./img/via1.png" />
-                    <h3 className="largeText mainColor weight-500  text-uppercase">
+                    <h3 className="largeText weight-500  text-uppercase">
                       Online System
                     </h3>
                   </a>
@@ -440,7 +440,7 @@ function EMarketingScreen() {
                 <div className="col col-6 col-sm-4 col-md-3">
                   <a href="#/" className="feature">
                     <img alt="" src="./img/via2.png" />
-                    <h3 className="largeText mainColor weight-500  text-uppercase">
+                    <h3 className="largeText weight-500  text-uppercase">
                       Ease of use
                     </h3>
                   </a>
@@ -448,7 +448,7 @@ function EMarketingScreen() {
                 <div className="col col-6 col-sm-4 col-md-3">
                   <a href="#/" className="feature">
                     <img alt="" src="./img/via3.png" />
-                    <h3 className="largeText mainColor weight-500  text-uppercase">
+                    <h3 className="largeText weight-500  text-uppercase">
                       Multiple languages for the message
                     </h3>
                   </a>
@@ -456,7 +456,7 @@ function EMarketingScreen() {
                 <div className="col col-6 col-sm-4 col-md-3">
                   <a href="#/" className="feature">
                     <img alt="" src="./img/via4.png" />
-                    <h3 className="largeText mainColor weight-500  text-uppercase">
+                    <h3 className="largeText weight-500  text-uppercase">
                       Register the sender's identity
                     </h3>
                   </a>
@@ -464,7 +464,7 @@ function EMarketingScreen() {
                 <div className="col col-6 col-sm-4 col-md-3">
                   <a href="#/" className="feature">
                     <img alt="" src="./img/via5.png" />
-                    <h3 className="largeText mainColor weight-500  text-uppercase">
+                    <h3 className="largeText weight-500  text-uppercase">
                       Direct reports to send
                     </h3>
                   </a>
@@ -472,7 +472,7 @@ function EMarketingScreen() {
                 <div className="col col-6 col-sm-4 col-md-3">
                   <a href="#/" className="feature">
                     <img alt="" src="./img/via6.png" />
-                    <h3 className="largeText mainColor weight-500  text-uppercase">
+                    <h3 className="largeText weight-500  text-uppercase">
                       Best price guarantee
                     </h3>
                   </a>
@@ -480,7 +480,7 @@ function EMarketingScreen() {
                 <div className="col col-6 col-sm-4 col-md-3">
                   <a href="#/" className="feature">
                     <img alt="" src="./img/via7.png" />
-                    <h3 className="largeText mainColor weight-500  text-uppercase">
+                    <h3 className="largeText weight-500  text-uppercase">
                       Schedule the date sent
                     </h3>
                   </a>
@@ -488,7 +488,7 @@ function EMarketingScreen() {
                 <div className="col col-6 col-sm-4 col-md-3">
                   <a href="#/" className="feature">
                     <img alt="" src="./img/via8.png" />
-                    <h3 className="largeText mainColor weight-500  text-uppercase">
+                    <h3 className="largeText weight-500  text-uppercase">
                       Special accounts for suppliers
                     </h3>
                   </a>

@@ -1,19 +1,5 @@
 /* Created by Mohamed Elshamhout  */
 
-/*
-mainColor : #0b1b34  ;
-secColor:#c68787  ;
-thirdcolor:#49c4d3  ;
-grayColor:#cccccc;
-English Fonts  
-*En fonts family 
-SFCompactText-Bold / SFCompactText-Medium / SFCompactText-Regular
-*fonts Weight classes   
-  .boldWeight/.mediumWeight/ .normalWeight
-*fonts Size classes   
-  .largestTitle/ .largeText  /.normalText
- */
-
 /* ///////////////////////////////////   DOT BAR STYLE  /////////////////////// */
 .button__bar {
     display: flex;
@@ -23,7 +9,6 @@ SFCompactText-Bold / SFCompactText-Medium / SFCompactText-Regular
     bottom: 4rem;
     border-radius: 40px;
     text-align: center;
-    z-index: 99999;
   }
 
   
@@ -104,9 +89,6 @@ SFCompactText-Bold / SFCompactText-Medium / SFCompactText-Regular
     font-weight: 500;
 }
 
-.mainColor {
-    color: #fff !important;
-}
 
 .secColor {
     color: #c68787 !important;
@@ -424,15 +406,7 @@ body {
 /* start styling introSlider */
 
 .page {
-    /* max-height: 1000px; */
     width: 100%;
-    overflow: hidden;
-    position: absolute;
-    left: 0px;
-    right: 0px;
-    top: 175%;
-    transform: skewY(10deg);
-    transition: top ease 1.5s, transform ease 1.5s;
 }
 @media only screen and (max-width:768px)  {
     .button__bar {
@@ -837,8 +811,7 @@ body {
 /* Start Styling Services */
 
 .homeServices,
-.homeAbout,
-.homeContact {
+.homeAbout {
     padding-top: 120px;
 }
 
@@ -1464,121 +1437,6 @@ body {
 }
 
 
-/* Start Home Contact styling */
-
-.homeContact {
-    overflow-y: scroll;
-}
-
-.homeContact .row>div:last-of-type {
-    display: flex;
-    /* align-items: center; */
-    justify-content: center;
-}
-
-.homeContact .mapContent {
-    transform: rotate(45deg);
-    overflow: hidden;
-    width: 360px;
-    height: 360px;
-    max-width: 48vh;
-    max-height: 48vh;
-    margin-top: 90px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    transition: transform ease .7s;
-}
-
-.homeContact .mapContent:hover {
-    transform: rotate(0deg);
-}
-
-.homeContact .mapImg {
-    width: 145%;
-    height: 145%;
-    background-size: cover;
-    transform: rotate(-45deg);
-    transition: transform ease .7s;
-}
-
-.homeContact .mapContent:hover .mapImg {
-    transform: rotate(0deg);
-}
-
-.homeContact .mapContent .corner {
-    width: 200px;
-    height: 90px;
-    border: 3px solid #c68787;
-    border-bottom: 0px;
-    border-left: 0px;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-}
-
-.homeContact .mapContent .corner:first-of-type {
-    width: 200px;
-    height: 90px;
-    border: 3px solid #c68787;
-    border-top: 0px;
-    border-right: 0px;
-    position: absolute;
-    top: auto;
-    right: auto;
-    left: 0px;
-    bottom: 0px;
-}
-
-.followUs .group {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.followUs .group .btn {
-    padding: 0px;
-    margin: 3px;
-}
-
-.followUs .group .btn i {
-    font-size: 2.4rem;
-    transition: color ease .5s, transform ease .5s;
-}
-
-.followUs .group .btn:hover i {
-    color: #c68787 !important;
-    transform: scale(1.2);
-}
-
-.homeContact .sec-outline-btn {
-    width: 78%;
-    color: #93a3b3;
-}
-
-.homeContact .sec-outline-btn:hover {
-    color: #fff;
-}
-
-.homeContact h3 {
-    margin-bottom: 4px;
-}
-
-.homeContact .mt-4 {
-    margin-top: 10px !important;
-}
-
-.homeContact p {
-    margin-bottom: 0px;
-}
-
-.homeContact .mt-3 {
-    margin-top: 12px !important;
-}
-
-.homeContact .sec-outline-btn {
-    margin-top: 12px;
-}
 
 
 /* End Home Contact styling */
@@ -3404,11 +3262,7 @@ body {
         width: 150px;
         height: 150px;
     }
-    .homeContact .mapContent {
-        width: 300px;
-        height: 300px;
-        margin-top: 70px;
-    }
+
     .video .videoContent {
         /* height: calc(40vw + 40px); */
         max-width: 100%;
@@ -3982,15 +3836,7 @@ body {
     .homeAbout .container {
         padding: 0px;
     }
-    .homeContact {
-        padding-bottom: 50px;
-    }
-    .homeContact .mapContent {
-        width: 235px;
-        height: 235px;
-        margin-top: 50px;
-        margin-bottom: 50px;
-    }
+
     .homeAbout .slideActive .slide {
         max-width: 66vw;
         max-height: 66vw;
@@ -4058,12 +3904,7 @@ body {
         width: 55vw;
         height: 55vw;
     }
-    footer {
-        position: initial;
-    }
-    footer .homeContact {
-        overflow-y: auto !important;
-    }
+
     .video .videoContent iframe {
         width: 95vw;
         height: 50vw;
@@ -4397,31 +4238,13 @@ body {
     } */
 }
 
-@media only screen and (max-height: 610px) {
-    footer {
-        position: initial;
-    }
-}
+
 
 @media only screen and (max-height: 630px) {
     .homeServices .carousel .carousel-inner {
         padding-top: 0px;
     }
-    .homeContact .mt-3 {
-        margin-top: 8px !important;
-    }
-    .homeContact .mediumText {
-        font-size: 15px;
-    }
-    .homeContact .mediumTitle {
-        font-size: 22px;
-    }
-    .followUs .group .btn i {
-        font-size: 2rem;
-    }
-    .homeContact .sec-outline-btn {
-        margin-top: 10px;
-    }
+
     .toggleMenu .row {
         margin-top: 4%;
     }
