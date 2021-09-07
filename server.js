@@ -29,6 +29,7 @@ app.use(cors());
 app.use(fileUpload({
   useTempFiles: true
 }))
+app.use(favicon(path.join(dirname, "build", "favicon.ico")));
 
 app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);
