@@ -94,7 +94,7 @@ export const TextArea = styled.textarea`
   border-radius: 5px;
   border: 1px solid #c58787;
   outline: none;
-  height: 5rem;
+  /* height: 5rem; */
   width: 100%;
   padding-left: 0.4rem;
   padding-top: 0.5rem;

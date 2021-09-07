@@ -75,17 +75,7 @@ const ViewProducts = () => {
       ) : (
         <Container>
           <Row>
-            {!products.length ? (
-              <Empty>
-                <h1>You don't have any products</h1>
-                <p>
-                  To create a new product, please click on this{" "}
-                  <Link className="btn" onClick={() => dispatch(createProduct()) }>
-                    button
-                  </Link>
-                </p>
-              </Empty>
-            ) : (
+            {products.length > 0 ? (
               <Grid>
                 {products.map((product, index) => (
                   <>
@@ -106,7 +96,7 @@ const ViewProducts = () => {
                       />
                       <div className="card-body">
                         <h2>{product.name}</h2>
-                        <p className="desc">description</p>
+                        <p className="desc">{product.description}</p>
                         <hr />
                         <h2 className="price">
                           <span>{product.price}</span> dr
@@ -124,7 +114,21 @@ const ViewProducts = () => {
                   </>
                 ))}
               </Grid>
-            )}
+            ) :
+            (
+              <Empty>
+                <h1>You don't have any products</h1>
+                <p>
+                  To create a new product, please click on this{" "}
+                  <Link className="btn" onClick={() => dispatch(createProduct()) }>
+                    button
+                  </Link>
+                </p>
+              </Empty>
+            ) 
+            
+            
+            }
           </Row>
         </Container>
       )}

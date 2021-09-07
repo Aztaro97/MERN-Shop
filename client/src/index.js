@@ -6,6 +6,7 @@ import store from "./flux/store";
 import "./translations/i18next";
 import Loader from "./components/Loader.jsx"
 import 'flag-icon-css/css/flag-icon.min.css'
+import "react-toastify/dist/ReactToastify.css";
 
 
 

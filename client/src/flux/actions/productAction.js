@@ -29,6 +29,7 @@ import {
   FILTER_PRODUCT_FAIL,
 } from "../constants/productConstants";
 import { logout } from "./userAction";
+import {toast} from "react-toastify"
 import {
   errorMessage,
   successMessage,
@@ -203,6 +204,7 @@ export const updateProduct = (product) => async (dispatch, getState) => {
     dispatch({
       type: PRODUCT_UPDATE_REQUEST,
     });
+     toast.success("Product Create");
 
     const {
       userLogin: { userInfo },
@@ -220,13 +222,15 @@ export const updateProduct = (product) => async (dispatch, getState) => {
       product,
       config
     );
-    successMessage("Product Create");
+    
 
     dispatch({
       type: PRODUCT_UPDATE_SUCCESS,
       payload: data,
     });
     dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data });
+   
+    window.location.href = "/myproducts"
   } catch (error) {
     const message =
       error.response && error.response.data.message

@@ -67,7 +67,6 @@ app.listen(
   PORT,
   console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`)
 );
-app.set("port", PORT);
 
 // Creating uploads folder if not already present
 // In "uploads" folder we will temporarily upload

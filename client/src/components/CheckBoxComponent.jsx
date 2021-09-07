@@ -2,9 +2,9 @@ import React from "react";
 import { Checkbox } from "antd";
 import styled from "styled-components";
 
-function CheckBoxComponent({ type, name, id, children, style, onChange }) {
+function CheckBoxComponent({ type, name, id, children, style, onChange, checked}) {
   return (
-    <InputCheck style={style} type={type} id={id} name={name} onChange={onChange} >
+    <InputCheck style={style} type={type} id={id} name={name} onChange={onChange} checked={checked} >
       {children}
     </InputCheck>
   );
