@@ -4,11 +4,11 @@
   "description": "au 79 code web site",
   "main": "server.js",
   "engines": {
-    "node": "14.17.3"
+    "node": "12.11.1"
   },
   "scripts": {
     "install-client": "npm install --prefix client",
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "server": "nodemon server.js --ignore client",
     "client": "npm start --prefix client",
     "dev": "concurrently \"nodemon run server\" \"npm run client\" ",
