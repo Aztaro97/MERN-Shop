@@ -7,7 +7,6 @@ import HomeComponents from "./components/pagesScreens/Home/HomeComponents";
 import ContactUsComponents from "./components/pagesScreens/contact/contact";
 import { GlobalStyle } from "./globalStyle";
 import AuthComponents from "./components/pagesScreens/auth/authTab";
-import LoaderComponent from "./components/Loader";
 import CreateProductComponent from "./components/pagesScreens/products/createProduct";
 import ProductsShop from "./components/pagesScreens/AllproductsShop/viewProducts";
 import EditProductScreen from "./components/pagesScreens/EditProductsAndCompany/editProductScreen";

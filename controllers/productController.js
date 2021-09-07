@@ -300,11 +300,12 @@ const filterAllProducts = asyncHandler(async (req, res) => {
     const priceItem = req.body.price ? req.body.price : {};
 
     const products = await Product.find({
+      allow: true,
       brand,
       variantColor,
-      variantSize,
+      // variantSize,
       price: {"$lte": priceItem }
-    });
+    }).populate("user", "company")
 
     if (products) {
       res.status(200).json({products})

@@ -9,7 +9,6 @@ import axios from "axios";
 import {
   CountryDropdown,
   RegionDropdown,
-  CountryRegionData,
 } from "react-country-region-selector";
 import {
   listProductDetails,

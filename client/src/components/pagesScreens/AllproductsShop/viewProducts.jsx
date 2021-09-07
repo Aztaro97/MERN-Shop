@@ -27,8 +27,8 @@ const ViewProducts = ({match}) => {
 
   const formik = useFormik({
     initialValues: {
-      brand: "",
-      color: "",
+      brand: null,
+      color: null,
       size: null,
       price: 1,
     },
@@ -45,7 +45,7 @@ const ViewProducts = ({match}) => {
   );
 
   const brandList = [
-    { title: "-- Select Brand --", value: "" },
+    { title: "-- Select Brand --", value: null },
     { title: "Beauty", value: "Beauty" },
     { title: "Cloth", value: "cloth" },
     { title: "Cosmetic", value: "Cosmetic" },
@@ -57,16 +57,17 @@ const ViewProducts = ({match}) => {
     { title: "Painting", value: "Painting" },
     { title: "Photography", value: "Photography" },
     { title: "Grocerie", value: "Grocerie" },   
+    { title: "Other", value: "Other" },   
   ];
   const colorList = [
-    { title: "-- Select color --", value: "" },
+    { title: "-- Select color --", value: null },
     { title: "Red", value: "red" },
     { title: "Blue", value: "blue" },
     { title: "White", value: "white" },
     { title: "Color1", value: "Color1" },
   ];
   const sizeList = [
-    { title: "-- Select size --", value: Number },
+    { title: "-- Select size --", value: null },
     { title: "20", value: "20" },
     { title: "25", value: "25" },
     { title: "30", value: "30" },
@@ -115,8 +116,8 @@ const ViewProducts = ({match}) => {
             onChange={(e) => formik.setFieldValue("size", parseInt(e.target.value))}
           />
           <div className="form_select slider">
-            <p>Price Less than Aed 500</p>
-            <SliderE value={formik.values.price}  onChange={handleChangeSlider} max={500} min={2} />
+            <p>Price Less than Aed 2000</p>
+            <SliderE value={formik.values.price}  onChange={handleChangeSlider} max={2000} min={2} />
           </div>
           <button type="submit" className="btn">
             Clear

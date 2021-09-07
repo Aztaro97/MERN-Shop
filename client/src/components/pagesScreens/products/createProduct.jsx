@@ -6,12 +6,12 @@ import MainContainer from "../../MainContainer";
 import { Upload, Modal } from "antd";
 import { FaPlus, AiFillDelete, GoPlus } from "react-icons/all";
 import axios from "axios";
-import { updateProduct, createProduct } from "../../../flux/actions/productAction";
 import {
-  CountryDropdown,
-  RegionDropdown,
-  CountryRegionData,
-} from "react-country-region-selector";
+  updateProduct,
+  createProduct,
+} from "../../../flux/actions/productAction";
+import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
+import SelectC from "../../SelectComponents";
 
 import {
   Card,
@@ -48,9 +48,10 @@ function AddProductScreen() {
   const [code, setCode] = useState("");
   const [shippingFrom, setShippingFrom] = useState("");
   const [shippingTo, setShippingTo] = useState([]);
-  const [rateShipping, setrateShipping] = useState([{}]);
+  // const [rateShipping, setrateShipping] = useState([{}]);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [brand, setBrand] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [variantColor, setVariantColor] = useState([]);
   const [variantSize, setVariantSize] = useState([]);
@@ -75,6 +76,7 @@ function AddProductScreen() {
     rateShipping: arrayZone,
     name,
     description,
+    brand,
     imageUrl,
     variantColor,
     variantSize,
@@ -108,10 +110,14 @@ function AddProductScreen() {
       for (var i = 0; i < fileList.length; i++) {
         formdata.append("imgfiles", fileList[i].originFileObj);
       }
-      const res = await axios.post(`/api/upload/product/${productId}`, formdata, config);
-      console.log(res)
+      const res = await axios.post(
+        `/api/upload/product/${productId}`,
+        formdata,
+        config
+      );
+      console.log(res);
     } catch (error) {
-      console.log(error.message)
+      console.log(error.message);
     }
   };
 
@@ -134,6 +140,8 @@ function AddProductScreen() {
       <MainProductForm onSubmit={handleProductCreate}>
         <Col>
           <ProductSection1
+          selling={selling}
+          delivery={delivery}
             setCode={setCode}
             setSelling={setSelling}
             setDelivery={setDelivery}
@@ -157,6 +165,7 @@ function AddProductScreen() {
             handleProductCreate={handleProductCreate}
             setName={setName}
             setDescription={setDescription}
+            setBrand={setBrand}
             setPrice={setPrice}
             setSize={setSize}
             setCompareAtPrice={setCompareAtPrice}
@@ -179,6 +188,7 @@ const FormRight = ({
   handleProductCreate,
   setName,
   setDescription,
+  setBrand,
   setSize,
   setPrice,
   setCompareAtPrice,
@@ -189,7 +199,7 @@ const FormRight = ({
   setVariantStyle,
   setUnited,
   fileList,
-  setFileList
+  setFileList,
 }) => {
   const [showInput, setShowInput] = useState(false);
   const [showInput0, setShowInput0] = useState(false);
@@ -328,31 +338,31 @@ const FormRight = ({
     console.log(fileList);
   };
 
-  const handleUpload = async (e) => {
-    try {
-      const config = {
-        headers: {
-          "content-type": "multipart/form-data",
-          // Authorization: `Bearer ${userInfo.token}`,
-        },
-      };
+  // const handleUpload = async (e) => {
+  //   try {
+  //     const config = {
+  //       headers: {
+  //         "content-type": "multipart/form-data",
+  //         // Authorization: `Bearer ${userInfo.token}`,
+  //       },
+  //     };
 
-      let formdata = new FormData();
-      for (var i = 0; i < fileList.length; i++) {
-        formdata.append("imgfiles", fileList[i].originFileObj);
-      }
+  //     let formdata = new FormData();
+  //     for (var i = 0; i < fileList.length; i++) {
+  //       formdata.append("imgfiles", fileList[i].originFileObj);
+  //     }
 
-      const res = await axios.post(
-        "/api/upload/company-images",
-        formdata,
-        config
-      );
+  //     const res = await axios.post(
+  //       "/api/upload/company-images",
+  //       formdata,
+  //       config
+  //     );
 
-      console.log(res.data);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
+  //     console.log(res.data);
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // };
 
   const handlePreview = async (file) => {
     let src = file.url;
@@ -379,13 +389,29 @@ const FormRight = ({
     product: createdProduct,
   } = useSelector((state) => state.productCreate);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+
+  const brandList = [
+    { title: "Select Product Brand", value: "" },
+    { title: "Beauty", value: "Beauty" },
+    { title: "Cloth", value: "cloth" },
+    { title: "Cosmetic", value: "Cosmetic" },
+    { title: "Electronic", value: "electronic" },
+    { title: "Fourniture", value: "Fourniture" },
+    { title: "Fruits", value: "Fruits" },
+    { title: "Handcraft", value: "Handcraft" },
+    { title: "Jewelry", value: "Jewelry" },
+    { title: "Painting", value: "Painting" },
+    { title: "Photography", value: "Photography" },
+    { title: "Grocerie", value: "Grocerie" },
+    { title: "Other", value: "Other" },
+  ];
 
   useEffect(() => {
     if (success) {
-      window.location.href = `/add-product/${createdProduct._id}`
+      window.location.href = `/add-product/${createdProduct._id}`;
     }
-  }, [success, history, createdProduct])
+  }, [success, history, createdProduct]);
 
   return (
     <div>
@@ -400,12 +426,23 @@ const FormRight = ({
         />
       </Row>
       <Row>
+        <SelectC
+          required
+          placeholder="Brand"
+          name="formik.brand"
+          options={brandList}
+          // value={}
+          onChange={(e) => setBrand(e.target.value)}
+        />
+      </Row>
+      <Row>
         <TextArea
-        required
+          required
           type="text"
           name="descript"
           id="descript"
           placeholder="Describe your Product"
+          rows="5"
           onChange={(e) => setDescription(e.target.value)}
         />
       </Row>
@@ -738,7 +775,7 @@ const FormRight = ({
             <div>
               <Label style={{ color: "#000" }}>price</Label>
               <InputC
-              required
+                required
                 type="currency"
                 placeholder="AED 0.00"
                 onChange={(e) => setPrice(e.target.value)}
@@ -747,7 +784,6 @@ const FormRight = ({
             <div>
               <Label style={{ color: "#000" }}>compare at price</Label>
               <InputC
-              
                 type="currency"
                 placeholder="AED 0.00"
                 onChange={(e) => setCompareAtPrice(e.target.value)}
@@ -763,12 +799,12 @@ const FormRight = ({
       >
         save & share
       </ButtonC>
-      <Link onClick={() => dispatch(createProduct()) } >ADD ANOTHER PRODUCT</Link>
+      <Link onClick={() => dispatch(createProduct())}>ADD ANOTHER PRODUCT</Link>
     </div>
   );
 };
 
-const ProductSection1 = ({ setCode, setSelling, setDelivery }) => {
+const ProductSection1 = ({selling, delivery, setCode, setSelling, setDelivery }) => {
   return (
     <>
       <Row>
@@ -790,6 +826,7 @@ const ProductSection1 = ({ setCode, setSelling, setDelivery }) => {
               type="checkbox"
               id="sellbyAU79CODE"
               name="sellbyAU79CODE"
+              value={selling}
               onChange={(e) => setSelling(e.target.checked)}
             >
               sell by <span className="span">AU79CODE</span>
@@ -803,6 +840,7 @@ const ProductSection1 = ({ setCode, setSelling, setDelivery }) => {
               type="checkbox"
               id="DeliverywithAU79CODE"
               name="DeliverywithAU79CODE"
+              value={delivery}
               onChange={(e) => setDelivery(e.target.checked)}
             >
               Delivery with <span className="span">AU79CODE</span>
@@ -822,7 +860,7 @@ const RateSection = ({ arrayZone, setArrayZone }) => {
   const [orderBased, setOrderBased] = useState("");
 
   const [indexarray, setIndexArray] = useState(null);
- 
+
   const [rateName, setRateName] = useState("");
 
   const showModal = (index) => {
@@ -844,10 +882,10 @@ const RateSection = ({ arrayZone, setArrayZone }) => {
     newArray[index].orderBased = orderBased;
     setArrayZone(newArray);
     setIsModalVisible(false);
-    setMin(null)
-    setMax(null)
-    setAmount(null)
-    setOrderBased("")
+    setMin(null);
+    setMax(null);
+    setAmount(null);
+    setOrderBased("");
 
     console.log(arrayZone);
   };
@@ -913,7 +951,7 @@ const RateSection = ({ arrayZone, setArrayZone }) => {
                       <hr />
                       <div className="price">
                         <input
-                        required
+                          required
                           type="currency"
                           name="minprice"
                           id="minprice"
@@ -932,7 +970,7 @@ const RateSection = ({ arrayZone, setArrayZone }) => {
                           onChange={(e) => setMax(e.target.value)}
                         />
                         <input
-                        required
+                          required
                           type="currency"
                           name="amount"
                           id="amount"
@@ -973,7 +1011,7 @@ const RateSection = ({ arrayZone, setArrayZone }) => {
                       <hr />
                       <div className="save_btn">
                         <button
-                        disabled={(!min || !orderBased || !amount) && (true) }
+                          disabled={(!min || !orderBased || !amount) && true}
                           type="button"
                           onClick={() => onSaveCondition(indexarray)}
                         >
@@ -1061,7 +1099,7 @@ const ShippingSection = ({
         <Row>
           <Label for="RateName">Shipping From</Label>
           <InputC
-          required
+            required
             type="text"
             name="RateName"
             id="RateName"

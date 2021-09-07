@@ -21,8 +21,8 @@ import productImg from "../../../img/productimg.png";
 const { confirm } = Modal;
 
 const ViewProducts = () => {
-  const [visible, setVisible] = useState(false);
-  const [productSelect, setProductSelect] = useState("");
+  // const [visible, setVisible] = useState(false);
+  // const [productSelect, setProductSelect] = useState("");
 
   const dispatch = useDispatch();
   const history = useHistory();
