@@ -12,10 +12,13 @@ import "react-toastify/dist/ReactToastify.css";
 
 
 ReactDOM.render(
-  <Suspense fallback={Loader}>
-    <Provider store={store}>
+  <Provider store={store}>
       <App />
-    </Provider>
-  </Suspense>,
+    </Provider>,
+  // <Suspense fallback={Loader}>
+  //   <Provider store={store}>
+  //     <App />
+  //   </Provider>
+  // </Suspense>,
   document.getElementById("root")
 );
