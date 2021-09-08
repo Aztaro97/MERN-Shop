@@ -36,13 +36,14 @@ function OrdersScreen() {
                   <th>delivered</th>
                 </tr>
               </thead>
-              <tbody>
-                {orders.length === 0 ? (
-                  <div className="Empty_content">
-                      <h1>You have not placed any orders in past three months</h1>
-                     </div>
-                ) : (
-                  orders.map((order) => (
+
+              {orders.length === 0 ? (
+                <div className="Empty_content">
+                  <h1>You have not placed any orders !!!</h1>
+                </div>
+              ) : (
+                <tbody>
+                  {orders.map((order) => (
                     <tr key={order._id}>
                       <td>{order._id}</td>
                       <td>{order.createdAt.substring(0, 10)}</td>
@@ -68,9 +69,9 @@ function OrdersScreen() {
                         )}
                       </td>
                     </tr>
-                  ))
-                )}
-              </tbody>
+                  ))}
+                </tbody>
+              )}
             </Table>
           </OrderContainer>
         </MainContainer>
@@ -114,7 +115,9 @@ const Table = styled.table`
 
   & .Empty_content {
     text-align: center;
+    width: 100%;
     & h1 {
+      margin-top: 1em;
       font-size: 1.6rem;
     }
   }

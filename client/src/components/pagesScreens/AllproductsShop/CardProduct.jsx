@@ -23,7 +23,7 @@ function Product({ product }) {
           className="card_name"
         />
         <TextTruncate
-          line={3}
+          line={1}
           element="span"
           text={product.description}
           truncateText="…"

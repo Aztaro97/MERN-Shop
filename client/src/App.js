@@ -41,6 +41,15 @@ import AdversitingComponent from "./components/pagesScreens/adversiting/adversit
 // ////////////////  Design Component    /////////////////////
 import DesignComponent from "./components/pagesScreens/design/designScreen"
 
+// ////////////////  Design Component    /////////////////////
+import ProgrammingComponent from "./components/pagesScreens/programmingScreen/programmingScreen"
+
+// ////////////////  Design Component    /////////////////////
+import PhotographyComponent from "./components/pagesScreens/photographyScreen/photographyScreen"
+
+// ////////////////  Design Component    /////////////////////
+import ProductionComponent from "./components/pagesScreens/productionScreen/productionScreen"
+
 function App() {
   return (
     <Router className="App">
@@ -80,6 +89,15 @@ function App() {
 
           {/* ////////////////////    DESIGNPAGE ROUTER   ////////////////// */}
           <Route path="/design"  component={DesignComponent} />
+
+          {/* ////////////////////    PROGRAMMING ROUTER   ////////////////// */}
+          <Route path="/programming"  component={ProgrammingComponent} />
+
+          {/* ////////////////////    PHOTOGRAPHY ROUTER   ////////////////// */}
+          <Route path="/photography"  component={PhotographyComponent} />
+
+          {/* ////////////////////    PRODUCTION ROUTER   ////////////////// */}
+          <Route path="/production"  component={ProductionComponent} />
 
 
 

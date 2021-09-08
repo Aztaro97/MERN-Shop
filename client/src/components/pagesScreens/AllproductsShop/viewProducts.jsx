@@ -10,20 +10,13 @@ import {
 } from "../../../flux/actions/productAction";
 import CardProduct from "./CardProduct";
 import Loader from "../../loader";
-import Paginate from "../../pagination"
-import MainContainer from "../../MainContainer"
+import Paginate from "../../pagination";
+import MainContainer from "../../MainContainer";
 
-const Brand = () => {
-  const OptionList = ["Iphone", "Samsumg", "Nokia"];
-  return <SelectC placeholder="Brand">{OptionList}</SelectC>;
-};
-
-const ViewProducts = ({match}) => {
-
+const ViewProducts = ({ match }) => {
   // const keyword = match.params.keyword
 
-  const pageNumber = match.params.pageNumber || 1
-
+  const pageNumber = match.params.pageNumber || 1;
 
   const formik = useFormik({
     initialValues: {
@@ -56,8 +49,8 @@ const ViewProducts = ({match}) => {
     { title: "Jewelry", value: "Jewelry" },
     { title: "Painting", value: "Painting" },
     { title: "Photography", value: "Photography" },
-    { title: "Grocerie", value: "Grocerie" },   
-    { title: "Other", value: "Other" },   
+    { title: "Grocerie", value: "Grocerie" },
+    { title: "Other", value: "Other" },
   ];
   const colorList = [
     { title: "-- Select color --", value: null },
@@ -82,85 +75,109 @@ const ViewProducts = ({match}) => {
     formik.setFieldValue("price", value);
   };
 
-
   return (
     <MainContainer>
       <Container>
         <Row>
           <h3 className="title">Products Shop :</h3>
         </Row>
-      <Row>
-        <FilterForm onSubmit={formik.handleSubmit}>
-          <SelectC
-            className="form_select"
-            placeholder="Brand"
-            name="formik.brand"
-            options={brandList}
-            value={formik.values.brand}
-            onChange={(e) => formik.setFieldValue("brand", e.target.value)}
-          />
-          <SelectC
-            className="form_select"
-            name="formik.color"
-            placeholder="Color"
-            options={colorList}
-            value={formik.values.color}
-            onChange={(e) => formik.setFieldValue("color", e.target.value)}
-          />
-          <SelectC
-            className="form_select"
-            name="formik.size"
-            placeholder="Size"
-            options={sizeList}
-            value={formik.values.size}
-            onChange={(e) => formik.setFieldValue("size", parseInt(e.target.value))}
-          />
-          <div className="form_select slider">
-            <p>Price Less than Aed 2000</p>
-            <SliderE value={formik.values.price}  onChange={handleChangeSlider} max={2000} min={2} />
-          </div>
-          <button type="submit" className="btn">
-            Clear
-          </button>
-        </FilterForm>
-      </Row>
-      <Row>
-        <>
-          {loading ? (
-            <Loader />
-          ) : error ? (
-            <h1>Errorrrr du chargement {error} .....</h1>
-          ) : (
-            <>
-              {products.length ? (
-                <Grid>
-                  {products.map((product, index) => (
-                    <div key={index} style={{ width: "100%" }}>
-                      <CardProduct product={product} />
-                    </div>
-                  ))}
-                </Grid>
-              ) : (
-                <h1>No matches found for your search</h1>
-              )}
-            </>
-          )}
-        </>
-      </Row>
-      <Row style={{marginTop:"1rem"}}>
-      <Paginate
+        <Row>
+          <FilterForm onSubmit={formik.handleSubmit}>
+            <SelectC
+              className="form_select"
+              placeholder="Brand"
+              name="formik.brand"
+              options={brandList}
+              value={formik.values.brand}
+              onChange={(e) => formik.setFieldValue("brand", e.target.value)}
+            />
+            <SelectC
+              className="form_select"
+              name="formik.color"
+              placeholder="Color"
+              options={colorList}
+              value={formik.values.color}
+              onChange={(e) => formik.setFieldValue("color", e.target.value)}
+            />
+            <SelectC
+              className="form_select"
+              name="formik.size"
+              placeholder="Size"
+              options={sizeList}
+              value={formik.values.size}
+              onChange={(e) =>
+                formik.setFieldValue("size", parseInt(e.target.value))
+              }
+            />
+            <div className="form_select slider">
+              <p>Price Less than Aed 2000</p>
+              <SliderE
+                value={formik.values.price}
+                onChange={handleChangeSlider}
+                max={2000}
+                min={2}
+              />
+            </div>
+            <button type="submit" className="btn">
+              Clear
+            </button>
+          </FilterForm>
+        </Row>
+        <Row>
+          <>
+            {loading ? (
+              <Loader />
+            ) : error ? (
+              <h1>Errorrrr du chargement {error} .....</h1>
+            ) : (
+              <>
+                {products.length ? (
+                  <Grid>
+                    {products.map((product, index) => (
+                      <div key={index} style={{ width: "100%" }}>
+                        <CardProduct product={product} />
+                      </div>
+                    ))}
+                  </Grid>
+                ) : (
+                  <div className="cart_empty">
+                    <h1>No matches found for your search</h1>
+                    <button onClick={() => window.location.reload()} >show all products</button>
+                  </div>
+                )}
+              </>
+            )}
+          </>
+        </Row>
+        <Row style={{ marginTop: "1rem" }}>
+          <Paginate
             pages={pages}
             page={page}
             // keyword={keyword ? keyword : ''}
           />
-      </Row>
+        </Row>
       </Container>
     </MainContainer>
   );
 };
 
 const Container = styled.div`
-margin-top: 2rem;
+  margin-top: 2rem;
+
+  & .cart_empty {
+    & button {
+      background: var(--orange-color);
+      color: #fff;
+      border: none;
+      padding: 4px 1rem;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+
+
   @media only screen and (max-width: 1000px) {
     padding: 0 1rem;
   }
@@ -171,7 +188,7 @@ const Row = styled.div`
 
   & .title {
     font-weight: 700;
-    letter-spacing:1px;
+    letter-spacing: 1px;
     /* text-decoration: underline; */
   }
 `;
@@ -194,7 +211,7 @@ const FilterForm = styled.form`
 
     & p {
       margin-bottom: 0;
-      font-size: .9rem;
+      font-size: 0.9rem;
     }
   }
 
@@ -214,16 +231,15 @@ const FilterForm = styled.form`
     height: 100%;
     margin-bottom: 1rem;
     & .form_select {
-      margin:0 0 1rem 0;
+      margin: 0 0 1rem 0;
       max-width: 150px;
     }
     @media only screen and (max-width: 768px) {
       grid-template-columns: repeat(2, 1fr);
       & .form_select {
-      margin-bottom: .5rem;
-      max-width: 150px;
-      
-    }
+        margin-bottom: 0.5rem;
+        max-width: 150px;
+      }
     }
   }
 `;
