@@ -7,6 +7,7 @@ const { notFound, errorHandler } = require("./middleware/errorMiddleware.js");
 const connectDB = require("./config/db.js");
 const fs = require("fs");
 const fileUpload = require('express-fileupload')
+const favicon = require('serve-favicon')
 
 const productRoutes = require("./routes/productRoutes.js");
 const userRoutes = require("./routes/userRoutes.js");
@@ -29,7 +30,7 @@ app.use(cors());
 app.use(fileUpload({
   useTempFiles: true
 }))
-app.use(favicon(path.join(dirname, "build", "favicon.ico")));
+app.use(favicon(path.join(__dirname, "public", "favicon.ico")));
 
 app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);
