@@ -11,7 +11,7 @@ import {
 import StripePayment from "../checkout/stripe/stripeContainer";
 
 import piture from "../../../img/card_pic.png";
-import LoaderComponent from "../../Loader";
+import LoaderComponent from "../../loader";
 
 function CompletePayement() {
   const history = useHistory();

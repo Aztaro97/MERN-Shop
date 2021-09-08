@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getCompanyList } from "../../../flux/actions/userAction";
-import Loader from "../../Loader";
+import Loader from "../../loader";
 import TextTruncate from "react-text-truncate";
 
 import company_pic2 from "../../../img/company_pic2.png";

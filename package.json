@@ -17,7 +17,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "antd-img-crop": "^3.14.2",
     "bcryptjs": "^2.4.3",
     "cloudinary": "^1.26.2",
     "cors": "^2.8.5",

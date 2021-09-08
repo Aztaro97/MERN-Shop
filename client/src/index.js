@@ -4,7 +4,7 @@ import App from "./App";
 import { Provider } from "react-redux";
 import store from "./flux/store";
 import "./translations/i18next";
-import Loader from "./components/Loader"
+import LoaderComponent from "./components/loader"
 import 'flag-icon-css/css/flag-icon.min.css'
 import "react-toastify/dist/ReactToastify.css";
 
@@ -12,13 +12,10 @@ import "react-toastify/dist/ReactToastify.css";
 
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Suspense fallback={LoaderComponent}>
+    <Provider store={store}>
       <App />
-    </Provider>,
-  // <Suspense fallback={Loader}>
-  //   <Provider store={store}>
-  //     <App />
-  //   </Provider>
-  // </Suspense>,
+    </Provider>
+  </Suspense>,
   document.getElementById("root")
 );

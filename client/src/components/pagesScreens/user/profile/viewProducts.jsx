@@ -10,7 +10,7 @@ import {
   filterProductsById,
 } from "../../../../flux/actions/productAction";
 import CardProduct from "./cardProducts";
-import Loader from "../../../Loader";
+import Loader from "../../../loader";
 import Paginate from "../../../pagination"
 
 const Brand = () => {

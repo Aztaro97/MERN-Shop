@@ -11,7 +11,7 @@ import {
 } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import { MdMail } from "react-icons/md";
-import Loader from "../../../Loader";
+import Loader from "../../../loader";
 
 import { getUserDetails } from "../../../../flux/actions/userAction";
 import ButtonC from "../../../ButtonComponeent";

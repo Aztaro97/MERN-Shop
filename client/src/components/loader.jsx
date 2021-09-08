@@ -23,4 +23,4 @@ const Loader = styled.div`
         }
      }
 `
-export default LoaderComponent
+export default LoaderComponent;

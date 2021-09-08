@@ -38,7 +38,7 @@ import InputRadio from "../../InputRadioComponent";
 import InputC from "../../InputComponents";
 import ButtonC from "../../ButtonComponeent";
 import InputCheck from "../../CheckBoxComponent";
-import LoaderComponent from "../../Loader";
+import LoaderComponent from "../../loader";
 
 function EditProductScreen() {
   const params = useParams();

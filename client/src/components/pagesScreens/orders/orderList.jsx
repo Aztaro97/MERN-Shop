@@ -14,7 +14,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { listOrders, deliverOrder } from "../../../flux/actions/orderAction";
 // import MainContainer from "../../MainContainer";
-import Loader from "../../Loader";
+import Loader from "../../loader";
 
 const { Option } = Select;
 

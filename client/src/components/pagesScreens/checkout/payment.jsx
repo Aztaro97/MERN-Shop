@@ -15,7 +15,7 @@ import { CART_CLEAR_ITEMS } from "../../../flux/constants/cartConstants";
 import { USER_DETAILS_RESET } from "../../../flux/constants/userConstants";
 import { registerShippingInfo } from "../../../flux/actions/userAction";
 import InputRadio from "../../InputRadioComponent";
-import Loader from "../../Loader";
+import Loader from "../../loader";
 
 import piture from "../../../img/card_pic.png";
 import InputComponents from "../../InputComponents";

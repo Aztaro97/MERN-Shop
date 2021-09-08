@@ -13,7 +13,7 @@ import {
   destroyImages,
   createProduct
 } from "../../../flux/actions/productAction";
-import Loader from "../../Loader";
+import Loader from "../../loader";
 import "./modal.css";
 
 import productImg from "../../../img/productimg.png";

@@ -6,7 +6,7 @@ import { Modal, Image } from "antd";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 import { useHistory } from "react-router-dom";
 import { MdDelete, AiOutlineCheck, FaTimes } from "react-icons/all";
-import Loader from "../../Loader";
+import Loader from "../../loader";
 import {
   listProductsAdmin,
   deleteProduct,

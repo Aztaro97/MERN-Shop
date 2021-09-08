@@ -22,7 +22,6 @@ import PaymentCompopnent from "./components/pagesScreens/checkout/payment";
 import ListOrderScreen from "./components/pagesScreens/orders/ordersScreen"
 import CompleteOrder from "./components/pagesScreens/orders/placeOrder"
 import pageNotFound from "./components/pagesScreens/pageNotFund"
-import Loading from "./components/Loader";
 import MapScreen from "./components/pagesScreens/checkout/googleMap/mapScreen";
 import ResetPasswordPage from "./components/pagesScreens/resetPasswordPage"
 
@@ -68,7 +67,6 @@ function App() {
           <Route path="/payment" component={PaymentCompopnent} />
           <Route path="/order/:id" component={CompleteOrder} />
           <Route path="/myorder" component={ListOrderScreen} />
-          <Route path="/loader" component={Loading} />
           <Route path="/map" component={MapScreen} />
           <Route path="/forgot-password" component={ResetPasswordPage} />
 

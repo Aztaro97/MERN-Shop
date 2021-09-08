@@ -9,7 +9,7 @@ import {
   filterAllProducts,
 } from "../../../flux/actions/productAction";
 import CardProduct from "./CardProduct";
-import Loader from "../../Loader";
+import Loader from "../../loader";
 import Paginate from "../../pagination"
 import MainContainer from "../../MainContainer"
 

@@ -12,7 +12,7 @@ import { MdMail } from "react-icons/md";
 
 import ButtonC from "../../ButtonComponeent";
 import BgImg from "../../../img/Background.png";
-import Loader from "../../Loader";
+import Loader from "../../loader";
 
 // const dispatch = useDispatch();
 function CompanyDetails({ loading, company }) {

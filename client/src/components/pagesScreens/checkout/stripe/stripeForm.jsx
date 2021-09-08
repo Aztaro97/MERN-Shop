@@ -14,7 +14,7 @@ import styled from "styled-components";
 import { errorMessage } from "../../../message";
 import { payOrder, createOrder } from "../../../../flux/actions/orderAction";
 import { CART_CLEAR_ITEMS } from "../../../../flux/constants/cartConstants";
-import LoaderComponent from "../../../Loader";
+import LoaderComponent from "../../../loader";
 
 const CARD_OPTIONS = {
   iconStyle: "solid",

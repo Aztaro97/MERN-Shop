@@ -9,7 +9,7 @@ import { ExclamationCircleOutlined } from "@ant-design/icons";
 
 import { listUsers, deleteUser } from "../../../flux/actions/userAction";
 import MainContainer from "../../MainContainer";
-import LoaderComponent from "../../Loader";
+import LoaderComponent from "../../loader";
 
 const { confirm } = Modal;
 

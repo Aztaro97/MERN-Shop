@@ -4,7 +4,7 @@ import { FaTimesCircle, FcPaid } from "react-icons/all";
 import MainContainer from "../../MainContainer";
 import { useDispatch, useSelector } from "react-redux";
 import { listMyOrders } from "../../../flux/actions/orderAction";
-import LoaderComponent from "../../Loader";
+import LoaderComponent from "../../loader";
 
 function OrdersScreen() {
   const dispatch = useDispatch();

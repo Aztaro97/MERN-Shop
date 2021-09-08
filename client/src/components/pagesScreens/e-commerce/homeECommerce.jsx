@@ -9,7 +9,7 @@ import {
   getCompanyList,
   getCraftmanList,
 } from "../../../flux/actions/userAction";
-import Loader from "../../Loader";
+import Loader from "../../loader";
 import "./ecommerce.css";
 
 import svg1 from "../../../img/svg1.svg";

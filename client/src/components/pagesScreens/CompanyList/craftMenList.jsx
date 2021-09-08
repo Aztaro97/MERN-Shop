@@ -5,7 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import TextTruncate from "react-text-truncate";
 import { getCraftmanList } from "../../../flux/actions/userAction";
-import Loader from "../../Loader";
+import Loader from "../../loader";
 import {
   USER_LIST_RESET,
   CRAFTMAN_LIST_REQUEST,
