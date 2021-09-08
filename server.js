@@ -30,7 +30,8 @@ app.use(cors());
 app.use(fileUpload({
   useTempFiles: true
 }))
-// app.use(favicon(path.join(__dirname, "public", "favicon.ico")));
+// app.use(path.join(__dirname,"/public"))
+app.use(favicon(path.join(__dirname, "client/public", "favicon.ico")));
 // app.use(favicon(path.join(__dirname, "build", "favicon.ico")));
 
 app.use("/api/products", productRoutes);
