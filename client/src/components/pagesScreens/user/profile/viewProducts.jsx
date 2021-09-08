@@ -46,21 +46,30 @@ const ViewProducts = () => {
   );
 
   const brandList = [
-    { title: "-- Select Brand --", value: "" },
-    { title: "Electronic", value: "electronic" },
+    { title: "-- Select Brand --", value: null },
+    { title: "Beauty", value: "Beauty" },
     { title: "Cloth", value: "cloth" },
-    { title: "Sample brand", value: "Sample brand" },
+    { title: "Cosmetic", value: "Cosmetic" },
+    { title: "Electronic", value: "electronic" },
+    { title: "Fourniture", value: "Fourniture" },
+    { title: "Fruits", value: "Fruits" },
+    { title: "Handcraft", value: "Handcraft" },
+    { title: "Jewelry", value: "Jewelry" },
+    { title: "Painting", value: "Painting" },
+    { title: "Photography", value: "Photography" },
+    { title: "Grocerie", value: "Grocerie" },
+    { title: "Vehicle", value: "Vehicle" },
+    { title: "Other", value: "Other" },
   ];
   const colorList = [
-    { title: "-- Select color --", value: "" },
+    { title: "-- Select color --", value: null },
     { title: "Red", value: "red" },
     { title: "Blue", value: "blue" },
     { title: "White", value: "white" },
     { title: "Color1", value: "Color1" },
-    { title: "Color2", value: "Color2" },
   ];
   const sizeList = [
-    { title: "-- Select size --", value: Number },
+    { title: "-- Select size --", value: null },
     { title: "20", value: "20" },
     { title: "25", value: "25" },
     { title: "30", value: "30" },

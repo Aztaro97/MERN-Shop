@@ -50,6 +50,7 @@ const ViewProducts = ({ match }) => {
     { title: "Painting", value: "Painting" },
     { title: "Photography", value: "Photography" },
     { title: "Grocerie", value: "Grocerie" },
+    { title: "Vehicle", value: "Vehicle" },
     { title: "Other", value: "Other" },
   ];
   const colorList = [

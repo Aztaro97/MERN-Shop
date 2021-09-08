@@ -392,7 +392,7 @@ const FormRight = ({
   const dispatch = useDispatch();
 
   const brandList = [
-    { title: "Select Product Brand", value: "" },
+    { title: "-- Select Brand --", value: null },
     { title: "Beauty", value: "Beauty" },
     { title: "Cloth", value: "cloth" },
     { title: "Cosmetic", value: "Cosmetic" },
@@ -404,6 +404,7 @@ const FormRight = ({
     { title: "Painting", value: "Painting" },
     { title: "Photography", value: "Photography" },
     { title: "Grocerie", value: "Grocerie" },
+    { title: "Vehicle", value: "Vehicle" },
     { title: "Other", value: "Other" },
   ];
 

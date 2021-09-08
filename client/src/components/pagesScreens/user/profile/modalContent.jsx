@@ -78,7 +78,22 @@ const Contente = ({ product, setShowModal }) => {
             <div className="size">
               <h2>size</h2>
               <div className="select-size">
-                <Radio.Group
+              <Radio.Group
+                  defaultValue={sizeSelected}
+                  buttonStyle="solid"
+                  onChange={handleSizeSelected}
+                >
+                  {product.variantSize.map((size, index) => (
+                    <RadioButton
+                      value={size}
+                      key={index}
+                      className="radio-group-container"
+                    >
+                      {size}
+                    </RadioButton>
+                  ))}
+                </Radio.Group>
+                {/* <Radio.Group
                   defaultValue="a"
                   buttonStyle="solid"
                   className="radio-group-container"
@@ -89,7 +104,7 @@ const Contente = ({ product, setShowModal }) => {
                       {size}
                     </Radio.Button>
                   ))}
-                </Radio.Group>
+                </Radio.Group> */}
               </div>
             </div>
           )}
@@ -367,6 +382,23 @@ const Btn = styled.div`
 
 const ContenteContainer = styled.div`
   padding: 1rem;
+`;
+
+const RadioButton = styled(Radio.Button)`
+  border-color: var(--orange-color) !important ;
+  &:hover {
+    color: #111 !important
+  }
+  & .ant-radio-button-checked  {
+    background: var(--orange-color);
+  }
+  & .ant-radio-button-checked .ant-radio-button-inner:after {
+    background-color: var(--orange-color);
+  }
+  & .ant-radio-button:hover .ant-radio-button-inner {
+    border-color: var(--orange-color);
+    color: #fff;
+  }
 `;
 
 export default ModalContent;
