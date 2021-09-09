@@ -12,6 +12,7 @@ import CardProduct from "./CardProduct";
 import Loader from "../../loader";
 import Paginate from "../../pagination";
 import MainContainer from "../../MainContainer";
+import {brandList, colorList, sizeList} from "../../../utils/listItems"
 
 const ViewProducts = ({ match }) => {
   // const keyword = match.params.keyword
@@ -37,36 +38,7 @@ const ViewProducts = ({ match }) => {
     (state) => state.productList
   );
 
-  const brandList = [
-    { title: "-- Select Brand --", value: null },
-    { title: "Beauty", value: "Beauty" },
-    { title: "Cloth", value: "cloth" },
-    { title: "Cosmetic", value: "Cosmetic" },
-    { title: "Electronic", value: "electronic" },
-    { title: "Fourniture", value: "Fourniture" },
-    { title: "Fruits", value: "Fruits" },
-    { title: "Handcraft", value: "Handcraft" },
-    { title: "Jewelry", value: "Jewelry" },
-    { title: "Painting", value: "Painting" },
-    { title: "Photography", value: "Photography" },
-    { title: "Grocerie", value: "Grocerie" },
-    { title: "Vehicle", value: "Vehicle" },
-    { title: "Other", value: "Other" },
-  ];
-  const colorList = [
-    { title: "-- Select color --", value: null },
-    { title: "Red", value: "red" },
-    { title: "Blue", value: "blue" },
-    { title: "White", value: "white" },
-    { title: "Color1", value: "Color1" },
-  ];
-  const sizeList = [
-    { title: "-- Select size --", value: null },
-    { title: "20", value: "20" },
-    { title: "25", value: "25" },
-    { title: "30", value: "30" },
-    { title: "40", value: "40" },
-  ];
+  
 
   useEffect(() => {
     dispatch(listProducts(pageNumber));
@@ -143,7 +115,7 @@ const ViewProducts = ({ match }) => {
                 ) : (
                   <div className="cart_empty">
                     <h1>No matches found for your search</h1>
-                    <button onClick={() => window.location.reload()} >show all products</button>
+                    <button onClick={() => dispatch(listProducts()) } >click to show all products</button>
                   </div>
                 )}
               </>

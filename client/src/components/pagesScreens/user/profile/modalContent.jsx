@@ -10,6 +10,13 @@ import {
   FaTumblr,
   FaSnapchatGhost,
 } from "react-icons/fa";
+import {
+  FacebookShareButton,
+  WhatsappShareButton,
+  TumblrShareButton,
+  TwitterShareButton,
+  InstapaperShareButton,
+} from "react-share";
 import { addToCart } from "../../../../flux/actions/cartAction";
 import { warningMessage } from "../../../message";
 
@@ -57,6 +64,8 @@ const Contente = ({ product, setShowModal }) => {
 
   const dispatch = useDispatch();
 
+  const sharingUrl = window.location.href;
+
   const addToCartHandler = (id, qty, size) => {
     if (!sizeSelected) {
       warningMessage("Select the size to add to cart", 10);
@@ -78,7 +87,7 @@ const Contente = ({ product, setShowModal }) => {
             <div className="size">
               <h2>size</h2>
               <div className="select-size">
-              <Radio.Group
+                <Radio.Group
                   defaultValue={sizeSelected}
                   buttonStyle="solid"
                   onChange={handleSizeSelected}
@@ -140,24 +149,54 @@ const Contente = ({ product, setShowModal }) => {
           <div className="social-media">
             <p>Share:</p>
             <div className="link-list">
-              <a className="media-link" href="#/">
+              <TumblrShareButton
+                className="media-link"
+                url={sharingUrl}
+                quote={"CampersTribe - World is yours to explore"}
+                hashtag="#au79code"
+              >
                 <FaTumblr className="icon" />
-              </a>
-              <a className="media-link" href="#/">
+              </TumblrShareButton>
+              <WhatsappShareButton
+                className="media-link"
+                url={sharingUrl}
+                quote={"CampersTribe - World is yours to explore"}
+                hashtag="#au79code"
+              >
                 <FaWhatsapp className="icon" />
-              </a>
-              <a className="media-link" href="#/">
+              </WhatsappShareButton>
+              <InstapaperShareButton
+                className="media-link"
+                url={sharingUrl}
+                quote={"CampersTribe - World is yours to explore"}
+                hashtag="#au79code"
+              >
                 <FaInstagram className="icon" />
-              </a>
-              <a className="media-link" href="#/">
+              </InstapaperShareButton>
+              <TwitterShareButton
+                className="media-link"
+                url={sharingUrl}
+                quote={"CampersTribe - World is yours to explore"}
+                hashtag="#au79code"
+              >
                 <FaTwitter className="icon" />
-              </a>
-              <a className="media-link" href="#/">
+              </TwitterShareButton>
+              {/* <a
+                className="media-link"
+                url={sharingUrl}
+                quote={"CampersTribe - World is yours to explore"}
+                hashtag="#au79code"
+              >
                 <FaSnapchatGhost className="icon" />
-              </a>
-              <a className="media-link" href="#/">
+              </a> */}
+              <FacebookShareButton
+                className="media-link"
+                url={sharingUrl}
+                quote={"CampersTribe - World is yours to explore"}
+                hashtag="#au79code"
+              >
                 <FaFacebookF className="icon" />
-              </a>
+              </FacebookShareButton>
             </div>
           </div>
         </div>
@@ -334,6 +373,7 @@ const Row = styled.div`
             background: #92a4b3;
             border-radius: 5px;
             transition: all 0.2s ease-in-out;
+            color: #fff;
 
             &:hover {
               background: var(--orange-color);
@@ -387,9 +427,9 @@ const ContenteContainer = styled.div`
 const RadioButton = styled(Radio.Button)`
   border-color: var(--orange-color) !important ;
   &:hover {
-    color: #111 !important
+    color: #111 !important;
   }
-  & .ant-radio-button-checked  {
+  & .ant-radio-button-checked {
     background: var(--orange-color);
   }
   & .ant-radio-button-checked .ant-radio-button-inner:after {

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Slider, Image, Modal } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { useFormik } from "formik";
-import {useParams} from "react-router-dom"
+import { useParams } from "react-router-dom";
 import SelectC from "../../../SelectComponents";
 import {
   getProductUserById,
@@ -11,7 +11,8 @@ import {
 } from "../../../../flux/actions/productAction";
 import CardProduct from "./cardProducts";
 import Loader from "../../../loader";
-import Paginate from "../../../pagination"
+import Paginate from "../../../pagination";
+import {brandList, colorList, sizeList} from "../../../../utils/listItems"
 
 const Brand = () => {
   const OptionList = ["Iphone", "Samsumg", "Nokia"];
@@ -19,19 +20,18 @@ const Brand = () => {
 };
 
 const ViewProducts = () => {
-  const params = useParams()
+  const params = useParams();
 
-  const userId = params.id
+  const userId = params.id;
 
-  const pageNumber = params.pageNumber || 1
-
+  const pageNumber = params.pageNumber || 1;
 
   const formik = useFormik({
     initialValues: {
-      brand: "",
-      color: "",
-      size: "",
-      price: "",
+       brand: null,
+      color: null,
+      size: null,
+      price: 1,
     },
     onSubmit: (values) => {
       const body = JSON.stringify(values, null, 2);
@@ -45,45 +45,14 @@ const ViewProducts = () => {
     (state) => state.productList
   );
 
-  const brandList = [
-    { title: "-- Select Brand --", value: null },
-    { title: "Beauty", value: "Beauty" },
-    { title: "Cloth", value: "cloth" },
-    { title: "Cosmetic", value: "Cosmetic" },
-    { title: "Electronic", value: "electronic" },
-    { title: "Fourniture", value: "Fourniture" },
-    { title: "Fruits", value: "Fruits" },
-    { title: "Handcraft", value: "Handcraft" },
-    { title: "Jewelry", value: "Jewelry" },
-    { title: "Painting", value: "Painting" },
-    { title: "Photography", value: "Photography" },
-    { title: "Grocerie", value: "Grocerie" },
-    { title: "Vehicle", value: "Vehicle" },
-    { title: "Other", value: "Other" },
-  ];
-  const colorList = [
-    { title: "-- Select color --", value: null },
-    { title: "Red", value: "red" },
-    { title: "Blue", value: "blue" },
-    { title: "White", value: "white" },
-    { title: "Color1", value: "Color1" },
-  ];
-  const sizeList = [
-    { title: "-- Select size --", value: null },
-    { title: "20", value: "20" },
-    { title: "25", value: "25" },
-    { title: "30", value: "30" },
-    { title: "40", value: "40" },
-  ];
 
   useEffect(() => {
     dispatch(getProductUserById(userId, pageNumber));
-  }, [dispatch,userId, pageNumber ]);
+  }, [dispatch, userId, pageNumber]);
 
   const handleChangeSlider = (value) => {
     formik.setFieldValue("price", value);
   };
-
 
   return (
     <Container>
@@ -115,7 +84,12 @@ const ViewProducts = () => {
           />
           <div className="form_select slider">
             <p>Price Less than Aed 500</p>
-            <SliderE defaultValue={30} onChange={handleChangeSlider} max={500} min={2} />
+            <SliderE
+              defaultValue={30}
+              onChange={handleChangeSlider}
+              max={500}
+              min={2}
+            />
           </div>
           <button type="submit" className="btn">
             Clear
@@ -139,18 +113,23 @@ const ViewProducts = () => {
                   ))}
                 </Grid>
               ) : (
-                <h1>No matches found for your search</h1>
+                <div className="cart_empty">
+                  <h1>No matches found for your search</h1>
+                  <button onClick={() => dispatch(getProductUserById(userId))}>
+                    click to show all products
+                  </button>
+                </div>
               )}
             </>
           )}
         </>
       </Row>
       <Row>
-      <Paginate
-            pages={pages}
-            page={page}
-            // keyword={keyword ? keyword : ''}
-          />
+        <Paginate
+          pages={pages}
+          page={page}
+          // keyword={keyword ? keyword : ''}
+        />
       </Row>
     </Container>
   );
@@ -165,6 +144,18 @@ const Row = styled.div`
   display: block;
   width: 100%;
   /* flex-direction: column; */
+  & .cart_empty {
+    & button {
+      background: var(--orange-color);
+      color: #fff;
+      border: none;
+      padding: 4px 1rem;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
 `;
 
 const FilterForm = styled.form`

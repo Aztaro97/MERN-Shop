@@ -12,6 +12,7 @@ import {
 } from "../../../flux/actions/productAction";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import SelectC from "../../SelectComponents";
+import {brandList} from "../../../utils/listItems"
 
 import {
   Card,
@@ -390,23 +391,6 @@ const FormRight = ({
   } = useSelector((state) => state.productCreate);
 
   const dispatch = useDispatch();
-
-  const brandList = [
-    { title: "-- Select Brand --", value: null },
-    { title: "Beauty", value: "Beauty" },
-    { title: "Cloth", value: "cloth" },
-    { title: "Cosmetic", value: "Cosmetic" },
-    { title: "Electronic", value: "electronic" },
-    { title: "Fourniture", value: "Fourniture" },
-    { title: "Fruits", value: "Fruits" },
-    { title: "Handcraft", value: "Handcraft" },
-    { title: "Jewelry", value: "Jewelry" },
-    { title: "Painting", value: "Painting" },
-    { title: "Photography", value: "Photography" },
-    { title: "Grocerie", value: "Grocerie" },
-    { title: "Vehicle", value: "Vehicle" },
-    { title: "Other", value: "Other" },
-  ];
 
   useEffect(() => {
     if (success) {
@@ -883,9 +867,9 @@ const RateSection = ({ arrayZone, setArrayZone }) => {
     newArray[index].orderBased = orderBased;
     setArrayZone(newArray);
     setIsModalVisible(false);
-    setMin(null);
-    setMax(null);
-    setAmount(null);
+    setMin("");
+    setMax("");
+    setAmount("");
     setOrderBased("");
 
     console.log(arrayZone);

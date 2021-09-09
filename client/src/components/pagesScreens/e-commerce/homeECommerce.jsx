@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import LandingPage from "../landing/LandingPage";
+import TextTruncate from "react-text-truncate";
 import MainContainer from "../../MainContainer";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -144,6 +145,7 @@ function HomeECommerce() {
       </SocialSection> */}
       <CardSection>
         <h4>companies for you</h4>
+        <hr />
         {loading ? (
           <Loader />
         ) : (
@@ -152,25 +154,30 @@ function HomeECommerce() {
               <>
                 {company.users.slice(0, 4).map((user) => (
                   <Fade right cascade>
-                  <Card>
-                    <img
-                      className="card_img"
-                      src={
-                        user.company.urlImg.length !== 0
-                          ? user.company.urlImg[0].url
-                          : compayn_pic
-                      }
-                      alt=""
-                    />
-                    <div className="card_body">
-                      <h3>{user.company.name}</h3>
-                      <p>{user.company.about}</p>
-                      <hr />
-                      <Link className="link" to={`profile/${user._id}`}>
-                        see more
-                      </Link>
-                    </div>
-                  </Card>
+                    <Card>
+                      <img
+                        className="card_img"
+                        src={
+                          user.company.urlImg.length !== 0
+                            ? user.company.urlImg[0].url
+                            : compayn_pic
+                        }
+                        alt=""
+                      />
+                      <div className="card_body">
+                        <h3>{user.company.name}</h3>
+                        <TextTruncate
+                          line={3}
+                          element="span"
+                          text={user.company.about}
+                          truncateText="…"
+                        />
+                        <hr />
+                        <Link className="link" to={`profile/${user._id}`}>
+                          see more
+                        </Link>
+                      </div>
+                    </Card>
                   </Fade>
                 ))}
               </>
@@ -184,6 +191,7 @@ function HomeECommerce() {
 
       <CardSection>
         <h4>craftman for you</h4>
+        <hr />
         {loadingCraft ? (
           <Loader />
         ) : (
@@ -191,26 +199,31 @@ function HomeECommerce() {
             {craftman.users !== null && (
               <>
                 {craftman.users.slice(0, 4).map((user) => (
-                   <Fade left cascade>
-                  <Card>
-                    <img
-                      className="card_img"
-                      src={
-                        user.company.urlImg.length !== 0
-                          ? user.company.urlImg[0].url
-                          : compayn_pic
-                      }
-                      alt=""
-                    />
-                    <div className="card_body">
-                      <h3>{user.company.name}</h3>
-                      <p>{user.company.about}</p>
-                      <hr />
-                      <Link className="link" to={`profile/${user._id}`}>
-                        see more
-                      </Link>
-                    </div>
-                  </Card>
+                  <Fade left cascade>
+                    <Card>
+                      <img
+                        className="card_img"
+                        src={
+                          user.company.urlImg.length !== 0
+                            ? user.company.urlImg[0].url
+                            : compayn_pic
+                        }
+                        alt=""
+                      />
+                      <div className="card_body">
+                        <h3>{user.company.name}</h3>
+                        <TextTruncate
+                          line={3}
+                          element="span"
+                          text={user.company.about}
+                          truncateText="…"
+                        />
+                        <hr />
+                        <Link className="link" to={`profile/${user._id}`}>
+                          see more
+                        </Link>
+                      </div>
+                    </Card>
                   </Fade>
                 ))}
               </>
@@ -368,13 +381,20 @@ const SocialSection = styled.section`
 const CardSection = styled.div`
   margin: 4rem auto;
   max-width: var(--max-width);
-  padding:0 1.5rem;
+  padding: 0 1.5rem;
 
   & h4 {
     font-size: 1.4rem;
     text-align: center;
     font-weight: 700;
     text-transform: uppercase;
+    color: var(--orange-color);
+  }
+  & hr {
+    width: 100px;
+    margin: 0 auto;
+    height: 2px;
+    background-color: var(--orange-color);
   }
   & .link {
     text-decoration: none;
@@ -444,6 +464,7 @@ const Card = styled.div`
 `;
 
 const GridCard = styled.div`
+margin: 2rem 0 3rem 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 10px;

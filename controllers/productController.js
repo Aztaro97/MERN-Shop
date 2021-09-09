@@ -18,16 +18,14 @@ const getProducts = asyncHandler(async (req, res) => {
       }
     : {};
 
-  const count = await Product.countDocuments({allow:true});
-  const products = await Product.find({allow:true}).populate("user", ["email","company"])
+  const count = await Product.countDocuments({ allow: true });
+  const products = await Product.find({ allow: true })
+    .populate("user", ["email", "company"])
     .limit(pageSize)
     .skip(pageSize * (page - 1));
 
   res.json({ products, page, pages: Math.ceil(count / pageSize) });
 });
-
-
-
 
 // @desc    Fetch all products Admin
 // @route   GET /api/products/admin
@@ -46,15 +44,13 @@ const getProductsAdmin = asyncHandler(async (req, res) => {
     : {};
 
   const count = await Product.countDocuments();
-  const products = await Product.find().populate("user", ["email","company"])
+  const products = await Product.find()
+    .populate("user", ["email", "company"])
     .limit(pageSize)
     .skip(pageSize * (page - 1));
 
   res.json({ products, page, pages: Math.ceil(count / pageSize) });
 });
-
-
-
 
 // @desc    Fetch single product
 // @route   GET /api/products/:id
@@ -91,7 +87,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
 const createProduct = asyncHandler(async (req, res) => {
   const product = new Product({
     user: req.user._id,
-    code:"",
+    code: "",
     typeService: "",
     name: "",
     price: "",
@@ -117,7 +113,6 @@ const createProduct = asyncHandler(async (req, res) => {
   const createdProduct = await product.save();
   res.status(201).json(createdProduct);
 });
-
 
 // // @desc    Create a product
 // // @route   POST /api/products
@@ -204,9 +199,9 @@ const updateProduct = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id);
 
   if (product) {
-    product.code = code,
-    product.typeService = typeService,
-    product.name = name;
+    (product.code = code),
+      (product.typeService = typeService),
+      (product.name = name);
     product.price = price;
     product.compareAtPrice = compareAtPrice;
     product.description = description;
@@ -286,41 +281,39 @@ const getTopProducts = asyncHandler(async (req, res) => {
 // @route   GET /api/products/my
 // @access  Private
 const getMyProducts = asyncHandler(async (req, res) => {
-  const products = await Product.find({ user: req.user }).populate("user", ["company"]);
+  const products = await Product.find({ user: req.user }).populate("user", [
+    "company",
+  ]);
   res.status(200).json(products);
 });
 
 // @desc    Filter products Search
-// @route   GET /api/products/search/
+// @route   Post /api/products/search/
 // @access  Public
 const filterAllProducts = asyncHandler(async (req, res) => {
-    const brand = req.body.brand ? req.body.brand : null;
-    const variantColor = req.body.color ? req.body.color : {};
-    const variantSize = req.body.size != null ? req.body.size : {};
-    const priceItem = req.body.price ? req.body.price : {};
+  const brand = req.body.brand ? req.body.brand : null;
+  const variantColor = req.body.color ? req.body.color : {};
+  const variantSize = req.body.size != null ? req.body.size : {};
+  const priceItem = req.body.price ? req.body.price : {};
 
-    const products = await Product.find({
-      allow: true,
-      brand,
-      variantColor,
-      // variantSize,
-      price: {"$lte": priceItem }
-    }).populate("user", "company")
+  const products = await Product.find({
+    allow: true,
+    brand,
+    variantColor,
+    // variantSize,
+    price: { $lte: priceItem },
+  }).populate("user", "company");
 
-    if (products) {
-      res.status(200).json({products})
-    } else {
-      res.status(404);
-      throw new Error("Product not found");
-    }
+  if (products) {
+    res.status(200).json({ products });
+  } else {
+    res.status(404);
+    throw new Error("Product not found");
+  }
 });
 
-
-
-
-
 // @desc    Filter products Search
-// @route   GET /api/products/:id/search/
+// @route   Post /api/products/:id/search/
 // @access  Public
 const filterProductsUser = asyncHandler(async (req, res) => {
   const brand = req.body.brand ? req.body.brand : null;
@@ -333,19 +326,17 @@ const filterProductsUser = asyncHandler(async (req, res) => {
     user: req.params.id,
     brand,
     variantColor,
-    variantSize,
-    price: {"$lte": priceItem }
-  })
+    // variantSize,
+    price: { $lte: priceItem },
+  }).populate("user", "company");
 
   if (products) {
-    res.status(200).json({products})
+    res.status(200).json({ products });
   } else {
     res.status(404);
     throw new Error("Product not found");
   }
 });
-
-
 
 // @desc    Fetch user products
 // @route   GET /api/products/user/:id
@@ -363,20 +354,22 @@ const getUserProducts = asyncHandler(async (req, res) => {
       }
     : {};
 
-  const count = await Product.countDocuments({user: req.params.id, allow: true});
-  const products = await Product.find({user: req.params.id, allow: true})
+  const count = await Product.countDocuments({
+    user: req.params.id,
+    allow: true,
+  });
+  const products = await Product.find({ user: req.params.id, allow: true })
     .limit(pageSize)
     .skip(pageSize * (page - 1));
 
-    res.json({ products, page, pages: Math.ceil(count / pageSize) });
+  res.json({ products, page, pages: Math.ceil(count / pageSize) });
 });
-
 
 // @desc    Allow products sell
 // @route   GET /api/products/:id
 // @access  Public
 const allowProductSell = asyncHandler(async (req, res) => {
-  const product = await Product.findById(req.params.id)
+  const product = await Product.findById(req.params.id);
 
   if (product) {
     product.allow = req.body.permission;
@@ -384,10 +377,8 @@ const allowProductSell = asyncHandler(async (req, res) => {
 
   await product.save();
 
-  res.status(200).json({message: "Product allow"})
-})
-
-
+  res.status(200).json({ message: "Product allow" });
+});
 
 module.exports = {
   getProducts,
@@ -402,5 +393,5 @@ module.exports = {
   getUserProducts,
   filterProductsUser,
   allowProductSell,
-  getProductsAdmin
+  getProductsAdmin,
 };

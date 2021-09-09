@@ -606,6 +606,7 @@ const GalleryPhotos = () => {
   const { userInfo } = useSelector((state) => state.userLogin);
 
   const [fileList, setFileList] = useState([]);
+  const history = useHistory();
 
 
   const handleChangeImage = ({ fileList: newFileList }) => {
@@ -650,6 +651,9 @@ const GalleryPhotos = () => {
       );
 
       successMessage(res.data.msg)
+      setTimeout(() => {
+        return history.push("/myproducts")
+      }, 1000)
 
     } catch (error) {
       console.log(error.message);
