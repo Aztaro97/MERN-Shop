@@ -8,17 +8,7 @@ import { categoryAdversiting } from "../../../utils/advertisingData";
 function AdversitingScreen() {
   return (
     <main>
-      <LandingTop>
-        <div className="contente">
-          <h1>
-            <span>Blind</span>Text Generator.
-          </h1>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-          <Link className="link1" to="#/">
-            Quote here
-          </Link>
-        </div>
-      </LandingTop>
+      <Landing />
       <Container>
         <SliderSection />
         <IntroSection />
@@ -26,6 +16,46 @@ function AdversitingScreen() {
     </main>
   );
 }
+
+const Landing = () => {
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+  return (
+    <LandingStyling>
+      <Slider {...settings} >
+        <div>
+          <div className="landing_overlay">
+            <h1>
+              <span>Blind</span>Text Generator.
+            </h1>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+            <Link className="link1" to="#/">
+              Quote here
+            </Link>
+          </div>
+        </div>
+        <div>
+          <div className="landing_overlay">
+            <h1>
+              <span>Blind</span>Text Generator.
+            </h1>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+            <Link className="link1" to="#/">
+              Quote here
+            </Link>
+          </div>
+        </div>
+      </Slider>
+    </LandingStyling>
+  );
+};
 
 const SliderSection = () => {
   const settings = {
@@ -193,31 +223,32 @@ const IntroSection = () => {
   );
 };
 
-const LandingTop = styled.div`
-  background-image: linear-gradient(
-      0deg,
-      rgba(244, 244, 244, 0.8827906162464986) 19%,
-      rgba(255, 255, 255, 0) 43%
-    ),
-    url("https://images.unsplash.com/photo-1529460608-bc455fccd5a4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1190&q=80");
-  height: 700px;
-  width: 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-origin: content-box;
-  display: flex;
-  align-items: flex-end;
-
-  & .contente {
-    /* position: absolute; */
-    padding: 0 0 2rem 2rem;
+const LandingStyling = styled.div`
+  & .landing_overlay {
+    background-image: linear-gradient(
+        0deg,
+        rgba(244, 244, 244, 0.8827906162464986) 19%,
+        rgba(255, 255, 255, 0) 43%
+      ),
+      url("https://images.unsplash.com/photo-1529460608-bc455fccd5a4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1190&q=80");
+    height: 700px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-origin: content-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: end;
+    
     & h1 {
       color: #49c4d3;
       margin: 0;
       font-weight: 700;
       text-transform: uppercase;
       font-size: 2.81rem;
+      margin-left: 1rem;
 
       & span {
         color: #c68787;
@@ -228,8 +259,9 @@ const LandingTop = styled.div`
       }
     }
     & p {
-      /* margin-bottom: 0; */
-      margin: 5px 0;
+      margin-left: 1rem;
+      margin-top: 5px;
+      margin-bottom: 5px;
       font-size: 1.25em;
     }
     & .link1 {
@@ -248,6 +280,7 @@ const LandingTop = styled.div`
       font-size: 1rem;
       cursor: pointer;
       z-index: 99999;
+      margin-left: 1rem;
       &:hover {
         opacity: 0.9;
       }
@@ -288,7 +321,7 @@ const Container = styled.div`
     &:hover {
       padding: 0;
     }
-    &:hover  .box-container  h4 {
+    &:hover .box-container h4 {
       color: var(--orange-color);
     }
 
