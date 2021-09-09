@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
+import { categoryAdversiting } from "../../../utils/advertisingData";
 // import MainContainer from "../../MainContainer";
 
 function AdversitingScreen() {
@@ -39,65 +40,46 @@ const SliderSection = () => {
     // slidesPerRow: 0,
     centerPadding: "0px",
     centerMode: true,
+    responsive: [
+      {
+        breakpoint: 700,
+        settings: {
+          arrows: false,
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          rows: 0,
+        },
+      },
+      {
+        breakpoint: 500,
+        settings: {
+          arrows: false,
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 400,
+        settings: {
+          arrows: false,
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
   return (
     <Slider {...settings}>
-      <div>
-        <div className="box">
-          <div className="box-container">
-            <h4>lorem ipsum 1</h4>
+      {categoryAdversiting.map((data) => (
+        <div key={data.id}>
+          <div
+            className="box"
+            style={{ backgroundImage: `url(${data.image})` }}
+          >
+            <div className="box-container">
+              <h4>{data.title}</h4>
+            </div>
           </div>
         </div>
-      </div>
-      <div>
-        <div className="box">
-          <div className="box-container">
-            <h4>lorem ipsum 2</h4>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div className="box">
-          <div className="box-container">
-            <h4>lorem ipsum 3</h4>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div className="box">
-          <div className="box-container">
-            <h4>lorem ipsum 4</h4>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div className="box">
-          <div className="box-container">
-            <h4>lorem ipsum 5</h4>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div className="box">
-          <div className="box-container">
-            <h4>lorem ipsum 6</h4>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div className="box">
-          <div className="box-container">
-            <h4>lorem ipsum 7</h4>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div className="box">
-          <div className="box-container">
-            <h4>lorem ipsum 8</h4>
-          </div>
-        </div>
-      </div>
+      ))}
     </Slider>
   );
 };
@@ -113,6 +95,7 @@ const IntroSection = () => {
     slidesToScroll: 1,
     // slidesPerRow: 0,
     centerPadding: "0px",
+    arrows: false,
   };
   return (
     <IntroStyling className="intro_section">
@@ -276,8 +259,20 @@ const Container = styled.div`
   padding: 6rem 1rem;
   max-width: 1400px;
   margin: 0 auto;
-  & .box {
+  & .real-state-bg {
     background-image: url("https://images.unsplash.com/photo-1630980260348-16f484cb6471?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80");
+  }
+  & .restaurant-bg {
+    background-image: url("https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1567&q=80");
+  }
+  & .vehicle-bg {
+    background-image: url("https://images.unsplash.com/photo-1549092223-c69273446922?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80");
+  }
+  & .pharmacy-bg {
+    background-image: url("https://images.unsplash.com/photo-1471864190281-a93a3070b6de?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80");
+  }
+  & .box {
+    /* background-image: url("https://images.unsplash.com/photo-1630980260348-16f484cb6471?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80"); */
     height: 200px;
     /* width: 300px; */
     background-size: cover;
@@ -320,7 +315,6 @@ const IntroStyling = styled.section`
     background: var(--orange-color);
     height: 1px;
     margin: 0 auto;
-    
   }
 
   & .slide_bg {
@@ -333,6 +327,9 @@ const IntroStyling = styled.section`
       position: relative;
       bottom: 2rem;
       left: 2rem;
+      @media only screen and (max-width: 768px) {
+        position: static;
+      }
 
       & div {
         height: 100%;
