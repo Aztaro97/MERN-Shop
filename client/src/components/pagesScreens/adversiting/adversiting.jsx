@@ -98,10 +98,10 @@ const IntroSection = () => {
     arrows: false,
   };
   return (
-    <IntroStyling className="intro_section">
+    <IntroStyling>
       <h1 className="title">lorem ipsum</h1>
       <hr />
-      <div className="row mt-5 py-5">
+      <div className="row py-lg-5">
         <div className="col-lg-6">
           <div className="slide_bg">
             <Slider {...settings} className="slider-container">
@@ -282,7 +282,15 @@ const Container = styled.div`
     margin-bottom: 10px;
     margin-left: 5px;
     margin-right: 5px;
+    cursor: pointer;
     /* margin: 0 10px; */
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      padding: 0;
+    }
+    &:hover  .box-container  h4 {
+      color: var(--orange-color);
+    }
 
     & .box-container {
       width: 100%;
@@ -296,6 +304,7 @@ const Container = styled.div`
         color: #ffff;
         text-transform: uppercase;
         font-size: 1rem;
+        transition: all 0.3s ease-in-out;
       }
     }
   }
@@ -303,6 +312,7 @@ const Container = styled.div`
 
 const IntroStyling = styled.section`
   padding: 3rem 0;
+  margin-top: 3rem;
   & .title {
     text-align: center;
     text-transform: uppercase;
@@ -327,7 +337,8 @@ const IntroStyling = styled.section`
       position: relative;
       bottom: 2rem;
       left: 2rem;
-      @media only screen and (max-width: 768px) {
+      @media only screen and (max-width: 992px) {
+        margin-top: 2rem;
         position: static;
       }
 
@@ -343,6 +354,9 @@ const IntroStyling = styled.section`
           bottom: 0;
           top: 120px;
           width: 400px;
+          @media only screen and (max-width: 992px) {
+            width: 300px;
+          }
 
           padding-left: 1rem;
           & h1 {
@@ -361,11 +375,18 @@ const IntroStyling = styled.section`
           }
         }
       }
+      /* ///////  Slider Dits  /////// */
+      & .slick-dots {
+        width: 90%;
+      }
     }
   }
   & .description {
     padding-left: 3rem;
     padding-top: 1rem;
+    @media only screen and (max-width: 992px) {
+      margin-top: 2rem;
+    }
   }
 `;
 
