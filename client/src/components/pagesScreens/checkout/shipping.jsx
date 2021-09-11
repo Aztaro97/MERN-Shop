@@ -11,40 +11,10 @@ import SelectC from "../../SelectComponents";
 import ButtonC from "../../ButtonComponeent";
 import { registerShippingInfo } from "../../../flux/actions/userAction";
 import { saveShippingAddress } from "../../../flux/actions/cartAction";
+import MainContainer from "../../MainContainer";
 
 // import MapComponent from "./map/getCurrentPosition";
 import MapComponent from "./googleMap/mapScreen";
-
-import piture from "../../../img/card_pic.png";
-
-const gouvList = [
-  {
-    title: "Abou dhabi",
-    value: "abu dhabi",
-  },
-  {
-    title: "Ajman",
-    value: "ajman",
-  },
-  {
-    title: "Dubai",
-    value: "dubai",
-  },
-];
-const countryList = [
-  {
-    title: "uae",
-    value: "uae",
-  },
-  {
-    title: "usa",
-    value: "usa",
-  },
-  {
-    title: "saudia",
-    value: "saudia",
-  },
-];
 
 function Checkout({ history }) {
   const [saveShippingCheck, setSaveShippingCheck] = useState(false);
@@ -75,9 +45,8 @@ function Checkout({ history }) {
     country,
     region,
     phoneNumber,
-    email
+    email,
   };
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -88,8 +57,7 @@ function Checkout({ history }) {
     history.push("/payment");
     // window.location.assign = "/payment";
     console.log(shipping);
-
-  }
+  };
 
   // const history = useHistory();
   const { shippingAddress } = useSelector((state) => state.cart);
@@ -97,10 +65,9 @@ function Checkout({ history }) {
   if (shippingAddress !== null) {
     // history.push("/payment");
   }
- 
 
   return (
-    <Container>
+    <MainContainer>
       <Header>
         <a href="#/" onClick={() => history.goBack()}>
           Back
@@ -120,7 +87,7 @@ function Checkout({ history }) {
               id="email"
               placeholder="EMAIL OR PHONE NUMBER"
               value={email}
-              onChange={e => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </Row>
           <Row>
@@ -140,7 +107,7 @@ function Checkout({ history }) {
                 id="firstName"
                 placeholder="FIRST NAME"
                 value={firstName}
-                onChange={e => setFirstName(e.target.value)}
+                onChange={(e) => setFirstName(e.target.value)}
               />
               <InputC
                 required
@@ -149,7 +116,7 @@ function Checkout({ history }) {
                 id="lastName"
                 placeholder="LAST NAME"
                 value={lastName}
-                onChange={e => setLastName(e.target.value)}
+                onChange={(e) => setLastName(e.target.value)}
               />
             </div>
           </Row>
@@ -160,7 +127,7 @@ function Checkout({ history }) {
               id="address"
               placeholder="ADRESS"
               value={address}
-              onChange={e => setAddress(e.target.value)}
+              onChange={(e) => setAddress(e.target.value)}
             />
           </Row>
           <Row>
@@ -170,7 +137,7 @@ function Checkout({ history }) {
               id="appartment"
               placeholder="APPARTMENT NO"
               value={appartment}
-              onChange={e => setAppartment(e.target.value)}
+              onChange={(e) => setAppartment(e.target.value)}
             />
           </Row>
           <Row>
@@ -182,13 +149,13 @@ function Checkout({ history }) {
                 id="city"
                 placeholder="CITY"
                 value={city}
-                onChange={e => setCity(e.target.value)}
+                onChange={(e) => setCity(e.target.value)}
               />
               <CountryDropdownCustom
                 required
                 name="country"
                 value={country}
-                onChange={(val) => setCountry( val)}
+                onChange={(val) => setCountry(val)}
               />
               <RegionDropdownCustom
                 required
@@ -230,7 +197,7 @@ function Checkout({ history }) {
               id="phoneNumber"
               placeholder="PHONE NUMBER"
               value={phoneNumber}
-              onChange={e => setPhoneNumber(e.target.value)}
+              onChange={(e) => setPhoneNumber(e.target.value)}
             />
           </Row>
           <Row>
@@ -252,10 +219,10 @@ function Checkout({ history }) {
             </Link>
           </Row>
         </Form>
-        <SectionRight />
+        <SectionRight className="section_right" />
         {/* <MapComponent /> */}
       </Grid>
-    </Container>
+    </MainContainer>
   );
 }
 
@@ -300,19 +267,13 @@ const SectionRight = () => {
   );
 };
 
-const Container = styled.div`
-  max-width: var(--max-width);
-  margin: 3rem auto 0;
-  padding: 3rem 0;
-`;
-
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 60% 40%;
-  border: 1px solid #ececec;
-  border-radius: 10px;
+  margin-bottom: 2rem;
   @media only screen and (max-width: 768px) {
-    display: block;
+    display: grid;
+    grid-template-columns: 1fr;
   }
 `;
 
@@ -378,6 +339,13 @@ const Header = styled.div`
 
 const Form = styled.form`
   padding: 2rem;
+  border: 1px solid #ececec;
+  
+  /* border-radius: 10px; */
+  @media only screen and (max-width: 768px) {
+    margin-top: 1rem;
+    grid-row-start: 2;
+  }
 `;
 const Label = styled.label`
   font-weight: 700;
@@ -459,6 +427,10 @@ const Card = styled.div`
         bottom: 11rem;
         left: 7.5rem;
       }
+      @media only screen and (max-width: 430px) {
+        bottom: 13rem;
+        left: 9rem;
+      }
     }
   }
 
@@ -497,6 +469,12 @@ const CountryDropdownCustom = styled(CountryDropdown)`
     border: 3px solid var(--background-color);
     outline: none;
   }
+  @media only screen and (max-width: 768px) {
+    height: 2.5rem;
+  }
+  @media only screen and (max-width: 330px) {
+    width: 100%;
+  }
 `;
 
 const RegionDropdownCustom = styled(RegionDropdown)`
@@ -510,6 +488,9 @@ const RegionDropdownCustom = styled(RegionDropdown)`
   &:focus-visible {
     border: 3px solid var(--background-color);
     outline: none;
+  }
+  @media only screen and (max-width: 768px) {
+    height: 2.5rem;
   }
 `;
 

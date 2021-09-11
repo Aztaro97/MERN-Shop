@@ -1,169 +1,197 @@
-import styled from "styled-components"
+import styled from "styled-components";
 import { Modal, Radio, Space } from "antd";
 
-
-
-
-
-
-
-
-
 export const Border = styled.div`
-border: 3px solid var(--background-color);
-padding: 1rem 2rem;
-border-radius: 10px;
-margin-bottom: 2rem;
+  border: 3px solid var(--background-color);
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
 
-& hr {
-  margin: 0.7rem 0;
-  border: none;
-  background: var(--silver-color);
-  height: 1px;
-}
-
-& .row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  & .price {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    & p {
-      text-transform: uppercase;
-      font-weight: 700;
-    }
-  }
-  @media only screen and (max-width: 453px) {
-    display: block;
-  }
-
-  & div {
-    display: flex;
-    align-items: center;
-    & h2 {
-      color: var(--orange-color);
-      margin: 0;
-      margin-right: 1rem;
-      text-transform: uppercase;
-      font-size: 1rem;
-      font-weight: 700;
-    }
-    & p {
-      display: flex;
-      margin: 0;
-      max-width: 300px;
-    }
-  }
-  & .link {
-    margin-left: auto;
-    outline: none;
+  & hr {
+    margin: 0.7rem 0;
     border: none;
-    background: transparent;
-    color: var(--orange-color);
-    &:hover {
-      opacity: 0.9;
-    }
+    background: var(--silver-color);
+    height: 1px;
   }
-}
 
-& .radio-button {
-  & .radio {
+  & .row {
     display: flex;
     align-items: center;
-    padding-left: 1rem;
-    & label {
-      margin-bottom: 0;
-      cursor: pointer;
-      padding-left: 0.7rem;
-      color: var(--silver-color);
+    justify-content: space-between;
+
+    & .price {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      & p {
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+    }
+    @media only screen and (max-width: 453px) {
+      display: block;
+    }
+
+    & div {
+      display: flex;
+      align-items: center;
+      & h2 {
+        color: var(--orange-color);
+        margin: 0;
+        margin-right: 1rem;
+        text-transform: uppercase;
+        font-size: 1rem;
+        font-weight: 700;
+      }
+      & p {
+        display: flex;
+        margin: 0;
+        max-width: 300px;
+      }
+    }
+    & .link {
+      margin-left: auto;
+      outline: none;
+      border: none;
+      background: transparent;
+      color: var(--orange-color);
+      &:hover {
+        opacity: 0.9;
+      }
     }
   }
-}
+
+  & .radio-button {
+    & .radio {
+      display: flex;
+      align-items: center;
+      padding-left: 1rem;
+      & label {
+        margin-bottom: 0;
+        cursor: pointer;
+        padding-left: 0.7rem;
+        color: var(--silver-color);
+      }
+    }
+  }
 `;
 
 export const SectionLeft = styled.form`
-padding: 2rem;
+  padding: 2rem;
+  border: 1px solid #ececec;
+  /* border-radius: 10px; */
 
-& .section_shippindAdress {
-  & > * {
-    margin-bottom: .6rem;
+  & .section_shippindAdress {
+    & > * {
+      margin-bottom: 0.6rem;
+    }
+    & .inputRow {
+      display: flex;
+    }
+    & .grid_input {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: 0.4rem;
+    }
   }
-  & .inputRow {
-    display: flex;
-  }
-  & .grid_input {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: .4rem;
-  }
-}
 
-& .section_billing {
-  margin-top: 1rem;
-}
+  & .section_billing {
+    margin-top: 1rem;
+  }
 
-& .section_Type_Payment, & .section_billing {
-  & h2 {
-    font-size: 1.2rem;
-    color: var(--silver-color);
+  & .section_Type_Payment,
+  & .section_billing {
+    & h2 {
+      font-size: 1.2rem;
+      color: var(--silver-color);
+      text-transform: uppercase;
+      font-weight: 700;
+      /* margin-bottom: 0; */
+    }
+    & p {
+      color: var(--silver-color);
+      margin-bottom: 0.7rem;
+    }
+  }
+  & .section_payment_info {
+    & > * {
+      margin-bottom: 0.6rem;
+    }
+    & h2 {
+      font-size: 1.2rem;
+      color: var(--silver-color);
+      text-transform: uppercase;
+      font-weight: 700;
+      /* margin-bottom: 0; */
+    }
+  }
+
+  & h1 {
+    color: var(--orange-color);
     text-transform: uppercase;
-    font-weight: 700;
-    /* margin-bottom: 0; */
   }
   & p {
     color: var(--silver-color);
-    margin-bottom: 0.7rem;
+    margin-bottom: 0;
   }
-}
-& .section_payment_info {
-  & > * {
-    margin-bottom: .6rem;
+  & .btn {
+    /* position: relative;
+  top: 3rem; */
   }
-  & h2 {
-    font-size: 1.2rem;
-    color: var(--silver-color);
+  & .row {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+
+    & .link {
+      color: var(--orange-color);
+      /* margin-left: 2rem; */
+    }
+  }
+
+  & .submition_btn {
+    padding: 2rem 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    & .btn {
+      padding: 0.5rem 0.6rem;
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      &:hover {
+        color: #fff;
+      }
+    }
+    & .link_back {
+      display: inline;
+      text-decoration: none;
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+    @media only screen and (max-width: 768px) {
+      padding: 2rem 0.5rem;
+    }
+  }
+  & .link_back {
+    color: var(--orange-color);
+    margin-left: 2rem;
     text-transform: uppercase;
     font-weight: 700;
-    /* margin-bottom: 0; */
+    @media only screen and (max-width: 768px) {
+      margin-left: 1rem;
+    }
   }
-}
-
-& h1 {
-  color: var(--orange-color);
-  text-transform: uppercase;
-}
-& p {
-  color: var(--silver-color);
-  margin-bottom: 0;
-}
-& .btn {
-  /* position: relative;
-  top: 3rem; */
-}
-& .row {
-  display: flex;
-  /* justify-content: center; */
-  align-items: center;
-
-  & .link {
-    color: var(--orange-color);
-    /* margin-left: 2rem; */
+  @media only screen and (max-width: 768px) {
+    grid-row-start: 2;
   }
-
-  
-}
 `;
-
-
-
-
 
 export const ContainerCart = styled.div`
   background: var(--background-color);
   padding: 2rem;
+
   & hr {
     border: none;
     outline: none;
@@ -202,6 +230,9 @@ export const ContainerCart = styled.div`
       color: #fff;
     }
   }
+  @media only screen and (max-width: 768px) {
+    margin-bottom: 2rem;
+  }
 `;
 
 export const Card = styled.div`
@@ -233,6 +264,10 @@ export const Card = styled.div`
         bottom: 11rem;
         left: 7.5rem;
       }
+      @media only screen and (max-width: 430px) {
+        bottom: 13rem;
+        left: 9rem;
+      }
     }
   }
 
@@ -259,47 +294,14 @@ export const Card = styled.div`
   }
 `;
 
-
-export const Container = styled.div`
+export const Container = styled.main`
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 5rem 0 3rem 0;
 
-  & .submition_btn{
-    padding:2rem .5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    & .btn {
-      padding:.5rem .6rem;
-      font-size: .8rem;
-      font-weight: 400;
-      letter-spacing: 2px;
-      &:hover {
-        color: #fff;
-      }
-    }
-    & .link_back {
-      display: inline;
-      text-decoration: none;
-      &:hover {
-        opacity: 0.9
-      }
-    }
-    @media only screen and (max-width: 768px) {
-      padding:2rem .5rem;
-    }
+  @media only screen and (max-width: 1030px) {
+    padding: 2rem 2rem;
   }
-
-  & .link_back {
-      color: var(--orange-color);
-      margin-left: 2rem;
-      text-transform: uppercase;
-      font-weight: 700;
-      @media only screen and (max-width: 768px) {
-        margin-left: 1rem;
-    }
-    }
 `;
 
 export const Header = styled.div`
@@ -327,52 +329,44 @@ export const Header = styled.div`
 export const Grid = styled.div`
   display: grid;
   grid-template-columns: 60% 40%;
-  border: 1px solid #ececec;
-  border-radius: 10px;
+  margin-bottom: 2rem;
   @media only screen and (max-width: 768px) {
-    display: block;
+    display: grid;
+    grid-template-columns: 1fr;
   }
 `;
 
-
 // /////////   RADIO BUTTON CUSTOM   ?////////////////////////////////
 export const RadioB = styled(Radio)`
-/* background: #000; */
-padding-left: 1rem;
-color: var(--silver-color);
+  /* background: #000; */
+  padding-left: 1rem;
+  color: var(--silver-color);
 
+  & span:nth-child(2) {
+    /* color: var(--orange-color); */
+    font-weight: 700;
+  }
 
-& span:nth-child(2) {
-  /* color: var(--orange-color); */
-  font-weight: 700;
-}
+  & .ant-radio {
+    & .ant-radio-inner {
+      border-color: var(--orange-color);
+      width: 1.4rem;
+      height: 1.4rem;
+      border: 1px solid var(--orange-color);
 
-
-& .ant-radio {
-  
-  
-
-  & .ant-radio-inner {
-    border-color: var(--orange-color);
-    width: 1.4rem;
-    height: 1.4rem;
-    border: 1px solid var(--orange-color);
-    
-    &:after {
-      background-color: var(--orange-color);
-      width: .9rem;
-    height: .9rem;
+      &:after {
+        background-color: var(--orange-color);
+        width: 0.9rem;
+        height: 0.9rem;
+      }
     }
   }
 
-}
+  & .ant-space {
+    gap: 0;
 
-& .ant-space {
-  gap: 0;
-
-  & .ant-radio-checked {
-    border-color: var(--orange-color);
+    & .ant-radio-checked {
+      border-color: var(--orange-color);
+    }
   }
-}
-
-`
+`;

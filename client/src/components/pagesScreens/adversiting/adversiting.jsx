@@ -2,6 +2,12 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
+import {
+  IoRestaurantSharp,
+  IoIosConstruct,
+  BiBuildingHouse,
+  AiOutlineShop,
+} from "react-icons/all";
 import { categoryAdversiting } from "../../../utils/advertisingData";
 // import MainContainer from "../../MainContainer";
 
@@ -10,8 +16,11 @@ function AdversitingScreen() {
     <main>
       <Landing />
       <Container>
+        <AdvertisingNavgation />
         <SliderSection />
         <IntroSection />
+        <JoiningUsSection />
+        <PartnerSection />
       </Container>
     </main>
   );
@@ -29,7 +38,7 @@ const Landing = () => {
   };
   return (
     <LandingStyling>
-      <Slider {...settings} >
+      <Slider {...settings}>
         <div>
           <div className="landing_overlay">
             <h1>
@@ -222,6 +231,379 @@ const IntroSection = () => {
     </IntroStyling>
   );
 };
+const AdvertisingNavgation = () => {
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    autoplay: true,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 500,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 350,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
+  };
+  return (
+    <NavStyling>
+      <Slider {...settings}>
+        <div>
+          <div className="card_container">
+            <div className="card_body">
+              <IoRestaurantSharp className="icon" />
+              <p>restaurants</p>
+            </div>
+            <div className="card_footer">
+              <a href="#">contact us</a>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div className="card_container">
+            <div className="card_body">
+              <IoIosConstruct className="icon" />
+              <p>construction</p>
+            </div>
+            <div className="card_footer">
+              <a href="#">contact us</a>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div className="card_container">
+            <div className="card_body">
+              <BiBuildingHouse className="icon" />
+              <p>reals estates</p>
+            </div>
+            <div className="card_footer">
+              <a href="#">contact us</a>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div className="card_container">
+            <div className="card_body">
+              <AiOutlineShop className="icon" />
+              <p>marketing</p>
+            </div>
+            <div className="card_footer">
+              <a href="#">contact us</a>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div className="card_container">
+            <div className="card_body">
+              <IoRestaurantSharp className="icon" />
+              <p>restaurants</p>
+            </div>
+            <div className="card_footer">
+              <a href="#">contact us</a>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div className="card_container">
+            <div className="card_body">
+              <IoRestaurantSharp className="icon" />
+              <p>restaurants</p>
+            </div>
+            <div className="card_footer">
+              <a href="#">contact us</a>
+            </div>
+          </div>
+        </div>
+      </Slider>
+    </NavStyling>
+  );
+};
+
+const JoiningUsSection = () => {
+  return (
+    <JoiningUsStyling>
+      <h1 className="title">
+        Join us <br /> Be a part of the our story{" "}
+      </h1>
+      <hr />
+      <div className="row">
+        <div className="col-lg-3">
+          <img src="/img/advertising/union.jpg" alt="" />
+        </div>
+        <div className="col-lg-9">
+          <h1 className="content">
+            Become a partner <br /> Reach more customers and <br /> achieve
+            growth with us
+          </h1>
+          <div className="link">
+            <a href="#">Lets go</a>
+          </div>
+        </div>
+      </div>
+    </JoiningUsStyling>
+  );
+};
+
+const PartnerSection = () => {
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    autoplay: true,
+    slidesToShow: 7,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 900,
+        settings: {
+          slidesToShow: 6,
+        },
+      },
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 5,
+        },
+      },
+      {
+        breakpoint: 700,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 400,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+    ],
+  };
+
+  return (
+    <PartnerStyling>
+      <h1 className="title">our partner</h1>
+      <hr />
+      <Slider {...settings}>
+        <div>
+          <div className="logo-box">
+            <img src="/img/logo11.png" alt="" />
+          </div>
+        </div>
+        <div>
+          <div className="logo-box">
+            <img src="/img/logo11.png" alt="" />
+          </div>
+        </div>
+        <div>
+          <div className="logo-box">
+            <img src="/img/logo11.png" alt="" />
+          </div>
+        </div>
+        <div>
+          <div className="logo-box">
+            <img src="/img/logo11.png" alt="" />
+          </div>
+        </div>
+        <div>
+          <div className="logo-box">
+            <img src="/img/logo11.png" alt="" />
+          </div>
+        </div>
+        <div>
+          <div className="logo-box">
+            <img src="/img/logo11.png" alt="" />
+          </div>
+        </div>
+        <div>
+          <div className="logo-box">
+            <img src="/img/logo11.png" alt="" />
+          </div>
+        </div>
+        <div>
+          <div className="logo-box">
+            <img src="/img/logo11.png" alt="" />
+          </div>
+        </div>
+        <div>
+          <div className="logo-box">
+            <img src="/img/logo11.png" alt="" />
+          </div>
+        </div>
+      </Slider>
+    </PartnerStyling>
+  );
+};
+
+const PartnerStyling = styled.section`
+  margin: 4rem;
+  & .title {
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--orange-color);
+    font-size: 2rem;
+  }
+  & hr {
+    height: 1px;
+    background: var(--background-color);
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3rem;
+    @media only screen and (max-width: 768px) {
+      width: 100px;
+    }
+  }
+  & .logo-box {
+    width: 100px;
+    height: 100px;
+    background: #0a3068;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin: 0 auto;
+    & img {
+      width: 70%;
+      height: 70%;
+      object-fit: contain;
+      background: transparent;
+    }
+    @media only screen and (max-width: 768px) {
+      width: 80px;
+    height: 80px;
+    }
+  }
+  /* ////////////   Slick Button next and previous   ///////////// */
+  .slick-prev:before,
+  .slick-next:before {
+    font-size: 20px;
+    opacity: 0.75;
+    color: #000;
+  }
+`;
+
+const JoiningUsStyling = styled.section`
+  padding: 0 7rem;
+  & .title {
+    text-align: center;
+    letter-spacing: 3px;
+    color: var(--silver-color);
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+  }
+  & hr {
+    height: 1px;
+    background: var(--background-color);
+    width: 200px;
+    margin: 1rem auto;
+    @media only screen and (max-width: 768px) {
+      width: 100px;
+    }
+  }
+  & img {
+    width: 100%;
+    border-radius: 80px;
+  }
+  & .content {
+    text-align: center;
+    letter-spacing: 3px;
+    color: var(--silver-color);
+    margin: 3rem auto 4rem auto;
+    font-size: 2rem;
+  }
+  .link {
+    text-align: center;
+    & a {
+      text-align: center;
+      font-size: 1.4rem;
+      letter-spacing: 2px;
+      background: #bf4f53;
+      color: #fff;
+      padding: 10px 3rem;
+      border-radius: 30px;
+      text-decoration: none;
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    padding: 0 2rem;
+  }
+`;
+
+const NavStyling = styled.div`
+  padding: 1rem;
+  margin: 2rem auto;
+  width: 100%;
+  /* height: 500px; */
+  & .card_container {
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* width: 200px; */
+    margin: 0 10px;
+    & .card_body {
+      height: 150px;
+      width: 100%;
+      box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+        rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      & .icon {
+        font-size: 2.3rem;
+        color: var(--orange-color);
+        margin-bottom: 0.7rem;
+      }
+      & p {
+        color: var(--orange-color);
+        text-transform: capitalize;
+        font-size: 1.2rem;
+        margin-bottom: 0;
+      }
+    }
+    & .card_footer {
+      text-align: center;
+      margin-top: 1rem;
+      & a {
+        text-decoration: none;
+        color: #fff;
+        text-transform: uppercase;
+        background-color: var(--orange-color);
+        padding: 7px 20px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        &:hover {
+          opacity: 0.9;
+        }
+      }
+    }
+  }
+
+  /* ////////////   Slick Button next and previous   ///////////// */
+  .slick-prev:before,
+  .slick-next:before {
+    font-size: 20px;
+    opacity: 0.75;
+    color: #000;
+  }
+`;
 
 const LandingStyling = styled.div`
   & .landing_overlay {
@@ -241,7 +623,7 @@ const LandingStyling = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: end;
-    
+
     & h1 {
       color: #49c4d3;
       margin: 0;

@@ -67,19 +67,17 @@ const GalleryImg = ({ product }) => {
 const Contente = ({ product, setShowModal }) => {
   const [qtyNumber, setQtyNumber] = useState(1);
   const [sizeSelected, setSizeSelected] = useState("");
-
-  const handleSizeSelected = (e) => {
-    setSizeSelected(e.target.value);
-    console.log(e.target.value);
-  };
+  const [colorSelected, setColorSelected] = useState("");
 
   const dispatch = useDispatch();
 
-  const addToCartHandler = (id, qty, size, merchant) => {
-    if (!sizeSelected) {
+  const addToCartHandler = (id, qty, size, color, merchant) => {
+    if (!sizeSelected && product.variantSize.length > 0) {
       warningMessage("Select the size to add to cart", 10);
+    } else if (!colorSelected && product.variantColor.length > 0) {
+      warningMessage("Select the color to add to cart", 10);
     } else {
-      dispatch(addToCart(id, qty, size, merchant));
+      dispatch(addToCart(id, qty, size, color, merchant));
       setShowModal(false);
     }
   };
@@ -97,14 +95,15 @@ const Contente = ({ product, setShowModal }) => {
       </Row>
       <Row>
         <div className="productDetail">
+          {/* ////////////////   Product Size  ////////////// */}
           {product.variantSize.length > 0 && (
-            <div className="size">
+            <div className="variant_container">
               <h2>size</h2>
-              <div className="select-size">
+              <div className="select-variant">
                 <Radio.Group
                   defaultValue={sizeSelected}
                   buttonStyle="solid"
-                  onChange={handleSizeSelected}
+                  onChange={(e) => setSizeSelected(e.target.value)}
                 >
                   {product.variantSize.map((size, index) => (
                     <RadioButton
@@ -113,6 +112,29 @@ const Contente = ({ product, setShowModal }) => {
                       className="radio-group-container"
                     >
                       {size}
+                    </RadioButton>
+                  ))}
+                </Radio.Group>
+              </div>
+            </div>
+          )}
+          {/* ////////////////   Product Color  ////////////// */}
+          {product.variantColor.length > 0 && (
+            <div className="variant_container">
+              <h2>color</h2>
+              <div className="select-variant">
+                <Radio.Group
+                  defaultValue={colorSelected}
+                  buttonStyle="solid"
+                  onChange={(e) => setColorSelected(e.target.value)}
+                >
+                  {product.variantColor.map((color, index) => (
+                    <RadioButton
+                      value={color}
+                      key={index}
+                      className="radio-group-container"
+                    >
+                      {color}
                     </RadioButton>
                   ))}
                 </Radio.Group>
@@ -144,6 +166,7 @@ const Contente = ({ product, setShowModal }) => {
                 product._id,
                 qtyNumber,
                 sizeSelected,
+                colorSelected,
                 product.user.company
               )
             }
@@ -295,8 +318,8 @@ const Row = styled.div`
   & .productDetail {
     max-width: 20rem;
 
-    & .size {
-      margin: 1rem 0;
+    & .variant_container {
+      margin: 1.3rem 0;
       & h2 {
         color: var(--orange-color);
         font-size: 1rem;
@@ -304,7 +327,7 @@ const Row = styled.div`
         letter-spacing: 2px;
         text-transform: uppercase;
       }
-      & .select-size {
+      & .select-variant {
         display: flex;
         justify-content: space-between;
 

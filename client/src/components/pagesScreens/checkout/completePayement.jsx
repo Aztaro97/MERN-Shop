@@ -8,6 +8,7 @@ import {
   ORDER_PAY_RESET,
   ORDER_DELIVER_RESET,
 } from "../../../flux/constants/orderConstants";
+import MainContainer from "../../MainContainer"
 import StripePayment from "../checkout/stripe/stripeContainer";
 
 import piture from "../../../img/card_pic.png";
@@ -46,7 +47,7 @@ function CompletePayement() {
       {loadingShipping || loading ? (
         <LoaderComponent />
       ) : (
-        <Container>
+        <MainContainer>
           <Header>
             <a href="#/" onClick={() => history.goBack()}>
               Back
@@ -99,7 +100,7 @@ function CompletePayement() {
             </SectionLeft>
             <SectionRight />
           </Grid>
-        </Container>
+        </MainContainer>
       )}
     </>
   );
@@ -171,6 +172,7 @@ const Border = styled.div`
 
 const SectionLeft = styled.div`
   padding: 2rem;
+  border: 1px solid #ececec;
 
   & h1 {
     color: var(--orange-color);
@@ -200,6 +202,10 @@ const SectionLeft = styled.div`
       text-transform: uppercase;
       font-weight: 700;
     }
+  }
+  @media only screen and (max-width:768px) {
+    margin-bottom: 2rem;
+    grid-row-start: 2;
   }
 `;
 
@@ -276,10 +282,9 @@ const Header = styled.div`
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 60% 40%;
-  border: 1px solid #ececec;
-  border-radius: 10px;
+  
   @media only screen and (max-width: 768px) {
-    display: block;
+    grid-template-columns: 1fr;
   }
 `;
 
@@ -323,6 +328,9 @@ const ContainerCart = styled.div`
     & h1:nth-child(2) {
       color: #fff;
     }
+  }
+  @media only screen and (max-width: 768px) {
+    margin-bottom: 2rem;
   }
 `;
 

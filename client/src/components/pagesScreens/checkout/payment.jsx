@@ -15,6 +15,7 @@ import { CART_CLEAR_ITEMS } from "../../../flux/constants/cartConstants";
 import { USER_DETAILS_RESET } from "../../../flux/constants/userConstants";
 import { registerShippingInfo } from "../../../flux/actions/userAction";
 import InputRadio from "../../InputRadioComponent";
+import MainContainer from "../../MainContainer"
 import Loader from "../../loader";
 
 import piture from "../../../img/card_pic.png";
@@ -174,7 +175,7 @@ function Payment() {
       {loading ? (
         <Loader />
       ) : (
-        <Container>
+        <MainContainer>
           <Header>
             <a href="#/" onClick={() => history.goBack()}>
               Back
@@ -305,7 +306,7 @@ function Payment() {
               totalPrice={totalPrice}
             />
           </Grid>
-        </Container>
+        </MainContainer>
       )}
     </>
   );
