@@ -66,64 +66,6 @@ export default function PaymentForm() {
     Number(taxPrice)
   ).toFixed(2);
 
-  // const handleSubmit = async (e) => {
-  //   console.log("click");
-  //   e.preventDefault();
-  //   const res = await stripe.createPaymentMethod({
-  //     type: "card",
-  //     card: elements.getElement(CardNumberElement),
-  //     billing_details: shippingAddress,
-  //   });
-
-  //   console.log(res)
-
-  // if (!error) {
-  //   try {
-  //     const { id } = paymentMethod;
-
-  //     const response = await axios.post("/api/payment", {
-  //       amount: totalPrice,
-  //       id,
-  //       payment_method: "pm_card_visa",
-  //     });
-
-  //     // const body = {
-  //     //   amount: totalPrice,
-  //     //   id,
-  //     //   // payment_method: "pm_card_visa",
-  //     //   paymentMethodType: "card",
-  //     //   currency: "eur"
-  //     // };
-
-  //     console.log(response)
-
-  //     // if (response.data.paymentSuccess) {
-  //     //   console.log("Successful payment");
-  //     //   setPaymentSuccess(true);
-  //     //   payOrder(response.data);
-  //     //   dispatch(
-  //     //     createOrder({
-  //     //       orderItems: cartItems,
-  //     //       shippingAddress: shippingAddress,
-  //     //       paymentMethod: paymentMethod,
-  //     //       itemsPrice: itemsPrice,
-  //     //       shippingPrice: shippingPrice,
-  //     //       taxPrice: taxPrice,
-  //     //       totalPrice: totalPrice,
-  //     //     })
-  //     //   );
-  //     //   history.push("/thank");
-  //     // }
-
-  //   } catch (error) {
-  //     console.log("Error", error);
-  //   }
-  // } else {
-  //   console.log(error.message);
-  //   errorMessage(error.message, 500);
-  // }
-  // };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!stripe || !elements) {
@@ -148,63 +90,28 @@ export default function PaymentForm() {
           payment_method: "pm_card_visa",
         });
 
+        if (response.data.paymentSuccess) {
+          console.log("Successful payment");
+          setPaymentSuccess(true);
+          payOrder(response.data);
+          payOrder(order._id, {
+            id: response.data.payment.id,
+            status: response.data.payment.status,
+            email_address: response.data.payment.receipt_email,
+          });
+          dispatch({ type: CART_CLEAR_ITEMS });
 
-
+          history.push("/thank");
+          history.push("/thank");
+        }
       } catch (error) {
         console.log("Error", error);
       }
+
     } else {
-      // console.log(error.message);
-      // errorMessage(error.message, 500);
-      console.log("error")
+      console.log(error.message);
+      console.log("error");
     }
-
-    // const config = {
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // };
-
-
-    // const body = {
-    //   amount: 90000,
-    //   // id,
-    //   paymentMethodType: "card",
-    // };
-
-    // const response = await axios.post(
-    //   "/api/payment",
-    //   JSON.stringify(body),
-    //   config
-    // );
-
-    // if (response.data.success) {
-    //   console.log("Successful payment");
-    //   setPaymentSuccess(true);
-    //   payOrder(order._id, {
-    //     id: response.data.payment.id,
-    //     status: response.data.payment.status,
-    //     email_address: response.data.payment.receipt_email
-    //   });
-    //   dispatch({type: CART_CLEAR_ITEMS})
-
-    //   history.push("/thank");
-    //   console.log(response.data.payment);
-    //   console.log(order._id)
-    // }
-
-    
-
-    // const res = await fetch("/api/payment", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     paymentMethodType: "card",
-    //     amount: 400
-    //   }),
-    // });
   };
 
   return (
@@ -263,6 +170,11 @@ const Row = styled.div`
     transition: all 0.3s;
     background: #fff;
     letter-spacing: 2px;
+    /* height: 2.9725rem; */
+    /* line-height: 2.9725rem; */
+    @media only screen and (max-width: 768px) {
+      height: 3.5rem;
+    }
   }
 `;
 

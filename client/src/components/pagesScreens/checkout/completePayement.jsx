@@ -8,7 +8,7 @@ import {
   ORDER_PAY_RESET,
   ORDER_DELIVER_RESET,
 } from "../../../flux/constants/orderConstants";
-import MainContainer from "../../MainContainer"
+import MainContainer from "../../MainContainer";
 import StripePayment from "../checkout/stripe/stripeContainer";
 
 import piture from "../../../img/card_pic.png";
@@ -91,12 +91,6 @@ function CompletePayement() {
                 <h4>Card Information</h4>
                 <StripePayment />
               </div>
-              {/* <div className="row" style={{marginTop: 30}}>
-          <ButtonC className="">submit</ButtonC>
-          <Link to="/products" className="link_back" >
-            back to payment
-          </Link>
-        </div> */}
             </SectionLeft>
             <SectionRight />
           </Grid>
@@ -203,7 +197,7 @@ const SectionLeft = styled.div`
       font-weight: 700;
     }
   }
-  @media only screen and (max-width:768px) {
+  @media only screen and (max-width: 768px) {
     margin-bottom: 2rem;
     grid-row-start: 2;
   }
@@ -282,7 +276,8 @@ const Header = styled.div`
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 60% 40%;
-  
+  margin-bottom: 3rem;
+
   @media only screen and (max-width: 768px) {
     grid-template-columns: 1fr;
   }

@@ -26,7 +26,7 @@ function AdversitingScreen() {
   );
 }
 
-const Landing = () => {
+const LandingSlider = () => {
   const settings = {
     dots: false,
     infinite: true,
@@ -62,6 +62,24 @@ const Landing = () => {
           </div>
         </div>
       </Slider>
+    </LandingStyling>
+  );
+};
+
+const Landing = () => {
+  return (
+    <LandingStyling>
+      <div>
+        <div className="landing_overlay">
+          <h1>
+            <span>Blind</span>Text Generator.
+          </h1>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+          <Link className="link1" to="#/">
+            Quote here
+          </Link>
+        </div>
+      </div>
     </LandingStyling>
   );
 };
@@ -270,7 +288,7 @@ const AdvertisingNavgation = () => {
               <p>restaurants</p>
             </div>
             <div className="card_footer">
-              <a href="#">contact us</a>
+              <a href="#/">contact us</a>
             </div>
           </div>
         </div>
@@ -281,7 +299,7 @@ const AdvertisingNavgation = () => {
               <p>construction</p>
             </div>
             <div className="card_footer">
-              <a href="#">contact us</a>
+              <a href="#/">contact us</a>
             </div>
           </div>
         </div>
@@ -292,7 +310,7 @@ const AdvertisingNavgation = () => {
               <p>reals estates</p>
             </div>
             <div className="card_footer">
-              <a href="#">contact us</a>
+              <a href="#/">contact us</a>
             </div>
           </div>
         </div>
@@ -303,7 +321,7 @@ const AdvertisingNavgation = () => {
               <p>marketing</p>
             </div>
             <div className="card_footer">
-              <a href="#">contact us</a>
+              <a href="#/">contact us</a>
             </div>
           </div>
         </div>
@@ -314,7 +332,9 @@ const AdvertisingNavgation = () => {
               <p>restaurants</p>
             </div>
             <div className="card_footer">
-              <a href="#">contact us</a>
+              <a href="#/" alt="">
+                contact us
+              </a>
             </div>
           </div>
         </div>
@@ -325,7 +345,9 @@ const AdvertisingNavgation = () => {
               <p>restaurants</p>
             </div>
             <div className="card_footer">
-              <a href="#">contact us</a>
+              <a href="#/" alt="">
+                contact us
+              </a>
             </div>
           </div>
         </div>
@@ -351,7 +373,9 @@ const JoiningUsSection = () => {
             growth with us
           </h1>
           <div className="link">
-            <a href="#">Lets go</a>
+            <a href="#/" alt="">
+              Lets go
+            </a>
           </div>
         </div>
       </div>
@@ -486,7 +510,7 @@ const PartnerStyling = styled.section`
     }
     @media only screen and (max-width: 768px) {
       width: 80px;
-    height: 80px;
+      height: 80px;
     }
   }
   /* ////////////   Slick Button next and previous   ///////////// */
@@ -609,8 +633,8 @@ const LandingStyling = styled.div`
   & .landing_overlay {
     background-image: linear-gradient(
         0deg,
-        rgba(244, 244, 244, 0.8827906162464986) 19%,
-        rgba(255, 255, 255, 0) 43%
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 0.37298669467787116) 0%
       ),
       url("https://images.unsplash.com/photo-1529460608-bc455fccd5a4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1190&q=80");
     height: 700px;
@@ -623,17 +647,19 @@ const LandingStyling = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: end;
+    color: #fff;
+    padding-bottom: 3rem;
 
     & h1 {
-      color: #49c4d3;
+      color: #fff;
       margin: 0;
       font-weight: 700;
       text-transform: uppercase;
       font-size: 2.81rem;
-      margin-left: 1rem;
+      margin-left: 2rem;
 
       & span {
-        color: #c68787;
+        /* color: #c68787; */
         display: block;
         text-transform: capitalize;
         font-size: 7.8rem;
@@ -641,7 +667,7 @@ const LandingStyling = styled.div`
       }
     }
     & p {
-      margin-left: 1rem;
+      margin-left: 2rem;
       margin-top: 5px;
       margin-bottom: 5px;
       font-size: 1.25em;
@@ -653,12 +679,13 @@ const LandingStyling = styled.div`
       border: none;
       border-radius: 30px;
       padding: 0.8rem 2rem;
-      background: var(--orange-color);
+      background: #fff;
       text-transform: uppercase;
-      color: #fff;
+      color: #000;
       width: 200px;
       text-align: center;
       margin: 10px 0;
+      margin-left: 2rem !important;
       font-size: 1rem;
       cursor: pointer;
       z-index: 99999;

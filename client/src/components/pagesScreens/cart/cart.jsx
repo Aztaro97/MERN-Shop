@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Carousel, Image } from "antd";
 import styled from "styled-components";
 import MainContainer from "../../MainContainer";
-import { AiOutlineClose } from "react-icons/ai";
+import { FaTrash } from "react-icons/fa";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart, addToCart } from "../../../flux/actions/cartAction";
@@ -66,11 +66,16 @@ function CartComponent({ location }) {
                             Size : <span>{item.sizeSelected}</span>{" "}
                           </h3>
                         )}
+                         {item.colorSelected && (
+                          <h3 className="cart_size">
+                            Color : <span>{item.colorSelected}</span>{" "}
+                          </h3>
+                        )}
                         <button
                           type="button"
                           onClick={() => handleRemoveCart(item.product)}
                         >
-                          <AiOutlineClose size={20} /> remove
+                          <FaTrash size={15} /> remove
                         </button>
                       </div>
                     </div>
@@ -260,12 +265,13 @@ const Grid = styled.div`
         letter-spacing: 1px;
       }
       & .cart_size {
-        color: var(--orange-color);
+        
         font-weight: 700;
-        margin-bottom: 0.9rem;
+        margin-bottom: 0.3rem;
         &.cart_size span {
           /* color: #000 !important; */
           font-weight: 700;
+          color: var(--orange-color);
         }
       }
 
@@ -274,15 +280,21 @@ const Grid = styled.div`
         border: none;
         display: flex;
         align-items: center;
+        justify-content: center;
         background: transparent;
         cursor: pointer;
         color: var(--orange-color);
-        text-transform: uppercase;
+        text-transform: lowercase;
         font-size: 0.9rem;
         transition: all 0.3s ease-in-out;
+        border: 1px solid var(--orange-color);
+        margin-top: 1rem;
+        padding: 10px auto;
+        transition: all 0.4s ease-in-out;
 
         &:hover {
-          font-weight: 700;
+          color: #fff;
+          background-color: var(--orange-color);
         }
 
         & > * {
