@@ -13,7 +13,7 @@ const languages = [
     name: "English",
     country_code: "gb",
   },
-  
+
   {
     code: "ar",
     name: "العربية",
@@ -33,43 +33,40 @@ function SelectLangButton() {
   const currentLanguage = languages.find((l) => l.code === currentLanguageCode);
   useEffect(() => {
     document.body.dir = currentLanguage.dir || "ltr";
-    document.title = t("welcome_message")
+    document.title = t("welcome_message");
   }, [currentLanguage, t]);
-
-
 
   return (
     <SelectC
-    style={{width:150}}
+      style={{ width: 150 }}
       onChange={(value) => i18next.changeLanguage(value)}
-      defaultValue={currentLanguageCode === "en" ? (<>
-        <span
-          style={{ paddingRight: "40px" }}
-          className={`flag-icon flag-icon-gb`}
-        >
-          
-        </span>
-        {t("name")}
-        </>
-      ) : currentLanguageCode === "ar" ? (<>
-        <span
-          style={{ paddingRight: "40px" }}
-          className={`flag-icon flag-icon-ae`}
-        >
-          
-        </span>
-        {t("name")}
-        </>
-      ) : (<>
-        <span
-          style={{ paddingRight: "40px" }}
-          className={`flag-icon flag-icon-fr`}
-        >
-          
-        </span>
-        {t("name")}
-        </>
-      )}
+      defaultValue={
+        currentLanguageCode === "en" ? (
+          <>
+            <span
+              style={{ paddingRight: "40px" }}
+              className={`flag-icon flag-icon-gb`}
+            ></span>
+            {t("name")}
+          </>
+        ) : currentLanguageCode === "ar" ? (
+          <>
+            <span
+              style={{ paddingRight: "40px" }}
+              className={`flag-icon flag-icon-ae`}
+            ></span>
+            {t("name")}
+          </>
+        ) : (
+          <>
+            <span
+              style={{ paddingRight: "40px" }}
+              className={`flag-icon flag-icon-fr`}
+            ></span>
+            {t("name")}
+          </>
+        )
+      }
     >
       {languages.map(({ code, name, country_code }, index) => (
         <Option
@@ -91,15 +88,18 @@ function SelectLangButton() {
   );
 }
 
-
-
 const SelectC = styled(Select)`
   /* border: 1px solid red; */
   /* border: 1px solid var(--orange-color); */
   border-radius: 80px;
-  @media only screen and (max-width: 380px ) {
+  @media only screen and (max-width: 380px) {
     width: 90px !important;
-    padding: 2px;
+    padding: 2px; 
+
+    & .flag-icon {
+      font-size: 1rem;
+      padding-right: 5px;
+    }
   }
 
   & .ant-select-selector {
@@ -107,14 +107,11 @@ const SelectC = styled(Select)`
     border-radius: 30px !important;
     /* border: none; */
     &:focus {
-      
     }
   }
-  
 
   &:hover {
-    
   }
-`
+`;
 
 export default SelectLangButton;

@@ -11,7 +11,7 @@ function MainContainer({children, style}) {
 
 const Container = styled.main`
     max-width:var(--max-width);
-    margin: 7rem auto 0;
+    margin: 7rem auto 4rem;
     padding-bottom: 2.5rem;
     height: 100%;
     display: block;

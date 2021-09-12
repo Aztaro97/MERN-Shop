@@ -6,6 +6,7 @@ import { loadStripe } from "@stripe/stripe-js";
 
 import StripeForme from "./stripeForm";
 
+
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_API_KEY);
 
 function stripeContainer() {

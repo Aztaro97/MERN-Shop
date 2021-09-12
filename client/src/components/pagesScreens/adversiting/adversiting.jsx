@@ -684,11 +684,11 @@ const LandingStyling = styled.div`
       color: #000;
       width: 200px;
       text-align: center;
-      margin: 10px 0;
+      margin-bottom:2rem;
       margin-left: 2rem !important;
       font-size: 1rem;
       cursor: pointer;
-      z-index: 99999;
+      /* z-index: 99999; */
       margin-left: 1rem;
       &:hover {
         opacity: 0.9;
@@ -698,7 +698,7 @@ const LandingStyling = styled.div`
 `;
 
 const Container = styled.div`
-  padding: 6rem 1rem;
+  padding: 0rem 1rem;
   max-width: 1400px;
   margin: 0 auto;
   & .real-state-bg {

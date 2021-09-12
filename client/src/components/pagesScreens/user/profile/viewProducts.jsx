@@ -96,7 +96,7 @@ const ViewProducts = () => {
           </button>
         </FilterForm>
       </Row>
-      <Row>
+      <Row className="products_items">
         <>
           {loading ? (
             <Loader />
@@ -144,6 +144,12 @@ const Row = styled.div`
   display: block;
   width: 100%;
   /* flex-direction: column; */
+
+  &.products_items {
+    margin-top: 4rem;
+  }
+
+
   & .cart_empty {
     & button {
       background: var(--orange-color);
@@ -159,23 +165,22 @@ const Row = styled.div`
 `;
 
 const FilterForm = styled.form`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1rem;
   width: 100%;
-  justify-content: space-between;
   align-items: center;
-  height: 6rem;
 
   & .form_select {
-    margin: 0 8px;
-    width: 400px;
+    width: 100%;
   }
 
   & .slider {
     display: flex;
     flex-direction: column;
-
     & p {
       margin-bottom: 0;
+      font-size: 0.9rem;
     }
   }
 
@@ -190,16 +195,24 @@ const FilterForm = styled.form`
   }
 
   @media only screen and (max-width: 768px) {
-    display: block;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0.3rem;
     height: 100%;
-    & > .form_select {
-      margin-bottom: 1rem;
+    & .form_select {
+      margin-bottom: 0.5rem;
+      width: 100%;
+    }
+    & .slider {
+      & p {
+        margin-bottom: 0;
+        font-size: 0.8rem;
+      }
     }
   }
 `;
 const SliderE = styled(Slider)`
   /* background: red; */
-  width: 200px;
+  width: 100%;
 
   & .ant-slider-rail {
     background: var(--silver-color);
@@ -214,6 +227,10 @@ const SliderE = styled(Slider)`
   }
   & .ant-slider-handle {
     border: solid 2px var(--orange-color);
+  }
+  @media only screen and (max-width: 1000px) {
+    width: 100%;
+    font-size: 0.7rem;
   }
 `;
 const Grid = styled.div`

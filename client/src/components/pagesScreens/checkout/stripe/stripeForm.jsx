@@ -11,7 +11,6 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-import { errorMessage } from "../../../message";
 import { payOrder, createOrder } from "../../../../flux/actions/orderAction";
 import { CART_CLEAR_ITEMS } from "../../../../flux/constants/cartConstants";
 import LoaderComponent from "../../../loader";

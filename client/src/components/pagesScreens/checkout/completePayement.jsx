@@ -245,11 +245,6 @@ const SectionRight = () => {
   );
 };
 
-const Container = styled.div`
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 3rem 0;
-`;
 
 const Header = styled.div`
   height: 5rem;
@@ -357,6 +352,10 @@ const Card = styled.div`
       @media only screen and (max-width: 768px) {
         bottom: 11rem;
         left: 7.5rem;
+      }
+      @media only screen and (max-width: 430px) {
+        bottom: 13rem;
+        left: 9rem;
       }
     }
   }
