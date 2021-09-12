@@ -164,7 +164,7 @@ const IntroSection = () => {
             <Slider {...settings} className="slider-container">
               <div>
                 <img
-                  src="https://images.unsplash.com/photo-1529460608-bc455fccd5a4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1190&q=80"
+                  src="./img/advertising/bg-images.jpeg"
                   alt=""
                 />
                 <div className="overlay">
@@ -180,7 +180,7 @@ const IntroSection = () => {
               </div>
               <div>
                 <img
-                  src="https://images.unsplash.com/photo-1529460608-bc455fccd5a4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1190&q=80"
+                  src="./img/advertising/bg-images.jpeg"
                   alt=""
                 />
                 <div className="overlay">
@@ -196,7 +196,7 @@ const IntroSection = () => {
               </div>
               <div>
                 <img
-                  src="https://images.unsplash.com/photo-1529460608-bc455fccd5a4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1190&q=80"
+                  src="./img/advertising/bg-images.jpeg"
                   alt=""
                 />
                 <div className="overlay">
@@ -212,7 +212,7 @@ const IntroSection = () => {
               </div>
               <div>
                 <img
-                  src="https://images.unsplash.com/photo-1529460608-bc455fccd5a4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1190&q=80"
+                  src="./img/advertising/bg-images.jpeg"
                   alt=""
                 />
                 <div className="overlay">
@@ -636,7 +636,7 @@ const LandingStyling = styled.div`
         rgba(0, 0, 0, 1) 0%,
         rgba(0, 0, 0, 0.37298669467787116) 0%
       ),
-      url("https://images.unsplash.com/photo-1529460608-bc455fccd5a4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1190&q=80");
+      url("./img/advertising/bg-images.jpeg");
     height: 700px;
     width: 100%;
     background-repeat: no-repeat;
@@ -701,7 +701,7 @@ const Container = styled.div`
   padding: 0rem 1rem;
   max-width: 1400px;
   margin: 0 auto;
-  & .real-state-bg {
+  /* & .real-state-bg {
     background-image: url("https://images.unsplash.com/photo-1630980260348-16f484cb6471?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80");
   }
   & .restaurant-bg {
@@ -712,7 +712,7 @@ const Container = styled.div`
   }
   & .pharmacy-bg {
     background-image: url("https://images.unsplash.com/photo-1471864190281-a93a3070b6de?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80");
-  }
+  } */
   & .box {
     /* background-image: url("https://images.unsplash.com/photo-1630980260348-16f484cb6471?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80"); */
     height: 200px;
