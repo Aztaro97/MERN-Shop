@@ -667,7 +667,7 @@ const LandingStyling = styled.div`
 
     & .contente_overlay {
       position: absolute;
-      margin-left: 5.5rem;
+      margin-left: 3rem;
 
       & h1 {
         color: #fff;
@@ -728,6 +728,12 @@ const LandingStyling = styled.div`
     color: #fff;
     font-size: 48px;
     position: relative;
+    @media only screen and (max-width:768px) {
+      font-size: 30px;
+      }
+      @media only screen and (max-width:540px) {
+      font-size: 20px;
+      }
   }
   .next-slick-arrow {
     right: 5rem;
