@@ -544,11 +544,20 @@ const JoiningUsStyling = styled.section`
     margin: 1rem auto;
     @media only screen and (max-width: 768px) {
       width: 100px;
+      
     }
   }
   & img {
     width: 100%;
     border-radius: 80px;
+    object-fit:cover;
+    
+    @media only screen and (max-width: 1000px) {
+      height: 600px;
+    }
+    @media only screen and (max-width: 768px) {
+      height: 300px;
+    }
   }
   & .content {
     text-align: center;
@@ -556,6 +565,7 @@ const JoiningUsStyling = styled.section`
     color: var(--silver-color);
     margin: 3rem auto 4rem auto;
     font-size: 2rem;
+    
   }
   .link {
     text-align: center;
