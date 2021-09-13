@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Slider from "react-slick";
+import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import { categoryAdversiting } from "../../../utils/advertisingData";
+import InputC from "../../InputComponents";
+import ButtonC from "../../ButtonComponeent";
 import "./advertising.css";
 
 function AdvertisingProfileScreen() {
@@ -53,7 +56,8 @@ function AdvertisingProfileScreen() {
         </section>
         <section className="contact">
           <h1 className="title">contact</h1>
-          <div className="grid">
+          <ContactForm />
+          {/* <div className="grid">
             <div>
               <form action="">
                 <ul>
@@ -77,15 +81,14 @@ function AdvertisingProfileScreen() {
                 <input type="text" placeholder="FULL NAME" required />
                 <input type="mail" placeholder="EMAIL" required />
                 <textarea
-                  name=""
-                  id=""
+                  name="message"
+                  id="message"
                   placeholder="MESSAGE"
                   cols="30"
                   rows="6"
                   required
-                >
-                  {" "}
-                </textarea>
+                />
+
                 <button class="btn btn_submit" type="submit">
                   send
                 </button>
@@ -102,7 +105,7 @@ function AdvertisingProfileScreen() {
                 loading="lazy"
               ></iframe>
             </div>
-          </div>
+          </div> */}
         </section>
       </ContainerStyling>
     </main>
@@ -156,6 +159,143 @@ const PortfolioSlider = () => {
     </Slider>
   );
 };
+
+const ContactForm = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [address, setAddress] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [city, setCity] = useState("");
+  const [country, setCountry] = useState("");
+  const [region, setRegion] = useState("");
+
+  const handleSubmit = (e) => {};
+  return (
+    <FormStyling onSubmit={handleSubmit}>
+      <div className="row">
+        <div className="col-lg-6">
+          <InputC
+            required
+            name="firstName"
+            id="firstName"
+            placeholder="FIRST NAME"
+            className="input"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+          />
+        </div>
+        <div className="col-lg-6">
+          <InputC
+            required
+            name="lastName"
+            id="lastName"
+            placeholder="LAST NAME"
+            className="input"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+          />
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-lg-6">
+          <InputC
+            required
+            name="email"
+            id="email"
+            placeholder="EMAIL"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div className="col-lg-6">
+          <InputC
+            required
+            type="tel"
+            name="phoneNumber"
+            id="phoneNumber"
+            placeholder="PHONE NUMBER"
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
+          />
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-lg-6">
+          <InputC
+            required
+            name="address"
+            id="address"
+            placeholder="ADRESS"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+          />
+        </div>
+        <div className="col-lg-6">
+          <InputC
+            required
+            type="text"
+            name="city"
+            id="city"
+            placeholder="CITY"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+          />
+        </div>
+      </div>
+
+      <div className="row">
+        <div className="col-lg-6">
+          <CountryDropdownCustom
+            required
+            name="country"
+            value={country}
+            onChange={(val) => setCountry(val)}
+          />
+        </div>
+        <div className="col-lg-6">
+          <RegionDropdownCustom
+            required
+            name="region"
+            country={country}
+            value={region}
+            onChange={(val) => setRegion(val)}
+          />
+        </div>
+      </div>
+
+      <ButtonC type="submit" className="btn_submit">
+        send
+      </ButtonC>
+    </FormStyling>
+  );
+};
+
+const FormStyling = styled.form`
+  padding: 2rem;
+  border: 1px solid #ececec;
+
+  & .row {
+    margin-bottom: 0.6rem;
+    & .col-lg-6:first-child {
+      
+      @media only screen and (max-width: 992px) {
+        margin-bottom: .6rem;
+      }
+    }
+  }
+
+  & .btn_submit {
+    margin-top: 1rem;
+    margin-left: auto;
+  }
+
+  /* border-radius: 10px; */
+  @media only screen and (max-width: 768px) {
+    margin-top: 1rem;
+    grid-row-start: 2;
+  }
+`;
 
 const ContainerStyling = styled.div`
   & section {
@@ -217,10 +357,12 @@ const ContainerStyling = styled.div`
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       grid-gap: 3rem;
+      @media only screen and (max-width: 768px) {
+        grid-template-columns: repeat(1, 1fr);
+      }
 
       & ul {
         list-style: none;
-        /* color: ; */
         & li {
           text-transform: capitalize;
         }
@@ -367,6 +509,44 @@ const LandingStyling = styled.div`
         opacity: 0.9;
       }
     }
+  }
+`;
+
+const CountryDropdownCustom = styled(CountryDropdown)`
+  border: 3px solid var(--background-color);
+  color: var(--slider-color);
+  padding-left: 0.4rem;
+  width: 100%;
+  height: 2.5rem;
+    border: 3px solid var(--background-color);
+  }
+  &:focus-visible {
+    border: 3px solid var(--background-color);
+    outline: none;
+  }
+  @media only screen and (max-width: 768px) {
+    height: 2.5rem;
+  }
+  @media only screen and (max-width: 330px) {
+    width: 100%;
+  }
+`;
+
+const RegionDropdownCustom = styled(RegionDropdown)`
+  border: 3px solid var(--background-color);
+  color: var(--slider-color);
+  padding-left: 0.4rem;
+  width: 100%;
+  height: 2.5rem;
+  &:focus {
+    border: 3px solid var(--background-color);
+  }
+  &:focus-visible {
+    border: 3px solid var(--background-color);
+    outline: none;
+  }
+  @media only screen and (max-width: 768px) {
+    height: 2.5rem;
   }
 `;
 
