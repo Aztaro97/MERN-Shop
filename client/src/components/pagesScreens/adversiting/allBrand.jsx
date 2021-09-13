@@ -35,10 +35,7 @@ const DataSection = () => {
       <hr />
       <div className="grid">
         <div className="data_item">
-          <img
-            src="/img/advertising/bg-images.jpeg"
-            alt=""
-          />
+          <img src="/img/advertising/bg-images.jpeg" alt="" />
           <div className="content">
             <h5>restaurants</h5>
             <hr />
@@ -52,10 +49,7 @@ const DataSection = () => {
           </div>
         </div>
         <div className="data_item">
-          <img
-            src="/img/advertising/bg-images.jpeg"
-            alt=""
-          />
+          <img src="/img/advertising/bg-images.jpeg" alt="" />
           <div className="content">
             <h5>restaurants</h5>
             <hr />
@@ -69,10 +63,7 @@ const DataSection = () => {
           </div>
         </div>
         <div className="data_item">
-          <img
-            src="/img/advertising/bg-images.jpeg"
-            alt=""
-          />
+          <img src="/img/advertising/bg-images.jpeg" alt="" />
           <div className="content">
             <h5>restaurants</h5>
             <hr />
@@ -86,10 +77,7 @@ const DataSection = () => {
           </div>
         </div>
         <div className="data_item">
-          <img
-            src="/img/advertising/bg-images.jpeg"
-            alt=""
-          />
+          <img src="/img/advertising/bg-images.jpeg" alt="" />
           <div className="content">
             <h5>restaurants</h5>
             <hr />
@@ -103,10 +91,7 @@ const DataSection = () => {
           </div>
         </div>
         <div className="data_item">
-          <img
-            src="/img/advertising/bg-images.jpeg"
-            alt=""
-          />
+          <img src="/img/advertising/bg-images.jpeg" alt="" />
           <div className="content">
             <h5>restaurants</h5>
             <hr />
@@ -120,10 +105,7 @@ const DataSection = () => {
           </div>
         </div>
         <div className="data_item">
-          <img
-            src="/img/advertising/bg-images.jpeg"
-            alt=""
-          />
+          <img src="/img/advertising/bg-images.jpeg" alt="" />
           <div className="content">
             <h5>restaurants</h5>
             <hr />
@@ -137,10 +119,7 @@ const DataSection = () => {
           </div>
         </div>
         <div className="data_item">
-          <img
-            src="/img/advertising/bg-images.jpeg"
-            alt=""
-          />
+          <img src="/img/advertising/bg-images.jpeg" alt="" />
           <div className="content">
             <h5>restaurants</h5>
             <hr />
@@ -212,10 +191,10 @@ const DataStyling = styled.section`
       }
     }
     @media only screen and (max-width: 1000px) {
-        grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, 1fr);
     }
     @media only screen and (max-width: 500px) {
-        grid-template-columns: repeat(1, 1fr);
+      grid-template-columns: repeat(1, 1fr);
     }
   }
 `;
@@ -246,7 +225,7 @@ const LandingStyling = styled.div`
       margin: 0;
       font-weight: 700;
       text-transform: uppercase;
-      font-size: 2.81rem;
+      font-size: 1.8rem;
       margin-bottom: 2rem;
     }
 
@@ -256,14 +235,14 @@ const LandingStyling = styled.div`
       outline: none;
       border: none;
       border-radius: 40px;
-      padding: 0.8rem 2rem;
+      padding: 0.5rem;
       background: #fff;
-      width: 300px;
+      width: 160px;
       color: #fff;
       text-align: center;
       margin-bottom: 2rem;
       margin-left: 2rem !important;
-      font-size: 2rem;
+      font-size: 1.3rem;
       cursor: pointer;
       background: var(--orange-color);
 

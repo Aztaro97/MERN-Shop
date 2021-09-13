@@ -95,6 +95,7 @@ const SliderSection = () => {
     slidesToScroll: 1,
     rows: 2,
     // slidesPerRow: 0,
+    dotsClass: "dots__bar",
     centerPadding: "0px",
     centerMode: true,
     responsive: [
@@ -151,6 +152,7 @@ const IntroSection = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     // slidesPerRow: 0,
+    dotsClass: "dots__bar",
     centerPadding: "0px",
     arrows: false,
   };
@@ -772,6 +774,7 @@ const IntroStyling = styled.section`
   & .slide_bg {
     background: #9c9c9c;
     height: 500px;
+    
 
     & .slider-container {
       height: 100%;
@@ -786,6 +789,7 @@ const IntroStyling = styled.section`
 
       & div {
         height: 100%;
+        margin-bottom: 7px;
         & img {
           object-fit: cover;
           width: 100%;
