@@ -171,7 +171,7 @@ const Row = styled.div`
 
 const FilterForm = styled.form`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-gap: 1rem;
   width: 100%;
   align-items: center;

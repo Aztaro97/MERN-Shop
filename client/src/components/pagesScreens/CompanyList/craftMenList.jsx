@@ -90,7 +90,15 @@ function CraftManList() {
                 <>
                   {craftman.users.map((user) => (
                     <div className="card" key={user._id}>
-                      <img className="card_img" src={company_pic1} alt="" />
+                      <img
+                        className="card_img"
+                        src={
+                          user.company.urlImg.length !== 0
+                            ? user.company.urlImg[0].url
+                            : company_pic2
+                        }
+                        alt=""
+                      />
                       <div className="card_body">
                         <h3>{user.company.name}</h3>
                         <TextTruncate

@@ -71,7 +71,7 @@ function HomeECommerce() {
       <div className="socialMedia" id="socialMediaContent">
         <div className="bgGrediant">
           <div className="row no-gutters">
-            <div className="col-12 col-md-5">
+            <div className="col-lg-5 col-md-12 col-sm-12">
               <div className="socialText">
                 <img src="./img/shape1.png" className="shape" alt="" />
                 <div className="contente">
@@ -89,7 +89,7 @@ function HomeECommerce() {
                 </div>
               </div>
             </div>
-            <div className="col-12 col-md-7">
+            <div className="col-lg-7 col-md-12 col-sm-12">
               <div className="popSocial">
                 <p className="largeText weight-500 thirdColor text-uppercase ">
                   how
@@ -98,7 +98,7 @@ function HomeECommerce() {
                   to make your ad
                 </p>
                 <a
-                  className="btn text-uppercase"
+                  className="btn text-uppercase social_btn_center"
                   type="button"
                   href="#/"
                   style={{ width: "auto" }}
@@ -467,7 +467,7 @@ const GridCard = styled.div`
 margin: 2rem 0 3rem 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 10px;
+  grid-gap: 15px;
   @media only screen and (max-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
   }

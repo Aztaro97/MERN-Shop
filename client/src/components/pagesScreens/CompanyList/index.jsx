@@ -37,7 +37,7 @@ function Tabulation() {
                     className="tab_icons"
                     style={{ marginRight: ".6rem" }}
                   />
-                  craftman
+                  personnel
                 </span>
               }
               key="2"

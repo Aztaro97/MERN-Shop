@@ -58,7 +58,7 @@ function RegisterPage() {
             {t("back")}
           </a>
           <div className="radio_container">
-            <Radio.Group onChange={handleClickRadio} value={typeUser}>
+            <Radio.Group onChange={handleClickRadio} defaultValue={typeUser}>
               <RadioCustom value="company"> {t("company")} </RadioCustom>
               <RadioCustom value="personnel">{t("personnel")}</RadioCustom>
             </Radio.Group>
@@ -68,13 +68,13 @@ function RegisterPage() {
         <CompanyInfo typeUser={typeUser} />
         <BankInfo />
         <GalleryPhotos />
-        <div className="row">
+        {/* <div className="row">
           <Link to="/add-product" className="submittion_btn">
             <ButtonC style={{ margin: "0 auto" }}>
               {t("save_and_continue")}
             </ButtonC>
           </Link>
-        </div>
+        </div> */}
       </FormContainer>
     </MainContainer>
   );
@@ -169,7 +169,7 @@ const CompanyInfo = ({ typeUser }) => {
     initialValues: {
       company: {
         name: "",
-        type: typeUser,
+        type: "",
         scopeBusiness: "",
         licenceNumber: "",
         expireDate: "",
@@ -688,8 +688,8 @@ const GalleryPhotos = () => {
           <p style={{ fontSize: ".8rem" }}> {t("cover_photo")}</p>
         </div>
       </div>
-      <ButtonC style={{ marginTop: "10px" }} type="submit">
-        {t("upload_all")}
+      <ButtonC style={{ margin: "2rem auto 0" }} type="submit">
+      {t("save_and_continue")}
       </ButtonC>
     </Form>
   );

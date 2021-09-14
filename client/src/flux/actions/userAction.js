@@ -512,7 +512,7 @@ export const getCraftmanList = () => async (dispatch) => {
       type: CRAFTMAN_LIST_REQUEST,
     });
 
-    const { data } = await axios.get(`/api/users/company/${"craftman"}`);
+    const { data } = await axios.get(`/api/users/company/${"personnel"}`);
 
     dispatch({
       type: CRAFTMAN_LIST_SUCCESS,

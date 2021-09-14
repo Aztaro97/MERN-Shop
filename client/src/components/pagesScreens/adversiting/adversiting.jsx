@@ -21,6 +21,7 @@ function AdversitingScreen() {
         <IntroSection />
         <JoiningUsSection />
         <PartnerSection />
+        <ServicesSlider />
       </Container>
     </main>
   );
@@ -480,6 +481,117 @@ const PartnerSection = () => {
   );
 };
 
+const ServicesSlider = () => {
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    autoplay: true,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1120,
+        settings: {
+          slidesToShow: 4,
+        },
+      },
+      {
+        breakpoint: 977,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 760,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 400,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
+  };
+  return (
+    <ServiceStyling>
+      <h1 className="title">our partner</h1>
+      <hr />
+      <Slider {...settings}>
+        <div>
+          <a href="#/" className="link" alt="">
+            <img src="/img/advertising/house.jpg" alt="" />
+          </a>
+        </div>
+        <div>
+          <a href="#/" className="link" alt="">
+            <img src="/img/advertising/house.jpg" alt="" />
+          </a>
+        </div>
+        <div>
+          <a href="#/" className="link" alt="">
+            <img src="/img/advertising/house.jpg" alt="" />
+          </a>
+        </div>
+        <div>
+          <a href="#/" className="link" alt="">
+            <img src="/img/advertising/house.jpg" alt="" />
+          </a>
+        </div>
+        <div>
+          <a href="#/" className="link" alt="">
+            <img src="/img/advertising/house.jpg" alt="" />
+          </a>
+        </div>
+        <div>
+          <a href="#/" className="link" alt="">
+            <img src="/img/advertising/house.jpg" alt="" />
+          </a>
+        </div>
+      </Slider>
+    </ServiceStyling>
+  );
+};
+
+const ServiceStyling = styled.section`
+  margin: 4rem;
+  & .title {
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--orange-color);
+    font-size: 2rem;
+  }
+  & hr {
+    height: 1px;
+    background: var(--background-color);
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3rem;
+    @media only screen and (max-width: 768px) {
+      width: 100px;
+    }
+  }
+  & .link {
+    & img {
+      max-width: 200px;
+      height: 200px;
+      margin: 0 auto;
+      object-fit: cover;
+    }
+  }
+  /* ////////////   Slick Button next and previous   ///////////// */
+  .slick-prev:before,
+  .slick-next:before {
+    font-size: 20px;
+    opacity: 0.75;
+    color: #000;
+  }
+`;
+
 const PartnerStyling = styled.section`
   margin: 4rem;
   & .title {
@@ -544,14 +656,13 @@ const JoiningUsStyling = styled.section`
     margin: 1rem auto;
     @media only screen and (max-width: 768px) {
       width: 100px;
-      
     }
   }
   & img {
     width: 100%;
     border-radius: 80px;
-    object-fit:cover;
-    
+    object-fit: cover;
+
     @media only screen and (max-width: 1000px) {
       height: 600px;
     }
@@ -565,7 +676,6 @@ const JoiningUsStyling = styled.section`
     color: var(--silver-color);
     margin: 3rem auto 4rem auto;
     font-size: 2rem;
-    
   }
   .link {
     text-align: center;
@@ -670,7 +780,7 @@ const LandingStyling = styled.div`
       );
       height: 700px;
       width: 100%;
-      @media only screen and (max-width:768px) {
+      @media only screen and (max-width: 768px) {
         height: 400px;
       }
     }
@@ -697,7 +807,7 @@ const LandingStyling = styled.div`
       & p {
         margin-top: 5px;
         margin-bottom: 5px;
-        font-size: .9em;
+        font-size: 0.9em;
       }
       & .link1 {
         display: block;
@@ -738,12 +848,12 @@ const LandingStyling = styled.div`
     color: #fff;
     font-size: 48px;
     position: relative;
-    @media only screen and (max-width:768px) {
+    @media only screen and (max-width: 768px) {
       font-size: 30px;
-      }
-      @media only screen and (max-width:540px) {
+    }
+    @media only screen and (max-width: 540px) {
       font-size: 20px;
-      }
+    }
   }
   .next-slick-arrow {
     right: 5rem;
