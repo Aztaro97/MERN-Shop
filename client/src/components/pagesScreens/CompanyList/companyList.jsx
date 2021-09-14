@@ -165,6 +165,9 @@ const CardContainer = styled.div`
       height: 12.5rem;
       object-fit: cover;
       /* border-radius: 1rem 1rem 0 0; */
+      @media only screen and (max-width: 768px) {
+      height: 17rem;
+    }
     }
 
     & .card_body {

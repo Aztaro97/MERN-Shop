@@ -67,6 +67,7 @@ export default function PaymentForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(process.env.REACT_APP_STRIPE_SECRET_KEY)
     if (!stripe || !elements) {
       return;
     }
@@ -74,7 +75,8 @@ export default function PaymentForm() {
     // ///  Check the payment valid
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
-      card: elements.getElement(CardNumberElement),
+      // card: elements.getElement(CardNumberElement),
+      card: elements.getElement(CardElement),
       billing_details: shippingAddress,
     });
 
@@ -83,11 +85,22 @@ export default function PaymentForm() {
       try {
         const { id } = paymentMethod;
 
-        const response = await axios.post("/api/payment", {
-          amount: totalPrice,
-          id,
-          payment_method: "pm_card_visa",
-        });
+        const config = {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${process.env.REACT_APP_STRIPE_SECRET_KEY} ${process.env.REACT_APP_STRIPE_API_KEY}`,
+          },
+        };
+
+        const response = await axios.post(
+          "/api/payment",
+          {
+            amount: totalPrice,
+            id,
+            payment_method: "pm_card_visa",
+          },
+          config
+        );
 
         if (response.data.paymentSuccess) {
           console.log("Successful payment");
@@ -106,7 +119,6 @@ export default function PaymentForm() {
       } catch (error) {
         console.log("Error", error);
       }
-
     } else {
       console.log(error.message);
       console.log("error");
@@ -138,6 +150,9 @@ export default function PaymentForm() {
               <Row>
                 <CardCvcElement className="input_card" options={CARD_OPTIONS} />
               </Row>
+              {/* <Row>
+                <CardElement options={CARD_OPTIONS} />
+              </Row> */}
               <button type="submit" disabled={!stripe}>
                 Pay {order.totalPrice} AED
               </button>

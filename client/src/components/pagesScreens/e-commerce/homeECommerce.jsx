@@ -420,7 +420,11 @@ const Card = styled.div`
     width: 100%;
     height: 12.5rem;
     object-fit: cover;
+    object-position: center;
     /* border-radius: 1rem 1rem 0 0; */
+    @media only screen and (max-width: 768px) {
+      height: 17rem;
+    }
   }
 
   & .card_body {
@@ -464,7 +468,7 @@ const Card = styled.div`
 `;
 
 const GridCard = styled.div`
-margin: 2rem 0 3rem 0;
+  margin: 2rem 0 3rem 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 15px;

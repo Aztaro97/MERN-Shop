@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Slider from "react-slick";
+import {Image} from "antd"
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import { categoryAdversiting } from "../../../utils/advertisingData";
 import InputC from "../../InputComponents";
@@ -333,17 +334,21 @@ const ContainerStyling = styled.div`
       margin-top: 2rem;
 
       & .slide {
-        max-width: 600px;
-        height: 400px;
+        max-width: 1080px;
+        height: 800px;
         display: flex !important;
         align-items: center;
         justify-content: center;
         margin-left: auto;
         margin-right: auto;
+        @media only screen and (max-width: 768px) {
+          height: 400px;
+        }
       }
       img {
         width: 90%;
         height: 90%;
+        object-fit: cover;
         border-radius: 40px;
         box-shadow: 13px -13px 0px -1px rgba(164, 165, 171, 0.75);
         -webkit-box-shadow: 13px -13px 0px -1px rgba(164, 165, 171, 0.75);

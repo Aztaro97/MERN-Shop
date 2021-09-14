@@ -485,7 +485,7 @@ const ServicesSlider = () => {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 500,
+    speed: 400,
     autoplay: true,
     slidesToShow: 5,
     slidesToScroll: 1,
