@@ -43,7 +43,7 @@ const DataSection = () => {
               Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
-            <a href="#/" alt="">
+            <a href="/advertising-profile" alt="">
               let's go
             </a>
           </div>
@@ -57,7 +57,7 @@ const DataSection = () => {
               Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
-            <a href="#/" alt="">
+            <a href="/advertising-profile" alt="">
               let's go
             </a>
           </div>
@@ -71,7 +71,7 @@ const DataSection = () => {
               Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
-            <a href="#/" alt="">
+            <a href="/advertising-profile" alt="">
               let's go
             </a>
           </div>
@@ -85,7 +85,7 @@ const DataSection = () => {
               Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
-            <a href="#/" alt="">
+            <a href="/advertising-profile" alt="">
               let's go
             </a>
           </div>
@@ -99,7 +99,7 @@ const DataSection = () => {
               Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
-            <a href="#/" alt="">
+            <a href="/advertising-profile" alt="">
               let's go
             </a>
           </div>
@@ -113,7 +113,7 @@ const DataSection = () => {
               Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
-            <a href="#/" alt="">
+            <a href="/advertising-profile" alt="">
               let's go
             </a>
           </div>
@@ -127,7 +127,7 @@ const DataSection = () => {
               Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
-            <a href="#/" alt="">
+            <a href="/advertising-profile" alt="">
               let's go
             </a>
           </div>

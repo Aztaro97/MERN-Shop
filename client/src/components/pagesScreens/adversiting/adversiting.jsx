@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Slider from "react-slick";
 import {
   IoRestaurantSharp,
@@ -173,6 +173,7 @@ const IntroSection = () => {
     centerPadding: "0px",
     arrows: false,
   };
+
   return (
     <IntroStyling>
       <h1 className="title">lorem ipsum</h1>
@@ -191,7 +192,7 @@ const IntroSection = () => {
                     voluptatibus dolores explicabo adipisci, repellat numquam
                     sint inventore hic possimus eligendi unde ea omnis.
                   </p>
-                  <button>contact us</button>
+                  <a href="/advertising-profile" alt="">contact us</a>
                 </div>
               </div>
               <div>
@@ -204,7 +205,7 @@ const IntroSection = () => {
                     voluptatibus dolores explicabo adipisci, repellat numquam
                     sint inventore hic possimus eligendi unde ea omnis.
                   </p>
-                  <button>contact us</button>
+                  <a href="/advertising-profile" alt="">contact us</a>
                 </div>
               </div>
               <div>
@@ -217,7 +218,7 @@ const IntroSection = () => {
                     voluptatibus dolores explicabo adipisci, repellat numquam
                     sint inventore hic possimus eligendi unde ea omnis.
                   </p>
-                  <button>contact</button>
+                  <a href="/advertising-profile" alt="">contact us</a>
                 </div>
               </div>
               <div>
@@ -230,7 +231,7 @@ const IntroSection = () => {
                     voluptatibus dolores explicabo adipisci, repellat numquam
                     sint inventore hic possimus eligendi unde ea omnis.
                   </p>
-                  <button>contact</button>
+                  <a href="/advertising-profile" alt="">contact us</a>
                 </div>
               </div>
             </Slider>
@@ -285,11 +286,18 @@ const AdvertisingNavgation = () => {
       },
     ],
   };
+
+  const history = useHistory()
+
+  const handleClick = () => {
+    history.push("/advertising-all")
+  }
+
   return (
     <NavStyling>
       <Slider {...settings}>
         <div>
-          <div className="card_container">
+          <div className="card_container" onClick={handleClick} >
             <div className="card_body">
               <IoRestaurantSharp className="icon" />
               <p>restaurants</p>
@@ -300,7 +308,7 @@ const AdvertisingNavgation = () => {
           </div>
         </div>
         <div>
-          <div className="card_container">
+          <div className="card_container" onClick={handleClick} >
             <div className="card_body">
               <IoIosConstruct className="icon" />
               <p>construction</p>
@@ -311,7 +319,7 @@ const AdvertisingNavgation = () => {
           </div>
         </div>
         <div>
-          <div className="card_container">
+          <div className="card_container" onClick={handleClick} >
             <div className="card_body">
               <BiBuildingHouse className="icon" />
               <p>reals estates</p>
@@ -322,7 +330,7 @@ const AdvertisingNavgation = () => {
           </div>
         </div>
         <div>
-          <div className="card_container">
+          <div className="card_container" onClick={handleClick} >
             <div className="card_body">
               <AiOutlineShop className="icon" />
               <p>marketing</p>
@@ -333,7 +341,7 @@ const AdvertisingNavgation = () => {
           </div>
         </div>
         <div>
-          <div className="card_container">
+          <div className="card_container" onClick={handleClick} >
             <div className="card_body">
               <IoRestaurantSharp className="icon" />
               <p>restaurants</p>
@@ -346,7 +354,7 @@ const AdvertisingNavgation = () => {
           </div>
         </div>
         <div>
-          <div className="card_container">
+          <div className="card_container" onClick={handleClick} >
             <div className="card_body">
               <IoRestaurantSharp className="icon" />
               <p>restaurants</p>
@@ -380,7 +388,7 @@ const JoiningUsSection = () => {
             growth with us
           </h1>
           <div className="link">
-            <a href="#/" alt="">
+            <a href="/partner-register" alt="">
               Lets go
             </a>
           </div>
@@ -518,7 +526,7 @@ const ServicesSlider = () => {
   };
   return (
     <ServiceStyling>
-      <h1 className="title">our partner</h1>
+      <h1 className="title">services</h1>
       <hr />
       <Slider {...settings}>
         <div>
@@ -567,7 +575,7 @@ const ServiceStyling = styled.section`
   & hr {
     height: 1px;
     background: var(--background-color);
-    width: 200px;
+    width: 120px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 3rem;
@@ -705,6 +713,7 @@ const NavStyling = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    cursor: pointer;
     /* width: 200px; */
     margin: 0 10px;
     & .card_body {
@@ -979,11 +988,15 @@ const IntroStyling = styled.section`
             font-size: 0.9rem;
             color: #fff;
           }
-          & button {
+          & a {
             border: none;
             background: var(--orange-color);
             color: #fff;
-            padding: 4px 1rem;
+            padding: 5px 1rem;
+            text-decoration: none;
+            &:hover {
+              opacity: 0.9;
+            }
           }
         }
       }

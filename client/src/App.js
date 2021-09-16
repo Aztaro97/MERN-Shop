@@ -39,6 +39,7 @@ import OutMarketingComponent from "./components/pagesScreens/marketing/outDoorMa
 import AdversitingComponent from "./components/pagesScreens/adversiting/adversiting";
 import AdversitingAllBrandComponent from "./components/pagesScreens/adversiting/allBrand"
 import AdversitingProfileComponent from "./components/pagesScreens/adversiting/advertisingProfile"
+import PartnerRegisterComponent from "./components/pagesScreens/adversiting/partnerRegister"
 
 // ////////////////  Design Component    /////////////////////
 import DesignComponent from "./components/pagesScreens/design/designScreen"
@@ -87,9 +88,10 @@ function App() {
           <Route path="/out-marketing"  component={OutMarketingComponent} />
 
           {/* ///////////////////   ADVERSITING ROUTER  /////////////////// */}
-          <Route path="/adversiting"  component={AdversitingComponent} />
-          <Route path="/adversiting-all"  component={AdversitingAllBrandComponent} />
-          <Route path="/adversiting-profile"  component={AdversitingProfileComponent} />
+          <Route path="/advertising"  component={AdversitingComponent} />
+          <Route path="/advertising-all"  component={AdversitingAllBrandComponent} />
+          <Route path="/advertising-profile"  component={AdversitingProfileComponent} />
+          <Route path="/partner-register" component={PartnerRegisterComponent} />
 
           {/* ////////////////////    DESIGNPAGE ROUTER   ////////////////// */}
           <Route path="/design"  component={DesignComponent} />

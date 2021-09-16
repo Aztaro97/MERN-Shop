@@ -51,6 +51,37 @@ function AdvertisingProfileScreen() {
             ))}
           </div>
         </section>
+
+        <section className="service_two">
+          <h1 className="title">company services</h1>
+          <div className="grid">
+            <div className="card">
+              <Image src="/img/advertising/real_state.jpg" alt="" className="card-image" />
+              <div className="card-body">
+                <p className="text-center">real estate</p>
+              </div>
+            </div>
+            <div className="card">
+              <Image src="/img/advertising/restaurant.jpg" alt="" className="card-image" />
+              <div className="card-body">
+                <p className="text-center">Restaurant</p>
+              </div>
+            </div>
+            <div className="card">
+              <Image src="/img/advertising/pharmacy.jpg" alt="" className="card-image" />
+              <div className="card-body">
+                <p className="text-center">pharmacy</p>
+              </div>
+            </div>
+            <div className="card">
+              <Image src="/img/advertising/real_state.jpg" alt="" className="card-image" />
+              <div className="card-body">
+                <p className="text-center">vehicle</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="portfolio">
           <h1 className="title">company portfolio</h1>
           <PortfolioSlider className="slider_container" />
@@ -279,9 +310,8 @@ const FormStyling = styled.form`
   & .row {
     margin-bottom: 0.6rem;
     & .col-lg-6:first-child {
-      
       @media only screen and (max-width: 992px) {
-        margin-bottom: .6rem;
+        margin-bottom: 0.6rem;
       }
     }
   }
@@ -461,6 +491,33 @@ const ContainerStyling = styled.div`
       grid-template-columns: repeat(1, 1fr);
     }
   }
+
+
+  /*  //////////   service two exemple  ///////////// */
+  & .service_two {
+    & .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 10px;
+      & .card-image {
+        max-height: 240px;
+      }
+      & p {
+        font-size: 1.2rem;
+        text-transform: capitalize;
+        letter-spacing: 2px;
+        margin: 0;
+      }
+
+      @media only screen and (max-width:520px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
+
+
+
+
 `;
 
 const LandingStyling = styled.div`

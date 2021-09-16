@@ -24,6 +24,7 @@ import {
 } from "../../../flux/actions/userAction";
 import { useFormik } from "formik";
 import MainContainer from "../../MainContainer";
+import logOutForm from "../auth/logOutForm";
 import InputRadio from "../../InputRadioComponent";
 import ButtonC from "../../ButtonComponeent";
 import InputC from "../../InputComponents";
@@ -64,7 +65,7 @@ function RegisterPage() {
             </Radio.Group>
           </div>
         </Header>
-        {!userInfo && <UserForm />}
+        {!userInfo && <logOutForm />}
         <CompanyInfo typeUser={typeUser} />
         <BankInfo />
         <GalleryPhotos />
@@ -79,74 +80,6 @@ function RegisterPage() {
     </MainContainer>
   );
 }
-
-const UserForm = () => {
-  const { t } = useTranslation();
-  const dispatch = useDispatch();
-
-  const formik = useFormik({
-    initialValues: {
-      email: "",
-      password: "",
-    },
-    onSubmit: (values) => {
-      const body = JSON.stringify(values, null, 2);
-      console.log(body);
-      dispatch(register(body));
-    },
-  });
-  return (
-    <Form onSubmit={formik.handleSubmit}>
-      <h1>{t("registration_info")}</h1>
-      <div className="card">
-        <div className="row">
-          <div className="input-container">
-            <MdMail className="icon" />
-            <input
-              required
-              className="input-field"
-              type="email"
-              placeholder={t("email_placeholder")}
-              name="email"
-              value={formik.values.email}
-              onChange={formik.handleChange}
-            />
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="input-container">
-            <GiPadlock className="icon" />
-            <input
-              required
-              className="input-field"
-              type="password"
-              placeholder={t("password_placeholder")}
-              name="password"
-              value={formik.values.password}
-              onChange={formik.handleChange}
-            />
-          </div>
-        </div>
-        <div className="row">
-          <div className="input-container">
-            <GiPadlock className="icon" />
-            <input
-              required
-              className="input-field"
-              type="password"
-              placeholder={t("retype_placeholder")}
-              name="password2"
-            />
-          </div>
-        </div>
-        <ButtonC type="submit" style={{ marginLeft: "auto", marginBottom: 20 }}>
-          {t("save")}
-        </ButtonC>
-      </div>
-    </Form>
-  );
-};
 
 const CompanyInfo = ({ typeUser }) => {
   const { t } = useTranslation();
@@ -608,7 +541,6 @@ const GalleryPhotos = () => {
   const [fileList, setFileList] = useState([]);
   const history = useHistory();
 
-
   const handleChangeImage = ({ fileList: newFileList }) => {
     setFileList(newFileList);
     console.log(newFileList);
@@ -650,11 +582,10 @@ const GalleryPhotos = () => {
         config
       );
 
-      successMessage(res.data.msg)
+      successMessage(res.data.msg);
       setTimeout(() => {
-        return history.push("/myproducts")
-      }, 1000)
-
+        return history.push("/myproducts");
+      }, 1000);
     } catch (error) {
       console.log(error.message);
     }
@@ -665,9 +596,9 @@ const GalleryPhotos = () => {
       <div className="row_galery">
         <h1>{t("add_photo_for_your")}</h1>
         <div className="card">
-          <ImgCrop >
+          <ImgCrop>
             <Upload
-            action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+              action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
               listType="picture-card"
               beforeUpload={() => true}
               onChange={handleChangeImage}
@@ -689,7 +620,7 @@ const GalleryPhotos = () => {
         </div>
       </div>
       <ButtonC style={{ margin: "2rem auto 0" }} type="submit">
-      {t("save_and_continue")}
+        {t("save_and_continue")}
       </ButtonC>
     </Form>
   );
