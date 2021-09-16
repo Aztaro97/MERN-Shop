@@ -55,15 +55,17 @@ import PhotographyComponent from "./components/pagesScreens/photographyScreen/ph
 // ////////////////  Design Component    /////////////////////
 import ProductionComponent from "./components/pagesScreens/productionScreen/productionScreen"
 
-
+import {initGA, PageView} from "./components/Tracking/tracking"
 
 
 
 function App() {
 
   useEffect(() => {
-    ReactGA.initialize("UA-207742018-1");
-    ReactGA.pageview(window.location.pathname + window.location.search);
+    // ReactGA.initialize("UA-207742018-1");
+    initGA();
+    PageView();
+    // ReactGA.pageview(window.location.pathname + window.location.search);
   } , [])
 
   return (
