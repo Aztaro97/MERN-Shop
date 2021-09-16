@@ -646,12 +646,20 @@ const Header = styled.div`
     font-weight: 700;
     position: relative;
     top: 2rem;
+    @media only screen and (max-width: 500px) {
+      display: block;
+      position: initial;
+    }
   }
 
   & .radio_container {
     display: flex;
     justify-content: center;
     align-items: center;
+    @media only screen and (max-width: 500px) {
+      display: block;
+      text-align: center;
+    }
   }
 `;
 
