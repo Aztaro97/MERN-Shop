@@ -9,10 +9,18 @@ import LogOutForm from "../auth/logOutForm";
 import { useSelector } from "react-redux";
 import { useFormik } from "formik";
 import InputComponents from "../../InputComponents";
+import SelectC from "../../SelectComponents";
+import TextArea from "../../TextAreaComponent";
+
+import { serviceArray } from "../../../utils/advertisingData";
+import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
+import ButtonComponeent from "../../ButtonComponeent";
 
 function PartnerRegister() {
   const [typeUser, setTypeUser] = useState("company");
   const [fileList, setFileList] = useState([]);
+  const [country, setCountry] = useState("");
+  const [region, setRegion] = useState("");
 
   const formik = useFormik({
     initialValues: {
@@ -98,6 +106,56 @@ function PartnerRegister() {
             <InputComponents
               style={{ textTransform: "uppercase" }}
               required
+              type="email"
+              placeholder="FIRST NAME"
+              name="company.email"
+              value={formik.values.company.email}
+              onChange={formik.handleChange}
+            />
+          </div>
+          <div className="col-lg-6 my-2">
+            <InputComponents
+              required
+              type="text"
+              style={{ textTransform: "uppercase" }}
+              placeholder="LAST NAME"
+              name="company.phoneNumber"
+              value={formik.values.company.phoneNumber}
+              onChange={formik.handleChange}
+            />
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="col-lg-6 my-2">
+            <InputComponents
+              style={{ textTransform: "uppercase" }}
+              required
+              type="email"
+              placeholder="EMAIL"
+              name="company.email"
+              value={formik.values.company.email}
+              onChange={formik.handleChange}
+            />
+          </div>
+          <div className="col-lg-6 my-2">
+            <InputComponents
+              required
+              type="text"
+              style={{ textTransform: "uppercase" }}
+              placeholder="TELEPHONE"
+              name="company.phoneNumber"
+              value={formik.values.company.phoneNumber}
+              onChange={formik.handleChange}
+            />
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="col-lg-6 my-2">
+            <InputComponents
+              style={{ textTransform: "uppercase" }}
+              required
               type="text"
               placeholder={`${typeUser} NAME`}
               name="company.name"
@@ -117,7 +175,43 @@ function PartnerRegister() {
             />
           </div>
         </div>
-        {typeUser === "company" && (
+
+        <div className="row">
+          <div className="col-lg-6  my-2">
+            <TextArea
+            required
+              name="company.about"
+              value={formik.values.company.about}
+              onChange={formik.handleChange}
+              style={{ width: "100%" }}
+              placeholder="ABOUT COMPANY"
+              rows="5"
+            />
+          </div>
+          <div className="col-lg-6">
+            <div className="row">
+              <div className="col-lg-12 my-2">
+                <CountryDropdownCustom
+                  required
+                  name="country"
+                  value={country}
+                  onChange={(val) => setCountry(val)}
+                />
+              </div>
+              <div className="col-lg-12 my-2">
+                <RegionDropdownCustom
+                  required
+                  name="region"
+                  country={country}
+                  value={region}
+                  onChange={(val) => setRegion(val)}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* {typeUser === "company" && (
           <div className="row">
             <div className="col-lg-6 my-2">
               <InputComponents
@@ -143,25 +237,49 @@ function PartnerRegister() {
               />
             </div>
           </div>
-        )}
+        )} */}
 
         <div className="row">
-          <div className="col-lg-12">
+          <div className="col-lg-12 my-2">
             <Upload
+            required
               listType="picture"
               fileList={fileList}
-            onChange={handleChangeImage}
-            onPreview={onPreview}
+              onChange={handleChangeImage}
+              onPreview={onPreview}
               accept="image/png, image/jpeg, image/jpg, video/mp4"
+              maxCount={1}
             >
-              <Button icon={<UploadOutlined />}>Upload top header</Button>
+              <Button icon={<UploadOutlined />}>Upload company logo</Button>
             </Upload>
           </div>
         </div>
+
+        <div className="row">
+          <ButtonComponeent className="ml-auto mt-2">save</ButtonComponeent>
+        </div>
       </FormPartnerInfoStyling>
+      <ServicesSection />
     </MainContainer>
   );
 }
+
+const ServicesSection = () => {
+  const [typeService, setTypeService] = useState("");
+  return (
+    <ServicesStyling>
+      <h3 className="title">Company Services</h3>
+      <SelectC
+        className="form_select"
+        placeholder="Brand"
+        name="formik.brand"
+        options={serviceArray}
+        value={typeService}
+        onChange={(e) => setTypeService(e.target.value)}
+      />
+    </ServicesStyling>
+  );
+};
 
 const FormPartnerInfoStyling = styled.form`
   padding: 1rem;
@@ -177,6 +295,17 @@ const FormPartnerInfoStyling = styled.form`
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+`;
+
+const ServicesStyling = styled.form`
+  padding: 1rem;
+  height: 100%;
+
+  & .title {
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: 700;
   }
 `;
 
@@ -200,6 +329,44 @@ const DatePickerStyling = styled(DatePicker)`
   &.ant-picker-focused {
     border-color: var(--orange-color) !important ;
     box-shadow: none;
+  }
+`;
+
+const CountryDropdownCustom = styled(CountryDropdown)`
+  border: 3px solid var(--background-color);
+  color: var(--slider-color);
+  padding-left: 0.4rem;
+  width: 100%;
+  height: 2.5rem;
+    border: 2px solid var(--background-color);
+  }
+  &:focus-visible {
+    border: 2px solid var(--background-color);
+    outline: none;
+  }
+  @media only screen and (max-width: 768px) {
+    height: 2.5rem;
+  }
+  @media only screen and (max-width: 330px) {
+    width: 100%;
+  }
+`;
+
+const RegionDropdownCustom = styled(RegionDropdown)`
+  border: 2px solid var(--background-color);
+  color: var(--slider-color);
+  padding-left: 0.4rem;
+  width: 100%;
+  height: 2.5rem;
+  &:focus {
+    border: 2px solid var(--background-color);
+  }
+  &:focus-visible {
+    border: 2px solid var(--background-color);
+    outline: none;
+  }
+  @media only screen and (max-width: 768px) {
+    height: 2.5rem;
   }
 `;
 

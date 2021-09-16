@@ -166,7 +166,7 @@ const UserForm = () => {
           width: 100%;
           padding: 0 10px;
           outline: none;
-          border: 2px solid var(--orange-color);
+          border: 2px solid var(--background-color);
           /* border-radius: 0 5px 5px 0; */
           font-size: 0.7rem;
           height: 2.5rem;

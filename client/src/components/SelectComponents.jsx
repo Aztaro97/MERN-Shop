@@ -4,10 +4,20 @@ import styled from "styled-components";
 
 // const { Option } = Select;
 
-function SelectCOmponents({ value, options, placeholder, style, name, id , className, onChange, required}) {
+function SelectCOmponents({
+  value,
+  options,
+  placeholder,
+  style,
+  name,
+  id,
+  className,
+  onChange,
+  required,
+}) {
   return (
     <SelectE
-    required={required}
+      required={required}
       name={name}
       id={id}
       style={style}
@@ -40,7 +50,7 @@ const SelectE = styled.select`
   font-size: 0.7rem;
   height: 2.5rem;
   border: 2px solid var(--background-color);
-  letter-spacing:2px;
+  letter-spacing: 2px;
 
   &:hover {
     box-shadow: 0 0 0 1px var(--orange-color);
@@ -54,9 +64,8 @@ const SelectE = styled.select`
 `;
 
 const OptionE = styled.option`
-  font-size:1rem;
+  font-size: 1rem;
   cursor: pointer;
-  
 
   &:hover {
     border: none;

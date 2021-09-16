@@ -7,9 +7,13 @@ import "./translations/i18next";
 import LoaderComponent from "./components/loader"
 import 'flag-icon-css/css/flag-icon.min.css'
 import "react-toastify/dist/ReactToastify.css";
+import ReactGA from "react-ga"
 // import "slick-carousel/slick/slick.css";
 // import "slick-carousel/slick/slick-theme.css";
 
+
+ReactGA.initialize("G-G30S0QYMCY");
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 
 
