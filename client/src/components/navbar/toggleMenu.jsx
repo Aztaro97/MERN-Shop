@@ -34,7 +34,7 @@ function ToggleMenu({ open }) {
             <SubLinks className="subLinks">
               <li>
                 <a
-                  href="/adversiting"
+                  href="/advertising"
                   onClick="menuToggling()"
                   className="subLink text-uppercase weight-500"
                 >
