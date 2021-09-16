@@ -12,7 +12,7 @@ import ReactGA from "react-ga"
 // import "slick-carousel/slick/slick-theme.css";
 
 
-ReactGA.initialize("G-G30S0QYMCY");
+ReactGA.initialize("G-G08KHNRNE5");
 ReactGA.pageview(window.location.pathname + window.location.search);
 
 
