@@ -19,7 +19,7 @@ import {
 } from "react-share";
 import { addToCart } from "../../../flux/actions/cartAction";
 import { warningMessage } from "../../message";
-import {Tracking} from "../../Tracking/tracking"
+import {Event} from "../../Tracking/tracking"
 
 import picture from "../../../img/Background.png";
 import picture1 from "../../../img/productimg.png";
@@ -93,7 +93,7 @@ const Contente = ({ product, setShowModal }) => {
     companyInfo
   ) => {
     addToCartHandler(productId, qty, sizeSelected, colorSelected, companyInfo);
-    Tracking("product", "Product added to cart", productId )
+    Event("product", "Product added to cart", productId )
   };
 
   return (
