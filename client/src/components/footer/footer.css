@@ -346,5 +346,20 @@ footer .homeContact .mapContent {
     padding:0 .7rem 1rem;
 }
 
+@media only screen and (max-width:768px) {
+    footer .homeContact .mapContent {
+        width: 200px;
+        height: 200px;
+        margin-top: 70px;
+    }
+}
+@media only screen and (max-width:400px) {
+    footer .homeContact .mapContent {
+        width: 150px;
+        height: 150px;
+        margin-top: 70px;
+    }
+}
+
 
 /* End styling Footer  */
