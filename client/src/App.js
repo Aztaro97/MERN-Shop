@@ -1,5 +1,7 @@
+import React, {useEffect} from 'react'
 import "./App.css";
 import "antd/dist/antd.css";
+import ReactGA from "react-ga"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NavBar from "./components/navbar/NavBar";
 import Footer from "./components/footer/Footer";
@@ -53,7 +55,17 @@ import PhotographyComponent from "./components/pagesScreens/photographyScreen/ph
 // ////////////////  Design Component    /////////////////////
 import ProductionComponent from "./components/pagesScreens/productionScreen/productionScreen"
 
+
+
+
+
 function App() {
+
+  useEffect(() => {
+    ReactGA.initialize("UA-207742018-1");
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  } , [])
+
   return (
     <Router className="App">
       <GlobalStyle />
