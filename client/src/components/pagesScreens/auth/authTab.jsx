@@ -1,36 +1,36 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { Tabs } from "antd";
 import styled from "styled-components";
-import {useHistory, Redirect} from "react-router-dom"
-import {useDispatch, useSelector} from "react-redux"
+import { useHistory, Redirect } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import MainContainer from "./../../MainContainer";
 import LoginComponent from "./loginTab";
 import RegisterComponent from "./RegisterTab";
-import {useTranslation} from "react-i18next"
+import { useTranslation } from "react-i18next";
 
 const { TabPane } = Tabs;
 
-function AuthTabPage({location}) {
-  const {t} = useTranslation();
+function AuthTabPage({ location }) {
+  const { t } = useTranslation();
 
-  const redirect = location.search ? location.search.split('=')[1] : "/"
+  const redirect = location.search ? location.search.split("=")[1] : "/";
 
   const history = useHistory();
-  const {userInfo} = useSelector((state) => state.userLogin);
+  const { userInfo } = useSelector((state) => state.userLogin);
 
   useEffect(() => {
     if (userInfo) {
-      history.push(redirect)
+      history.push(redirect);
     }
-  }, [redirect])
+  }, [redirect]);
 
   if (userInfo) {
-    history.push("/products")
+    history.push("/products");
   }
 
   return (
-    <AuthTab>
-      <MainContainer>
+    <MainContainer>
+      <AuthTab>
         <TabsE defaultActiveKey="1" centered size="default">
           <TabPaneE tab={t("login")} key="1">
             <LoginComponent />
@@ -39,16 +39,16 @@ function AuthTabPage({location}) {
             <RegisterComponent />
           </TabPaneE>
         </TabsE>
-      </MainContainer>
-    </AuthTab>
+      </AuthTab>
+    </MainContainer>
   );
 }
 
 const AuthTab = styled.div`
   /* height: ; */
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  padding: 4rem 0;
+  padding: 4rem 0; */
 `;
 
 const TabsE = styled(Tabs)`
@@ -68,6 +68,12 @@ const TabsE = styled(Tabs)`
   }
   & .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
     color: var(--orange-color) !important;
+  }
+  &.ant-tabs-top > .ant-tabs-nav::before {
+    border-bottom: none !important;
+  }
+  & .ant-tabs-ink-bar {
+    background-color: var(--orange-color) !important;
   }
 `;
 

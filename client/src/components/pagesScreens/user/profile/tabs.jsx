@@ -63,6 +63,12 @@ const TabsE = styled(Tabs)`
   & .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
     color: var(--orange-color) !important;
   }
+  &.ant-tabs-top > .ant-tabs-nav::before {
+    border-bottom: none !important;
+  }
+  & .ant-tabs-ink-bar {
+    background-color: var(--orange-color) !important;
+  }
 `;
 
 export default Tabulation;

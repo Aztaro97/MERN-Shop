@@ -4,23 +4,23 @@ import InputComponents from "../../InputComponents";
 import ButtonComponeent from "../../ButtonComponeent";
 import { Link, useHistory } from "react-router-dom";
 import { useFormik } from "formik";
-import {useTranslation} from "react-i18next"
-import {useDispatch} from "react-redux"
-import {login} from "../../../flux/actions/userAction"
+import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
+import { login } from "../../../flux/actions/userAction";
 
 function LoginForm() {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
       email: "",
       password: "",
     },
-    onSubmit:async (values) => {
+    onSubmit: async (values) => {
       const body = JSON.stringify(values, null, 2);
       dispatch(login(body));
-      formik.setFieldValue("email", "")
-      formik.setFieldValue("password", "")
+      formik.setFieldValue("email", "");
+      formik.setFieldValue("password", "");
     },
   });
   return (
@@ -57,17 +57,18 @@ function LoginForm() {
 }
 
 const Containber = styled.div`
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 3rem;
-  width: 550px;
+  width: 500px;
+  padding: 2rem;
 
-  @media only screen and (max-width: 651px) {
-    width: auto;
-    padding: 2rem;
+  @media only screen and (max-width: 768px) {
+    padding: 1rem;
   }
 `;
-const Form = styled.form``;
+const Form = styled.form`
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 2rem;
+`;
 
 const Row = styled.div`
   padding: 1rem 0;
@@ -84,7 +85,7 @@ const LinkE = styled(Link)`
 
   &:hover {
     color: var(--orange-color);
-    text-decoration:none;
+    text-decoration: none;
   }
   @media only screen and (max-width: 653px) {
     font-size: 0.6rem;

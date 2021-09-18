@@ -46,14 +46,17 @@ import PartnerRegisterComponent from "./components/pagesScreens/adversiting/part
 // ////////////////  Design Component    /////////////////////
 import DesignComponent from "./components/pagesScreens/design/designScreen"
 
-// ////////////////  Design Component    /////////////////////
+// ////////////////  PROGRAMMING Component    /////////////////////
 import ProgrammingComponent from "./components/pagesScreens/programmingScreen/programmingScreen"
 
-// ////////////////  Design Component    /////////////////////
+// ////////////////  PHOTOGRAPHY Component    /////////////////////
 import PhotographyComponent from "./components/pagesScreens/photographyScreen/photographyScreen"
 
-// ////////////////  Design Component    /////////////////////
+// ////////////////  PRODUCTION Component    /////////////////////
 import ProductionComponent from "./components/pagesScreens/productionScreen/productionScreen"
+
+// ////////////////  ABOUT Component    /////////////////////
+import AboutComponent from "./components/pagesScreens/AboutScreen/aboutScreen"
 
 import {initGA, PageView} from "./components/Tracking/tracking"
 
@@ -118,6 +121,9 @@ function App() {
 
           {/* ////////////////////    PRODUCTION ROUTER   ////////////////// */}
           <Route path="/production"  component={ProductionComponent} />
+
+          {/* ////////////////////    ABOUT ROUTER   ////////////////// */}
+          <Route path="/about"  component={AboutComponent} />
 
 
 

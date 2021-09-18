@@ -45,7 +45,7 @@ const GalleryImg = ({ product }) => {
     <GallerieContent>
       <img className="current-img" src={currentImg} alt="" />
       <div className="aside-img">
-        {product.imageUrl.slice(0, 4).map((image, index) => (
+        {product.imageUrl.slice(0, 5).map((image, index) => (
           <img key={index} src={image.url} alt="" onClick={hanleClick} />
         ))}
       </div>

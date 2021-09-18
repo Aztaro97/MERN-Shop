@@ -57,7 +57,7 @@ const GalleryImg = ({ product }) => {
         alt=""
       />
       <div className="aside-img">
-        {product.imageUrl.slice(1, 5).map((image, index) => (
+        {product.imageUrl.slice(0, 5).map((image, index) => (
           <img key={index} src={image.url} alt="" onClick={hanleClick} />
         ))}
       </div>
@@ -352,6 +352,7 @@ const Row = styled.div`
             height: 40px;
             line-height: 40px;
             padding: 0 0.7rem;
+            background: var(--orange-color) !important;
 
             & > * {
               display: flex;
@@ -371,6 +372,15 @@ const Row = styled.div`
                 color: #fff;
               }
             }
+          }
+          &.ant-radio-button-wrapper .ant-radio-group-solid .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):active {
+            background-color: var(--orange-color);
+          }
+          &.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled)::before {
+            background-color: none !important;
+          }
+          &.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):hover::before {
+            background-color: none !important;
           }
         }
       }

@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link, useHistory } from "react-router-dom";
-import { FaUser, FaShoppingCart, FaUserCog } from "react-icons/all";
+import { FaUser, FaShoppingCart } from "react-icons/fa";
+import { AiTwotoneSetting } from "react-icons/ai";
 import { Popover, Menu } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../flux/actions/userAction";
 import { createProduct } from "../../flux/actions/productAction";
 import { useTranslation } from "react-i18next";
-import cookies from "js-cookie"
+import cookies from "js-cookie";
 import SelectLangue from "./SelectLangButton";
 import ToggleMenu from "./toggleMenu";
 
@@ -27,8 +28,6 @@ function NavBar() {
   const { cartItems } = useSelector((state) => state.cart);
 
   const { userInfo } = useSelector((state) => state.userLogin);
-
-  
 
   const {
     loading: loadingCreate,
@@ -74,18 +73,18 @@ function NavBar() {
         </>
       ) : (
         <>
-        <LinkR href="/myorder">{t("my_order")}</LinkR>
+          <LinkR href="/myorder">{t("my_order")}</LinkR>
           <LinkR
             style={{ textTransform: "capitalize", letterSpacing: "1px" }}
             href="/register"
           >
-           {t("create_your_shop")}
+            {t("create_your_shop")}
           </LinkR>
         </>
       )}
 
       <LinkP className="btn_logOut" onClick={handleLogOut}>
-      {t("logout")}
+        {t("logout")}
       </LinkP>
     </Content>
   );
@@ -98,7 +97,7 @@ function NavBar() {
         {t("create_your_shop")}
       </LinkR>
       <LinkP to="/auth" className="btn_signin">
-      {t("login")}
+        {t("login")}
       </LinkP>
     </Content>
   );
@@ -133,7 +132,7 @@ function NavBar() {
     </Menu>
   );
 
-  const currentLanguageCode = cookies.get("i18next")
+  const currentLanguageCode = cookies.get("i18next");
 
   return (
     <Header scrollNav={scrollNav}>
@@ -143,7 +142,9 @@ function NavBar() {
       {/* <Lang href="/" onClick={handleChangeLang} >{t("language")}</Lang> */}
 
       <Nav>
-        <SelectLangue />
+        <NavItem>
+          <SelectLangue />
+        </NavItem>
         {userInfo && userInfo.isAdmin && (
           <NavItem>
             <Popover
@@ -152,7 +153,7 @@ function NavBar() {
               trigger="hover"
             >
               <NavLink>
-                <FaUserCog className="icon" size={30} />
+                <AiTwotoneSetting className="icon" />
               </NavLink>
             </Popover>
           </NavItem>
@@ -206,7 +207,7 @@ const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 3rem;
+  padding: 0 2rem;
   position: fixed;
   top: 0;
   width: 100%;
@@ -217,7 +218,7 @@ const Header = styled.header`
   transition: ${({ scrollNav }) =>
     scrollNav ? "background 0s ease-in-out" : "background .5s ease-in-out"};
   @media only screen and (max-width: 995px) {
-    padding-left: 1rem;
+    /* padding-left: 1rem; */
     /* padding: 0 1rem; */
   }
 `;
@@ -227,18 +228,11 @@ const Nav = styled.ul`
   align-items: center;
   list-style: none;
   margin-bottom: 0;
-  position: relative;
-  right: 1.8rem;
-  top: 0.6rem;
-  @media only screen and (max-width: 995px) {
-    right: -1rem;
-    top: 0.1rem;
-  }
 `;
 const NavItem = styled.li`
-  margin: 0 1rem;
+  margin: 0 .7rem;
   @media only screen and (max-width: 995px) {
-    margin: 0 .4rem;
+    margin: 0 0.4rem;
   }
 `;
 const NavLink = styled(Link)`
@@ -251,8 +245,8 @@ const NavLink = styled(Link)`
   & .count {
     position: relative;
     bottom: 1rem;
-    /* right: 0.4rem; */
-    right: ${({ currentLanguageCode }) => currentLanguageCode === "ar" ? "-.3rem" : ".4rem"};
+    right: ${({ currentLanguageCode }) =>
+      currentLanguageCode === "ar" ? "-.3rem" : ".4rem"};
     background: var(--orange-color);
     color: #fff;
     padding: 6px;
@@ -285,10 +279,16 @@ const LinkR = styled.a`
   margin: 0.7rem 0;
   text-align: center;
   transition: 0.2s all ease-in;
+  font-size: 1rem;
   &:hover {
     color: #fff;
     background: var(--orange-color);
     text-decoration: none;
+  }
+  @media only screen and (max-width: 768px) {
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem;
+    margin: 0.5rem 0;
   }
 `;
 
@@ -302,6 +302,7 @@ const LinkP = styled(Link)`
   margin: 0.7rem 0;
   text-align: center;
   transition: 0.2s all ease-in;
+  font-size: 1rem;
   &:hover {
     color: #fff;
     background: var(--orange-color);
@@ -323,19 +324,25 @@ const LinkP = styled(Link)`
     padding: 0.3rem 3rem;
     /* margin:2rem 0 */
   }
+  @media only screen and (max-width: 768px) {
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem;
+    margin: 0.5rem 0;
+  }
 `;
 
 const Logo = styled.a`
-  position: relative;
+  /* position: relative;
+  top: 0px; */
+  z-index: 999999999999;
   text-decoration: none;
-   
+
   span {
     color: var(--silver-color);
-   text-transform: uppercase;
-   font-weight: 700;
+    text-transform: uppercase;
+    font-weight: 700;
   }
-  top: 0px;
-  z-index: 999999999999;
+
   & img {
     width: 3rem;
   }
@@ -345,9 +352,9 @@ const Logo = styled.a`
     color: var(--silver-color);
   }
   @media only screen and (max-width: 560px) {
-   span {
-     display: none;
-   }
+    span {
+      display: none;
+    }
   }
 `;
 

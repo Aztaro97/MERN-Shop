@@ -8,7 +8,7 @@ import {
   listProducts,
   filterAllProducts,
 } from "../../../flux/actions/productAction";
-import CardProduct from "./CardProduct";
+import ProductItems from "./ProductItem";
 import Loader from "../../loader";
 import Paginate from "../../pagination";
 import MainContainer from "../../MainContainer";
@@ -106,7 +106,7 @@ const ViewProducts = ({ match }) => {
                   <Grid>
                     {products.map((product, index) => (
                       <div key={index} style={{ width: "100%" }}>
-                        <CardProduct product={product} />
+                        <ProductItems product={product} />
                       </div>
                     ))}
                   </Grid>

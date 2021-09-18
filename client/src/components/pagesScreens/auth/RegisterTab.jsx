@@ -102,17 +102,18 @@ function Register() {
 }
 
 const Containber = styled.div`
-  border: 01px solid #ddd;
-  border-radius: 10px;
-  padding: 3rem;
-  width: 550px;
+  width: 500px;
+  padding: 2rem;
 
-  @media only screen and (max-width: 651px) {
-    width: auto;
-    padding: 2rem;
+  @media only screen and (max-width: 768px) {
+    padding: 1rem;
   }
 `;
-const Form = styled.form``;
+const Form = styled.form`
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 2rem;
+`;
 
 const Row = styled.div`
   padding: 1rem 0;
