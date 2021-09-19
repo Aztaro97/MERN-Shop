@@ -42,6 +42,7 @@ import AdversitingComponent from "./components/pagesScreens/adversiting/adversit
 import AdversitingAllBrandComponent from "./components/pagesScreens/adversiting/allBrand"
 import AdversitingProfileComponent from "./components/pagesScreens/adversiting/advertisingProfile"
 import PartnerRegisterComponent from "./components/pagesScreens/adversiting/partnerRegister"
+import StepComponent from "./components/pagesScreens/adversiting/StepsScreen"
 
 // ////////////////  Design Component    /////////////////////
 import DesignComponent from "./components/pagesScreens/design/designScreen"
@@ -109,6 +110,7 @@ function App() {
           <Route path="/advertising-all"  component={AdversitingAllBrandComponent} />
           <Route path="/advertising-profile"  component={AdversitingProfileComponent} />
           <Route path="/partner-register" component={PartnerRegisterComponent} />
+          <Route path="/partner-register2" component={StepComponent} />
 
           {/* ////////////////////    DESIGNPAGE ROUTER   ////////////////// */}
           <Route path="/design"  component={DesignComponent} />

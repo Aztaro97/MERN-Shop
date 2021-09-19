@@ -11,9 +11,7 @@ import {
   FaChevronRight
 } from "react-icons/fa";
 
-// import OwlCarousel from 'react-owl-carousel';
-// import 'owl.carousel/dist/assets/owl.carousel.css';
-// import 'owl.carousel/dist/assets/owl.theme.default.css';
+
 
 import "./css/style.css";
 import "./css/bootstrap.min.css";
@@ -21,11 +19,6 @@ import "./css/owl.carousel.min.css";
 import "./css/owl.theme.default.min.css";
 import "./css/animate.min.css";
 
-// import "./js/main"
-// import "./js/jquery-3.5.1.slim.min.js"
-// import "./js/bootstrap.min.js"
-// import "./js/owl.carousel.min.js"
-// import "./js/popper.min.js"
 
 function HomeComponents() {
   return (
@@ -175,12 +168,12 @@ function HomeComponents() {
                   {/* <!--  repeating carousel item  --> */}
                   <div className="carousel-item active">
                     <div className="minContent">
-                      <div className="imgCover">
+                      <a href="/advertising" className="imgCover">
                         <img alt="" src="./img/myadd.png" />
                         {/* <!-- carousel number from 2 digits number  --> */}
                         <div className="carousalNumber">01</div>
-                      </div>
-                      <div className="carousel-caption">
+                      </a>
+                      <a href="/advertising" className="carousel-caption">
                         <h3 className="mediumTitle secColor text-uppercase weight-500">
                           Advertising
                         </h3>
@@ -189,18 +182,18 @@ function HomeComponents() {
                           when our clients succeed <br /> Which is why we never
                           stop <br /> working on being better
                         </p>
-                      </div>
+                      </a>
                     </div>
                   </div>
                   {/* <!--  repeating carousel item  --> */}
                   <div className="carousel-item ">
                     <div className="minContent">
-                      <div className="imgCover">
+                      <a href="/marketing" className="imgCover">
                         <img alt="" src="./img/marketing.png" />
                         {/* <!-- carousel number from 2 digits number  --> */}
                         <div className="carousalNumber">02</div>
-                      </div>
-                      <div className="carousel-caption">
+                      </a>
+                      <a href="/marketing" className="carousel-caption">
                         <h3 className="mediumTitle secColor text-uppercase weight-500">
                           Marketing
                         </h3>
@@ -209,18 +202,18 @@ function HomeComponents() {
                           when our clients succeed <br /> Which is why we never
                           stop <br /> working on being better
                         </p>
-                      </div>
+                      </a>
                     </div>
                   </div>
                   {/* // <!--  repeating carousel item  --> */}
                   <div className="carousel-item ">
                     <div className="minContent">
-                      <div className="imgCover">
+                      <a href="/e-commerce" className="imgCover">
                         <img alt="" src="./img/e-commerce.png" />
                         {/* <!-- carousel number from 2 digits number  --> */}
                         <div className="carousalNumber">03</div>
-                      </div>
-                      <div className="carousel-caption">
+                      </a>
+                      <a href="/e-commerce" className="carousel-caption">
                         <h3 className="mediumTitle secColor text-uppercase weight-500">
                           E-Commerce
                         </h3>
@@ -229,7 +222,7 @@ function HomeComponents() {
                           when our clients succeed <br /> Which is why we never
                           stop <br /> working on being better
                         </p>
-                      </div>
+                      </a>
                     </div>
                   </div>
                   {/* // <!--  repeating carousel item  --> */}
@@ -240,7 +233,7 @@ function HomeComponents() {
                         {/* <!-- carousel number from 2 digits number  --> */}
                         <div className="carousalNumber">04</div>
                       </a>
-                      <a className="carousel-caption" href="pos.html">
+                      <a className="carousel-caption" href="/pos">
                         <h3 className="mediumTitle secColor text-uppercase weight-500">
                           POS
                         </h3>
@@ -255,12 +248,12 @@ function HomeComponents() {
                   {/* // <!--  repeating carousel item  --> */}
                   <div className="carousel-item ">
                     <div className="minContent">
-                      <div className="imgCover">
+                      <a href="/printing" className="imgCover">
                         <img alt="" src="./img/printing.png" />
                         {/* <!-- carousel number from 2 digits number  --> */}
                         <div className="carousalNumber">05</div>
-                      </div>
-                      <div className="carousel-caption">
+                      </a>
+                      <a href="/printing" className="carousel-caption">
                         <h3 className="mediumTitle secColor text-uppercase weight-500">
                           Printing
                         </h3>
@@ -269,18 +262,18 @@ function HomeComponents() {
                           when our clients succeed <br /> Which is why we never
                           stop <br /> working on being better
                         </p>
-                      </div>
+                      </a>
                     </div>
                   </div>
                   {/* // <!--  repeating carousel item  --> */}
                   <div className="carousel-item ">
                     <div className="minContent">
-                      <div className="imgCover">
+                      <a href="/photography" className="imgCover">
                         <img alt="" src="./img/photography.png" />
                         {/* <!-- carousel number from 2 digits number  --> */}
                         <div className="carousalNumber">06</div>
-                      </div>
-                      <div className="carousel-caption">
+                      </a>
+                      <a href="/photography" className="carousel-caption">
                         <h3 className="mediumTitle secColor text-uppercase weight-500">
                           Photography
                         </h3>
@@ -289,18 +282,18 @@ function HomeComponents() {
                           when our clients succeed <br /> Which is why we never
                           stop <br /> working on being better
                         </p>
-                      </div>
+                      </a>
                     </div>
                   </div>
                   {/* // <!--  repeating carousel item  --> */}
                   <div className="carousel-item ">
                     <div className="minContent">
-                      <div className="imgCover">
+                      <a href="/designing" className="imgCover">
                         <img alt="" src="./img/designing.png" />
                         {/* <!-- carousel number from 2 digits number  --> */}
                         <div className="carousalNumber">07</div>
-                      </div>
-                      <div className="carousel-caption">
+                      </a>
+                      <a href="/designing" className="carousel-caption">
                         <h3 className="mediumTitle secColor text-uppercase weight-500">
                           designing
                         </h3>
@@ -309,7 +302,7 @@ function HomeComponents() {
                           when our clients succeed <br /> Which is why we never
                           stop <br /> working on being better
                         </p>
-                      </div>
+                      </a>
                     </div>
                   </div>
                   {/* // <!--  repeating carousel item  --> */}
@@ -335,12 +328,12 @@ function HomeComponents() {
                   {/* // <!--  repeating carousel item  --> */}
                   <div className="carousel-item ">
                     <div className="minContent">
-                      <div className="imgCover">
+                      <a href="/programming" className="imgCover">
                         <img alt="" src="./img/programing.png" />
                         {/* <!-- carousel number from 2 digits number  --> */}
                         <div className="carousalNumber">09</div>
-                      </div>
-                      <div className="carousel-caption">
+                      </a>
+                      <a href="/programming" className="carousel-caption">
                         <h3 className="mediumTitle secColor text-uppercase weight-500">
                           programing
                         </h3>
@@ -349,7 +342,7 @@ function HomeComponents() {
                           when our clients succeed <br /> Which is why we never
                           stop <br /> working on being better
                         </p>
-                      </div>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -361,8 +354,7 @@ function HomeComponents() {
                   data-slide="prev"
                 >
                   <span>
-                    {/* <i className="fas fa-chevron-left"></i> */}
-                    <FaChevronLeft  />
+                    <FaChevronLeft className="chevron_prev"  />
                   </span>
                   <span className="sr-only">Previous</span>
                 </a>
@@ -373,8 +365,7 @@ function HomeComponents() {
                   data-slide="next"
                 >
                   <span>
-                    {/* <i className="fas fa-chevron-right"></i>o */}
-                    <FaChevronRight />
+                    <FaChevronRight className="chevron_next" />
 
                   </span>
                   <span className="sr-only">Next</span>
@@ -521,7 +512,7 @@ function HomeComponents() {
                   {/* <!-- link for going to external map  --> */}
                   <a className="mapContent" href="#/">
                     {/* <!-- png square img  (preferred 737 * 737 px) --> */}
-                    <img alt="" className="mapImg" src="./img/map.png" />
+                    <iframe title="AU79CODE Location" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7218.432955814597!2d55.385108200000005!3d25.229632700000014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m3!3e6!4m0!4m0!5e0!3m2!1sen!2sae!4v1629292534309!5m2!1sen!2sae" width="600" height="450"  allowfullscreen="" loading="lazy"></iframe>
                     <div className="corners">
                       <div className="corner"></div>
                       <div className="corner"></div>
@@ -553,6 +544,13 @@ const MainStyling = styled.div`
       }
     }
   }
+
+  & .arrow .chevron_prev, .arrow .chevron_next {
+    transform: rotate(-45deg) !important;
+  }
+
+
+
 `;
 
 export default HomeComponents;

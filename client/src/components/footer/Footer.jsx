@@ -88,7 +88,8 @@ function FooterScrren() {
               {/* <!-- link for going to external map  --> */}
               <a className="mapContent" href="https://goo.gl/maps/eKtFdn7NEEZSxoty8" target="_blank"  rel="noreferrer" >
                 {/* <!-- png square img  (preferred 737 * 737 px) --> */}
-                <img className="mapImg" src={MapImg} alt="" />
+                {/* <img className="mapImg" src={MapImg} alt="" /> */}
+                <iframe title="AU79CODE Location" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7218.432955814597!2d55.385108200000005!3d25.229632700000014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m3!3e6!4m0!4m0!5e0!3m2!1sen!2sae!4v1629292534309!5m2!1sen!2sae" width="600" height="450"  allowfullscreen="" loading="lazy"></iframe>
                 <div className="corners">
                   <div className="corner"></div>
                   <div className="corner"></div>

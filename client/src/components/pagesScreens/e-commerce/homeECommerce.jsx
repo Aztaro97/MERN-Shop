@@ -113,7 +113,7 @@ function HomeECommerce() {
                     </a>
                   </div>
                   <div className="item">
-                    <a href="/#" className="btn" type="button">
+                    <a href="/register" className="btn" type="button">
                       <img src="./img/profile3.png" alt="" />
                       <span className="social_btn">register</span>
                     </a>

@@ -50,7 +50,7 @@ const GalleryImg = ({ product }) => {
   }, []);
 
   return (
-    <GallerieContent>
+    <GallerieStyling>
       <img
         className="current-img"
         src={product.imageUrl.length > 0 ? currentImg : picture1}
@@ -61,7 +61,7 @@ const GalleryImg = ({ product }) => {
           <img key={index} src={image.url} alt="" onClick={hanleClick} />
         ))}
       </div>
-    </GallerieContent>
+    </GallerieStyling>
   );
 };
 
@@ -97,7 +97,7 @@ const Contente = ({ product, setShowModal }) => {
   };
 
   return (
-    <ContenteContainer>
+    <ContenteStyling>
       <Row>
         <h1>{product.name}</h1>
         <p style={{ marginBottom: "10px" }}>{product.description}</p>
@@ -243,16 +243,16 @@ const Contente = ({ product, setShowModal }) => {
           </div>
         </div>
       </Row>
-    </ContenteContainer>
+    </ContenteStyling>
   );
 };
 
-const GallerieContent = styled.div`
+const GallerieStyling = styled.div`
   display: flex;
   padding: 1rem;
 
   & .current-img {
-    border: 4px solid #c68787;
+    border: 1px solid #c68787;
     border-radius: 10px;
     max-height: 100%;
     width: 70%;
@@ -270,12 +270,12 @@ const GallerieContent = styled.div`
     width: 30%;
 
     & img {
-      width: 100px;
+      width: 100%;
       height: 100px;
       object-fit: cover;
-      margin-left: 15px;
+      margin-left: 10px;
       border-radius: 10px;
-      border: 4px solid #c68787;
+      border: 1px solid #c68787;
       cursor: pointer;
       margin-bottom: 4px;
       @media only screen and (max-width: 500px) {
@@ -312,14 +312,7 @@ const Row = styled.div`
     font-size: 0.9rem;
   }
 
-  & .merchant_name {
-    font-size: 1rem;
-    font-weight: 700;
-    & span {
-      color: var(--jungle-color);
-      text-transform: uppercase;
-    }
-  }
+ 
 
   & .price {
     color: var(--jungle-color);
@@ -482,8 +475,16 @@ const Btn = styled.div`
   }
 `;
 
-const ContenteContainer = styled.div`
+const ContenteStyling = styled.div`
   padding: 1rem;
+  & .merchant_name {
+    font-size: 1rem;
+    font-weight: 700;
+    & span {
+      color: var(--jungle-color);
+      text-transform: uppercase;
+    }
+  }
 `;
 
 const RadioButton = styled(Radio.Button)`

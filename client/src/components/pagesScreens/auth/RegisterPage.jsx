@@ -32,6 +32,7 @@ import SelectC from "../../SelectComponents";
 import Ratio from "../../antRatio";
 import { successMessage } from "../../message";
 
+
 function RegisterPage() {
   const { t } = useTranslation();
   const [typeUser, setTypeUser] = useState("company");
