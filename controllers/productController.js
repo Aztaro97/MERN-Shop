@@ -358,7 +358,7 @@ const getUserProducts = asyncHandler(async (req, res) => {
     user: req.params.id,
     allow: true,
   });
-  const products = await Product.find({ user: req.params.id, allow: true })
+  const products = await Product.find({ user: req.params.id, allow: true }).populate("user",[ "company"])
     .limit(pageSize)
     .skip(pageSize * (page - 1));
 

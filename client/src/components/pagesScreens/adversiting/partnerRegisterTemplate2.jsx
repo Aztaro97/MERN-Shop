@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Col, DatePicker, Row } from "antd";
 import { AiOutlineMail } from "react-icons/ai";
@@ -10,6 +10,7 @@ import { ImPhone } from "react-icons/im";
 import { useDropzone } from "react-dropzone";
 import { IoClose, IoCloudUploadOutline } from "react-icons/io5";
 import { GiCheckMark } from "react-icons/gi";
+import DropZoneComponent from "./uploadComponent/DropzoneComponent";
 
 function PartnerRegisterTemplate2() {
   return (
@@ -17,6 +18,7 @@ function PartnerRegisterTemplate2() {
       <LogOutForm />
       <DetailsComponent />
       <AddPictureComponent />
+      <AddVideoComponent />
     </Container>
   );
 }
@@ -51,7 +53,7 @@ const LogOutForm = () => {
           </IconStyling>
         </Col>
         <Col span={22} className="gutter-row">
-          <InputStyling type="password" placeholder="Retype Your Password" />
+          <InputStyling type="password" placeholder="Retype Password" />
         </Col>
       </Row>
       <Button className="ml-auto">save</Button>
@@ -157,106 +159,79 @@ const DetailsComponent = () => {
 };
 
 const AddPictureComponent = () => {
-  const { acceptedFiles, fileRejections, getRootProps, getInputProps } =
-    useDropzone({
-      accept: "image/jpeg, image/png",
-      multiple: false,
-      //   maxSize: 130979,
-    });
-
-  const acceptedFileItems = acceptedFiles.map((file) => (
-    <span key={file.path}>
-      {file.path} - {file.size} bytes
-    </span>
-  ));
-
-  const fileRejectionItems = fileRejections.map(({ file, errors }) => (
-    <li key={file.path}>
-      {file.path} - {file.size} bytes
-      <ul>
-        {errors.map((e) => (
-          <li key={e.code}>{e.message}</li>
-        ))}
-      </ul>
-    </li>
-  ));
-  console.log(fileRejections);
   return (
-    <>
-      <h1 className="title">add products</h1>
-      <UploadButton>
-        <DropZone {...getRootProps({ className: "dropzone" })}>
-          <input {...getInputProps()} type="file" name="file" />
-          {acceptedFiles.length == 0 && fileRejections.length == 0 && (
-            <>
-              <IoCloudUploadOutline className="upload_icon" />
-
-              <p>Drag & drop file here, or click to select file</p>
-              {/* <em>(Only *.jpeg and *.png images will be accepted)</em> */}
-            </>
-          )}
-          {acceptedFiles.length > 0 && (
-            <>
-              <GiCheckMark className="accept_icon" />
-              {acceptedFileItems}
-            </>
-          )}
-           {/* {fileRejections.length > 0 && } */}
-          {fileRejections.length > 0 && (
-            <>
-              <IoClose className="reject_icon" />
-              <p className="alert_danger"> {fileRejectionItems} </p>
-            </>
-          )}
-          <em>(Only *.jpeg and *.png images will be accepted)</em>
-        </DropZone>
-        {/* <aside>
-          <h4>Accepted files</h4>
-          <ul>{acceptedFileItems}</ul>
-          <h4>Rejected files</h4>
-          <ul>{fileRejectionItems}</ul>
-        </aside> */}
-      </UploadButton>
-    </>
+    <form>
+      <h1 className="title">add pictures</h1>
+      <Row>
+        <Col span={24} className="gutter-row"  >
+          <DropZoneComponent
+            name="landing-image"
+            price={150}
+            accept="image/png, image/jpg, image/jpeg"
+          />
+        </Col>
+      </Row>
+      <Row gutter={10}>
+        <Col span={8} className="gutter-row" xs={{span:12}} sm={{span:8}}>
+          <DropZoneComponent
+            name="image1"
+            price={45}
+            accept="image/png, image/jpg, image/jpeg"
+          />
+        </Col>
+        <Col span={8} xs={{span:12}} sm={{span:8}}>
+          <DropZoneComponent
+            name="image2"
+            price={45}
+            accept="image/png, image/jpg, image/jpeg"
+          />
+        </Col>
+        <Col  span={8} className="gutter-row" xs={{span:12}} sm={{span:8}}>
+          <DropZoneComponent
+            name="image3"
+            price={45}
+            accept="image/png, image/jpg, image/jpeg"
+          />
+        </Col>
+      </Row>
+      <Row gutter={10}>
+        <Col span={12} className="gutter-row">
+          <DropZoneComponent
+            name="image4"
+            price={55}
+            accept="image/png, image/jpg, image/jpeg"
+          />
+        </Col>
+        <Col span={12} className="gutter-row">
+          <DropZoneComponent
+            name="image5"
+            price={55}
+            accept="image/png, image/jpg, image/jpeg"
+          />
+        </Col>
+      </Row>
+      <Button className="ml-auto mt-3">save</Button>
+    </form>
   );
 };
 
-const DropZone = styled.div`
-  padding: 1rem;
-  background: #ddd;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: #333;
-  & .upload_icon,
-  & .accept_icon,
-  & .reject_icon {
-    font-size: 2.5rem;
-
-    padding: 5px;
-    border-radius: 50%;
-  }
-  & .upload_icon {
-    border: 1px solid var(--orange-color);
-    color: var(--orange-color);
-  }
-  & .accept_icon {
-    color: #fff;
-    background: #2ecc71;
-  }
-  & .reject_icon {
-    color: #fff !important;
-    background: #dc3545;
-  }
-  & .alert_danger {
-    color: #dc3545 !important;
-  }
-`;
-
-const UploadButton = styled.div`
-  /* background-color: ; */
-`;
+const AddVideoComponent = () => {
+  return (
+    <form>
+      <h1 className="title">add videos</h1>
+      <Row>
+        <Col span={24} className="gutter-row">
+          <DropZoneComponent
+            name="landing-image"
+            price={200}
+            accept="video/*"
+          />
+        </Col>
+      </Row>
+      <Button className="ml-auto mt-3">save</Button>
+    </form>
+  );
+};
 
 const Container = styled.div`
   max-width: 800px;
