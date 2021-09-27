@@ -67,7 +67,7 @@ export default function PaymentForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(process.env.REACT_APP_STRIPE_SECRET_KEY)
+    // console.log(process.env.REACT_APP_STRIPE_SECRET_KEY)
     if (!stripe || !elements) {
       return;
     }
@@ -75,9 +75,7 @@ export default function PaymentForm() {
     // ///  Check the payment valid
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
-      // card: elements.getElement(CardNumberElement),
-      card: elements.getElement(CardElement),
-      billing_details: shippingAddress,
+      card: elements.getElement(CardNumberElement),
     });
 
     //  Create payment intent on the server
@@ -93,11 +91,16 @@ export default function PaymentForm() {
         };
 
         const response = await axios.post(
-          "/api/payment",
+          "/create-checkout-session",
           {
             amount: totalPrice,
             id,
-            payment_method: "pm_card_visa",
+            payment: {
+              gateway: "stripe",
+              stripe: {
+                payment_method_id: id,
+              },
+            },
           },
           config
         );
@@ -113,7 +116,6 @@ export default function PaymentForm() {
           });
           dispatch({ type: CART_CLEAR_ITEMS });
 
-          history.push("/thank");
           history.push("/thank");
         }
       } catch (error) {
@@ -153,7 +155,7 @@ export default function PaymentForm() {
               {/* <Row>
                 <CardElement options={CARD_OPTIONS} />
               </Row> */}
-              <button type="submit" disabled={!stripe}>
+              <button type="submit"  disabled={!stripe}>
                 Pay {order.totalPrice} AED
               </button>
             </Form>

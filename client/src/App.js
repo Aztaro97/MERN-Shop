@@ -47,7 +47,9 @@ import AdversitingComponent from "./components/pagesScreens/adversiting/adversit
 import AdversitingAllBrandComponent from "./components/pagesScreens/adversiting/allBrand";
 import AdversitingProfileComponent from "./components/pagesScreens/adversiting/advertisingProfile";
 import PartnerRegisterComponent from "./components/pagesScreens/adversiting/partnerRegister";
-import StepComponent from "./components/pagesScreens/adversiting/StepsScreen";
+import AdvertisingRegister from "./components/pagesScreens/adversiting/partnerRegisterForm";
+import CartAdvertising from "./components/pagesScreens/adversiting/cartUploading";
+import BillingPaymentAdvertising from "./components/pagesScreens/adversiting/BillingStep";
 
 // ////////////////  Design Component    /////////////////////
 import DesignComponent from "./components/pagesScreens/design/designScreen";
@@ -80,6 +82,17 @@ function App() {
       <NavBar />
       <Switch>
         <Route exact path="/" component={HomeComponents} />
+
+        {/* <Route
+          path="/"
+          render={(props) => {
+            const [subdomain] = window.location.hostname.split(".");
+            if (subdomain === "advertising")
+              return <AdversitingComponent {...props} />;
+            return <HomeComponents {...props} />;
+          }}
+        /> */}
+
         <Route exact path="/contact-us" component={ContactUsComponents} />
         <Route path="/auth" component={AuthComponents} />
         <Route path="/add-product/:id" component={CreateProductComponent} />
@@ -112,13 +125,15 @@ function App() {
         {/* ///////////////////   ADVERSITING ROUTER  /////////////////// */}
         <Route path="/advertising" component={AdversitingComponent} exact />
         <Route path="/advertising" component={AdversitingComponent}>
-          <Route
-            path="/advertising/partner-register1"
+          {/* <Route
+            path="/adver1"
             component={PartnerRegisterComponent}
-          />
+          /> */}
+          <Route path="/advertising/register" component={AdvertisingRegister} />
+          <Route path="/advertising/cart" component={CartAdvertising} />
           <Route
-            path="/advertising/partner-register"
-            component={StepComponent}
+            path="/advertising/payment"
+            component={BillingPaymentAdvertising}
           />
           <Route
             path="/advertising/all-brands"

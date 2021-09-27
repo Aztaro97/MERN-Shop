@@ -11,12 +11,13 @@ import {
   getMyProducts,
   deleteProduct,
   destroyImages,
-  createProduct
+  createProduct,
 } from "../../../flux/actions/productAction";
 import Loader from "../../loader";
 import "./modal.css";
 
 import productImg from "../../../img/productimg.png";
+import TextTruncate from "react-text-truncate";
 
 const { confirm } = Modal;
 
@@ -41,11 +42,10 @@ const ViewProducts = () => {
 
   useEffect(() => {
     dispatch(getMyProducts());
-    
+
     if (successCreate) {
       history.push(`/add-product/${createdProduct._id}`);
     }
-
   }, [dispatch, getMyProducts, createdProduct, history]);
 
   const showConfirm = (productID, images) => {
@@ -56,7 +56,6 @@ const ViewProducts = () => {
       okText: "Yes, I'm",
       className: "modal_container",
       onOk() {
-        
         dispatch(deleteProduct(productID));
         dispatch(destroyImages(images));
       },
@@ -96,7 +95,14 @@ const ViewProducts = () => {
                       />
                       <div className="card-body">
                         <h2>{product.name}</h2>
-                        <p className="desc">{product.description}</p>
+                        {/* <p className="desc">{product.description}</p> */}
+                        <TextTruncate
+                          line={2}
+                          element="p"
+                          text={product.description}
+                          truncateText="…"
+                          className="card_desc"
+                        />
                         <hr />
                         <h2 className="price">
                           <span>{product.price}</span> dr
@@ -114,21 +120,20 @@ const ViewProducts = () => {
                   </>
                 ))}
               </Grid>
-            ) :
-            (
+            ) : (
               <Empty>
                 <h1>You don't have any products</h1>
                 <p>
                   To create a new product, please click on this{" "}
-                  <Link className="btn" onClick={() => dispatch(createProduct()) }>
+                  <Link
+                    className="btn"
+                    onClick={() => dispatch(createProduct())}
+                  >
                     button
                   </Link>
                 </p>
               </Empty>
-            ) 
-            
-            
-            }
+            )}
           </Row>
         </Container>
       )}
@@ -196,7 +201,7 @@ const Card = styled.div`
     & h2 {
       font-weight: 700;
       text-transform: uppercase;
-      margin-bottom: 0rem;
+      margin: .3rem 0;
       font-size: 1rem;
     }
     & p {

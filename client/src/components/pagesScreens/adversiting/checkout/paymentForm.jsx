@@ -1,0 +1,163 @@
+import React, { useEffect, useState } from "react";
+import {
+  CardElement,
+  Elements,
+  useStripe,
+  useElements,
+} from "@stripe/react-stripe-js";
+import Button from "../../../ButtonComponeent";
+import InputComponents from "../../../InputComponents";
+import { Col, Row } from "antd";
+import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
+import { clearCardImage, AddOrderCardImage } from "../../../../flux/actions/advertisingAction/advertisingAction";
+import axios from "axios";
+
+const PaymentForm = () => {
+  const [data, setData] = useState([]);
+
+  const stripe = useStripe();
+  const elements = useElements();
+  const dispatch = useDispatch();
+
+  // const {data} = useSelector(state => state.advertising);
+
+  //   Calculate prices
+  const addDecimals = (num) => {
+    return (Math.round(num * 100) / 100).toFixed(2);
+  };
+
+  const totalPrice = data.reduce((acc, item) => acc + item.total, 0);
+  console.log(totalPrice);
+
+  const history = useHistory();
+
+  useEffect(() => {
+    const Cartdata = JSON.parse(localStorage.getItem("cardDataImage"));
+    if (Cartdata) {
+      setData(Cartdata);
+    } else {
+      history.push("/advertising/cart");
+    }
+  }, [setData, history]);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    dispatch(clearCardImage());
+    const cardElement = elements?.getElement(CardElement);
+
+    if (!stripe || !elements || !cardElement) {
+      return;
+    }
+
+    const { error, paymentMethod } = await stripe.createPaymentMethod({
+      type: "card",
+      card: cardElement,
+    });
+
+    if (!error) {
+      try {
+        const { id } = paymentMethod;
+        console.log(id);
+
+        // const config = {
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //     Authorization: `Bearer ${process.env.REACT_APP_STRIPE_SECRET_KEY} ${process.env.REACT_APP_STRIPE_API_KEY}`,
+        //   },
+        // };
+
+        // const response = await axios.post(
+        //   "/create-checkout-session",
+        //   {
+        //     amount: totalPrice,
+        //     id,
+        //     payment: {
+        //       gateway: "stripe",
+        //       stripe: {
+        //         payment_method_id: id,
+        //       },
+        //     },
+        //   },
+        //   config
+        // );
+
+        // if (response.data.paymentSuccess) {
+        //   dispatch(AddOrderCardImage())
+        //   history.push("/thank");
+        // }
+      } catch (error) {
+        console.log("Error", error);
+      }
+    } else {
+      console.log(error);
+    }
+  };
+
+  return (
+    <FormStyling onSubmit={handleSubmit}>
+      <Row gutter={10}>
+        <Col
+          lg={{ span: 8 }}
+          md={{ span: 8 }}
+          sm={{ span: 8 }}
+          xs={{ span: 24 }}
+          className="gutter-row"
+        >
+          <InputComponents type="text" placeholder="FullName" />
+        </Col>
+        <Col
+          lg={{ span: 8 }}
+          md={{ span: 8 }}
+          sm={{ span: 8 }}
+          xs={{ span: 24 }}
+          className="gutter-row"
+        >
+          <InputComponents type="tel" placeholder="Phone Number" />
+        </Col>
+        <Col
+          lg={{ span: 8 }}
+          md={{ span: 8 }}
+          sm={{ span: 8 }}
+          xs={{ span: 24 }}
+          className="gutter-row"
+        >
+          <InputComponents type="email" placeholder="Email" />
+        </Col>
+      </Row>
+
+      <CardElementStyling className="my-2" />
+
+      <ButtonStyling
+        className="mt-4 mx-auto"
+        type="submit"
+        disabled={!stripe || !elements}
+      >
+        Pay {addDecimals(totalPrice)} AED
+      </ButtonStyling>
+    </FormStyling>
+  );
+};
+
+const FormStyling = styled.form`
+  @media only screen and (max-width: 565px) {
+    & .gutter-row {
+      margin-bottom: 0.7rem;
+    }
+  }
+`;
+
+const CardElementStyling = styled(CardElement)`
+  padding: 10px;
+  background-color: #fff;
+  border: 2px solid var(--background-color);
+`;
+
+const ButtonStyling = styled(Button)`
+  margin-top: 0 !important;
+  font-weight: 400;
+  font-size: 1.1rem;
+`;
+
+export default PaymentForm;

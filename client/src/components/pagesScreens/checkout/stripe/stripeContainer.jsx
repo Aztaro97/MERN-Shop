@@ -8,7 +8,7 @@ import StripeForme from "./stripeForm";
 
 
 // const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_API_KEY);
-const stripePromise = loadStripe("pk_test_51JJfI4Bx9NV9CAAsTnpUzgnSYM4JyQLcpqSX0Zv9FmUMKEHWnOazlmqWKAPToNeKQlL1ZBsw2uPGuJYbYvmk0vi100DrzhVwzL");
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
 
 function stripeContainer() {
   return (

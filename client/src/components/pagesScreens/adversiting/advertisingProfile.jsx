@@ -177,16 +177,16 @@ const PortfolioSlider = () => {
   return (
     <Slider {...settings} className="slider_container">
       <div className="slide">
-        <img src="./img/advertising/bg-images.jpeg" alt="" />
+        <img src="/img/advertising/bg-images.jpeg" alt="" />
       </div>
       <div className="slide">
-        <img src="./img/advertising/bg-images.jpeg" alt="" />
+        <img src="/img/advertising/bg-images.jpeg" alt="" />
       </div>
       <div className="slide">
-        <img src="./img/advertising/bg-images.jpeg" alt="" />
+        <img src="/img/advertising/bg-images.jpeg" alt="" />
       </div>
       <div className="slide">
-        <img src="./img/advertising/bg-images.jpeg" alt="" />
+        <img src="/img/advertising/bg-images.jpeg" alt="" />
       </div>
     </Slider>
   );
@@ -527,7 +527,7 @@ const LandingStyling = styled.div`
         rgba(0, 0, 0, 1) 0%,
         rgba(0, 0, 0, 0.37298669467787116) 0%
       ),
-      url("./img/advertising/bg-images.jpeg");
+      url("/img/advertising/bg-images.jpeg");
     height: 700px;
     width: 100%;
     background-repeat: no-repeat;

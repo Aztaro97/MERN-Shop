@@ -13,7 +13,11 @@ const productRoutes = require("./routes/productRoutes.js");
 const userRoutes = require("./routes/userRoutes.js");
 const orderRoutes = require("./routes/orderRoutes.js");
 const uploadRoutes = require("./routes/upload");
-const StripeRouter = require("./utils/stripe")
+const StripeRouter = require("./routes/stripe");
+const advertisingRoutes = require("./routes/advertisingRoute/advertisingRoute");
+const subscriptionRoutes = require("./routes/advertisingRoute/subscriptionRouter");
+
+const contactRouter = require("./routes/contact/contactRouter")
 
 dotenv.config();
 
@@ -25,6 +29,7 @@ if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 app.use(fileUpload({
@@ -38,7 +43,10 @@ app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/orders", orderRoutes);
 app.use('/api/upload', uploadRoutes);
-app.use("/api/payment", StripeRouter)
+app.use("/create-checkout-session", StripeRouter)
+app.use("/api/advertising", advertisingRoutes )
+app.use("/api/subscription", subscriptionRoutes )
+app.use("/api/contact-us", contactRouter )
 
 // app.use('/api/upload', uploadRoutes)
 

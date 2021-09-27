@@ -71,7 +71,7 @@ const Form = styled.form`
 `;
 
 const Row = styled.div`
-  padding: 1rem 0;
+  margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;

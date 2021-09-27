@@ -192,7 +192,7 @@ const IntroSection = () => {
                     voluptatibus dolores explicabo adipisci, repellat numquam
                     sint inventore hic possimus eligendi unde ea omnis.
                   </p>
-                  <a href="/advertising-profile" alt="">contact us</a>
+                  <a href="/advertising/profile" alt="">contact us</a>
                 </div>
               </div>
               <div>
@@ -205,7 +205,7 @@ const IntroSection = () => {
                     voluptatibus dolores explicabo adipisci, repellat numquam
                     sint inventore hic possimus eligendi unde ea omnis.
                   </p>
-                  <a href="/advertising-profile" alt="">contact us</a>
+                  <a href="/advertising/profile" alt="">contact us</a>
                 </div>
               </div>
               <div>
@@ -218,7 +218,7 @@ const IntroSection = () => {
                     voluptatibus dolores explicabo adipisci, repellat numquam
                     sint inventore hic possimus eligendi unde ea omnis.
                   </p>
-                  <a href="/advertising-profile" alt="">contact us</a>
+                  <a href="/advertising/profile" alt="">contact us</a>
                 </div>
               </div>
               <div>
@@ -231,7 +231,7 @@ const IntroSection = () => {
                     voluptatibus dolores explicabo adipisci, repellat numquam
                     sint inventore hic possimus eligendi unde ea omnis.
                   </p>
-                  <a href="/advertising-profile" alt="">contact us</a>
+                  <a href="/advertising/profile" alt="">contact us</a>
                 </div>
               </div>
             </Slider>
@@ -290,7 +290,7 @@ const AdvertisingNavgation = () => {
   const history = useHistory()
 
   const handleClick = () => {
-    history.push("/advertising-all")
+    history.push("/advertising/all-brands")
   }
 
   return (
@@ -388,7 +388,7 @@ const JoiningUsSection = () => {
             growth with us
           </h1>
           <div className="link">
-            <a href="/partner-register" alt="">
+            <a href="/advertising/register" alt="">
               Lets go
             </a>
           </div>

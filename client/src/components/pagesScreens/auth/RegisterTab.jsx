@@ -5,21 +5,21 @@ import InputComponents from "../../InputComponents";
 import ButtonComponeent from "../../ButtonComponeent";
 import { useFormik } from "formik";
 import { register } from "../../../flux/actions/userAction";
-import { successMessage, errorMessage } from "../../message";
 import { useDispatch, useSelector } from "react-redux";
-import {useTranslation} from "react-i18next"
+import { useTranslation } from "react-i18next";
 
 function Register() {
-  const {t} = useTranslation();
-  const [errorPwd, setErrorPwd] = useState(false);
+  const { t } = useTranslation();
 
   const dispatch = useDispatch();
-
 
   const validate = (values) => {
     const errors = {};
     if (!values.email) errors.email = "Email est requis";
-    if (values.password.length < 6) errors.password = "Enter a password longer than 6 characters";
+    if (values.password.length < 6)
+      errors.password = "Enter a password longer than 6 characters";
+    if (values.password !== values.password2)
+      errors.password2 = "Error Please Make sure your passwords match";
     return errors;
   };
 
@@ -30,20 +30,9 @@ function Register() {
       password2: "",
     },
     validate,
-    onSubmit: async (values) => {
-      try {
-        const body = JSON.stringify(values, null, 2);
-      if (formik.values.password !== formik.values.password2) {
-        setErrorPwd(true);
-        console.log("errr");
-      } else {
-        dispatch(register(body));
-        successMessage("Registration Successfull");
-      }
-        
-      } catch (error) {
-        console.log(error.err)
-      }
+    onSubmit: (values) => {
+      const body = JSON.stringify(values, null, 2);
+      dispatch(register(body));
     },
   });
 
@@ -73,9 +62,7 @@ function Register() {
             value={formik.values.password}
           />
         </Row>
-        {formik.errors.password ? (
-          <div style={{color: "#ff7875"}}>{formik.errors.password}</div>
-        ) : null}
+
         <Row>
           <InputComponents
             type="password"
@@ -86,13 +73,18 @@ function Register() {
             placeholder={t("retype_placeholder")}
           />
         </Row>
-        {errorPwd ? (
+        {formik.errors.password ? (
           <Alert
-            message="Error Please Make sure your passwords match"
+            message={formik.errors.password}
             type="error"
             showIcon
+            className="mb-1"
           />
         ) : null}
+        {formik.errors.password2 ? (
+          <Alert message={formik.errors.password2} type="error" showIcon />
+        ) : null}
+
         <Row>
           <ButtonComponeent type="submit">register</ButtonComponeent>
         </Row>
@@ -116,7 +108,7 @@ const Form = styled.form`
 `;
 
 const Row = styled.div`
-  padding: 1rem 0;
+  margin-bottom: 10px;
   display: flex;
   align-items: center;
   justify-content: flex-end;

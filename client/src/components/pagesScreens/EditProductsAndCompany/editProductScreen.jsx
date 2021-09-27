@@ -13,7 +13,7 @@ import {
 import {
   listProductDetails,
   updateProduct,
-  createProduct,
+  // createProduct,
 } from "../../../flux/actions/productAction";
 
 import {
@@ -848,7 +848,7 @@ const FormRight = ({
       >
         update
       </ButtonC>
-      <Link onClick={() => dispatch(createProduct())}>ADD ANOTHER PRODUCT</Link>
+      {/* <Link onClick={() => dispatch(createProduct())}>ADD ANOTHER PRODUCT</Link> */}
     </div>
   );
 };

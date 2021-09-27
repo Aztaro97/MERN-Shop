@@ -31,7 +31,7 @@ const Input = styled.input`
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  color: var(--silver-color);
+  color: #111;
   list-style: none;
   width: 100%;
   min-width: 0;

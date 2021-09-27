@@ -29,7 +29,7 @@ const ModalContent = ({ product, setShowModal }) => {
     <Container>
       <Grid>
         <GalleryImg product={product} />
-        <Contente product={product} setShowModal={setShowModal} />
+        <ProductDetails product={product} setShowModal={setShowModal} />
       </Grid>
     </Container>
   );
@@ -65,7 +65,7 @@ const GalleryImg = ({ product }) => {
   );
 };
 
-const Contente = ({ product, setShowModal }) => {
+const ProductDetails = ({ product, setShowModal }) => {
   const [qtyNumber, setQtyNumber] = useState(1);
   const [sizeSelected, setSizeSelected] = useState("");
   const [colorSelected, setColorSelected] = useState("");

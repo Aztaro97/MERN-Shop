@@ -18,11 +18,11 @@ const orderSchema = mongoose.Schema(
           required: false,
           ref: "Product",
         },
-        merchant: { 
+        merchant: {
           name: { type: String, required: false },
           email: { type: String, required: false },
           phoneNumber: { type: Array, required: false },
-         }
+        },
       },
     ],
     shippingAddress: {

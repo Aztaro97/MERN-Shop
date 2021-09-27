@@ -52,9 +52,10 @@ export const categoryAdversiting = [
 ];
 
 export const serviceArray = [
-  {title:"-- select type of Business--", value: ""},
   {title:"restaurants", value: "restaurants"},
   {title:"real estate", value: "real estate"},
   {title:"construction", value: "construction"},
   {title:"marketing", value: "marketing"},
+  {title:"vehicule", value: "vehicule"},
+  {title:"pharmacy", value: "pharmacy"},
 ];
