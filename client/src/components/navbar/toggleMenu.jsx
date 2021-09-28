@@ -187,8 +187,9 @@ const SubLinks = styled.ul`
   }
   & .sub__nav a {
     color: #93a3b3;
-    font-size: 0.8rem;
+    font-size: .95rem;
     text-transform: capitalize;
+    letter-spacing:.5px;
   }
   & .sub__nav a:hover {
     text-decoration: none;
