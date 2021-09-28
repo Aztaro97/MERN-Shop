@@ -1,0 +1,3 @@
+export const AD_LIST_REQUEST = 'AD_LIST_REQUEST';
+export const AD_LIST_SUCCESS = 'AD_LIST_SUCCESS';
+export const AD_LIST_FAIL = 'AD_LIST_FAIL';

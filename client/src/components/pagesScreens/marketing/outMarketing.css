@@ -435,7 +435,9 @@
     display: none !important;
   }
   .introSlider .slider {
-    height: auto;
+    /* height: auto; */
+    height: 700px;
+
   }
   .introSlider .inner {
     height: auto;
@@ -737,7 +739,7 @@
   }
   .marketing .topImg img,
   .outMarketing .topImg img {
-    height: auto;
+    height: 250px;
   }
   .marketing .largestTitle,
   .outMarketing .largestTitle {

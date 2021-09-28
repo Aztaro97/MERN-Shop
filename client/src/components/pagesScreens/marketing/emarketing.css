@@ -1321,6 +1321,7 @@
     height: 85px;
   }
   .marketing .topImg .imgCover {
+    /* height: auto; */
     height: auto;
   }
   .adsSlider .myContent,

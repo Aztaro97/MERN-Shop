@@ -17,11 +17,12 @@ import DropZoneComponent from "./uploadComponent/DropzoneComponent";
 import {
   AddCardImage,
   registerParnerService,
+  saveServiceInfo,
 } from "../../../flux/actions/advertisingAction/advertisingAction";
 
 import { serviceArray } from "../../../utils/advertisingData";
 import ButtonComponeent from "../../ButtonComponeent";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { register } from "../../../flux/actions/userAction";
 import { BiWorld } from "react-icons/bi";
 import axios from "axios";
@@ -39,7 +40,6 @@ function PartnerRegisterTemplate2() {
         <Container>
           {!userInfo && <SignUpForm />}
           <DetailsComponent />
-          <PlanComponent />
         </Container>
       )}
     </>
@@ -185,7 +185,7 @@ const DetailsComponent = () => {
     region,
   };
 
-  const handleSubmit =  (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(registerParnerService(body));
   };
@@ -201,6 +201,7 @@ const DetailsComponent = () => {
         </Col>
         <Col span={22} className="gutter-row">
           <InputStyling
+            required
             type="text"
             placeholder="Company Name"
             value={companyName}
@@ -216,6 +217,7 @@ const DetailsComponent = () => {
         </Col>
         <Col span={22} className="gutter-row">
           <TextAreaStyling
+            required
             name=""
             rows="5"
             cols="4"
@@ -233,6 +235,7 @@ const DetailsComponent = () => {
         </Col>
         <Col span={22} className="gutter-row">
           <SelectStyling
+            required
             mode="multiple"
             allowClear
             style={{ width: "100%" }}
@@ -257,7 +260,9 @@ const DetailsComponent = () => {
         </Col>
         <Col span={22} className="gutter-row">
           <InputStyling
+            required
             type="tel"
+            name="name"
             placeholder="Full Name"
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
@@ -272,6 +277,7 @@ const DetailsComponent = () => {
         </Col>
         <Col span={22} className="gutter-row">
           <InputStyling
+            required
             type="tel"
             placeholder="Phone Number"
             value={telephone}
@@ -287,6 +293,7 @@ const DetailsComponent = () => {
         </Col>
         <Col span={22} className="gutter-row">
           <InputStyling
+            required
             type="email"
             placeholder="Email"
             value={email}
@@ -302,6 +309,7 @@ const DetailsComponent = () => {
         </Col>
         <Col span={22} className="gutter-row">
           <InputStyling
+            required
             type="text"
             placeholder="City"
             value={city}
@@ -326,6 +334,7 @@ const DetailsComponent = () => {
             </Col>
             <Col xs={{ span: 12 }}>
               <RegionDropdownStyling
+                required
                 country={country}
                 value={region}
                 onChange={(value) => setRegion(value)}
@@ -336,14 +345,19 @@ const DetailsComponent = () => {
         </Col>
       </Row>
 
-      <Button type="submit" className="ml-auto">
-        save
-      </Button>
+      <PlanComponent body={body} />
     </form>
   );
 };
 
-const PlanComponent = () => {
+const PlanComponent = ({ body }) => {
+  const dispatch = useDispatch();
+  const history = useHistory()
+
+  const handleClickPremium = () => {
+    dispatch(saveServiceInfo(body));
+    history.push("/advertising/cart")
+  };
   return (
     <PlanStyling>
       <h1 className="title">Choose your ad type, premium or free</h1>
@@ -369,7 +383,11 @@ const PlanComponent = () => {
               </ul>
             </div>
             <div className="card_footer">
-              <Link to="/advertising/cart" className="btn premium">
+              <Link
+                // to="/advertising/cart"
+                className="btn premium"
+                onClick={handleClickPremium}
+              >
                 Start Now
               </Link>
             </div>
@@ -396,7 +414,9 @@ const PlanComponent = () => {
               </ul>
             </div>
             <div className="card_footer">
-              <div className="btn free">Start Now</div>
+              <button type="submit" className="btn free">
+                Start Now
+              </button>
             </div>
           </div>
         </Col>

@@ -14,7 +14,7 @@ const AdvertisingServiceSchema = mongoose.Schema({
   city: { type: String, required: true },
   country: { type: String, required: true },
   region: { type: String, required: true },
-  
+  typePlan: { type: String, required: true, default: "free"}
 });
 
 const AdvertisingService = mongoose.model(

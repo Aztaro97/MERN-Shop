@@ -4,7 +4,7 @@ const advertising = require("../../models/advertisingModels/AdvertisingserviceMo
 // @desc    Create new parter advertising
 // @route   POST /api/advertising
 // @access  Public
-const addAdvertisingService = asyncHandler( async (req, res) => {
+const addAdvertisingService = asyncHandler(async (req, res) => {
   const {
     companyName,
     about,
@@ -34,4 +34,18 @@ const addAdvertisingService = asyncHandler( async (req, res) => {
   res.status(200).json(createService);
 });
 
-module.exports = { addAdvertisingService };
+const getAllAdService = asyncHandler(async (req, res) => {
+  try {
+    const allService = await advertising.find();
+
+    if (allService) {
+      res.status(200).json(allService);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+
+
+module.exports = { addAdvertisingService , getAllAdService};

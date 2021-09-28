@@ -25,7 +25,7 @@ function AuthTabPage({ location }) {
   }, [redirect]);
 
   if (userInfo) {
-    history.push("/products");
+    window.history.back();
   }
 
   return (

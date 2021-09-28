@@ -66,6 +66,8 @@ import ProductionComponent from "./components/pagesScreens/productionScreen/prod
 // ////////////////  ABOUT Component    /////////////////////
 import AboutComponent from "./components/pagesScreens/AboutScreen/aboutScreen";
 
+import AllCompanyServiceComponent from "./components/pagesScreens/admin/adminAdvertising/allCompany"
+
 import { initGA, PageView } from "./components/Tracking/tracking";
 
 function App() {
@@ -176,6 +178,11 @@ function App() {
         <Route
           path="/admin/order/:orderId"
           component={OrderDetailsComponent}
+          exact
+        />
+        <Route
+          path="/admin/advertising"
+          component={AllCompanyServiceComponent}
           exact
         />
 

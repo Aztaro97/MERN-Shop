@@ -49,6 +49,7 @@ import {
   successMessage,
   warningMessage,
 } from "../../components/message";
+import { useHistory } from "react-router";
 
 export const login = (body) => async (dispatch) => {
   try {
@@ -69,7 +70,6 @@ export const login = (body) => async (dispatch) => {
       payload: data,
     });
     successMessage("Login Succefull", 500);
-
     localStorage.setItem("userInfo", JSON.stringify(data));
   } catch (error) {
     warningMessage(
