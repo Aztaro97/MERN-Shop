@@ -5,7 +5,7 @@ import { Alert, Card, Col, DatePicker, Row, Select } from "antd";
 import { AiOutlineMail } from "react-icons/ai";
 import { IoMdKey } from "react-icons/io";
 import Button from "../../ButtonComponeent";
-import { FaMapMarkerAlt, FaPencilAlt } from "react-icons/fa";
+import { FaMapMarkerAlt, FaPencilAlt, FaUser } from "react-icons/fa";
 import { MdBusinessCenter } from "react-icons/md";
 import { BsBuilding } from "react-icons/bs";
 import { ImPhone } from "react-icons/im";
@@ -164,6 +164,7 @@ const DetailsComponent = () => {
   const [companyName, setCompanyName] = useState("");
   const [about, setAbout] = useState("");
   const [TypeBusiness, setTypeBusiness] = useState([]);
+  const [fullName, setFullName] = useState("");
   const [telephone, setTelephone] = useState("");
   const [email, setEmail] = useState("");
   const [city, setCity] = useState("");
@@ -176,6 +177,7 @@ const DetailsComponent = () => {
     companyName,
     about,
     TypeBusiness,
+    fullName,
     telephone,
     email,
     city,
@@ -247,6 +249,21 @@ const DetailsComponent = () => {
       </Row>
 
       <h1 className="title">contact</h1>
+      <Row gutter={1}>
+        <Col span={2} className="gutter-row">
+          <IconStyling>
+            <FaUser className="icon" />
+          </IconStyling>
+        </Col>
+        <Col span={22} className="gutter-row">
+          <InputStyling
+            type="tel"
+            placeholder="Full Name"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
+          />
+        </Col>
+      </Row>
       <Row gutter={1}>
         <Col span={2} className="gutter-row">
           <IconStyling>

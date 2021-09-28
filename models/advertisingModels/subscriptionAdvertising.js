@@ -6,14 +6,12 @@ const SubscriptionSchema = mongoose.Schema({
     ref: "User",
   },
 
-  products: { type: Array, required: false },
-  paymentResult: {
-    id: { type: String },
-    update_time: { type: String },
-    email_address: { type: String },
-  },
+  productsOrdered: { type: Array, required: false },
+  fullName: { type: String },
+  phoneNumber: { type: String },
+  email: { type: String },
   isPaid: { type: Boolean, required: false, default: false },
-  totalPrice: { type: Number, required: false,}
+  totalPrice: { type: Number, required: false },
 });
 
 const subscription = mongoose.model("subscription", SubscriptionSchema);

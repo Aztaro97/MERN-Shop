@@ -17,6 +17,10 @@ import axios from "axios";
 const PaymentForm = () => {
   const [data, setData] = useState([]);
 
+  const [fullName, setFullName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [email, setEmail] = useState("");
+
   const stripe = useStripe();
   const elements = useElements();
   const dispatch = useDispatch();
@@ -32,9 +36,10 @@ const PaymentForm = () => {
   console.log(totalPrice);
 
   const history = useHistory();
+  const Cartdata = JSON.parse(localStorage.getItem("cardDataImage"));
 
   useEffect(() => {
-    const Cartdata = JSON.parse(localStorage.getItem("cardDataImage"));
+    
     if (Cartdata) {
       setData(Cartdata);
     } else {
@@ -42,8 +47,17 @@ const PaymentForm = () => {
     }
   }, [setData, history]);
 
+  const body = {
+    productsOrdered: Cartdata,
+    fullName,
+    phoneNumber,
+    email,
+    totalPrice,
+  }
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    console.log(body)
     dispatch(clearCardImage());
     const cardElement = elements?.getElement(CardElement);
 
@@ -105,7 +119,7 @@ const PaymentForm = () => {
           xs={{ span: 24 }}
           className="gutter-row"
         >
-          <InputComponents type="text" placeholder="FullName" />
+          <InputComponents type="text" placeholder="Full Name" value={fullName} onChange={(e) => setFullName(e.target.value)} />
         </Col>
         <Col
           lg={{ span: 8 }}
@@ -114,7 +128,7 @@ const PaymentForm = () => {
           xs={{ span: 24 }}
           className="gutter-row"
         >
-          <InputComponents type="tel" placeholder="Phone Number" />
+          <InputComponents type="tel" placeholder="Phone Number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
         </Col>
         <Col
           lg={{ span: 8 }}
@@ -123,7 +137,7 @@ const PaymentForm = () => {
           xs={{ span: 24 }}
           className="gutter-row"
         >
-          <InputComponents type="email" placeholder="Email" />
+          <InputComponents type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
         </Col>
       </Row>
 

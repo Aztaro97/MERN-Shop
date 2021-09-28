@@ -420,3 +420,533 @@
     margin-top: -40px;
   }
 }
+
+@media only screen and (max-width: 768px) {
+  .navDiv {
+    display: none;
+  }
+  .introSlider .container {
+    height: calc(100% - 80px);
+  }
+  /* .homeServices .container {
+    height: calc(100% - 80px);
+} */
+  .introSlider .arrow {
+    display: none !important;
+  }
+  .introSlider .slider {
+    height: auto;
+  }
+  .introSlider .inner {
+    height: auto;
+  }
+  .introSlider .myImg {
+    position: initial;
+    transform: none;
+    margin: 75px auto -40px;
+    width: 75vh;
+    height: 75vh;
+    max-width: 85vw;
+    max-height: 85vw;
+  }
+  .introSlider .sliders {
+    height: auto;
+    padding-bottom: 40px;
+  }
+  .introSlider .slider .caption {
+    text-align: center;
+    position: initial;
+    width: 90%;
+    margin: auto;
+    margin-top: -9vh;
+  }
+  .introSlider .pagers .pager:nth-child(2) {
+    top: 20px;
+    left: 55%;
+  }
+  .introSlider .pagers .pager:nth-child(1) {
+    top: 130px;
+    left: 6px;
+  }
+  .introSlider .pagers .pager:nth-child(3) {
+    top: 195px;
+    left: auto;
+    right: 6px;
+  }
+  .langBtn {
+    margin: 20px 10px 5px;
+    padding: 1px 8px;
+    font-size: 15px !important;
+  }
+  .HeaderLogo {
+    top: 10px;
+    width: 15%;
+  }
+  .introSlider .sliders:after {
+    top: 160px;
+    height: 60vw;
+    width: 60vw;
+  }
+  .homeServices .carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .homeServices .carousel-item .imgCover {
+    margin: auto;
+    margin-top: 35px;
+    transform: rotate(45deg);
+    position: initial;
+    width: 130px;
+    height: 130px;
+  }
+  .homeServices .carousel-item .minContent {
+    height: auto;
+  }
+  .homeServices .carousel .carousel-inner {
+    height: auto;
+    padding-bottom: 40px;
+  }
+  .homeServices .carousel-item {
+    height: auto;
+  }
+  .homeServices .carousel-caption {
+    width: 90%;
+    margin: auto;
+    margin-top: 45px;
+    position: initial;
+    text-align: center;
+  }
+  .homeServices .arrow {
+    bottom: auto;
+    top: calc(50% - 80px);
+  }
+  .homeServices .arrow.carousel-control-next {
+    right: 12px !important;
+  }
+  .homeServices .arrow.carousel-control-prev {
+    left: 12px !important;
+  }
+  /* .nextBtn {
+    left: calc(50% - 37px);
+    width: 74px;
+} */
+  .page.current {
+    overflow-y: scroll;
+  }
+  .homeServices .carousel-item .carousalNumber {
+    font-size: 40px;
+  }
+  .homeAbout .container {
+    padding: 0px;
+  }
+  .homeContact {
+    padding-bottom: 50px;
+  }
+  .homeContact .mapContent {
+    width: 235px;
+    height: 235px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  .homeAbout .slideActive .slide {
+    max-width: 66vw;
+    max-height: 66vw;
+    padding: 25px;
+  }
+  .homeAbout .slideActive .slide .normalText {
+    font-size: 12px;
+  }
+  .moveBtns {
+    bottom: 30px;
+  }
+  .moveBtns a {
+    margin: 0px 10px;
+  }
+  .moveBtns .nextBtn:hover {
+    letter-spacing: 6px;
+  }
+  .moveBtns .nextBtn:hover::after {
+    content: none;
+  }
+  .pos .topImg .caption .weSpan {
+    font-size: 45px;
+  }
+  .marketing .topImg .caption .weSpan {
+    font-size: 45px;
+  }
+  .largestTitle {
+    font-size: 20px;
+  }
+  .largestText {
+    font-size: 15px;
+    line-height: 20px;
+  }
+  .pos .topImg .caption p {
+    line-height: 18px;
+  }
+  .pos .topImg a {
+    margin-top: 8px !important;
+  }
+  .marketing .topImg .caption p,
+  .outMarketing .topImg .caption p {
+    line-height: 18px;
+  }
+  .marketing .topImg a,
+  .outMarketing .topImg a {
+    margin-top: 8px !important;
+  }
+  .pos .features:after {
+    top: 0px;
+    transform: none;
+  }
+  .pos .rewardsRow {
+    width: 292px;
+    max-width: 100%;
+  }
+  .pos .rewardsRow .col {
+    width: 290px;
+    max-width: 100%;
+    height: 235px;
+  }
+  #hardware-slider .owl-stage-outer {
+    padding: 10px 0px;
+  }
+  #hardware-slider:after {
+    width: 55vw;
+    height: 55vw;
+  }
+  footer {
+    position: initial;
+  }
+  footer .homeContact {
+    overflow-y: auto !important;
+  }
+  .video .videoContent iframe {
+    width: 95vw;
+    height: 50vw;
+  }
+  .video .videoContent {
+    height: calc(50vw + 14px);
+    padding: 14px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+  .pos .topImg:after {
+    height: 45px;
+  }
+  .pos .topImg .caption {
+    bottom: 10%;
+  }
+  .pos-register .webForm h2 {
+    font-size: 25px;
+  }
+  .pos-register .webForm {
+    padding-inline-start: 4%;
+  }
+  .agreeConditions {
+    padding: 6px 10px;
+    margin: 2px 0px;
+  }
+  .pos-register .row {
+    min-height: 0px;
+  }
+  .menuBtn {
+    width: 40px;
+    height: 40px;
+  }
+  .menuBtn span {
+    margin: 2px;
+  }
+  .btn-lg {
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    font-size: 15px !important;
+    min-width: 85px;
+  }
+  .toggleMenu {
+    overflow-y: scroll;
+  }
+  .toggleMenu .row {
+    flex-direction: column;
+  }
+  .toggleMenu .item {
+    margin-bottom: 10vh;
+  }
+  .toggleMenu .col:last-of-type .item {
+    margin-bottom: 4vh;
+  }
+  .toggleMenu .itemLink {
+    width: 15vh;
+    height: 15vh;
+  }
+  .toggleMenu .item .subLinks {
+    margin-top: 0px;
+  }
+  .toggleMenu .item:hover .subLinks {
+    margin-top: 7vh;
+  }
+  .menuShapes {
+    animation: none;
+  }
+  .menuShapes .a1 {
+    top: 12%;
+    left: 5%;
+    width: 22vh;
+  }
+  .menuShapes .a2 {
+    left: 82%;
+    top: 12%;
+    height: 10vh;
+  }
+  .menuShapes .a3 {
+    top: 74%;
+    right: 0%;
+    width: 22vh;
+  }
+  .menuShapes .a4 {
+    top: 70%;
+    right: 60%;
+    width: 15vh;
+  }
+  .menuShapes .s1 {
+    top: 35%;
+    right: 15%;
+  }
+  .menuShapes .s2 {
+    top: 20%;
+    right: 70%;
+  }
+  .copyRights {
+    bottom: 8px;
+    right: 15px;
+    font-size: 12px;
+  }
+  .marketing .topImg:after,
+  .outMarketing .topImg:after {
+    height: 45px;
+  }
+  .marketing .topImg .caption,
+  .outMarketing .topImg .caption {
+    width: 100%;
+    padding: 10px;
+    position: initial;
+    text-align: center;
+  }
+  .marketing .topImg img,
+  .outMarketing .topImg img {
+    height: auto;
+  }
+  .marketing .largestTitle,
+  .outMarketing .largestTitle {
+    font-size: 14px;
+    font-weight: 500 !important;
+  }
+  .marketing .topImg,
+  .outMarketing .topImg {
+    max-height: none;
+  }
+  .marketing .topImg .caption p,
+  .outMarketing .topImg .caption p {
+    color: #93a3b3 !important;
+  }
+  .marketing .topImg .marketingSelect,
+  .outMarketing .topImg .marketingSelect {
+    max-width: 100%;
+    margin: 10px 2px 2px;
+    box-shadow: 0px 0px 20px 0px rgb(175 211 216 / 48%);
+  }
+  .marketing .topImg:after,
+  .outMarketing .topImg:after {
+    height: 0px;
+  }
+  .marketing .marketingSelect > .btn,
+  .outMarketing .marketingSelect > .btn {
+    margin: 0px !important;
+    padding: 0px 8px !important;
+  }
+  .marketing .popSocial {
+    width: 80vw;
+    height: 80vw;
+    max-width: 360px;
+    max-height: 360px;
+  }
+  .marketing .socialMedia .shape {
+    display: none;
+  }
+  .marketing .socialText > div {
+    position: initial;
+    text-align: center;
+    width: 100%;
+    max-width: 370px;
+    padding: 15px;
+    padding-bottom: 0px;
+    margin: auto;
+  }
+  .marketing .socialMedia {
+    /* background-size: 200% 100%; */
+    padding: 24px 0px;
+  }
+  .marketing .bgGrediant:before {
+    right: -60%;
+    left: -60%;
+    width: 220%;
+  }
+  .outMarketing .ledScreen .bgGrediant:before {
+    right: -60%;
+    left: -60%;
+    width: 220%;
+  }
+  .marketing .socialText h2 {
+    color: #0b1b34 !important;
+  }
+  .marketing .socialText .normalText {
+    color: #fff !important;
+    margin-bottom: 10px;
+  }
+  .marketing .increaseCustomers .innerText {
+    text-align: center;
+    margin-top: 15px;
+  }
+  .marketing .increaseCustomers .adsServices {
+    text-align: start;
+  }
+  .marketing .improveSite:after {
+    left: -60%;
+    right: -60%;
+    width: 220%;
+  }
+  .marketing .improveSite .textContent {
+    max-width: 100%;
+    margin: 0px !important;
+  }
+  #seo-slider {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+  #seo-slider .owl-stage {
+    padding: 10px 0px 0px;
+  }
+  .viaText .featuresRow {
+    padding: 5px;
+  }
+  .viaText .col {
+    padding: 5px;
+  }
+  .exViaText:before {
+    left: -120%;
+    right: -120%;
+    width: 340%;
+  }
+  .exViaText .imgCover img {
+    width: 300px;
+    max-width: 95%;
+  }
+  .marketing .topLinks,
+  .outMarketing .topLinks {
+    flex-direction: column;
+    align-items: flex-start;
+    top: 48px;
+    height: 30px;
+    margin: 0px 0px;
+  }
+  .marketing .topLinks a,
+  .outMarketing .topLinks a {
+    height: 30px;
+    line-height: 30px;
+  }
+  .marketing .socials a img {
+    width: 85px;
+    height: 85px;
+  }
+  .marketing .topImg .imgCover {
+    height: auto;
+  }
+  .adsSlider .myContent,
+  .adsSlider .item {
+    width: 200px;
+    height: 182px;
+  }
+  .adsSlider .item p {
+    line-height: 14px;
+    font-size: 10px;
+    height: 155px;
+  }
+  .adsSlider .item .col {
+    padding: 10px;
+  }
+  .adsSlider .a {
+    /* transform: rotateY(0deg) translateZ(50px) rotateY(0deg); */
+  }
+  .adsSlider .b {
+    /* transform: rotateY(120deg) translateZ(50px) rotateY(-120deg); */
+  }
+  .adsSlider .c {
+    /* transform: rotateY(240deg) translateZ(50px) rotateY(-240deg); */
+  }
+  .adsSlider .adsCarousel,
+  .adsSlider .adsCarousel div {
+    transform: none !important;
+    transition: none !important;
+    transform-style: initial !important;
+    position: initial;
+  }
+  .adsSlider .next,
+  .adsSlider .prev {
+    display: none;
+  }
+  .adsSlider {
+    position: initial;
+    padding: 0px;
+  }
+  .adsSlider .myContent,
+  .adsSlider .item {
+    width: 100%;
+    perspective: none;
+    height: auto;
+  }
+  .adsSlider .item {
+    margin-bottom: 10px;
+    box-shadow: 0px 0px 6px 2px rgb(175 211 216 / 45%);
+  }
+  .adsSlider .item p {
+    height: auto;
+  }
+  .outMarketing .exAdvs {
+    padding-bottom: 25px;
+  }
+  .outMarketing .serRow .col:nth-child(2) .service {
+    margin-top: 10px;
+  }
+  .outMarketing .serRow .service {
+    padding: 20px 10px;
+    margin: 10px;
+  }
+  .outMarketing .ledScreen .shape,
+  .outMarketing .ledScreen2 .shape,
+  .outMarketing .billboard .shape {
+    width: 90%;
+    max-width: 460px;
+    margin-top: 0px;
+  }
+  .outMarketing .ledScreen,
+  .outMarketing .ledScreen2,
+  .outMarketing .billboard {
+    padding: 10px 0px;
+    margin-top: 0px;
+  }
+  .outMarketing .ledScreen .textContent,
+  .outMarketing .ledScreen2 .textContent,
+  .outMarketing .billboard .textContent {
+    padding: 15px;
+    text-align: center;
+  }
+  .outMarketing .billboard .bgGrediant:before,
+  .outMarketing .ledScreen .bgGrediant:before {
+    width: 240%;
+    right: -70%;
+    left: -70%;
+  }
+}
