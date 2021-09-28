@@ -18,7 +18,7 @@ function OutDoorMarketing() {
             </a>
           </div>
           <div className="imgCover">
-            <img alt="" src="./img/outMarketing.png" />
+            <img alt="" src="./img/outMarketing.jpg" />
           </div>
           {/* <!-- add DropdownMenu  --> */}
           <div className="caption animate__animated">
