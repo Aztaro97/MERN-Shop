@@ -8,7 +8,10 @@ import {
   BiBuildingHouse,
   AiOutlineShop,
 } from "react-icons/all";
-import { categoryAdversiting } from "../../../utils/advertisingData";
+import {
+  categoryAdversiting,
+  serviceArray,
+} from "../../../utils/advertisingData";
 // import MainContainer from "../../MainContainer";
 
 function AdversitingScreen() {
@@ -192,7 +195,9 @@ const IntroSection = () => {
                     voluptatibus dolores explicabo adipisci, repellat numquam
                     sint inventore hic possimus eligendi unde ea omnis.
                   </p>
-                  <a href="/advertising/profile" alt="">contact us</a>
+                  <a href="/advertising/profile" alt="">
+                    contact us
+                  </a>
                 </div>
               </div>
               <div>
@@ -205,7 +210,9 @@ const IntroSection = () => {
                     voluptatibus dolores explicabo adipisci, repellat numquam
                     sint inventore hic possimus eligendi unde ea omnis.
                   </p>
-                  <a href="/advertising/profile" alt="">contact us</a>
+                  <a href="/advertising/profile" alt="">
+                    contact us
+                  </a>
                 </div>
               </div>
               <div>
@@ -218,7 +225,9 @@ const IntroSection = () => {
                     voluptatibus dolores explicabo adipisci, repellat numquam
                     sint inventore hic possimus eligendi unde ea omnis.
                   </p>
-                  <a href="/advertising/profile" alt="">contact us</a>
+                  <a href="/advertising/profile" alt="">
+                    contact us
+                  </a>
                 </div>
               </div>
               <div>
@@ -231,7 +240,9 @@ const IntroSection = () => {
                     voluptatibus dolores explicabo adipisci, repellat numquam
                     sint inventore hic possimus eligendi unde ea omnis.
                   </p>
-                  <a href="/advertising/profile" alt="">contact us</a>
+                  <a href="/advertising/profile" alt="">
+                    contact us
+                  </a>
                 </div>
               </div>
             </Slider>
@@ -287,85 +298,27 @@ const AdvertisingNavgation = () => {
     ],
   };
 
-  const history = useHistory()
-
-  const handleClick = () => {
-    history.push("/advertising/all-brands")
-  }
+  const history = useHistory();
 
   return (
     <NavStyling>
       <Slider {...settings}>
-        <div>
-          <div className="card_container" onClick={handleClick} >
-            <div className="card_body">
-              <IoRestaurantSharp className="icon" />
-              <p>restaurants</p>
-            </div>
-            <div className="card_footer">
-              <a href="#/">contact us</a>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div className="card_container" onClick={handleClick} >
-            <div className="card_body">
-              <IoIosConstruct className="icon" />
-              <p>construction</p>
-            </div>
-            <div className="card_footer">
-              <a href="#/">contact us</a>
+        {serviceArray.map((data, index) => (
+          <div key={index}>
+            <div
+              className="card_container"
+              onClick={() => history.push(`/advertising/${data.value}`)}
+            >
+              <div className="card_body">
+                {data.icon}
+                <p>{data.title}</p>
+              </div>
+              {/* <div className="card_footer">
+                <a href="#/">contact us</a>
+              </div> */}
             </div>
           </div>
-        </div>
-        <div>
-          <div className="card_container" onClick={handleClick} >
-            <div className="card_body">
-              <BiBuildingHouse className="icon" />
-              <p>reals estates</p>
-            </div>
-            <div className="card_footer">
-              <a href="#/">contact us</a>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div className="card_container" onClick={handleClick} >
-            <div className="card_body">
-              <AiOutlineShop className="icon" />
-              <p>marketing</p>
-            </div>
-            <div className="card_footer">
-              <a href="#/">contact us</a>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div className="card_container" onClick={handleClick} >
-            <div className="card_body">
-              <IoRestaurantSharp className="icon" />
-              <p>restaurants</p>
-            </div>
-            <div className="card_footer">
-              <a href="#/" alt="">
-                contact us
-              </a>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div className="card_container" onClick={handleClick} >
-            <div className="card_body">
-              <IoRestaurantSharp className="icon" />
-              <p>restaurants</p>
-            </div>
-            <div className="card_footer">
-              <a href="#/" alt="">
-                contact us
-              </a>
-            </div>
-          </div>
-        </div>
+        ))}
       </Slider>
     </NavStyling>
   );

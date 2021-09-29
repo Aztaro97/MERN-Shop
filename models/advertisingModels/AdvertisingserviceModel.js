@@ -7,7 +7,7 @@ const AdvertisingServiceSchema = mongoose.Schema({
   },
   companyName: { type: String, required: true },
   about: { type: String, required: true },
-  TypeBusiness: { type: Array, required: true },
+  typeBusiness: { type: Array, required: true },
   fullName: { type: String, required: true },
   telephone: { type: String, required: true },
   email: { type: String, required: true },

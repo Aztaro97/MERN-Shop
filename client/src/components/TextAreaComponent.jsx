@@ -9,6 +9,8 @@ function TextAreaComponent({
   placeholder,
   style,
   required,
+  onChange,
+  value,
 }) {
   return (
     <TextAreaStyling
@@ -19,6 +21,8 @@ function TextAreaComponent({
       placeholder={placeholder}
       style={style}
       required={required}
+      onChange={onChange}
+      value={value}
     />
   );
 }

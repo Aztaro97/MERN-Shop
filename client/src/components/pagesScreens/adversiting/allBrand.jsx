@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useParams } from "react-router-dom";
+import { filterByTypeBusiness } from "../../../flux/actions/advertisingAction/advertisingAction";
+import { useDispatch, useSelector } from "react-redux";
+import LoaderComponent from "../../loader";
 
 function AllBrandScreen() {
   return (
@@ -19,7 +23,7 @@ const Landing = () => {
       <div>
         <div className="landing_overlay">
           <h1>all restaurants</h1>
-          <Link className="link1" to="#/">
+          <Link className="link1" to="/advertising/profile/:id">
             Let's go
           </Link>
         </div>
@@ -29,19 +33,53 @@ const Landing = () => {
 };
 
 const DataSection = () => {
+  const params = useParams();
+  const dispatch = useDispatch();
+  const type = params.typeBusiness;
+
+  const { loading, listAdService, error } = useSelector(
+    (state) => state.advertising
+  );
+
+  useEffect(() => {
+    dispatch(filterByTypeBusiness(type));
+  }, []);
   return (
     <DataStyling>
-      <h3 className="title">lorem ipsum</h3>
+      <h3 className="title">all {type}</h3>
       <hr />
       <div className="grid">
-        <div className="data_item">
+        {loading ? (
+          <LoaderComponent />
+        ) : error ? (
+          <h1>{error}</h1>
+        ) : (
+          listAdService.map((data, index) => (
+            <div className="data_item" key={data._id}>
+              <img src="/img/advertising/bg-images.jpeg" alt="" />
+              <div className="content">
+                <h5>{data.companyName}</h5>
+                <hr />
+                <p>
+                  Curabitur arcu erat, accumsan id imperdiet et, porttitor at
+                  sem. Lorem .
+                </p>
+                <a href={`/advertising/profile/${data._id}`} alt="">
+                  explore
+                </a>
+              </div>
+            </div>
+          ))
+        )}
+
+        {/* <div className="data_item">
           <img src="/img/advertising/bg-images.jpeg" alt="" />
           <div className="content">
             <h5>restaurants</h5>
             <hr />
             <p>
               Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Lorem .
             </p>
             <a href="/advertising-profile" alt="">
               let's go
@@ -55,7 +93,7 @@ const DataSection = () => {
             <hr />
             <p>
               Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Lorem .
             </p>
             <a href="/advertising-profile" alt="">
               let's go
@@ -69,7 +107,7 @@ const DataSection = () => {
             <hr />
             <p>
               Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Lorem .
             </p>
             <a href="/advertising-profile" alt="">
               let's go
@@ -83,7 +121,7 @@ const DataSection = () => {
             <hr />
             <p>
               Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Lorem .
             </p>
             <a href="/advertising-profile" alt="">
               let's go
@@ -97,7 +135,7 @@ const DataSection = () => {
             <hr />
             <p>
               Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Lorem .
             </p>
             <a href="/advertising-profile" alt="">
               let's go
@@ -111,27 +149,13 @@ const DataSection = () => {
             <hr />
             <p>
               Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Lorem .
             </p>
             <a href="/advertising-profile" alt="">
               let's go
             </a>
           </div>
-        </div>
-        <div className="data_item">
-          <img src="/img/advertising/bg-images.jpeg" alt="" />
-          <div className="content">
-            <h5>restaurants</h5>
-            <hr />
-            <p>
-              Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </p>
-            <a href="/advertising-profile" alt="">
-              let's go
-            </a>
-          </div>
-        </div>
+        </div> */}
       </div>
     </DataStyling>
   );
@@ -141,6 +165,7 @@ const DataStyling = styled.section`
   text-align: center;
   & .title {
     font-size: 2rem;
+    text-transform: capitalize;
   }
   & hr {
     width: 100px;
@@ -157,7 +182,7 @@ const DataStyling = styled.section`
     & .data_item {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      border: 1px solid #000;
+      border: 1px solid #999;
       border-radius: 0 30px 30px 0;
       & img {
         width: 100%;
@@ -169,6 +194,7 @@ const DataStyling = styled.section`
         & h5 {
           text-transform: capitalize;
           letter-spacing: 2px;
+          font-weight: 700;
         }
         & hr {
           width: 80px;

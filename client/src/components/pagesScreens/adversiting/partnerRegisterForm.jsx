@@ -163,7 +163,7 @@ const SignUpForm = () => {
 const DetailsComponent = () => {
   const [companyName, setCompanyName] = useState("");
   const [about, setAbout] = useState("");
-  const [TypeBusiness, setTypeBusiness] = useState([]);
+  const [typeBusiness, setTypeBusiness] = useState([]);
   const [fullName, setFullName] = useState("");
   const [telephone, setTelephone] = useState("");
   const [email, setEmail] = useState("");
@@ -176,7 +176,7 @@ const DetailsComponent = () => {
   const body = {
     companyName,
     about,
-    TypeBusiness,
+    typeBusiness,
     fullName,
     telephone,
     email,

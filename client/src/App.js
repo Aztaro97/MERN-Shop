@@ -138,11 +138,12 @@ function App() {
             component={BillingPaymentAdvertising}
           />
           <Route
-            path="/advertising/all-brands"
+            path="/advertising/:typeBusiness"
             component={AdversitingAllBrandComponent}
+            exact
           />
           <Route
-            path="/advertising/profile"
+            path="/advertising/profile/:id"
             component={AdversitingProfileComponent}
           />
         </Route>

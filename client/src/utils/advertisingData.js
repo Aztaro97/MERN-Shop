@@ -1,3 +1,8 @@
+import { AiOutlineShop } from "react-icons/ai";
+import { BiBuildingHouse } from "react-icons/bi";
+import { IoIosConstruct } from "react-icons/io";
+import { IoRestaurantSharp } from "react-icons/io5";
+
 export const categoryAdversiting = [
   {
     id: 1,
@@ -52,10 +57,10 @@ export const categoryAdversiting = [
 ];
 
 export const serviceArray = [
-  {title:"restaurants", value: "restaurants"},
-  {title:"real estate", value: "real estate"},
-  {title:"construction", value: "construction"},
-  {title:"marketing", value: "marketing"},
-  {title:"vehicule", value: "vehicule"},
-  {title:"pharmacy", value: "pharmacy"},
+  {title:"restaurant", value: "restaurant", icon: <IoRestaurantSharp className="icon" />},
+  {title:"real estate", value: "real estate", icon: <BiBuildingHouse className="icon" />},
+  {title:"construction", value: "construction", icon: <IoIosConstruct className="icon" />},
+  {title:"marketing", value: "marketing", icon: <AiOutlineShop className="icon" />},
+  {title:"vehicule", value: "vehicule", icon: <AiOutlineShop className="icon" />},
+  {title:"pharmacy", value: "pharmacy", icon: <AiOutlineShop className="icon" />},
 ];

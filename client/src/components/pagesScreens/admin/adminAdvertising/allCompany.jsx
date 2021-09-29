@@ -1,8 +1,15 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllAdService } from "../../../../flux/actions/advertisingAction/advertisingAction";
+import {
+  getAllAdService,
+  filterByTypeBusiness,
+} from "../../../../flux/actions/advertisingAction/advertisingAction";
 import LoaderComponent from "../../../loader";
+import { useHistory } from "react-router";
+import { Select } from "antd";
+import { serviceArray } from "../../../../utils/advertisingData";
+const { Option } = Select;
 
 const AllCompanyService = () => {
   const dispatch = useDispatch();
@@ -10,10 +17,21 @@ const AllCompanyService = () => {
   const { loading, listAdService, error } = useSelector(
     (state) => state.advertising
   );
+  const { userInfo } = useSelector((state) => state.userLogin);
 
+  const handleSelectType = (val) => {
+    console.log(val);
+    dispatch(filterByTypeBusiness(val));
+  };
+
+  const history = useHistory();
   useEffect(() => {
-    dispatch(getAllAdService());
-  }, []);
+    if (userInfo && userInfo.isAdmin) {
+      dispatch(getAllAdService());
+    } else {
+      history.push("/auth");
+    }
+  }, [dispatch, getAllAdService, userInfo]);
 
   return (
     <AllCompanyContainer>
@@ -23,38 +41,73 @@ const AllCompanyService = () => {
         <h3>Error: {error} </h3>
       ) : (
         <>
-          <h3 className="title">all ad services</h3>
+          <h3 className="title">list all ad services</h3>
+          <SelectStyling
+            defaultValue="filter by type of Business"
+            style={{ width: 400 }}
+            onChange={handleSelectType}
+          >
+            {serviceArray.map((item, index) => (
+              <Option key={index} value={item.value}>
+                {item.title}
+              </Option>
+            ))}
+          </SelectStyling>
           <Table>
             <thead>
               <tr>
+                <th>id</th>
                 <th>name</th>
                 <th>email</th>
                 <th>Telephone</th>
                 <th>address</th>
-                <th>Type ad</th>
+
                 <th>company</th>
-                <th>Action</th>
+                <th>Type ad plan</th>
               </tr>
             </thead>
             <tbody>
-              <td>moussa</td>
-              <td>moussa@gmail.com</td>
-              <td>90909090</td>
-              <td>
-                <ul>
-                  <li>city: Niamey</li>
-                  <li>region: Niamey</li>
-                  <li>country: Niger</li>
-                </ul>
-              </td>
-              <td>free</td>
-              <td>
-                <ul>
-                  <li>name: au79code</li>
-                  <li>Bussiness: restaurant, real estate, car</li>
-                  <li>about: about about about</li>
-                </ul>
-              </td>
+              {listAdService.map((ad) => (
+                <tr key={ad._id}>
+                  <td>{ad.user}</td>
+                  <td>{ad.fullName}</td>
+                  <td>
+                    {" "}
+                    <a href={`mailto:${ad.email}`}> {ad.email} </a>{" "}
+                  </td>
+                  <td>
+                    {" "}
+                    <a href={`tel:${ad.telephone}`}> {ad.telephone}</a>{" "}
+                  </td>
+                  <td>
+                    <ul>
+                      <li>
+                        <span>city:</span> {ad.city}
+                      </li>
+                      <li>
+                        <span>region:</span> {ad.region}
+                      </li>
+                      <li>
+                        <span>country:</span> {ad.country}
+                      </li>
+                    </ul>
+                  </td>
+                  <td>
+                    <ul>
+                      <li>
+                        <span>name:</span> {ad.companyName}
+                      </li>
+                      <li>
+                        <span>Bussiness:</span> {ad.typeBusiness.join(", ")}
+                      </li>
+                      <li className="about">
+                        <span>about:</span> {ad.about}
+                      </li>
+                    </ul>
+                  </td>
+                  <td>{ad.typePlan}</td>
+                </tr>
+              ))}
             </tbody>
           </Table>
         </>
@@ -64,7 +117,7 @@ const AllCompanyService = () => {
 };
 
 const AllCompanyContainer = styled.div`
-  margin: 7rem auto 0;
+  margin: 7rem auto 7rem;
   max-width: 2000px;
   padding: 0 1rem;
   & .title {
@@ -75,6 +128,15 @@ const AllCompanyContainer = styled.div`
 
 const Table = styled.table`
   width: 100%;
+  & ul {
+    list-style: none;
+  }
+  & a {
+    color: #333;
+    text-decoration: none;
+    text-transform: lowercase;
+  }
+
   & thead {
     & tr {
       background: var(--orange-color);
@@ -82,7 +144,7 @@ const Table = styled.table`
         border: 1px solid rgba(0, 0, 0, 0.05);
         padding: 10px;
         text-transform: uppercase;
-        font-weight: 700;
+        /* font-weight: 700; */
         color: #fff;
         font-size: 0.8rem;
       }
@@ -91,60 +153,34 @@ const Table = styled.table`
   & tbody {
     margin-top: 1rem;
     & tr {
+      border-bottom: 1px solid #333;
       & td {
         border: 1px solid rgba(0, 0, 0, 0.05);
         padding: 10px;
-        text-transform: uppercase;
         font-size: 0.8rem;
-        & .delete_btn {
-          outline: none;
-          background: #eb4d4b;
-          color: #fff;
-          border: none;
-          padding: 1px 12px;
-          font-size: 1.2rem;
+        text-transform: capitalize;
+
+        & span {
+          /* color: var(--orange-color); */
+          font-weight: 700;
+          text-transform: uppercase;
+          text-decoration: underline;
         }
-        & .images_lists {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          & .img {
-            height: 70px;
-            width: 70px;
-            margin: 0 5px;
-          }
-        }
-        & .action_btn {
-          display: flex;
-          align-items: center;
-          color: #111;
-          position: relative;
-          top: 11px;
-          &:hover {
-            text-decoration: none;
-            opacity: 0.9;
-          }
-        }
-      }
-      & .status {
-        & p {
-          display: flex;
-          text-transform: capitalize;
-          background: transparent;
-          margin-bottom: 0;
-          & .allow_btn_accept {
-            color: green;
-            font-size: 1rem;
-            margin-left: 2px;
-          }
-          & .allow_btn_refuse {
-            color: red;
-            font-size: 1rem;
-            margin-left: 2px;
-          }
+        & .about {
+          text-transform: initial;
         }
       }
     }
+  }
+`;
+
+const SelectStyling = styled(Select)`
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  &:hover .ant-select-selector {
+    /* outline: 1px solid var(--orange-color); */
+    border-color: var(--orange-color) !important;
+    /* outline: none; */
   }
 `;
 

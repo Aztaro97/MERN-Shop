@@ -1,95 +1,124 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Slider from "react-slick";
-import {Image} from "antd"
+import { Image } from "antd";
+import { useParams } from "react-router-dom";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import { categoryAdversiting } from "../../../utils/advertisingData";
 import InputC from "../../InputComponents";
 import ButtonC from "../../ButtonComponeent";
 import "./advertising.css";
+import { useDispatch, useSelector } from "react-redux";
+import { getAdvertisingProfileByID } from "../../../flux/actions/advertisingAction/advertisingAction";
+import LoaderComponent from "../../loader";
+import TextAreaComponent from "../../TextAreaComponent";
+import axios from "axios";
+import { successMessage } from "../../message";
 
 function AdvertisingProfileScreen() {
+  const params = useParams();
+  const profileID = params.id;
+
+  const { profile, loading, error } = useSelector((state) => state.advertising);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAdvertisingProfileByID(profileID));
+  }, [dispatch, getAdvertisingProfileByID]);
+
   return (
     <main>
       <Landing />
-      <ContainerStyling className="container my-5">
-        <section className="introduction">
-          <h1 className="title">company name</h1>
-          <img src="/img/logo11.png" alt="" />
-        </section>
-        <section className="about">
-          <h1 className="title">about company</h1>
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque, rem
-            tempore doloremque sit id esse iusto? Quasi ex laudantium voluptate
-            porro? Veniam eligendi fugit consequuntur repellendus error
-            repudiandae! Nostrum, amet! Rerum aliquid recusandae nostrum
-            consectetur molestias eum illum soluta, cumque vel rem! Debitis nisi
-            eos ut reprehenderit ex unde nesciunt voluptate mollitia ducimus
-            temporibus earum quibusdam distinctio saepe, tempora amet! Ipsum,
-            fugiat laboriosam! Voluptatum obcaecati cumque beatae nisi.
-            Inventore velit corporis distinctio impedit vel dolorum minima sed
-            veniam? Nam cum enim, unde praesentium reprehenderit ad nisi
-            voluptatibus sunt qui similique?
-          </p>
-        </section>
-        <section className="service">
-          <h1 className="title">company services</h1>
-          <div className="grid">
-            {categoryAdversiting.map((data) => (
-              <div key={data.id}>
-                <div
-                  className="box"
-                  style={{ backgroundImage: `url(${data.image})` }}
-                >
-                  <div className="box-container">
-                    <h4>{data.title}</h4>
+      {loading ? (
+        <LoaderComponent />
+      ) : error ? (
+        <h1>{error}</h1>
+      ) : (
+        <ContainerStyling className="container my-5">
+          <section className="introduction">
+            <h1 className="title">{profile.companyName}</h1>
+            <img src="/img/logo11.png" alt="" />
+          </section>
+          <section className="about">
+            <h1 className="title">about company</h1>
+            <p>{profile.about}</p>
+          </section>
+          <section className="service">
+            <h1 className="title">company services</h1>
+            <div className="grid">
+              {profile.typeBusiness.map((data, index) => (
+                <div key={index}>
+                  <div
+                    className="box"
+                    style={{
+                      backgroundImage: `url(${"/img/advertising/real_state.jpg"})`,
+                    }}
+                  >
+                    <div className="box-container">
+                      <h4>{data}</h4>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </section>
+              ))}
+            </div>
+          </section>
 
-        <section className="service_two">
-          <h1 className="title">company services</h1>
-          <div className="grid">
-            <div className="card">
-              <Image src="/img/advertising/real_state.jpg" alt="" className="card-image" />
-              <div className="card-body">
-                <p className="text-center">real estate</p>
+          <section className="service_two">
+            <h1 className="title">company services</h1>
+            <div className="grid">
+              <div className="card">
+                <Image
+                  src="/img/advertising/real_state.jpg"
+                  alt=""
+                  className="card-image"
+                />
+                <div className="card-body">
+                  <p className="text-center">real estate</p>
+                </div>
+              </div>
+              <div className="card">
+                <Image
+                  src="/img/advertising/restaurant.jpg"
+                  alt=""
+                  className="card-image"
+                />
+                <div className="card-body">
+                  <p className="text-center">Restaurant</p>
+                </div>
+              </div>
+              <div className="card">
+                <Image
+                  src="/img/advertising/pharmacy.jpg"
+                  alt=""
+                  className="card-image"
+                />
+                <div className="card-body">
+                  <p className="text-center">pharmacy</p>
+                </div>
+              </div>
+              <div className="card">
+                <Image
+                  src="/img/advertising/real_state.jpg"
+                  alt=""
+                  className="card-image"
+                />
+                <div className="card-body">
+                  <p className="text-center">vehicle</p>
+                </div>
               </div>
             </div>
-            <div className="card">
-              <Image src="/img/advertising/restaurant.jpg" alt="" className="card-image" />
-              <div className="card-body">
-                <p className="text-center">Restaurant</p>
-              </div>
-            </div>
-            <div className="card">
-              <Image src="/img/advertising/pharmacy.jpg" alt="" className="card-image" />
-              <div className="card-body">
-                <p className="text-center">pharmacy</p>
-              </div>
-            </div>
-            <div className="card">
-              <Image src="/img/advertising/real_state.jpg" alt="" className="card-image" />
-              <div className="card-body">
-                <p className="text-center">vehicle</p>
-              </div>
-            </div>
-          </div>
-        </section>
+          </section>
 
-        <section className="portfolio">
-          <h1 className="title">company portfolio</h1>
-          <PortfolioSlider className="slider_container" />
-        </section>
-        <section className="contact">
-          <h1 className="title">contact</h1>
-          <ContactForm />
-          {/* <div className="grid">
+          <section className="portfolio">
+            <h1 className="title">company portfolio</h1>
+            <PortfolioSlider className="slider_container" />
+          </section>
+          <section className="contact">
+            <h1 className="title">contact</h1>
+            <ContactForm profile={profile} />
+            {/* <div className="grid">
             <div>
               <form action="">
                 <ul>
@@ -138,8 +167,9 @@ function AdvertisingProfileScreen() {
               ></iframe>
             </div>
           </div> */}
-        </section>
-      </ContainerStyling>
+          </section>
+        </ContainerStyling>
+      )}
     </main>
   );
 }
@@ -192,7 +222,7 @@ const PortfolioSlider = () => {
   );
 };
 
-const ContactForm = () => {
+const ContactForm = ({ profile }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [address, setAddress] = useState("");
@@ -201,8 +231,40 @@ const ContactForm = () => {
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
   const [region, setRegion] = useState("");
+  const [message, setMessage] = useState("");
 
-  const handleSubmit = (e) => {};
+  const body = {
+    firstName,
+    lastName,
+    address,
+    email,
+    phoneNumber,
+    city,
+    country,
+    region,
+    message,
+    companyId: profile._id,
+    companyName: profile.companyName,
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const config = {
+      headers: { "Content-Type": "application/json" },
+    };
+    const res = await axios.post("/api/advertising/message", body, config);
+  if (res.data) {
+    successMessage((res.data.msg), 1000, 7);
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setPhoneNumber("");
+    setCity("");
+    setCountry("");
+    setMessage("");
+  }
+    console.log(res.data)
+  };
   return (
     <FormStyling onSubmit={handleSubmit}>
       <div className="row">
@@ -258,7 +320,7 @@ const ContactForm = () => {
             required
             name="address"
             id="address"
-            placeholder="ADRESS"
+            placeholder="ADDRESS"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
           />
@@ -296,8 +358,27 @@ const ContactForm = () => {
         </div>
       </div>
 
-      <ButtonC type="submit" className="btn_submit">
-        send
+      <div className="row">
+        <div className="col-lg-12">
+          <TextAreaComponent
+            style={{ width: "100%" }}
+            rows="5"
+            required
+            name="message"
+            id="message"
+            placeholder="MESSAGE"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+          />
+        </div>
+      </div>
+
+      <ButtonC
+        type="submit"
+        className="btn_submit"
+        style={{ textTransform: "capitalize", letterSpacing: "1px" }}
+      >
+        submit
       </ButtonC>
     </FormStyling>
   );
@@ -492,7 +573,6 @@ const ContainerStyling = styled.div`
     }
   }
 
-
   /*  //////////   service two exemple  ///////////// */
   & .service_two {
     & .grid {
@@ -509,15 +589,11 @@ const ContainerStyling = styled.div`
         margin: 0;
       }
 
-      @media only screen and (max-width:520px) {
+      @media only screen and (max-width: 520px) {
         grid-template-columns: repeat(2, 1fr);
       }
     }
   }
-
-
-
-
 `;
 
 const LandingStyling = styled.div`
