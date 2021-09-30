@@ -57,7 +57,7 @@ function OrderDetailsScreen({ match }) {
 
   useEffect(() => {
     if (!userInfo || !userInfo.isAdmin) {
-      history.push("/login");
+      history.push("/auth");
     }
 
     dispatch(getOrderDetails(orderId));

@@ -15,6 +15,7 @@ import LoaderComponent from "../../loader";
 import TextAreaComponent from "../../TextAreaComponent";
 import axios from "axios";
 import { successMessage } from "../../message";
+import { toast, ToastContainer } from "react-toastify";
 
 function AdvertisingProfileScreen() {
   const params = useParams();
@@ -245,6 +246,7 @@ const ContactForm = ({ profile }) => {
     message,
     companyId: profile._id,
     companyName: profile.companyName,
+    companyTelephone: profile.telephone
   };
 
   const handleSubmit = async (e) => {
@@ -253,17 +255,16 @@ const ContactForm = ({ profile }) => {
       headers: { "Content-Type": "application/json" },
     };
     const res = await axios.post("/api/advertising/message", body, config);
-  if (res.data) {
-    successMessage((res.data.msg), 1000, 7);
-    setFirstName("");
-    setLastName("");
-    setEmail("");
-    setPhoneNumber("");
-    setCity("");
-    setCountry("");
-    setMessage("");
-  }
-    console.log(res.data)
+    if (res.data) {
+      successMessage(res.data.msg, 1000, 7);
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setPhoneNumber("");
+      setCity("");
+      setCountry("");
+      setMessage("");
+    }
   };
   return (
     <FormStyling onSubmit={handleSubmit}>

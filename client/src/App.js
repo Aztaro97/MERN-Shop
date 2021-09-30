@@ -50,6 +50,7 @@ import PartnerRegisterComponent from "./components/pagesScreens/adversiting/part
 import AdvertisingRegister from "./components/pagesScreens/adversiting/partnerRegisterForm";
 import CartAdvertising from "./components/pagesScreens/adversiting/cartUploading";
 import BillingPaymentAdvertising from "./components/pagesScreens/adversiting/BillingStep";
+import ListAdMessageComponent from "./components/pagesScreens/admin/adminAdvertising/listAdMessage"
 
 // ////////////////  Design Component    /////////////////////
 import DesignComponent from "./components/pagesScreens/design/designScreen";
@@ -184,6 +185,11 @@ function App() {
         <Route
           path="/admin/advertising"
           component={AllCompanyServiceComponent}
+          exact
+        />
+        <Route
+          path="/admin/message"
+          component={ListAdMessageComponent}
           exact
         />
 

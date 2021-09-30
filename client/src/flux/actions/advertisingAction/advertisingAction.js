@@ -7,9 +7,15 @@ import {
   AD_PROFILE_FAIL,
   AD_PROFILE_REQUEST,
   AD_PROFILE_SUCCESS,
+  FETCH_MESSAGE_FAIL,
+  FETCH_MESSAGE_REQUEST,
+  FETCH_MESSAGE_SUCCESS,
   FILTER_BUSINESS_FAIL,
   FILTER_BUSINESS_REQUEST,
   FILTER_BUSINESS_SUCCESS,
+  OPEN_MESSAGE_FAIL,
+  OPEN_MESSAGE_REQUEST,
+  OPEN_MESSAGE_SUCCESS,
 } from "../../constants/advertising";
 
 export const AddOrderCardImage = (data) => async (dispatch, getState) => {
@@ -152,6 +158,69 @@ export const getAdvertisingProfileByID = (id) => async (dispatch) => {
     dispatch({
       type: AD_PROFILE_FAIL,
       payload: error,
+    });
+  }
+};
+
+export const getMessageById = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: OPEN_MESSAGE_REQUEST,
+    });
+    const {
+      userLogin: { userInfo },
+    } = getState();
+    const config = {
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const res = await axios.put(`/api/advertising/message/view`, {id}, config);
+    console.log(res.data)
+    dispatch({
+      type: OPEN_MESSAGE_SUCCESS,
+      payload: res.data,
+    });
+    // dispatch({
+    //   type: OPEN_MESSAGE_SUCCESS,
+    //   payload: res.data,
+    // });
+
+  } catch (error) {
+    // dispatch({
+    //   type: OPEN_MESSAGE_FAIL,
+    //   payload: error,
+    // });
+  }
+};
+
+export const fetchAllClientMessage = () => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: FETCH_MESSAGE_REQUEST,
+    });
+    const {
+      userLogin: { userInfo },
+    } = getState();
+    const config = {
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const res = await axios.get(`/api/advertising/message`, config);
+
+    dispatch({
+      type: FETCH_MESSAGE_SUCCESS,
+      payload: res.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: FETCH_MESSAGE_FAIL,
+      payload: error.message,
     });
   }
 };
