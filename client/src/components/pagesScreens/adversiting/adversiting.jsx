@@ -10,101 +10,47 @@ import {
 } from "react-icons/all";
 import {
   categoryAdversiting,
+  listPartnerLogo,
   serviceArray,
 } from "../../../utils/advertisingData";
+import FirstLandingSlider from "./AdLanding/firstLanding";
 // import MainContainer from "../../MainContainer";
 
 function AdversitingScreen() {
   return (
     <main>
-      <LandingSlider />
+      <FirstLandingSlider />
       <Container>
         <AdvertisingNavgation />
-        <SliderSection />
+        <TypeBusinessSection />
         <IntroSection />
         <JoiningUsSection />
-        <PartnerSection />
+        <PartnerSectionLogo />
         <ServicesSlider />
       </Container>
     </main>
   );
 }
 
-const LandingSlider = () => {
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    nextArrow: (
-      <div>
-        <div className="next-slick-arrow"> ⫸ </div>
-      </div>
-    ),
-    prevArrow: (
-      <div>
-        <div className="prev-slick-arrow"> ⫷ </div>
-      </div>
-    ),
-  };
-  return (
-    <LandingStyling>
-      <Slider {...settings}>
-        <div>
-          <div className="landing_overlay">
-            <img src="/img/advertising/bg-images.jpeg" alt="" />
-            <div className="contente_overlay">
-              <h1>
-                <span>Blind</span>Text Generator.
-              </h1>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-              <Link className="link1" to="#/">
-                Quote here
-              </Link>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div className="landing_overlay">
-            <img src="/img/advertising/bg-images.jpeg" alt="" />
-            <div className="contente_overlay">
-              <h1>
-                <span>Blind</span>Text Generator.
-              </h1>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-              <Link className="link1" to="#/">
-                Quote here
-              </Link>
-            </div>
-          </div>
-        </div>
-      </Slider>
-    </LandingStyling>
-  );
-};
+// const Landing = () => {
+//   return (
+//     <LandingStyling>
+//       <div>
+//         <div className="landing_overlay">
+//           <h1>
+//             <span>Blind</span>Text Generator.
+//           </h1>
+//           <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+//           <Link className="link1" to="#/">
+//             Quote here
+//           </Link>
+//         </div>
+//       </div>
+//     </LandingStyling>
+//   );
+// };
 
-const Landing = () => {
-  return (
-    <LandingStyling>
-      <div>
-        <div className="landing_overlay">
-          <h1>
-            <span>Blind</span>Text Generator.
-          </h1>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-          <Link className="link1" to="#/">
-            Quote here
-          </Link>
-        </div>
-      </div>
-    </LandingStyling>
-  );
-};
-
-const SliderSection = () => {
+const TypeBusinessSection = () => {
   const settings = {
     dots: true,
     infinite: true,
@@ -144,10 +90,16 @@ const SliderSection = () => {
       },
     ],
   };
+  const history = useHistory();
   return (
     <Slider {...settings}>
       {categoryAdversiting.map((data) => (
-        <div key={data.id}>
+        <CardItemStyling
+          key={data.profileId}
+          onClick={() =>
+            (window.location.href = `/advertising/profile/${data.profileId}`)
+          }
+        >
           <div
             className="box"
             style={{ backgroundImage: `url(${data.image})` }}
@@ -156,11 +108,48 @@ const SliderSection = () => {
               <h4>{data.title}</h4>
             </div>
           </div>
-        </div>
+        </CardItemStyling>
       ))}
     </Slider>
   );
 };
+
+const CardItemStyling = styled.div`
+  & .box {
+    height: 200px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 1.5rem;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      padding: 0;
+    }
+    &:hover .box-container h4 {
+      color: var(--orange-color);
+    }
+
+    & .box-container {
+      width: 100%;
+      height: 100%;
+      background: #00000068;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      & h4 {
+        color: #ffff;
+        text-transform: uppercase;
+        font-size: 1rem;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+  }
+`;
 
 const IntroSection = () => {
   const settings = {
@@ -305,18 +294,16 @@ const AdvertisingNavgation = () => {
       <Slider {...settings}>
         {serviceArray.map((data, index) => (
           <div key={index}>
-            <div
+            <a
+              href={`/advertising/type/${data.value}`}
               className="card_container"
-              onClick={() => history.push(`/advertising/${data.value}`)}
+              // onClick={() => history.push(`/advertising/type/${data.value}`)}
             >
               <div className="card_body">
-                {data.icon}
-                <p>{data.title}</p>
+                <i className="icon">{data.icon}</i>
+                <span>{data.title}</span>
               </div>
-              {/* <div className="card_footer">
-                <a href="#/">contact us</a>
-              </div> */}
-            </div>
+            </a>
           </div>
         ))}
       </Slider>
@@ -332,10 +319,10 @@ const JoiningUsSection = () => {
       </h1>
       <hr />
       <div className="row">
-        <div className="col-lg-3">
+        <div className="col-lg-4">
           <img src="/img/advertising/union.jpg" alt="" />
         </div>
-        <div className="col-lg-9">
+        <div className="col-lg-8">
           <h1 className="content">
             Become a partner <br /> Reach more customers and <br /> achieve
             growth with us
@@ -351,11 +338,11 @@ const JoiningUsSection = () => {
   );
 };
 
-const PartnerSection = () => {
+const PartnerSectionLogo = () => {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 500,
+    speed: 400,
     autoplay: true,
     slidesToShow: 7,
     slidesToScroll: 1,
@@ -388,57 +375,19 @@ const PartnerSection = () => {
   };
 
   return (
-    <PartnerStyling>
+    <PartnerLogoStyling>
       <h1 className="title">our partner</h1>
       <hr />
       <Slider {...settings}>
-        <div>
-          <div className="logo-box">
-            <img src="/img/logo11.png" alt="" />
+        {listPartnerLogo.map((item) => (
+          <div key={item.profileId} className="logo-box">
+            <a href={`/advertising/profile/${item.profileId}`}>
+              <img src={item.logoUrl} alt={item.companyName} />
+            </a>
           </div>
-        </div>
-        <div>
-          <div className="logo-box">
-            <img src="/img/logo11.png" alt="" />
-          </div>
-        </div>
-        <div>
-          <div className="logo-box">
-            <img src="/img/logo11.png" alt="" />
-          </div>
-        </div>
-        <div>
-          <div className="logo-box">
-            <img src="/img/logo11.png" alt="" />
-          </div>
-        </div>
-        <div>
-          <div className="logo-box">
-            <img src="/img/logo11.png" alt="" />
-          </div>
-        </div>
-        <div>
-          <div className="logo-box">
-            <img src="/img/logo11.png" alt="" />
-          </div>
-        </div>
-        <div>
-          <div className="logo-box">
-            <img src="/img/logo11.png" alt="" />
-          </div>
-        </div>
-        <div>
-          <div className="logo-box">
-            <img src="/img/logo11.png" alt="" />
-          </div>
-        </div>
-        <div>
-          <div className="logo-box">
-            <img src="/img/logo11.png" alt="" />
-          </div>
-        </div>
+        ))}
       </Slider>
-    </PartnerStyling>
+    </PartnerLogoStyling>
   );
 };
 
@@ -553,8 +502,9 @@ const ServiceStyling = styled.section`
   }
 `;
 
-const PartnerStyling = styled.section`
+const PartnerLogoStyling = styled.section`
   margin: 4rem;
+  margin-bottom: 8rem;
   & .title {
     text-align: center;
     text-transform: uppercase;
@@ -573,23 +523,28 @@ const PartnerStyling = styled.section`
     }
   }
   & .logo-box {
-    width: 100px;
-    height: 100px;
-    background: #0a3068;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    margin: 0 auto;
+    width: 100%;
+    height: 120px;
+    margin: auto;
+
+    & a {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+        rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+      margin: 5px;
+    }
     & img {
-      width: 70%;
-      height: 70%;
       object-fit: contain;
       background: transparent;
+      padding: 20px;
+      width: 100%;
+      height: 100%;
     }
     @media only screen and (max-width: 768px) {
-      width: 80px;
-      height: 80px;
+      /* width: 80px;
+      height: 80px; */
     }
   }
   /* ////////////   Slick Button next and previous   ///////////// */
@@ -602,44 +557,49 @@ const PartnerStyling = styled.section`
 `;
 
 const JoiningUsStyling = styled.section`
-  padding: 0 7rem;
+  /* padding: 0 7rem; */
+  margin-bottom: 8rem;
   & .title {
     text-align: center;
     letter-spacing: 3px;
     color: var(--silver-color);
-    margin-bottom: 1.5rem;
-    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
   }
   & hr {
     height: 1px;
     background: var(--background-color);
     width: 200px;
-    margin: 1rem auto;
+    margin: 1rem auto 1.5rem;
     @media only screen and (max-width: 768px) {
       width: 100px;
     }
   }
   & img {
     width: 100%;
-    border-radius: 80px;
+    border-radius: 40px;
     object-fit: cover;
+    height: 250px;
 
     @media only screen and (max-width: 1000px) {
       height: 600px;
+      border-radius: 60px;
     }
     @media only screen and (max-width: 768px) {
-      height: 300px;
+      height: 250px;
+      border-radius: 30px;
     }
   }
   & .content {
     text-align: center;
     letter-spacing: 3px;
     color: var(--silver-color);
-    margin: 3rem auto 4rem auto;
-    font-size: 2rem;
+    margin: 1rem auto 2rem auto;
+    font-size: 1.4rem;
   }
   .link {
     text-align: center;
+    height: 100%;
     & a {
       text-align: center;
       font-size: 1.4rem;
@@ -662,13 +622,25 @@ const NavStyling = styled.div`
   width: 100%;
   /* height: 500px; */
   & .card_container {
-    height: 250px;
+    height: 170px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    cursor: pointer;
-    /* width: 200px; */
+    text-decoration: none;
     margin: 0 10px;
+
+    &:hover {
+      & .card_body {
+        background: var(--orange-color);
+      }
+      & .icon > * {
+        color: #fff;
+      }
+      & span {
+        color: #fff !important;
+      }
+    }
+
     & .card_body {
       height: 150px;
       width: 100%;
@@ -678,16 +650,19 @@ const NavStyling = styled.div`
       align-items: center;
       justify-content: center;
       flex-direction: column;
+      background: #fff;
+      transition: background 0.2s ease-in;
       & .icon {
         font-size: 2.3rem;
         color: var(--orange-color);
         margin-bottom: 0.7rem;
+        transition: color 0.3s ease-in-out;
       }
-      & p {
+      & span {
         color: var(--orange-color);
         text-transform: capitalize;
         font-size: 1.2rem;
-        margin-bottom: 0;
+        transition: color 0.1s ease-in-out;
       }
     }
     & .card_footer {
@@ -718,116 +693,6 @@ const NavStyling = styled.div`
   }
 `;
 
-const LandingStyling = styled.div`
-  & .landing_overlay {
-    /* background-image: ,
-      url("./img/advertising/bg-images.jpeg"); */
-
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    background-origin: content-box;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: end;
-    color: #fff;
-    padding-bottom: 3rem;
-
-    & img {
-      background: linear-gradient(
-        0deg,
-        rgba(0, 0, 0, 1) 0%,
-        rgba(0, 0, 0, 0.37298669467787116) 0%
-      );
-      height: 700px;
-      width: 100%;
-      @media only screen and (max-width: 768px) {
-        height: 400px;
-      }
-    }
-
-    & .contente_overlay {
-      position: absolute;
-      margin-left: 3rem;
-
-      & h1 {
-        color: #fff;
-        margin: 0;
-        font-weight: 700;
-        text-transform: uppercase;
-        font-size: 2rem;
-
-        & span {
-          /* color: #c68787; */
-          display: block;
-          text-transform: capitalize;
-          font-size: 7.8rem;
-          font-family: weFont, sans-serif;
-        }
-      }
-      & p {
-        margin-top: 5px;
-        margin-bottom: 5px;
-        font-size: 0.9em;
-      }
-      & .link1 {
-        display: block;
-        text-decoration: none;
-        outline: none;
-        border: none;
-        border-radius: 30px;
-        padding: 0.8rem 2rem;
-        background: #fff;
-        text-transform: uppercase;
-        color: #000;
-        width: 200px;
-        text-align: center;
-        margin-bottom: 2rem;
-        font-size: 1rem;
-        cursor: pointer;
-        /* z-index: 99999; */
-        margin-left: 1rem;
-        &:hover {
-          opacity: 0.9;
-        }
-      }
-    }
-  }
-
-  /* //////////  Slider Customer Arrows */
-  .slick-prev {
-    left: -52px !important;
-    z-index: 2 !important;
-  }
-
-  .slick-next:before,
-  .slick-prev:before {
-    content: "" !important;
-  }
-  .next-slick-arrow,
-  .prev-slick-arrow {
-    color: #fff;
-    font-size: 48px;
-    position: relative;
-    @media only screen and (max-width: 768px) {
-      font-size: 30px;
-    }
-    @media only screen and (max-width: 540px) {
-      font-size: 20px;
-    }
-  }
-  .next-slick-arrow {
-    right: 5rem;
-    z-index: 2;
-  }
-  .prev-slick-arrow {
-    position: relative;
-    left: 5rem;
-    color: #fff;
-  }
-`;
-
 const Container = styled.div`
   padding: 0rem 1rem;
   max-width: 1400px;
@@ -844,43 +709,6 @@ const Container = styled.div`
   & .pharmacy-bg {
     background-image: url("https://images.unsplash.com/photo-1471864190281-a93a3070b6de?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80");
   } */
-  & .box {
-    /* background-image: url("https://images.unsplash.com/photo-1630980260348-16f484cb6471?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80"); */
-    height: 200px;
-    /* width: 300px; */
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    padding: 1.5rem;
-    margin-bottom: 10px;
-    margin-left: 5px;
-    margin-right: 5px;
-    cursor: pointer;
-    /* margin: 0 10px; */
-    transition: all 0.3s ease-in-out;
-    &:hover {
-      padding: 0;
-    }
-    &:hover .box-container h4 {
-      color: var(--orange-color);
-    }
-
-    & .box-container {
-      width: 100%;
-      height: 100%;
-      background: #00000068;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      & h4 {
-        color: #ffff;
-        text-transform: uppercase;
-        font-size: 1rem;
-        transition: all 0.3s ease-in-out;
-      }
-    }
-  }
 `;
 
 const IntroStyling = styled.section`

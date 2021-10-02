@@ -9,9 +9,13 @@ import Button from "../../../ButtonComponeent";
 import InputComponents from "../../../InputComponents";
 import { Col, Row } from "antd";
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { clearCardImage, AddOrderCardImage } from "../../../../flux/actions/advertisingAction/advertisingAction";
+import {
+  clearCardImage,
+  AddOrderCardImage,
+  PremiumSubscription,
+} from "../../../../flux/actions/advertisingAction/advertisingAction";
 import axios from "axios";
 
 const PaymentForm = () => {
@@ -25,7 +29,7 @@ const PaymentForm = () => {
   const elements = useElements();
   const dispatch = useDispatch();
 
-  // const {data} = useSelector(state => state.advertising);
+  const { service } = useSelector((state) => state.advertising);
 
   //   Calculate prices
   const addDecimals = (num) => {
@@ -39,25 +43,15 @@ const PaymentForm = () => {
   const Cartdata = JSON.parse(localStorage.getItem("cardDataImage"));
 
   useEffect(() => {
-    
     if (Cartdata) {
       setData(Cartdata);
     } else {
       history.push("/advertising/cart");
     }
-  }, [setData, history]);
-
-  const body = {
-    productsOrdered: Cartdata,
-    fullName,
-    phoneNumber,
-    email,
-    totalPrice,
-  }
+  }, [Cartdata, history]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(body)
     dispatch(clearCardImage());
     const cardElement = elements?.getElement(CardElement);
 
@@ -73,34 +67,39 @@ const PaymentForm = () => {
     if (!error) {
       try {
         const { id } = paymentMethod;
-        console.log(id);
+        const body = {
+          productsOrdered: Cartdata,
+          service,
+          totalPrice,
+        };
 
-        // const config = {
-        //   headers: {
-        //     "Content-Type": "application/json",
-        //     Authorization: `Bearer ${process.env.REACT_APP_STRIPE_SECRET_KEY} ${process.env.REACT_APP_STRIPE_API_KEY}`,
-        //   },
-        // };
+        const config = {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${process.env.REACT_APP_STRIPE_SECRET_KEY} ${process.env.REACT_APP_STRIPE_API_KEY}`,
+          },
+        };
 
-        // const response = await axios.post(
-        //   "/create-checkout-session",
-        //   {
-        //     amount: totalPrice,
-        //     id,
-        //     payment: {
-        //       gateway: "stripe",
-        //       stripe: {
-        //         payment_method_id: id,
-        //       },
-        //     },
-        //   },
-        //   config
-        // );
+        const response = await axios.post(
+          "/create-checkout-session",
+          {
+            amount: totalPrice,
+            id,
+            payment: {
+              gateway: "stripe",
+              stripe: {
+                payment_method_id: id,
+              },
+            },
+          },
+          config
+        );
 
-        // if (response.data.paymentSuccess) {
-        //   dispatch(AddOrderCardImage())
-        //   history.push("/thank");
-        // }
+        if (response.data.paymentSuccess) {
+          // dispatch(AddOrderCardImage())
+          dispatch(PremiumSubscription(body));
+          history.push("/thank");
+        }
       } catch (error) {
         console.log("Error", error);
       }
@@ -119,7 +118,12 @@ const PaymentForm = () => {
           xs={{ span: 24 }}
           className="gutter-row"
         >
-          <InputComponents type="text" placeholder="Full Name" value={fullName} onChange={(e) => setFullName(e.target.value)} />
+          <InputComponents
+            type="text"
+            placeholder="Full Name"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
+          />
         </Col>
         <Col
           lg={{ span: 8 }}
@@ -128,7 +132,12 @@ const PaymentForm = () => {
           xs={{ span: 24 }}
           className="gutter-row"
         >
-          <InputComponents type="tel" placeholder="Phone Number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+          <InputComponents
+            type="tel"
+            placeholder="Phone Number"
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
+          />
         </Col>
         <Col
           lg={{ span: 8 }}
@@ -137,7 +146,12 @@ const PaymentForm = () => {
           xs={{ span: 24 }}
           className="gutter-row"
         >
-          <InputComponents type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
+          <InputComponents
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </Col>
       </Row>
 

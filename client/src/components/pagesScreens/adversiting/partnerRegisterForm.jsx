@@ -16,7 +16,7 @@ import DropZoneComponent from "./uploadComponent/DropzoneComponent";
 
 import {
   AddCardImage,
-  registerParnerService,
+  freeSubscription,
   saveServiceInfo,
 } from "../../../flux/actions/advertisingAction/advertisingAction";
 
@@ -161,6 +161,9 @@ const SignUpForm = () => {
 };
 
 const DetailsComponent = () => {
+  const [plan, setPlan] = useState("");
+
+  // ////////    services fields
   const [companyName, setCompanyName] = useState("");
   const [about, setAbout] = useState("");
   const [typeBusiness, setTypeBusiness] = useState([]);
@@ -185,10 +188,25 @@ const DetailsComponent = () => {
     region,
   };
 
+  const history = useHistory();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(registerParnerService(body));
+
+    if (plan === "free") {
+      dispatch(freeSubscription(body));
+      history.push("/advertising/thank");
+    }
+    if (plan === "premium") {
+      dispatch(saveServiceInfo(body));
+      history.push("/advertising/cart");
+    }
   };
+
+  // const handleClickFree = () => {
+  //   dispatch(saveServiceInfo(body));
+  //   history.push("/advertising/cart")
+  // };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -345,85 +363,91 @@ const DetailsComponent = () => {
         </Col>
       </Row>
 
-      <PlanComponent body={body} />
+      <PlanStyling>
+        <h1 className="title">Choose your ad type, premium or free</h1>
+        <Row gutter={{ lg: 20, md: 10, sm: 10 }}>
+          <Col
+            lg={{ span: 12 }}
+            md={{ span: 12 }}
+            sm={{ span: 12 }}
+            xs={{ span: 24 }}
+          >
+            <div className="card">
+              <h5 className="card_title premium">Premium</h5>
+              <div className="card_body">
+                <p className="price">
+                  {" "}
+                  start<span>aed 25</span>{" "}
+                </p>
+                <ul className="content">
+                  <li>Vivamus magna justo, lacinia eget consectetur</li>
+                  <li>Vivamus magna justo, lacinia consectetur</li>
+                  <li>Vivamus magna justo, lacinia eget consectetur</li>
+                  <li>Vivamus magna justo, lacinia consectetur</li>
+                </ul>
+              </div>
+              <div className="card_footer">
+                <button
+                  type="submit"
+                  // to="/advertising/cart"
+                  className="btn premium"
+                  onClick={() => setPlan("premium")}
+                >
+                  Start Now
+                </button>
+              </div>
+            </div>
+          </Col>
+          <Col
+            lg={{ span: 12 }}
+            md={{ span: 12 }}
+            sm={{ span: 12 }}
+            xs={{ span: 24 }}
+          >
+            <div className="card">
+              <h5 className="card_title free">free</h5>
+              <div className="card_body">
+                <p className="price">
+                  {" "}
+                  start<span>aed 0</span>{" "}
+                </p>
+                <ul className="content">
+                  <li>Vivamus magna justo, lacinia eget consectetur</li>
+                  <li>Vivamus magna justo, lacinia consectetur</li>
+                  <li>Vivamus magna justo, lacinia eget consectetur</li>
+                  <li>Vivamus magna justo, lacinia consectetur</li>
+                </ul>
+              </div>
+              <div className="card_footer">
+                <button
+                  type="submit"
+                  className="btn free"
+                  onClick={() => setPlan("free")}
+                >
+                  Start Now
+                </button>
+              </div>
+            </div>
+          </Col>
+        </Row>
+      </PlanStyling>
     </form>
   );
 };
 
-const PlanComponent = ({ body }) => {
-  const dispatch = useDispatch();
-  const history = useHistory()
+// const PlanComponent = ({ body }) => {
+//   const dispatch = useDispatch();
+//   const history = useHistory();
 
-  const handleClickPremium = () => {
-    dispatch(saveServiceInfo(body));
-    history.push("/advertising/cart")
-  };
-  return (
-    <PlanStyling>
-      <h1 className="title">Choose your ad type, premium or free</h1>
-      <Row gutter={{ lg: 20, md: 10, sm: 10 }}>
-        <Col
-          lg={{ span: 12 }}
-          md={{ span: 12 }}
-          sm={{ span: 12 }}
-          xs={{ span: 24 }}
-        >
-          <div className="card">
-            <h5 className="card_title premium">Premium</h5>
-            <div className="card_body">
-              <p className="price">
-                {" "}
-                start<span>aed 25</span>{" "}
-              </p>
-              <ul className="content">
-                <li>Vivamus magna justo, lacinia eget consectetur</li>
-                <li>Vivamus magna justo, lacinia consectetur</li>
-                <li>Vivamus magna justo, lacinia eget consectetur</li>
-                <li>Vivamus magna justo, lacinia consectetur</li>
-              </ul>
-            </div>
-            <div className="card_footer">
-              <Link
-                // to="/advertising/cart"
-                className="btn premium"
-                onClick={handleClickPremium}
-              >
-                Start Now
-              </Link>
-            </div>
-          </div>
-        </Col>
-        <Col
-          lg={{ span: 12 }}
-          md={{ span: 12 }}
-          sm={{ span: 12 }}
-          xs={{ span: 24 }}
-        >
-          <div className="card">
-            <h5 className="card_title free">free</h5>
-            <div className="card_body">
-              <p className="price">
-                {" "}
-                start<span>aed 0</span>{" "}
-              </p>
-              <ul className="content">
-                <li>Vivamus magna justo, lacinia eget consectetur</li>
-                <li>Vivamus magna justo, lacinia consectetur</li>
-                <li>Vivamus magna justo, lacinia eget consectetur</li>
-                <li>Vivamus magna justo, lacinia consectetur</li>
-              </ul>
-            </div>
-            <div className="card_footer">
-              <button type="submit" className="btn free">
-                Start Now
-              </button>
-            </div>
-          </div>
-        </Col>
-      </Row>
-    </PlanStyling>
-  );
-};
+//   const handleClickPremium = () => {
+//     dispatch(saveServiceInfo(body));
+//     history.push("/advertising/cart");
+//   };
+
+//   return (
+
+//   );
+// };
 
 const PlanStyling = styled.div`
   margin: 4rem 0;

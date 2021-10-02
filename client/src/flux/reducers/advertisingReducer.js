@@ -60,13 +60,15 @@ export const advertisingReducer = (
     case FETCH_MESSAGE_SUCCESS:
       return { ...state, loading: false, allMessages: action.payload };
 
+
+
     default:
       return state;
   }
 };
 
 export const messageReducer = (
-  state = {  loading: true, error:{} },
+  state = { loading: true, error: {} },
   action
 ) => {
   switch (action.type) {

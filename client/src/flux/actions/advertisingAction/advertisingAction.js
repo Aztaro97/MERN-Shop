@@ -16,26 +16,9 @@ import {
   OPEN_MESSAGE_FAIL,
   OPEN_MESSAGE_REQUEST,
   OPEN_MESSAGE_SUCCESS,
+  SERVICE_UPDATE_REQUEST,
+  SERVICE_UPDATE_SUCCESS,
 } from "../../constants/advertising";
-
-export const AddOrderCardImage = (data) => async (dispatch, getState) => {
-  dispatch({
-    type: "ADD_CART_IMAGE",
-    payload: data,
-  });
-
-  const {
-    userLogin: { userInfo },
-  } = getState();
-
-  const config = {
-    headers: {
-      accept: "application/json",
-      Authorization: `Bearer ${userInfo.token}`,
-    },
-  };
-  const res = await axios.post("/api/subscription", data, config);
-};
 
 export const clearCardImage = () => (dispatch) => {
   dispatch({
@@ -51,7 +34,7 @@ export const saveServiceInfo = (data) => (dispatch) => {
   });
 };
 
-export const registerParnerService = (body) => async (dispatch, getState) => {
+export const freeSubscription = (body) => async (dispatch, getState) => {
   try {
     dispatch({
       type: "SERVICE_REGISTER_SUCCESS",
@@ -69,10 +52,29 @@ export const registerParnerService = (body) => async (dispatch, getState) => {
       },
     };
     const res = await axios.post("/api/advertising", body, config);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-    if (res.data) {
-      successMessage("Info saved succefully !");
-    }
+export const PremiumSubscription = (body) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: "SERVICE_REGISTER_SUCCESS",
+      payload: body,
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+    const res = await axios.post("/api/advertising/premium", body, config);
   } catch (error) {
     console.log(error);
   }
@@ -177,8 +179,12 @@ export const getMessageById = (id) => async (dispatch, getState) => {
       },
     };
 
-    const res = await axios.put(`/api/advertising/message/view`, {id}, config);
-    console.log(res.data)
+    const res = await axios.put(
+      `/api/advertising/message/view`,
+      { id },
+      config
+    );
+    console.log(res.data);
     dispatch({
       type: OPEN_MESSAGE_SUCCESS,
       payload: res.data,
@@ -187,7 +193,6 @@ export const getMessageById = (id) => async (dispatch, getState) => {
     //   type: OPEN_MESSAGE_SUCCESS,
     //   payload: res.data,
     // });
-
   } catch (error) {
     // dispatch({
     //   type: OPEN_MESSAGE_FAIL,
@@ -221,6 +226,35 @@ export const fetchAllClientMessage = () => async (dispatch, getState) => {
     dispatch({
       type: FETCH_MESSAGE_FAIL,
       payload: error.message,
+    });
+  }
+};
+
+export const updateAllowService = (id, allow) => async (dispatch, getState) => {
+  try {
+    const {
+      userLogin: { userInfo },
+    } = getState();
+    const config = {
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const res = await axios.put(`/api/advertising`, {id, allow }, config);
+    if (res.data) {
+      console.log("Service updated");
+    }
+
+    // dispatch({
+    //   type: SERVICE_UPDATE_SUCCESS,
+    //   // payload: res.data,
+    // });
+  } catch (error) {
+    console.log(error.message);
+    dispatch({
+      type: "SERVICE_UPDATE_FAIL",
     });
   }
 };

@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
+import Switch from "react-switch";
 import {
   getAllAdService,
   filterByTypeBusiness,
+  updateAllowService,
 } from "../../../../flux/actions/advertisingAction/advertisingAction";
 import LoaderComponent from "../../../loader";
 import { useHistory } from "react-router";
@@ -12,6 +14,7 @@ import { serviceArray } from "../../../../utils/advertisingData";
 const { Option } = Select;
 
 const AllCompanyService = () => {
+  const [allowed, setAllowed] = useState(false);
   const dispatch = useDispatch();
 
   const { loading, listAdService, error } = useSelector(
@@ -31,7 +34,13 @@ const AllCompanyService = () => {
     } else {
       history.push("/auth");
     }
-  }, [dispatch, getAllAdService, userInfo]);
+  }, [dispatch, userInfo, history]);
+
+  const handleToggleChange = (id, checked) => {
+    // console.log(checked)
+    dispatch(updateAllowService(id, checked));
+    dispatch(getAllAdService());
+  };
 
   return (
     <AllCompanyContainer>
@@ -64,6 +73,7 @@ const AllCompanyService = () => {
 
                 <th>company</th>
                 <th>Type ad plan</th>
+                <th>Allowed</th>
               </tr>
             </thead>
             <tbody>
@@ -106,6 +116,12 @@ const AllCompanyService = () => {
                     </ul>
                   </td>
                   <td>{ad.typePlan}</td>
+                  <td>
+                    <Switch
+                      onChange={(check) => handleToggleChange(ad._id, check)}
+                      checked={ad.allow}
+                    />
+                  </td>
                 </tr>
               ))}
             </tbody>

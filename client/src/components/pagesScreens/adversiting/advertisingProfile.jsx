@@ -5,7 +5,6 @@ import Slider from "react-slick";
 import { Image } from "antd";
 import { useParams } from "react-router-dom";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
-import { categoryAdversiting } from "../../../utils/advertisingData";
 import InputC from "../../InputComponents";
 import ButtonC from "../../ButtonComponeent";
 import "./advertising.css";
@@ -15,7 +14,6 @@ import LoaderComponent from "../../loader";
 import TextAreaComponent from "../../TextAreaComponent";
 import axios from "axios";
 import { successMessage } from "../../message";
-import { toast, ToastContainer } from "react-toastify";
 
 function AdvertisingProfileScreen() {
   const params = useParams();
@@ -27,7 +25,7 @@ function AdvertisingProfileScreen() {
 
   useEffect(() => {
     dispatch(getAdvertisingProfileByID(profileID));
-  }, [dispatch, getAdvertisingProfileByID]);
+  }, [dispatch, profileID]);
 
   return (
     <main>
@@ -40,13 +38,13 @@ function AdvertisingProfileScreen() {
         <ContainerStyling className="container my-5">
           <section className="introduction">
             <h1 className="title">{profile.companyName}</h1>
-            <img src="/img/logo11.png" alt="" />
+            <img src={profile.logoUrl} alt="" />
           </section>
           <section className="about">
             <h1 className="title">about company</h1>
             <p>{profile.about}</p>
           </section>
-          <section className="service">
+          {/* <section className="service">
             <h1 className="title">company services</h1>
             <div className="grid">
               {profile.typeBusiness.map((data, index) => (
@@ -64,7 +62,7 @@ function AdvertisingProfileScreen() {
                 </div>
               ))}
             </div>
-          </section>
+          </section> */}
 
           <section className="service_two">
             <h1 className="title">company services</h1>
@@ -119,55 +117,6 @@ function AdvertisingProfileScreen() {
           <section className="contact">
             <h1 className="title">contact</h1>
             <ContactForm profile={profile} />
-            {/* <div className="grid">
-            <div>
-              <form action="">
-                <ul>
-                  <li>
-                    Email:{" "}
-                    <a href="mailto:exemple@emple.com">exemple@example.com</a>
-                  </li>
-                  <li>
-                    telephone: <a href="tel:+971505555555">+971505555555</a>
-                  </li>
-                  <li>
-                    adress: <a href="#/">al rashiya , dubai</a>
-                  </li>
-                  <li>
-                    Country: <span>Emirates</span>
-                  </li>
-                  <li>
-                    State: <span>Dubai</span>
-                  </li>
-                </ul>
-                <input type="text" placeholder="FULL NAME" required />
-                <input type="mail" placeholder="EMAIL" required />
-                <textarea
-                  name="message"
-                  id="message"
-                  placeholder="MESSAGE"
-                  cols="30"
-                  rows="6"
-                  required
-                />
-
-                <button class="btn btn_submit" type="submit">
-                  send
-                </button>
-              </form>
-            </div>
-            <div>
-              <iframe
-                title="maps"
-                className="maps"
-                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d28871.70752908401!2d55.39180900000002!3d25.23815630000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2sae!4v1631523146741!5m2!1sfr!2sae"
-                width="400"
-                height="300"
-                allowfullscreen=""
-                loading="lazy"
-              ></iframe>
-            </div>
-          </div> */}
           </section>
         </ContainerStyling>
       )}
@@ -246,7 +195,7 @@ const ContactForm = ({ profile }) => {
     message,
     companyId: profile._id,
     companyName: profile.companyName,
-    companyTelephone: profile.telephone
+    companyTelephone: profile.telephone,
   };
 
   const handleSubmit = async (e) => {
@@ -412,11 +361,11 @@ const FormStyling = styled.form`
 
 const ContainerStyling = styled.div`
   & section {
-    margin: 4rem 0;
+    margin-bottom: 3rem;
   }
   & .title {
     text-transform: capitalize;
-    color: var(--silver-color);
+    /* color: var(--silver-color); */
     font-size: 1.8rem;
   }
   & .introduction {
@@ -427,11 +376,13 @@ const ContainerStyling = styled.div`
       height: 200px;
       margin-left: auto;
       margin-right: auto;
+      box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+        rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
       border-radius: 50%;
-      padding: 2rem;
-      background: #111;
+      padding: .7rem;
+      /* background: #111; */
       object-fit: contain;
-      margin-top: 1rem;
+      margin-top: .5rem;
     }
   }
 
@@ -578,16 +529,24 @@ const ContainerStyling = styled.div`
   & .service_two {
     & .grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       grid-gap: 10px;
       & .card-image {
-        max-height: 240px;
+        height: 240px;
       }
       & p {
         font-size: 1.2rem;
         text-transform: capitalize;
         letter-spacing: 2px;
         margin: 0;
+      }
+      @media only screen and (max-width: 1000px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      @media only screen and (max-width: 768px) {
+        & .card-image {
+        height: 150px;
+      }
       }
 
       @media only screen and (max-width: 520px) {
@@ -616,7 +575,6 @@ const LandingStyling = styled.div`
     align-items: center;
     justify-content: center;
     color: #fff;
-    padding-bottom: 3rem;
 
     & h1 {
       color: #fff;

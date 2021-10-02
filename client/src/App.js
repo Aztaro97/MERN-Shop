@@ -50,7 +50,8 @@ import PartnerRegisterComponent from "./components/pagesScreens/adversiting/part
 import AdvertisingRegister from "./components/pagesScreens/adversiting/partnerRegisterForm";
 import CartAdvertising from "./components/pagesScreens/adversiting/cartUploading";
 import BillingPaymentAdvertising from "./components/pagesScreens/adversiting/BillingStep";
-import ListAdMessageComponent from "./components/pagesScreens/admin/adminAdvertising/listAdMessage"
+import ListAdMessageComponent from "./components/pagesScreens/admin/adminAdvertising/listAdMessage";
+import AdThankYouRegister from "./components/pagesScreens/adversiting/thankScreen"
 
 // ////////////////  Design Component    /////////////////////
 import DesignComponent from "./components/pagesScreens/design/designScreen";
@@ -67,7 +68,7 @@ import ProductionComponent from "./components/pagesScreens/productionScreen/prod
 // ////////////////  ABOUT Component    /////////////////////
 import AboutComponent from "./components/pagesScreens/AboutScreen/aboutScreen";
 
-import AllCompanyServiceComponent from "./components/pagesScreens/admin/adminAdvertising/allCompany"
+import AllCompanyServiceComponent from "./components/pagesScreens/admin/adminAdvertising/allCompany";
 
 import { initGA, PageView } from "./components/Tracking/tracking";
 
@@ -127,27 +128,37 @@ function App() {
 
         {/* ///////////////////   ADVERSITING ROUTER  /////////////////// */}
         <Route path="/advertising" component={AdversitingComponent} exact />
-        <Route path="/advertising" component={AdversitingComponent}>
-          {/* <Route
+        <Route
+          path="/advertising/profile/:id"
+          component={AdversitingProfileComponent}
+        />
+        <Route
+          path="/advertising/type/:typeBusiness"
+          component={AdversitingAllBrandComponent}
+          exact
+        />
+        <Route
+          path="/advertising/thank"
+          component={AdThankYouRegister}
+          exact
+        />
+        {/* <Route
             path="/adver1"
             component={PartnerRegisterComponent}
           /> */}
-          <Route path="/advertising/register" component={AdvertisingRegister} />
-          <Route path="/advertising/cart" component={CartAdvertising} />
-          <Route
-            path="/advertising/payment"
-            component={BillingPaymentAdvertising}
-          />
-          <Route
-            path="/advertising/:typeBusiness"
-            component={AdversitingAllBrandComponent}
-            exact
-          />
-          <Route
-            path="/advertising/profile/:id"
-            component={AdversitingProfileComponent}
-          />
-        </Route>
+        <Route
+          path="/advertising/register"
+          component={AdvertisingRegister}
+          exact
+        />
+        <Route path="/advertising/cart" component={CartAdvertising} exact />
+        <Route
+          path="/advertising/payment"
+          component={BillingPaymentAdvertising}
+          exact
+        />
+
+        
 
         {/* ////////////////////    DESIGNPAGE ROUTER   ////////////////// */}
         <Route path="/design" component={DesignComponent} />
@@ -187,11 +198,7 @@ function App() {
           component={AllCompanyServiceComponent}
           exact
         />
-        <Route
-          path="/admin/message"
-          component={ListAdMessageComponent}
-          exact
-        />
+        <Route path="/admin/message" component={ListAdMessageComponent} exact />
 
         <Route component={pageNotFound} exact />
       </Switch>

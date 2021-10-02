@@ -15,7 +15,6 @@ const orderRoutes = require("./routes/orderRoutes.js");
 const uploadRoutes = require("./routes/upload");
 const StripeRouter = require("./routes/stripe");
 const advertisingRoutes = require("./routes/advertisingRoute/advertisingRoute");
-const subscriptionRoutes = require("./routes/advertisingRoute/subscriptionRouter");
 
 const contactRouter = require("./routes/contact/contactRouter")
 
@@ -45,7 +44,6 @@ app.use("/api/orders", orderRoutes);
 app.use('/api/upload', uploadRoutes);
 app.use("/create-checkout-session", StripeRouter)
 app.use("/api/advertising", advertisingRoutes )
-app.use("/api/subscription", subscriptionRoutes )
 app.use("/api/contact-us", contactRouter )
 
 // app.use('/api/upload', uploadRoutes)

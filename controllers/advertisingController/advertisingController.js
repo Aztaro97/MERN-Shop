@@ -34,6 +34,43 @@ const addAdvertisingService = asyncHandler(async (req, res) => {
   res.status(200).json(createService);
 });
 
+
+const registerPremiumService = asyncHandler(async (req, res) => {
+  const {
+    companyName,
+    about,
+    typeBusiness,
+    fullName,
+    telephone,
+    email,
+    city,
+    country,
+    region,
+    productsOrdered,
+    totalPrice
+  } = req.body;
+
+  const newService = new advertising({
+    user: req.user._id,
+    isPaid: true,
+    typePlan:"premium",
+    companyName,
+    about,
+    typeBusiness,
+    fullName,
+    telephone,
+    email,
+    city,
+    country,
+    region,
+    productsOrdered,
+    totalPrice
+  });
+
+  const createService = await newService.save();
+  res.status(200).json(createService);
+});
+
 const getAllAdService = asyncHandler(async (req, res) => {
   try {
     const allService = await advertising.find();
@@ -49,6 +86,7 @@ const getAllAdService = asyncHandler(async (req, res) => {
 const filterByTypeBusiness = asyncHandler(async (req, res) => {
   const filter = await advertising.find({
     typeBusiness: req.body.typeBusiness,
+    allow:true
   });
 
   if (filter) {
@@ -70,9 +108,24 @@ const getAdProfile = asyncHandler(async (req, res) => {
 })
 
 
+const setUpdateAllowed = asyncHandler(async (req, res) => {
+  const service = await advertising.findById(req.body.id);
+  if (service) {
+    service.allow = req.body.allow;
+    const updateService = await service.save();
+    res.status(200).json(updateService)
+  } else {
+    res.status(404);
+    throw new Error("AD not fund")
+  }
+})
+
+
 module.exports = {
   addAdvertisingService,
   getAllAdService,
   filterByTypeBusiness,
-  getAdProfile
+  getAdProfile,
+  registerPremiumService,
+  setUpdateAllowed
 };
