@@ -48,6 +48,8 @@ const ResetPasswordPage = () => {
 const Container = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: calc(70vh - 80px);
 `;
 
 const FormStyling = styled.form`
@@ -59,6 +61,7 @@ const FormStyling = styled.form`
 
   & h1 {
     font-size: 2rem;
+    text-align: center;
   }
   & .input {
     margin-bottom: 1.5rem;

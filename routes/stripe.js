@@ -4,10 +4,10 @@ const cors = require("cors");
 
 // This is a sample test API key. Sign in to see examples pre-filled with your key.
 const stripe = require("stripe")(
-  "rk_test_51JJfI4Bx9NV9CAAsOc3mvqziw3RWQoa3cBZrWYqEuMuFQggmrIlcX4fMcTxZ45N0FUwPd76a0RejH4QNh8zXayBl00gALevlVp"
+  "sk_test_51JJfI4Bx9NV9CAAsdpOsySQlf2vLAMfcysbMGn0kP7QF7Cwy4oNgfHQEvVdkYdKCdFuy30ADHyd2uTio72uqBH7J00Wo9lKQyi"
 );
 
-router.post("/", async (req, res) => {
+router.post("/", cors(), async (req, res) => {
   // const customer = await stripe.customers.create({
   // 	email: 'gm.au79code@gmail.com',
   //   });
@@ -73,17 +73,19 @@ router.post("/", async (req, res) => {
   res.status(200).json({ session });
 });
 
-router.post("/advertising", async (req, res) => {
+router.post("/advertising", cors(), async (req, res) => {
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
+    customer_email: req.body.email,
     line_items: [
       {
         price_data: {
-          currency: "usd",
-          product_data: {
-            name: "T-shirt",
-          },
-          unit_amount: 2000,
+          currency: "aed",
+          product_data: req.body.productsOrdered,
+          unit_amount: req.body.totalPrice,
+          // user: {
+          //   customer_email: "azo@gmail.com"
+          // }
         },
         quantity: 1,
       },
@@ -92,6 +94,10 @@ router.post("/advertising", async (req, res) => {
     success_url: "http://localhost:3000/thank",
     cancel_url: "https://example.com/cancel",
   });
+
+  if (session) {
+    res.status(200).json(session);
+  }
 });
 
 module.exports = router;

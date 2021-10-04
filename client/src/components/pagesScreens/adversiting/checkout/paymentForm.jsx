@@ -40,19 +40,19 @@ const PaymentForm = () => {
   console.log(totalPrice);
 
   const history = useHistory();
-  const Cartdata = JSON.parse(localStorage.getItem("cardDataImage"));
 
   useEffect(() => {
-    if (Cartdata) {
-      setData(Cartdata);
+    const CartItems = JSON.parse(localStorage.getItem("cardDataImage"));
+    if (CartItems) {
+      setData(CartItems);
     } else {
       history.push("/advertising/cart");
     }
-  }, [Cartdata, history]);
+  }, [history]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    dispatch(clearCardImage());
+
     const cardElement = elements?.getElement(CardElement);
 
     if (!stripe || !elements || !cardElement) {
@@ -68,7 +68,7 @@ const PaymentForm = () => {
       try {
         const { id } = paymentMethod;
         const body = {
-          productsOrdered: Cartdata,
+          productsOrdered: data,
           service,
           totalPrice,
         };
@@ -76,15 +76,16 @@ const PaymentForm = () => {
         const config = {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${process.env.REACT_APP_STRIPE_SECRET_KEY} ${process.env.REACT_APP_STRIPE_API_KEY}`,
+            // Authorization: `Bearer ${process.env.REACT_APP_STRIPE_SECRET_KEY} ${process.env.REACT_APP_STRIPE_API_KEY}`,
           },
         };
 
         const response = await axios.post(
-          "/create-checkout-session",
+          "/create-checkout-session/advertising",
           {
             amount: totalPrice,
             id,
+            customer_email: email,
             payment: {
               gateway: "stripe",
               stripe: {
@@ -98,6 +99,7 @@ const PaymentForm = () => {
         if (response.data.paymentSuccess) {
           // dispatch(AddOrderCardImage())
           dispatch(PremiumSubscription(body));
+          dispatch(clearCardImage());
           history.push("/thank");
         }
       } catch (error) {

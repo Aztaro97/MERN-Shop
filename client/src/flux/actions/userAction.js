@@ -548,7 +548,7 @@ export const resetPassword = (email) => async (dispatch) => {
 
     await axios.post("/api/users/reset-password", { email }, config);
     dispatch({ type: RESET_PASSWORD_SUCCESS });
-    successMessage("Un message à été envoyé à votre email", 2000);
+    successMessage("A message has been sent to your email", 2000);
   } catch (error) {
     dispatch({
       type: RESET_PASSWORD_FAIL,
@@ -558,5 +558,37 @@ export const resetPassword = (email) => async (dispatch) => {
           : error.message,
     });
     errorMessage(error);
+  }
+};
+
+export const newPassword = (token , password) => async (dispatch) => {
+  try {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const res = await axios.post(`/api/users/new-password/${token}`, { password }, config);
+
+    if (res.data.msg === "success") {
+      successMessage(res.data.msg, 2000, 3);
+      console.log(res.data)
+    }
+    dispatch({
+      type: "UPDATE_PASSWORD_SUCCESS"
+    })
+    // successMessage("A message has been sent to your email", 2000);
+  } catch (error) {
+    // dispatch({
+    //   type: RESET_PASSWORD_FAIL,
+    //   payload:
+    //     error.response && error.response.data.message
+    //       ? error.response.data.message
+    //       : error.message,
+    // });
+
+    // errorMessage(error.msg, 2000, 3);
+    console.log(error)
   }
 };

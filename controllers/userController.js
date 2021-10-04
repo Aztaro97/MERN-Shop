@@ -458,7 +458,7 @@ const resetPassword = asyncHandler(async (req, res) => {
         <body>
         <div style="width:100%; padding:4rem 0;">
         <div style="border:3px solid #fff; padding:4rem 5rem; background:#ECEEF1; font-family: sans-serif; max-width:38rem;margin:0 auto">
-            <a href="https://www.au79code.com/" style="text-align:center;font-size:2rem;display:flex;justify-content: center;text-decoration:none;color:#000;margin-bottom: 1rem;">Au79Code</a>
+            <a href="https://www.au79code.com/" style="text-align:center;font-size:2rem;display:flex;justify-content: center;text-decoration:none;color:#c68787;margin:0 auto 1rem;">Au79Code</a>
             <div style="padding:4rem; background: #fff; margin: auto;text-align: center;">
                 <h2 style="color: #696868;">Password Reset</h2>
                 <p style="margin-bottom:3rem;font-weight:700;color: #8E8E8E;">If you've lost your password or wish to reset it, use the link below to get started.</p>
@@ -504,7 +504,7 @@ const updatePassword = asyncHandler(async (req, res, next) => {
     user.resetToken = undefined;
     user.expireToken = undefined;
     user.save(() => {
-      res.status(200).json({ msg: "Mot de passe à été mise à jour " });
+      res.status(200).json({ msg: "success" });
     });
   } catch (error) {
     next(error);

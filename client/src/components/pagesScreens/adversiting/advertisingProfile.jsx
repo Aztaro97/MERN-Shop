@@ -14,6 +14,8 @@ import LoaderComponent from "../../loader";
 import TextAreaComponent from "../../TextAreaComponent";
 import axios from "axios";
 import { successMessage } from "../../message";
+import ThirsdBannerSlider from "./Banner/thirdBanner";
+import MainContainer from "../../MainContainer";
 
 function AdvertisingProfileScreen() {
   const params = useParams();
@@ -28,8 +30,8 @@ function AdvertisingProfileScreen() {
   }, [dispatch, profileID]);
 
   return (
-    <main>
-      <Landing />
+    <MainContainer>
+      <ThirsdBannerSlider />
       {loading ? (
         <LoaderComponent />
       ) : error ? (
@@ -120,7 +122,7 @@ function AdvertisingProfileScreen() {
           </section>
         </ContainerStyling>
       )}
-    </main>
+    </MainContainer>
   );
 }
 
@@ -365,8 +367,8 @@ const ContainerStyling = styled.div`
   }
   & .title {
     text-transform: capitalize;
-    /* color: var(--silver-color); */
-    font-size: 1.8rem;
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
   }
   & .introduction {
     text-align: center;
@@ -379,10 +381,10 @@ const ContainerStyling = styled.div`
       box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
         rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
       border-radius: 50%;
-      padding: .7rem;
+      padding: 0.7rem;
       /* background: #111; */
       object-fit: contain;
-      margin-top: .5rem;
+      margin-top: 0.5rem;
     }
   }
 
@@ -390,15 +392,14 @@ const ContainerStyling = styled.div`
     p {
       color: var(--silver-color);
       letter-spacing: 1px;
+      font-size: 1rem;
     }
   }
   & .portfolio {
     & .slider_container {
-      margin-top: 2rem;
-
       & .slide {
-        max-width: 1080px;
-        height: 800px;
+        max-width: 400px;
+        height: 400px;
         display: flex !important;
         align-items: center;
         justify-content: center;
@@ -545,8 +546,8 @@ const ContainerStyling = styled.div`
       }
       @media only screen and (max-width: 768px) {
         & .card-image {
-        height: 150px;
-      }
+          height: 150px;
+        }
       }
 
       @media only screen and (max-width: 520px) {

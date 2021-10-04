@@ -140,26 +140,33 @@ export const filterByTypeBusiness = (typeBusiness) => async (dispatch) => {
 };
 
 export const getAdvertisingProfileByID = (id) => async (dispatch) => {
-  dispatch({
-    type: AD_PROFILE_REQUEST,
-  });
-
-  const config = {
-    headers: {
-      accept: "application/json",
-    },
-  };
-  const res = await axios.get(`/api/advertising/profile/${id}`, config);
-
-  dispatch({
-    type: AD_PROFILE_SUCCESS,
-    payload: res.data,
-  });
   try {
+    dispatch({
+      type: AD_PROFILE_REQUEST,
+    });
+
+    const config = {
+      headers: {
+        accept: "application/json",
+      },
+    };
+    const res = await axios.get(`/api/advertising/profile/${id}`, config);
+
+    dispatch({
+      type: AD_PROFILE_SUCCESS,
+      payload: res.data,
+    });
   } catch (error) {
+    // dispatch({
+    //   type: AD_PROFILE_FAIL,
+    //   payload: error,
+    // });
     dispatch({
       type: AD_PROFILE_FAIL,
-      payload: error,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
     });
   }
 };
@@ -225,7 +232,10 @@ export const fetchAllClientMessage = () => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: FETCH_MESSAGE_FAIL,
-      payload: error.message,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
     });
   }
 };
@@ -242,7 +252,7 @@ export const updateAllowService = (id, allow) => async (dispatch, getState) => {
       },
     };
 
-    const res = await axios.put(`/api/advertising`, {id, allow }, config);
+    const res = await axios.put(`/api/advertising`, { id, allow }, config);
     if (res.data) {
       console.log("Service updated");
     }

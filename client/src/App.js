@@ -51,7 +51,7 @@ import AdvertisingRegister from "./components/pagesScreens/adversiting/partnerRe
 import CartAdvertising from "./components/pagesScreens/adversiting/cartUploading";
 import BillingPaymentAdvertising from "./components/pagesScreens/adversiting/BillingStep";
 import ListAdMessageComponent from "./components/pagesScreens/admin/adminAdvertising/listAdMessage";
-import AdThankYouRegister from "./components/pagesScreens/adversiting/thankScreen"
+import AdThankYouRegister from "./components/pagesScreens/adversiting/thankScreen";
 
 // ////////////////  Design Component    /////////////////////
 import DesignComponent from "./components/pagesScreens/design/designScreen";
@@ -71,6 +71,7 @@ import AboutComponent from "./components/pagesScreens/AboutScreen/aboutScreen";
 import AllCompanyServiceComponent from "./components/pagesScreens/admin/adminAdvertising/allCompany";
 
 import { initGA, PageView } from "./components/Tracking/tracking";
+import NewPasswordScreen from "./components/pagesScreens/newPasswordScreen";
 
 function App() {
   useEffect(() => {
@@ -85,20 +86,9 @@ function App() {
       <GlobalStyle />
       <NavBar />
       <Switch>
-        <Route exact path="/" component={HomeComponents} />
-
-        {/* <Route
-          path="/"
-          render={(props) => {
-            const [subdomain] = window.location.hostname.split(".");
-            if (subdomain === "advertising")
-              return <AdversitingComponent {...props} />;
-            return <HomeComponents {...props} />;
-          }}
-        /> */}
-
+        {/* <Route exact path="/" component={HomeComponents} />
         <Route exact path="/contact-us" component={ContactUsComponents} />
-        <Route path="/auth" component={AuthComponents} />
+        
         <Route path="/add-product/:id" component={CreateProductComponent} />
         <Route path="/products/page/:pageNumber" component={ProductsShop} />
         <Route path="/products" component={ProductsShop} />
@@ -120,14 +110,14 @@ function App() {
         <Route path="/order/:id" component={CompleteOrder} />
         <Route path="/myorder" component={ListOrderScreen} />
         <Route path="/map" component={MapScreen} />
-        <Route path="/forgot-password" component={ResetPasswordPage} />
+         */}
 
         {/* /////////////////////   Markeing Router   ///////////////////// */}
-        <Route path="/marketing" component={EMarketingComponent} />
-        <Route path="/out-marketing" component={OutMarketingComponent} />
+        {/* <Route path="/marketing" component={EMarketingComponent} />
+        <Route path="/out-marketing" component={OutMarketingComponent} /> */}
 
         {/* ///////////////////   ADVERSITING ROUTER  /////////////////// */}
-        <Route path="/advertising" component={AdversitingComponent} exact />
+        <Route path="/" component={AdversitingComponent} exact />
         <Route
           path="/advertising/profile/:id"
           component={AdversitingProfileComponent}
@@ -137,11 +127,7 @@ function App() {
           component={AdversitingAllBrandComponent}
           exact
         />
-        <Route
-          path="/advertising/thank"
-          component={AdThankYouRegister}
-          exact
-        />
+        <Route path="/advertising/thank" component={AdThankYouRegister} exact />
         {/* <Route
             path="/adver1"
             component={PartnerRegisterComponent}
@@ -158,22 +144,26 @@ function App() {
           exact
         />
 
-        
+        <Route path="/auth" component={AuthComponents} />
+
+        <Route path="/forgot-password" component={ResetPasswordPage} />
+
+        <Route path="/new-password/:token" component={NewPasswordScreen} exact />
 
         {/* ////////////////////    DESIGNPAGE ROUTER   ////////////////// */}
-        <Route path="/design" component={DesignComponent} />
+        {/* <Route path="/design" component={DesignComponent} /> */}
 
         {/* ////////////////////    PROGRAMMING ROUTER   ////////////////// */}
-        <Route path="/programming" component={ProgrammingComponent} />
+        {/* <Route path="/programming" component={ProgrammingComponent} /> */}
 
         {/* ////////////////////    PHOTOGRAPHY ROUTER   ////////////////// */}
-        <Route path="/photography" component={PhotographyComponent} />
+        {/* <Route path="/photography" component={PhotographyComponent} /> */}
 
         {/* ////////////////////    PRODUCTION ROUTER   ////////////////// */}
-        <Route path="/production" component={ProductionComponent} />
+        {/* <Route path="/production" component={ProductionComponent} /> */}
 
         {/* ////////////////////    ABOUT ROUTER   ////////////////// */}
-        <Route path="/about" component={AboutComponent} />
+        {/* <Route path="/about" component={AboutComponent} /> */}
 
         {/*////////////////  ADMIN ROUTER  ///////////// */}
         <Route path="/admin/orderlist" component={OrderListComponent} exact />

@@ -4,7 +4,7 @@ import React from "react";
 
 import PaymentForm from "./paymentForm";
 
-const stripePromise = loadStripe("pk_test_51JJfI4Bx9NV9CAAshXbuRHvvy0RZGWdkGS5wa2I2Pn11xCvtSgshiDWqenxopl4Ol0h0W6JGcSN35lGAeyxLwoxO00XgLDjgJS");
+const stripePromise = loadStripe("pk_test_51JJfI4Bx9NV9CAAsuru5nAfIu9rF8RK6yxAf52TPNFMD7G0wnXlmH9r3MzKIlPO5kXBwkRGR8D9fK4xBod44lmRq00mT5OQdVM");
 
 const paymentContainer = () => {
   return (

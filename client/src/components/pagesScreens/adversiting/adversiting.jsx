@@ -1,34 +1,35 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Link, useHistory } from "react-router-dom";
+import ReactPlayer from "react-player";
 import Slider from "react-slick";
-import {
-  IoRestaurantSharp,
-  IoIosConstruct,
-  BiBuildingHouse,
-  AiOutlineShop,
-} from "react-icons/all";
 import {
   categoryAdversiting,
   listPartnerLogo,
-  serviceArray,
+  BusinessList,
+  VideoData,
+  servicePicture,
 } from "../../../utils/advertisingData";
-import FirstLandingSlider from "./AdLanding/firstLanding";
+import FirstLandingSlider from "./Banner/firstLanding";
+import { config } from "dotenv";
+import MainContainer from "../../MainContainer";
+import { Col, Row } from "antd";
+import ButtonComponeent from "../../ButtonComponeent";
 // import MainContainer from "../../MainContainer";
 
 function AdversitingScreen() {
   return (
-    <main>
+    <MainContainer>
       <FirstLandingSlider />
       <Container>
         <AdvertisingNavgation />
         <TypeBusinessSection />
-        <IntroSection />
+        {/* <IntroVideoSection /> */}
         <JoiningUsSection />
         <PartnerSectionLogo />
         <ServicesSlider />
       </Container>
-    </main>
+    </MainContainer>
   );
 }
 
@@ -151,13 +152,13 @@ const CardItemStyling = styled.div`
   }
 `;
 
-const IntroSection = () => {
+const IntroVideoSection = () => {
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
     autoplay: true,
-    autoplaySpeed: 4000,
+    autoplaySpeed: 7000,
     slidesToShow: 1,
     slidesToScroll: 1,
     // slidesPerRow: 0,
@@ -167,94 +168,45 @@ const IntroSection = () => {
   };
 
   return (
-    <IntroStyling>
+    <IntroVideoStyling>
       <h1 className="title">lorem ipsum</h1>
       <hr />
-      <div className="row py-lg-5">
-        <div className="col-lg-6">
-          <div className="slide_bg">
-            <Slider {...settings} className="slider-container">
-              <div>
-                <img src="./img/advertising/bg-images.jpeg" alt="" />
-                <div className="overlay">
-                  <h1>lorem ipsum</h1>
+      <Slider {...settings} className="slider-container">
+        {VideoData.map((data) => (
+          <div className="box-wrapper" key={data.profileId}>
+            <Row>
+              <Col span="12">
+                <ReactPlayer
+                  className="video-player"
+                  url={data.videoUrl}
+                  height="100%"
+                  width="100%"
+                  // playing
+                  muted
+                  volume="0.0"
+                  controls
+                  config={{
+                    Files: {
+                      autoplay: true,
+                    },
+                  }}
+                />
+              </Col>
+              <Col span="12">
+                <div className="description">
                   <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Reiciendis eum molestiae repellendus quia at natus rerum
-                    voluptatibus dolores explicabo adipisci, repellat numquam
-                    sint inventore hic possimus eligendi unde ea omnis.
+                   {data.description}
                   </p>
-                  <a href="/advertising/profile" alt="">
+              <Link to={`/advertising/profile/${data.profileId}`} className="link">
                     contact us
-                  </a>
+                  </Link>
                 </div>
-              </div>
-              <div>
-                <img src="./img/advertising/bg-images.jpeg" alt="" />
-                <div className="overlay">
-                  <h1>lorem ipsum</h1>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Reiciendis eum molestiae repellendus quia at natus rerum
-                    voluptatibus dolores explicabo adipisci, repellat numquam
-                    sint inventore hic possimus eligendi unde ea omnis.
-                  </p>
-                  <a href="/advertising/profile" alt="">
-                    contact us
-                  </a>
-                </div>
-              </div>
-              <div>
-                <img src="./img/advertising/bg-images.jpeg" alt="" />
-                <div className="overlay">
-                  <h1>lorem ipsum</h1>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Reiciendis eum molestiae repellendus quia at natus rerum
-                    voluptatibus dolores explicabo adipisci, repellat numquam
-                    sint inventore hic possimus eligendi unde ea omnis.
-                  </p>
-                  <a href="/advertising/profile" alt="">
-                    contact us
-                  </a>
-                </div>
-              </div>
-              <div>
-                <img src="./img/advertising/bg-images.jpeg" alt="" />
-                <div className="overlay">
-                  <h1>lorem ipsum</h1>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Reiciendis eum molestiae repellendus quia at natus rerum
-                    voluptatibus dolores explicabo adipisci, repellat numquam
-                    sint inventore hic possimus eligendi unde ea omnis.
-                  </p>
-                  <a href="/advertising/profile" alt="">
-                    contact us
-                  </a>
-                </div>
-              </div>
-            </Slider>
+              </Col>
+            </Row>
           </div>
-        </div>
-        <div className="col-lg-6">
-          <div className="description">
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Eligendi, fuga officiis reiciendis eaque magni facilis suscipit
-              culpa eius recusandae ipsa, incidunt ea sapiente id autem deleniti
-              perspiciatis vitae porro soluta?
-            </p>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Eligendi, fuga officiis reiciendis eaque magni facilis suscipit
-              culpa eius recusandae ipsa, incidunt ea sapiente id autem deleniti
-              perspiciatis vitae porro soluta?
-            </p>
-          </div>
-        </div>
-      </div>
-    </IntroStyling>
+        ))}
+      </Slider>
+    </IntroVideoStyling>
   );
 };
 const AdvertisingNavgation = () => {
@@ -263,36 +215,34 @@ const AdvertisingNavgation = () => {
     infinite: true,
     speed: 500,
     autoplay: true,
-    slidesToShow: 5,
+    slidesToShow: 6,
     slidesToScroll: 1,
     responsive: [
       {
-        breakpoint: 800,
+        breakpoint: 1000,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 5,
         },
       },
       {
-        breakpoint: 500,
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 4,
+        },
+      },
+      {
+        breakpoint: 576,
         settings: {
           slidesToShow: 2,
-        },
-      },
-      {
-        breakpoint: 350,
-        settings: {
-          slidesToShow: 1,
         },
       },
     ],
   };
 
-  const history = useHistory();
-
   return (
     <NavStyling>
       <Slider {...settings}>
-        {serviceArray.map((data, index) => (
+        {BusinessList.map((data, index) => (
           <div key={index}>
             <a
               href={`/advertising/type/${data.value}`}
@@ -397,7 +347,7 @@ const ServicesSlider = () => {
     infinite: true,
     speed: 400,
     autoplay: true,
-    slidesToShow: 5,
+    slidesToShow: 4,
     slidesToScroll: 1,
     responsive: [
       {
@@ -431,36 +381,17 @@ const ServicesSlider = () => {
       <h1 className="title">services</h1>
       <hr />
       <Slider {...settings}>
-        <div>
-          <a href="#/" className="link" alt="">
-            <img src="/img/advertising/house.jpg" alt="" />
-          </a>
-        </div>
-        <div>
-          <a href="#/" className="link" alt="">
-            <img src="/img/advertising/house.jpg" alt="" />
-          </a>
-        </div>
-        <div>
-          <a href="#/" className="link" alt="">
-            <img src="/img/advertising/house.jpg" alt="" />
-          </a>
-        </div>
-        <div>
-          <a href="#/" className="link" alt="">
-            <img src="/img/advertising/house.jpg" alt="" />
-          </a>
-        </div>
-        <div>
-          <a href="#/" className="link" alt="">
-            <img src="/img/advertising/house.jpg" alt="" />
-          </a>
-        </div>
-        <div>
-          <a href="#/" className="link" alt="">
-            <img src="/img/advertising/house.jpg" alt="" />
-          </a>
-        </div>
+        {servicePicture.map((data) => (
+          <div>
+            <a
+              href={`/advertising/profile/${data.profileId}`}
+              className="link"
+              alt=""
+            >
+              <img src={data.imgUrl} alt="" />
+            </a>
+          </div>
+        ))}
       </Slider>
     </ServiceStyling>
   );
@@ -472,15 +403,13 @@ const ServiceStyling = styled.section`
     text-align: center;
     text-transform: uppercase;
     color: var(--orange-color);
-    font-size: 2rem;
+    font-size: 1.6rem;
   }
   & hr {
+    width: 100px;
+    background: var(--orange-color);
     height: 1px;
-    background: var(--background-color);
-    width: 120px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 3rem;
+    margin: 0 auto 1.8rem;
     @media only screen and (max-width: 768px) {
       width: 100px;
     }
@@ -509,15 +438,13 @@ const PartnerLogoStyling = styled.section`
     text-align: center;
     text-transform: uppercase;
     color: var(--orange-color);
-    font-size: 2rem;
+    font-size: 1.6rem;
   }
   & hr {
+    width: 150px;
+    background: var(--orange-color);
     height: 1px;
-    background: var(--background-color);
-    width: 200px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 3rem;
+    margin: 0 auto 1.8rem;
     @media only screen and (max-width: 768px) {
       width: 100px;
     }
@@ -567,10 +494,10 @@ const JoiningUsStyling = styled.section`
     font-size: 1.6rem;
   }
   & hr {
+    width: 150px;
+    background: var(--orange-color);
     height: 1px;
-    background: var(--background-color);
-    width: 200px;
-    margin: 1rem auto 1.5rem;
+    margin: 0 auto 1.8rem;
     @media only screen and (max-width: 768px) {
       width: 100px;
     }
@@ -711,88 +638,56 @@ const Container = styled.div`
   } */
 `;
 
-const IntroStyling = styled.section`
+const IntroVideoStyling = styled.section`
   padding: 3rem 0;
   margin-top: 3rem;
   & .title {
     text-align: center;
     text-transform: uppercase;
     color: var(--orange-color);
-    font-size: 2rem;
+    font-size: 1.6rem;
     /* margin-bottom: 0; */
   }
   & hr {
     width: 150px;
     background: var(--orange-color);
     height: 1px;
-    margin: 0 auto;
+    margin: 0 auto 1.8rem;
   }
 
-  & .slide_bg {
-    background: #9c9c9c;
-    height: 500px;
+  & .slider-container {
+    height: 100%;
 
-    & .slider-container {
-      height: 100%;
-      background: #fff;
-      position: relative;
-      bottom: 2rem;
-      left: 2rem;
-      @media only screen and (max-width: 992px) {
-        margin-top: 2rem;
-        position: static;
-      }
-
-      & div {
-        height: 100%;
-        margin-bottom: 7px;
-        & img {
-          object-fit: cover;
-          width: 100%;
-          height: 100%;
-        }
-        & .overlay {
-          position: absolute;
-          bottom: 0;
-          top: 120px;
-          width: 400px;
-          @media only screen and (max-width: 992px) {
-            width: 300px;
-          }
-
-          padding-left: 1rem;
-          & h1 {
-            display: block;
-            color: #fff;
-          }
-          & p {
-            font-size: 0.9rem;
-            color: #fff;
-          }
-          & a {
-            border: none;
-            background: var(--orange-color);
-            color: #fff;
-            padding: 5px 1rem;
-            text-decoration: none;
-            &:hover {
-              opacity: 0.9;
-            }
-          }
-        }
-      }
-      /* ///////  Slider Dits  /////// */
-      & .slick-dots {
-        width: 90%;
-      }
+    @media only screen and (max-width: 992px) {
+      margin-top: 2rem;
+      position: static;
+    }
+    & .box-wrapper {
+      margin: 0 10px;
     }
   }
   & .description {
     padding-left: 3rem;
     padding-top: 1rem;
+    & p {
+      color: var(--silver-color);
+      letter-spacing: 1px;
+    }
+    & .link {
+      text-decoration: none;
+      color: #fff;
+      background-color: var(--orange-color);
+      padding: 4px 10px;
+      text-transform: capitalize;
+      font-size: 1rem;
+    }
     @media only screen and (max-width: 992px) {
       margin-top: 2rem;
     }
+  }
+  /* ///////  Slider Dits  /////// */
+  & .slick-dots {
+    width: 90%;
   }
 `;
 

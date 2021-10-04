@@ -5,7 +5,8 @@ import { useParams } from "react-router-dom";
 import { filterByTypeBusiness } from "../../../flux/actions/advertisingAction/advertisingAction";
 import { useDispatch, useSelector } from "react-redux";
 import LoaderComponent from "../../loader";
-import SecondeLandingSlider from "./AdLanding/secondeLanding";
+import SecondeLandingSlider from "./Banner/secondeLanding";
+import MainContainer from "../../MainContainer";
 
 function AllBrandScreen() {
   const params = useParams();
@@ -19,11 +20,11 @@ function AllBrandScreen() {
     dispatch(filterByTypeBusiness(type));
   }, [dispatch, type]);
   return (
-    <>
+    <MainContainer>
       {loading ? (
         <LoaderComponent />
       ) : (
-        <main>
+        <>
           <SecondeLandingSlider />
           <div className="container my-5">
             <DataSection
@@ -32,9 +33,9 @@ function AllBrandScreen() {
               type={type}
             />
           </div>
-        </main>
+        </>
       )}
-    </>
+    </MainContainer>
   );
 }
 
@@ -69,8 +70,7 @@ const DataSection = ({ listAdService, error, type }) => {
                 <h5>{data.companyName}</h5>
                 <hr />
                 <p>
-                  Curabitur arcu erat, accumsan id imperdiet et, porttitor at
-                  sem. Lorem .
+                  Curabitur arcu erat, accumsan id imperdiet et
                 </p>
                 <a href={`/advertising/profile/${data._id}`} alt="">
                   explore
@@ -88,8 +88,9 @@ const DataStyling = styled.section`
   text-align: center;
   margin-bottom: 4rem;
   & .title {
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-transform: capitalize;
+    font-weight: 700;
   }
   & hr {
     width: 100px;

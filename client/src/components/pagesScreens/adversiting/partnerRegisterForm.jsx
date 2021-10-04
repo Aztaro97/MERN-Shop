@@ -20,20 +20,21 @@ import {
   saveServiceInfo,
 } from "../../../flux/actions/advertisingAction/advertisingAction";
 
-import { serviceArray } from "../../../utils/advertisingData";
+import { BusinessList } from "../../../utils/advertisingData";
 import ButtonComponeent from "../../ButtonComponeent";
 import { Link, useHistory } from "react-router-dom";
 import { register } from "../../../flux/actions/userAction";
 import { BiWorld } from "react-icons/bi";
 import axios from "axios";
 import { successMessage } from "../../message";
+import MainContainer from "../../MainContainer";
 
 const { Option } = Select;
 
 function PartnerRegisterTemplate2() {
   const { loading, userInfo } = useSelector((state) => state.userLogin);
   return (
-    <>
+    <MainContainer>
       {loading ? (
         <Loader />
       ) : (
@@ -42,7 +43,7 @@ function PartnerRegisterTemplate2() {
           <DetailsComponent />
         </Container>
       )}
-    </>
+    </MainContainer>
   );
 }
 
@@ -260,7 +261,7 @@ const DetailsComponent = () => {
             placeholder="Please select your type of busness"
             onChange={(value) => setTypeBusiness(value)}
           >
-            {serviceArray.map((item, index) => (
+            {BusinessList.map((item, index) => (
               <Option key={index} value={item.value} label={item.title}>
                 {item.title}
               </Option>
@@ -650,12 +651,12 @@ const FirstFraction = styled.div`
 // };
 
 const Container = styled.div`
-  max-width: 800px;
-  margin: 12rem auto 0;
+  /* max-width: 800px; */
+  /* margin: rem auto 0; */
   background-color: #ecececec;
   padding: 3rem;
   position: relative;
-  bottom: 5rem;
+  /* bottom: 5rem; */
 
   & .title {
     font-size: 1.5rem;

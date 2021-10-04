@@ -10,7 +10,7 @@ import {
 import LoaderComponent from "../../../loader";
 import { useHistory } from "react-router";
 import { Select } from "antd";
-import { serviceArray } from "../../../../utils/advertisingData";
+import { BusinessList } from "../../../../utils/advertisingData";
 const { Option } = Select;
 
 const AllCompanyService = () => {
@@ -56,7 +56,7 @@ const AllCompanyService = () => {
             style={{ width: 400 }}
             onChange={handleSelectType}
           >
-            {serviceArray.map((item, index) => (
+            {BusinessList.map((item, index) => (
               <Option key={index} value={item.value}>
                 {item.title}
               </Option>

@@ -12,7 +12,7 @@ import InputComponents from "../../InputComponents";
 import SelectC from "../../SelectComponents";
 import TextArea from "../../TextAreaComponent";
 
-import { serviceArray } from "../../../utils/advertisingData";
+import { BusinessList } from "../../../utils/advertisingData";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import ButtonComponeent from "../../ButtonComponeent";
 
@@ -273,7 +273,7 @@ const ServicesSection = () => {
         className="form_select"
         placeholder="Brand"
         name="formik.brand"
-        options={serviceArray}
+        options={BusinessList}
         value={typeService}
         onChange={(e) => setTypeService(e.target.value)}
       />

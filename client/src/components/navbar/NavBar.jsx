@@ -101,11 +101,21 @@ function NavBar() {
       </LinkP>
     </Content>
   );
+
+  const AdvertisingMode = () => (
+    <Content>
+      <LinkP to="/auth" className="btn_signin">
+        {t("login")}
+      </LinkP>
+    </Content>
+  );
   const AdminContente = (
     <Content>
       <LinkR href="/admin/userlist">{t("users_lists")}</LinkR>
       <LinkR href="/admin/productlist">{t("products_lists")}</LinkR>
       <LinkR href="/admin/orderlist">{t("orders_lists")}</LinkR>
+      <LinkR href="/admin/advertising">AD User list</LinkR>
+      <LinkR href="/admin/message">Message</LinkR>
     </Content>
   );
 
@@ -161,7 +171,22 @@ function NavBar() {
         <NavItem>
           <Popover
             placement="bottomRight"
-            content={userInfo ? ProfileContentLogin : ProfileContentLogOut}
+            // /////  E-COMMERCE POPOVER
+            // content={userInfo ? ProfileContentLogin : ProfileContentLogOut}
+
+            content={
+              !userInfo ? (
+                <Content>
+                  <LinkP to="/auth" className="btn_signin">
+                    {t("login")}
+                  </LinkP>
+                </Content>
+              ) : (
+                <Content>
+                  <LinkP onClick={handleLogOut}>{t("logout")}</LinkP>
+                </Content>
+              )
+            }
             trigger="hover"
           >
             <NavLink>
@@ -169,7 +194,7 @@ function NavBar() {
             </NavLink>
           </Popover>
         </NavItem>
-        <NavItem>
+        {/* <NavItem>
           <NavLink to="/cart" currentLanguageCode={currentLanguageCode}>
             <FaShoppingCart className="icon" />
             {cartItems.length > 0 ? (
@@ -195,7 +220,7 @@ function NavBar() {
             <span></span>
             <span></span>
           </ToggleBtn>
-        </NavItem>
+        </NavItem> */}
         <ToggleMenu open={showToggleMenu} />
       </Nav>
     </Header>
@@ -203,13 +228,19 @@ function NavBar() {
 }
 
 const Header = styled.header`
+  max-width: var(--max-width);
+  margin: 0 auto !important;
+  /* max-width: var(--max-width) */
+  /* margin-right: auto; */
   height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2rem;
-  position: fixed;
+  /* padding: 0 2rem; */
+  padding: 0 1rem;
+  position: sticky;
   top: 0;
+  /* left: 0; */
   width: 100%;
   z-index: 99;
   background: ${({ scrollNav }) => (scrollNav ? "#fff" : "transparent")};
@@ -219,7 +250,7 @@ const Header = styled.header`
     scrollNav ? "background 0s ease-in-out" : "background .5s ease-in-out"};
   @media only screen and (max-width: 995px) {
     /* padding-left: 1rem; */
-    /* padding: 0 1rem; */
+    padding: 0 1rem;
   }
 `;
 const Nav = styled.ul`
@@ -230,7 +261,7 @@ const Nav = styled.ul`
   margin-bottom: 0;
 `;
 const NavItem = styled.li`
-  margin: 0 .7rem;
+  margin: 0 0.7rem;
   @media only screen and (max-width: 995px) {
     margin: 0 0.4rem;
   }

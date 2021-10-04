@@ -23,7 +23,12 @@ const AdvertisingServiceSchema = mongoose.Schema({
   productsOrdered: { type: Array, required: false },
   isPaid: { type: Boolean, required: false, default: false },
   totalPrice: { type: Number, required: false },
-});
+},
+{
+  timestamps: true,
+}
+
+);
 
 const AdvertisingService = mongoose.model(
   "Advertising",

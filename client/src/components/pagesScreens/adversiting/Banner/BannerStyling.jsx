@@ -1,76 +1,16 @@
-import Slider from "@ant-design/react-slick";
-import React from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const FirstLandingSlider = () => {
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    nextArrow: (
-      <div>
-        <div className="next-slick-arrow"> ⫸ </div>
-      </div>
-    ),
-    prevArrow: (
-      <div>
-        <div className="prev-slick-arrow"> ⫷ </div>
-      </div>
-    ),
-  };
-  return (
-    <LandingStyling>
-      <Slider {...settings}>
-        <div>
-          <div className="landing_overlay">
-            <img src="/img/advertising/bg-images.jpeg" alt="" />
-            <div className="contente_overlay">
-              <h1>
-                <span>Blind</span>Text Generator.
-              </h1>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-              <Link className="link1" to="#/">
-                Quote here
-              </Link>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div className="landing_overlay">
-            <img src="/img/advertising/bg-images.jpeg" alt="" />
-            <div className="contente_overlay">
-              <h1>
-                <span>Blind</span>Text Generator.
-              </h1>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-              <Link className="link1" to="#/">
-                Quote here
-              </Link>
-            </div>
-          </div>
-        </div>
-      </Slider>
-    </LandingStyling>
-  );
-};
-
-const LandingStyling = styled.div`
+export const LandingStyling = styled.div`
+max-width:var(--max-width);
+margin: 0 auto;
   & .landing_overlay {
-    /* background-image: ,
-      url("./img/advertising/bg-images.jpeg"); */
-
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: end;
     color: #fff;
-    padding-bottom: 3rem;
-    height: 700px;
+    height: 400px;
+    cursor: pointer;
     @media only screen and (max-width: 768px) {
       height: 400px;
     }
@@ -85,7 +25,7 @@ const LandingStyling = styled.div`
       background-position: center;
       background-size: contain;
       background-origin: content-box;
-      object-fit: cover;
+      /* object-fit: contain; */
       height: 100%;
       width: 100%;
     }
@@ -170,5 +110,3 @@ const LandingStyling = styled.div`
     color: #fff;
   }
 `;
-
-export default FirstLandingSlider;
