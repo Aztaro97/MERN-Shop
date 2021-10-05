@@ -20,12 +20,13 @@ import {
   SERVICE_UPDATE_SUCCESS,
 } from "../../constants/advertising";
 
-export const clearCardImage = () => (dispatch) => {
+export const clearCardAd = () => (dispatch) => {
   dispatch({
     type: "CLEAR_ALL_CARD_SERVICE",
   });
   localStorage.removeItem("cardDataImage");
 };
+
 
 export const saveServiceInfo = (data) => (dispatch) => {
   dispatch({

@@ -24,7 +24,7 @@ function AdversitingScreen() {
       <Container>
         <AdvertisingNavgation />
         <TypeBusinessSection />
-        {/* <IntroVideoSection /> */}
+        <IntroVideoSection />
         <JoiningUsSection />
         <PartnerSectionLogo />
         <ServicesSlider />
@@ -186,18 +186,26 @@ const IntroVideoSection = () => {
                   volume="0.0"
                   controls
                   config={{
-                    Files: {
-                      autoplay: true,
+                    vimeo: {
+                      playerOptions: {
+                        controls: true,
+                        transparent: true,
+                        autoplay: false,
+                        // autopause: true,
+                        quality: "auto"
+                        // title: data.companyName,
+                      },
                     },
                   }}
                 />
               </Col>
               <Col span="12">
                 <div className="description">
-                  <p>
-                   {data.description}
-                  </p>
-              <Link to={`/advertising/profile/${data.profileId}`} className="link">
+                  <p>{data.description}</p>
+                  <Link
+                    to={`/advertising/profile/${data.profileId}`}
+                    className="link"
+                  >
                     contact us
                   </Link>
                 </div>

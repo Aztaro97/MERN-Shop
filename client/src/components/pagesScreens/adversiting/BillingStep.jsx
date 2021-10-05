@@ -1,14 +1,20 @@
 import { Radio, Space } from "antd";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import StripeCheckout from "react-stripe-checkout";
 import PaymentContainer from "./checkout/paymentContainer";
+import { useHistory } from "react-router";
+// import { userRequest } from "./checkout/requestMethode";
+import axios from "axios";
+import ButtonComponeent from "../../ButtonComponeent";
 
 const BillingStep = () => {
+ 
+
   return (
     <Container>
       <h2>Payment</h2>
-      <p>All transactions are secure and encrypted.</p>
-      <PaymentContainer />
+      <p>All transactions are secure and encrypted.</p>      
     </Container>
   );
 };

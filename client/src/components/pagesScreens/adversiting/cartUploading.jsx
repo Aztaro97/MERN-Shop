@@ -3,12 +3,10 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import ButtonComponeent from "../../ButtonComponeent";
+import CheckOut from "./checkout/checkoutComponent";
 
 const CartUploading = () => {
-
   const [isDesable, setIsDesable] = useState(true);
-
 
   // //////////////  first Banner
   const [qtyFirstBanner, setQtyFirstBanner] = useState(0);
@@ -48,10 +46,6 @@ const CartUploading = () => {
     totalPriceService +
     totalPriceLogo +
     totalPriceVideo;
-
-    
-
-    
 
   const dispatch = useDispatch();
 
@@ -93,26 +87,23 @@ const CartUploading = () => {
     },
   ];
 
-  
-
   useEffect(() => {
-    if ( Total !== 0 ) {
-      setIsDesable(true)
+    if (Total !== 0) {
+      setIsDesable(true);
     } else {
-      setIsDesable(false)
+      setIsDesable(false);
     }
-
-  }, [Total])
+  }, [Total]);
 
   // const handleSaveInfo = (data) => {
   //   dispatch(AddCardImage(data));
   // };
   const HandleSavedCArt = () => {
     localStorage.setItem("cardDataImage", JSON.stringify(data));
-  }
+  };
   return (
     <Container>
-      <form action="">
+      <div>
         <h1 className="title">Add pictures</h1>
         <Row>
           <Col span={24}>
@@ -320,18 +311,10 @@ const CartUploading = () => {
             </h4>
           </Col>
           <Col span={10}>
-            <LinkStyling
-            // to="/advertising/payment"
-            to={ isDesable ? ("/advertising/payment") : ("#") } 
-            disabled={ isDesable ? (false) : (true)}
-              // style={{ marginLeft: "auto", marginTop: "1rem" }}
-              onClick={HandleSavedCArt}
-            >
-              checkout
-            </LinkStyling>
+            <CheckOut totalPrice={Total} cardData={data} />
           </Col>
         </Row>
-      </form>
+      </div>
     </Container>
   );
 };
@@ -359,7 +342,7 @@ const Container = styled.div`
 
 const LinkStyling = styled(Link)`
   width: 130px;
-  padding:5px 20px;
+  padding: 5px 20px;
   background: var(--orange-color);
   color: #fff;
   text-decoration: none;

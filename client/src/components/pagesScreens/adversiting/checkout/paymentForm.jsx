@@ -12,7 +12,7 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import {
-  clearCardImage,
+  clearCardAd,
   AddOrderCardImage,
   PremiumSubscription,
 } from "../../../../flux/actions/advertisingAction/advertisingAction";
@@ -99,7 +99,7 @@ const PaymentForm = () => {
         if (response.data.paymentSuccess) {
           // dispatch(AddOrderCardImage())
           dispatch(PremiumSubscription(body));
-          dispatch(clearCardImage());
+          dispatch(clearCardAd());
           history.push("/thank");
         }
       } catch (error) {

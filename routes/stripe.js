@@ -73,31 +73,39 @@ router.post("/", cors(), async (req, res) => {
   res.status(200).json({ session });
 });
 
-router.post("/advertising", cors(), async (req, res) => {
-  const session = await stripe.checkout.sessions.create({
-    payment_method_types: ["card"],
-    customer_email: req.body.email,
-    line_items: [
-      {
-        price_data: {
-          currency: "aed",
-          product_data: req.body.productsOrdered,
-          unit_amount: req.body.totalPrice,
-          // user: {
-          //   customer_email: "azo@gmail.com"
-          // }
-        },
-        quantity: 1,
-      },
-    ],
-    mode: "payment",
-    success_url: "http://localhost:3000/thank",
-    cancel_url: "https://example.com/cancel",
-  });
+// router.post("/advertising", async (req, res) => {
+//   try {
+//     const response = await stripe.charges.create({
+//       source: req.body.source,
+//       customer: "ddd",
+//       amount: req.body.amount,
+//       description: req.body.description,
+//     });
 
-  if (session) {
-    res.status(200).json(session);
-  }
+//     if (response) {
+//       res.status(200).json(response);
+//     }
+//   } catch (error) {
+//     // throw new Error(error)
+//     res.status(500).json(error);
+//   }
+// });
+
+router.post("/advertising", (req, res) => {
+  stripe.charges.create(
+    {
+      source: req.body.tokenId,
+      amount: req.body.amount,
+      currency: "usd",
+    },
+    (stripeErr, stripeRes) => {
+      if (stripeErr) {
+        res.status(500).json(stripeErr);
+      } else {
+        res.status(200).json({ success: "success", stripeRes });
+      }
+    }
+  );
 });
 
 module.exports = router;

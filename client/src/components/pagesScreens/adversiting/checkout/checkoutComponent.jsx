@@ -1,0 +1,80 @@
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
+import StripeCheckout from "react-stripe-checkout";
+import {
+  clearCardAd,
+  PremiumSubscription,
+} from "../../../../flux/actions/advertisingAction/advertisingAction";
+import ButtonComponeent from "../../../ButtonComponeent";
+
+const CheckoutComponent = ({ totalPrice, cardData }) => {
+  const [stripeToken, setStripeToken] = useState(null);
+
+  const stripe_api_key =
+    "pk_test_51JJfI4Bx9NV9CAAsuru5nAfIu9rF8RK6yxAf52TPNFMD7G0wnXlmH9r3MzKIlPO5kXBwkRGR8D9fK4xBod44lmRq00mT5OQdVM";
+
+  const { service: userField } = useSelector((state) => state.advertising);
+
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  const onToken = (token) => {
+    setStripeToken(token);
+  };
+
+  if (userField == null) {
+    history.push("/advertising/register");
+  }
+
+  const body = {
+    companyName: userField.companyName,
+    about: userField.about,
+    typeBusiness: userField.typeBusiness,
+    fullName: userField.fullName,
+    telephone: userField.telephone,
+    email: userField.email,
+    city: userField.city,
+    country: userField.country,
+    region: userField.region,
+    productsOrdered: cardData,
+    totalPrice,
+  };
+
+  useEffect(() => {
+    const makeRequest = async () => {
+      try {
+        const res = await axios.post("/checkout/advertising", {
+          tokenId: stripeToken.id,
+          amount: totalPrice * 100,
+          description: "description   ",
+        });
+        if (res.data.success === "success") {
+          console.log(body);
+          dispatch(PremiumSubscription(body));
+          dispatch(clearCardAd());
+          history.push("/advertising/thank", { data: res.data });
+        }
+      } catch {}
+    };
+    stripeToken && makeRequest();
+  }, [stripeToken, totalPrice, history, dispatch, body]);
+
+  return (
+    <StripeCheckout
+      name="AU 97 CODE Advertising"
+      image="https://res.cloudinary.com/tarositeweb/image/upload/v1633424746/recipes/logo_png_wlukid.png"
+      billingAddress
+      shippingAddress
+      description={`Your total is `}
+      amount={totalPrice * 100}
+      token={onToken}
+      stripeKey={stripe_api_key}
+    >
+      <ButtonComponeent className="ml-auto">CHECKOUT NOW </ButtonComponeent>
+    </StripeCheckout>
+  );
+};
+
+export default CheckoutComponent;
