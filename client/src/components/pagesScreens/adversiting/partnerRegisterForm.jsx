@@ -163,7 +163,6 @@ const SignUpForm = () => {
 
 const DetailsComponent = () => {
   const [plan, setPlan] = useState("");
-
   // ////////    services fields
   const [companyName, setCompanyName] = useState("");
   const [about, setAbout] = useState("");
@@ -196,7 +195,7 @@ const DetailsComponent = () => {
 
     if (plan === "free") {
       dispatch(freeSubscription(body));
-      history.push("/advertising/thank");
+      history.push("/advertising/thank", {data: body});
     }
     if (plan === "premium") {
       dispatch(saveServiceInfo(body));

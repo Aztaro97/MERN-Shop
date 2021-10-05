@@ -66,7 +66,7 @@ const CheckoutComponent = ({ totalPrice, cardData }) => {
       name="AU 97 CODE Advertising"
       image="https://res.cloudinary.com/tarositeweb/image/upload/v1633424746/recipes/logo_png_wlukid.png"
       billingAddress
-      shippingAddress
+      // shippingAddress
       description={`Your total is `}
       amount={totalPrice * 100}
       token={onToken}

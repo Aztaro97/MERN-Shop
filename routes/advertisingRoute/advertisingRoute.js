@@ -18,9 +18,8 @@ const { protect, admin } = require("../../middleware/authMiddleware");
 
 router
   .route("/")
-  .post(protect, addAdvertisingService)
   .get(protect, admin, getAllAdService)
-  .put( setUpdateAllowed);
+  .put(setUpdateAllowed);
 router.route("/filter-type-business").post(filterByTypeBusiness);
 router.route("/profile/:id").get(getAdProfile);
 router
@@ -29,5 +28,6 @@ router
   .get(protect, admin, fetchAllMessage);
 router.route("/message/view").put(protect, admin, openMessageById);
 router.route("/premium").post(protect, registerPremiumService);
+router.route("/free").post(protect, addAdvertisingService);
 
 module.exports = router;

@@ -1,5 +1,6 @@
+import React from 'react';
 import axios from "axios";
-import { successMessage } from "../../../components/message";
+import { useHistory } from "react-router";
 import {
   AD_LIST_FAIL,
   AD_LIST_REQUEST,
@@ -20,13 +21,13 @@ import {
   SERVICE_UPDATE_SUCCESS,
 } from "../../constants/advertising";
 
+
 export const clearCardAd = () => (dispatch) => {
   dispatch({
     type: "CLEAR_ALL_CARD_SERVICE",
   });
   localStorage.removeItem("cardDataImage");
 };
-
 
 export const saveServiceInfo = (data) => (dispatch) => {
   dispatch({
@@ -37,6 +38,7 @@ export const saveServiceInfo = (data) => (dispatch) => {
 
 export const freeSubscription = (body) => async (dispatch, getState) => {
   try {
+    
     dispatch({
       type: "SERVICE_REGISTER_SUCCESS",
       payload: body,
@@ -45,14 +47,18 @@ export const freeSubscription = (body) => async (dispatch, getState) => {
     const {
       userLogin: { userInfo },
     } = getState();
-
     const config = {
       headers: {
         accept: "application/json",
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
-    const res = await axios.post("/api/advertising", body, config);
+
+    const res = await axios.post("/api/advertising/free", body, config);
+    // if (res.data) {
+    //   useHistory().push("/advertising/thank", { data: res.data });
+    //   console.log(res)
+    // }
   } catch (error) {
     console.log(error);
   }
