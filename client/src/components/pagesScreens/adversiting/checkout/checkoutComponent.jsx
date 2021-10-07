@@ -73,7 +73,7 @@ const CheckoutComponent = ({ totalPrice, cardData }) => {
       stripeKey={stripe_api_key}
       zipCode={false}
     >
-      <Button disabled={totalPrice < 0 && true } className="ml-auto">
+      <Button disabled={totalPrice === 0 ? true : false} className="ml-auto">
         CHECKOUT NOW{" "}
       </Button>
     </StripeCheckout>
