@@ -124,7 +124,7 @@ function AdvertisingProfileScreen() {
             </section>
 
             <section className="portfolio">
-              <h1 className="title">company portfolio</h1>
+              <h1 className="title">Ad videos</h1>
               <PortfolioSlider className="slider_container" />
             </section>
             <section className="contact">
