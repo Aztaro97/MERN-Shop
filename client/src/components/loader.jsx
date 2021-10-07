@@ -1,26 +1,31 @@
-import React from 'react';
-import styled from "styled-components"
-import { Spin  } from "antd"
+import React, { useState } from "react";
+
+import RiseLoader from "react-spinners/RiseLoader";
 
 function LoaderComponent() {
-    return (
-        <Loader>
-            <Spin size="large" className="spin_loader" />
-        </Loader>
-    )
+  const override = `
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999999999999999999999999999999999999999999;
+  background: #fff9f9ec;
+  `;
+  let [loading, setLoading] = useState(true);
+  return (
+    <RiseLoader
+      className="hell"
+      color={`var(--orange-color)`}
+      css={override}
+      loading={loading}
+      size={40}
+      margin={3}
+    />
+  );
 }
 
-const Loader = styled.div`
-    height:40rem;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-     & .spin_loader {
-        & .ant-spin-dot > * {
-            background: var(--orange-color)
-        }
-     }
-`
 export default LoaderComponent;

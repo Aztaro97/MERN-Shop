@@ -50,6 +50,11 @@ import {
   warningMessage,
 } from "../../components/message";
 import { useHistory } from "react-router";
+import {
+  SEND_CONTACT_FORM_FAIL,
+  SEND_CONTACT_FORM_REQUEST,
+  SEND_CONTACT_FORM_SUCCESS,
+} from "../constants/advertising";
 
 export const login = (body) => async (dispatch) => {
   try {
@@ -561,7 +566,7 @@ export const resetPassword = (email) => async (dispatch) => {
   }
 };
 
-export const newPassword = (token , password) => async (dispatch) => {
+export const newPassword = (token, password) => async (dispatch) => {
   try {
     const config = {
       headers: {
@@ -569,15 +574,19 @@ export const newPassword = (token , password) => async (dispatch) => {
       },
     };
 
-    const res = await axios.post(`/api/users/new-password/${token}`, { password }, config);
+    const res = await axios.post(
+      `/api/users/new-password/${token}`,
+      { password },
+      config
+    );
 
     if (res.data.msg === "success") {
       successMessage(res.data.msg, 2000, 3);
-      console.log(res.data)
+      console.log(res.data);
     }
     dispatch({
-      type: "UPDATE_PASSWORD_SUCCESS"
-    })
+      type: "UPDATE_PASSWORD_SUCCESS",
+    });
     // successMessage("A message has been sent to your email", 2000);
   } catch (error) {
     // dispatch({
@@ -589,6 +598,32 @@ export const newPassword = (token , password) => async (dispatch) => {
     // });
 
     // errorMessage(error.msg, 2000, 3);
-    console.log(error)
+    console.log(error);
+  }
+};
+
+export const sendContactFormMessage = (body) => async (dispatch) => {
+  try {
+    dispatch({ type: SEND_CONTACT_FORM_REQUEST });
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const res = await axios.post("/api/contact-us", body, config);
+    if (res.data) {
+      successMessage("Your Message have successfully sended !", 500, 4);
+    }
+    dispatch({ type: SEND_CONTACT_FORM_SUCCESS });
+  } catch (error) {
+    dispatch({
+      type: SEND_CONTACT_FORM_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+    errorMessage(error);
   }
 };

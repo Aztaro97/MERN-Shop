@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const LandingStyling = styled.div`
-max-width:var(--max-width);
-margin: 0 auto;
+  max-width: var(--max-width);
+  margin: 0 auto;
   & .landing_overlay {
     display: flex;
     flex-direction: column;

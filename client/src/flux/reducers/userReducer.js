@@ -1,3 +1,4 @@
+import { SEND_CONTACT_FORM_FAIL, SEND_CONTACT_FORM_REQUEST, SEND_CONTACT_FORM_SUCCESS } from "../constants/advertising";
 import {
   USER_DETAILS_FAIL,
   USER_DETAILS_REQUEST,
@@ -102,17 +103,17 @@ export const userUpdateProfileReducer = (state = {}, action) => {
 export const userListReducer = (state = { users: [] }, action) => {
   switch (action.type) {
     case USER_LIST_REQUEST:
-      return { loading: true }
+      return { loading: true };
     case USER_LIST_SUCCESS:
-      return { loading: false, users: action.payload }
+      return { loading: false, users: action.payload };
     case USER_LIST_FAIL:
-      return { loading: false, error: action.payload }
+      return { loading: false, error: action.payload };
     case USER_LIST_RESET:
-      return { users: [] }
+      return { users: [] };
     default:
-      return state
+      return state;
   }
-}
+};
 
 export const companyListReducer = (
   state = { loading: true, company: [] },
@@ -196,6 +197,19 @@ export const userRegisterBankInfo = (state = {}, action) => {
     case USER_REGISTER_BANK_INFO_SUCCESS:
       return { loading: false, info: action.payload };
     case USER_REGISTER_BANK_INFO_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const sendingMessageContactFormReducer = (state = {}, action) => {
+  switch (action.type) {
+    case SEND_CONTACT_FORM_REQUEST:
+      return { loading: true };
+    case SEND_CONTACT_FORM_SUCCESS:
+      return { loading: false };
+    case SEND_CONTACT_FORM_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

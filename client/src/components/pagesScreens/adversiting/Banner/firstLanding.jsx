@@ -1,11 +1,20 @@
-import Slider from "@ant-design/react-slick";
-import React from "react";
+import Slider from "react-slick";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import cookies from "js-cookie";
 import { firstBannerData } from "../../../../utils/advertisingData";
 import { LandingStyling } from "./BannerStyling";
 
 const FirstLandingSlider = () => {
+  const currentLang = cookies.get("i18next");
+  const [lang, setLang] = useState("");
+
+  useEffect(() => {
+    if (currentLang) {
+      setLang(currentLang);
+    }
+  }, [currentLang]);
   const settings = {
     dots: false,
     infinite: true,
@@ -14,6 +23,7 @@ const FirstLandingSlider = () => {
     autoplaySpeed: 3000,
     slidesToShow: 1,
     slidesToScroll: 1,
+    rtl: lang === "ar" ? true : false,
     nextArrow: (
       <div>
         <div className="next-slick-arrow"> ⫸ </div>
@@ -29,7 +39,12 @@ const FirstLandingSlider = () => {
     <LandingStyling>
       <Slider {...settings}>
         {firstBannerData.map((data) => (
-          <div key={data.profileId} onClick={() => window.location.href = (`/advertising/profile/${data.profileId}`) }>
+          <div
+            key={data.profileId}
+            onClick={() =>
+              (window.location.href = `/advertising/profile/${data.profileId}`)
+            }
+          >
             <div className="landing_overlay">
               <img src={data.imgUrl} alt="" />
               {/* <div className="contente_overlay">

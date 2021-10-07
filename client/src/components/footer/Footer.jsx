@@ -143,7 +143,13 @@ function FooterScrren() {
           </div>
         </div>
       </section>
-      <div className="copyRights">AU79CODE &copy; All rights reserved</div>
+      <div className="bottom-footer container">
+        <div className="contract-link">
+          <a href="/terms">Terms</a>
+          <a href="/private-policy">Private policy</a>
+        </div>
+        <div className="copyRights">AU79CODE &copy; All rights reserved</div>
+      </div>
     </Footer>
   );
 }

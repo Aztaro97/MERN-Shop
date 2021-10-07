@@ -93,25 +93,27 @@ const TypeBusinessSection = () => {
   };
   const history = useHistory();
   return (
-    <Slider {...settings}>
-      {categoryAdversiting.map((data) => (
-        <CardItemStyling
-          key={data.profileId}
-          onClick={() =>
-            (window.location.href = `/advertising/profile/${data.profileId}`)
-          }
-        >
-          <div
-            className="box"
-            style={{ backgroundImage: `url(${data.image})` }}
+    <section>
+      <Slider {...settings}>
+        {categoryAdversiting.map((data) => (
+          <CardItemStyling
+            key={data.profileId}
+            onClick={() =>
+              (window.location.href = `/advertising/profile/${data.profileId}`)
+            }
           >
-            <div className="box-container">
-              <h4>{data.title}</h4>
+            <div
+              className="box"
+              style={{ backgroundImage: `url(${data.image})` }}
+            >
+              <div className="box-container">
+                <h4>{data.title}</h4>
+              </div>
             </div>
-          </div>
-        </CardItemStyling>
-      ))}
-    </Slider>
+          </CardItemStyling>
+        ))}
+      </Slider>
+    </section>
   );
 };
 
@@ -191,8 +193,11 @@ const IntroVideoSection = () => {
                         controls: true,
                         transparent: true,
                         autoplay: false,
+                        muted: true,
                         // autopause: true,
-                        quality: "auto"
+                        quality: "auto",
+                        // width: "900",
+                        color: "00ADEF",
                         // title: data.companyName,
                       },
                     },
@@ -280,15 +285,17 @@ const JoiningUsSection = () => {
         <div className="col-lg-4">
           <img src="/img/advertising/union.jpg" alt="" />
         </div>
-        <div className="col-lg-8">
-          <h1 className="content">
-            Become a partner <br /> Reach more customers and <br /> achieve
-            growth with us
-          </h1>
-          <div className="link">
-            <a href="/advertising/register" alt="">
-              Lets go
-            </a>
+        <div className="col-lg-6">
+          <div className="content">
+            <h1>
+              Become a partner <br /> Reach more customers and <br /> achieve
+              growth with us
+            </h1>
+            <div className="link">
+              <a href="/advertising/register" alt="">
+                Let's go
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -406,7 +413,6 @@ const ServicesSlider = () => {
 };
 
 const ServiceStyling = styled.section`
-  margin: 4rem;
   & .title {
     text-align: center;
     text-transform: uppercase;
@@ -440,8 +446,6 @@ const ServiceStyling = styled.section`
 `;
 
 const PartnerLogoStyling = styled.section`
-  margin: 4rem;
-  margin-bottom: 8rem;
   & .title {
     text-align: center;
     text-transform: uppercase;
@@ -492,12 +496,10 @@ const PartnerLogoStyling = styled.section`
 `;
 
 const JoiningUsStyling = styled.section`
-  /* padding: 0 7rem; */
-  margin-bottom: 8rem;
   & .title {
     text-align: center;
-    letter-spacing: 3px;
-    color: var(--silver-color);
+    /* letter-spacing: 3px; */
+    color: var(--orange-color);
     margin-bottom: 1rem;
     font-size: 1.6rem;
   }
@@ -517,7 +519,6 @@ const JoiningUsStyling = styled.section`
     height: 250px;
 
     @media only screen and (max-width: 1000px) {
-      height: 600px;
       border-radius: 60px;
     }
     @media only screen and (max-width: 768px) {
@@ -526,23 +527,30 @@ const JoiningUsStyling = styled.section`
     }
   }
   & .content {
-    text-align: center;
-    letter-spacing: 3px;
-    color: var(--silver-color);
-    margin: 1rem auto 2rem auto;
-    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    & h1 {
+      text-align: center;
+      letter-spacing: 3px;
+      color: var(--silver-color);
+      font-size: 1.4rem;
+      margin-bottom: 2rem;
+    }
   }
   .link {
     text-align: center;
-    height: 100%;
+    /* height: 100%; */
     & a {
       text-align: center;
-      font-size: 1.4rem;
+      font-size: 1.1rem;
       letter-spacing: 2px;
-      background: #bf4f53;
+      background: var(--orange-color);
       color: #fff;
-      padding: 10px 3rem;
-      border-radius: 30px;
+      padding: 10px 2rem;
+      border-radius: 20px;
       text-decoration: none;
     }
   }
@@ -551,9 +559,9 @@ const JoiningUsStyling = styled.section`
   }
 `;
 
-const NavStyling = styled.div`
+const NavStyling = styled.section`
   padding: 1rem;
-  margin: 2rem auto;
+  margin: 0 auto;
   width: 100%;
   /* height: 500px; */
   & .card_container {
@@ -632,23 +640,13 @@ const Container = styled.div`
   padding: 0rem 1rem;
   max-width: 1400px;
   margin: 0 auto;
-  /* & .real-state-bg {
-    background-image: url("https://images.unsplash.com/photo-1630980260348-16f484cb6471?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80");
+
+  & section {
+    margin: 2.5rem 0;
   }
-  & .restaurant-bg {
-    background-image: url("https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1567&q=80");
-  }
-  & .vehicle-bg {
-    background-image: url("https://images.unsplash.com/photo-1549092223-c69273446922?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80");
-  }
-  & .pharmacy-bg {
-    background-image: url("https://images.unsplash.com/photo-1471864190281-a93a3070b6de?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80");
-  } */
 `;
 
 const IntroVideoStyling = styled.section`
-  padding: 3rem 0;
-  margin-top: 3rem;
   & .title {
     text-align: center;
     text-transform: uppercase;
@@ -671,7 +669,8 @@ const IntroVideoStyling = styled.section`
       position: static;
     }
     & .box-wrapper {
-      margin: 0 10px;
+      margin: 0;
+      margin-bottom: 15px;
     }
   }
   & .description {
@@ -685,9 +684,11 @@ const IntroVideoStyling = styled.section`
       text-decoration: none;
       color: #fff;
       background-color: var(--orange-color);
-      padding: 4px 10px;
+      padding: 6px 12px;
       text-transform: capitalize;
       font-size: 1rem;
+      margin: auto;
+      border-radius: 5px;
     }
     @media only screen and (max-width: 992px) {
       margin-top: 2rem;
@@ -696,6 +697,7 @@ const IntroVideoStyling = styled.section`
   /* ///////  Slider Dits  /////// */
   & .slick-dots {
     width: 90%;
+    /* margin-top: 10px; */
   }
 `;
 

@@ -72,6 +72,8 @@ import AllCompanyServiceComponent from "./components/pagesScreens/admin/adminAdv
 
 import { initGA, PageView } from "./components/Tracking/tracking";
 import NewPasswordScreen from "./components/pagesScreens/newPasswordScreen";
+import privatePolicy from "./components/pagesScreens/regulationScreen.jsx/privatePolicy";
+import TermsScreen from "./components/pagesScreens/regulationScreen.jsx/termsContent";
 
 function App() {
   useEffect(() => {
@@ -87,7 +89,7 @@ function App() {
       <NavBar />
       <Switch>
         {/* <Route exact path="/" component={HomeComponents} />
-        <Route exact path="/contact-us" component={ContactUsComponents} />
+        
         
         <Route path="/add-product/:id" component={CreateProductComponent} />
         <Route path="/products/page/:pageNumber" component={ProductsShop} />
@@ -115,7 +117,7 @@ function App() {
         {/* /////////////////////   Markeing Router   ///////////////////// */}
         {/* <Route path="/marketing" component={EMarketingComponent} />
         <Route path="/out-marketing" component={OutMarketingComponent} /> */}
-
+        <Route exact path="/contact-us" component={ContactUsComponents} />
         {/* ///////////////////   ADVERSITING ROUTER  /////////////////// */}
         <Route path="/" component={AdversitingComponent} exact />
         <Route
@@ -190,7 +192,12 @@ function App() {
         />
         <Route path="/admin/message" component={ListAdMessageComponent} exact />
 
-        <Route component={pageNotFound} exact />
+
+        {/* ///////////////////  CONTRACT TERMS AND PRIVACY POLICY   ////////////////// */}
+        <Route path="/terms" component={TermsScreen} exact />
+        <Route path="/private-policy" component={privatePolicy} exact />
+
+        <Route  component={pageNotFound} exact />
       </Switch>
       <Footer />
     </Router>

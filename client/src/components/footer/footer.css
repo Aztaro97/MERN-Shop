@@ -336,10 +336,30 @@ footer .homeContact .mapContent {
 
 
 /* copy rights  */
+.bottom-footer {
+    display: flex;
+    justify-content: space-between;
+    color: #93a3b3;
+    
+}
+.contract-link {
+    margin-left: 40px;
+}
+.contract-link a {
+    text-decoration: none;
+    color: #93a3b3;
+    margin-right: 10px;
+    text-transform: capitalize;
+}
+.contract-link a:hover {
+    color: var(--orange-color);
+    text-decoration: none;
+}
+
 
 .copyRights {
     font-size: 18px;
-    color: #93a3b3;
+    
     font-weight: 500;
     z-index: 200;
     text-align: end;
@@ -361,5 +381,10 @@ footer .homeContact .mapContent {
     }
 }
 
+
+
+.followUs .group {
+    display: block !important;   
+}
 
 /* End styling Footer  */

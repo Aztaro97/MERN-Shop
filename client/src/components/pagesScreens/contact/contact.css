@@ -145,3 +145,7 @@
 .form_contact button:hover {
   opacity: 0.9;
 }
+
+.followUs .group  {
+  display: block;
+}

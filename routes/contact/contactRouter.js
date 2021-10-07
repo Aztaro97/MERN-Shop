@@ -4,43 +4,54 @@ const nodemailer = require("nodemailer");
 const sentGridTransport = require("nodemailer-sendgrid-transport");
 const config = require("../../config/default.json");
 
-const { protect } = require("../../middleware/authMiddleware");
 
 // ///////////  Config NodeMailer Transport ////////////////////
 const SENDGRID_API_KEYS = config.SENDGRID_API_KEYS;
-const transport = nodemailer.createTransport(
-  sentGridTransport({
-    auth: {
-      api_key: SENDGRID_API_KEYS,
-    },
-  })
-);
+const transporter = nodemailer.createTransport({
+  host: "smtp.sendgrid.net", //replace with your email provider
+  port: 465,
+  auth: {
+    user: "apikey",
+    pass: SENDGRID_API_KEYS,
+  },
+  tls: {
+    // do not fail on invalid certs
+    rejectUnauthorized: false,
+  },
+});
+
+// verify connection configuration
+transporter.verify(function (error, success) {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log("Server is ready to take our messages");
+  }
+});
 
 router.post("/", async (req, res) => {
-  const { fullName, email, message } = req.body;
+  const { name, email, message } = req.body;
 
-  const data = await transport.sendMail({
-    to: "aztaro97@gmail.com",
-    from: "aztaro97@gmail.com",
-    subject: "Contact us",
-    html: `
-          <body>
+  transporter
+    .sendMail({
+      to: email,
+      from:  "taroshopping97@gmail.com",
+      subject: "Contact us",
+      html: `
+        <body>
           <div style="width:100%; padding:4rem 0;">
-          <h6>Full Name: ${fullName} </h6>
-          <h6>Full Name: ${email} </h6>
-          <p>Full Name: ${message} </p>
-          
-            </div>
-  
-  
-          
-          </body>
-          `,
-  });
+            <h6>Full Name: ${name} </h6>
+            <h6>Email adress: ${email} </h6>
+            <p>Body Message: ${message} </p>         
+          </div>
 
-  console.log(data)
 
-  res.status(200).json({data});
+        
+        </body>
+        `,
+    })
+    .then((data) => res.status(200).json({ data }))
+    .catch((error) => res.status(500).json(error));
 });
 
 module.exports = router;

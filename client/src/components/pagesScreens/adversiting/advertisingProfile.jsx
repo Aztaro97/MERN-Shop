@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Slider from "react-slick";
 import { Image } from "antd";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import InputC from "../../InputComponents";
 import ButtonC from "../../ButtonComponeent";
@@ -16,6 +16,11 @@ import axios from "axios";
 import { successMessage } from "../../message";
 import ThirsdBannerSlider from "./Banner/thirdBanner";
 import MainContainer from "../../MainContainer";
+import PageNotFund from "../pageNotFund";
+import {
+  SEND_CONTACT_FORM_REQUEST,
+  SEND_CONTACT_FORM_SUCCESS,
+} from "../../../flux/constants/advertising";
 
 function AdvertisingProfileScreen() {
   const params = useParams();
@@ -24,29 +29,35 @@ function AdvertisingProfileScreen() {
   const { profile, loading, error } = useSelector((state) => state.advertising);
 
   const dispatch = useDispatch();
+  const history = useHistory();
+
+  // if (error) {
+  //   history.push("")
+  // }
 
   useEffect(() => {
-    dispatch(getAdvertisingProfileByID(profileID));
+    if (profileID) dispatch(getAdvertisingProfileByID(profileID));
   }, [dispatch, profileID]);
 
   return (
     <MainContainer>
-      <ThirsdBannerSlider />
       {loading ? (
         <LoaderComponent />
       ) : error ? (
-        <h1>{error}</h1>
+        <PageNotFund />
       ) : (
-        <ContainerStyling className="container my-5">
-          <section className="introduction">
-            <h1 className="title">{profile.companyName}</h1>
-            <img src={profile.logoUrl} alt="" />
-          </section>
-          <section className="about">
-            <h1 className="title">about company</h1>
-            <p>{profile.about}</p>
-          </section>
-          {/* <section className="service">
+        <>
+          <ThirsdBannerSlider />
+          <ContainerStyling className="container my-5">
+            <section className="introduction">
+              <h1 className="title">{profile.companyName}</h1>
+              <img src={profile.logoUrl} alt="" />
+            </section>
+            <section className="about">
+              <h1 className="title">about company</h1>
+              <p>{profile.about}</p>
+            </section>
+            {/* <section className="service">
             <h1 className="title">company services</h1>
             <div className="grid">
               {profile.typeBusiness.map((data, index) => (
@@ -66,61 +77,62 @@ function AdvertisingProfileScreen() {
             </div>
           </section> */}
 
-          <section className="service_two">
-            <h1 className="title">company services</h1>
-            <div className="grid">
-              <div className="card">
-                <Image
-                  src="/img/advertising/real_state.jpg"
-                  alt=""
-                  className="card-image"
-                />
-                <div className="card-body">
-                  <p className="text-center">real estate</p>
+            <section className="service_two">
+              <h1 className="title">company services</h1>
+              <div className="grid">
+                <div className="card">
+                  <Image
+                    src="/img/advertising/real_state.jpg"
+                    alt=""
+                    className="card-image"
+                  />
+                  <div className="card-body">
+                    <p className="text-center">real estate</p>
+                  </div>
+                </div>
+                <div className="card">
+                  <Image
+                    src="/img/advertising/restaurant.jpg"
+                    alt=""
+                    className="card-image"
+                  />
+                  <div className="card-body">
+                    <p className="text-center">Restaurant</p>
+                  </div>
+                </div>
+                <div className="card">
+                  <Image
+                    src="/img/advertising/pharmacy.jpg"
+                    alt=""
+                    className="card-image"
+                  />
+                  <div className="card-body">
+                    <p className="text-center">pharmacy</p>
+                  </div>
+                </div>
+                <div className="card">
+                  <Image
+                    src="/img/advertising/real_state.jpg"
+                    alt=""
+                    className="card-image"
+                  />
+                  <div className="card-body">
+                    <p className="text-center">vehicle</p>
+                  </div>
                 </div>
               </div>
-              <div className="card">
-                <Image
-                  src="/img/advertising/restaurant.jpg"
-                  alt=""
-                  className="card-image"
-                />
-                <div className="card-body">
-                  <p className="text-center">Restaurant</p>
-                </div>
-              </div>
-              <div className="card">
-                <Image
-                  src="/img/advertising/pharmacy.jpg"
-                  alt=""
-                  className="card-image"
-                />
-                <div className="card-body">
-                  <p className="text-center">pharmacy</p>
-                </div>
-              </div>
-              <div className="card">
-                <Image
-                  src="/img/advertising/real_state.jpg"
-                  alt=""
-                  className="card-image"
-                />
-                <div className="card-body">
-                  <p className="text-center">vehicle</p>
-                </div>
-              </div>
-            </div>
-          </section>
+            </section>
 
-          <section className="portfolio">
-            <h1 className="title">company portfolio</h1>
-            <PortfolioSlider className="slider_container" />
-          </section>
-          <section className="contact">
-            <h1 className="title">contact</h1>
-            <ContactForm profile={profile} />
-          </section>
-        </ContainerStyling>
+            <section className="portfolio">
+              <h1 className="title">company portfolio</h1>
+              <PortfolioSlider className="slider_container" />
+            </section>
+            <section className="contact">
+              <h1 className="title">contact</h1>
+              <ContactForm profile={profile} />
+            </section>
+          </ContainerStyling>
+        </>
       )}
     </MainContainer>
   );
@@ -199,15 +211,19 @@ const ContactForm = ({ profile }) => {
     companyName: profile.companyName,
     companyTelephone: profile.telephone,
   };
+  const dispatch = useDispatch();
+  const { loading } = useSelector((state) => state.contactForm);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    dispatch({
+      type: SEND_CONTACT_FORM_REQUEST,
+    });
     const config = {
       headers: { "Content-Type": "application/json" },
     };
     const res = await axios.post("/api/advertising/message", body, config);
     if (res.data) {
-      successMessage(res.data.msg, 1000, 7);
       setFirstName("");
       setLastName("");
       setEmail("");
@@ -215,124 +231,134 @@ const ContactForm = ({ profile }) => {
       setCity("");
       setCountry("");
       setMessage("");
+      dispatch({
+        type: SEND_CONTACT_FORM_SUCCESS,
+      });
+      successMessage(res.data.msg, 10, 7);
     }
   };
   return (
-    <FormStyling onSubmit={handleSubmit}>
-      <div className="row">
-        <div className="col-lg-6">
-          <InputC
-            required
-            name="firstName"
-            id="firstName"
-            placeholder="FIRST NAME"
-            className="input"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-          />
-        </div>
-        <div className="col-lg-6">
-          <InputC
-            required
-            name="lastName"
-            id="lastName"
-            placeholder="LAST NAME"
-            className="input"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-          />
-        </div>
-      </div>
-      <div className="row">
-        <div className="col-lg-6">
-          <InputC
-            required
-            name="email"
-            id="email"
-            placeholder="EMAIL"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div className="col-lg-6">
-          <InputC
-            required
-            type="tel"
-            name="phoneNumber"
-            id="phoneNumber"
-            placeholder="PHONE NUMBER"
-            value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
-          />
-        </div>
-      </div>
-      <div className="row">
-        <div className="col-lg-6">
-          <InputC
-            required
-            name="address"
-            id="address"
-            placeholder="ADDRESS"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-          />
-        </div>
-        <div className="col-lg-6">
-          <InputC
-            required
-            type="text"
-            name="city"
-            id="city"
-            placeholder="CITY"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-          />
-        </div>
-      </div>
+    <>
+      {loading ? (
+        <LoaderComponent />
+      ) : (
+        <FormStyling onSubmit={handleSubmit}>
+          <div className="row">
+            <div className="col-lg-6">
+              <InputC
+                required
+                name="firstName"
+                id="firstName"
+                placeholder="FIRST NAME"
+                className="input"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+              />
+            </div>
+            <div className="col-lg-6">
+              <InputC
+                required
+                name="lastName"
+                id="lastName"
+                placeholder="LAST NAME"
+                className="input"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+              />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-lg-6">
+              <InputC
+                required
+                name="email"
+                id="email"
+                placeholder="EMAIL"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className="col-lg-6">
+              <InputC
+                required
+                type="tel"
+                name="phoneNumber"
+                id="phoneNumber"
+                placeholder="PHONE NUMBER"
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+              />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-lg-6">
+              <InputC
+                required
+                name="address"
+                id="address"
+                placeholder="ADDRESS"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+              />
+            </div>
+            <div className="col-lg-6">
+              <InputC
+                required
+                type="text"
+                name="city"
+                id="city"
+                placeholder="CITY"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+              />
+            </div>
+          </div>
 
-      <div className="row">
-        <div className="col-lg-6">
-          <CountryDropdownCustom
-            required
-            name="country"
-            value={country}
-            onChange={(val) => setCountry(val)}
-          />
-        </div>
-        <div className="col-lg-6">
-          <RegionDropdownCustom
-            required
-            name="region"
-            country={country}
-            value={region}
-            onChange={(val) => setRegion(val)}
-          />
-        </div>
-      </div>
+          <div className="row">
+            <div className="col-lg-6">
+              <CountryDropdownCustom
+                required
+                name="country"
+                value={country}
+                onChange={(val) => setCountry(val)}
+              />
+            </div>
+            <div className="col-lg-6">
+              <RegionDropdownCustom
+                required
+                name="region"
+                country={country}
+                value={region}
+                onChange={(val) => setRegion(val)}
+              />
+            </div>
+          </div>
 
-      <div className="row">
-        <div className="col-lg-12">
-          <TextAreaComponent
-            style={{ width: "100%" }}
-            rows="5"
-            required
-            name="message"
-            id="message"
-            placeholder="MESSAGE"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-          />
-        </div>
-      </div>
+          <div className="row">
+            <div className="col-lg-12">
+              <TextAreaComponent
+                style={{ width: "100%" }}
+                rows="5"
+                required
+                name="message"
+                id="message"
+                placeholder="MESSAGE"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+              />
+            </div>
+          </div>
 
-      <ButtonC
-        type="submit"
-        className="btn_submit"
-        style={{ textTransform: "capitalize", letterSpacing: "1px" }}
-      >
-        submit
-      </ButtonC>
-    </FormStyling>
+          <ButtonC
+            type="submit"
+            className="btn_submit"
+            style={{ textTransform: "capitalize", letterSpacing: "1px" }}
+          >
+            submit
+          </ButtonC>
+        </FormStyling>
+      )}
+    </>
   );
 };
 

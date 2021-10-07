@@ -103,7 +103,8 @@ const getAdProfile = asyncHandler(async (req, res) => {
   if (profile ) {
     res.status(200).json(profile);
   } else {
-    res.status(404).json("Profile not fund")
+    res.status(404)
+    throw new Error("Profile not fund")
   }
 })
 

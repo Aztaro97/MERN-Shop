@@ -16,7 +16,7 @@ function PageNotFund() {
 }
 
 const Container = styled.div`
-  /* height: 100vh; */
+  height: 40vh;
   display: flex;
   width: 100%;
   justify-content: center;

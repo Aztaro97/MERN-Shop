@@ -48,13 +48,12 @@ const CheckoutComponent = ({ totalPrice, cardData }) => {
         const res = await axios.post("/checkout/advertising", {
           tokenId: stripeToken.id,
           amount: totalPrice * 100,
-          description: "description   ",
+          description: `Ordered  ${cardData} `,
         });
-        if (res.data.success === "success") {
-          console.log(body);
+        if (res.data.success) {
           dispatch(PremiumSubscription(body));
           dispatch(clearCardAd());
-          history.push("/advertising/thank", { data: res.data });
+          history.push("/advertising/thank", { data: body });
         }
       } catch {}
     };
@@ -68,9 +67,11 @@ const CheckoutComponent = ({ totalPrice, cardData }) => {
       billingAddress
       // shippingAddress
       description={`Your total is `}
+      currency="aed"
       amount={totalPrice * 100}
       token={onToken}
       stripeKey={stripe_api_key}
+      zipCode={false}
     >
       <ButtonComponeent className="ml-auto">CHECKOUT NOW </ButtonComponeent>
     </StripeCheckout>
