@@ -47,14 +47,14 @@ function FooterScrren() {
                 href="tel:+97142839983"
                 className="grayBlueColor weight-500 mediumText mt-3 mb-0 phoneNumer"
               >
-                +97142839983
+                0097142839983
               </a>{" "}
               <br />
               <a
                 href="tel:+971502022251"
                 className="grayBlueColor weight-500 mediumText phoneNumer "
               >
-                +971502022251
+                00971502022251
               </a>
               {/* <!-- follow us div  --> */}
               <div className="followUs mt-4">
