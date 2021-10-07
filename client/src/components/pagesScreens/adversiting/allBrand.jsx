@@ -39,6 +39,7 @@ function AllBrandScreen() {
   );
 }
 
+
 const Landing = () => {
   return (
     <LandingStyling>

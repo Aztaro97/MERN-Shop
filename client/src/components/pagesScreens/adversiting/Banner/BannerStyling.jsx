@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const LandingStyling = styled.div`
   max-width: var(--max-width);
   margin: 0 auto;
+  /* overflow-x: hidden; */
   & .landing_overlay {
     display: flex;
     flex-direction: column;
@@ -28,53 +29,6 @@ export const LandingStyling = styled.div`
       /* object-fit: contain; */
       height: 100%;
       width: 100%;
-    }
-
-    & .contente_overlay {
-      position: absolute;
-      margin-left: 3rem;
-
-      & h1 {
-        color: #fff;
-        margin: 0;
-        font-weight: 700;
-        text-transform: uppercase;
-        font-size: 2rem;
-
-        & span {
-          /* color: #c68787; */
-          display: block;
-          text-transform: capitalize;
-          font-size: 7.8rem;
-          font-family: weFont, sans-serif;
-        }
-      }
-      & p {
-        margin-top: 5px;
-        margin-bottom: 5px;
-        font-size: 0.9em;
-      }
-      & .link1 {
-        display: block;
-        text-decoration: none;
-        outline: none;
-        border: none;
-        border-radius: 30px;
-        padding: 0.8rem 2rem;
-        background: #fff;
-        text-transform: uppercase;
-        color: #000;
-        width: 200px;
-        text-align: center;
-        margin-bottom: 2rem;
-        font-size: 1rem;
-        cursor: pointer;
-        /* z-index: 99999; */
-        margin-left: 1rem;
-        &:hover {
-          opacity: 0.9;
-        }
-      }
     }
   }
 

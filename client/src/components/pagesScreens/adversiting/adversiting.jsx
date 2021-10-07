@@ -21,6 +21,7 @@ import { useTranslation } from "react-i18next";
 function AdversitingScreen() {
   const { t, i18n } = useTranslation();
   const lang = i18n.language;
+  console.log(lang)
   return (
     <MainContainer>
       <FirstLandingSlider />

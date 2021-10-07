@@ -18,6 +18,7 @@ const ThirsdBannerSlider = () => {
     autoplaySpeed: 3000,
     slidesToShow: 1,
     slidesToScroll: 1,
+    rtl: currentLang === "ar" ? true : false,
     nextArrow: (
       <div>
         <div className="next-slick-arrow">
@@ -38,25 +39,14 @@ const ThirsdBannerSlider = () => {
     <LandingStyling>
       <Slider {...settings}>
         {ThirdBannerData.map((data) => (
-          <div
+          <a
             key={data.profileId}
-            onClick={() =>
-              (window.location.href = `/advertising/profile/${data.profileId}`)
-            }
+            href={`/advertising/profile/${data.profileId}`}
           >
             <div className="landing_overlay">
               <img src={data.imgUrl} alt="" />
-              {/* <div className="contente_overlay">
-              <h1>
-                <span>Blind</span>Text Generator.
-              </h1>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-              <Link className="link1" to="#/">
-                Quote here
-              </Link>
-            </div> */}
             </div>
-          </div>
+          </a>
         ))}
       </Slider>
     </LandingStyling>
