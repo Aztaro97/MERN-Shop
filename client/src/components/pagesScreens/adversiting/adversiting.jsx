@@ -15,19 +15,22 @@ import { config } from "dotenv";
 import MainContainer from "../../MainContainer";
 import { Col, Row } from "antd";
 import ButtonComponeent from "../../ButtonComponeent";
+import { useTranslation } from "react-i18next";
 // import MainContainer from "../../MainContainer";
 
 function AdversitingScreen() {
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language;
   return (
     <MainContainer>
       <FirstLandingSlider />
       <Container>
-        <AdvertisingNavgation />
-        <TypeBusinessSection />
-        <IntroVideoSection />
+        <AdvertisingNavgation lang={lang} />
+        <TypeBusinessSection lang={lang} />
+        <IntroVideoSection lang={lang} />
         <JoiningUsSection />
-        <PartnerSectionLogo />
-        <ServicesSlider />
+        <PartnerSectionLogo lang={lang} />
+        <ServicesSlider lang={lang} />
       </Container>
     </MainContainer>
   );
@@ -51,7 +54,7 @@ function AdversitingScreen() {
 //   );
 // };
 
-const TypeBusinessSection = () => {
+const TypeBusinessSection = ({ lang }) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -61,7 +64,7 @@ const TypeBusinessSection = () => {
     slidesToShow: 3,
     slidesToScroll: 1,
     rows: 2,
-    // slidesPerRow: 0,
+    rtl: lang === "ar" ? true : false,
     dotsClass: "dots__bar",
     centerPadding: "0px",
     centerMode: true,
@@ -154,7 +157,7 @@ const CardItemStyling = styled.div`
   }
 `;
 
-const IntroVideoSection = () => {
+const IntroVideoSection = ({ lang }) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -163,9 +166,9 @@ const IntroVideoSection = () => {
     autoplaySpeed: 7000,
     slidesToShow: 1,
     slidesToScroll: 1,
-    // slidesPerRow: 0,
+    rtl: lang === "ar" ? true : false,
     dotsClass: "dots__bar",
-    centerPadding: "0px",
+    centerPadding: "100px",
     arrows: false,
   };
 
@@ -177,7 +180,12 @@ const IntroVideoSection = () => {
         {VideoData.map((data) => (
           <div className="box-wrapper" key={data.profileId}>
             <Row>
-              <Col span="12">
+              <Col
+                xs={{ span: 24 }}
+                sm={{ span: 24 }}
+                md={{ span: 12 }}
+                lg={{ span: 12 }}
+              >
                 <ReactPlayer
                   className="video-player"
                   url={data.videoUrl}
@@ -204,7 +212,12 @@ const IntroVideoSection = () => {
                   }}
                 />
               </Col>
-              <Col span="12">
+              <Col
+                xs={{ span: 24 }}
+                sm={{ span: 24 }}
+                md={{ span: 12 }}
+                lg={{ span: 12 }}
+              >
                 <div className="description">
                   <p>{data.description}</p>
                   <Link
@@ -222,7 +235,7 @@ const IntroVideoSection = () => {
     </IntroVideoStyling>
   );
 };
-const AdvertisingNavgation = () => {
+const AdvertisingNavgation = ({ lang }) => {
   const settings = {
     dots: false,
     infinite: true,
@@ -230,6 +243,7 @@ const AdvertisingNavgation = () => {
     autoplay: true,
     slidesToShow: 6,
     slidesToScroll: 1,
+    rtl: lang === "ar" ? true : false,
     responsive: [
       {
         breakpoint: 1000,
@@ -281,11 +295,21 @@ const JoiningUsSection = () => {
         Join us <br /> Be a part of the our story{" "}
       </h1>
       <hr />
-      <div className="row">
-        <div className="col-lg-4">
+      <Row gutter={[10, 10]}>
+        <Col
+          xs={{ span: 24 }}
+          sm={{ span: 24 }}
+          md={{ span: 12 }}
+          lg={{ span: 12 }}
+        >
           <img src="/img/advertising/union.jpg" alt="" />
-        </div>
-        <div className="col-lg-6">
+        </Col>
+        <Col
+          xs={{ span: 24 }}
+          sm={{ span: 24 }}
+          md={{ span: 12 }}
+          lg={{ span: 12 }}
+        >
           <div className="content">
             <h1>
               Become a partner <br /> Reach more customers and <br /> achieve
@@ -297,19 +321,20 @@ const JoiningUsSection = () => {
               </a>
             </div>
           </div>
-        </div>
-      </div>
+        </Col>
+      </Row>
     </JoiningUsStyling>
   );
 };
 
-const PartnerSectionLogo = () => {
+const PartnerSectionLogo = ({ lang }) => {
   const settings = {
     dots: false,
     infinite: true,
     speed: 400,
     autoplay: true,
     slidesToShow: 7,
+    rtl: lang === "ar" ? true : false,
     slidesToScroll: 1,
     responsive: [
       {
@@ -356,7 +381,7 @@ const PartnerSectionLogo = () => {
   );
 };
 
-const ServicesSlider = () => {
+const ServicesSlider = ({ lang }) => {
   const settings = {
     dots: false,
     infinite: true,
@@ -364,6 +389,7 @@ const ServicesSlider = () => {
     autoplay: true,
     slidesToShow: 4,
     slidesToScroll: 1,
+    rtl: lang === "ar" ? true : false,
     responsive: [
       {
         breakpoint: 1120,
@@ -386,7 +412,7 @@ const ServicesSlider = () => {
       {
         breakpoint: 400,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
         },
       },
     ],
@@ -395,9 +421,9 @@ const ServicesSlider = () => {
     <ServiceStyling>
       <h1 className="title">services</h1>
       <hr />
-      <Slider {...settings}>
+      <Slider {...settings} className="slider">
         {servicePicture.map((data) => (
-          <div>
+          <div className="box" key={data.profileId}>
             <a
               href={`/advertising/profile/${data.profileId}`}
               className="link"
@@ -427,13 +453,27 @@ const ServiceStyling = styled.section`
     @media only screen and (max-width: 768px) {
       width: 100px;
     }
+    @media only screen and (max-width: 500px) {
+      width: 70px;
+    }
   }
+  & .slider .box {
+    /* margin: 0 10px; */
+    /* width: 90%; */
+  }
+
   & .link {
+    margin: 0 auto;
+    width: 90% !important;
+
     & img {
-      max-width: 200px;
+      width: 90%;
       height: 200px;
       margin: 0 auto;
       object-fit: cover;
+      @media only screen and (max-width: 768px) {
+        height: 100px;
+      }
     }
   }
   /* ////////////   Slick Button next and previous   ///////////// */
@@ -522,7 +562,7 @@ const JoiningUsStyling = styled.section`
       border-radius: 60px;
     }
     @media only screen and (max-width: 768px) {
-      height: 250px;
+      height: 170px;
       border-radius: 30px;
     }
   }
@@ -549,8 +589,8 @@ const JoiningUsStyling = styled.section`
       letter-spacing: 2px;
       background: var(--orange-color);
       color: #fff;
-      padding: 10px 2rem;
-      border-radius: 20px;
+      padding: 5px 2rem;
+      border-radius: 5px;
       text-decoration: none;
     }
   }
@@ -563,14 +603,16 @@ const NavStyling = styled.section`
   padding: 1rem;
   margin: 0 auto;
   width: 100%;
-  /* height: 500px; */
   & .card_container {
-    height: 170px;
+    height: 120px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-decoration: none;
     margin: 0 10px;
+    @media only screen and (max-width: 768px) {
+      height: 100px;
+    }
 
     &:hover {
       & .card_body {
@@ -585,7 +627,7 @@ const NavStyling = styled.section`
     }
 
     & .card_body {
-      height: 150px;
+      /* height: 150px; */
       width: 100%;
       box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
         rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
@@ -595,6 +637,7 @@ const NavStyling = styled.section`
       flex-direction: column;
       background: #fff;
       transition: background 0.2s ease-in;
+      padding: 10px;
       & .icon {
         font-size: 2.3rem;
         color: var(--orange-color);
@@ -642,7 +685,7 @@ const Container = styled.div`
   margin: 0 auto;
 
   & section {
-    margin: 2.5rem 0;
+    margin: 1rem 0 4rem 0;
   }
 `;
 
@@ -676,6 +719,7 @@ const IntroVideoStyling = styled.section`
   & .description {
     padding-left: 3rem;
     padding-top: 1rem;
+    text-align: center;
     & p {
       color: var(--silver-color);
       letter-spacing: 1px;

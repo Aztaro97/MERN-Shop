@@ -13,7 +13,7 @@ const Container = styled.main`
     max-width:var(--max-width);
     margin: 0 auto 4rem;
     padding-bottom: 2.5rem;
-    height: 100%;
+    min-height: 51vh;
     display: block;
 
     @media only screen and (max-width: 1040px) {

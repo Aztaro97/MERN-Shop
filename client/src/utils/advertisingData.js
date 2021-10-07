@@ -123,51 +123,51 @@ export const VideoData = [
   {
     profileId: "615316be9ab6da6a1c",
     companyName: "au 79 code",
-    videoUrl: "https://vimeo.com/623196350",
+    videoUrl: "https://res.cloudinary.com/tarositeweb/video/upload/v1633354963/video_exemple_kqynvl.mp4",
     description:
-      "Quisque velit nisi, pretium ut lacinia in, Quisque velit nisi, pretium ut lacinia in,Quisque velit nisi, pretium ut lacinia in, Quisque velit nisi, pretium ut lacinia in, Quisque velit nisi, pretium ut lacinia in, Quisque velit nisi, pretium ut lacinia in, ",
+      "Quisque velit nisi, pretium ut lacinia inQuisque velit nisi, pretium ut lacinia in Quisque velit nisi, pretium ut lacinia in ",
   },
   {
     profileId: "615316be9ab6da6a1c",
     companyName: "au 79 code",
-    videoUrl: "https://vimeo.com/623196350",
+    videoUrl: "https://res.cloudinary.com/tarositeweb/video/upload/v1633354963/video_exemple_kqynvl.mp4",
     description:
-      "Quisque velit nisi, pretium ut lacinia in, Quisque velit nisi, pretium ut lacinia in,Quisque velit nisi, pretium ut lacinia in, Quisque velit nisi, pretium ut lacinia in, Quisque velit nisi, pretium ut lacinia in, Quisque velit nisi, pretium ut lacinia in, ",
+      "Quisque velit nisi, pretium ut lacinia inQuisque velit nisi, pretium ut lacinia in Quisque velit nisi, pretium ut lacinia in ",
   },
   {
     profileId: "615316be9ab6da6a1c",
     companyName: "au 79 code",
-    videoUrl: "https://vimeo.com/623196350",
+    videoUrl: "https://res.cloudinary.com/tarositeweb/video/upload/v1633354963/video_exemple_kqynvl.mp4",
     description:
-      "Quisque velit nisi, pretium ut lacinia in, Quisque velit nisi, pretium ut lacinia in,Quisque velit nisi, pretium ut lacinia in, Quisque velit nisi, pretium ut lacinia in, Quisque velit nisi, pretium ut lacinia in, Quisque velit nisi, pretium ut lacinia in, ",
+      "Quisque velit nisi, pretium ut lacinia inQuisque velit nisi, pretium ut lacinia in Quisque velit nisi, pretium ut lacinia in ",
   },
   {
     profileId: "615316be9ab6da6a1c",
     companyName: "au 79 code",
-    videoUrl: "https://vimeo.com/623196350",
+    videoUrl: "https://res.cloudinary.com/tarositeweb/video/upload/v1633354963/video_exemple_kqynvl.mp4",
     description:
-      "Quisque velit nisi, pretium ut lacinia in, Quisque velit nisi, pretium ut lacinia in,Quisque velit nisi, pretium ut lacinia in, Quisque velit nisi, pretium ut lacinia in, Quisque velit nisi, pretium ut lacinia in, Quisque velit nisi, pretium ut lacinia in, ",
+      "Quisque velit nisi, pretium ut lacinia inQuisque velit nisi, pretium ut lacinia in Quisque velit nisi, pretium ut lacinia in ",
   },
   {
     profileId: "615316be9ab6da6a1c",
     companyName: "au 79 code",
-    videoUrl: "https://vimeo.com/623196350",
+    videoUrl: "https://res.cloudinary.com/tarositeweb/video/upload/v1633354963/video_exemple_kqynvl.mp4",
     description:
-      "Quisque velit nisi, pretium ut lacinia in, Quisque velit nisi, pretium ut lacinia in,Quisque velit nisi, pretium ut lacinia in, Quisque velit nisi, pretium ut lacinia in, Quisque velit nisi, pretium ut lacinia in, Quisque velit nisi, pretium ut lacinia in, ",
+      "Quisque velit nisi, pretium ut lacinia inQuisque velit nisi, pretium ut lacinia in Quisque velit nisi, pretium ut lacinia in ",
   },
   {
     profileId: "615316be9ab6da6a1c",
     companyName: "au 79 code",
-    videoUrl: "https://vimeo.com/623196350",
+    videoUrl: "https://res.cloudinary.com/tarositeweb/video/upload/v1633354963/video_exemple_kqynvl.mp4",
     description:
-      "Quisque velit nisi, pretium ut lacinia in, Quisque velit nisi, pretium ut lacinia in,Quisque velit nisi, pretium ut lacinia in, Quisque velit nisi, pretium ut lacinia in, Quisque velit nisi, pretium ut lacinia in, Quisque velit nisi, pretium ut lacinia in, ",
+      "Quisque velit nisi, pretium ut lacinia inQuisque velit nisi, pretium ut lacinia in Quisque velit nisi, pretium ut lacinia in ",
   },
   {
     profileId: "615316be9ab6da6a1c",
     companyName: "au 79 code",
-    videoUrl: "https://vimeo.com/623196350",
+    videoUrl: "https://res.cloudinary.com/tarositeweb/video/upload/v1633354963/video_exemple_kqynvl.mp4",
     description:
-      "Quisque velit nisi, pretium ut lacinia in, Quisque velit nisi, pretium ut lacinia in,Quisque velit nisi, pretium ut lacinia in, Quisque velit nisi, pretium ut lacinia in, Quisque velit nisi, pretium ut lacinia in, Quisque velit nisi, pretium ut lacinia in, ",
+      "Quisque velit nisi, pretium ut lacinia inQuisque velit nisi, pretium ut lacinia in Quisque velit nisi, pretium ut lacinia in ",
   },
 ];
 

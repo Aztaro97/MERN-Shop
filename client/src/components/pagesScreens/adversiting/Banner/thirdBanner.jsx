@@ -4,8 +4,12 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { ThirdBannerData } from "../../../../utils/advertisingData";
 import { LandingStyling } from "./BannerStyling";
+import { useTranslation } from "react-i18next";
 
 const ThirsdBannerSlider = () => {
+  const { t, i18n } = useTranslation();
+
+  const currentLang = i18n.language;
   const settings = {
     dots: false,
     infinite: true,
@@ -16,12 +20,17 @@ const ThirsdBannerSlider = () => {
     slidesToScroll: 1,
     nextArrow: (
       <div>
-        <div className="next-slick-arrow"> ⫸ </div>
+        <div className="next-slick-arrow">
+          {" "}
+          {currentLang === "en" ? "⫸" : "⫷"}{" "}
+        </div>
       </div>
     ),
     prevArrow: (
       <div>
-        <div className="prev-slick-arrow"> ⫷ </div>
+        <div className="prev-slick-arrow">
+          {currentLang === "en" ? "⫷" : "⫸"}{" "}
+        </div>
       </div>
     ),
   };

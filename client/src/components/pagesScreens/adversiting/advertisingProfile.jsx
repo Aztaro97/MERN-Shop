@@ -400,17 +400,20 @@ const ContainerStyling = styled.div`
     text-align: center;
 
     & img {
-      width: 200px;
-      height: 200px;
+      max-width: 150px;
+      height: 150px;
       margin-left: auto;
       margin-right: auto;
       box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
         rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
       border-radius: 50%;
       padding: 0.7rem;
-      /* background: #111; */
       object-fit: contain;
       margin-top: 0.5rem;
+      @media only screen and (max-width: 768px) {
+        width: 100px;
+        height: 100px;
+      }
     }
   }
 

@@ -3,18 +3,15 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import cookies from "js-cookie";
+import { useTranslation } from "react-i18next";
 import { firstBannerData } from "../../../../utils/advertisingData";
 import { LandingStyling } from "./BannerStyling";
 
 const FirstLandingSlider = () => {
-  const currentLang = cookies.get("i18next");
-  const [lang, setLang] = useState("");
+  const { t, i18n } = useTranslation();
 
-  useEffect(() => {
-    if (currentLang) {
-      setLang(currentLang);
-    }
-  }, [currentLang]);
+  const currentLang = i18n.language;
+
   const settings = {
     dots: false,
     infinite: true,
@@ -23,20 +20,25 @@ const FirstLandingSlider = () => {
     autoplaySpeed: 3000,
     slidesToShow: 1,
     slidesToScroll: 1,
-    rtl: lang === "ar" ? true : false,
+    rtl: currentLang === "ar" ? true : false,
     nextArrow: (
       <div>
-        <div className="next-slick-arrow"> ⫸ </div>
+        <div className="next-slick-arrow">
+          {" "}
+          {currentLang === "en" ? "⫸" : "⫷"}{" "}
+        </div>
       </div>
     ),
     prevArrow: (
       <div>
-        <div className="prev-slick-arrow"> ⫷ </div>
+        <div className="prev-slick-arrow">
+          {currentLang === "en" ? "⫷" : "⫸"}{" "}
+        </div>
       </div>
     ),
   };
   return (
-    <LandingStyling>
+    <LandingStyling currentLang={currentLang}>
       <Slider {...settings}>
         {firstBannerData.map((data) => (
           <div

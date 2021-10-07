@@ -12,7 +12,7 @@ export const LandingStyling = styled.div`
     height: 400px;
     cursor: pointer;
     @media only screen and (max-width: 768px) {
-      height: 400px;
+      height: 200px;
     }
 
     & img {
@@ -79,34 +79,45 @@ export const LandingStyling = styled.div`
   }
 
   /* //////////  Slider Customer Arrows */
+
   .slick-prev {
-    left: -52px !important;
+    /* left: -52px !important; */
     z-index: 2 !important;
   }
 
   .slick-next:before,
   .slick-prev:before {
     content: "" !important;
+    position: absolute;
   }
   .next-slick-arrow,
   .prev-slick-arrow {
     color: #fff;
-    font-size: 48px;
-    position: relative;
+    font-size: 30px;
+    position: absolute;
+    background: #8585859e !important;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     @media only screen and (max-width: 768px) {
       font-size: 30px;
+      width: 40px;
+      height: 40px;
     }
     @media only screen and (max-width: 540px) {
       font-size: 20px;
     }
   }
   .next-slick-arrow {
-    right: 5rem;
-    z-index: 2;
+    /* right: 5rem; */
+    right: ${({ currentLang }) => (currentLang === "en" ? "3rem" : "-4rem")};
   }
   .prev-slick-arrow {
-    position: relative;
-    left: 5rem;
-    color: #fff;
+    /* left: 5rem; */
+    left: ${({ currentLang }) => (currentLang === "en" ? "3rem" : "-4rem")};
   }
 `;
