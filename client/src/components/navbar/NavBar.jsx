@@ -249,8 +249,7 @@ const Header = styled.header`
   transition: ${({ scrollNav }) =>
     scrollNav ? "background 0s ease-in-out" : "background .5s ease-in-out"};
   @media only screen and (max-width: 995px) {
-    /* padding-left: 1rem; */
-    padding: 0 1rem;
+    padding: 0 2rem;
   }
 `;
 const Nav = styled.ul`

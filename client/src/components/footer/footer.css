@@ -6,6 +6,8 @@ footer .homeContact {
     overflow-y: hidden;
     padding-top: 20px;
     padding-bottom: 20px;
+    max-width: var(--max-width) !important;
+    margin: auto;
     transform: none;
     position: initial !important;
     height: auto !important;
@@ -340,10 +342,12 @@ footer .homeContact .mapContent {
     display: grid;
     grid-template-columns: 1fr 1fr;
     color: #93a3b3;
+    max-width: var(--max-width);
+    margin: auto;
     
 }
 .contract-link {
-    margin-left: 40px;
+    margin-left: 30px;
 }
 .contract-link a {
     text-decoration: none;

@@ -22,12 +22,12 @@ function FooterScrren() {
   return (
     <Footer currentPage={currentPage}>
       {/* <!-- contact us section  --> */}
-      <section className="homeContact page ">
-        <div className="container">
+      <section>
+        <div style={{ width: "100%" }} className="homeContact page ">
           {/* <!-- <div className="homeTitle">
                     <h2 className="largeTitle text-uppercase weight-600 primaryColor">Contact Us</h2>
                 </div> --> */}
-          <Row>
+          <Row style={{ width: "100%" }}>
             <Col
               xs={{ span: 24 }}
               sm={{ span: 24 }}
@@ -153,14 +153,14 @@ function FooterScrren() {
             </Col>
           </Row>
         </div>
-      </section>
-      <div className="bottom-footer container">
-        <div className="contract-link">
-          <a href="/terms">Terms</a>
-          <a href="/private-policy">Privacy policy</a>
+        <div className="bottom-footer">
+          <div className="contract-link">
+            <a href="/terms">Terms</a>
+            <a href="/private-policy">Privacy policy</a>
+          </div>
+          <div className="copyRights">AU79CODE &copy; All rights reserved</div>
         </div>
-        <div className="copyRights">AU79CODE &copy; All rights reserved</div>
-      </div>
+      </section>
     </Footer>
   );
 }
