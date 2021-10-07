@@ -37,7 +37,7 @@ const SecondeLandingSlider = () => {
     ),
   };
   return (
-    <LandingStyling>
+    <LandingStyling currentLang={currentLang} >
       <Slider {...settings}>
         {secondeBannerData.map((data) => (
           <a

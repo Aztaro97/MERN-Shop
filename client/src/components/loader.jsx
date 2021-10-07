@@ -13,7 +13,7 @@ function LoaderComponent() {
   top: 0;
   left: 0;
   z-index: 999999999999999999999999999999999999999999;
-  background: #fff9f9ec;
+  background: #ffffffe4;
   `;
   let [loading, setLoading] = useState(true);
   return (

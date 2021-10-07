@@ -36,7 +36,7 @@ const ThirsdBannerSlider = () => {
     ),
   };
   return (
-    <LandingStyling>
+    <LandingStyling currentLang={currentLang}>
       <Slider {...settings}>
         {ThirdBannerData.map((data) => (
           <a

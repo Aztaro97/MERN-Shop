@@ -42,7 +42,7 @@ export const LandingStyling = styled.div`
   .slick-next:before,
   .slick-prev:before {
     content: "" !important;
-    position: absolute;
+    position: relative;
   }
   .next-slick-arrow,
   .prev-slick-arrow {
@@ -67,11 +67,9 @@ export const LandingStyling = styled.div`
     }
   }
   .next-slick-arrow {
-    /* right: 5rem; */
-    right: ${({ currentLang }) => (currentLang === "en" ? "3rem" : "-4rem")};
+    right: ${({ currentLang }) => (currentLang === "en" ? "2rem" : "-4rem")};
   }
   .prev-slick-arrow {
-    /* left: 5rem; */
     left: ${({ currentLang }) => (currentLang === "en" ? "3rem" : "-4rem")};
   }
 `;
