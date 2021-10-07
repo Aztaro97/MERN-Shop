@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import CheckOut from "./checkout/checkoutComponent";
+import CheckOutButton from "./checkout/checkoutComponent";
 
 const CartUploading = () => {
   const [isDesable, setIsDesable] = useState(true);
@@ -311,7 +311,7 @@ const CartUploading = () => {
             </h4>
           </Col>
           <Col span={10}>
-            <CheckOut totalPrice={Total} cardData={data} />
+            <CheckOutButton totalPrice={Total} cardData={data} />
           </Col>
         </Row>
       </div>

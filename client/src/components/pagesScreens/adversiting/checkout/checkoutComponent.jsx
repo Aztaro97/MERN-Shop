@@ -7,7 +7,7 @@ import {
   clearCardAd,
   PremiumSubscription,
 } from "../../../../flux/actions/advertisingAction/advertisingAction";
-import ButtonComponeent from "../../../ButtonComponeent";
+import Button from "../../../ButtonComponeent";
 
 const CheckoutComponent = ({ totalPrice, cardData }) => {
   const [stripeToken, setStripeToken] = useState(null);
@@ -73,7 +73,9 @@ const CheckoutComponent = ({ totalPrice, cardData }) => {
       stripeKey={stripe_api_key}
       zipCode={false}
     >
-      <ButtonComponeent className="ml-auto">CHECKOUT NOW </ButtonComponeent>
+      <Button disabled={totalPrice < 0 && true } className="ml-auto">
+        CHECKOUT NOW{" "}
+      </Button>
     </StripeCheckout>
   );
 };
