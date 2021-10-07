@@ -2,28 +2,39 @@
 
 .homeContact {
   overflow-y: hidden;
+  background-color: var(--dark-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* height: 60vh; */
+  padding: 2rem;
+  height: 100% !important;
 }
 
 .homeContact .row > div:last-of-type {
   display: flex;
-  /* align-items: center; */
+  align-items: center;
   justify-content: center;
 }
 
 .homeContact .mapContent {
   /* transform: rotate(45deg); */
   overflow: hidden;
-  width: 250px;
-  height: 250px;
-  max-width: 48vh;
-  max-height: 48vh;
-  margin-top: 90px;
-  /* margin-left: 90px; */
+  width: 200px;
+  height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+  top: 5rem;
   transition: transform ease 0.7s;
+  text-align: center;
+  margin: auto;
+}
+@media only screen and (max-width: 768px) {
+  .homeContact .mapContent {
+    display: none;
+  }
 }
 
 .homeContact .mapContent:hover {
@@ -97,8 +108,8 @@
 
 /* ///////////   Social media icon    ////////////////////////////////// */
 .media_link .icon {
-  color: #FFF;
-  background: #93a3b3;
+  color: #fff;
+  background: var(--dark-color);
   padding: 4px;
   font-size: 2rem;
   transition: all 0.3s ease-in-out;
@@ -129,6 +140,7 @@
   margin-bottom: 10px;
   border: 1px solid #c68787;
   padding: 7px 10px;
+  resize: none;
 }
 .form_contact textarea:focus {
   outline: 1px solid #c68787;
@@ -146,6 +158,6 @@
   opacity: 0.9;
 }
 
-.followUs .group  {
+.followUs .group {
   display: block;
 }

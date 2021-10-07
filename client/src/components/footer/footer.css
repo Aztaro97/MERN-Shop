@@ -19,9 +19,9 @@ footer .homeContact .homeTitle h2 {
     color: #fff !important;
 }
 footer .homeContact .mapContent {
-    width: 300px;
-    height: 300px;
-    margin-top: 70px;
+    max-width: 200px;
+    max-height: 200px;
+    margin: auto;
 }
 
 .menuBtn {
@@ -337,8 +337,8 @@ footer .homeContact .mapContent {
 
 /* copy rights  */
 .bottom-footer {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     color: #93a3b3;
     
 }
@@ -372,6 +372,13 @@ footer .homeContact .mapContent {
         height: 200px;
         margin-top: 70px;
     }
+    .contract-link {
+        margin-left: 20px;
+    }
+    .contract-link a {
+        display: block;
+        
+    }
 }
 @media only screen and (max-width:400px) {
     footer .homeContact .mapContent {
@@ -388,3 +395,13 @@ footer .homeContact .mapContent {
 }
 
 /* End styling Footer  */
+
+
+
+/* .homeContact .phoneNumer {
+    direction: ltr !important;
+} */
+.homeContact .phoneNumer:hover {
+    text-decoration: none !important;
+    color: var(--orange-color) !important;
+}

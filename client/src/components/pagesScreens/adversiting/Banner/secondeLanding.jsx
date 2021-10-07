@@ -24,14 +24,14 @@ const SecondeLandingSlider = () => {
       <div>
         <div className="next-slick-arrow">
           {" "}
-          {currentLang === "en" ? "⫸" : "⫷"}{" "}
+          {currentLang === "en" ? ">" : "<"}{" "}
         </div>
       </div>
     ),
     prevArrow: (
       <div>
         <div className="prev-slick-arrow">
-          {currentLang === "en" ? "⫷" : "⫸"}{" "}
+          {currentLang === "en" ? "<" : ">"}{" "}
         </div>
       </div>
     ),

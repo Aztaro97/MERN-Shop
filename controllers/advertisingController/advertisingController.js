@@ -73,7 +73,7 @@ const registerPremiumService = asyncHandler(async (req, res) => {
 
 const getAllAdService = asyncHandler(async (req, res) => {
   try {
-    const allService = await advertising.find();
+    const allService = await advertising.find().sort({ createdAt: -1 })
 
     if (allService) {
       res.status(200).json(allService);
@@ -85,8 +85,7 @@ const getAllAdService = asyncHandler(async (req, res) => {
 
 const filterByTypeBusiness = asyncHandler(async (req, res) => {
   const filter = await advertising.find({
-    typeBusiness: req.body.typeBusiness,
-    allow:true
+    typeBusiness: req.body.typeBusiness
   });
 
   if (filter) {

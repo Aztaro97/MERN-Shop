@@ -12,6 +12,7 @@ import {
 
 import "./footer.css";
 import MapImg from "../../img/pictures/map.png";
+import { Col, Row } from "antd";
 
 function FooterScrren() {
   const currentPage = document.location.pathname;
@@ -26,8 +27,13 @@ function FooterScrren() {
           {/* <!-- <div className="homeTitle">
                     <h2 className="largeTitle text-uppercase weight-600 primaryColor">Contact Us</h2>
                 </div> --> */}
-          <div className="row">
-            <div className="col-12 col-md-6  col-lg-5 p-3 pl-5 order-12 order-md-1">
+          <Row>
+            <Col
+              xs={{ span: 24 }}
+              sm={{ span: 24 }}
+              md={{ span: 12 }}
+              lg={{ span: 12 }}
+            >
               <h3 className="secColor weight-500 mediumTitle">To visit us</h3>
               <p className="grayBlueColor weight-400 normalText">
                 If you want to visit us <br /> talk about a project or <br />{" "}
@@ -39,16 +45,16 @@ function FooterScrren() {
               </p>
               <a
                 href="tel:+97142839983"
-                className="grayBlueColor weight-500 mediumText mt-3 mb-0"
+                className="grayBlueColor weight-500 mediumText mt-3 mb-0 phoneNumer"
               >
                 +97142839983
               </a>{" "}
               <br />
               <a
-                href="tel:+971504366696"
-                className="grayBlueColor weight-500 mediumText "
+                href="tel:+971502022251"
+                className="grayBlueColor weight-500 mediumText phoneNumer "
               >
-                +971504366696
+                +971502022251
               </a>
               {/* <!-- follow us div  --> */}
               <div className="followUs mt-4">
@@ -60,7 +66,7 @@ function FooterScrren() {
                   </a> */}
                   {/* <!-- Repeating link  --> */}
                   <a
-                    href="https://api.whatsapp.com/send?phone=+971567957775"
+                    href="https://api.whatsapp.com/send?phone=+971502022251"
                     className="btn media_link"
                     target="_blank"
                     rel="noreferrer"
@@ -115,8 +121,13 @@ function FooterScrren() {
                   WRITE US
                 </a>
               </div>
-            </div>
-            <div className="col-12 col-md-6  col-lg-7  order-1 order-md-12">
+            </Col>
+            <Col
+              xs={{ span: 24 }}
+              sm={{ span: 24 }}
+              md={{ span: 12 }}
+              lg={{ span: 12 }}
+            >
               {/* <!-- link for going to external map  --> */}
               <a
                 className="mapContent"
@@ -139,14 +150,14 @@ function FooterScrren() {
                   <div className="corner"></div>
                 </div>
               </a>
-            </div>
-          </div>
+            </Col>
+          </Row>
         </div>
       </section>
       <div className="bottom-footer container">
         <div className="contract-link">
           <a href="/terms">Terms</a>
-          <a href="/private-policy">Private policy</a>
+          <a href="/private-policy">Privacy policy</a>
         </div>
         <div className="copyRights">AU79CODE &copy; All rights reserved</div>
       </div>

@@ -74,7 +74,7 @@ const SignUpForm = () => {
   });
   return (
     <form action="" onSubmit={formik.handleSubmit}>
-      <Row gutter={1}>
+      <Row gutter={{xs:20}}>
         <Col span={2} className="gutter-row">
           <IconStyling>
             <AiOutlineMail className="icon" />
@@ -91,7 +91,7 @@ const SignUpForm = () => {
         </Col>
       </Row>
       <Row>
-        <Col span={22} offset={2} className="gutter-row">
+        <Col span={22}  className="gutter-row">
           {formik.errors.email ? (
             <Alert message={formik.errors.email} type="error" banner>
               {formik.errors.email}
@@ -117,7 +117,7 @@ const SignUpForm = () => {
           />
         </Col>
       </Row>
-      <Row gutter={1}>
+      <Row gutter={{xs:20}}>
         <Col span={2} className="gutter-row">
           <IconStyling>
             <IoMdKey className="icon" />
@@ -211,7 +211,7 @@ const DetailsComponent = () => {
   return (
     <form onSubmit={handleSubmit}>
       <h1 className="title">company information</h1>
-      <Row gutter={1}>
+      <Row gutter={{xs:20}}>
         <Col span={2} className="gutter-row">
           <IconStyling>
             <BsBuilding className="icon" />
@@ -227,7 +227,7 @@ const DetailsComponent = () => {
           />
         </Col>
       </Row>
-      <Row gutter={1}>
+      <Row gutter={{xs:20}}>
         <Col span={2} className="gutter-row">
           <IconStyling>
             <FaPencilAlt className="icon" />
@@ -245,7 +245,7 @@ const DetailsComponent = () => {
           />
         </Col>
       </Row>
-      <Row gutter={1}>
+      <Row gutter={{xs:20}}>
         <Col span={2} className="gutter-row">
           <IconStyling>
             <MdBusinessCenter className="icon" />
@@ -270,7 +270,7 @@ const DetailsComponent = () => {
       </Row>
 
       <h1 className="title">contact</h1>
-      <Row gutter={1}>
+      <Row gutter={{xs:20}}>
         <Col span={2} className="gutter-row">
           <IconStyling>
             <FaUser className="icon" />
@@ -287,7 +287,7 @@ const DetailsComponent = () => {
           />
         </Col>
       </Row>
-      <Row gutter={1}>
+      <Row gutter={{xs:20}}>
         <Col span={2} className="gutter-row">
           <IconStyling>
             <ImPhone className="icon" />
@@ -303,7 +303,7 @@ const DetailsComponent = () => {
           />
         </Col>
       </Row>
-      <Row gutter={1}>
+      <Row gutter={{xs:20}}>
         <Col span={2} className="gutter-row">
           <IconStyling>
             <AiOutlineMail className="icon" />
@@ -319,7 +319,7 @@ const DetailsComponent = () => {
           />
         </Col>
       </Row>
-      <Row gutter={1}>
+      <Row gutter={{xs:20}}>
         <Col span={2} className="gutter-row">
           <IconStyling>
             <FaMapMarkerAlt className="icon" />
@@ -336,7 +336,7 @@ const DetailsComponent = () => {
         </Col>
       </Row>
 
-      <Row gutter={1}>
+      <Row gutter={{xs:20}}>
         <Col span={2} className="gutter-row">
           <IconStyling>
             <BiWorld className="icon" />

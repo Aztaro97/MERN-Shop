@@ -14,14 +14,14 @@ import "./contact.css";
 import { useDispatch, useSelector } from "react-redux";
 import { sendContactFormMessage } from "../../../flux/actions/userAction";
 import LoaderComponent from "../../loader";
+import { Col, Row } from "antd";
 
 function Contact() {
-
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
-  const {loading} = useSelector((state) => state.contactForm)
+  const { loading } = useSelector((state) => state.contactForm);
 
   const dispatch = useDispatch();
 
@@ -42,22 +42,14 @@ function Contact() {
         <MainContainer>
           <section className="homeContact">
             <div className="container">
-              <div className="row">
-                <div className="col-12 col-md-6  col-lg-5 p-3 pl-5 order-12 order-md-1">
-                  {/* <h3 className="secColor weight-500 mediumTitle">Visit us</h3>
-              <p className="grayBlueColor weight-400 normalText">
-                If you want to visit us <br /> talk about a project or <br />{" "}
-                just have a coffee
-              </p>
-              <p className="grayBlueColor weight-500 mediumText mt-3">
-                Near 41B Street
-                <br /> Al Rashidiya - Dubai
-              </p>
-              <p className="grayBlueColor weight-500 mediumText mt-3 mb-0">
-                +97142839983
-              </p>
-              <p className="grayBlueColor weight-500 mediumText ">+971504366696</p>
-              <!-- follow us div  --> */}
+              <Row gutter={[10, 10]}>
+                <Col
+                  xs={{ span: 24 }}
+                  sm={{ span: 24 }}
+                  md={{ span: 12 }}
+                  lg={{ span: 12 }}
+                  className=""
+                >
                   <div className="followUs mt-4">
                     <h3 className="secColor weight-500 mediumTitle">
                       Follow us
@@ -68,7 +60,7 @@ function Contact() {
                     <FaTumblr className="icon" />
                   </a> */}
                       <a
-                        href="https://api.whatsapp.com/send?phone=+971567957775"
+                        href="https://api.whatsapp.com/send?phone=+971502022251"
                         className="btn media_link"
                         target="_blank"
                         rel="noreferrer"
@@ -145,15 +137,21 @@ function Contact() {
                         name="message"
                         id=""
                         cols="30"
-                        rows="10"
+                        rows="5"
                         placeholder="MESSAGE"
                         onChange={(e) => setMessage(e.target.value)}
                       ></textarea>
                       <button type="submit">send</button>
                     </form>
                   </div>
-                </div>
-                <div className="col-12 col-md-6  col-lg-7  order-1 order-md-12">
+                </Col>
+                <Col
+                  xs={{ span: 24 }}
+                  sm={{ span: 24 }}
+                  md={{ span: 12 }}
+                  lg={{ span: 12 }}
+                  className=""
+                >
                   {/* <!-- link for going to external map  --> */}
 
                   <a
@@ -177,8 +175,8 @@ function Contact() {
                       <div className="corner"></div>
                     </div>
                   </a>
-                </div>
-              </div>
+                </Col>
+              </Row>
             </div>
           </section>
         </MainContainer>
