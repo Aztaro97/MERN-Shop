@@ -31,6 +31,7 @@ function AdvertisingProfileScreen() {
 
   const dispatch = useDispatch();
   const history = useHistory();
+  const {t} = useTranslation();
 
   // if (error) {
   //   history.push("")
@@ -55,7 +56,7 @@ function AdvertisingProfileScreen() {
               <img src={profile.logoUrl} alt="" />
             </section>
             <section className="about">
-              <h1 className="title">about company</h1>
+              <h1 className="title">{t("about_company")}</h1>
               <p>{profile.about}</p>
             </section>
             {/* <section className="service">
@@ -79,7 +80,7 @@ function AdvertisingProfileScreen() {
           </section> */}
 
             <section className="service_two">
-              <h1 className="title">company services</h1>
+              <h1 className="title">{t("company_service")}</h1>
               <div className="grid">
                 <div className="card">
                   <Image

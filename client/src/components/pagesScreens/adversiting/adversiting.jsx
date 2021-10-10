@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import {useTranslation} from "react-i18next"
+import { useTranslation } from "react-i18next";
 import { Link, useHistory } from "react-router-dom";
 import ReactPlayer from "react-player";
 import Slider from "react-slick";
@@ -21,7 +21,7 @@ import ButtonComponeent from "../../ButtonComponeent";
 function AdversitingScreen() {
   const { t, i18n } = useTranslation();
   const lang = i18n.language;
-  console.log(lang)
+  console.log(lang);
   return (
     <MainContainer>
       <FirstLandingSlider />
@@ -96,7 +96,7 @@ const TypeBusinessSection = ({ lang }) => {
     ],
   };
   const history = useHistory();
-  
+
   return (
     <section>
       <Slider {...settings}>
@@ -268,15 +268,21 @@ const AdvertisingNavgation = ({ lang }) => {
     ],
   };
 
-  const {t} = useTranslation();
+  const { t } = useTranslation();
+  const history = useHistory();
 
   return (
     <NavStyling>
       <Slider {...settings}>
         {BusinessList.map((data, index) => (
           <div key={index}>
-            <a
+            <div
               href={`/advertising/type/${data.value}`}
+              onClick={() =>
+                history.push(`/advertising/type/${data.value}`, {
+                  type: data.value,
+                })
+              }
               className="card_container"
               // onClick={() => history.push(`/advertising/type/${data.value}`)}
             >
@@ -284,7 +290,7 @@ const AdvertisingNavgation = ({ lang }) => {
                 <i className="icon">{data.icon}</i>
                 <span>{data.title}</span>
               </div>
-            </a>
+            </div>
           </div>
         ))}
       </Slider>

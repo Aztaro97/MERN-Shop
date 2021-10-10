@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import {useTranslation} from "react-i18next"
-import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { useParams, useHistory } from "react-router-dom";
 import { filterByTypeBusiness } from "../../../flux/actions/advertisingAction/advertisingAction";
 import { useDispatch, useSelector } from "react-redux";
 import LoaderComponent from "../../loader";
 import SecondeLandingSlider from "./Banner/secondeLanding";
 import MainContainer from "../../MainContainer";
+import ButtonComponeent from "../../ButtonComponeent";
 
 function AllBrandScreen() {
   const params = useParams();
@@ -17,6 +18,8 @@ function AllBrandScreen() {
   const { loading, listAdService, error } = useSelector(
     (state) => state.advertising
   );
+
+  const history = useHistory();
   useEffect(() => {
     dispatch(filterByTypeBusiness(type));
   }, [dispatch, type]);
@@ -40,7 +43,6 @@ function AllBrandScreen() {
   );
 }
 
-
 const Landing = () => {
   return (
     <LandingStyling>
@@ -57,32 +59,47 @@ const Landing = () => {
 };
 
 const DataSection = ({ listAdService, error, type }) => {
-  const {t} = useTranslation()
+  const { t } = useTranslation();
   return (
     <DataStyling>
       <h3 className="title">all {type}</h3>
       <hr />
-      <div className="grid">
+      <>
         {error ? (
           <h1>{error}</h1>
         ) : (
-          listAdService.map((data, index) => (
-            <div className="data_item" key={data._id}>
-              <img src="/img/advertising/bg-images.jpeg" alt="" />
-              <div className="content">
-                <h5>{data.companyName}</h5>
-                <hr />
-                <p>
-                  Curabitur arcu erat, accumsan id imperdiet et
-                </p>
-                <a href={`/advertising/profile/${data._id}`} alt="">
-                  {t("explore")}
-                </a>
+          <>
+            {listAdService.length ? (
+              <div className="grid">
+                {listAdService.map((data) => (
+                  <div className="data_item" key={data._id}>
+                    <img src="/img/advertising/bg-images.jpeg" alt="" />
+                    <div className="content">
+                      <h5>{data.companyName}</h5>
+                      <hr />
+                      <p>Curabitur arcu erat, accumsan id imperdiet et</p>
+                      <a href={`/advertising/profile/${data._id}`} alt="">
+                        {t("explore")}
+                      </a>
+                    </div>
+                  </div>
+                ))}
               </div>
-            </div>
-          ))
+            ) : (
+              <div className="empty_container">
+                <h5>
+                  {" "}
+                  <span>Sorry !</span> we couldn't find any results matching "
+                  {type}"
+                </h5>
+                <Link to="/" className="link">
+                  Go home
+                </Link>
+              </div>
+            )}
+          </>
         )}
-      </div>
+      </>
     </DataStyling>
   );
 };
@@ -149,6 +166,26 @@ const DataStyling = styled.section`
     }
     @media only screen and (max-width: 500px) {
       grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  & .empty_container {
+    margin: 20px 0;
+    & h5 {
+      & span {
+        font-size: 1.4rem;
+        color: var(--orange-color);
+        font-weight: 700;
+      }
+    }
+    & .link {
+      color: #fff;
+      background: var(--orange-color);
+      padding: 5px 15px;
+      &:hover {
+        text-decoration: none;
+        opacity: 0.9;
+      }
     }
   }
 `;
