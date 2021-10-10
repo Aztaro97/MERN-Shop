@@ -44,23 +44,24 @@ function AllBrandScreen() {
   );
 }
 
-const Landing = () => {
-  return (
-    <LandingStyling>
-      <div>
-        <div className="landing_overlay">
-          <h1>all restaurants</h1>
-          <Link className="link1" to="/advertising/profile/:id">
-            Let's go
-          </Link>
-        </div>
-      </div>
-    </LandingStyling>
-  );
-};
+// const Landing = () => {
+//   return (
+//     <LandingStyling>
+//       <div>
+//         <div className="landing_overlay">
+//           <h1>all restaurants</h1>
+//           <Link className="link1" to="/advertising/profile/:id">
+//             Let's go
+//           </Link>
+//         </div>
+//       </div>
+//     </LandingStyling>
+//   );
+// };
 
 const DataSection = ({ listAdService, error, type }) => {
   const { t } = useTranslation();
+  const history = useHistory();
   return (
     <DataStyling>
       <h3 className="title">all {type}</h3>

@@ -190,7 +190,7 @@ export const getAdvertisingProfileByID = (id) => async (dispatch) => {
         accept: "application/json",
       },
     };
-    const res = await axios.get(`/api/advertising/profile/${id}`, config);
+    const res = await axios.post(`/api/advertising/profile/${id}`, config);
 
     dispatch({
       type: AD_PROFILE_SUCCESS,

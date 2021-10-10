@@ -33,10 +33,6 @@ const { Option } = Select;
 
 function PartnerRegisterTemplate2() {
   const { loading, userInfo } = useSelector((state) => state.userLogin);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
   return (
     <MainContainer>
       {loading ? (

@@ -7,6 +7,7 @@ import {
   Route,
   Switch,
   HashRouter,
+  useLocation
 } from "react-router-dom";
 import NavBar from "./components/navbar/NavBar";
 import Footer from "./components/footer/Footer";
@@ -74,8 +75,10 @@ import { initGA, PageView } from "./components/Tracking/tracking";
 import NewPasswordScreen from "./components/pagesScreens/newPasswordScreen";
 import privatePolicy from "./components/pagesScreens/regulationScreen.jsx/privatePolicy";
 import TermsScreen from "./components/pagesScreens/regulationScreen.jsx/termsContent";
+import ScrollTop from "./utils/scrollTop";
 
 function App() {
+  
   useEffect(() => {
     // ReactGA.initialize("UA-207742018-1");
     initGA();
@@ -85,6 +88,7 @@ function App() {
 
   return (
     <Router className="App">
+      <ScrollTop />
       <GlobalStyle />
       <NavBar />
       <Switch>

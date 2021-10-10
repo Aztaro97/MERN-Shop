@@ -380,9 +380,9 @@ const PartnerSectionLogo = ({ lang }) => {
       <Slider {...settings}>
         {listPartnerLogo.map((item) => (
           <div key={item.profileId} className="logo-box">
-            <a href={`/advertising/profile/${item.profileId}`}>
+            <Link to={`/advertising/profile/${item.profileId}`}>
               <img src={item.logoUrl} alt={item.companyName} />
-            </a>
+            </Link>
           </div>
         ))}
       </Slider>
@@ -433,13 +433,13 @@ const ServicesSlider = ({ lang }) => {
       <Slider {...settings} className="slider">
         {servicePicture.map((data) => (
           <div className="box" key={data.profileId}>
-            <a
-              href={`/advertising/profile/${data.profileId}`}
+            <Link
+              to={`/advertising/profile/${data.profileId}`}
               className="link"
               alt=""
             >
               <img src={data.imgUrl} alt="" />
-            </a>
+            </Link>
           </div>
         ))}
       </Slider>
@@ -657,7 +657,7 @@ const NavStyling = styled.section`
       & span {
         color: var(--orange-color);
         text-transform: capitalize;
-        font-size: 1.2rem;
+        font-size: 1rem;
         transition: color 0.1s ease-in-out;
       }
     }

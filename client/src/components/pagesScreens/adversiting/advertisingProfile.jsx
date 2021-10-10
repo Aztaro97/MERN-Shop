@@ -31,7 +31,7 @@ function AdvertisingProfileScreen() {
 
   const dispatch = useDispatch();
   const history = useHistory();
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   // if (error) {
   //   history.push("")
@@ -39,7 +39,7 @@ function AdvertisingProfileScreen() {
 
   useEffect(() => {
     if (profileID) dispatch(getAdvertisingProfileByID(profileID));
-  }, [dispatch, profileID]);
+  }, [profileID, dispatch]);
 
   return (
     <MainContainer>
@@ -52,7 +52,9 @@ function AdvertisingProfileScreen() {
           <ThirsdBannerSlider />
           <ContainerStyling className="container my-5">
             <section className="introduction">
-              <h1 className="title">{profile.companyName}</h1>
+              <h1 className="title">
+                {profile.companyName ? profile.companyName : null}
+              </h1>
               <img src={profile.logoUrl} alt="" />
             </section>
             <section className="about">
@@ -140,20 +142,20 @@ function AdvertisingProfileScreen() {
   );
 }
 
-const Landing = () => {
-  return (
-    <LandingStyling>
-      <div>
-        <div className="landing_overlay">
-          <h1>all restaurants</h1>
-          <Link className="link1" to="#/">
-            Let's go
-          </Link>
-        </div>
-      </div>
-    </LandingStyling>
-  );
-};
+// const Landing = () => {
+//   return (
+//     <LandingStyling>
+//       <div>
+//         <div className="landing_overlay">
+//           <h1>all restaurants</h1>
+//           <Link className="link1" to="#/">
+//             Let's go
+//           </Link>
+//         </div>
+//       </div>
+//     </LandingStyling>
+//   );
+// };
 
 const PortfolioSlider = () => {
   const settings = {
