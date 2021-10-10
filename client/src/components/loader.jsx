@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import RiseLoader from "react-spinners/RiseLoader";
+import BeatLoader from "react-spinners/BeatLoader";
 
 function LoaderComponent() {
   const override = `
@@ -13,17 +13,16 @@ function LoaderComponent() {
   top: 0;
   left: 0;
   z-index: 999999999999999999999999999999999999999999;
-  background: #ffffffe4;
+  background: #e9e9e9;
   `;
   let [loading, setLoading] = useState(true);
   return (
-    <RiseLoader
-      className="hell"
+    <BeatLoader
       color={`var(--orange-color)`}
       css={override}
       loading={loading}
-      size={40}
-      margin={3}
+      size={35}
+      margin={4}
     />
   );
 }

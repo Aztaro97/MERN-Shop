@@ -142,7 +142,6 @@ function NavBar() {
     </Menu>
   );
 
-  const currentLanguageCode = cookies.get("i18next");
 
   return (
     <Header scrollNav={scrollNav}>
