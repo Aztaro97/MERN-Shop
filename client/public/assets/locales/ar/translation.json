@@ -40,8 +40,15 @@
     "retype_placeholder": "اعد ادخال كلمة المرور",
     "company_name_placeholder": "اسم الشركة",
     "scope__placeholder": "مجال العمل",
+    "address__placeholder": "عنوان",
+    "city__placeholder": "مدينة",
+    "first_name__placeholder": "الاسم الأول",
+    "last_name__placeholder": "الكنية",
+    "select_country__placeholder": "حدد الدولة",
+    "select_region__placeholder": "اختر المنطقة",
+    "message__placeholder": "رسالة",
     "expiry_placeholder": "تاريخ انتهاء الصلاحية",
-    "phone_number_placeholder": "PHONE NUMBER",
+    "phone_number_placeholder": "رقم الهاتف",
     "location_placeholder": "موقعك",
     "type_day_placeholder": "أيام النوع",
     "type_video_link_placeholder": "رابط فيديو النوع",
@@ -104,7 +111,27 @@
     "marketing": "تسويق",
     "vehicule": "مركبة",
     "pharmacy": "مقابل",
-    "photography": "التصوير"
+    "photography": "التصوير",
+
+    "footer" : {
+      "to_visite_us": "لزيارتنا",
+      "desc_1": "إذا كنت تريد زيارتنا",
+      "desc_2": "نتحدث عن مشروع أو",
+      "desc_3": "فقط تناول القهوة",
+      "street": "بالقرب من شارع 41 ب",
+      "address": "Al Rashidiya - Dubai",
+      "follow": "تابعنا",
+      "contact_us": "اتصل بنا",
+      "question": "هل لديك سؤال",
+      "request": "طلب معلومات ، مشروع",
+      "write": "اكتب لنا",
+      "terms": "مصطلحات",
+      "privacy": "سياسة خاصة"
+    },
+
+
+    "explore": "يكتشف",
+    "submit": "إرسال"
 
     
   }

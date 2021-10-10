@@ -76,7 +76,7 @@ const DataSection = ({ listAdService, error, type }) => {
                   Curabitur arcu erat, accumsan id imperdiet et
                 </p>
                 <a href={`/advertising/profile/${data._id}`} alt="">
-                  explore
+                  {t("explore")}
                 </a>
               </div>
             </div>

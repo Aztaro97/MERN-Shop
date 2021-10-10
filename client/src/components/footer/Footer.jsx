@@ -13,9 +13,12 @@ import {
 import "./footer.css";
 import MapImg from "../../img/pictures/map.png";
 import { Col, Row } from "antd";
+import { useTranslation } from "react-i18next";
 
 function FooterScrren() {
   const currentPage = document.location.pathname;
+
+  const { t } = useTranslation();
 
   console.log(currentPage);
 
@@ -34,14 +37,16 @@ function FooterScrren() {
               md={{ span: 12 }}
               lg={{ span: 12 }}
             >
-              <h3 className="secColor weight-500 mediumTitle">To visit us</h3>
+              <h3 className="secColor weight-500 mediumTitle">
+                {" "}
+                {t("footer.to_visite_us")}{" "}
+              </h3>
               <p className="grayBlueColor weight-400 normalText">
-                If you want to visit us <br /> talk about a project or <br />{" "}
-                just have a coffee
+                {t("footer.desc_1")} <br /> {t("footer.desc_2")} <br /> {t("footer.desc_3")}
               </p>
               <p className="grayBlueColor weight-500 mediumText mt-3 mb-2">
-                Near 41B Street
-                <br /> Al Rashidiya - Dubai
+                {t("footer.street")}
+                <br /> {t("footer.address")}
               </p>
               <a
                 href="tel:+97142839983"
@@ -58,7 +63,7 @@ function FooterScrren() {
               </a>
               {/* <!-- follow us div  --> */}
               <div className="followUs mt-4">
-                <h3 className="secColor weight-500 mediumTitle">Follow us</h3>
+                <h3 className="secColor weight-500 mediumTitle">{t("footer.follow")}</h3>
                 <div className="group">
                   {/* <!-- Repeating link  --> */}
                   {/* <a href="" className="btn media_link">
@@ -112,13 +117,15 @@ function FooterScrren() {
                 </div>
               </div>
               <div className="mt-4">
-                <h3 className="secColor weight-500 mediumTitle">Contact US</h3>
+                <h3 className="secColor weight-500 mediumTitle">
+                  {t("footer.contact_us")}
+                </h3>
                 <p className="grayBlueColor weight-400 normalText">
-                  You Have a question
-                  <br /> a request for information, a project{" "}
+                  {t("footer.question")}
+                  <br /> {t("footer.request")}{" "}
                 </p>
                 <a href="/contact-us" className="btn sec-outline-btn">
-                  WRITE US
+                  {t("footer.write")}
                 </a>
               </div>
             </Col>
@@ -155,8 +162,8 @@ function FooterScrren() {
         </div>
         <div className="bottom-footer">
           <div className="contract-link">
-            <a href="/terms">Terms</a>
-            <a href="/private-policy">Privacy policy</a>
+            <a href="/terms"> {t("footer.terms")}</a>
+            <a href="/private-policy"> {t("footer.privacy")}</a>
           </div>
           <div className="copyRights">AU79CODE &copy; All rights reserved</div>
         </div>

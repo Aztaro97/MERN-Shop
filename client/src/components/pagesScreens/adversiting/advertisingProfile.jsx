@@ -21,6 +21,7 @@ import {
   SEND_CONTACT_FORM_REQUEST,
   SEND_CONTACT_FORM_SUCCESS,
 } from "../../../flux/constants/advertising";
+import { useTranslation } from "react-i18next";
 
 function AdvertisingProfileScreen() {
   const params = useParams();
@@ -157,10 +158,10 @@ const PortfolioSlider = () => {
   const settings = {
     dots: true,
     infinite: true,
-    fade: true,
+    // fade: true,
     speed: 500,
     autoplay: true,
-    autoplaySpeed: 4000,
+    autoplaySpeed: 5000,
     slidesToShow: 1,
     slidesToScroll: 1,
     // slidesPerRow: 0,
@@ -214,6 +215,7 @@ const ContactForm = ({ profile }) => {
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.contactForm);
 
+  const { t } = useTranslation();
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch({
@@ -249,7 +251,7 @@ const ContactForm = ({ profile }) => {
                 required
                 name="firstName"
                 id="firstName"
-                placeholder="FIRST NAME"
+                placeholder={t("first_name__placeholder")}
                 className="input"
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
@@ -260,7 +262,7 @@ const ContactForm = ({ profile }) => {
                 required
                 name="lastName"
                 id="lastName"
-                placeholder="LAST NAME"
+                placeholder={t("last_name__placeholder")}
                 className="input"
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
@@ -273,7 +275,7 @@ const ContactForm = ({ profile }) => {
                 required
                 name="email"
                 id="email"
-                placeholder="EMAIL"
+                placeholder={t("email_placeholder")}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -284,7 +286,7 @@ const ContactForm = ({ profile }) => {
                 type="tel"
                 name="phoneNumber"
                 id="phoneNumber"
-                placeholder="PHONE NUMBER"
+                placeholder={t("phone_number_placeholder")}
                 value={phoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value)}
               />
@@ -296,7 +298,7 @@ const ContactForm = ({ profile }) => {
                 required
                 name="address"
                 id="address"
-                placeholder="ADDRESS"
+                placeholder={t("address__placeholder")}
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
               />
@@ -307,7 +309,7 @@ const ContactForm = ({ profile }) => {
                 type="text"
                 name="city"
                 id="city"
-                placeholder="CITY"
+                placeholder={t("city__placeholder")}
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
               />
@@ -320,6 +322,7 @@ const ContactForm = ({ profile }) => {
                 required
                 name="country"
                 value={country}
+                defaultOptionLabel={t("select_country__placeholder")}
                 onChange={(val) => setCountry(val)}
               />
             </div>
@@ -329,6 +332,7 @@ const ContactForm = ({ profile }) => {
                 name="region"
                 country={country}
                 value={region}
+                defaultOptionLabel={t("select_region__placeholder")}
                 onChange={(val) => setRegion(val)}
               />
             </div>
@@ -342,7 +346,7 @@ const ContactForm = ({ profile }) => {
                 required
                 name="message"
                 id="message"
-                placeholder="MESSAGE"
+                placeholder={t("message__placeholder")}
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
               />
@@ -354,7 +358,7 @@ const ContactForm = ({ profile }) => {
             className="btn_submit"
             style={{ textTransform: "capitalize", letterSpacing: "1px" }}
           >
-            submit
+            {t("submit")}
           </ButtonC>
         </FormStyling>
       )}
@@ -428,14 +432,14 @@ const ContainerStyling = styled.div`
     & .slider_container {
       & .slide {
         max-width: 400px;
-        height: 400px;
+        height: 300px;
         display: flex !important;
         align-items: center;
         justify-content: center;
         margin-left: auto;
         margin-right: auto;
         @media only screen and (max-width: 768px) {
-          height: 400px;
+          height: 200px;
         }
       }
       img {
@@ -562,7 +566,7 @@ const ContainerStyling = styled.div`
       grid-template-columns: repeat(4, 1fr);
       grid-gap: 10px;
       & .card-image {
-        height: 240px;
+        height: 200px;
       }
       & p {
         font-size: 1.2rem;
@@ -575,7 +579,7 @@ const ContainerStyling = styled.div`
       }
       @media only screen and (max-width: 768px) {
         & .card-image {
-          height: 150px;
+          height: 100px;
         }
       }
 
@@ -645,8 +649,7 @@ const CountryDropdownCustom = styled(CountryDropdown)`
   padding-left: 0.4rem;
   width: 100%;
   height: 2.5rem;
-    border: 3px solid var(--background-color);
-  }
+  border: 3px solid var(--background-color);
   &:focus-visible {
     border: 3px solid var(--background-color);
     outline: none;

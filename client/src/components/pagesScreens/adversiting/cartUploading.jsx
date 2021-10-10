@@ -304,13 +304,13 @@ const CartUploading = () => {
             </FirstFraction>
           </Col>
         </Row>
-        <Row className="mt-4">
-          <Col span={14}>
+        <Row className="mt-4" justify="space-between">
+          <Col >
             <h4 className="subtotal">
               SubTotal: <span>{addDecimals(Total)} aed</span>
             </h4>
           </Col>
-          <Col span={10}>
+          <Col >
             <CheckOutButton totalPrice={Total} cardData={data} />
           </Col>
         </Row>

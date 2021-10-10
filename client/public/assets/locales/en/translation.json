@@ -40,6 +40,13 @@
     "retype_placeholder": "RETYPE PASSWORD",
     "company_name_placeholder": "COMPANY NAME",
     "scope__placeholder": "SCOPE OF BUSINESS",
+    "address__placeholder": "ADDRESS",
+    "city__placeholder": "CITY",
+    "first_name__placeholder": "FIRST NAME",
+    "last_name__placeholder": "LAST NAME",
+    "select_country__placeholder": "SELECT COUNTRY",
+    "select_region__placeholder": "SELECT REGION",
+    "message__placeholder": "MESSAGE",
     "expiry_placeholder": "EXPIRY DATE",
     "phone_number_placeholder": "PHONE NUMBER",
     "location_placeholder": "LOCATION",
@@ -108,8 +115,27 @@
     "marketing": "marketing",
     "vehicule": "vehicule",
     "pharmacy": "pharmacy",
-    "photography": "photography"
+    "photography": "photography",
+
+
+    "footer": {
+      "to_visite_us": "To visit us",
+      "desc_1": "If you want to visit us",
+      "desc_2": "talk about a project or",
+      "desc_3": "just have a coffee",
+      "street": "Near 41B Street",
+      "address": "Al Rashidiya - Dubai",
+      "follow": "Follow us",
+      "contact_us": "Contact Us",
+      "question": "You Have a question",
+      "request": "a request for information, a project",
+      "write": "Write Us",
+      "terms": "Terms",
+      "privacy": "Privacy Policy"
+    },
     
+    "explore": "explore",
+    "submit": "submit"
 
 
   }
