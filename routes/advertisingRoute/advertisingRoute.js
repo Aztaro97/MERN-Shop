@@ -3,6 +3,7 @@ const {
   addAdvertisingService,
   getAllAdService,
   filterByTypeBusiness,
+  filterByTypeBusinessPublic,
   getAdProfile,
   registerPremiumService,
   setUpdateAllowed,
@@ -20,7 +21,8 @@ router
   .route("/")
   .get(protect, admin, getAllAdService)
   .put(setUpdateAllowed);
-router.route("/filter-type-business").post(filterByTypeBusiness);
+router.route("/filter-type-business").post(protect, admin, filterByTypeBusiness);
+router.route("/filter-business").post(filterByTypeBusinessPublic);
 router.route("/profile/:id").get(getAdProfile);
 router
   .route("/message")

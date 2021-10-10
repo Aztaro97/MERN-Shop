@@ -103,8 +103,7 @@ const TypeBusinessSection = ({ lang }) => {
         {categoryAdversiting.map((data) => (
           <CardItemStyling
             key={data.profileId}
-            onClick={() =>
-              (window.location.href = `/advertising/profile/${data.profileId}`)
+            onClick={() => history.push( `/advertising/profile/${data.profileId}`)
             }
           >
             <div
@@ -326,9 +325,9 @@ const JoiningUsSection = () => {
               growth with us
             </h1>
             <div className="link">
-              <a href="/advertising/register" alt="">
+              <Link to="/advertising/register" alt="">
                 Let's go
-              </a>
+              </Link>
             </div>
           </div>
         </Col>
@@ -620,6 +619,7 @@ const NavStyling = styled.section`
     justify-content: center;
     text-decoration: none;
     margin: 0 10px;
+    cursor: pointer;
     @media only screen and (max-width: 768px) {
       height: 100px;
     }

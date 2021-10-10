@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { useParams, useHistory } from "react-router-dom";
-import { filterByTypeBusiness } from "../../../flux/actions/advertisingAction/advertisingAction";
+import { filterBusiness } from "../../../flux/actions/advertisingAction/advertisingAction";
 import { useDispatch, useSelector } from "react-redux";
 import LoaderComponent from "../../loader";
 import SecondeLandingSlider from "./Banner/secondeLanding";
@@ -22,7 +22,7 @@ function AllBrandScreen() {
 
   const history = useHistory();
   useEffect(() => {
-    dispatch(filterByTypeBusiness(type));
+    dispatch(filterBusiness(type));
   }, [dispatch, type]);
   return (
     <MainContainer>

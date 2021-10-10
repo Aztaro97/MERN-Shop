@@ -103,52 +103,52 @@ export const BusinessList = [
 
 export const listPartnerLogo = [
   {
-    profileId: "6153163d1ae5f63044d1ffbf",
+    profileId: "615ed6515ba595815415ff90",
     companyName: "code loccol",
     logoUrl: "https://logo.clearbit.com/clearbit.com",
   },
   {
-    profileId: "615316be9ab6da6a1c805681",
+    profileId: "615ed6515ba595815415ff90",
     companyName: "Noon",
     logoUrl: "https://logo.clearbit.com/amazon.com",
   },
   {
-    profileId: "6154566a56099631408439dd",
+    profileId: "615ed6515ba595815415ff90",
     companyName: "au 79 code",
     logoUrl: "https://logo.clearbit.com/alibaba.com",
   },
   {
-    profileId: "615456de56099631408439e0",
+    profileId: "615ed6515ba595815415ff90",
     companyName: "tabalat",
     logoUrl: "https://logo.clearbit.com/aliexpress.com",
   },
   {
-    profileId: "615316be9ab6da6a1c805681",
+    profileId: "615ed6515ba595815415ff90",
     companyName: "au 79 code",
     logoUrl: "https://logo.clearbit.com/ebay.com",
   },
   {
-    profileId: "615316be9ab6da6a1c805681",
+    profileId: "615ed6515ba595815415ff90",
     companyName: "au 79 code",
     logoUrl: "https://logo.clearbit.com/Fiverr.com",
   },
   {
-    profileId: "615316be9ab6da6a1c805681",
+    profileId: "615ed6515ba595815415ff90",
     companyName: "au 79 code",
     logoUrl: "https://logo.clearbit.com/IKEA.com",
   },
   {
-    profileId: "615316be9ab6da6a1c805681",
+    profileId: "615ed6515ba595815415ff90",
     companyName: "au 79 code",
     logoUrl: "https://logo.clearbit.com/Vinted.com",
   },
   {
-    profileId: "615316be9ab6da6a1c805681",
+    profileId: "615ed6515ba595815415ff90",
     companyName: "au 79 code",
     logoUrl: "https://logo.clearbit.com/Rakuten.com",
   },
   {
-    profileId: "615316be9ab6da6a1c805681",
+    profileId: "615ed6515ba595815415ff90",
     companyName: "au 79 code",
     logoUrl: "https://logo.clearbit.com/Pinterest.com",
   },

@@ -83,9 +83,27 @@ const getAllAdService = asyncHandler(async (req, res) => {
   }
 });
 
+
+
+// Admin
 const filterByTypeBusiness = asyncHandler(async (req, res) => {
   const filter = await advertising.find({
     typeBusiness: req.body.typeBusiness
+  });
+
+  if (filter) {
+    res.status(200).json(filter);
+  } else {
+    res.status(404).json("Product not fund");
+  }
+});
+
+
+// Public
+const filterByTypeBusinessPublic = asyncHandler(async (req, res) => {
+  const filter = await advertising.find({
+    typeBusiness: req.body.typeBusiness,
+    allow: true
   });
 
   if (filter) {
@@ -125,6 +143,7 @@ module.exports = {
   addAdvertisingService,
   getAllAdService,
   filterByTypeBusiness,
+  filterByTypeBusinessPublic,
   getAdProfile,
   registerPremiumService,
   setUpdateAllowed

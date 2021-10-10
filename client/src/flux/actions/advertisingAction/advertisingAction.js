@@ -117,7 +117,40 @@ export const getAllAdService = () => async (dispatch, getState) => {
   }
 };
 
-export const filterByTypeBusiness = (typeBusiness) => async (dispatch) => {
+export const filterByTypeBusiness = (typeBusiness) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: FILTER_BUSINESS_REQUEST,
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+    const config = {
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+    const res = await axios.post(
+      "/api/advertising/filter-type-business",
+      { typeBusiness },
+      config
+    );
+
+    dispatch({
+      type: FILTER_BUSINESS_SUCCESS,
+      payload: res.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: FILTER_BUSINESS_FAIL,
+      payload: error,
+    });
+  }
+};
+
+export const filterBusiness = (typeBusiness) => async (dispatch) => {
   try {
     dispatch({
       type: FILTER_BUSINESS_REQUEST,
@@ -129,7 +162,7 @@ export const filterByTypeBusiness = (typeBusiness) => async (dispatch) => {
       },
     };
     const res = await axios.post(
-      "/api/advertising/filter-type-business",
+      "/api/advertising/filter-business",
       { typeBusiness },
       config
     );
