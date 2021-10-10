@@ -124,9 +124,9 @@ function FooterScrren() {
                   {t("footer.question")}
                   <br /> {t("footer.request")}{" "}
                 </p>
-                <a href="/contact-us" className="btn sec-outline-btn">
+                <Link to="/contact-us" className="btn sec-outline-btn">
                   {t("footer.write")}
-                </a>
+                </Link>
               </div>
             </Col>
             <Col
@@ -162,8 +162,8 @@ function FooterScrren() {
         </div>
         <div className="bottom-footer">
           <div className="contract-link">
-            <a href="/terms"> {t("footer.terms")}</a>
-            <a href="/private-policy"> {t("footer.privacy")}</a>
+            <Link to="/terms" className="link"> {t("footer.terms")}</Link>
+            <Link to="/private-policy" className="link"> {t("footer.privacy")}</Link>
           </div>
           <div className="copyRights">AU79CODE &copy; All rights reserved</div>
         </div>

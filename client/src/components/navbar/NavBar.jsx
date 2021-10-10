@@ -146,7 +146,7 @@ function NavBar() {
 
   return (
     <Header scrollNav={scrollNav}>
-      <Logo href="/">
+      <Logo to="/">
         <img src={Logo_SVG} alt="" /> <span>au 79 code</span>
       </Logo>
       {/* <Lang href="/" onClick={handleChangeLang} >{t("language")}</Lang> */}
@@ -361,7 +361,7 @@ const LinkP = styled(Link)`
   }
 `;
 
-const Logo = styled.a`
+const Logo = styled(Link)`
   /* position: relative;
   top: 0px; */
   z-index: 999999999999;
