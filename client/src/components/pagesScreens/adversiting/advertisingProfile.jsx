@@ -43,7 +43,7 @@ function AdvertisingProfileScreen() {
 
   return (
     <MainContainer>
-      {!loading ? (
+      {loading ? (
         <LoaderComponent />
       ) : error ? (
         <PageNotFund />
