@@ -32,6 +32,7 @@
     "orders_lists": "قوائم الطلبات",
     "logout":"تسجيل خروج",
     "signin":"تسجيل الدخول",
+    "signup":"أفتح حساب الأن",
     "create_your_shop":"أنشئ متجرك",
     "all_user_lists": "جميع قوائم المستخدمين",
 
@@ -45,6 +46,7 @@
     "city__placeholder": "مدينة",
     "first_name__placeholder": "الاسم الأول",
     "last_name__placeholder": "الكنية",
+    "full_name__placeholder": "الاسم بالكامل",
     "select_country__placeholder": "حدد الدولة",
     "select_region__placeholder": "اختر المنطقة",
     "message__placeholder": "رسالة",

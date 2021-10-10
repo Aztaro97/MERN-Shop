@@ -32,6 +32,7 @@
     "orders_lists": "orders lists",
     "logout":"log out",
     "signin":"sign in",
+    "signup":"sign up",
     "create_your_shop":"Create your shop",
     "all_user_lists": "all users lists",
 
@@ -45,6 +46,7 @@
     "city__placeholder": "CITY",
     "first_name__placeholder": "FIRST NAME",
     "last_name__placeholder": "LAST NAME",
+    "full_name__placeholder": "FULL NAME",
     "select_country__placeholder": "SELECT COUNTRY",
     "select_region__placeholder": "SELECT REGION",
     "message__placeholder": "MESSAGE",
@@ -81,7 +83,7 @@
     "save_and_continue": "save and continue",
     "upload_all": "upload all",
     "cover_photo": "COVER PHOTO",
-    "about_company": "about company",
+    "about_company": "About company",
     "registration_info": "REGISTRATION INFORMATION",
 
     "back":"Back",

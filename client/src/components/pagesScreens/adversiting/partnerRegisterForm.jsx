@@ -28,6 +28,7 @@ import { BiWorld } from "react-icons/bi";
 import axios from "axios";
 import { successMessage } from "../../message";
 import MainContainer from "../../MainContainer";
+import { useTranslation } from "react-i18next";
 
 const { Option } = Select;
 
@@ -49,6 +50,7 @@ function PartnerRegisterTemplate2() {
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const validate = (values) => {
     const errors = {};
@@ -74,69 +76,63 @@ const SignUpForm = () => {
   });
   return (
     <form action="" onSubmit={formik.handleSubmit}>
-      <Row gutter={{ xs: 20 }}>
-        <Col span={2} className="gutter-row">
+      <Row gutter={[10, 10]}>
+        <Col xs={{ span: 4 }} md={{ span: 1 }}>
           <IconStyling>
             <AiOutlineMail className="icon" />
           </IconStyling>
         </Col>
-        <Col span={22} className="gutter-row">
+        <Col xs={{ span: 20 }} md={{ span: 23 }}>
           <InputStyling
             type="email"
             name="email"
-            placeholder="Email"
+            placeholder={t("email_placeholder")}
             onChange={formik.handleChange}
             value={formik.values.email}
           />
         </Col>
-      </Row>
-      <Row>
-        <Col span={22} className="gutter-row">
-          {formik.errors.email ? (
+
+        <Col xs={{ span: 20 }} md={{ span: 23 }} offset={2}>
+          {formik.errors.email && (
             <Alert message={formik.errors.email} type="error" banner>
               {formik.errors.email}
             </Alert>
-          ) : null}
+          )}
         </Col>
-      </Row>
 
-      <Row gutter={10}>
-        <Col span={2} className="gutter-row">
+        <Col xs={{ span: 4 }} md={{ span: 1 }}>
           <IconStyling>
             <IoMdKey className="icon" />
           </IconStyling>
         </Col>
-        <Col span={22} className="gutter-row">
+        <Col xs={{ span: 20 }} md={{ span: 23 }}>
           <InputStyling
             type="password"
-            placeholder="Password"
+            placeholder={t("password_placeholder")}
             name="password"
             id="password"
             onChange={formik.handleChange}
             value={formik.values.password}
           />
         </Col>
-      </Row>
-      <Row gutter={{ xs: 20 }}>
-        <Col span={2} className="gutter-row">
+
+        <Col xs={{ span: 4 }} md={{ span: 1 }}>
           <IconStyling>
             <IoMdKey className="icon" />
           </IconStyling>
         </Col>
-        <Col span={22} className="gutter-row">
+        <Col xs={{ span: 20 }} md={{ span: 23 }}>
           <InputStyling
             type="password"
-            placeholder="Retype Password"
+            placeholder={t("retype_placeholder")}
             name="password2"
             id="password2"
             onChange={formik.handleChange}
             value={formik.values.password2}
           />
         </Col>
-      </Row>
 
-      <Row>
-        <Col span={22} offset={2} className="gutter-row">
+        <Col xs={{ span: 20 }} md={{ span: 23 }} offset={2}>
           {formik.errors.password ? (
             <Alert type="error" message={formik.errors.password} banner />
           ) : null}
@@ -146,17 +142,21 @@ const SignUpForm = () => {
         </Col>
       </Row>
 
-      <Button
-        type="submit"
-        style={{
-          fontWeight: 400,
-          letterSpacing: "1px",
-          textTransform: "capitalize",
-        }}
-        className="ml-auto"
-      >
-        sign up
-      </Button>
+      <Row gutter={[10, 10]} justify="end">
+        <Col>
+          <Button
+            type="submit"
+            style={{
+              fontWeight: 400,
+              letterSpacing: "1px",
+              textTransform: "capitalize",
+            }}
+            className="ml-auto"
+          >
+            {t("signup")}
+          </Button>
+        </Col>
+      </Row>
     </form>
   );
 };
@@ -189,6 +189,7 @@ const DetailsComponent = () => {
   };
 
   const history = useHistory();
+  const { t } = useTranslation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -211,47 +212,43 @@ const DetailsComponent = () => {
   return (
     <form onSubmit={handleSubmit}>
       <h1 className="title">company information</h1>
-      <Row gutter={{ xs: 20 }}>
-        <Col span={2} className="gutter-row">
+      <Row gutter={[10, 10]}>
+        <Col xs={{ span: 4 }} md={{ span: 1 }}>
           <IconStyling>
             <BsBuilding className="icon" />
           </IconStyling>
         </Col>
-        <Col span={22} className="gutter-row">
+        <Col xs={{ span: 20 }} md={{ span: 23 }}>
           <InputStyling
             required
             type="text"
-            placeholder="Company Name"
+            placeholder={t("company_name_placeholder")}
             value={companyName}
             onChange={(e) => setCompanyName(e.target.value)}
           />
         </Col>
-      </Row>
-      <Row gutter={{ xs: 20 }}>
-        <Col span={2} className="gutter-row">
+        <Col xs={{ span: 4 }} md={{ span: 1 }}>
           <IconStyling>
             <FaPencilAlt className="icon" />
           </IconStyling>
         </Col>
-        <Col span={22} className="gutter-row">
+        <Col xs={{ span: 20 }} md={{ span: 23 }}>
           <TextAreaStyling
             required
             name=""
             rows="5"
             cols="4"
-            placeholder="About Company"
+            placeholder={t("about_company")}
             value={about}
             onChange={(e) => setAbout(e.target.value)}
           />
         </Col>
-      </Row>
-      <Row gutter={{ xs: 20 }}>
-        <Col span={2} className="gutter-row">
+        <Col xs={{ span: 4 }} md={{ span: 1 }}>
           <IconStyling>
             <MdBusinessCenter className="icon" />
           </IconStyling>
         </Col>
-        <Col span={22} className="gutter-row">
+        <Col xs={{ span: 20 }} md={{ span: 23 }}>
           <SelectStyling
             required
             mode="multiple"
@@ -270,83 +267,75 @@ const DetailsComponent = () => {
       </Row>
 
       <h1 className="title">contact</h1>
-      <Row gutter={{ xs: 20 }}>
-        <Col span={2} className="gutter-row">
+      <Row gutter={[10, 10]}>
+        <Col xs={{ span: 4 }} md={{ span: 1 }}>
           <IconStyling>
             <FaUser className="icon" />
           </IconStyling>
         </Col>
-        <Col span={22} className="gutter-row">
+        <Col xs={{ span: 20 }} md={{ span: 23 }}>
           <InputStyling
             required
             type="tel"
             name="name"
-            placeholder="Full Name"
+            placeholder={t("full_name__placeholder")}
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
           />
         </Col>
-      </Row>
-      <Row gutter={{ xs: 20 }}>
-        <Col span={2} className="gutter-row">
+        <Col xs={{ span: 4 }} md={{ span: 1 }}>
           <IconStyling>
             <ImPhone className="icon" />
           </IconStyling>
         </Col>
-        <Col span={22} className="gutter-row">
+        <Col xs={{ span: 20 }} md={{ span: 23 }}>
           <InputStyling
             required
             type="tel"
-            placeholder="Phone Number"
+            placeholder={t("phone_number_placeholder")}
             value={telephone}
             onChange={(e) => setTelephone(e.target.value)}
           />
         </Col>
-      </Row>
-      <Row gutter={{ xs: 20 }}>
-        <Col span={2} className="gutter-row">
+        <Col xs={{ span: 4 }} md={{ span: 1 }}>
           <IconStyling>
             <AiOutlineMail className="icon" />
           </IconStyling>
         </Col>
-        <Col span={22} className="gutter-row">
+        <Col xs={{ span: 20 }} md={{ span: 23 }}>
           <InputStyling
             required
             type="email"
-            placeholder="Email"
+            placeholder={t("email_placeholder")}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </Col>
-      </Row>
-      <Row gutter={{ xs: 20 }}>
-        <Col span={2} className="gutter-row">
+        <Col xs={{ span: 4 }} md={{ span: 1 }}>
           <IconStyling>
             <FaMapMarkerAlt className="icon" />
           </IconStyling>
         </Col>
-        <Col span={22} className="gutter-row">
+        <Col xs={{ span: 20 }} md={{ span: 23 }}>
           <InputStyling
             required
             type="text"
-            placeholder="City"
+            placeholder={t("city__placeholder")}
             value={city}
             onChange={(e) => setCity(e.target.value)}
           />
         </Col>
-      </Row>
-
-      <Row gutter={{ xs: 20 }}>
-        <Col span={2} className="gutter-row">
+        <Col xs={{ span: 4 }} md={{ span: 1 }}>
           <IconStyling>
             <BiWorld className="icon" />
           </IconStyling>
         </Col>
-        <Col span={22} className="gutter-row">
+        <Col xs={{ span: 20 }} md={{ span: 23 }}>
           <Row gutter={20}>
             <Col xs={{ span: 12 }}>
               <CountryDropdownStyling
                 value={country}
+                defaultOptionLabel={t("select_country__placeholder")}
                 onChange={(val) => setCountry(val)}
               />
             </Col>
@@ -356,7 +345,7 @@ const DetailsComponent = () => {
                 country={country}
                 value={region}
                 onChange={(value) => setRegion(value)}
-                defaultOptionLabel="Choose Region"
+                defaultOptionLabel={t("select_region__placeholder")}
               />
             </Col>
           </Row>
@@ -579,7 +568,7 @@ const FirstFraction = styled.div`
 //     <form>
 //       <h1 className="title">add pictures</h1>
 //       <Row>
-//         <Col span={24} className="gutter-row">
+//         <Col span={24} >
 //           <DropZoneComponent
 //             name="landing-image"
 //             price={150}
@@ -588,7 +577,7 @@ const FirstFraction = styled.div`
 //         </Col>
 //       </Row>
 //       <Row gutter={10}>
-//         <Col span={8} className="gutter-row" xs={{ span: 12 }} sm={{ span: 8 }}>
+//         <Col span={8}  xs={{ span: 12 }} sm={{ span: 8 }}>
 //           <DropZoneComponent
 //             name="image1"
 //             price={45}
@@ -602,7 +591,7 @@ const FirstFraction = styled.div`
 //             accept="image/png, image/jpg, image/jpeg"
 //           />
 //         </Col>
-//         <Col span={8} className="gutter-row" xs={{ span: 12 }} sm={{ span: 8 }}>
+//         <Col span={8}  xs={{ span: 12 }} sm={{ span: 8 }}>
 //           <DropZoneComponent
 //             name="image3"
 //             price={45}
@@ -611,14 +600,14 @@ const FirstFraction = styled.div`
 //         </Col>
 //       </Row>
 //       <Row gutter={10}>
-//         <Col span={12} className="gutter-row">
+//         <Col span={12} >
 //           <DropZoneComponent
 //             name="image4"
 //             price={55}
 //             accept="image/png, image/jpg, image/jpeg"
 //           />
 //         </Col>
-//         <Col span={12} className="gutter-row">
+//         <Col span={12} >
 //           <DropZoneComponent
 //             name="image5"
 //             price={55}
@@ -636,7 +625,7 @@ const FirstFraction = styled.div`
 //     <form>
 //       <h1 className="title">add videos</h1>
 //       <Row>
-//         <Col span={24} className="gutter-row">
+//         <Col span={24} >
 //           <DropZoneComponent
 //             name="landing-image"
 //             price={200}
@@ -675,6 +664,9 @@ const Container = styled.div`
 `;
 
 const IconStyling = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--orange-color);
   & .icon {
     font-size: 1.5rem;
