@@ -9,6 +9,7 @@ import LoaderComponent from "../../loader";
 import SecondeLandingSlider from "./Banner/secondeLanding";
 import MainContainer from "../../MainContainer";
 import ButtonComponeent from "../../ButtonComponeent";
+import { Col, Row } from "antd";
 
 function AllBrandScreen() {
   const params = useParams();
@@ -70,21 +71,23 @@ const DataSection = ({ listAdService, error, type }) => {
         ) : (
           <>
             {listAdService.length ? (
-              <div className="grid">
+              <Row gutter={[10, 10]}>
                 {listAdService.map((data) => (
-                  <div className="data_item" key={data._id}>
-                    <img src="/img/advertising/bg-images.jpeg" alt="" />
-                    <div className="content">
-                      <h5>{data.companyName}</h5>
-                      <hr />
-                      <p>Curabitur arcu erat, accumsan id imperdiet et</p>
-                      <a href={`/advertising/profile/${data._id}`} alt="">
-                        {t("explore")}
-                      </a>
+                  <Col lg={{ span: 6 }} xs={{ span: 24 }} sm={{span: 12 }} md={{ span: 8 }} >
+                    <div className="data_item" key={data._id}>
+                      <img src="/img/advertising/bg-images.jpeg" alt="" />
+                      <div className="content">
+                        <h5>{data.companyName}</h5>
+                        <hr />
+                        <p>Curabitur arcu erat, accumsan id imperdiet et</p>
+                        <a href={`/advertising/profile/${data._id}`} alt="">
+                          {t("explore")}
+                        </a>
+                      </div>
                     </div>
-                  </div>
+                  </Col>
                 ))}
-              </div>
+              </Row>
             ) : (
               <div className="empty_container">
                 <h5>
@@ -118,54 +121,42 @@ const DataStyling = styled.section`
     background: var(--orange-color);
     margin: 10px auto;
   }
-  & .grid {
+  & .data_item {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 2rem;
-    margin: 2rem 0;
-
-    & .data_item {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      border: 1px solid #999;
-      border-radius: 0 30px 30px 0;
-      & img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+    grid-template-columns: repeat(2, 1fr);
+    border: 1px solid #999;
+    border-radius: 0 30px 30px 0;
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    & .content {
+      padding: 10px;
+      & h5 {
+        text-transform: capitalize;
+        letter-spacing: 0px;
+        font-weight: 700;
+        font-size: .9rem;
       }
-      & .content {
-        padding: 10px;
-        & h5 {
-          text-transform: capitalize;
-          letter-spacing: 2px;
-          font-weight: 700;
-        }
-        & hr {
-          width: 80px;
-          margin-left: auto;
-          margin-right: auto;
-        }
-        & p {
-          font-size: 0.9rem;
-        }
-        & a {
-          color: #fff;
-          background: var(--orange-color);
-          padding: 7px 1.5rem;
-          border-radius: 30px;
-          text-decoration: none;
-          &:hover {
-            opacity: 0.9;
-          }
+      & hr {
+        width: 80px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      & p {
+        font-size: 0.9rem;
+      }
+      & a {
+        color: #fff;
+        background: var(--orange-color);
+        padding: 7px 1.5rem;
+        border-radius: 30px;
+        text-decoration: none;
+        &:hover {
+          opacity: 0.9;
         }
       }
-    }
-    @media only screen and (max-width: 1000px) {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    @media only screen and (max-width: 500px) {
-      grid-template-columns: repeat(1, 1fr);
     }
   }
 
