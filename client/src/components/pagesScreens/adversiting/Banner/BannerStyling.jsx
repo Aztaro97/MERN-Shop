@@ -67,7 +67,7 @@ export const LandingStyling = styled.div`
     }
   }
   .next-slick-arrow {
-    right: ${({ currentLang }) => (currentLang === "en" ? "2rem" : "-4rem")};
+    right: ${({ currentLang }) => (currentLang === "en" ? "3rem" : "-4rem")};
   }
   .prev-slick-arrow {
     left: ${({ currentLang }) => (currentLang === "en" ? "3rem" : "-4rem")};

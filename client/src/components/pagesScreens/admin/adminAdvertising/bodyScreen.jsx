@@ -53,7 +53,7 @@ const BodyScreen = () => {
             Body Message : <span>{message.message}</span>
           </p>
 
-          <h6 className="time">Date : <span>{message.createdAt}</span></h6>
+          <h6 className="time">Date : <span>{message.createdAt.toString()}</span></h6>
         </>
       )}
     </Container>

@@ -96,7 +96,15 @@
     "credit_card":"بطاقة ائتمان",
     "new_order":"طلب جديد",
     "select":"تحديد",
-    "delete":"حذف"
+    "delete":"حذف",
+
+    "construction": "اعمال بناء",
+    "restaurant": "مطعم",
+    "real estate": "العقارات",
+    "marketing": "تسويق",
+    "vehicule": "مركبة",
+    "pharmacy": "مقابل",
+    "photography": "التصوير"
 
     
   }

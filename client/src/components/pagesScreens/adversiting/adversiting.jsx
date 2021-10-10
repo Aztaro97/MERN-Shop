@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import {useTranslation} from "react-i18next"
 import { Link, useHistory } from "react-router-dom";
 import ReactPlayer from "react-player";
 import Slider from "react-slick";
@@ -15,7 +16,6 @@ import { config } from "dotenv";
 import MainContainer from "../../MainContainer";
 import { Col, Row } from "antd";
 import ButtonComponeent from "../../ButtonComponeent";
-import { useTranslation } from "react-i18next";
 // import MainContainer from "../../MainContainer";
 
 function AdversitingScreen() {
@@ -96,6 +96,7 @@ const TypeBusinessSection = ({ lang }) => {
     ],
   };
   const history = useHistory();
+  
   return (
     <section>
       <Slider {...settings}>
@@ -266,6 +267,8 @@ const AdvertisingNavgation = ({ lang }) => {
       },
     ],
   };
+
+  const {t} = useTranslation();
 
   return (
     <NavStyling>

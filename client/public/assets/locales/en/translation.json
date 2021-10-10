@@ -99,7 +99,17 @@
     "credit_card":"credit card",
     "new_order":"new order",
     "select":"select",
-    "delete":"delete"
+    "delete":"delete",
+
+
+    "construction": "construction",
+    "restaurant": "restaurant",
+    "real estate": "real estate",
+    "marketing": "marketing",
+    "vehicule": "vehicule",
+    "pharmacy": "pharmacy",
+    "photography": "photography"
+    
 
 
   }

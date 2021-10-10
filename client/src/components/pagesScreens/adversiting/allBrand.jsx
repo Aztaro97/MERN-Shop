@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import {useTranslation} from "react-i18next"
 import { useParams } from "react-router-dom";
 import { filterByTypeBusiness } from "../../../flux/actions/advertisingAction/advertisingAction";
 import { useDispatch, useSelector } from "react-redux";
@@ -56,6 +57,7 @@ const Landing = () => {
 };
 
 const DataSection = ({ listAdService, error, type }) => {
+  const {t} = useTranslation()
   return (
     <DataStyling>
       <h3 className="title">all {type}</h3>

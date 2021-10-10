@@ -1,69 +1,104 @@
+import React from "react";
+import { Translation } from "react-i18next";
 import { AiOutlineShop } from "react-icons/ai";
 import { BiBuildingHouse } from "react-icons/bi";
 import { IoIosConstruct } from "react-icons/io";
 import { IoRestaurantSharp } from "react-icons/io5";
+import { MdCamera } from "react-icons/md";
+
+const TranslateContent = (contents) => {
+  return <Translation>{(t) => <>{t(contents)}</>}</Translation>;
+};
 
 export const categoryAdversiting = [
   {
-    profileId: "6153163d1ae5f63044d1ffbf",
-    title: "real state",
+    profileId: "615ed6515ba595815415ff90",
+    title: TranslateContent("real estate"),
     image: "/img/advertising/real_state.jpg",
   },
   {
-    profileId: "615316be9ab6da6a1c805681",
-    title: "restaurant",
+    profileId: "615ed6515ba595815415ff90",
+    title: TranslateContent("restaurant"),
     image: "/img/advertising/restaurant.jpg",
   },
   {
-    profileId: "6154566a56099631408439dd",
-    title: "vehicle",
+    profileId: "615ed6515ba595815415ff90",
+    title: TranslateContent("vehicule"),
     image: "/img/advertising/real_state.jpg",
   },
   {
-    profileId: "615456de56099631408439e0",
-    title: "pharmacy",
+    profileId: "615ed6515ba595815415ff90",
+    title: TranslateContent("pharmacy"),
     image: "/img/advertising/pharmacy.jpg",
   },
   {
-    profileId: "615316be9ab6da6a1c805681",
-    title: "marketing",
+    profileId: "615ed6515ba595815415ff90",
+    title: TranslateContent("marketing"),
     image: "/img/advertising/exemple.jpg",
   },
   {
-    profileId: "615316be9ab6da6a1c805681",
-    title: "construction",
+    profileId: "615ed6515ba595815415ff90",
+    title: TranslateContent("construction"),
     image: "/img/advertising/exemple.jpg",
   },
   {
-    profileId: "615316be9ab6da6a1c805681",
-    title: "real estate",
+    profileId: "615ed6515ba595815415ff90",
+    title: TranslateContent("real estate"),
     image: "/img/advertising/exemple.jpg",
   },
   {
-    profileId: "615316be9ab6da6a1c805681",
-    title: "restaurant",
+    profileId: "615ed6515ba595815415ff90",
+    title: TranslateContent("restaurant"),
     image: "/img/advertising/exemple.jpg",
   },
   {
-    profileId: "615316be9ab6da6a1c805681",
-    title: "markting",
+    profileId: "615ed6515ba595815415ff90",
+    title: TranslateContent("marketing"),
     image: "/img/advertising/exemple.jpg",
   },
   {
-    profileId: "615316be9ab6da6a1c805681",
-    title: "construction",
+    profileId: "615ed6515ba595815415ff90",
+    title: TranslateContent("construction"),
     image: "/img/advertising/exemple.jpg",
   },
 ];
 
 export const BusinessList = [
-  { title: "restaurant", value: "restaurant", icon: <IoRestaurantSharp /> },
-  { title: "real estate", value: "real estate", icon: <BiBuildingHouse /> },
-  { title: "construction", value: "construction", icon: <IoIosConstruct /> },
-  { title: "marketing", value: "marketing", icon: <AiOutlineShop /> },
-  { title: "vehicule", value: "vehicule", icon: <AiOutlineShop /> },
-  { title: "pharmacy", value: "pharmacy", icon: <AiOutlineShop /> },
-  { title: "exemple", value: "exemple", icon: <AiOutlineShop /> },
+  {
+    title: TranslateContent("restaurant"),
+    value: "restaurant",
+    icon: <IoRestaurantSharp />,
+  },
+  {
+    title: TranslateContent("real estate"),
+    value: "real estate",
+    icon: <BiBuildingHouse />,
+  },
+  {
+    title: TranslateContent("construction"),
+    value: "construction",
+    icon: <IoIosConstruct />,
+  },
+  {
+    title: TranslateContent("marketing"),
+    value: "marketing",
+    icon: <AiOutlineShop />,
+  },
+  {
+    title: TranslateContent("vehicule"),
+    value: "vehicule",
+    icon: <AiOutlineShop />,
+  },
+  {
+    title: TranslateContent("pharmacy"),
+    value: "pharmacy",
+    icon: <AiOutlineShop />,
+  },
+  {
+    title: TranslateContent("photography"),
+    value: "photography",
+    icon: <MdCamera />,
+  },
 ];
 
 export const listPartnerLogo = [
@@ -121,51 +156,58 @@ export const listPartnerLogo = [
 
 export const VideoData = [
   {
-    profileId: "615316be9ab6da6a1c",
+    profileId: "615ed6515ba595815415ff90",
     companyName: "au 79 code",
-    videoUrl: "https://res.cloudinary.com/tarositeweb/video/upload/v1633354963/video_exemple_kqynvl.mp4",
+    videoUrl:
+      "https://res.cloudinary.com/tarositeweb/video/upload/v1633354963/video_exemple_kqynvl.mp4",
     description:
       "Quisque velit nisi, pretium ut lacinia inQuisque velit nisi, pretium ut lacinia in Quisque velit nisi, pretium ut lacinia in ",
   },
   {
-    profileId: "615316be9ab6da6a1c",
+    profileId: "615ed6515ba595815415ff90",
     companyName: "au 79 code",
-    videoUrl: "https://res.cloudinary.com/tarositeweb/video/upload/v1633354963/video_exemple_kqynvl.mp4",
+    videoUrl:
+      "https://res.cloudinary.com/tarositeweb/video/upload/v1633354963/video_exemple_kqynvl.mp4",
     description:
       "Quisque velit nisi, pretium ut lacinia inQuisque velit nisi, pretium ut lacinia in Quisque velit nisi, pretium ut lacinia in ",
   },
   {
-    profileId: "615316be9ab6da6a1c",
+    profileId: "615ed6515ba595815415ff90",
     companyName: "au 79 code",
-    videoUrl: "https://res.cloudinary.com/tarositeweb/video/upload/v1633354963/video_exemple_kqynvl.mp4",
+    videoUrl:
+      "https://res.cloudinary.com/tarositeweb/video/upload/v1633354963/video_exemple_kqynvl.mp4",
     description:
       "Quisque velit nisi, pretium ut lacinia inQuisque velit nisi, pretium ut lacinia in Quisque velit nisi, pretium ut lacinia in ",
   },
   {
-    profileId: "615316be9ab6da6a1c",
+    profileId: "615ed6515ba595815415ff90",
     companyName: "au 79 code",
-    videoUrl: "https://res.cloudinary.com/tarositeweb/video/upload/v1633354963/video_exemple_kqynvl.mp4",
+    videoUrl:
+      "https://res.cloudinary.com/tarositeweb/video/upload/v1633354963/video_exemple_kqynvl.mp4",
     description:
       "Quisque velit nisi, pretium ut lacinia inQuisque velit nisi, pretium ut lacinia in Quisque velit nisi, pretium ut lacinia in ",
   },
   {
-    profileId: "615316be9ab6da6a1c",
+    profileId: "615ed6515ba595815415ff90",
     companyName: "au 79 code",
-    videoUrl: "https://res.cloudinary.com/tarositeweb/video/upload/v1633354963/video_exemple_kqynvl.mp4",
+    videoUrl:
+      "https://res.cloudinary.com/tarositeweb/video/upload/v1633354963/video_exemple_kqynvl.mp4",
     description:
       "Quisque velit nisi, pretium ut lacinia inQuisque velit nisi, pretium ut lacinia in Quisque velit nisi, pretium ut lacinia in ",
   },
   {
-    profileId: "615316be9ab6da6a1c",
+    profileId: "615ed6515ba595815415ff90",
     companyName: "au 79 code",
-    videoUrl: "https://res.cloudinary.com/tarositeweb/video/upload/v1633354963/video_exemple_kqynvl.mp4",
+    videoUrl:
+      "https://res.cloudinary.com/tarositeweb/video/upload/v1633354963/video_exemple_kqynvl.mp4",
     description:
       "Quisque velit nisi, pretium ut lacinia inQuisque velit nisi, pretium ut lacinia in Quisque velit nisi, pretium ut lacinia in ",
   },
   {
-    profileId: "615316be9ab6da6a1c",
+    profileId: "615ed6515ba595815415ff90",
     companyName: "au 79 code",
-    videoUrl: "https://res.cloudinary.com/tarositeweb/video/upload/v1633354963/video_exemple_kqynvl.mp4",
+    videoUrl:
+      "https://res.cloudinary.com/tarositeweb/video/upload/v1633354963/video_exemple_kqynvl.mp4",
     description:
       "Quisque velit nisi, pretium ut lacinia inQuisque velit nisi, pretium ut lacinia in Quisque velit nisi, pretium ut lacinia in ",
   },
