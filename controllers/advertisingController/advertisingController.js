@@ -139,6 +139,20 @@ const setUpdateAllowed = asyncHandler(async (req, res) => {
 })
 
 
+//  @router /api/advertising/profile/:id
+const deleteAdService = asyncHandler( async (req, res) => {
+  const service = await advertising.findById(req.params.id)
+
+  if (service) {
+    await service.remove();
+    res.status(200).json({msg: "Service deleted successfully"})
+  } else {
+    res.status(400)
+    throw new Error("Service not Fund")
+  }
+})
+
+
 module.exports = {
   addAdvertisingService,
   getAllAdService,
@@ -146,5 +160,6 @@ module.exports = {
   filterByTypeBusinessPublic,
   getAdProfile,
   registerPremiumService,
-  setUpdateAllowed
+  setUpdateAllowed,
+  deleteAdService
 };

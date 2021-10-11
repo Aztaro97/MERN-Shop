@@ -24,6 +24,7 @@
     "view_products":"View products",
     "company_info": "Company Information",
     "company_service": "Company Services",
+    "contact_details": "contact details",
     "my_products": "my products",
     "my_order": "my order",
     "add_more_products": "ADD MORE PRODUCTS",
@@ -41,6 +42,7 @@
     "password_placeholder": "PASSWORD",
     "retype_placeholder": "RETYPE PASSWORD",
     "company_name_placeholder": "COMPANY NAME",
+    "about_company_placeholder": "ABOUT COMPANY",
     "scope__placeholder": "SCOPE OF BUSINESS",
     "address__placeholder": "ADDRESS",
     "city__placeholder": "CITY",
@@ -49,6 +51,7 @@
     "full_name__placeholder": "FULL NAME",
     "select_country__placeholder": "SELECT COUNTRY",
     "select_region__placeholder": "SELECT REGION",
+    "select_typ_business_placeholder": "PLEASE SELECT YOUR TYPE OF BUSINESS ",
     "message__placeholder": "MESSAGE",
     "expiry_placeholder": "EXPIRY DATE",
     "phone_number_placeholder": "PHONE NUMBER",
@@ -138,8 +141,9 @@
     },
     
     "explore": "explore",
-    "submit": "submit"
+    "submit": "submit",
 
+    "contact_us": "Contact us"
 
   }
   

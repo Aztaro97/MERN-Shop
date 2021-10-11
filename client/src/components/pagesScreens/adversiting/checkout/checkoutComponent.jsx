@@ -8,8 +8,10 @@ import {
   PremiumSubscription,
 } from "../../../../flux/actions/advertisingAction/advertisingAction";
 import Button from "../../../ButtonComponeent";
+import LoaderComponent from "../../../loader";
 
 const CheckoutComponent = ({ totalPrice, cardData }) => {
+  const [isLoading, setIsLoading] = useState(false);
   const [stripeToken, setStripeToken] = useState(null);
 
   const stripe_api_key =
@@ -57,26 +59,46 @@ const CheckoutComponent = ({ totalPrice, cardData }) => {
         }
       } catch {}
     };
+    if (stripeToken) {
+      setIsLoading(true);
+    }
     stripeToken && makeRequest();
-  }, [stripeToken, totalPrice, history, dispatch, body]);
+  }, [
+    stripeToken,
+    totalPrice,
+    history,
+    dispatch,
+    body,
+    setIsLoading,
+    cardData,
+  ]);
 
   return (
-    <StripeCheckout
-      name="AU 97 CODE Advertising"
-      image="https://res.cloudinary.com/tarositeweb/image/upload/v1633424746/recipes/logo_png_wlukid.png"
-      billingAddress
-      // shippingAddress
-      description={`Your total is `}
-      currency="aed"
-      amount={totalPrice * 100}
-      token={onToken}
-      stripeKey={stripe_api_key}
-      zipCode={false}
-    >
-      <Button disabled={totalPrice === 0 ? true : false} className="ml-auto">
-        CHECKOUT NOW{" "}
-      </Button>
-    </StripeCheckout>
+    <>
+      {isLoading ? (
+        <LoaderComponent />
+      ) : (
+        <StripeCheckout
+          name="AU 97 CODE Advertising"
+          image="https://res.cloudinary.com/tarositeweb/image/upload/v1633424746/recipes/logo_png_wlukid.png"
+          billingAddress
+          // shippingAddress
+          description={`Your total is `}
+          currency="aed"
+          amount={totalPrice * 100}
+          token={onToken}
+          stripeKey={stripe_api_key}
+          zipCode={false}
+        >
+          <Button
+            disabled={totalPrice === 0 ? true : false}
+            className="ml-auto"
+          >
+            CHECKOUT NOW{" "}
+          </Button>
+        </StripeCheckout>
+      )}
+    </>
   );
 };
 

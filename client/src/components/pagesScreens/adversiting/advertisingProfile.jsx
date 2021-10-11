@@ -50,18 +50,19 @@ function AdvertisingProfileScreen() {
       ) : (
         <>
           <ThirsdBannerSlider />
-          <ContainerStyling className="container my-5">
-            <section className="introduction">
-              <h1 className="title">
-                {profile.companyName ? profile.companyName : null}
-              </h1>
-              <img src={profile.logoUrl} alt="" />
-            </section>
-            <section className="about">
-              <h1 className="title">{t("about_company")}</h1>
-              <p>{profile.about}</p>
-            </section>
-            {/* <section className="service">
+          {profile && (
+            <ContainerStyling className="container my-5">
+              <section className="introduction">
+                <h1 className="title">
+                  {profile.companyName ? profile.companyName : null}
+                </h1>
+                <img src={profile.logoUrl} alt="" />
+              </section>
+              <section className="about">
+                <h1 className="title">{t("about_company")}</h1>
+                <p>{profile.about}</p>
+              </section>
+              {/* <section className="service">
             <h1 className="title">company services</h1>
             <div className="grid">
               {profile.typeBusiness.map((data, index) => (
@@ -81,61 +82,62 @@ function AdvertisingProfileScreen() {
             </div>
           </section> */}
 
-            <section className="service_two">
-              <h1 className="title">{t("company_service")}</h1>
-              <div className="grid">
-                <div className="card">
-                  <Image
-                    src="/img/advertising/real_state.jpg"
-                    alt=""
-                    className="card-image"
-                  />
-                  <div className="card-body">
-                    <p className="text-center">real estate</p>
+              <section className="service_two">
+                <h1 className="title">{t("company_service")}</h1>
+                <div className="grid">
+                  <div className="card">
+                    <Image
+                      src="/img/advertising/real_state.jpg"
+                      alt=""
+                      className="card-image"
+                    />
+                    <div className="card-body">
+                      <p className="text-center">real estate</p>
+                    </div>
+                  </div>
+                  <div className="card">
+                    <Image
+                      src="/img/advertising/restaurant.jpg"
+                      alt=""
+                      className="card-image"
+                    />
+                    <div className="card-body">
+                      <p className="text-center">Restaurant</p>
+                    </div>
+                  </div>
+                  <div className="card">
+                    <Image
+                      src="/img/advertising/pharmacy.jpg"
+                      alt=""
+                      className="card-image"
+                    />
+                    <div className="card-body">
+                      <p className="text-center">pharmacy</p>
+                    </div>
+                  </div>
+                  <div className="card">
+                    <Image
+                      src="/img/advertising/real_state.jpg"
+                      alt=""
+                      className="card-image"
+                    />
+                    <div className="card-body">
+                      <p className="text-center">vehicle</p>
+                    </div>
                   </div>
                 </div>
-                <div className="card">
-                  <Image
-                    src="/img/advertising/restaurant.jpg"
-                    alt=""
-                    className="card-image"
-                  />
-                  <div className="card-body">
-                    <p className="text-center">Restaurant</p>
-                  </div>
-                </div>
-                <div className="card">
-                  <Image
-                    src="/img/advertising/pharmacy.jpg"
-                    alt=""
-                    className="card-image"
-                  />
-                  <div className="card-body">
-                    <p className="text-center">pharmacy</p>
-                  </div>
-                </div>
-                <div className="card">
-                  <Image
-                    src="/img/advertising/real_state.jpg"
-                    alt=""
-                    className="card-image"
-                  />
-                  <div className="card-body">
-                    <p className="text-center">vehicle</p>
-                  </div>
-                </div>
-              </div>
-            </section>
+              </section>
 
-            <section className="portfolio">
-              <h1 className="title">Ad videos</h1>
-              <PortfolioSlider className="slider_container" />
-            </section>
-            <section className="contact">
-              <h1 className="title">contact</h1>
-              <ContactForm profile={profile} />
-            </section>
-          </ContainerStyling>
+              <section className="portfolio">
+                <h1 className="title">Ad videos</h1>
+                <PortfolioSlider className="slider_container" />
+              </section>
+              <section className="contact">
+                <h1 className="title">contact</h1>
+                <ContactForm profile={profile} />
+              </section>
+            </ContainerStyling>
+          )}
         </>
       )}
     </MainContainer>

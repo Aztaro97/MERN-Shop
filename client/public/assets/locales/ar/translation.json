@@ -24,6 +24,7 @@
     "view_products":"مشاهدة المنتجات",
     "company_info": "معلومات الشركة",
     "company_service": "خدمات الشركة",
+    "contact_details": "بيانات المتصل",
     "my_products": "منتجاتي",
     "my_order": "طلبي",
     "add_more_products": "أضف المزيد من المنتجات",
@@ -41,6 +42,7 @@
     "password_placeholder": "كلمه السر",
     "retype_placeholder": "اعد ادخال كلمة المرور",
     "company_name_placeholder": "اسم الشركة",
+    "about_company_placeholder": "عن الشركة",
     "scope__placeholder": "مجال العمل",
     "address__placeholder": "عنوان",
     "city__placeholder": "مدينة",
@@ -49,6 +51,7 @@
     "full_name__placeholder": "الاسم بالكامل",
     "select_country__placeholder": "حدد الدولة",
     "select_region__placeholder": "اختر المنطقة",
+    "select_typ_business_placeholder": "يرجى تحديد نوع عملك",
     "message__placeholder": "رسالة",
     "expiry_placeholder": "تاريخ انتهاء الصلاحية",
     "phone_number_placeholder": "رقم الهاتف",
@@ -134,7 +137,9 @@
 
 
     "explore": "يكتشف",
-    "submit": "إرسال"
+    "submit": "إرسال",
+
+    "contact_us": "اتصل بنا"
 
     
   }

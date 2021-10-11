@@ -7,6 +7,7 @@ const {
   getAdProfile,
   registerPremiumService,
   setUpdateAllowed,
+  deleteAdService
 } = require("../../controllers/advertisingController/advertisingController");
 const {
   sendingMessage,
@@ -23,7 +24,7 @@ router
   .put(setUpdateAllowed);
 router.route("/filter-type-business").post(protect, admin, filterByTypeBusiness);
 router.route("/filter-business").post(filterByTypeBusinessPublic);
-router.route("/profile/:id").post(getAdProfile);
+router.route("/profile/:id").post(getAdProfile).delete(protect, admin, deleteAdService)
 router
   .route("/message")
   .post(sendingMessage)

@@ -132,7 +132,7 @@ const SignUpForm = () => {
           />
         </Col>
 
-        <Col xs={{ span: 20 }} md={{ span: 23 }} offset={2}>
+        <Col xs={{ span: 24, offset: 0 }} md={{ span: 23, offset: 1 }}>
           {formik.errors.password ? (
             <Alert type="error" message={formik.errors.password} banner />
           ) : null}
@@ -151,7 +151,7 @@ const SignUpForm = () => {
               letterSpacing: "1px",
               textTransform: "capitalize",
             }}
-            className="ml-auto"
+            className="mt-2"
           >
             {t("signup")}
           </Button>
@@ -211,7 +211,7 @@ const DetailsComponent = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h1 className="title">company information</h1>
+      <h1 className="title">{t("company_info")}</h1>
       <Row gutter={[10, 10]}>
         <Col xs={{ span: 4 }} md={{ span: 1 }}>
           <IconStyling>
@@ -238,7 +238,7 @@ const DetailsComponent = () => {
             name=""
             rows="5"
             cols="4"
-            placeholder={t("about_company")}
+            placeholder={t("about_company_placeholder")}
             value={about}
             onChange={(e) => setAbout(e.target.value)}
           />
@@ -254,7 +254,7 @@ const DetailsComponent = () => {
             mode="multiple"
             allowClear
             style={{ width: "100%" }}
-            placeholder="Please select your type of busness"
+            placeholder={t("select_typ_business_placeholder")}
             onChange={(value) => setTypeBusiness(value)}
           >
             {BusinessList.map((item, index) => (
@@ -266,7 +266,7 @@ const DetailsComponent = () => {
         </Col>
       </Row>
 
-      <h1 className="title">contact</h1>
+      <h1 className="title">{t("contact_details")}</h1>
       <Row gutter={[10, 10]}>
         <Col xs={{ span: 4 }} md={{ span: 1 }}>
           <IconStyling>
@@ -276,7 +276,7 @@ const DetailsComponent = () => {
         <Col xs={{ span: 20 }} md={{ span: 23 }}>
           <InputStyling
             required
-            type="tel"
+            type="text"
             name="name"
             placeholder={t("full_name__placeholder")}
             value={fullName}
@@ -647,10 +647,11 @@ const Container = styled.div`
   /* bottom: 5rem; */
 
   & .title {
-    font-size: 1.5rem;
-    text-transform: capitalize;
+    font-size: 1.2rem;
+    text-transform: uppercase;
     margin-bottom: 14px;
     margin-top: 1rem;
+    font-weight: 700;
   }
   & h3,
   h4 {
@@ -688,6 +689,9 @@ const TextAreaStyling = styled.textarea`
 `;
 
 const SelectStyling = styled(Select)`
+  & > * {
+    text-transform: capitalize !important;
+  }
   &.ant-select-selection {
     background-color: red;
   }

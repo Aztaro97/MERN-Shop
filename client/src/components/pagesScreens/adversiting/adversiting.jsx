@@ -173,6 +173,8 @@ const IntroVideoSection = ({ lang }) => {
     arrows: false,
   };
 
+  const {t} = useTranslation();
+
   return (
     <IntroVideoStyling>
       <h1 className="title">lorem ipsum</h1>
@@ -225,7 +227,7 @@ const IntroVideoSection = ({ lang }) => {
                     to={`/advertising/profile/${data.profileId}`}
                     className="link"
                   >
-                    contact us
+                    {t("contact_us")}
                   </Link>
                 </div>
               </Col>

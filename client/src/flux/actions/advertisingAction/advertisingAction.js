@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import axios from "axios";
 import { useHistory } from "react-router";
 import {
@@ -8,6 +8,9 @@ import {
   AD_PROFILE_FAIL,
   AD_PROFILE_REQUEST,
   AD_PROFILE_SUCCESS,
+  DELETE_AD_PROFILE_FAIL,
+  DELETE_AD_PROFILE_REQUEST,
+  DELETE_AD_PROFILE_SUCCESS,
   FETCH_MESSAGE_FAIL,
   FETCH_MESSAGE_REQUEST,
   FETCH_MESSAGE_SUCCESS,
@@ -20,7 +23,6 @@ import {
   SERVICE_UPDATE_REQUEST,
   SERVICE_UPDATE_SUCCESS,
 } from "../../constants/advertising";
-
 
 export const clearCardAd = () => (dispatch) => {
   dispatch({
@@ -38,7 +40,6 @@ export const saveServiceInfo = (data) => (dispatch) => {
 
 export const freeSubscription = (body) => async (dispatch, getState) => {
   try {
-    
     dispatch({
       type: "SERVICE_REGISTER_SUCCESS",
       payload: body,
@@ -109,46 +110,50 @@ export const getAllAdService = () => async (dispatch, getState) => {
       payload: res.data,
     });
   } catch (error) {
-    console.log(error);
+    console.error(error);
     dispatch({
       type: AD_LIST_FAIL,
-      payload: error,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
     });
   }
 };
 
-export const filterByTypeBusiness = (typeBusiness) => async (dispatch, getState) => {
-  try {
-    dispatch({
-      type: FILTER_BUSINESS_REQUEST,
-    });
+export const filterByTypeBusiness =
+  (typeBusiness) => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: FILTER_BUSINESS_REQUEST,
+      });
 
-    const {
-      userLogin: { userInfo },
-    } = getState();
-    const config = {
-      headers: {
-        accept: "application/json",
-        Authorization: `Bearer ${userInfo.token}`,
-      },
-    };
-    const res = await axios.post(
-      "/api/advertising/filter-type-business",
-      { typeBusiness },
-      config
-    );
+      const {
+        userLogin: { userInfo },
+      } = getState();
+      const config = {
+        headers: {
+          accept: "application/json",
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      };
+      const res = await axios.post(
+        "/api/advertising/filter-type-business",
+        { typeBusiness },
+        config
+      );
 
-    dispatch({
-      type: FILTER_BUSINESS_SUCCESS,
-      payload: res.data,
-    });
-  } catch (error) {
-    dispatch({
-      type: FILTER_BUSINESS_FAIL,
-      payload: error,
-    });
-  }
-};
+      dispatch({
+        type: FILTER_BUSINESS_SUCCESS,
+        payload: res.data,
+      });
+    } catch (error) {
+      dispatch({
+        type: FILTER_BUSINESS_FAIL,
+        payload: error,
+      });
+    }
+  };
 
 export const filterBusiness = (typeBusiness) => async (dispatch) => {
   try {
@@ -305,6 +310,30 @@ export const updateAllowService = (id, allow) => async (dispatch, getState) => {
     console.log(error.message);
     dispatch({
       type: "SERVICE_UPDATE_FAIL",
+    });
+  }
+};
+
+export const deleteAdService = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: DELETE_AD_PROFILE_REQUEST,
+    });
+    const {
+      userLogin: { userInfo },
+    } = getState();
+    const config = {
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+    const res = await axios.delete(`/api/advertising/profile/${id}`, config);
+    if (res) window.location.reload();
+  } catch (error) {
+    console.error(error);
+    dispatch({
+      type: DELETE_AD_PROFILE_FAIL,
     });
   }
 };

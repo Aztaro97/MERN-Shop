@@ -6,11 +6,15 @@ import {
   getAllAdService,
   filterByTypeBusiness,
   updateAllowService,
+  deleteAdService,
 } from "../../../../flux/actions/advertisingAction/advertisingAction";
 import LoaderComponent from "../../../loader";
 import { useHistory } from "react-router";
-import { Select } from "antd";
+import { Popconfirm, Select } from "antd";
 import { BusinessList } from "../../../../utils/advertisingData";
+import { FaRegEdit } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { MdDelete } from "react-icons/md";
 const { Option } = Select;
 
 const AllCompanyService = () => {
@@ -40,6 +44,10 @@ const AllCompanyService = () => {
     // console.log(checked)
     dispatch(updateAllowService(id, checked));
     dispatch(getAllAdService());
+  };
+
+  const handleDelete = (id) => {
+    ;
   };
 
   return (
@@ -74,6 +82,7 @@ const AllCompanyService = () => {
                 <th>company</th>
                 <th>Type ad plan</th>
                 <th>Allowed</th>
+                <th>Control</th>
               </tr>
             </thead>
             <tbody>
@@ -121,6 +130,23 @@ const AllCompanyService = () => {
                       onChange={(check) => handleToggleChange(ad._id, check)}
                       checked={ad.allow}
                     />
+                  </td>
+                  <td>
+                    <div className="control_container">
+                      <Link to="/advertising/edit/profile">
+                        <FaRegEdit className="icon edit" />
+                      </Link>
+                      <Popconfirm
+                        title="Are you sure to delete ?"
+                        okText="Yes"
+                        onConfirm={() => dispatch(deleteAdService(ad._id))}
+                        cancelText="No"
+                      >
+                        <Link>
+                          <MdDelete className="icon delete" />
+                        </Link>
+                      </Popconfirm>
+                    </div>
                   </td>
                 </tr>
               ))}
@@ -184,6 +210,29 @@ const Table = styled.table`
         }
         & .about {
           text-transform: initial;
+        }
+        & .control_container {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin: 0 5px;
+
+          & .icon {
+            font-size: 1.2rem;
+            transition: all 0.3s ease-in-out;
+            &.delete {
+              color: #e74c3c;
+              &:hover {
+                transform: scale(1.2);
+              }
+            }
+            &.edit {
+              color: #111;
+              &:hover {
+                transform: scale(1.2);
+              }
+            }
+          }
         }
       }
     }

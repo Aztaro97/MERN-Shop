@@ -97,7 +97,7 @@ const DataSection = ({ listAdService, error, type }) => {
                   {type}"
                 </h5>
                 <Link to="/" className="link">
-                  Go home
+                  Back home
                 </Link>
               </div>
             )}
@@ -162,7 +162,7 @@ const DataStyling = styled.section`
   }
 
   & .empty_container {
-    margin: 20px 0;
+    margin: 20px 0 25px 0;
     & h5 {
       & span {
         font-size: 1.4rem;
