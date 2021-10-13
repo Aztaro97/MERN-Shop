@@ -12,9 +12,10 @@ const TranslateContent = (contents) => {
 
 export const categoryAdversiting = [
   {
-    profileId: "615ed6515ba595815415ff90",
+    profileId: "6166daa4e956c26f18bf6bce",
     title: TranslateContent("real estate"),
-    image: "/img/advertising/real_state.jpg",
+    image:
+      "https://res.cloudinary.com/tarositeweb/image/upload/v1634130730/tmp-9-1634130722917_bxjxtm.jpg",
   },
   {
     profileId: "615ed6515ba595815415ff90",
@@ -43,17 +44,7 @@ export const categoryAdversiting = [
   },
   {
     profileId: "615ed6515ba595815415ff90",
-    title: TranslateContent("real estate"),
-    image: "/img/advertising/exemple.jpg",
-  },
-  {
-    profileId: "615ed6515ba595815415ff90",
-    title: TranslateContent("restaurant"),
-    image: "/img/advertising/exemple.jpg",
-  },
-  {
-    profileId: "615ed6515ba595815415ff90",
-    title: TranslateContent("marketing"),
+    title: TranslateContent("construction"),
     image: "/img/advertising/exemple.jpg",
   },
   {
@@ -159,7 +150,7 @@ export const VideoData = [
     profileId: "615ed6515ba595815415ff90",
     companyName: "au 79 code",
     videoUrl:
-      "https://res.cloudinary.com/tarositeweb/video/upload/v1633354963/video_exemple_kqynvl.mp4",
+      "https://res.cloudinary.com/tarositeweb/video/upload/v1634022188/au79code/AZ_1_gro3g4.mp4",
     description:
       "Quisque velit nisi, pretium ut lacinia inQuisque velit nisi, pretium ut lacinia in Quisque velit nisi, pretium ut lacinia in ",
   },
@@ -167,7 +158,7 @@ export const VideoData = [
     profileId: "615ed6515ba595815415ff90",
     companyName: "au 79 code",
     videoUrl:
-      "https://res.cloudinary.com/tarositeweb/video/upload/v1633354963/video_exemple_kqynvl.mp4",
+      "https://res.cloudinary.com/tarositeweb/video/upload/v1634022182/au79code/AZ_3_ignyyi.mp4",
     description:
       "Quisque velit nisi, pretium ut lacinia inQuisque velit nisi, pretium ut lacinia in Quisque velit nisi, pretium ut lacinia in ",
   },
@@ -175,39 +166,7 @@ export const VideoData = [
     profileId: "615ed6515ba595815415ff90",
     companyName: "au 79 code",
     videoUrl:
-      "https://res.cloudinary.com/tarositeweb/video/upload/v1633354963/video_exemple_kqynvl.mp4",
-    description:
-      "Quisque velit nisi, pretium ut lacinia inQuisque velit nisi, pretium ut lacinia in Quisque velit nisi, pretium ut lacinia in ",
-  },
-  {
-    profileId: "615ed6515ba595815415ff90",
-    companyName: "au 79 code",
-    videoUrl:
-      "https://res.cloudinary.com/tarositeweb/video/upload/v1633354963/video_exemple_kqynvl.mp4",
-    description:
-      "Quisque velit nisi, pretium ut lacinia inQuisque velit nisi, pretium ut lacinia in Quisque velit nisi, pretium ut lacinia in ",
-  },
-  {
-    profileId: "615ed6515ba595815415ff90",
-    companyName: "au 79 code",
-    videoUrl:
-      "https://res.cloudinary.com/tarositeweb/video/upload/v1633354963/video_exemple_kqynvl.mp4",
-    description:
-      "Quisque velit nisi, pretium ut lacinia inQuisque velit nisi, pretium ut lacinia in Quisque velit nisi, pretium ut lacinia in ",
-  },
-  {
-    profileId: "615ed6515ba595815415ff90",
-    companyName: "au 79 code",
-    videoUrl:
-      "https://res.cloudinary.com/tarositeweb/video/upload/v1633354963/video_exemple_kqynvl.mp4",
-    description:
-      "Quisque velit nisi, pretium ut lacinia inQuisque velit nisi, pretium ut lacinia in Quisque velit nisi, pretium ut lacinia in ",
-  },
-  {
-    profileId: "615ed6515ba595815415ff90",
-    companyName: "au 79 code",
-    videoUrl:
-      "https://res.cloudinary.com/tarositeweb/video/upload/v1633354963/video_exemple_kqynvl.mp4",
+      "https://res.cloudinary.com/tarositeweb/video/upload/v1634022150/au79code/AZ_2_l0qaqv.mp4",
     description:
       "Quisque velit nisi, pretium ut lacinia inQuisque velit nisi, pretium ut lacinia in Quisque velit nisi, pretium ut lacinia in ",
   },

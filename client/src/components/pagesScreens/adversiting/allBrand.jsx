@@ -76,7 +76,7 @@ const DataSection = ({ listAdService, error, type }) => {
                 {listAdService.map((data) => (
                   <Col lg={{ span: 6 }} xs={{ span: 24 }} sm={{span: 12 }} md={{ span: 8 }} >
                     <div className="data_item" key={data._id}>
-                      <img src="/img/advertising/bg-images.jpeg" alt="" />
+                      <img src={data.serviceUrl[0].url} alt="" />
                       <div className="content">
                         <h5>{data.companyName}</h5>
                         <hr />

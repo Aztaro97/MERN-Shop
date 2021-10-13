@@ -13,6 +13,7 @@ const productRoutes = require("./routes/productRoutes.js");
 const userRoutes = require("./routes/userRoutes.js");
 const orderRoutes = require("./routes/orderRoutes.js");
 const uploadRoutes = require("./routes/upload");
+const AdverUploadingRoutes = require("./routes/advertisingRoute/uploadFiles");
 const StripeRouter = require("./routes/stripe");
 const advertisingRoutes = require("./routes/advertisingRoute/advertisingRoute");
 
@@ -42,15 +43,12 @@ app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/orders", orderRoutes);
 app.use('/api/upload', uploadRoutes);
+app.use('/upload-images', AdverUploadingRoutes);
 app.use("/checkout", StripeRouter)
 app.use("/api/advertising", advertisingRoutes )
 app.use("/api/contact-us", contactRouter )
 
 // app.use('/api/upload', uploadRoutes)
-
-app.get("/api/config/paypal", (req, res) =>
-  res.send(process.env.PAYPAL_CLIENT_ID)
-);
 
 app.use(express.static(__dirname + "/public"));
 // const __dirname = path.resolve()

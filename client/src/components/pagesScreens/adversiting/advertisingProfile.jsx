@@ -85,17 +85,21 @@ function AdvertisingProfileScreen() {
               <section className="service_two">
                 <h1 className="title">{t("company_service")}</h1>
                 <div className="grid">
-                  <div className="card">
+                  {profile.serviceUrl.map(data => (
+                    <div className="card">
                     <Image
-                      src="/img/advertising/real_state.jpg"
+                      src={data.url}
                       alt=""
                       className="card-image"
                     />
-                    <div className="card-body">
+                    {/* <div className="card-body">
                       <p className="text-center">real estate</p>
-                    </div>
+                    </div> */}
                   </div>
-                  <div className="card">
+
+                  ))}
+                  
+                  {/* <div className="card">
                     <Image
                       src="/img/advertising/restaurant.jpg"
                       alt=""
@@ -124,7 +128,7 @@ function AdvertisingProfileScreen() {
                     <div className="card-body">
                       <p className="text-center">vehicle</p>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </section>
 

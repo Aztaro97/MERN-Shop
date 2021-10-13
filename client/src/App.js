@@ -70,6 +70,7 @@ import ProductionComponent from "./components/pagesScreens/productionScreen/prod
 import AboutComponent from "./components/pagesScreens/AboutScreen/aboutScreen";
 
 import AllCompanyServiceComponent from "./components/pagesScreens/admin/adminAdvertising/allCompany";
+import EditServiceComponent from "./components/pagesScreens/admin/adminAdvertising/editService";
 
 import { initGA, PageView } from "./components/Tracking/tracking";
 import NewPasswordScreen from "./components/pagesScreens/newPasswordScreen";
@@ -192,6 +193,11 @@ function App() {
         <Route
           path="/admin/advertising"
           component={AllCompanyServiceComponent}
+          exact
+        />
+        <Route
+          path="/admin/advertising/edit/:id"
+          component={EditServiceComponent}
           exact
         />
         <Route path="/admin/message" component={ListAdMessageComponent} exact />

@@ -11,7 +11,7 @@ export default function DropZoneComponent({ name, style, price, accept }) {
     useDropzone({
       accept: accept,
       multiple: false,
-      maxFiles:1,
+      maxFiles: 1,
       onDrop: (acceptedFiles) => {
         setFiles(
           acceptedFiles.map((file) =>
@@ -24,11 +24,11 @@ export default function DropZoneComponent({ name, style, price, accept }) {
       //   maxSize: 130979,
     });
 
-//   const acceptedFileItems = acceptedFiles.map((file) => (
-//     <span key={file.path}>
-//       {file.path} - {file.size} bytes
-//     </span>
-//   ));
+  //   const acceptedFileItems = acceptedFiles.map((file) => (
+  //     <span key={file.path}>
+  //       {file.path} - {file.size} bytes
+  //     </span>
+  //   ));
 
   const fileRejectionItems = fileRejections.map(({ file, errors }) => (
     <li key={file.path}>
@@ -40,7 +40,6 @@ export default function DropZoneComponent({ name, style, price, accept }) {
       </ul>
     </li>
   ));
-
 
   const imageUrl = files.map((file) => file.preview);
 
@@ -75,9 +74,9 @@ export default function DropZoneComponent({ name, style, price, accept }) {
         </>
       )}
       <em>(Only *.jpeg and *.png images will be accepted)</em>
-      <div className="price">
+      {/* <div className="price">
         <p>price: {price} AED</p>
-      </div>
+      </div> */}
     </DropZone>
   );
 }
@@ -98,7 +97,7 @@ const DropZone = styled.div`
       rgba(0, 0, 0, 0.4920343137254902) 100%,
       rgba(0, 0, 0, 0.37298669467787116) 100%
     ), url(${imageUrl})`
-      : "#fff"};
+      : "#ececec"};
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

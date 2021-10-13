@@ -251,7 +251,7 @@ const DetailsComponent = () => {
         <Col xs={{ span: 20 }} md={{ span: 23 }}>
           <SelectStyling
             required
-            mode="multiple"
+            // mode="multiple"
             allowClear
             style={{ width: "100%" }}
             placeholder={t("select_typ_business_placeholder")}

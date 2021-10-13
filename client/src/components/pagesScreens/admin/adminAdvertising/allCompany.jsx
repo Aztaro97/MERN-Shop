@@ -133,7 +133,7 @@ const AllCompanyService = () => {
                   </td>
                   <td>
                     <div className="control_container">
-                      <Link to="/advertising/edit/profile">
+                      <Link to={`/admin/advertising/edit/${ad._id}`}>
                         <FaRegEdit className="icon edit" />
                       </Link>
                       <Popconfirm
