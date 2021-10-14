@@ -8,7 +8,8 @@ const AdvertisingServiceSchema = mongoose.Schema(
     },
     allow: { type: Boolean, required: true, default: false },
     companyName: { type: String, required: true },
-    about: { type: String, required: true },
+    about: { type: String, required: false },
+    about_ar: { type: String, required: false },
     typeBusiness: { type: Array, required: true },
     fullName: { type: String, required: true },
     telephone: { type: String, required: true },
@@ -26,7 +27,7 @@ const AdvertisingServiceSchema = mongoose.Schema(
         "https://www.launchgrowjoy.com/wp-content/uploads/logo-placeholder.jpg",
     },
     serviceUrl: { type: Array, required: false },
-    videoUrl: { type: String, required: false },
+    videoUrl: { type: Array, required: false },
 
     productsOrdered: { type: Array, required: false },
     isPaid: { type: Boolean, required: false, default: false },

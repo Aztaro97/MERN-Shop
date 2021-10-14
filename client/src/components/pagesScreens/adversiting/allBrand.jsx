@@ -62,6 +62,7 @@ function AllBrandScreen() {
 const DataSection = ({ listAdService, error, type }) => {
   const { t } = useTranslation();
   const history = useHistory();
+  const defaultImage = "https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png";
   return (
     <DataStyling>
       <h3 className="title">all {type}</h3>
@@ -74,16 +75,25 @@ const DataSection = ({ listAdService, error, type }) => {
             {listAdService.length ? (
               <Row gutter={[10, 10]}>
                 {listAdService.map((data) => (
-                  <Col lg={{ span: 6 }} xs={{ span: 24 }} sm={{span: 12 }} md={{ span: 8 }} >
+                  <Col
+                    lg={{ span: 6 }}
+                    xs={{ span: 24 }}
+                    sm={{ span: 12 }}
+                    md={{ span: 8 }}
+                  >
                     <div className="data_item" key={data._id}>
-                      <img src={data.serviceUrl[0].url} alt="" />
+                      {data.serviceUrl.length > 0 ? (
+                        <img src={data.serviceUrl[0].url} alt="" />
+                      ) : (
+                        <img src={defaultImage} alt="" />
+                      )}
                       <div className="content">
                         <h5>{data.companyName}</h5>
                         <hr />
                         <p>Curabitur arcu erat, accumsan id imperdiet et</p>
-                        <a href={`/advertising/profile/${data._id}`} alt="">
+                        <Link to={`/advertising/profile/${data._id}`} alt="">
                           {t("explore")}
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </Col>
@@ -138,7 +148,7 @@ const DataStyling = styled.section`
         text-transform: capitalize;
         letter-spacing: 0px;
         font-weight: 700;
-        font-size: .9rem;
+        font-size: 0.9rem;
       }
       & hr {
         width: 80px;

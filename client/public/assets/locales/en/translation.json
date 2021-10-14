@@ -1,6 +1,8 @@
 {
     "app_title": "Title",
     "language": "Language",
+    "arabic": "ARABIC",
+    "english": "ENGLISH",
     "name": "English",
     "welcome_message": "Welcome to au79code",
     "product_list": {

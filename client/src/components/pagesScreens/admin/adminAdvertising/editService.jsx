@@ -1,12 +1,17 @@
-import { Col, Row } from "antd";
+import { Col, Image, Row } from "antd";
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import Button from "../../../ButtonComponeent";
+import { useDispatch, useSelector } from "react-redux";
+// import Button from "../../../ButtonComponeent";
+import { Button } from "antd";
 import MainContainer from "../../../MainContainer";
 import { useDropzone } from "react-dropzone";
 import styled from "styled-components";
+import { IoMdDoneAll } from "react-icons/io";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import Loader from "../../../loader";
+import { getAdvertisingProfileByID } from "../../../../flux/actions/advertisingAction/advertisingAction";
+import { AiOutlineCloudUpload } from "react-icons/ai";
 
 function EditServiceScreen() {
   const params = useParams();
@@ -30,23 +35,54 @@ function EditServiceScreen() {
     );
     console.log(res);
   };
+
+  const { profile, loading, error } = useSelector((state) => state.advertising);
+
+  const dispatch = useDispatch();
+  // const history = useHistory();
+
+  useEffect(() => {
+    if (id) dispatch(getAdvertisingProfileByID(id));
+  }, [id, dispatch]);
+
   return (
     <MainContainer>
-      <LogoContainer id={id} userInfo={userInfo} />
-      <ServiceesContainer id={id} userInfo={userInfo} />
-      <VideoContainer id={id} userInfo={userInfo} />
-      <Row justify="space-between" className="mt-3">
-        <Col>
-          <BackLinkStyling to="/admin/advertising">cancel</BackLinkStyling>
-        </Col>
-        <Col>{/* <Button>save</Button> */}</Col>
-      </Row>
+      {loading ? (
+        <Loader />
+      ) : error ? (
+        <h3>error</h3>
+      ) : (
+        <>
+          <LogoContainer
+            id={id}
+            userInfo={userInfo}
+            profile={profile}
+            loading={loading}
+          />
+          <ServiceesContainer
+            id={id}
+            userInfo={userInfo}
+            loading={loading}
+            profile={profile}
+          />
+          <VideoContainer id={id} userInfo={userInfo} />
+          <Row justify="space-between" className="mt-3">
+            <Col>
+              <BackLinkStyling to="/admin/advertising">cancel</BackLinkStyling>
+            </Col>
+            <Col>{/* <Button>save</Button> */}</Col>
+          </Row>
+        </>
+      )}
     </MainContainer>
   );
 }
 
-const LogoContainer = ({ id, userInfo }) => {
+const LogoContainer = ({ id, userInfo, loading, profile }) => {
   const [logoFile, setLogoFile] = useState("");
+
+  const dispatch = useDispatch();
+
   const handleSubmit = async (e) => {
     const formdata = new FormData();
     formdata.append("logoFile", logoFile);
@@ -61,38 +97,67 @@ const LogoContainer = ({ id, userInfo }) => {
     };
     const res = await axios.post(`/upload-images/logo/${id}`, formdata, config);
     console.log(res);
-    if (res.data.msg) alert(res.data.msg);
+    if (res.data.msg) {
+      dispatch(getAdvertisingProfileByID(id));
+    }
   };
+
   return (
-    <form onSubmit={handleSubmit}>
-      {" "}
-      <h5 className="title mt-5">Add Logo</h5>
-      <Row gutter={[10, 10]} justify="space-between">
-        <Col span={18}>
-          <InputStyling
-            type="file"
-            name="logoFile"
-            onChange={(e) => setLogoFile(e.target.files[0])}
-            accept="image/png, image/jpg, image/jpeg"
-          />
-        </Col>
-        <Col>
-          {" "}
-          <Button>update</Button>
-        </Col>
-      </Row>
-    </form>
+    <>
+      {loading ? (
+        <Loader />
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <TitleStyling>Add Logo</TitleStyling>
+          <Row gutter={[10, 10]} justify="space-between">
+            <Col span={18}>
+              <InputStyling
+                type="file"
+                name="logoFile"
+                onChange={(e) => setLogoFile(e.target.files[0])}
+                accept="image/png, image/jpg, image/jpeg"
+              />
+            </Col>
+            <Col>
+              {" "}
+              <ButtonStyling
+                icon={<AiOutlineCloudUpload className="icon" />}
+                htmlType="submit"
+              >
+                upload
+              </ButtonStyling>
+            </Col>
+          </Row>
+          <Row className="mt-3">
+            <Col>
+              {profile.logoUrl !== undefined && (
+                <Image
+                  width={100}
+                  height={100}
+                  src={profile.logoUrl}
+                  alt=""
+                  preview={{ mask: <span></span> }}
+                />
+              )}
+            </Col>
+          </Row>
+        </form>
+      )}
+    </>
   );
 };
 
-const ServiceesContainer = ({ id, userInfo }) => {
+const ServiceesContainer = ({ id, userInfo, loading, profile }) => {
   const [serviceFile, setServiceFile] = useState([]);
+
+  const dispatch = useDispatch();
+
   const handleSubmit = async (e) => {
     const formdata = new FormData();
     // formdata.append("serviceFile", serviceFile);
 
     const files = e.target.serviceFile.files;
-    if (files.length != 0) {
+    if (files.length !== 0) {
       for (const single_file of files) {
         formdata.append("serviceFile", single_file);
       }
@@ -113,28 +178,54 @@ const ServiceesContainer = ({ id, userInfo }) => {
       config
     );
     console.log(res);
-    if (res.data.msg) alert(res.data.msg);
+    if (res.data.msg) dispatch(getAdvertisingProfileByID(id));
   };
+
   return (
-    <form onSubmit={handleSubmit}>
-      {" "}
-      <h5 className="title mt-5">Add Service Pictures</h5>
-      <Row gutter={[10, 10]} justify="space-between">
-        <Col span={18}>
-          <InputStyling
-            multiple
-            type="file"
-            name="serviceFile"
-            // onChange={(e) => setServiceFile(e.target.files)}
-            accept="image/png, image/jpg, image/jpeg"
-          />
-        </Col>
-        <Col>
+    <>
+      {loading ? (
+        <Loader />
+      ) : (
+        <form onSubmit={handleSubmit}>
           {" "}
-          <Button>update</Button>
-        </Col>
-      </Row>
-    </form>
+          <TitleStyling>Add Pictures</TitleStyling>
+          <Row gutter={[10, 10]} justify="space-between" className="mb-3">
+            <Col span={18}>
+              <InputStyling
+                multiple
+                type="file"
+                name="serviceFile"
+                // onChange={(e) => setServiceFile(e.target.files)}
+                accept="image/png, image/jpg, image/jpeg"
+              />
+            </Col>
+            <Col>
+              {" "}
+              <ButtonStyling
+                icon={<AiOutlineCloudUpload className="icon" />}
+                htmlType="submit"
+              >
+                update
+              </ButtonStyling>
+            </Col>
+          </Row>
+          {profile.serviceUrl.length > 0 && (
+            <Row gutter={[10, 10]}>
+              {profile.serviceUrl.map((item) => (
+                <Col xs={{ span: 3 }}>
+                  <Image
+                    height={100}
+                    src={item.url}
+                    alt=""
+                    preview={{ mask: <span></span> }}
+                  />
+                </Col>
+              ))}
+            </Row>
+          )}
+        </form>
+      )}
+    </>
   );
 };
 
@@ -142,7 +233,7 @@ const VideoContainer = ({ id, userInfo }) => {
   const [videoFile, setVideoFile] = useState("");
 
   const handleSubmit = async (e) => {
-    console.log(videoFile)
+    console.log(videoFile);
     try {
       const formdata = new FormData();
       formdata.append("file", videoFile);
@@ -165,13 +256,13 @@ const VideoContainer = ({ id, userInfo }) => {
         console.log(res);
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
   return (
     <form onSubmit={handleSubmit}>
       {" "}
-      <h5 className="title mt-5">Add Video</h5>
+      <TitleStyling>Add Video</TitleStyling>
       <Row gutter={[10, 10]} justify="space-between">
         <Col span={18}>
           <InputStyling
@@ -183,7 +274,12 @@ const VideoContainer = ({ id, userInfo }) => {
         </Col>
         <Col>
           {" "}
-          <Button>update</Button>
+          <ButtonStyling
+            icon={<AiOutlineCloudUpload className="icon" />}
+            htmlType="submit"
+          >
+            update
+          </ButtonStyling>
         </Col>
       </Row>
     </form>
@@ -202,5 +298,20 @@ const BackLinkStyling = styled(Link)`
 `;
 
 const InputStyling = styled.input``;
+
+const ButtonStyling = styled(Button)`
+  background: var(--orange-color);
+  color: #fff;
+  & .icon {
+    font-size: 1.4rem;
+    margin-right: 5px;
+  }
+`;
+
+const TitleStyling = styled.h3`
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-top: 3rem;
+`;
 
 export default EditServiceScreen;

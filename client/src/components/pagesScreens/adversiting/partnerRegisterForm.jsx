@@ -166,6 +166,7 @@ const DetailsComponent = () => {
   // ////////    services fields
   const [companyName, setCompanyName] = useState("");
   const [about, setAbout] = useState("");
+  const [about_ar, setAbout_ar] = useState("");
   const [typeBusiness, setTypeBusiness] = useState([]);
   const [fullName, setFullName] = useState("");
   const [telephone, setTelephone] = useState("");
@@ -175,10 +176,13 @@ const DetailsComponent = () => {
   const [region, setRegion] = useState("");
 
   const dispatch = useDispatch();
+  const { i18n } = useTranslation();
+  const lang = i18n.language;
 
   const body = {
     companyName,
     about,
+    about_ar,
     typeBusiness,
     fullName,
     telephone,
@@ -234,15 +238,39 @@ const DetailsComponent = () => {
         </Col>
         <Col xs={{ span: 20 }} md={{ span: 23 }}>
           <TextAreaStyling
+            style={{ direction: lang === "ar" && "ltr"  }}
             required
             name=""
             rows="5"
             cols="4"
-            placeholder={t("about_company_placeholder")}
+            placeholder={`${t("about_company_placeholder")} ( ${t(
+              "english"
+            )} ) `}
             value={about}
             onChange={(e) => setAbout(e.target.value)}
           />
         </Col>
+
+        <Col xs={{ span: 4 }} md={{ span: 1 }}>
+          <IconStyling>
+            <FaPencilAlt className="icon" />
+          </IconStyling>
+        </Col>
+        <Col xs={{ span: 20 }} md={{ span: 23 }}>
+          <TextAreaStyling
+            style={{ direction: lang === "en" && "rtl" }}
+            required
+            name=""
+            rows="5"
+            cols="4"
+            placeholder={`${t("about_company_placeholder")}  ( ${t(
+              "arabic"
+            )} ) `}
+            value={about_ar}
+            onChange={(e) => setAbout_ar(e.target.value)}
+          />
+        </Col>
+
         <Col xs={{ span: 4 }} md={{ span: 1 }}>
           <IconStyling>
             <MdBusinessCenter className="icon" />

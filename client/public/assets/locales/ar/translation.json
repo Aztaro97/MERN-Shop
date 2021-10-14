@@ -2,6 +2,8 @@
     "app_title": "عنوان",
     "language": "اللغة",
     "name": "العربية",
+    "arabic": "العربية",
+    "english": "إنجليزي",
     "welcome_message": "Au79code مرحبًا بك في ",
     "product_list": {
       "title":"جميع قوائم المنتجات"

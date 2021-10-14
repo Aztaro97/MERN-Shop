@@ -195,8 +195,7 @@ const IntroVideoSection = ({ lang }) => {
                   height="100%"
                   width="100%"
                   // playing
-                  muted
-                  volume="0.0"
+                  volume="0.5"
                   controls
                   config={{
                     vimeo: {
@@ -204,7 +203,7 @@ const IntroVideoSection = ({ lang }) => {
                         controls: true,
                         transparent: true,
                         autoplay: false,
-                        muted: true,
+                        muted: false,
                         // autopause: true,
                         quality: "auto",
                         // width: "900",

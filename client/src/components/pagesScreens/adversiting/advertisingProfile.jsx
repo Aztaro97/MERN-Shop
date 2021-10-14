@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Slider from "react-slick";
 import { Image } from "antd";
+import ReactPlayer from "react-player";
 import { useParams, useHistory } from "react-router-dom";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import InputC from "../../InputComponents";
@@ -31,7 +32,8 @@ function AdvertisingProfileScreen() {
 
   const dispatch = useDispatch();
   const history = useHistory();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language;
 
   // if (error) {
   //   history.push("")
@@ -49,98 +51,50 @@ function AdvertisingProfileScreen() {
         <PageNotFund />
       ) : (
         <>
-          <ThirsdBannerSlider />
           {profile && (
-            <ContainerStyling className="container my-5">
-              <section className="introduction">
-                <h1 className="title">
-                  {profile.companyName ? profile.companyName : null}
-                </h1>
-                <img src={profile.logoUrl} alt="" />
-              </section>
-              <section className="about">
-                <h1 className="title">{t("about_company")}</h1>
-                <p>{profile.about}</p>
-              </section>
-              {/* <section className="service">
-            <h1 className="title">company services</h1>
-            <div className="grid">
-              {profile.typeBusiness.map((data, index) => (
-                <div key={index}>
-                  <div
-                    className="box"
-                    style={{
-                      backgroundImage: `url(${"/img/advertising/real_state.jpg"})`,
-                    }}
-                  >
-                    <div className="box-container">
-                      <h4>{data}</h4>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section> */}
-
-              <section className="service_two">
-                <h1 className="title">{t("company_service")}</h1>
-                <div className="grid">
-                  {profile.serviceUrl.map(data => (
-                    <div className="card">
-                    <Image
-                      src={data.url}
-                      alt=""
-                      className="card-image"
-                    />
-                    {/* <div className="card-body">
+            <>
+              <ThirsdBannerSlider profile={profile} />
+              <ContainerStyling className="container my-5">
+                <section className="introduction">
+                  <h1 className="title">
+                    {profile.companyName ? profile.companyName : null}
+                  </h1>
+                  <img src={profile.logoUrl} alt="" />
+                </section>
+                <section className="about">
+                  <h1 className="title">{t("about_company")}</h1>
+                  {lang === "en" && <p>{profile.about}</p>}
+                  {lang === "ar" && <p>{profile.about_ar}</p>}
+                </section>
+                <section className="service_two">
+                  <h1 className="title">Pictures</h1>
+                  <div className="grid">
+                    {profile.serviceUrl.map((data) => (
+                      <div className="card">
+                        <Image
+                          src={data.url}
+                          alt=""
+                          className="card-image"
+                          preview={{ mask: <span></span> }}
+                        />
+                        {/* <div className="card-body">
                       <p className="text-center">real estate</p>
                     </div> */}
+                      </div>
+                    ))}
                   </div>
+                </section>
 
-                  ))}
-                  
-                  {/* <div className="card">
-                    <Image
-                      src="/img/advertising/restaurant.jpg"
-                      alt=""
-                      className="card-image"
-                    />
-                    <div className="card-body">
-                      <p className="text-center">Restaurant</p>
-                    </div>
-                  </div>
-                  <div className="card">
-                    <Image
-                      src="/img/advertising/pharmacy.jpg"
-                      alt=""
-                      className="card-image"
-                    />
-                    <div className="card-body">
-                      <p className="text-center">pharmacy</p>
-                    </div>
-                  </div>
-                  <div className="card">
-                    <Image
-                      src="/img/advertising/real_state.jpg"
-                      alt=""
-                      className="card-image"
-                    />
-                    <div className="card-body">
-                      <p className="text-center">vehicle</p>
-                    </div>
-                  </div> */}
-                </div>
-              </section>
-
-              <section className="portfolio">
-                <h1 className="title">Ad videos</h1>
-                <PortfolioSlider className="slider_container" />
-              </section>
-              <section className="contact">
-                <h1 className="title">contact</h1>
-                <ContactForm profile={profile} />
-              </section>
-            </ContainerStyling>
+                <section className="portfolio">
+                  <h1 className="title">videos</h1>
+                  <PortfolioSlider className="slider_container" />
+                </section>
+                <section className="contact">
+                  <h1 className="title">contact</h1>
+                  <ContactForm profile={profile} />
+                </section>
+              </ContainerStyling>
+            </>
           )}
         </>
       )}
@@ -168,9 +122,9 @@ const PortfolioSlider = () => {
     dots: true,
     infinite: true,
     // fade: true,
-    speed: 500,
+    speed: 700,
     autoplay: true,
-    autoplaySpeed: 5000,
+    autoplaySpeed: 60000,
     slidesToShow: 1,
     slidesToScroll: 1,
     // slidesPerRow: 0,
@@ -181,16 +135,40 @@ const PortfolioSlider = () => {
   return (
     <Slider {...settings} className="slider_container">
       <div className="slide">
-        <img src="/img/advertising/bg-images.jpeg" alt="" />
+        <ReactPlayer
+          url="https://res.cloudinary.com/tarositeweb/video/upload/v1634022188/au79code/AZ_1_gro3g4.mp4"
+          height="100%"
+          width="100%"
+          volume="0.5"
+          controls
+        />
       </div>
       <div className="slide">
-        <img src="/img/advertising/bg-images.jpeg" alt="" />
+        <ReactPlayer
+          url="https://res.cloudinary.com/tarositeweb/video/upload/v1634022188/au79code/AZ_1_gro3g4.mp4"
+          height="100%"
+          width="100%"
+          volume="0.5"
+          controls
+        />
       </div>
       <div className="slide">
-        <img src="/img/advertising/bg-images.jpeg" alt="" />
+        <ReactPlayer
+          url="https://res.cloudinary.com/tarositeweb/video/upload/v1634022188/au79code/AZ_1_gro3g4.mp4"
+          height="100%"
+          width="100%"
+          volume="0.5"
+          controls
+        />
       </div>
       <div className="slide">
-        <img src="/img/advertising/bg-images.jpeg" alt="" />
+        <ReactPlayer
+          url="https://res.cloudinary.com/tarositeweb/video/upload/v1634022188/au79code/AZ_1_gro3g4.mp4"
+          height="100%"
+          width="100%"
+          volume="0.5"
+          controls
+        />
       </div>
     </Slider>
   );
@@ -411,17 +389,23 @@ const ContainerStyling = styled.div`
   }
   & .introduction {
     text-align: center;
+    & .title {
+      text-transform: capitalize;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 0;
+    }
 
     & img {
       max-width: 150px;
       height: 150px;
       margin-left: auto;
       margin-right: auto;
-      box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
-        rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+      /* box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+        rgba(9, 30, 66, 0.08) 0px 0px 0px 1px; */
       border-radius: 50%;
       padding: 0.7rem;
-      object-fit: contain;
+      object-fit: cover;
       margin-top: 0.5rem;
       @media only screen and (max-width: 768px) {
         width: 100px;
@@ -440,7 +424,7 @@ const ContainerStyling = styled.div`
   & .portfolio {
     & .slider_container {
       & .slide {
-        max-width: 400px;
+        max-width: 500px;
         height: 300px;
         display: flex !important;
         align-items: center;
@@ -451,14 +435,10 @@ const ContainerStyling = styled.div`
           height: 200px;
         }
       }
-      img {
-        width: 90%;
-        height: 90%;
-        object-fit: cover;
-        border-radius: 40px;
-        box-shadow: 13px -13px 0px -1px rgba(164, 165, 171, 0.75);
-        -webkit-box-shadow: 13px -13px 0px -1px rgba(164, 165, 171, 0.75);
-        -moz-box-shadow: 13px -13px 0px -1px rgba(164, 165, 171, 0.75);
+      video {
+        width: 100%;
+        height: 100%;
+        padding-bottom: 15px;
       }
     }
   }
