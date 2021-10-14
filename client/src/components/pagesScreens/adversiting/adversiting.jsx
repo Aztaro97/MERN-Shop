@@ -729,8 +729,13 @@ const IntroVideoStyling = styled.section`
   }
   & .description {
     /* padding-left: 3rem; */
+    height: 100%;
     padding-top: 1rem;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     & p {
       color: var(--silver-color);
       letter-spacing: 1px;
@@ -742,7 +747,7 @@ const IntroVideoStyling = styled.section`
       padding: 6px 12px;
       text-transform: capitalize;
       font-size: 1rem;
-      margin: auto;
+      /* margin: auto; */
       border-radius: 5px;
     }
     @media only screen and (max-width: 992px) {
