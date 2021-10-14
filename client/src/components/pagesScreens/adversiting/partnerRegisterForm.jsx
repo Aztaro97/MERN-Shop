@@ -77,12 +77,12 @@ const SignUpForm = () => {
   return (
     <form action="" onSubmit={formik.handleSubmit}>
       <Row gutter={[10, 10]}>
-        <Col xs={{ span: 4 }} md={{ span: 1 }}>
+        <Col xs={{ span: 4 }} md={{ span: 2 }}>
           <IconStyling>
             <AiOutlineMail className="icon" />
           </IconStyling>
         </Col>
-        <Col xs={{ span: 20 }} md={{ span: 23 }}>
+        <Col xs={{ span: 20 }} md={{ span: 22 }}>
           <InputStyling
             type="email"
             name="email"
@@ -92,7 +92,7 @@ const SignUpForm = () => {
           />
         </Col>
 
-        <Col xs={{ span: 20 }} md={{ span: 23 }} offset={2}>
+        <Col xs={{ span: 20 }} md={{ span: 22 }} offset={2}>
           {formik.errors.email && (
             <Alert message={formik.errors.email} type="error" banner>
               {formik.errors.email}
@@ -100,12 +100,12 @@ const SignUpForm = () => {
           )}
         </Col>
 
-        <Col xs={{ span: 4 }} md={{ span: 1 }}>
+        <Col xs={{ span: 4 }} md={{ span: 2 }}>
           <IconStyling>
             <IoMdKey className="icon" />
           </IconStyling>
         </Col>
-        <Col xs={{ span: 20 }} md={{ span: 23 }}>
+        <Col xs={{ span: 20 }} md={{ span: 22 }}>
           <InputStyling
             type="password"
             placeholder={t("password_placeholder")}
@@ -116,12 +116,12 @@ const SignUpForm = () => {
           />
         </Col>
 
-        <Col xs={{ span: 4 }} md={{ span: 1 }}>
+        <Col xs={{ span: 4 }} md={{ span: 2 }}>
           <IconStyling>
             <IoMdKey className="icon" />
           </IconStyling>
         </Col>
-        <Col xs={{ span: 20 }} md={{ span: 23 }}>
+        <Col xs={{ span: 20 }} md={{ span: 22 }}>
           <InputStyling
             type="password"
             placeholder={t("retype_placeholder")}
@@ -165,6 +165,7 @@ const DetailsComponent = () => {
   const [plan, setPlan] = useState("");
   // ////////    services fields
   const [companyName, setCompanyName] = useState("");
+  const [companyName_ar, setCompanyName_ar] = useState("");
   const [about, setAbout] = useState("");
   const [about_ar, setAbout_ar] = useState("");
   const [typeBusiness, setTypeBusiness] = useState([]);
@@ -181,6 +182,7 @@ const DetailsComponent = () => {
 
   const body = {
     companyName,
+    companyName_ar,
     about,
     about_ar,
     typeBusiness,
@@ -216,29 +218,44 @@ const DetailsComponent = () => {
   return (
     <form onSubmit={handleSubmit}>
       <h1 className="title">{t("company_info")}</h1>
-      <Row gutter={[10, 10]}>
-        <Col xs={{ span: 4 }} md={{ span: 1 }}>
+      <Row gutter={[10, 10]} justify="end" >
+        <Col xs={{ span: 4 }} md={{ span: 2 }}>
           <IconStyling>
             <BsBuilding className="icon" />
           </IconStyling>
         </Col>
-        <Col xs={{ span: 20 }} md={{ span: 23 }}>
+        <Col xs={{ span: 20 }} md={{ span: 11 }}>
           <InputStyling
+            style={{ direction: lang === "ar" && "ltr" }}
             required
             type="text"
-            placeholder={t("company_name_placeholder")}
+            placeholder={`${t("company_name_placeholder")}  ( ${t(
+              "english"
+            )} ) `}
             value={companyName}
             onChange={(e) => setCompanyName(e.target.value)}
           />
         </Col>
-        <Col xs={{ span: 4 }} md={{ span: 1 }}>
+        <Col xs={{ span: 20, offset: lang === "en" ? 4 : 1}} md={{ span: 11, offset: 0 }}>
+          <InputStyling
+            style={{ direction: lang === "en" && "rtl" }}
+            required
+            type="text"
+            placeholder={`${t("company_name_placeholder")}  ( ${t(
+              "arabic"
+            )} ) `}
+            value={companyName_ar}
+            onChange={(e) => setCompanyName_ar(e.target.value)}
+          />
+        </Col>
+        <Col xs={{ span: 4 }} md={{ span: 2 }}>
           <IconStyling>
             <FaPencilAlt className="icon" />
           </IconStyling>
         </Col>
-        <Col xs={{ span: 20 }} md={{ span: 23 }}>
+        <Col xs={{ span: 20 }} md={{ span: 11 }}>
           <TextAreaStyling
-            style={{ direction: lang === "ar" && "ltr"  }}
+            style={{ direction: lang === "ar" && "ltr" }}
             required
             name=""
             rows="5"
@@ -250,13 +267,7 @@ const DetailsComponent = () => {
             onChange={(e) => setAbout(e.target.value)}
           />
         </Col>
-
-        <Col xs={{ span: 4 }} md={{ span: 1 }}>
-          <IconStyling>
-            <FaPencilAlt className="icon" />
-          </IconStyling>
-        </Col>
-        <Col xs={{ span: 20 }} md={{ span: 23 }}>
+        <Col xs={{ span: 20, offset: lang === "en" ? 4 : 1 }} md={{ span: 11, offset: 0 }}>
           <TextAreaStyling
             style={{ direction: lang === "en" && "rtl" }}
             required
@@ -271,12 +282,12 @@ const DetailsComponent = () => {
           />
         </Col>
 
-        <Col xs={{ span: 4 }} md={{ span: 1 }}>
+        <Col xs={{ span: 4 }} md={{ span: 2 }}>
           <IconStyling>
             <MdBusinessCenter className="icon" />
           </IconStyling>
         </Col>
-        <Col xs={{ span: 20 }} md={{ span: 23 }}>
+        <Col xs={{ span: 20 }} md={{ span: 22 }}>
           <SelectStyling
             required
             // mode="multiple"
@@ -296,12 +307,12 @@ const DetailsComponent = () => {
 
       <h1 className="title">{t("contact_details")}</h1>
       <Row gutter={[10, 10]}>
-        <Col xs={{ span: 4 }} md={{ span: 1 }}>
+        <Col xs={{ span: 4 }} md={{ span: 2 }}>
           <IconStyling>
             <FaUser className="icon" />
           </IconStyling>
         </Col>
-        <Col xs={{ span: 20 }} md={{ span: 23 }}>
+        <Col xs={{ span: 20 }} md={{ span: 22 }}>
           <InputStyling
             required
             type="text"
@@ -311,12 +322,12 @@ const DetailsComponent = () => {
             onChange={(e) => setFullName(e.target.value)}
           />
         </Col>
-        <Col xs={{ span: 4 }} md={{ span: 1 }}>
+        <Col xs={{ span: 4 }} md={{ span: 2 }}>
           <IconStyling>
             <ImPhone className="icon" />
           </IconStyling>
         </Col>
-        <Col xs={{ span: 20 }} md={{ span: 23 }}>
+        <Col xs={{ span: 20 }} md={{ span: 22 }}>
           <InputStyling
             required
             type="tel"
@@ -325,12 +336,12 @@ const DetailsComponent = () => {
             onChange={(e) => setTelephone(e.target.value)}
           />
         </Col>
-        <Col xs={{ span: 4 }} md={{ span: 1 }}>
+        <Col xs={{ span: 4 }} md={{ span: 2 }}>
           <IconStyling>
             <AiOutlineMail className="icon" />
           </IconStyling>
         </Col>
-        <Col xs={{ span: 20 }} md={{ span: 23 }}>
+        <Col xs={{ span: 20 }} md={{ span: 22 }}>
           <InputStyling
             required
             type="email"
@@ -339,12 +350,12 @@ const DetailsComponent = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
         </Col>
-        <Col xs={{ span: 4 }} md={{ span: 1 }}>
+        <Col xs={{ span: 4 }} md={{ span: 2 }}>
           <IconStyling>
             <FaMapMarkerAlt className="icon" />
           </IconStyling>
         </Col>
-        <Col xs={{ span: 20 }} md={{ span: 23 }}>
+        <Col xs={{ span: 20 }} md={{ span: 22 }}>
           <InputStyling
             required
             type="text"
@@ -353,12 +364,12 @@ const DetailsComponent = () => {
             onChange={(e) => setCity(e.target.value)}
           />
         </Col>
-        <Col xs={{ span: 4 }} md={{ span: 1 }}>
+        <Col xs={{ span: 4 }} md={{ span: 2 }}>
           <IconStyling>
             <BiWorld className="icon" />
           </IconStyling>
         </Col>
-        <Col xs={{ span: 20 }} md={{ span: 23 }}>
+        <Col xs={{ span: 20 }} md={{ span: 22 }}>
           <Row gutter={20}>
             <Col xs={{ span: 12 }}>
               <CountryDropdownStyling

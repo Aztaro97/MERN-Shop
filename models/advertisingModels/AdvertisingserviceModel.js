@@ -8,6 +8,7 @@ const AdvertisingServiceSchema = mongoose.Schema(
     },
     allow: { type: Boolean, required: true, default: false },
     companyName: { type: String, required: true },
+    companyName_ar: { type: String, required: true },
     about: { type: String, required: false },
     about_ar: { type: String, required: false },
     typeBusiness: { type: Array, required: true },

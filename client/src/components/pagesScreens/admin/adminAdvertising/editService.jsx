@@ -130,7 +130,7 @@ const LogoContainer = ({ id, userInfo, loading, profile }) => {
           </Row>
           <Row className="mt-3">
             <Col>
-              {profile.logoUrl !== undefined && (
+              {profile.logoUrl && (
                 <Image
                   width={100}
                   height={100}

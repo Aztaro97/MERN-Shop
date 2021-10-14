@@ -91,7 +91,7 @@ const DataSection = ({ listAdService, error, type }) => {
                         <h5>{data.companyName}</h5>
                         <hr />
                         <p>Curabitur arcu erat, accumsan id imperdiet et</p>
-                        <Link to={`/advertising/profile/${data._id}`} alt="">
+                        <Link onClick={() => history.push(`/advertising/profile/${data._id}`)} alt="">
                           {t("explore")}
                         </Link>
                       </div>

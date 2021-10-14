@@ -56,9 +56,12 @@ function AdvertisingProfileScreen() {
               <ThirsdBannerSlider profile={profile} />
               <ContainerStyling className="container my-5">
                 <section className="introduction">
-                  <h1 className="title">
-                    {profile.companyName ? profile.companyName : null}
-                  </h1>
+                  {lang === "en" && (
+                    <h1 className="title">{profile.companyName}</h1>
+                  )}
+                  {lang === "ar" && (
+                    <h1 className="title">{profile.companyName_ar}</h1>
+                  )}
                   <img src={profile.logoUrl} alt="" />
                 </section>
                 <section className="about">

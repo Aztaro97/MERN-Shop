@@ -7,6 +7,7 @@ const advertising = require("../../models/advertisingModels/AdvertisingserviceMo
 const addAdvertisingService = asyncHandler(async (req, res) => {
   const {
     companyName,
+    companyName_ar,
     about,
     about_ar,
     typeBusiness,
@@ -21,6 +22,7 @@ const addAdvertisingService = asyncHandler(async (req, res) => {
   const newService = new advertising({
     user: req.user._id,
     companyName,
+    companyName_ar,
     about,
     about_ar,
     typeBusiness,
@@ -39,6 +41,7 @@ const addAdvertisingService = asyncHandler(async (req, res) => {
 const registerPremiumService = asyncHandler(async (req, res) => {
   const {
     companyName,
+    companyName_ar,
     about,
     about_ar,
     typeBusiness,
@@ -57,6 +60,7 @@ const registerPremiumService = asyncHandler(async (req, res) => {
     isPaid: true,
     typePlan: "premium",
     companyName,
+    companyName_ar,
     about,
     about_ar,
     typeBusiness,
