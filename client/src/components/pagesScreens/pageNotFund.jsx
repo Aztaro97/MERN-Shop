@@ -2,14 +2,18 @@ import React from "react";
 import styled from "styled-components";
 import MainContainer from "../MainContainer";
 import Button from "../ButtonComponeent";
+import { useHistory } from "react-router";
 
 function PageNotFund() {
+  const history = useHistory();
   return (
     <MainContainer>
       <Container>
         <h1 className="number">404</h1>
         <h1 className="text">Sorry, the page you visited does not exist</h1>
-        <Button style={{marginTop: 20}} onClick={() => document.location.href = "/"} >Back to home</Button>
+        <Button style={{ marginTop: 20 }} onClick={() => history.push("/")}>
+          Back to home
+        </Button>
       </Container>
     </MainContainer>
   );

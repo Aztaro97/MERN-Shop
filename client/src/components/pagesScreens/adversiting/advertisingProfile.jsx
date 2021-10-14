@@ -108,20 +108,6 @@ function AdvertisingProfileScreen() {
   );
 }
 
-// const Landing = () => {
-//   return (
-//     <LandingStyling>
-//       <div>
-//         <div className="landing_overlay">
-//           <h1>all restaurants</h1>
-//           <Link className="link1" to="#/">
-//             Let's go
-//           </Link>
-//         </div>
-//       </div>
-//     </LandingStyling>
-//   );
-// };
 
 const PortfolioSlider = ({ profile }) => {
   const settings = {
