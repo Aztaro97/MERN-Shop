@@ -13,7 +13,6 @@ import { useHistory } from "react-router";
 import { Popconfirm, Select } from "antd";
 import { BusinessList } from "../../../../utils/advertisingData";
 import { FaRegEdit } from "react-icons/fa";
-import { Link } from "react-router-dom";
 import { MdDelete } from "react-icons/md";
 const { Option } = Select;
 
@@ -133,7 +132,7 @@ const AllCompanyService = () => {
                   </td>
                   <td>
                     <div className="control_container">
-                      <Link to={`/admin/advertising/edit/${ad._id}`}>
+                      <Link href={`/admin/advertising/edit/${ad._id}`}>
                         <FaRegEdit className="icon edit" />
                       </Link>
                       <Popconfirm
@@ -248,5 +247,7 @@ const SelectStyling = styled(Select)`
     /* outline: none; */
   }
 `;
+
+const Link = styled.a``
 
 export default AllCompanyService;

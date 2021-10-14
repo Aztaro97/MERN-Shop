@@ -90,7 +90,10 @@ function AdvertisingProfileScreen() {
 
                 <section className="portfolio">
                   <h1 className="title">videos</h1>
-                  <PortfolioSlider className="slider_container" />
+                  <PortfolioSlider
+                    profile={profile}
+                    className="slider_container"
+                  />
                 </section>
                 <section className="contact">
                   <h1 className="title">contact</h1>
@@ -120,7 +123,7 @@ function AdvertisingProfileScreen() {
 //   );
 // };
 
-const PortfolioSlider = () => {
+const PortfolioSlider = ({ profile }) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -136,44 +139,23 @@ const PortfolioSlider = () => {
     // arrows: false,
   };
   return (
-    <Slider {...settings} className="slider_container">
-      <div className="slide">
-        <ReactPlayer
-          url="https://res.cloudinary.com/tarositeweb/video/upload/v1634022188/au79code/AZ_1_gro3g4.mp4"
-          height="100%"
-          width="100%"
-          volume="0.5"
-          controls
-        />
-      </div>
-      <div className="slide">
-        <ReactPlayer
-          url="https://res.cloudinary.com/tarositeweb/video/upload/v1634022188/au79code/AZ_1_gro3g4.mp4"
-          height="100%"
-          width="100%"
-          volume="0.5"
-          controls
-        />
-      </div>
-      <div className="slide">
-        <ReactPlayer
-          url="https://res.cloudinary.com/tarositeweb/video/upload/v1634022188/au79code/AZ_1_gro3g4.mp4"
-          height="100%"
-          width="100%"
-          volume="0.5"
-          controls
-        />
-      </div>
-      <div className="slide">
-        <ReactPlayer
-          url="https://res.cloudinary.com/tarositeweb/video/upload/v1634022188/au79code/AZ_1_gro3g4.mp4"
-          height="100%"
-          width="100%"
-          volume="0.5"
-          controls
-        />
-      </div>
-    </Slider>
+    <>
+      {profile.videoUrl.length > 0 && (
+        <Slider {...settings} className="slider_container">
+          {profile.videoUrl.map((url, index) => (
+            <div className="slide" key={index}>
+              <ReactPlayer
+                url={url}
+                height="100%"
+                width="100%"
+                volume="0.5"
+                controls
+              />
+            </div>
+          ))}
+        </Slider>
+      )}
+    </>
   );
 };
 

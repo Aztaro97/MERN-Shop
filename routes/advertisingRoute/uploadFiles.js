@@ -4,7 +4,7 @@ const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const multer = require("multer");
 const AdvertisingModel = require("../../models/advertisingModels/AdvertisingserviceModel");
 const fs = require("fs");
-const { protect } = require("../../middleware/authMiddleware");
+const { protect, admin } = require("../../middleware/authMiddleware");
 
 // we will upload image on cloudinary
 cloudinary.config({
@@ -116,21 +116,12 @@ router.post(
 // //////     Logo Upload
 router.post(
   "/video/:id",
-  [protect, parser.single("videoFile")],
+  [protect, admin],
   async (req, res) => {
     try {
-      const files = req.files.videoFile;
-      console.log(files);
-
-      if (files.length == 0)
-        return res.status(400).json({ msg: "No files were uploaded." });
-
-      const results = [];
-
-      const resul = await cloudinary.v2.uploader.upload(files.tempFilePath);
       const service = await AdvertisingModel.findById(req.params.id);
       if (service) {
-        service.videoUrl = resul.url;
+        service.videoUrl = req.body.videoUrl;
       }
       await service.save();
       res.status(200).json({ msg: "Successfully uploaded" });

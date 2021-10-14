@@ -1,5 +1,5 @@
 import { Col, Image, Row } from "antd";
-import React, { useEffect, useState } from "react";
+import React, { Children, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import Button from "../../../ButtonComponeent";
 import { Button } from "antd";
@@ -12,6 +12,9 @@ import axios from "axios";
 import Loader from "../../../loader";
 import { getAdvertisingProfileByID } from "../../../../flux/actions/advertisingAction/advertisingAction";
 import { AiOutlineCloudUpload } from "react-icons/ai";
+import { Select } from "antd";
+
+const { Option } = Select;
 
 function EditServiceScreen() {
   const params = useParams();
@@ -230,26 +233,21 @@ const ServiceesContainer = ({ id, userInfo, loading, profile }) => {
 };
 
 const VideoContainer = ({ id, userInfo }) => {
-  const [videoFile, setVideoFile] = useState("");
+  const [children, setChildren] = useState([]);
+  // const 
 
   const handleSubmit = async (e) => {
-    console.log(videoFile);
     try {
-      const formdata = new FormData();
-      formdata.append("file", videoFile);
-      formdata.append("cloud_name", "TaroSiteWeb");
-      formdata.append("upload_preset", "download");
-
       e.preventDefault();
       const config = {
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userInfo.token}`,
         },
       };
       const res = await axios.post(
-        "https://api.cloudinary.com/v1_1/tarositeweb/image/upload",
-        formdata,
+        `/upload-images/video/${id}`,
+        { videoUrl: children },
         config
       );
       if (res) {
@@ -259,18 +257,39 @@ const VideoContainer = ({ id, userInfo }) => {
       console.log(error);
     }
   };
+
+  // const children = [];
+  for (let i = 0; i < children.lenght; i++) {
+    <Option key={i}>{i}</Option>;
+  }
+  function handleChange(value) {
+    console.log(`Selected: ${value}`);
+    setChildren(value);
+  }
+
   return (
     <form onSubmit={handleSubmit}>
       {" "}
       <TitleStyling>Add Video</TitleStyling>
       <Row gutter={[10, 10]} justify="space-between">
-        <Col span={18}>
+        {/* <Col span={18}>
           <InputStyling
             type="file"
             name="serviceFile"
             onChange={(e) => setVideoFile(e.target.files[0])}
             accept="video/mp4"
           />
+        </Col> */}
+        <Col span={24}>
+          <SelectStyling
+            mode="tags"
+            // size={size}
+            placeholder="Add videos links Exemple: https://www.youtube.com/watch?v"
+            // defaultValue={[]}
+            onChange={handleChange}
+          >
+            {children}
+          </SelectStyling>
         </Col>
         <Col>
           {" "}
@@ -312,6 +331,9 @@ const TitleStyling = styled.h3`
   text-transform: uppercase;
   font-weight: 700;
   margin-top: 3rem;
+`;
+const SelectStyling = styled(Select)`
+  width: 100% !important;
 `;
 
 export default EditServiceScreen;

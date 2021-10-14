@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect} from "react";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { HiOutlineBadgeCheck } from "react-icons/hi";
 import { useHistory, useLocation } from "react-router";
@@ -6,23 +6,22 @@ import styled from "styled-components";
 import MainContainer from "../../MainContainer";
 
 const ThankScreen = () => {
-  const [name, setName] = useState("");
   const location = useLocation();
+  const data = location.state.data;
 
   const history = useHistory();
-
+  
   useEffect(() => {
-    // const data = location.state.data;
-    if (!location.state) {
+    if (data === undefined) {
       history.push("/");
     }
-    setName(location.state.data);
-  }, [history, location]);
+
+  }, [data, history]);
   return (
     <MainContainer>
       <Container>
         <HiOutlineBadgeCheck className="icon" />
-        <h3 className="title">Thanks for registering Mr {name}!</h3>
+        <h3 className="title">Thanks for registering Mr {data.fullName}!</h3>
         <p className="message">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis
           minima nisi ut sit enim quasi molestias natus expedita quos id. Est
