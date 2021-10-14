@@ -10,6 +10,7 @@ import SecondeLandingSlider from "./Banner/secondeLanding";
 import MainContainer from "../../MainContainer";
 import ButtonComponeent from "../../ButtonComponeent";
 import { Col, Row } from "antd";
+import Meta from "../../helmet";
 
 function AllBrandScreen() {
   const params = useParams();
@@ -30,6 +31,7 @@ function AllBrandScreen() {
         <LoaderComponent />
       ) : (
         <>
+          <Meta title={`All ${type}`} />
           <SecondeLandingSlider />
           <div className="container my-5">
             <DataSection
@@ -62,7 +64,8 @@ function AllBrandScreen() {
 const DataSection = ({ listAdService, error, type }) => {
   const { t } = useTranslation();
   const history = useHistory();
-  const defaultImage = "https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png";
+  const defaultImage =
+    "https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png";
   return (
     <DataStyling>
       <h3 className="title">all {type}</h3>
@@ -91,7 +94,12 @@ const DataSection = ({ listAdService, error, type }) => {
                         <h5>{data.companyName}</h5>
                         <hr />
                         <p>Curabitur arcu erat, accumsan id imperdiet et</p>
-                        <Link onClick={() => history.push(`/advertising/profile/${data._id}`)} alt="">
+                        <Link
+                          onClick={() =>
+                            history.push(`/advertising/profile/${data._id}`)
+                          }
+                          alt=""
+                        >
                           {t("explore")}
                         </Link>
                       </div>

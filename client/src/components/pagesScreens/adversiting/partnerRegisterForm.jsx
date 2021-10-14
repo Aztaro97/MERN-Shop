@@ -29,6 +29,7 @@ import axios from "axios";
 import { successMessage } from "../../message";
 import MainContainer from "../../MainContainer";
 import { useTranslation } from "react-i18next";
+import Meta from "../../helmet";
 
 const { Option } = Select;
 
@@ -40,6 +41,7 @@ function PartnerRegisterTemplate2() {
         <Loader />
       ) : (
         <Container>
+          <Meta title="Partner Registration" />
           {!userInfo && <SignUpForm />}
           <DetailsComponent />
         </Container>
@@ -132,7 +134,7 @@ const SignUpForm = () => {
           />
         </Col>
 
-        <Col xs={{ span: 24, offset: 0 }} md={{ span: 23, offset: 1 }}>
+        <Col xs={{ span: 24, offset: 0 }} md={{ span: 22, offset: 2 }}>
           {formik.errors.password ? (
             <Alert type="error" message={formik.errors.password} banner />
           ) : null}

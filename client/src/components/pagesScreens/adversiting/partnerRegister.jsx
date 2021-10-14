@@ -15,6 +15,7 @@ import TextArea from "../../TextAreaComponent";
 import { BusinessList } from "../../../utils/advertisingData";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import ButtonComponeent from "../../ButtonComponeent";
+import Meta from "../../helmet";
 
 function PartnerRegister() {
   const [typeUser, setTypeUser] = useState("company");
@@ -88,9 +89,8 @@ function PartnerRegister() {
 
   return (
     <MainContainer>
-      {/* //////////   FormUser    //////// */}
+      <Meta title="Partner Registration" />
       {!userInfo && <LogOutForm />}
-
       <FormPartnerInfoStyling>
         <h3 className="title">partner information</h3>
         {/* ///////////   Radio Type User */}
@@ -179,7 +179,7 @@ function PartnerRegister() {
         <div className="row">
           <div className="col-lg-6  my-2">
             <TextArea
-            required
+              required
               name="company.about"
               value={formik.values.company.about}
               onChange={formik.handleChange}
@@ -242,7 +242,7 @@ function PartnerRegister() {
         <div className="row">
           <div className="col-lg-12 my-2">
             <Upload
-            required
+              required
               listType="picture"
               fileList={fileList}
               onChange={handleChangeImage}

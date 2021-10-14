@@ -12,43 +12,43 @@ const TranslateContent = (contents) => {
 
 export const categoryAdversiting = [
   {
-    profileId: "6168271f73477a669876cb2f",
+    profileId: "61683883bb90435d90a1bd24",
     title: TranslateContent("real estate"),
     image:
       "https://res.cloudinary.com/tarositeweb/image/upload/v1634130730/tmp-9-1634130722917_bxjxtm.jpg",
   },
   {
-    profileId: "6168271f73477a669876cb2f",
+    profileId: "61683883bb90435d90a1bd24",
     title: TranslateContent("restaurant"),
     image: "/img/advertising/restaurant.jpg",
   },
   {
-    profileId: "6168271f73477a669876cb2f",
+    profileId: "61683883bb90435d90a1bd24",
     title: TranslateContent("vehicule"),
     image: "/img/advertising/real_state.jpg",
   },
   {
-    profileId: "6168271f73477a669876cb2f",
+    profileId: "61683883bb90435d90a1bd24",
     title: TranslateContent("pharmacy"),
     image: "/img/advertising/pharmacy.jpg",
   },
   {
-    profileId: "6168271f73477a669876cb2f",
+    profileId: "61683883bb90435d90a1bd24",
     title: TranslateContent("marketing"),
     image: "/img/advertising/exemple.jpg",
   },
   {
-    profileId: "6168271f73477a669876cb2f",
+    profileId: "61683883bb90435d90a1bd24",
     title: TranslateContent("construction"),
     image: "/img/advertising/exemple.jpg",
   },
   {
-    profileId: "6168271f73477a669876cb2f",
+    profileId: "61683883bb90435d90a1bd24",
     title: TranslateContent("construction"),
     image: "/img/advertising/exemple.jpg",
   },
   {
-    profileId: "6168271f73477a669876cb2f",
+    profileId: "61683883bb90435d90a1bd24",
     title: TranslateContent("construction"),
     image: "/img/advertising/exemple.jpg",
   },
@@ -94,52 +94,52 @@ export const BusinessList = [
 
 export const listPartnerLogo = [
   {
-    profileId: "6168271f73477a669876cb2f",
+    profileId: "61683883bb90435d90a1bd24",
     companyName: "code loccol",
     logoUrl: "https://logo.clearbit.com/clearbit.com",
   },
   {
-    profileId: "6168271f73477a669876cb2f",
+    profileId: "61683883bb90435d90a1bd24",
     companyName: "Noon",
     logoUrl: "https://logo.clearbit.com/amazon.com",
   },
   {
-    profileId: "6168271f73477a669876cb2f",
+    profileId: "61683883bb90435d90a1bd24",
     companyName: "au 79 code",
     logoUrl: "https://logo.clearbit.com/alibaba.com",
   },
   {
-    profileId: "6168271f73477a669876cb2f",
+    profileId: "61683883bb90435d90a1bd24",
     companyName: "tabalat",
     logoUrl: "https://logo.clearbit.com/aliexpress.com",
   },
   {
-    profileId: "6168271f73477a669876cb2f",
+    profileId: "61683883bb90435d90a1bd24",
     companyName: "au 79 code",
     logoUrl: "https://logo.clearbit.com/ebay.com",
   },
   {
-    profileId: "6168271f73477a669876cb2f",
+    profileId: "61683883bb90435d90a1bd24",
     companyName: "au 79 code",
     logoUrl: "https://logo.clearbit.com/Fiverr.com",
   },
   {
-    profileId: "6168271f73477a669876cb2f",
+    profileId: "61683883bb90435d90a1bd24",
     companyName: "au 79 code",
     logoUrl: "https://logo.clearbit.com/IKEA.com",
   },
   {
-    profileId: "6168271f73477a669876cb2f",
+    profileId: "61683883bb90435d90a1bd24",
     companyName: "au 79 code",
     logoUrl: "https://logo.clearbit.com/Vinted.com",
   },
   {
-    profileId: "6168271f73477a669876cb2f",
+    profileId: "61683883bb90435d90a1bd24",
     companyName: "au 79 code",
     logoUrl: "https://logo.clearbit.com/Rakuten.com",
   },
   {
-    profileId: "6168271f73477a669876cb2f",
+    profileId: "61683883bb90435d90a1bd24",
     companyName: "au 79 code",
     logoUrl: "https://logo.clearbit.com/Pinterest.com",
   },
@@ -147,7 +147,7 @@ export const listPartnerLogo = [
 
 export const VideoData = [
   {
-    profileId: "6168271f73477a669876cb2f",
+    profileId: "61683883bb90435d90a1bd24",
     companyName: "au 79 code",
     videoUrl:
       "https://res.cloudinary.com/tarositeweb/video/upload/v1634022188/au79code/AZ_1_gro3g4.mp4",
@@ -155,7 +155,7 @@ export const VideoData = [
       "Quisque velit nisi, pretium ut lacinia inQuisque velit nisi, pretium ut lacinia in Quisque velit nisi, pretium ut lacinia in ",
   },
   {
-    profileId: "6168271f73477a669876cb2f",
+    profileId: "61683883bb90435d90a1bd24",
     companyName: "au 79 code",
     videoUrl:
       "https://res.cloudinary.com/tarositeweb/video/upload/v1634022182/au79code/AZ_3_ignyyi.mp4",
@@ -163,7 +163,7 @@ export const VideoData = [
       "Quisque velit nisi, pretium ut lacinia inQuisque velit nisi, pretium ut lacinia in Quisque velit nisi, pretium ut lacinia in ",
   },
   {
-    profileId: "6168271f73477a669876cb2f",
+    profileId: "61683883bb90435d90a1bd24",
     companyName: "au 79 code",
     videoUrl:
       "https://res.cloudinary.com/tarositeweb/video/upload/v1634022150/au79code/AZ_2_l0qaqv.mp4",
@@ -174,96 +174,96 @@ export const VideoData = [
 
 export const firstBannerData = [
   {
-    profileId: "6153163d1ae5f63044d1ffbf",
+    profileId: "61683883bb90435d90a1bd24",
     imgUrl:
       "https://assets.waseet.net/prod/Dubai/banners/8874465/%D8%AA%D8%B1%D8%A7%D9%8A%D9%86%D8%AC%D9%84-%D9%84%D9%84%D8%A7%D8%B3%D8%AA%D8%B4%D8%A7%D8%B1%D8%A7%D8%AA-%D8%A7%D9%84%D9%87%D9%86%D8%AF%D8%B3%D9%8A%D8%A9-8874465-english_featured_image_mobile-1621170914.jpg?width=720&height=408",
   },
   {
-    profileId: "615316be9ab6da6a1c805681",
+    profileId: "61683883bb90435d90a1bd24",
     imgUrl:
       "https://assets.waseet.net/prod/Dubai/banners/9063300/%D9%81%D8%A7%D9%86%D8%AA%D8%A7%D8%B2%D9%8A-%D8%A8%D8%B1%D9%8A%D9%85%D9%8A%D9%8A%D8%B1-%D9%84%D9%8A%D8%AC-9063300-english_featured_image_mobile-1630224811.jpg?width=720&height=408",
   },
   {
-    profileId: "615316be9ab6da6a1c805681",
+    profileId: "61683883bb90435d90a1bd24",
     imgUrl:
       "https://assets.waseet.net/prod/Dubai/banners/8736764/%D8%AC%D8%A7%D9%83%D9%84%D9%8A%D9%86-%D9%84%D9%84%D8%AA%D9%86%D8%B8%D9%8A%D9%81-8736764-english_featured_image_mobile-1614506174.jpg?width=720&height=408",
   },
   {
-    profileId: "615316be9ab6da6a1c805681",
+    profileId: "61683883bb90435d90a1bd24",
     imgUrl:
       "https://assets.waseet.net/prod/Dubai/banners/8961842/%D8%B4%D9%87%D8%AF-%D8%A7%D9%84%D8%A7%D8%B5%D9%8A%D9%84-%D9%84%D9%86%D9%82%D9%84-%D8%A7%D9%84%D8%A7%D8%AB%D8%A7%D8%AB-8961842-english_featured_image_mobile-1624714329.jpg?width=720&height=408",
   },
   {
-    profileId: "615316be9ab6da6a1c805681",
+    profileId: "61683883bb90435d90a1bd24",
     imgUrl:
       "https://assets.waseet.net/prod/Abu-Dhabi/banners/7903041/%D9%84%D8%AD%D8%AC%D8%B2-%D8%A7%D9%84%D9%85%D8%B3%D8%A7%D8%AD%D9%87-%D8%A7%D9%84%D8%A7%D8%B9%D9%84%D8%A7%D9%86%D9%8A%D8%A9-7903041-english_featured_image_mobile-1608209412.jpg?width=720&height=408",
   },
   {
-    profileId: "615316be9ab6da6a1c805681",
+    profileId: "61683883bb90435d90a1bd24",
     imgUrl: "/img/advertising/bg-images.jpeg",
   },
 ];
 
 export const secondeBannerData = [
   {
-    profileId: "6153163d1ae5f63044d1ffbf",
+    profileId: "61683883bb90435d90a1bd24",
     imgUrl:
       "https://assets.waseet.net/prod/Dubai/banners/8874465/%D8%AA%D8%B1%D8%A7%D9%8A%D9%86%D8%AC%D9%84-%D9%84%D9%84%D8%A7%D8%B3%D8%AA%D8%B4%D8%A7%D8%B1%D8%A7%D8%AA-%D8%A7%D9%84%D9%87%D9%86%D8%AF%D8%B3%D9%8A%D8%A9-8874465-english_featured_image_mobile-1621170914.jpg?width=720&height=408",
   },
   {
-    profileId: "615316be9ab6da6a1c805681",
+    profileId: "61683883bb90435d90a1bd24",
     imgUrl:
       "https://assets.waseet.net/prod/Dubai/banners/9063300/%D9%81%D8%A7%D9%86%D8%AA%D8%A7%D8%B2%D9%8A-%D8%A8%D8%B1%D9%8A%D9%85%D9%8A%D9%8A%D8%B1-%D9%84%D9%8A%D8%AC-9063300-english_featured_image_mobile-1630224811.jpg?width=720&height=408",
   },
   {
-    profileId: "615316be9ab6da6a1c805681",
+    profileId: "61683883bb90435d90a1bd24",
     imgUrl:
       "https://assets.waseet.net/prod/Dubai/banners/8736764/%D8%AC%D8%A7%D9%83%D9%84%D9%8A%D9%86-%D9%84%D9%84%D8%AA%D9%86%D8%B8%D9%8A%D9%81-8736764-english_featured_image_mobile-1614506174.jpg?width=720&height=408",
   },
   {
-    profileId: "615316be9ab6da6a1c805681",
+    profileId: "61683883bb90435d90a1bd24",
     imgUrl:
       "https://assets.waseet.net/prod/Dubai/banners/8961842/%D8%B4%D9%87%D8%AF-%D8%A7%D9%84%D8%A7%D8%B5%D9%8A%D9%84-%D9%84%D9%86%D9%82%D9%84-%D8%A7%D9%84%D8%A7%D8%AB%D8%A7%D8%AB-8961842-english_featured_image_mobile-1624714329.jpg?width=720&height=408",
   },
   {
-    profileId: "615316be9ab6da6a1c805681",
+    profileId: "61683883bb90435d90a1bd24",
     imgUrl:
       "https://assets.waseet.net/prod/Abu-Dhabi/banners/7903041/%D9%84%D8%AD%D8%AC%D8%B2-%D8%A7%D9%84%D9%85%D8%B3%D8%A7%D8%AD%D9%87-%D8%A7%D9%84%D8%A7%D8%B9%D9%84%D8%A7%D9%86%D9%8A%D8%A9-7903041-english_featured_image_mobile-1608209412.jpg?width=720&height=408",
   },
   {
-    profileId: "615316be9ab6da6a1c805681",
+    profileId: "61683883bb90435d90a1bd24",
     imgUrl: "/img/advertising/bg-images.jpeg",
   },
 ];
 
 export const ThirdBannerData = [
   {
-    profileId: "6153163d1ae5f63044d1ffbf",
+    profileId: "61683883bb90435d90a1bd24",
     imgUrl:
       "https://assets.waseet.net/prod/Dubai/banners/8874465/%D8%AA%D8%B1%D8%A7%D9%8A%D9%86%D8%AC%D9%84-%D9%84%D9%84%D8%A7%D8%B3%D8%AA%D8%B4%D8%A7%D8%B1%D8%A7%D8%AA-%D8%A7%D9%84%D9%87%D9%86%D8%AF%D8%B3%D9%8A%D8%A9-8874465-english_featured_image_mobile-1621170914.jpg?width=720&height=408",
   },
   {
-    profileId: "615316be9ab6da6a1c805681",
+    profileId: "61683883bb90435d90a1bd24",
     imgUrl:
       "https://assets.waseet.net/prod/Dubai/banners/9063300/%D9%81%D8%A7%D9%86%D8%AA%D8%A7%D8%B2%D9%8A-%D8%A8%D8%B1%D9%8A%D9%85%D9%8A%D9%8A%D8%B1-%D9%84%D9%8A%D8%AC-9063300-english_featured_image_mobile-1630224811.jpg?width=720&height=408",
   },
   {
-    profileId: "615316be9ab6da6a1c805681",
+    profileId: "61683883bb90435d90a1bd24",
     imgUrl:
       "https://assets.waseet.net/prod/Dubai/banners/8736764/%D8%AC%D8%A7%D9%83%D9%84%D9%8A%D9%86-%D9%84%D9%84%D8%AA%D9%86%D8%B8%D9%8A%D9%81-8736764-english_featured_image_mobile-1614506174.jpg?width=720&height=408",
   },
   {
-    profileId: "615316be9ab6da6a1c805681",
+    profileId: "61683883bb90435d90a1bd24",
     imgUrl:
       "https://assets.waseet.net/prod/Dubai/banners/8961842/%D8%B4%D9%87%D8%AF-%D8%A7%D9%84%D8%A7%D8%B5%D9%8A%D9%84-%D9%84%D9%86%D9%82%D9%84-%D8%A7%D9%84%D8%A7%D8%AB%D8%A7%D8%AB-8961842-english_featured_image_mobile-1624714329.jpg?width=720&height=408",
   },
   {
-    profileId: "615316be9ab6da6a1c805681",
+    profileId: "61683883bb90435d90a1bd24",
     imgUrl:
       "https://assets.waseet.net/prod/Abu-Dhabi/banners/7903041/%D9%84%D8%AD%D8%AC%D8%B2-%D8%A7%D9%84%D9%85%D8%B3%D8%A7%D8%AD%D9%87-%D8%A7%D9%84%D8%A7%D8%B9%D9%84%D8%A7%D9%86%D9%8A%D8%A9-7903041-english_featured_image_mobile-1608209412.jpg?width=720&height=408",
   },
   {
-    profileId: "615316be9ab6da6a1c805681",
+    profileId: "61683883bb90435d90a1bd24",
     imgUrl: "/img/advertising/bg-images.jpeg",
   },
 ];

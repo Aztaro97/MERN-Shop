@@ -23,6 +23,7 @@ import {
   SEND_CONTACT_FORM_SUCCESS,
 } from "../../../flux/constants/advertising";
 import { useTranslation } from "react-i18next";
+import Meta from "../../helmet";
 
 function AdvertisingProfileScreen() {
   const params = useParams();
@@ -53,6 +54,11 @@ function AdvertisingProfileScreen() {
         <>
           {profile && (
             <>
+              <Meta
+                title={
+                  lang === "en" ? profile.companyName : profile.companyName_ar
+                }
+              />
               <ThirsdBannerSlider profile={profile} />
               <ContainerStyling className="container my-5">
                 <section className="introduction">
@@ -107,7 +113,6 @@ function AdvertisingProfileScreen() {
     </MainContainer>
   );
 }
-
 
 const PortfolioSlider = ({ profile }) => {
   const settings = {

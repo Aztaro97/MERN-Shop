@@ -16,6 +16,7 @@ import { config } from "dotenv";
 import MainContainer from "../../MainContainer";
 import { Col, Row } from "antd";
 import ButtonComponeent from "../../ButtonComponeent";
+import Meta from "../../helmet";
 // import MainContainer from "../../MainContainer";
 
 function AdversitingScreen() {
@@ -24,6 +25,7 @@ function AdversitingScreen() {
   console.log(lang);
   return (
     <MainContainer>
+      <Meta title="Welcome to Adversiting" />
       <FirstLandingSlider />
       <Container>
         <AdvertisingNavgation lang={lang} />

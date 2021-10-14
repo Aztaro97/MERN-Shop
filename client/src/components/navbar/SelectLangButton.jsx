@@ -33,7 +33,6 @@ function SelectLangButton() {
   const currentLanguage = languages.find((l) => l.code === currentLanguageCode);
   useEffect(() => {
     document.body.dir = currentLanguage.dir || "ltr";
-    document.title = t("welcome_message");
   }, [currentLanguage, t]);
 
   return (
