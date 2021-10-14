@@ -145,7 +145,10 @@
     "explore": "explore",
     "submit": "submit",
 
-    "contact_us": "Contact us"
+    "contact_us": "Contact us",
+    "videos": "videos",
+    "pictures": "pictures",
+    "contact": "contact"
 
   }
   

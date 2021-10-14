@@ -70,7 +70,7 @@ function AdvertisingProfileScreen() {
                   {lang === "ar" && <p>{profile.about_ar}</p>}
                 </section>
                 <section className="service_two">
-                  <h1 className="title">Pictures</h1>
+                  <h1 className="title">{t("pictures")}</h1>
                   <div className="grid">
                     {profile.serviceUrl.map((data) => (
                       <div className="card">
@@ -89,14 +89,14 @@ function AdvertisingProfileScreen() {
                 </section>
 
                 <section className="portfolio">
-                  <h1 className="title">videos</h1>
+                  <h1 className="title">{t("videos")}</h1>
                   <PortfolioSlider
                     profile={profile}
                     className="slider_container"
                   />
                 </section>
                 <section className="contact">
-                  <h1 className="title">contact</h1>
+                  <h1 className="title">{t("contact")}</h1>
                   <ContactForm profile={profile} />
                 </section>
               </ContainerStyling>

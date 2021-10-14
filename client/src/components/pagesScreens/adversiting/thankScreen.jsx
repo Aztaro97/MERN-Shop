@@ -2,6 +2,7 @@ import React, {useEffect} from "react";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { HiOutlineBadgeCheck } from "react-icons/hi";
 import { useHistory, useLocation } from "react-router";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import MainContainer from "../../MainContainer";
 
@@ -27,6 +28,7 @@ const ThankScreen = () => {
           minima nisi ut sit enim quasi molestias natus expedita quos id. Est
           dolorem quisquam qui consectetur ipsum iure magnam iste maxime.
         </p>
+        <LinkStyling to="/">continue to home</LinkStyling>
       </Container>
     </MainContainer>
   );
@@ -51,5 +53,17 @@ const Container = styled.div`
     padding: 0 3rem;
   }
 `;
+
+const LinkStyling = styled(Link)`
+  color: #fff;
+  background: var(--orange-color);
+  padding: 5px 2rem;
+  text-transform: capitalize;
+  &:hover {
+    text-decoration: none;
+    color: #fff;
+    opacity: 0.9;
+  }
+`
 
 export default ThankScreen;

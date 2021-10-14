@@ -13,6 +13,7 @@ import Loader from "../../../loader";
 import { getAdvertisingProfileByID } from "../../../../flux/actions/advertisingAction/advertisingAction";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 import { Select } from "antd";
+import ReactPlayer from "react-player";
 
 const { Option } = Select;
 
@@ -22,27 +23,9 @@ function EditServiceScreen() {
 
   const { userInfo } = useSelector((state) => state.userLogin);
 
-  const handleSubmit = async (e) => {
-    const formdata = new FormData();
-    e.preventDefault();
-    const config = {
-      headers: {
-        "Content-Type": "multipart/form-data",
-        Accept: "application/json",
-      },
-    };
-    const res = await axios.post(
-      "https://api.cloudinary.com/v1_1/tarositeweb/image/upload",
-      formdata,
-      config
-    );
-    console.log(res);
-  };
-
   const { profile, loading, error } = useSelector((state) => state.advertising);
 
   const dispatch = useDispatch();
-  // const history = useHistory();
 
   useEffect(() => {
     if (id) dispatch(getAdvertisingProfileByID(id));
@@ -68,12 +51,16 @@ function EditServiceScreen() {
             loading={loading}
             profile={profile}
           />
-          <VideoContainer id={id} userInfo={userInfo} />
-          <Row justify="space-between" className="mt-3">
+          <VideoContainer
+            id={id}
+            userInfo={userInfo}
+            loading={loading}
+            profile={profile}
+          />
+          <Row justify="space-between" className="mt-5">
             <Col>
-              <BackLinkStyling to="/admin/advertising">cancel</BackLinkStyling>
+              <BackLinkStyling to="/admin/advertising">back</BackLinkStyling>
             </Col>
-            <Col>{/* <Button>save</Button> */}</Col>
           </Row>
         </>
       )}
@@ -83,10 +70,12 @@ function EditServiceScreen() {
 
 const LogoContainer = ({ id, userInfo, loading, profile }) => {
   const [logoFile, setLogoFile] = useState("");
+  const [saveLoading, setSaveLoading] = useState(false);
 
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
+    setSaveLoading(true);
     const formdata = new FormData();
     formdata.append("logoFile", logoFile);
     e.preventDefault();
@@ -102,12 +91,13 @@ const LogoContainer = ({ id, userInfo, loading, profile }) => {
     console.log(res);
     if (res.data.msg) {
       dispatch(getAdvertisingProfileByID(id));
+      setSaveLoading(false);
     }
   };
 
   return (
     <>
-      {loading ? (
+      {loading || saveLoading ? (
         <Loader />
       ) : (
         <form onSubmit={handleSubmit}>
@@ -115,6 +105,7 @@ const LogoContainer = ({ id, userInfo, loading, profile }) => {
           <Row gutter={[10, 10]} justify="space-between">
             <Col span={18}>
               <InputStyling
+                required
                 type="file"
                 name="logoFile"
                 onChange={(e) => setLogoFile(e.target.files[0])}
@@ -151,11 +142,12 @@ const LogoContainer = ({ id, userInfo, loading, profile }) => {
 };
 
 const ServiceesContainer = ({ id, userInfo, loading, profile }) => {
-  const [serviceFile, setServiceFile] = useState([]);
+  const [saveLoading, setSaveLoading] = useState(false);
 
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
+    setSaveLoading(true);
     const formdata = new FormData();
     // formdata.append("serviceFile", serviceFile);
 
@@ -167,7 +159,6 @@ const ServiceesContainer = ({ id, userInfo, loading, profile }) => {
     }
 
     e.preventDefault();
-    // console.log(serviceFile);
     const config = {
       headers: {
         "Content-Type": "multipart/form-data",
@@ -181,12 +172,15 @@ const ServiceesContainer = ({ id, userInfo, loading, profile }) => {
       config
     );
     console.log(res);
-    if (res.data.msg) dispatch(getAdvertisingProfileByID(id));
+    if (res.data.msg) {
+      dispatch(getAdvertisingProfileByID(id));
+      setSaveLoading(false);
+    }
   };
 
   return (
     <>
-      {loading ? (
+      {loading || saveLoading ? (
         <Loader />
       ) : (
         <form onSubmit={handleSubmit}>
@@ -195,6 +189,7 @@ const ServiceesContainer = ({ id, userInfo, loading, profile }) => {
           <Row gutter={[10, 10]} justify="space-between" className="mb-3">
             <Col span={18}>
               <InputStyling
+                required
                 multiple
                 type="file"
                 name="serviceFile"
@@ -232,12 +227,15 @@ const ServiceesContainer = ({ id, userInfo, loading, profile }) => {
   );
 };
 
-const VideoContainer = ({ id, userInfo }) => {
+const VideoContainer = ({ id, userInfo, loading, profile }) => {
   const [children, setChildren] = useState([]);
-  // const 
+  const [saveLoading, setSaveLoading] = useState(false);
+
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     try {
+      setSaveLoading(true);
       e.preventDefault();
       const config = {
         headers: {
@@ -250,8 +248,9 @@ const VideoContainer = ({ id, userInfo }) => {
         { videoUrl: children },
         config
       );
-      if (res) {
-        console.log(res);
+      if (res.data.msg) {
+        dispatch(getAdvertisingProfileByID(id));
+        setSaveLoading(false);
       }
     } catch (error) {
       console.log(error);
@@ -268,40 +267,50 @@ const VideoContainer = ({ id, userInfo }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      {" "}
-      <TitleStyling>Add Video</TitleStyling>
-      <Row gutter={[10, 10]} justify="space-between">
-        {/* <Col span={18}>
-          <InputStyling
-            type="file"
-            name="serviceFile"
-            onChange={(e) => setVideoFile(e.target.files[0])}
-            accept="video/mp4"
-          />
-        </Col> */}
-        <Col span={24}>
-          <SelectStyling
-            mode="tags"
-            // size={size}
-            placeholder="Add videos links Exemple: https://www.youtube.com/watch?v"
-            // defaultValue={[]}
-            onChange={handleChange}
-          >
-            {children}
-          </SelectStyling>
-        </Col>
-        <Col>
-          {" "}
-          <ButtonStyling
-            icon={<AiOutlineCloudUpload className="icon" />}
-            htmlType="submit"
-          >
-            update
-          </ButtonStyling>
-        </Col>
-      </Row>
-    </form>
+    <>
+      {loading || saveLoading ? (
+        <Loader />
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <TitleStyling>Add Video</TitleStyling>
+          <Row gutter={[10, 10]} justify="space-between">
+            <Col span={20}>
+              <SelectStyling
+                required
+                mode="tags"
+                placeholder="Add videos links Exemple: https://www.youtube.com/watch?v"
+                onChange={handleChange}
+              >
+                {children}
+              </SelectStyling>
+            </Col>
+            <Col span={4}>
+              {" "}
+              <ButtonStyling
+                icon={<AiOutlineCloudUpload className="icon" />}
+                htmlType="submit"
+                disabled={children.length === 0 ? true : false}
+              >
+                update
+              </ButtonStyling>
+            </Col>
+          </Row>
+          <Row gutter={[10, 10]} className="mt-3">
+            {profile.videoUrl.map((url, index) => (
+              <Col lg={{ span: 4 }} className="slide" key={index}>
+                <ReactPlayer
+                  url={url}
+                  height="100%"
+                  width="100%"
+                  volume="0.5"
+                  controls
+                />
+              </Col>
+            ))}
+          </Row>
+        </form>
+      )}
+    </>
   );
 };
 
