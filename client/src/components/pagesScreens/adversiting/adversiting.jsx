@@ -164,7 +164,7 @@ const IntroVideoSection = ({ lang }) => {
     infinite: true,
     speed: 700,
     autoplay: true,
-    autoplaySpeed: 10000,
+    autoplaySpeed: 60000,
     slidesToShow: 1,
     slidesToScroll: 1,
     rtl: lang === "ar" ? true : false,
