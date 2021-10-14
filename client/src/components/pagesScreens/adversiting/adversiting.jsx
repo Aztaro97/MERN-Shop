@@ -182,7 +182,7 @@ const IntroVideoSection = ({ lang }) => {
       <Slider {...settings} className="slider-container">
         {VideoData.map((data) => (
           <div className="box-wrapper" key={data.profileId}>
-            <Row>
+            <Row gutter={[20, 20]}>
               <Col
                 xs={{ span: 24 }}
                 sm={{ span: 24 }}
@@ -728,7 +728,7 @@ const IntroVideoStyling = styled.section`
     }
   }
   & .description {
-    padding-left: 3rem;
+    /* padding-left: 3rem; */
     padding-top: 1rem;
     text-align: center;
     & p {
@@ -746,7 +746,8 @@ const IntroVideoStyling = styled.section`
       border-radius: 5px;
     }
     @media only screen and (max-width: 992px) {
-      margin-top: 2rem;
+      padding-top: .1rem;
+      margin-bottom: 10px;
     }
   }
   /* ///////  Slider Dits  /////// */
