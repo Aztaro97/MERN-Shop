@@ -164,7 +164,7 @@ function FooterScrren() {
             <Link to="/terms" className="link"> {t("footer.terms")}</Link>
             <Link to="/private-policy" className="link"> {t("footer.privacy")}</Link>
           </div>
-          <div className="copyRights">AU79CODE &copy; All rights reserved</div>
+          <p className="copyRights">AU79CODE &copy; All rights reserved</p>
         </div>
       </section>
     </Footer>
