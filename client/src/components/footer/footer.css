@@ -1,33 +1,33 @@
 /* Start styling footer  */
 
-
-
 footer .homeContact {
-    overflow-y: hidden;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    max-width: var(--max-width) !important;
-    margin: auto;
-    transform: none;
-    position: initial !important;
-    height: auto !important;
+  overflow-y: hidden;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  max-width: var(--max-width) !important;
+  margin: auto;
+  transform: none;
+  position: initial !important;
+  height: auto !important;
 }
 
 footer .followUs .group .btn:hover i {
-    color: #fff !important;
+  color: #fff !important;
 }
 
 footer .homeContact .homeTitle h2 {
-    color: #fff !important;
+  color: #fff !important;
 }
 footer .homeContact .mapContent {
-    max-width: 200px;
-    max-height: 200px;
-    margin: auto;
+  max-width: 200px;
+  max-height: 200px;
+  /* margin: auto; */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .menuBtn {
-    /* position: absolute;
+  /* position: absolute;
     top: 60px;
     right: 45px;
     width: 48px;
@@ -46,366 +46,357 @@ footer .homeContact .mapContent {
 }
 
 .menuBtn span {
-    display: inline-block;
-    margin: 3px;
-    width: 4px;
-    height: 4px;
-    background: #c68787;
-    transition: .8s;
+  display: inline-block;
+  margin: 3px;
+  width: 4px;
+  height: 4px;
+  background: #c68787;
+  transition: 0.8s;
 }
-
 
 /* .menuBtn:hover, */
 
 .menuBtn.open {
-    transform: rotate(45deg);
-    transition-delay: .2s
+  transform: rotate(45deg);
+  transition-delay: 0.2s;
 }
-
 
 /* .menuBtn:hover span, */
 
 .menuBtn.open span {
-    animation: menuBtnAnim .4s
+  animation: menuBtnAnim 0.4s;
 }
 
 .toggleMenu.open {
-    opacity: 1;
-    visibility: visible;
+  opacity: 1;
+  visibility: visible;
 }
 
 .toggleMenu {
-    position: fixed;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    z-index: 100;
-    background: rgba(11, 27, 52, .94);
-    padding: 5% 15% 40px;
-    width: 100vw;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity ease .5s;
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 100;
+  background: rgba(11, 27, 52, 0.94);
+  padding: 5% 15% 40px;
+  width: 100vw;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity ease 0.5s;
 }
 
 .toggleMenu .itemLink {
-    width: 10vw;
-    height: 10vw;
-    display: inline-block;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    text-decoration: none !important;
-    margin: auto;
-    font-size: 20px;
-    text-align: center;
+  width: 10vw;
+  height: 10vw;
+  display: inline-block;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-decoration: none !important;
+  margin: auto;
+  font-size: 20px;
+  text-align: center;
 }
 
 .toggleMenu .itemLink:after {
-    content: '';
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    right: 0px;
-    left: 0px;
-    border: 1px solid #c68787;
-    transform: rotate(45deg);
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  border: 1px solid #c68787;
+  transform: rotate(45deg);
 }
 
 .toggleMenu .itemLink:before {
-    content: '';
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    opacity: 0;
-    top: 0%;
-    transform: rotate(45deg);
-    background: rgba(255, 255, 255, .1);
-    transition: top ease .6s, opacity ease .6s;
-    /* , opacity ease .4s */
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  opacity: 0;
+  top: 0%;
+  transform: rotate(45deg);
+  background: rgba(255, 255, 255, 0.1);
+  transition: top ease 0.6s, opacity ease 0.6s;
+  /* , opacity ease .4s */
 }
 
 .toggleMenu .item:hover .itemLink:before {
-    opacity: 1;
-    top: 12%;
+  opacity: 1;
+  top: 12%;
 }
 
 .toggleMenu .itemLink:hover {
-    color: #c68787;
+  color: #c68787;
 }
 
 .toggleMenu .row {
-    margin-top: 12vh;
+  margin-top: 12vh;
 }
 
 .toggleMenu .subLinks {
-    text-align: center;
-    list-style: none;
-    padding: 0px;
-    margin: 0px;
-    margin-top: 3.7vw;
+  text-align: center;
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+  margin-top: 3.7vw;
 }
 
 .toggleMenu .subLinks .subLink {
-    color: #93a3b3;
-    line-height: 32px;
-    text-decoration: none;
-    font-size: 16px;
+  color: #93a3b3;
+  line-height: 32px;
+  text-decoration: none;
+  font-size: 16px;
 }
 
 .toggleMenu .subLinks li {
-    max-height: 0px;
-    overflow: hidden;
-    transition: max-height ease .6s;
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height ease 0.6s;
 }
 
 .toggleMenu .subLinks .subLink:hover {
-    color: #c68787;
+  color: #c68787;
 }
 
 .toggleMenu .item:hover .subLinks li {
-    max-height: 32px;
+  max-height: 32px;
 }
 
 @keyframes turn {
-    50% {
-        transform: rotateY(180deg) rotateX(45deg);
-        top: -40%;
-    }
-    100% {
-        transform: rotateY(360deg) rotateX(0deg);
-        top: 0%;
-    }
+  50% {
+    transform: rotateY(180deg) rotateX(45deg);
+    top: -40%;
+  }
+  100% {
+    transform: rotateY(360deg) rotateX(0deg);
+    top: 0%;
+  }
 }
 
 .menuShapes {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    animation: turn 10s linear infinite 1s;
-    z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  animation: turn 10s linear infinite 1s;
+  z-index: -1;
 }
 
 .menuShapes div {
-    position: absolute;
+  position: absolute;
 }
 
 .menuShapes .a:before {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: #c68787;
-    opacity: .8;
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #c68787;
+  opacity: 0.8;
 }
 
 .menuShapes .a1 {
-    top: 60%;
-    left: 12%;
-    height: 1px;
-    width: 40vh;
+  top: 60%;
+  left: 12%;
+  height: 1px;
+  width: 40vh;
 }
 
 .menuShapes .a1:before {
-    transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 
 .menuShapes .a2 {
-    left: 30%;
-    top: 60%;
-    width: 1px;
-    height: 20vh;
+  left: 30%;
+  top: 60%;
+  width: 1px;
+  height: 20vh;
 }
 
 .menuShapes .a2:before {
-    transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 
 .menuShapes .a3 {
-    top: 60%;
-    right: 28%;
-    height: 1px;
-    width: 40vh;
+  top: 60%;
+  right: 28%;
+  height: 1px;
+  width: 40vh;
 }
 
 .menuShapes .a3:before {
-    transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 
 .menuShapes .a4 {
-    top: 85%;
-    right: 20%;
-    height: 1px;
-    width: 18vh;
+  top: 85%;
+  right: 20%;
+  height: 1px;
+  width: 18vh;
 }
 
 .menuShapes .a4:before {
-    transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 .menuShapes .s:before {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255, 255, 255, .1);
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .menuShapes .s1 {
-    top: calc(50% - 4vh);
-    right: calc(50% - 4vh);
-    height: 8vh;
-    width: 8vh;
+  top: calc(50% - 4vh);
+  right: calc(50% - 4vh);
+  height: 8vh;
+  width: 8vh;
 }
 
 .menuShapes .s1::before {
-    transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 .menuShapes .s2 {
-    top: calc(60% - 2vh);
-    right: calc(30% - 2vh);
-    height: 4vh;
-    width: 4vh;
+  top: calc(60% - 2vh);
+  right: calc(30% - 2vh);
+  height: 4vh;
+  width: 4vh;
 }
 
 .menuShapes .s2::before {
-    transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 .menuShapes .s3 {
-    top: calc(60% - 2vh);
-    left: calc(30% - 2vh);
-    height: 4vh;
-    width: 4vh;
+  top: calc(60% - 2vh);
+  left: calc(30% - 2vh);
+  height: 4vh;
+  width: 4vh;
 }
 
 .menuShapes .s3::before {
-    transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 .menuShapes .s4 {
-    top: calc(80% - 2vh);
-    right: calc(41% - 2vh);
-    height: 4vh;
-    width: 4vh;
+  top: calc(80% - 2vh);
+  right: calc(41% - 2vh);
+  height: 4vh;
+  width: 4vh;
 }
 
 .menuShapes .s4::before {
-    transform: rotate(45deg);
+  transform: rotate(45deg);
 }
-
 
 /*    */
 
 ::-webkit-scrollbar {
-    width: 6px;
+  width: 6px;
 }
-
 
 /* Track */
 
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+  background: #f1f1f1;
 }
-
 
 /* Handle */
 
 ::-webkit-scrollbar-thumb {
-    background: #888;
+  background: #888;
 }
-
 
 /* Handle on hover */
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+  background: #555;
 }
-
 
 /* copy rights  */
 .bottom-footer {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    color: #93a3b3;
-    max-width: var(--max-width);
-    margin: auto;
-    
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  color: #93a3b3;
+  max-width: var(--max-width);
+  margin: auto;
 }
 .contract-link {
-    margin-left: 30px;
+  margin-left: 30px;
 }
 .contract-link .link {
-    text-decoration: none;
-    color: #93a3b3;
-    margin-right: 10px;
-    text-transform: capitalize;
+  text-decoration: none;
+  color: #93a3b3;
+  margin-right: 10px;
+  text-transform: capitalize;
 }
 .contract-link .link:hover {
-    color: var(--orange-color);
-    text-decoration: none;
+  color: var(--orange-color);
+  text-decoration: none;
 }
-
 
 .copyRights {
-    font-size: 18px;
-    
-    font-weight: 500;
-    z-index: 200;
-    text-align: end;
-    padding:0 .7rem 1rem;
+  font-size: 18px;
+
+  font-weight: 500;
+  z-index: 200;
+  text-align: end;
+  padding: 0 0.7rem 1rem;
 }
 
-@media only screen and (max-width:768px) {
-    footer .homeContact .mapContent {
-        width: 200px;
-        height: 200px;
-        margin-top: 70px;
-    }
-    .contract-link {
-        margin-left: 20px;
-    }
-    .contract-link a {
-        display: block;
-        
-    }
+@media only screen and (max-width: 768px) {
+  footer .homeContact .mapContent {
+    width: 200px;
+    height: 200px;
+    margin-top: 70px;
+  }
+  .contract-link {
+    margin-left: 20px;
+  }
+  .contract-link a {
+    display: block;
+  }
 }
-@media only screen and (max-width:400px) {
-    footer .homeContact .mapContent {
-        width: 150px;
-        height: 150px;
-        margin-top: 70px;
-    }
+@media only screen and (max-width: 400px) {
+  footer .homeContact .mapContent {
+    width: 150px;
+    height: 150px;
+    margin-top: 70px;
+  }
 }
-
-
 
 .followUs .group {
-    display: block !important;   
+  display: block !important;
 }
 
 /* End styling Footer  */
-
-
 
 /* .homeContact .phoneNumer {
     direction: ltr !important;
 } */
 .homeContact .phoneNumer:hover {
-    text-decoration: none !important;
-    color: var(--orange-color) !important;
+  text-decoration: none !important;
+  color: var(--orange-color) !important;
+}
+
+.sec-outline-btn {
+  border: 1px solid #ececec71;
+  border-radius: 10px;
 }

@@ -7,7 +7,6 @@ import ReactGA from "react-ga";
 import { initGA, PageView } from "./components/Tracking/tracking";
 import { GlobalStyle } from "./globalStyle";
 
-
 import HomeComponents from "./components/pagesScreens/Home/HomeComponents";
 import CreateProductComponent from "./components/pagesScreens/products/createProduct";
 import ProductsShop from "./components/pagesScreens/AllproductsShop/productsShop";

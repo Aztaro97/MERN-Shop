@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import {
@@ -11,7 +11,6 @@ import {
 } from "react-icons/fa";
 
 import "./footer.css";
-import MapImg from "../../img/pictures/map.png";
 import { Col, Row } from "antd";
 import { useTranslation } from "react-i18next";
 

@@ -12,12 +12,10 @@ import {
   servicePicture,
 } from "../../../utils/advertisingData";
 import FirstLandingSlider from "./Banner/firstLanding";
-import { config } from "dotenv";
 import MainContainer from "../../MainContainer";
 import { Col, Row } from "antd";
-import ButtonComponeent from "../../ButtonComponeent";
 import Meta from "../../helmet";
-// import MainContainer from "../../MainContainer";
+import "./advertising.css"
 
 function AdversitingScreen() {
   const { t, i18n } = useTranslation();
