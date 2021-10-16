@@ -17,11 +17,9 @@ import {
   FILTER_BUSINESS_FAIL,
   FILTER_BUSINESS_REQUEST,
   FILTER_BUSINESS_SUCCESS,
-  OPEN_MESSAGE_FAIL,
   OPEN_MESSAGE_REQUEST,
   OPEN_MESSAGE_SUCCESS,
-  SERVICE_UPDATE_REQUEST,
-  SERVICE_UPDATE_SUCCESS,
+
 } from "../../constants/advertising";
 
 export const clearCardAd = () => (dispatch) => {
