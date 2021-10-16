@@ -15,7 +15,7 @@ export const categoryAdversiting = [
     profileId: "61683883bb90435d90a1bd24",
     title: TranslateContent("real estate"),
     image:
-      "https://res.cloudinary.com/tarositeweb/image/upload/v1634130730/tmp-9-1634130722917_bxjxtm.jpg",
+      "https://res.cloudinary.com/tarositeweb/image/upload/v1634220205/tmp-6-1634220194284_gvhktf.jpg",
   },
   {
     profileId: "61683883bb90435d90a1bd24",
