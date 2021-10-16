@@ -96,52 +96,52 @@ export const listPartnerLogo = [
   {
     profileId: "61683883bb90435d90a1bd24",
     companyName: "code loccol",
-    logoUrl: "https://logo.clearbit.com/clearbit.com",
+    logoUrl: "https://via.placeholder.com/150",
   },
   {
     profileId: "61683883bb90435d90a1bd24",
     companyName: "Noon",
-    logoUrl: "https://logo.clearbit.com/amazon.com",
+    logoUrl: "https://via.placeholder.com/150",
   },
   {
     profileId: "61683883bb90435d90a1bd24",
     companyName: "au 79 code",
-    logoUrl: "https://logo.clearbit.com/alibaba.com",
+    logoUrl: "https://via.placeholder.com/150",
   },
   {
     profileId: "61683883bb90435d90a1bd24",
     companyName: "tabalat",
-    logoUrl: "https://logo.clearbit.com/aliexpress.com",
+    logoUrl: "https://via.placeholder.com/150",
   },
   {
     profileId: "61683883bb90435d90a1bd24",
     companyName: "au 79 code",
-    logoUrl: "https://logo.clearbit.com/ebay.com",
+    logoUrl: "https://via.placeholder.com/150",
   },
   {
     profileId: "61683883bb90435d90a1bd24",
     companyName: "au 79 code",
-    logoUrl: "https://logo.clearbit.com/Fiverr.com",
+    logoUrl: "https://via.placeholder.com/150",
   },
   {
     profileId: "61683883bb90435d90a1bd24",
     companyName: "au 79 code",
-    logoUrl: "https://logo.clearbit.com/IKEA.com",
+    logoUrl: "https://via.placeholder.com/150",
   },
   {
     profileId: "61683883bb90435d90a1bd24",
     companyName: "au 79 code",
-    logoUrl: "https://logo.clearbit.com/Vinted.com",
+    logoUrl: "https://via.placeholder.com/150",
   },
   {
     profileId: "61683883bb90435d90a1bd24",
     companyName: "au 79 code",
-    logoUrl: "https://logo.clearbit.com/Rakuten.com",
+    logoUrl: "https://via.placeholder.com/150",
   },
   {
     profileId: "61683883bb90435d90a1bd24",
     companyName: "au 79 code",
-    logoUrl: "https://logo.clearbit.com/Pinterest.com",
+    logoUrl: "https://via.placeholder.com/150",
   },
 ];
 
@@ -200,7 +200,7 @@ export const firstBannerData = [
   },
   {
     profileId: "61683883bb90435d90a1bd24",
-    imgUrl: "/img/advertising/bg-images.jpeg",
+    imgUrl: "/img/advertising/bg-images.jpg",
   },
 ];
 
@@ -232,7 +232,7 @@ export const secondeBannerData = [
   },
   {
     profileId: "61683883bb90435d90a1bd24",
-    imgUrl: "/img/advertising/bg-images.jpeg",
+    imgUrl: "/img/advertising/bg-images.jpg",
   },
 ];
 
@@ -264,39 +264,33 @@ export const ThirdBannerData = [
   },
   {
     profileId: "61683883bb90435d90a1bd24",
-    imgUrl: "/img/advertising/bg-images.jpeg",
+    imgUrl: "/img/advertising/bg-images.jpg",
   },
 ];
 
 export const servicePicture = [
   {
     profileId: "6162a11181e69950ac0d7e0d",
-    imgUrl:
-      "https://thumbs.dreamstime.com/b/healthy-food-background-fruits-vegetables-cereal-nuts-superfood-dietary-balanced-vegetarian-eating-products-kitchen-143677456.jpg",
+    imgUrl: "https://via.placeholder.com/150",
   },
   {
     profileId: "6162a11181e69950ac0d7e0d",
-    imgUrl:
-      "https://thumbs.dreamstime.com/b/diet-healthy-food-lifestyle-health-concept-sport-exercise-equipment-workout-and-gym-background-nutrition-detox-salad-f-179855057.jpg",
+    imgUrl: "https://via.placeholder.com/150",
   },
   {
     profileId: "6162a11181e69950ac0d7e0d",
-    imgUrl:
-      "https://assets.waseet.net/prod/Dubai/banners/8736764/%D8%AC%D8%A7%D9%83%D9%84%D9%8A%D9%86-%D9%84%D9%84%D8%AA%D9%86%D8%B8%D9%8A%D9%81-8736764-english_featured_image_mobile-1614506174.jpg?width=720&height=408",
+    imgUrl: "https://via.placeholder.com/150",
   },
   {
     profileId: "6162a11181e69950ac0d7e0d",
-    imgUrl:
-      "https://thumbs.dreamstime.com/b/mexican-food-mix-colorful-background-mexico-66442136.jpg",
+    imgUrl: "https://via.placeholder.com/150",
   },
   {
     profileId: "6162a11181e69950ac0d7e0d",
-    imgUrl:
-      "https://thumbs.dreamstime.com/b/fast-food-menu-chicken-nuggets-hamburger-french-fries-33671451.jpg",
+    imgUrl: "https://via.placeholder.com/150",
   },
   {
     profileId: "6162a11181e69950ac0d7e0d",
-    imgUrl:
-      "https://thumbs.dreamstime.com/b/real-estate-agent-closeup-woman-mortgage-consultant-holding-house-model-concept-new-home-sale-rent-shallow-depth-field-53751844.jpg",
+    imgUrl: "https://via.placeholder.com/150",
   },
 ];

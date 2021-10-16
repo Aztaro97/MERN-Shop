@@ -1,6 +1,5 @@
 import { Col, Row } from "antd";
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import CheckOutButton from "./checkout/checkoutComponent";
@@ -47,7 +46,6 @@ const CartUploading = () => {
     totalPriceLogo +
     totalPriceVideo;
 
-  const dispatch = useDispatch();
 
   //   Calculate prices
   const addDecimals = (num) => {
@@ -95,12 +93,7 @@ const CartUploading = () => {
     }
   }, [Total]);
 
-  // const handleSaveInfo = (data) => {
-  //   dispatch(AddCardImage(data));
-  // };
-  const HandleSavedCArt = () => {
-    localStorage.setItem("cardDataImage", JSON.stringify(data));
-  };
+
   return (
     <Container>
       <div>
@@ -340,22 +333,6 @@ const Container = styled.div`
   }
 `;
 
-const LinkStyling = styled(Link)`
-  width: 130px;
-  padding: 5px 20px;
-  background: var(--orange-color);
-  color: #fff;
-  text-decoration: none;
-  text-transform: uppercase;
-  display: block;
-  margin-left: auto;
-  text-align: center;
-  &:hover {
-    text-decoration: none;
-    opacity: 0.9;
-    color: #fff;
-  }
-`;
 
 const FirstFraction = styled.div`
   margin-bottom: 1rem;
