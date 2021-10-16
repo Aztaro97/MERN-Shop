@@ -6,8 +6,9 @@ const cors = require("cors");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware.js");
 const connectDB = require("./config/db.js");
 const fs = require("fs");
-const fileUpload = require('express-fileupload')
-const favicon = require('serve-favicon')
+const fileUpload = require("express-fileupload");
+const favicon = require("serve-favicon");
+const compression = require("compression");
 
 const productRoutes = require("./routes/productRoutes.js");
 const userRoutes = require("./routes/userRoutes.js");
@@ -17,7 +18,8 @@ const AdverUploadingRoutes = require("./routes/advertisingRoute/uploadFiles");
 const StripeRouter = require("./routes/stripe");
 const advertisingRoutes = require("./routes/advertisingRoute/advertisingRoute");
 
-const contactRouter = require("./routes/contact/contactRouter")
+const contactRouter = require("./routes/contact/contactRouter");
+const { filter } = require("compression");
 
 dotenv.config();
 
@@ -32,9 +34,22 @@ if (process.env.NODE_ENV === "development") {
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
-app.use(fileUpload({
-  useTempFiles: true
-}))
+app.use(
+  compression({
+    level: 6,
+    filter: (req, res) => {
+      if (req.headers["x-no-compression"]) {
+        return false;
+      }
+      return compression.filter(req, res)
+    },
+  })
+);
+app.use(
+  fileUpload({
+    useTempFiles: true,
+  })
+);
 // app.use(path.join(__dirname,"/public"))
 app.use(favicon(path.join(__dirname, "client/public", "favicon.ico")));
 // app.use(favicon(path.join(__dirname, "build", "favicon.ico")));
@@ -42,11 +57,11 @@ app.use(favicon(path.join(__dirname, "client/public", "favicon.ico")));
 app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/orders", orderRoutes);
-app.use('/api/upload', uploadRoutes);
-app.use('/upload-images', AdverUploadingRoutes);
-app.use("/checkout", StripeRouter)
-app.use("/api/advertising", advertisingRoutes )
-app.use("/api/contact-us", contactRouter )
+app.use("/api/upload", uploadRoutes);
+app.use("/upload-images", AdverUploadingRoutes);
+app.use("/checkout", StripeRouter);
+app.use("/api/advertising", advertisingRoutes);
+app.use("/api/contact-us", contactRouter);
 
 // app.use('/api/upload', uploadRoutes)
 
@@ -66,8 +81,8 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-app.use(notFound)
-app.use(errorHandler)
+app.use(notFound);
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 8080;
 
@@ -82,4 +97,3 @@ app.listen(
 if (!fs.existsSync("./uploads")) {
   fs.mkdirSync("./uploads");
 }
-

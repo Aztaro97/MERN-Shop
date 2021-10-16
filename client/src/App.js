@@ -26,22 +26,22 @@ import MapScreen from "./components/pagesScreens/checkout/googleMap/mapScreen";
 
 // /////////////////   Marketing Component   ///////////////
 import EMarketingComponent from "./components/pagesScreens/marketing/eMarketingScreen";
-import OutMarketingComponent from "./components/pagesScreens/marketing/outDoorMarketing";
+const OutMarketingComponent = lazy(() => import("./components/pagesScreens/marketing/outDoorMarketing"))
 
 // ////////////////  Design Component    /////////////////////
-import DesignComponent from "./components/pagesScreens/design/designScreen";
+const DesignComponent = lazy(() => import("./components/pagesScreens/design/designScreen"))
 
 // ////////////////  PROGRAMMING Component    /////////////////////
-import ProgrammingComponent from "./components/pagesScreens/programmingScreen/programmingScreen";
+const ProgrammingComponent = lazy(() => import("./components/pagesScreens/programmingScreen/programmingScreen"))
 
 // ////////////////  PHOTOGRAPHY Component    /////////////////////
-import PhotographyComponent from "./components/pagesScreens/photographyScreen/photographyScreen";
+const PhotographyComponent = lazy(() => import("./components/pagesScreens/photographyScreen/photographyScreen"))
 
 // ////////////////  PRODUCTION Component    /////////////////////
-import ProductionComponent from "./components/pagesScreens/productionScreen/productionScreen";
+const ProductionComponent = lazy(() => import("./components/pagesScreens/productionScreen/productionScreen"))
 
 // ////////////////  ABOUT Component    /////////////////////
-import AboutComponent from "./components/pagesScreens/AboutScreen/aboutScreen";
+const AboutComponent = lazy(() => import("./components/pagesScreens/AboutScreen/aboutScreen") )
 
 const pageNotFound = lazy(() =>
   import("./components/pagesScreens/pageNotFund")
