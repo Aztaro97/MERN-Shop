@@ -220,9 +220,6 @@ const Footer = styled.footer`
       margin-right: 10px;
       text-transform: capitalize;
       font-size: 1rem;
-      @media only screen and (max-width: 600px) {
-        display: block;
-      }
     }
     & .contract-link .link:hover {
       color: var(--orange-color);
@@ -230,6 +227,13 @@ const Footer = styled.footer`
     }
     & .copyRights {
       margin-bottom: 0;
+    }
+    @media only screen and (max-width: 768px) {
+      margin-top: 0px;
+      margin-bottom: 20;
+      & .contract-link .link {
+        display: block;
+      }
     }
   }
 
@@ -239,7 +243,9 @@ const Footer = styled.footer`
     display: flex;
     align-items: center;
     justify-content: center;
-
+    @media only screen and (max-width: 768px) {
+      display: none;
+    }
     & a {
       transform: rotate(-45deg);
       transition: all 700ms ease;
@@ -248,6 +254,10 @@ const Footer = styled.footer`
         width: 200px;
         height: 200px;
         border: 2px solid var(--orange-color);
+        @media only screen and (max-width: 768px) {
+          width: 150px;
+          height: 150px;
+        }
       }
       &:hover {
         transform: rotate(0deg);
