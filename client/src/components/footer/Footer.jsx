@@ -10,7 +10,6 @@ import {
   FaInstagram,
 } from "react-icons/fa";
 
-// import "./footer.css";
 import { Col, Row } from "antd";
 import { useTranslation } from "react-i18next";
 
@@ -48,15 +47,9 @@ function FooterScrren() {
               <a href="tel:+971502022251" className="para phoneNumer ">
                 00971502022251
               </a>
-              {/* <!-- follow us div  --> */}
               <div className="followUs mt-4">
                 <h3 className="title">{t("footer.follow")}</h3>
                 <div className="group">
-                  {/* <!-- Repeating link  --> */}
-                  {/* <a href="" className="btn media_link">
-                    <FaTumblr className="icon" />
-                  </a> */}
-                  {/* <!-- Repeating link  --> */}
                   <a
                     href="https://api.whatsapp.com/send?phone=+971502022251"
                     className="btn media_link"
@@ -65,7 +58,6 @@ function FooterScrren() {
                   >
                     <FaWhatsapp className="icon" />
                   </a>
-                  {/* <!-- Repeating link  --> */}
                   <a
                     href="https://www.instagram.com/au_79_code/"
                     className="btn media_link"
@@ -74,7 +66,6 @@ function FooterScrren() {
                   >
                     <FaInstagram className="icon" />
                   </a>
-                  {/* <!-- Repeating link  --> */}
                   <a
                     href="https://twitter.com/79_code"
                     className="btn media_link"
@@ -83,7 +74,6 @@ function FooterScrren() {
                   >
                     <FaTwitter className="icon" />
                   </a>
-                  {/* <!-- Repeating link  --> */}
                   <a
                     href="https://www.snapchat.com/add/au79code"
                     className="btn media_link"
@@ -92,7 +82,6 @@ function FooterScrren() {
                   >
                     <FaSnapchatGhost className="icon" />
                   </a>
-                  {/* <!-- Repeating link  --> */}
                   <a
                     href="https://www.facebook.com/pages/category/Marketing-Agency/AU-79-CODE-103505425005079/"
                     className="btn media_link"
@@ -120,24 +109,20 @@ function FooterScrren() {
               md={{ span: 12 }}
               lg={{ span: 12 }}
             >
-              {/* <!-- link for going to external map  --> */}
-              <a
-                className="mapContent"
-                href="https://goo.gl/maps/eKtFdn7NEEZSxoty8"
-                target="_blank"
-                rel="noreferrer"
-              >
-                {/* <!-- png square img  (preferred 737 * 737 px) --> */}
-                {/* <img className="mapImg" src={MapImg} alt="" /> */}
-                <iframe
-                  title="AU79CODE Location"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7218.432955814597!2d55.385108200000005!3d25.229632700000014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m3!3e6!4m0!4m0!5e0!3m2!1sen!2sae!4v1629292534309!5m2!1sen!2sae"
-                  // width="600"
-                  // height="450"
-                  allowfullscreen=""
-                  loading="lazy"
-                ></iframe>
-              </a>
+              <div className="mapContainer">
+                <a
+                  href="https://goo.gl/maps/eKtFdn7NEEZSxoty8"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <iframe
+                    title="AU79CODE Location"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7218.432955814597!2d55.385108200000005!3d25.229632700000014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m3!3e6!4m0!4m0!5e0!3m2!1sen!2sae!4v1629292534309!5m2!1sen!2sae"
+                    allowfullscreen=""
+                    loading="lazy"
+                  ></iframe>
+                </a>
+              </div>
             </Col>
           </Row>
         </div>
@@ -248,14 +233,25 @@ const Footer = styled.footer`
     }
   }
 
-  & .mapContent {
-    width: 150px;
-    height: 150px;
-    margin-left: auto;
-    margin-right: auto;
-    & iframe {
-      width: 100%;
-      height: 100%;
+  & .mapContainer {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & a {
+      transform: rotate(-45deg);
+      transition: all 700ms ease;
+
+      & iframe {
+        width: 200px;
+        height: 200px;
+        border: 2px solid var(--orange-color);
+      }
+      &:hover {
+        transform: rotate(0deg);
+      }
     }
   }
 
