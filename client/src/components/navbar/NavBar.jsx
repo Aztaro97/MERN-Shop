@@ -74,12 +74,7 @@ function NavBar() {
       ) : (
         <>
           <LinkR href="/myorder">{t("my_order")}</LinkR>
-          <LinkR
-            style={{ textTransform: "capitalize", letterSpacing: "1px" }}
-            href="/register"
-          >
-            {t("create_your_shop")}
-          </LinkR>
+          <LinkR href="/register">{t("create_your_shop")}</LinkR>
         </>
       )}
 
@@ -90,12 +85,7 @@ function NavBar() {
   );
   const ProfileContentLogOut = (
     <Content>
-      <LinkR
-        style={{ textTransform: "capitalize", letterSpacing: "1px" }}
-        href="/register"
-      >
-        {t("create_your_shop")}
-      </LinkR>
+      <LinkR href="/register">{t("create_your_shop")}</LinkR>
       <LinkP to="/auth" className="btn_signin">
         {t("login")}
       </LinkP>
@@ -177,7 +167,7 @@ function NavBar() {
               !userInfo ? (
                 <Content>
                   <LinkP to="/auth" className="btn_signin">
-                    {t("login")}
+                    {t("signin")} / {t("signup")}
                   </LinkP>
                 </Content>
               ) : (
@@ -299,7 +289,7 @@ const LinkR = styled.a`
   border-radius: 10px;
   border: 1px solid var(--orange-color);
   color: var(--silver-color);
-  text-transform: uppercase;
+  text-transform: capitalize;
   padding: 0.5rem 1.5rem;
   margin: 0.7rem 0;
   text-align: center;
@@ -320,37 +310,31 @@ const LinkR = styled.a`
 const LinkP = styled(Link)`
   text-decoration: none;
   border-radius: 10px;
-  border: 1px solid var(--orange-color);
   color: var(--silver-color);
-  text-transform: uppercase;
-  padding: 0.5rem 1.5rem;
+  padding: 3px 1rem;
   margin: 0.7rem 0;
   text-align: center;
   transition: 0.2s all ease-in;
-  font-size: 1rem;
+  font-size: 0.9rem;
+  text-transform: capitalize !important;
   &:hover {
     color: #fff;
     background: var(--orange-color);
     text-decoration: none;
   }
   &.btn_logOut {
-    margin-top: 1rem;
     background: var(--orange-color);
     color: #fff;
-    font-weight: 700;
   }
   &.btn_logOut:hover {
     opacity: 0.9;
   }
   &.btn_signin {
-    text-transform: capitalize;
     background: var(--orange-color);
     color: #fff;
-    padding: 0.3rem 3rem;
-    /* margin:2rem 0 */
+    text-transform: capitalize !important;
   }
   @media only screen and (max-width: 768px) {
-    padding: 0.4rem 1rem;
     font-size: 0.8rem;
     margin: 0.5rem 0;
   }

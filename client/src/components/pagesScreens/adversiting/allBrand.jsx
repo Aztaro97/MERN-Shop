@@ -33,13 +33,11 @@ function AllBrandScreen() {
         <>
           <Meta title={`All ${type}`} />
           <SecondeLandingSlider />
-          <div className="container my-5">
-            <DataSection
-              listAdService={listAdService}
-              error={error}
-              type={type}
-            />
-          </div>
+          <DataSection
+            listAdService={listAdService}
+            error={error}
+            type={type}
+          />
         </>
       )}
     </MainContainer>
@@ -128,7 +126,7 @@ const DataSection = ({ listAdService, error, type }) => {
 
 const DataStyling = styled.section`
   text-align: center;
-  margin-bottom: 4rem;
+  margin: 5rem 0;
   & .title {
     font-size: 1.5rem;
     text-transform: capitalize;

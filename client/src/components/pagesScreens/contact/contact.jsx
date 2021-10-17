@@ -143,6 +143,7 @@ function Contact() {
                         rows="5"
                         placeholder="MESSAGE"
                         onChange={(e) => setMessage(e.target.value)}
+                        required
                       ></TextArea>
                     </Col>
                   </Row>
@@ -185,15 +186,16 @@ function Contact() {
 
 const ContactContainer = styled.section`
   background: rgba(236, 236, 236, 0.925);
-  margin: auto 0 !important;
   height: 100% !important;
   padding: 2rem;
+  margin-top: 4rem;
   & .title {
     color: #111;
     font-weight: 500;
+    margin-bottom: 4px;
   }
   .followUs {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     & .media_link {
       color: #fff;
       background: var(--orange-color);
