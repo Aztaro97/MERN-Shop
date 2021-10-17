@@ -1,34 +1,37 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { HiOutlineBadgeCheck } from "react-icons/hi";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { clearCardAd } from "../../../flux/actions/advertisingAction/advertisingAction";
 import MainContainer from "../../MainContainer";
 
 const ThankScreen = () => {
-  const location = useLocation();
-  const data = location.state.data;
-
   const history = useHistory();
-  
+  const dispatch = useDispatch();
+
+  const { service } = useSelector((state) => state.advertising);
+
   useEffect(() => {
-    if (data === undefined) {
+    if (!service.fullName) {
       history.push("/");
     }
-
-  }, [data, history]);
+  }, [history, service]);
   return (
     <MainContainer>
       <Container>
         <HiOutlineBadgeCheck className="icon" />
-        <h3 className="title">Thanks for registering Mr {data.fullName}!</h3>
+        <h3 className="title">Thanks for registering Mr {service.fullName}!</h3>
         <p className="message">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis
           minima nisi ut sit enim quasi molestias natus expedita quos id. Est
           dolorem quisquam qui consectetur ipsum iure magnam iste maxime.
         </p>
-        <LinkStyling to="/">continue to home</LinkStyling>
+        <LinkStyling to="/" onClick={() => dispatch(clearCardAd())}>
+          continue to home
+        </LinkStyling>
       </Container>
     </MainContainer>
   );
@@ -64,6 +67,6 @@ const LinkStyling = styled(Link)`
     color: #fff;
     opacity: 0.9;
   }
-`
+`;
 
 export default ThankScreen;

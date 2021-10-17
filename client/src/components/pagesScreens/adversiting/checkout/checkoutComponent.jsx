@@ -13,6 +13,7 @@ import LoaderComponent from "../../../loader";
 const CheckoutComponent = ({ totalPrice, cardData }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [stripeToken, setStripeToken] = useState(null);
+  const [successPayment, setSuccessPayment] = useState(false);
 
   const stripe_api_key =
     "pk_test_51JJfI4Bx9NV9CAAsuru5nAfIu9rF8RK6yxAf52TPNFMD7G0wnXlmH9r3MzKIlPO5kXBwkRGR8D9fK4xBod44lmRq00mT5OQdVM";
@@ -32,6 +33,7 @@ const CheckoutComponent = ({ totalPrice, cardData }) => {
 
   const body = {
     companyName: userField.companyName,
+    companyName_ar: userField.companyName_ar,
     about: userField.about,
     typeBusiness: userField.typeBusiness,
     fullName: userField.fullName,
@@ -44,34 +46,33 @@ const CheckoutComponent = ({ totalPrice, cardData }) => {
     totalPrice,
   };
 
+  const makeRequest = async () => {
+    try {
+      const res = await axios.post("/checkout/advertising", {
+        tokenId: stripeToken.id,
+        amount: totalPrice * 100,
+        description: `Ordered  ${JSON.stringify(cardData)} `,
+      });
+      if (res.data.success) {
+        setSuccessPayment(true);
+        console.log(stripeToken)
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  if (successPayment) {
+    dispatch(PremiumSubscription(body));
+    history.push("/advertising/thank");
+  }
+
   useEffect(() => {
-    const makeRequest = async () => {
-      try {
-        const res = await axios.post("/checkout/advertising", {
-          tokenId: stripeToken.id,
-          amount: totalPrice * 100,
-          description: `Ordered  ${cardData} `,
-        });
-        if (res.data.success) {
-          dispatch(PremiumSubscription(body));
-          dispatch(clearCardAd());
-          history.push("/advertising/thank", { data: body });
-        }
-      } catch {}
-    };
     if (stripeToken) {
       setIsLoading(true);
     }
     stripeToken && makeRequest();
-  }, [
-    stripeToken,
-    totalPrice,
-    history,
-    dispatch,
-    body,
-    setIsLoading,
-    cardData,
-  ]);
+  }, [stripeToken, setIsLoading, makeRequest]);
 
   return (
     <>

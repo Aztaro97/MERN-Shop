@@ -45,9 +45,7 @@ const AllCompanyService = () => {
     dispatch(getAllAdService());
   };
 
-  const handleDelete = (id) => {
-    ;
-  };
+  const handleDelete = (id) => {};
 
   return (
     <AllCompanyContainer>
@@ -72,14 +70,14 @@ const AllCompanyService = () => {
           <Table>
             <thead>
               <tr>
-                <th>id</th>
+                {/* <th>id</th> */}
                 <th>name</th>
                 <th>email</th>
                 <th>Telephone</th>
                 <th>address</th>
 
                 <th>company</th>
-                <th>Type ad plan</th>
+                <th>plan</th>
                 <th>Allowed</th>
                 <th>Control</th>
               </tr>
@@ -87,7 +85,6 @@ const AllCompanyService = () => {
             <tbody>
               {listAdService.map((ad) => (
                 <tr key={ad._id}>
-                  <td>{ad.user}</td>
                   <td>{ad.fullName}</td>
                   <td>
                     {" "}
@@ -123,7 +120,12 @@ const AllCompanyService = () => {
                       </li>
                     </ul>
                   </td>
-                  <td>{ad.typePlan}</td>
+                  <td>
+                    <ul>
+                      <li>Type: {ad.typePlan}</li>
+                      {ad.isPaid && <li>Price: {ad.totalPrice}</li>}
+                    </ul>
+                  </td>
                   <td>
                     <Switch
                       onChange={(check) => handleToggleChange(ad._id, check)}
@@ -188,6 +190,7 @@ const Table = styled.table`
         /* font-weight: 700; */
         color: #fff;
         font-size: 0.8rem;
+        text-align: center;
       }
     }
   }
@@ -248,6 +251,6 @@ const SelectStyling = styled(Select)`
   }
 `;
 
-const Link = styled.a``
+const Link = styled.a``;
 
 export default AllCompanyService;

@@ -41,7 +41,7 @@ app.use(
       if (req.headers["x-no-compression"]) {
         return false;
       }
-      return compression.filter(req, res)
+      return compression.filter(req, res);
     },
   })
 );
