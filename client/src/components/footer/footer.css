@@ -1,16 +1,3 @@
-/* Start styling footer  */
-
-footer .homeContact {
-  overflow-y: hidden;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  max-width: var(--max-width) !important;
-  margin: auto;
-  transform: none;
-  position: initial !important;
-  height: auto !important;
-}
-
 footer .followUs .group .btn:hover i {
   color: #fff !important;
 }
@@ -21,28 +8,8 @@ footer .homeContact .homeTitle h2 {
 footer .homeContact .mapContent {
   max-width: 200px;
   max-height: 200px;
-  /* margin: auto; */
   margin-left: auto;
   margin-right: auto;
-}
-
-.menuBtn {
-  /* position: absolute;
-    top: 60px;
-    right: 45px;
-    width: 48px;
-    height: 48px;
-    padding: 5px;
-    text-align: center;
-    font-size: 0;
-    border: none;
-    background: none;
-    z-index: 12;
-    perspective: 500px;
-    border: 1px solid #cccccc;
-    transition: .2s;
-    z-index: 200;
-    background: #fff; */
 }
 
 .menuBtn span {
@@ -385,7 +352,7 @@ footer .homeContact .mapContent {
     margin-top: 70px;
   }
   .copyRights {
-    font-size: .8rem;
+    font-size: 0.8rem;
   }
 }
 
@@ -398,12 +365,7 @@ footer .homeContact .mapContent {
 /* .homeContact .phoneNumer {
     direction: ltr !important;
 } */
-.homeContact .phoneNumer:hover {
+/* .homeContact .phoneNumer:hover {
   text-decoration: none !important;
   color: var(--orange-color) !important;
-}
-
-.sec-outline-btn {
-  border: 1px solid #ececec71;
-  border-radius: 10px;
-}
+} */

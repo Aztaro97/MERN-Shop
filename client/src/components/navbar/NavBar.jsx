@@ -41,7 +41,7 @@ function NavBar() {
   };
 
   const ChangeNav = () => {
-    if (window.scrollY >= 40) {
+    if (window.scrollY >= 1) {
       setScrollNav(true);
     } else {
       setScrollNav(false);
@@ -229,7 +229,7 @@ function NavBar() {
 const Header = styled.header`
   max-width: var(--max-width);
   margin: 0 auto !important;
-  height: 80px;
+  height: 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -237,13 +237,14 @@ const Header = styled.header`
   top: 0;
   width: 100%;
   z-index: 99;
+  padding: 0 2rem;
   background: ${({ scrollNav }) => (scrollNav ? "#fff" : "transparent")};
   box-shadow: ${({ scrollNav }) =>
     scrollNav ? "0px 5px 0px 0px rgba(0,0,0,0.11)" : "none"};
   transition: ${({ scrollNav }) =>
     scrollNav ? "background 0s ease-in-out" : "background .5s ease-in-out"};
-  @media only screen and (max-width: 995px) {
-    padding: 0 2rem;
+  @media only screen and (max-width: 768px) {
+    height: 80px;
   }
 `;
 const Nav = styled.ul`
