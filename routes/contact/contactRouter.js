@@ -12,7 +12,7 @@ const transporter = nodemailer.createTransport({
   port: 465,
   auth: {
     user: "apikey",
-    pass: SENDGRID_API_KEYS,
+    pass: "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",
   },
   tls: {
     // do not fail on invalid certs
@@ -34,14 +34,14 @@ router.post("/", async (req, res) => {
 
   transporter
     .sendMail({
-      to: email,
-      from:  "taroshopping97@gmail.com",
-      subject: "Contact us",
+      to: "aztaro97@gmail.com",
+      from:  "abdoulazizsanitaro@gmail.com",
+      subject: "Contact Form",
       html: `
         <body>
           <div style="width:100%; padding:4rem 0;">
-            <h6>Full Name: ${name} </h6>
-            <h6>Email adress: ${email} </h6>
+            <h1>Full Name: ${name} </h1>
+            <h1>Email adress: ${email} </h1>
             <p>Body Message: ${message} </p>         
           </div>
 

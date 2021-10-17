@@ -123,7 +123,7 @@ const AllCompanyService = () => {
                   <td>
                     <ul>
                       <li>Type: {ad.typePlan}</li>
-                      {ad.isPaid && <li>Price: {ad.totalPrice}</li>}
+                      {ad.isPaid && <li>Price: {ad.totalPrice} dh</li>}
                     </ul>
                   </td>
                   <td>

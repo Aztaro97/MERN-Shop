@@ -54,7 +54,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   transport.sendMail({
     to: email,
-    from: "taroshopping97@gmail.com",
+    from: "abdoulazizsanitaro@gmail.com",
     subject: "Welcome to Au79Code",
     html: `
     <body>
@@ -452,7 +452,7 @@ const resetPassword = asyncHandler(async (req, res) => {
 
     transport.sendMail({
       to: user.email,
-      from: "taroshopping97@gmail.com",
+      from: "abdoulazizsanitaro@gmail.com",
       subject: "Reset Password",
       html: `
         <body>
