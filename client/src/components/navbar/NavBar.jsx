@@ -229,22 +229,17 @@ function NavBar() {
 const Header = styled.header`
   max-width: var(--max-width);
   margin: 0 auto !important;
-  /* max-width: var(--max-width) */
-  /* margin-right: auto; */
   height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* padding: 0 2rem; */
-  padding: 0 1rem;
   position: sticky;
   top: 0;
-  /* left: 0; */
   width: 100%;
   z-index: 99;
   background: ${({ scrollNav }) => (scrollNav ? "#fff" : "transparent")};
   box-shadow: ${({ scrollNav }) =>
-    scrollNav ? "0px 8px 5px 1px rgba(0,0,0,0.11)" : "none"};
+    scrollNav ? "0px 5px 0px 0px rgba(0,0,0,0.11)" : "none"};
   transition: ${({ scrollNav }) =>
     scrollNav ? "background 0s ease-in-out" : "background .5s ease-in-out"};
   @media only screen and (max-width: 995px) {
