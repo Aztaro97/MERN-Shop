@@ -36,7 +36,7 @@ function SelectLangButton() {
   }, [currentLanguage, t]);
 
   return (
-    <SelectC
+    <SelectStyling
       style={{ width: 150 }}
       onChange={(value) => i18next.changeLanguage(value)}
       defaultValue={
@@ -83,23 +83,14 @@ function SelectLangButton() {
           {name}
         </Option>
       ))}
-    </SelectC>
+    </SelectStyling>
   );
 }
 
-const SelectC = styled(Select)`
+const SelectStyling = styled(Select)`
   /* border: 1px solid red; */
   /* border: 1px solid var(--orange-color); */
   border-radius: 80px;
-  @media only screen and (max-width: 380px) {
-    width: 90px !important;
-    padding: 2px; 
-
-    & .flag-icon {
-      font-size: 1rem;
-      padding-right: 5px;
-    }
-  }
 
   & .ant-select-selector {
     border: 1px solid var(--orange-color) !important;
@@ -110,6 +101,20 @@ const SelectC = styled(Select)`
   }
 
   &:hover {
+  }
+
+  @media only screen and (max-width: 380px) {
+    border-radius: 20px;
+    width: 130px !important;
+    padding: 2px;
+
+    & .flag-icon {
+      font-size: 1rem;
+      padding-right: 5px;
+    }
+    & .ant-select-selector {
+      border-radius: 0 !important;
+    }
   }
 `;
 

@@ -153,6 +153,7 @@ export const VideoData = [
       "https://res.cloudinary.com/tarositeweb/video/upload/v1634022188/au79code/AZ_1_gro3g4.mp4",
     description:
       "Quisque velit nisi, pretium ut lacinia inQuisque velit nisi, pretium ut lacinia in Quisque velit nisi, pretium ut lacinia in ",
+    publicId: "au79code/AZ_1_gro3g4",
   },
   {
     profileId: "61683883bb90435d90a1bd24",
@@ -161,6 +162,7 @@ export const VideoData = [
       "https://res.cloudinary.com/tarositeweb/video/upload/v1634022182/au79code/AZ_3_ignyyi.mp4",
     description:
       "Quisque velit nisi, pretium ut lacinia inQuisque velit nisi, pretium ut lacinia in Quisque velit nisi, pretium ut lacinia in ",
+    publicId: "au79code/AZ_3_ignyyi",
   },
   {
     profileId: "61683883bb90435d90a1bd24",
@@ -169,6 +171,7 @@ export const VideoData = [
       "https://res.cloudinary.com/tarositeweb/video/upload/v1634022150/au79code/AZ_2_l0qaqv.mp4",
     description:
       "Quisque velit nisi, pretium ut lacinia inQuisque velit nisi, pretium ut lacinia in Quisque velit nisi, pretium ut lacinia in ",
+    publicId: "au79code/AZ_2_l0qaqv",
   },
 ];
 

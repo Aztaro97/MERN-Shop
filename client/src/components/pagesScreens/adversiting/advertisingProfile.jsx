@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Slider from "react-slick";
 import { Image } from "antd";
-import ReactPlayer from "react-player";
+import { Video, Transformation } from "cloudinary-react";
 import { useParams, useHistory } from "react-router-dom";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import InputC from "../../InputComponents";
@@ -135,13 +135,13 @@ const PortfolioSlider = ({ profile }) => {
         <Slider {...settings} className="slider_container">
           {profile.videoUrl.map((url, index) => (
             <div className="slide" key={index}>
-              <ReactPlayer
-                url={url}
-                height="100%"
-                width="100%"
-                volume="0.5"
-                controls
-              />
+              <Video
+                  cloudName="tarositeweb"
+                  controls="true"
+                  fallback="Cannot display video"
+                  publicId={url}
+                  width={330}
+                />
             </div>
           ))}
         </Slider>

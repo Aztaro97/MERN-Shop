@@ -13,7 +13,7 @@ import Loader from "../../../loader";
 import { getAdvertisingProfileByID } from "../../../../flux/actions/advertisingAction/advertisingAction";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 import { Select } from "antd";
-import ReactPlayer from "react-player";
+import { Video, Transformation } from "cloudinary-react";
 
 const { Option } = Select;
 
@@ -38,7 +38,7 @@ function EditServiceScreen() {
       ) : error ? (
         <h3>error</h3>
       ) : (
-        <>
+        <Container>
           <LogoContainer
             id={id}
             userInfo={userInfo}
@@ -62,7 +62,7 @@ function EditServiceScreen() {
               <BackLinkStyling to="/admin/advertising">back</BackLinkStyling>
             </Col>
           </Row>
-        </>
+        </Container>
       )}
     </MainContainer>
   );
@@ -272,13 +272,13 @@ const VideoContainer = ({ id, userInfo, loading, profile }) => {
         <Loader />
       ) : (
         <form onSubmit={handleSubmit}>
-          <TitleStyling>Add Video</TitleStyling>
+          <TitleStyling>Add Video Public ID</TitleStyling>
           <Row gutter={[10, 10]} justify="space-between">
             <Col span={20}>
               <SelectStyling
                 required
                 mode="tags"
-                placeholder="Add videos links Exemple: https://www.youtube.com/watch?v"
+                placeholder="Past the Video Public ID here"
                 onChange={handleChange}
               >
                 {children}
@@ -298,12 +298,12 @@ const VideoContainer = ({ id, userInfo, loading, profile }) => {
           <Row gutter={[10, 10]} className="mt-3">
             {profile.videoUrl.map((url, index) => (
               <Col lg={{ span: 4 }} className="slide" key={index}>
-                <ReactPlayer
-                  url={url}
-                  height="100%"
+                <Video
+                  cloudName="tarositeweb"
+                  controls="true"
+                  fallback="Cannot display video"
+                  publicId={url}
                   width="100%"
-                  volume="0.5"
-                  controls
                 />
               </Col>
             ))}
@@ -313,6 +313,10 @@ const VideoContainer = ({ id, userInfo, loading, profile }) => {
     </>
   );
 };
+
+const Container = styled.div`
+  margin: 4rem 0;
+`
 
 const BackLinkStyling = styled(Link)`
   color: #111;

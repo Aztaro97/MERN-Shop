@@ -15,7 +15,8 @@ import FirstLandingSlider from "./Banner/firstLanding";
 import MainContainer from "../../MainContainer";
 import { Col, Row } from "antd";
 import Meta from "../../helmet";
-import "./advertising.css"
+import { Video, Transformation } from "cloudinary-react";
+import "./advertising.css";
 
 function AdversitingScreen() {
   const { t, i18n } = useTranslation();
@@ -103,7 +104,8 @@ const TypeBusinessSection = ({ lang }) => {
         {categoryAdversiting.map((data) => (
           <CardItemStyling
             key={data.profileId}
-            onClick={() => history.push( `/advertising/profile/${data.profileId}`)
+            onClick={() =>
+              history.push(`/advertising/profile/${data.profileId}`)
             }
           >
             <div
@@ -173,7 +175,7 @@ const IntroVideoSection = ({ lang }) => {
     arrows: false,
   };
 
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <IntroVideoStyling>
@@ -189,7 +191,15 @@ const IntroVideoSection = ({ lang }) => {
                 md={{ span: 12 }}
                 lg={{ span: 12 }}
               >
-                <ReactPlayer
+                <Video
+                  cloudName="tarositeweb"
+                  controls="true"
+                  fallback="Cannot display video"
+                  publicId={data.publicId}
+                  width="100%"
+                />
+
+                {/* <ReactPlayer
                   className="video-player"
                   url={data.videoUrl}
                   height="100%"
@@ -204,15 +214,12 @@ const IntroVideoSection = ({ lang }) => {
                         transparent: true,
                         autoplay: false,
                         muted: false,
-                        // autopause: true,
                         quality: "auto",
-                        // width: "900",
                         color: "00ADEF",
-                        // title: data.companyName,
                       },
                     },
                   }}
-                />
+                /> */}
               </Col>
               <Col
                 xs={{ span: 24 }}
@@ -751,7 +758,7 @@ const IntroVideoStyling = styled.section`
       border-radius: 5px;
     }
     @media only screen and (max-width: 992px) {
-      padding-top: .1rem;
+      padding-top: 0.1rem;
       margin-bottom: 10px;
     }
   }

@@ -172,7 +172,7 @@ function NavBar() {
                 </Content>
               ) : (
                 <Content>
-                  <LinkP onClick={handleLogOut}>{t("logout")}</LinkP>
+                  <LinkP onClick={handleLogOut} className="btn_logOut" >{t("logout")}</LinkP>
                 </Content>
               )
             }
@@ -243,6 +243,7 @@ const Nav = styled.ul`
   align-items: center;
   list-style: none;
   margin-bottom: 0;
+  padding: 0
 `;
 const NavItem = styled.li`
   margin: 0 0.7rem;
