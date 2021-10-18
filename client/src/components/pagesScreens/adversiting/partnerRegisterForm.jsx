@@ -214,7 +214,11 @@ const DetailsComponent = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h1 className="title">{t("company_info")}</h1>
+      <Row justify="start" >
+        <Col xs={{ span: 20, offset: 4 }} md={{ span: 22, offset: 2 }}>
+          <h1 className="title">{t("company_info")}</h1>
+        </Col>
+      </Row>
       <Row gutter={[10, 10]} justify="end">
         <Col xs={{ span: 4 }} md={{ span: 2 }}>
           <IconStyling>
@@ -308,7 +312,11 @@ const DetailsComponent = () => {
         </Col>
       </Row>
 
-      <h1 className="title">{t("contact_details")}</h1>
+      <Row style={{ marginTop: 20 }}>
+        <Col xs={{ span: 20, offset: 4 }} md={{ span: 22, offset: 2 }}>
+          <h1 className="title">{t("contact_details")}</h1>
+        </Col>
+      </Row>
       <Row gutter={[10, 10]}>
         <Col xs={{ span: 4 }} md={{ span: 2 }}>
           <IconStyling>
@@ -466,7 +474,6 @@ const DetailsComponent = () => {
   );
 };
 
-
 const PlanStyling = styled.div`
   margin: 4rem 0;
   & .title {
@@ -536,7 +543,6 @@ const PlanStyling = styled.div`
   }
 `;
 
-
 const Container = styled.div`
   background-color: #ecececec;
   padding: 3rem;
@@ -557,6 +563,11 @@ const Container = styled.div`
 
   & .gutter-row {
     margin-bottom: 10px;
+  }
+  @media only screen and (max-width: 768px) {
+    & .title {
+      font-size: 1.1rem;
+    }
   }
 `;
 
