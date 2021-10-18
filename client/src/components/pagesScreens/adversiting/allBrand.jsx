@@ -78,9 +78,9 @@ const DataSection = ({ listAdService, error, type }) => {
                 {listAdService.map((data) => (
                   <Col
                     lg={{ span: 6 }}
-                    xs={{ span: 24 }}
-                    sm={{ span: 12 }}
                     md={{ span: 8 }}
+                    sm={{ span: 12 }}
+                    xs={{ span: 24 }}
                   >
                     <div className="data_item" key={data._id}>
                       {data.serviceUrl.length > 0 ? (
