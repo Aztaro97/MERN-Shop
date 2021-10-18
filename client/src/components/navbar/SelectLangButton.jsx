@@ -101,9 +101,8 @@ const SelectStyling = styled(Select)`
 
   @media only screen and (max-width: 768px) {
     font-size: 1rem;
-    border-radius: 20px;
     width: 100% !important;
-    padding: 2px;
+    padding-right: 7px !important;
 
     & .flag-icon {
       font-size: 0.9rem;
@@ -111,7 +110,7 @@ const SelectStyling = styled(Select)`
       padding: 0 3px !important;
     }
     & .ant-select-selector {
-      border-radius: 5px !important;
+      border-radius: 10px !important;
       padding: 0 !important;
     }
   }
