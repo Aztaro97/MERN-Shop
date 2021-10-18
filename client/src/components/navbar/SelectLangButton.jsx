@@ -88,10 +88,6 @@ function SelectLangButton() {
 }
 
 const SelectStyling = styled(Select)`
-  /* border: 1px solid red; */
-  /* border: 1px solid var(--orange-color); */
-  border-radius: 80px;
-
   & .ant-select-selector {
     border: 1px solid var(--orange-color) !important;
     border-radius: 30px !important;
@@ -103,17 +99,20 @@ const SelectStyling = styled(Select)`
   &:hover {
   }
 
-  @media only screen and (max-width: 380px) {
+  @media only screen and (max-width: 768px) {
+    font-size: 1rem;
     border-radius: 20px;
-    width: 130px !important;
+    width: 100% !important;
     padding: 2px;
 
     & .flag-icon {
-      font-size: 1rem;
-      padding-right: 5px;
+      font-size: 0.9rem;
+      margin: 0 2px !important;
+      padding: 0 3px !important;
     }
     & .ant-select-selector {
-      border-radius: 0 !important;
+      border-radius: 5px !important;
+      padding: 0 !important;
     }
   }
 `;

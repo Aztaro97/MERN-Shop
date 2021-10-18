@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Link, useHistory } from "react-router-dom";
-import ReactPlayer from "react-player";
 import Slider from "react-slick";
 import {
   categoryAdversiting,
@@ -198,28 +197,6 @@ const IntroVideoSection = ({ lang }) => {
                   publicId={data.publicId}
                   width="100%"
                 />
-
-                {/* <ReactPlayer
-                  className="video-player"
-                  url={data.videoUrl}
-                  height="100%"
-                  width="100%"
-                  // playing
-                  volume="0.5"
-                  controls
-                  config={{
-                    vimeo: {
-                      playerOptions: {
-                        controls: true,
-                        transparent: true,
-                        autoplay: false,
-                        muted: false,
-                        quality: "auto",
-                        color: "00ADEF",
-                      },
-                    },
-                  }}
-                /> */}
               </Col>
               <Col
                 xs={{ span: 24 }}

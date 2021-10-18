@@ -47,12 +47,12 @@ function FooterScrren() {
               <a href="tel:+971502022251" className="para phoneNumer ">
                 00971502022251
               </a>
-              <div className="followUs mt-4">
+              <div className="follow mt-4">
                 <h3 className="title">{t("footer.follow")}</h3>
                 <div className="group">
                   <a
                     href="https://api.whatsapp.com/send?phone=+971502022251"
-                    className="btn media_link"
+                    className="media_link"
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -60,7 +60,7 @@ function FooterScrren() {
                   </a>
                   <a
                     href="https://www.instagram.com/au_79_code/"
-                    className="btn media_link"
+                    className="media_link"
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -68,7 +68,7 @@ function FooterScrren() {
                   </a>
                   <a
                     href="https://twitter.com/79_code"
-                    className="btn media_link"
+                    className="media_link"
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -76,7 +76,7 @@ function FooterScrren() {
                   </a>
                   <a
                     href="https://www.snapchat.com/add/au79code"
-                    className="btn media_link"
+                    className="media_link"
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -84,7 +84,7 @@ function FooterScrren() {
                   </a>
                   <a
                     href="https://www.facebook.com/pages/category/Marketing-Agency/AU-79-CODE-103505425005079/"
-                    className="btn media_link"
+                    className="media_link"
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -234,6 +234,14 @@ const Footer = styled.footer`
       & .contract-link .link {
         display: block;
       }
+    }
+  }
+
+  & .follow .group {
+    /* display: flex; */
+    flex-wrap: wrap;
+    & .media_link {
+      margin: 3px;
     }
   }
 
