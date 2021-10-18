@@ -134,7 +134,7 @@ const DataStyling = styled.section`
   }
   & hr {
     width: 100px;
-    height: 1px;
+    height: 2px;
     background: var(--orange-color);
     margin: 10px auto;
   }

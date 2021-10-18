@@ -20,37 +20,37 @@ export const categoryAdversiting = [
   {
     profileId: "61683883bb90435d90a1bd24",
     title: TranslateContent("restaurant"),
-    image: "/img/advertising/restaurant.jpg",
+    image: "https://res.cloudinary.com/tarositeweb/image/upload/v1634568758/image/exemple_rqi6yl.jpg",
   },
   {
     profileId: "61683883bb90435d90a1bd24",
     title: TranslateContent("vehicule"),
-    image: "/img/advertising/real_state.jpg",
+    image: "https://res.cloudinary.com/tarositeweb/image/upload/v1634568758/image/exemple_rqi6yl.jpg",
   },
   {
     profileId: "61683883bb90435d90a1bd24",
     title: TranslateContent("pharmacy"),
-    image: "/img/advertising/pharmacy.jpg",
+    image: "https://res.cloudinary.com/tarositeweb/image/upload/v1634568758/image/exemple_rqi6yl.jpg",
   },
   {
     profileId: "61683883bb90435d90a1bd24",
     title: TranslateContent("marketing"),
-    image: "/img/advertising/exemple.jpg",
+    image: "https://res.cloudinary.com/tarositeweb/image/upload/v1634568758/image/exemple_rqi6yl.jpg",
   },
   {
     profileId: "61683883bb90435d90a1bd24",
     title: TranslateContent("construction"),
-    image: "/img/advertising/exemple.jpg",
+    image: "https://res.cloudinary.com/tarositeweb/image/upload/v1634568758/image/exemple_rqi6yl.jpg",
   },
   {
     profileId: "61683883bb90435d90a1bd24",
     title: TranslateContent("construction"),
-    image: "/img/advertising/exemple.jpg",
+    image: "https://res.cloudinary.com/tarositeweb/image/upload/v1634568758/image/exemple_rqi6yl.jpg",
   },
   {
     profileId: "61683883bb90435d90a1bd24",
     title: TranslateContent("construction"),
-    image: "/img/advertising/exemple.jpg",
+    image: "https://res.cloudinary.com/tarositeweb/image/upload/v1634568758/image/exemple_rqi6yl.jpg",
   },
 ];
 
