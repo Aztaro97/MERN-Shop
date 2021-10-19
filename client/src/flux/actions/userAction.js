@@ -591,15 +591,15 @@ export const newPassword = (token, password) => async (dispatch) => {
     });
     // successMessage("A message has been sent to your email", 2000);
   } catch (error) {
-    // dispatch({
-    //   type: RESET_PASSWORD_FAIL,
-    //   payload:
-    //     error.response && error.response.data.message
-    //       ? error.response.data.message
-    //       : error.message,
-    // });
+    dispatch({
+      type: RESET_PASSWORD_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
 
-    // errorMessage(error.msg, 2000, 3);
+    errorMessage(error.msg, 2000, 3);
     console.log(error);
   }
 };
@@ -614,9 +614,8 @@ export const sendContactFormMessage = (body) => async (dispatch) => {
     };
 
     const res = await axios.post("/api/contact-us", body, config);
-    if (res.data) {
+    if (res.data.message) {
       successMessage("Your Message have successfully sended !", 500, 4);
-      console.log(res.data)
     }
     dispatch({ type: SEND_CONTACT_FORM_SUCCESS });
   } catch (error) {

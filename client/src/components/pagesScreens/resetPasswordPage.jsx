@@ -48,14 +48,12 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* height: calc(70vh - 80px); */
 `;
 
 const FormStyling = styled.form`
   padding: 3rem 2rem;
   margin-top: 1rem;
-  width: 500px;
-  /* border: 1px solid #ececec; */
+  max-width: 500px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 0px 1px;
 
   & h1 {

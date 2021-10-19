@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams , useHistory} from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 import styled from "styled-components";
-import { useFormik } from "formik";
+import { Formik, useFormik } from "formik";
 import { newPassword } from "../../flux/actions/userAction";
 import MainContainer from "../MainContainer";
 import ButtonComponeent from "../ButtonComponeent";
@@ -12,7 +12,7 @@ import { useTranslation } from "react-i18next";
 import { Alert } from "antd";
 
 const NewPasswordScreen = () => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const params = useParams();
 
   const token = params.token;
@@ -36,22 +36,20 @@ const NewPasswordScreen = () => {
     validate,
     onSubmit: (values) => {
       const body = JSON.stringify(values, null, 2);
-      const password = body.password;
+      const password = formik.values.password;
       dispatch(newPassword(token, password));
     },
   });
 
-  const {userInfo} = useSelector((state => state.userLogin))
+  const { userInfo } = useSelector((state) => state.userLogin);
 
   const history = useHistory();
 
   useEffect(() => {
-      if (userInfo) {
-        history.push("/")
-      }
-  }, [history, userInfo])
-
-  
+    if (userInfo) {
+      history.push("/");
+    }
+  }, [history, userInfo]);
 
   return (
     <MainContainer>
@@ -110,20 +108,18 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(70vh - 80px);
-  
 `;
 
 const FormStyling = styled.form`
   padding: 3rem 2rem;
   margin-top: 1rem;
-  width: 500px;
-  /* border: 1px solid #ececec; */
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  max-width: 500px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 0px 1px;
 
   & h1 {
     font-size: 2rem;
     text-align: center;
+    font-weight: 700;
   }
   & .input {
     margin-bottom: 1.5rem;
@@ -144,7 +140,7 @@ const FormStyling = styled.form`
 
     &:hover {
       color: var(--orange-color);
-      
+
       text-decoration: none;
     }
   }
