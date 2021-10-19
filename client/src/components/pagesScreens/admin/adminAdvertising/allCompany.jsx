@@ -7,14 +7,16 @@ import {
   filterByTypeBusiness,
   updateAllowService,
   deleteAdService,
+  searchCompanyName,
 } from "../../../../flux/actions/advertisingAction/advertisingAction";
 import LoaderComponent from "../../../loader";
 import { useHistory } from "react-router";
-import { Popconfirm, Select } from "antd";
+import { Col, Popconfirm, Row, Select, Input } from "antd";
 import { BusinessList } from "../../../../utils/advertisingData";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 const { Option } = Select;
+const { Search } = Input;
 
 const AllCompanyService = () => {
   const [allowed, setAllowed] = useState(false);
@@ -49,13 +51,9 @@ const AllCompanyService = () => {
 
   return (
     <AllCompanyContainer>
-      {loading ? (
-        <LoaderComponent />
-      ) : error ? (
-        <h3>Error: {error} </h3>
-      ) : (
-        <>
-          <h3 className="title">list all ad services</h3>
+      <h3 className="title">list all ad services</h3>
+      <Row>
+        <Col xs={{ span: 12 }}>
           <SelectStyling
             defaultValue="filter by type of Business"
             style={{ width: 400 }}
@@ -67,6 +65,21 @@ const AllCompanyService = () => {
               </Option>
             ))}
           </SelectStyling>
+        </Col>
+        <Col xs={{ span: 12 }}>
+          <Search
+            style={{ width: "200px" }}
+            placeholder="filter company name"
+            onSearch={(value) => dispatch(searchCompanyName(value))}
+          />
+        </Col>
+      </Row>
+      {loading ? (
+        <LoaderComponent />
+      ) : error ? (
+        <h3>Error: {error} </h3>
+      ) : (
+        <>
           <Table>
             <thead>
               <tr>

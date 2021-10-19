@@ -153,6 +153,24 @@ const deleteAdService = asyncHandler(async (req, res) => {
   }
 });
 
+const seachAdvertisingByCompanyName = asyncHandler(async (req, res) => {
+  const keyword = req.body.companyName
+    ? {
+        companyName: {
+          $regex: req.body.companyName,
+          $options: "i"
+        },
+      }
+    : {};
+  const service = await advertising.find({ ...keyword });
+  if (service) {
+    res.status(200).json(service);
+  } else {
+    res.status(404);
+    throw new Error("Service not Fund");
+  }
+});
+
 module.exports = {
   addAdvertisingService,
   getAllAdService,
@@ -162,4 +180,5 @@ module.exports = {
   registerPremiumService,
   setUpdateAllowed,
   deleteAdService,
+  seachAdvertisingByCompanyName,
 };

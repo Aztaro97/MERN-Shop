@@ -7,7 +7,8 @@ const {
   getAdProfile,
   registerPremiumService,
   setUpdateAllowed,
-  deleteAdService
+  deleteAdService,
+  seachAdvertisingByCompanyName,
 } = require("../../controllers/advertisingController/advertisingController");
 const {
   sendingMessage,
@@ -18,13 +19,18 @@ const router = express.Router();
 
 const { protect, admin } = require("../../middleware/authMiddleware");
 
+router.route("/").get(protect, admin, getAllAdService).put(setUpdateAllowed);
 router
-  .route("/")
-  .get(protect, admin, getAllAdService)
-  .put(setUpdateAllowed);
-router.route("/filter-type-business").post(protect, admin, filterByTypeBusiness);
-router.route("/filter-business").post(filterByTypeBusinessPublic);
-router.route("/profile/:id").post(getAdProfile).delete(protect, admin, deleteAdService)
+  .route("/filter-type-business")
+  .post(protect, admin, filterByTypeBusiness);
+router
+  .route("/filter-business")
+  .post(protect, admin, filterByTypeBusinessPublic);
+router.route("/search").post(seachAdvertisingByCompanyName);
+router
+  .route("/profile/:id")
+  .post(getAdProfile)
+  .delete(protect, admin, deleteAdService);
 router
   .route("/message")
   .post(sendingMessage)
