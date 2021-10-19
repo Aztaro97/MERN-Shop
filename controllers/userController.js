@@ -439,6 +439,13 @@ const updateUser = asyncHandler(async (req, res) => {
 // @route   PUT /api/users/reset-password
 // @access  Private/Admin
 const resetPassword = asyncHandler(async (req, res) => {
+  const myUrl = req.headers.referer;
+
+  const urlObject = new URL(myUrl);
+  const hostName = urlObject.hostname;
+  const domainName = hostName.replace(/^[^.]+\./g, "");
+  const protocol = urlObject.protocol;
+
   crypto.randomBytes(32, async (err, buffer) => {
     if (err) console.log(err);
     const token = buffer.toString("hex");
@@ -455,22 +462,100 @@ const resetPassword = asyncHandler(async (req, res) => {
       from: "abdoulazizsanitaro@gmail.com",
       subject: "Reset Password",
       html: `
-        <body>
-        <div style="width:100%; padding:4rem 0;">
-        <div style="border:3px solid #fff; padding:4rem 5rem; background:#ECEEF1; font-family: sans-serif; max-width:38rem;margin:0 auto">
-            <a href="https://www.au79code.com/" style="text-align:center;font-size:2rem;display:flex;justify-content: center;text-decoration:none;color:#c68787;margin:0 auto 1rem;">Au79Code</a>
-            <div style="padding:4rem; background: #fff; margin: auto;text-align: center;">
-                <h2 style="color: #696868;">Password Reset</h2>
-                <p style="margin-bottom:3rem;font-weight:700;color: #8E8E8E;">If you've lost your password or wish to reset it, use the link below to get started.</p>
-                <a href=http://localhost:5000/new-password/${token} style="text-decoration: none; color: #fff; background: #54BBFB;padding:1rem 4rem; font-size: 1.2rem;border-radius: 10px;font-weight: 700;display: block;max-width:30rem;margin:auto;" >Reset your password</a>
-                <p style="color:#8E8E8E;font-weight: 700; margin-top: 3rem;font-size:.9rem;">If you did not request a password reset, you can safety ignore this email. Only a person with access to your email can rest your account password</p>
-            </div>
-        </div>
-    </div>
-
-
-        
-        </body>
+      <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <style>
+      .container {
+        border: 3px solid #fff;
+        padding: 4rem 5rem;
+        background: #eceef1;
+        font-family: sans-serif;
+        max-width: 38rem;
+        margin: 0 auto;
+      }
+      .logo {
+        text-align: center;
+        font-size: 1.2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        color: #c68787;
+        margin: 0 auto 1rem;
+        font-weight: 700;
+      }
+      .logo img {
+        width: 40px;
+        height: 40px;
+        margin-right: 5px;
+      }
+      .box {
+        padding: 4rem;
+        background: #fff;
+        margin: auto;
+        text-align: center;
+      }
+      .box h2 {
+        font-size: 1.2rem;
+      }
+      .box .para {
+        font-size: 0.9rem;
+        margin-bottom: 3rem;
+        font-weight: 700;
+        color: #8e8e8e;
+      }
+      .box .link {
+        text-decoration: none;
+        color: #fff;
+        background: #c68787;
+        padding: 10px;
+        font-size: 1rem;
+        border-radius: 10px;
+        font-weight: 700;
+        display: block;
+        max-width: 30rem;
+        margin: auto;
+      }
+      @media only screen and (max-width: 768px) {
+        .container {
+          padding: 10px;
+        }
+        .logo {
+          font-size: 1rem;
+        }
+        .box {
+          padding: 20px;
+        }
+        .box .link {
+          font-size: 14px;
+          margin-bottom: 10px;
+        }
+        .box .para {
+          font-size: 12px;
+          margin-bottom: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+      <div class="title" style="width:100%; padding:4rem 0;">
+      <div class="container">
+          <a href="${protocol}//${domainName}/" class="logo" > <img src="https://res.cloudinary.com/tarositeweb/image/upload/v1634465718/tmp-1-1634465716055_owluzm.png" alt=""> Au 79 Code</a>
+          
+          <div class="box">
+              <h2 style="color: #696868;">Password Reset</h2>
+              <p class="para">If you've lost your password or wish to reset it, use the link below to get started.</p>
+              <a href="${protocol}//${domainName}/new-password/${token}" class="link" >Reset your password</a>
+              <p class="para">If you did not request a password reset, you can safety ignore this email. Only a person with access to your email can rest your account password</p>
+          </div>
+      </div>
+  </div>
+  
+  
+      
+      </body>
         `,
     });
 

@@ -582,7 +582,9 @@ export const newPassword = (token, password) => async (dispatch) => {
 
     if (res.data.msg === "success") {
       successMessage(res.data.msg, 2000, 3);
-      console.log(res.data);
+      setTimeout(() => {
+        window.location.href= "/auth"
+      }, 2000);
     }
     dispatch({
       type: "UPDATE_PASSWORD_SUCCESS",
@@ -614,6 +616,7 @@ export const sendContactFormMessage = (body) => async (dispatch) => {
     const res = await axios.post("/api/contact-us", body, config);
     if (res.data) {
       successMessage("Your Message have successfully sended !", 500, 4);
+      console.log(res.data)
     }
     dispatch({ type: SEND_CONTACT_FORM_SUCCESS });
   } catch (error) {

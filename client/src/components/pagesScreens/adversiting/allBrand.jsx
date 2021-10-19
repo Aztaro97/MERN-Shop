@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from "react-redux";
 import LoaderComponent from "../../loader";
 import SecondeLandingSlider from "./Banner/secondeLanding";
 import MainContainer from "../../MainContainer";
-import ButtonComponeent from "../../ButtonComponeent";
 import { Col, Row } from "antd";
 import Meta from "../../helmet";
 
@@ -21,7 +20,6 @@ function AllBrandScreen() {
     (state) => state.advertising
   );
 
-  const history = useHistory();
   useEffect(() => {
     dispatch(filterBusiness(type));
   }, [dispatch, type]);
@@ -192,60 +190,6 @@ const DataStyling = styled.section`
       padding: 5px 15px;
       &:hover {
         text-decoration: none;
-        opacity: 0.9;
-      }
-    }
-  }
-`;
-
-const LandingStyling = styled.div`
-  & .landing_overlay {
-    background-image: linear-gradient(
-        0deg,
-        rgba(0, 0, 0, 1) 0%,
-        rgba(0, 0, 0, 0.37298669467787116) 0%
-      ),
-      url("/img/advertising/bg-images.jpeg");
-    height: 700px;
-    width: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    background-origin: content-box;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    padding-bottom: 3rem;
-
-    & h1 {
-      color: #fff;
-      margin: 0;
-      font-weight: 700;
-      text-transform: uppercase;
-      font-size: 1.8rem;
-      margin-bottom: 2rem;
-    }
-
-    & .link1 {
-      display: block;
-      text-decoration: none;
-      outline: none;
-      border: none;
-      border-radius: 40px;
-      padding: 0.5rem;
-      background: #fff;
-      width: 160px;
-      color: #fff;
-      text-align: center;
-      margin-bottom: 2rem;
-      margin-left: 2rem !important;
-      font-size: 1.3rem;
-      cursor: pointer;
-      background: var(--orange-color);
-
-      &:hover {
         opacity: 0.9;
       }
     }

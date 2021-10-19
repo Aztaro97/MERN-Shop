@@ -7,41 +7,41 @@ import ReactGA from "react-ga";
 import { initGA, PageView } from "./components/Tracking/tracking";
 import { GlobalStyle } from "./globalStyle";
 
-import HomeComponents from "./components/pagesScreens/Home/HomeComponents";
-import CreateProductComponent from "./components/pagesScreens/products/createProduct";
-import ProductsShop from "./components/pagesScreens/AllproductsShop/productsShop";
-import EditProductScreen from "./components/pagesScreens/EditProductsAndCompany/editProductScreen";
-import EditProductAndCompanyComponent from "./components/pagesScreens/EditProductsAndCompany/tabs";
-import CartComponent from "./components/pagesScreens/cart/cart";
-import ShippingComponenet from "./components/pagesScreens/checkout/shipping";
-import ThankComponenet from "./components/pagesScreens/checkout/thankPage";
-import RegisterComponenet from "./components/pagesScreens/auth/RegisterPage";
-import PayementStep from "./components/pagesScreens/checkout/completePayement";
-import CompanyListComponent from "./components/pagesScreens/CompanyList/index";
-import EcommerceHomeComponent from "./components/pagesScreens/e-commerce/homeECommerce";
-import PaymentCompopnent from "./components/pagesScreens/checkout/payment";
-import ListOrderScreen from "./components/pagesScreens/orders/ordersScreen";
-import CompleteOrder from "./components/pagesScreens/orders/placeOrder";
-import MapScreen from "./components/pagesScreens/checkout/googleMap/mapScreen";
+// import HomeComponents from "./components/pagesScreens/Home/HomeComponents";
+// import CreateProductComponent from "./components/pagesScreens/products/createProduct";
+// import ProductsShop from "./components/pagesScreens/AllproductsShop/productsShop";
+// import EditProductScreen from "./components/pagesScreens/EditProductsAndCompany/editProductScreen";
+// import EditProductAndCompanyComponent from "./components/pagesScreens/EditProductsAndCompany/tabs";
+// import CartComponent from "./components/pagesScreens/cart/cart";
+// import ShippingComponenet from "./components/pagesScreens/checkout/shipping";
+// import ThankComponenet from "./components/pagesScreens/checkout/thankPage";
+// import RegisterComponenet from "./components/pagesScreens/auth/RegisterPage";
+// import PayementStep from "./components/pagesScreens/checkout/completePayement";
+// import CompanyListComponent from "./components/pagesScreens/CompanyList/index";
+// import EcommerceHomeComponent from "./components/pagesScreens/e-commerce/homeECommerce";
+// import PaymentCompopnent from "./components/pagesScreens/checkout/payment";
+// import ListOrderScreen from "./components/pagesScreens/orders/ordersScreen";
+// import CompleteOrder from "./components/pagesScreens/orders/placeOrder";
+// import MapScreen from "./components/pagesScreens/checkout/googleMap/mapScreen";
 
-// /////////////////   Marketing Component   ///////////////
-import EMarketingComponent from "./components/pagesScreens/marketing/eMarketingScreen";
-const OutMarketingComponent = lazy(() => import("./components/pagesScreens/marketing/outDoorMarketing"))
+// // /////////////////   Marketing Component   ///////////////
+// import EMarketingComponent from "./components/pagesScreens/marketing/eMarketingScreen";
+// const OutMarketingComponent = lazy(() => import("./components/pagesScreens/marketing/outDoorMarketing"))
 
-// ////////////////  Design Component    /////////////////////
-const DesignComponent = lazy(() => import("./components/pagesScreens/design/designScreen"))
+// // ////////////////  Design Component    /////////////////////
+// const DesignComponent = lazy(() => import("./components/pagesScreens/design/designScreen"))
 
-// ////////////////  PROGRAMMING Component    /////////////////////
-const ProgrammingComponent = lazy(() => import("./components/pagesScreens/programmingScreen/programmingScreen"))
+// // ////////////////  PROGRAMMING Component    /////////////////////
+// const ProgrammingComponent = lazy(() => import("./components/pagesScreens/programmingScreen/programmingScreen"))
 
-// ////////////////  PHOTOGRAPHY Component    /////////////////////
-const PhotographyComponent = lazy(() => import("./components/pagesScreens/photographyScreen/photographyScreen"))
+// // ////////////////  PHOTOGRAPHY Component    /////////////////////
+// const PhotographyComponent = lazy(() => import("./components/pagesScreens/photographyScreen/photographyScreen"))
 
-// ////////////////  PRODUCTION Component    /////////////////////
-const ProductionComponent = lazy(() => import("./components/pagesScreens/productionScreen/productionScreen"))
+// // ////////////////  PRODUCTION Component    /////////////////////
+// const ProductionComponent = lazy(() => import("./components/pagesScreens/productionScreen/productionScreen"))
 
-// ////////////////  ABOUT Component    /////////////////////
-const AboutComponent = lazy(() => import("./components/pagesScreens/AboutScreen/aboutScreen") )
+// // ////////////////  ABOUT Component    /////////////////////
+// const AboutComponent = lazy(() => import("./components/pagesScreens/AboutScreen/aboutScreen") )
 
 const pageNotFound = lazy(() =>
   import("./components/pagesScreens/pageNotFund")
@@ -60,9 +60,9 @@ const AdversitingAllBrandComponent = lazy(() =>
 const AdversitingProfileComponent = lazy(() =>
   import("./components/pagesScreens/adversiting/advertisingProfile")
 );
-const PartnerRegisterComponent = lazy(() =>
-  import("./components/pagesScreens/adversiting/partnerRegister")
-);
+// const PartnerRegisterComponent = lazy(() =>
+//   import("./components/pagesScreens/adversiting/partnerRegister")
+// );
 const AdvertisingRegister = lazy(() =>
   import("./components/pagesScreens/adversiting/partnerRegisterForm")
 );
@@ -119,9 +119,9 @@ const UserListComponent = lazy(() =>
 const ProductListComponent = lazy(() =>
   import("./components/pagesScreens/products/productsList")
 );
-const ProfileComponent = lazy(() =>
-  import("./components/pagesScreens/user/profile/tabs")
-);
+// const ProfileComponent = lazy(() =>
+//   import("./components/pagesScreens/user/profile/tabs")
+// );
 
 function App() {
   useEffect(() => {

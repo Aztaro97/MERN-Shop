@@ -10,7 +10,6 @@ import {
 } from "react-icons/fa";
 import MainContainer from "../../MainContainer";
 
-// import "./contact.css";
 import { useDispatch, useSelector } from "react-redux";
 import { sendContactFormMessage } from "../../../flux/actions/userAction";
 import LoaderComponent from "../../loader";
@@ -59,7 +58,7 @@ function Contact() {
                   </a> */}
                   <a
                     href="https://api.whatsapp.com/send?phone=+971502022251"
-                    className="btn media_link"
+                    className="media_link"
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -68,7 +67,7 @@ function Contact() {
                   {/* <!-- Repeating link  --> */}
                   <a
                     href="https://www.instagram.com/au_79_code/"
-                    className="btn media_link"
+                    className="media_link"
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -77,7 +76,7 @@ function Contact() {
                   {/* <!-- Repeating link  --> */}
                   <a
                     href="https://twitter.com/79_code"
-                    className="btn media_link"
+                    className="media_link"
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -86,7 +85,7 @@ function Contact() {
                   {/* <!-- Repeating link  --> */}
                   <a
                     href="https://www.snapchat.com/add/au79code"
-                    className="btn media_link"
+                    className="media_link"
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -95,7 +94,7 @@ function Contact() {
                   {/* <!-- Repeating link  --> */}
                   <a
                     href="https://www.facebook.com/pages/category/Marketing-Agency/AU-79-CODE-103505425005079/"
-                    className="btn media_link"
+                    className="media_link"
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -200,7 +199,8 @@ const ContactContainer = styled.section`
       color: #fff;
       background: var(--orange-color);
       transition: all 0.5s ease-in-out;
-      padding: 4px;
+      padding: 7px;
+      margin-right: 2px;
       &:hover {
         transform: scale(1.2);
       }
@@ -209,9 +209,6 @@ const ContactContainer = styled.section`
       }
     }
   }
-
-
-
 
   & .map {
     & iframe {
