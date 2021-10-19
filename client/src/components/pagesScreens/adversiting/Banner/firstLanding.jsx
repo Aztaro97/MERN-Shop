@@ -41,14 +41,14 @@ const FirstLandingSlider = () => {
     <LandingStyling currentLang={currentLang}>
       <Slider {...settings}>
         {firstBannerData.map((data) => (
-          <a
+          <Link
             key={data.profileId}
-            href={`/advertising/profile/${data.profileId}`}
+            to={`/advertising/profile/${data.profileId}`}
           >
             <div className="landing_overlay">
               <img src={data.imgUrl} alt="" />
             </div>
-          </a>
+          </Link>
         ))}
       </Slider>
     </LandingStyling>

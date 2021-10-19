@@ -6,7 +6,6 @@ import { secondeBannerData } from "../../../../utils/advertisingData";
 import { LandingStyling } from "./BannerStyling";
 import { useTranslation } from "react-i18next";
 
-
 const SecondeLandingSlider = () => {
   const { t, i18n } = useTranslation();
 
@@ -37,17 +36,17 @@ const SecondeLandingSlider = () => {
     ),
   };
   return (
-    <LandingStyling currentLang={currentLang} >
+    <LandingStyling currentLang={currentLang}>
       <Slider {...settings}>
         {secondeBannerData.map((data) => (
-          <a
-          key={data.profileId}
-          href={`/advertising/profile/${data.profileId}`}
-        >
-          <div className="landing_overlay">
-            <img src={data.imgUrl} alt="" />
-          </div>
-        </a>
+          <Link
+            key={data.profileId}
+            to={`/advertising/profile/${data.profileId}`}
+          >
+            <div className="landing_overlay">
+              <img src={data.imgUrl} alt="" />
+            </div>
+          </Link>
         ))}
       </Slider>
     </LandingStyling>
