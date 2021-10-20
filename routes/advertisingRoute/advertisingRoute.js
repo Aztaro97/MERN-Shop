@@ -23,10 +23,8 @@ router.route("/").get(protect, admin, getAllAdService).put(setUpdateAllowed);
 router
   .route("/filter-type-business")
   .post(protect, admin, filterByTypeBusiness);
-router
-  .route("/filter-business")
-  .post(protect, admin, filterByTypeBusinessPublic);
-router.route("/search").post(seachAdvertisingByCompanyName);
+router.route("/filter-business").post(filterByTypeBusinessPublic);
+router.route("/search").post(protect, admin, seachAdvertisingByCompanyName);
 router
   .route("/profile/:id")
   .post(getAdProfile)

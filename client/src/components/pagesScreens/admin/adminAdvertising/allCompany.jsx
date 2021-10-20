@@ -51,7 +51,7 @@ const AllCompanyService = () => {
 
   return (
     <AllCompanyContainer>
-      <h3 className="title">list all ad services</h3>
+      <h3 className="title">list all services</h3>
       <Row>
         <Col xs={{ span: 12 }}>
           <SelectStyling
@@ -68,8 +68,9 @@ const AllCompanyService = () => {
         </Col>
         <Col xs={{ span: 12 }}>
           <Search
+            // bordered={false}
             style={{ width: "200px" }}
-            placeholder="filter company name"
+            placeholder="SEARCH COMPANY"
             onSearch={(value) => dispatch(searchCompanyName(value))}
           />
         </Col>
@@ -178,7 +179,8 @@ const AllCompanyContainer = styled.div`
   padding: 0 1rem;
   & .title {
     text-align: center;
-    text-transform: capitalize;
+    text-transform: uppercase;
+    font-weight: 700;
   }
 `;
 

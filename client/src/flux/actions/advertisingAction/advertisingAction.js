@@ -210,7 +210,10 @@ export const filterBusiness = (typeBusiness) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: FILTER_BUSINESS_FAIL,
-      payload: error,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
     });
   }
 };
