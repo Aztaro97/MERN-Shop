@@ -41,7 +41,6 @@ router.post(
   async (req, res) => {
     try {
       const files = req.files.logoFile;
-      console.log(files);
 
       if (files.length == 0)
         return res.status(400).json({ msg: "No files were uploaded." });
@@ -53,8 +52,8 @@ router.post(
       if (service) {
         service.logoUrl = resul.url;
       }
-      await service.save();
-      res.status(200).json({ msg: "Successfully uploaded" });
+      const newService = await service.save();
+      res.status(200).json(newService);
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
@@ -68,7 +67,6 @@ router.post(
   async (req, res) => {
     try {
       const files = req.files.serviceFile;
-      console.log(files);
 
       const results = [];
 

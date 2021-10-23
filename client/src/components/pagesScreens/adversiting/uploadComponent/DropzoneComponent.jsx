@@ -4,31 +4,69 @@ import { GiCheckMark } from "react-icons/gi";
 import { IoClose, IoCloudUploadOutline } from "react-icons/io5";
 import styled from "styled-components";
 
-export default function DropZoneComponent({ name, style, price, accept }) {
-  const [files, setFiles] = useState([]);
-  // const [imageUrl, setImageUrl] = useState(null)
-  const { acceptedFiles, fileRejections, getRootProps, getInputProps } =
-    useDropzone({
-      accept: accept,
-      multiple: false,
-      maxFiles: 1,
-      onDrop: (acceptedFiles) => {
-        setFiles(
-          acceptedFiles.map((file) =>
-            Object.assign(file, {
-              preview: URL.createObjectURL(file),
-            })
-          )
-        );
-      },
-      //   maxSize: 130979,
-    });
+const thumbsContainer = {
+  display: "flex",
+  flexDirection: "row",
+  flexWrap: "wrap",
+  marginTop: 16,
+};
 
-  //   const acceptedFileItems = acceptedFiles.map((file) => (
-  //     <span key={file.path}>
-  //       {file.path} - {file.size} bytes
-  //     </span>
-  //   ));
+const thumb = {
+  display: "inline-flex",
+  borderRadius: 2,
+  border: "1px solid #eaeaea",
+  marginBottom: 8,
+  marginRight: 8,
+  width: 100,
+  height: 100,
+  padding: 4,
+  boxSizing: "border-box",
+};
+
+const thumbInner = {
+  display: "flex",
+  minWidth: 0,
+  overflow: "hidden",
+};
+
+const img = {
+  display: "block",
+  width: "auto",
+  height: "100%",
+};
+
+export default function DropZoneComponent({
+  name,
+  style,
+  accept,
+  multiple,
+  maxFiles,
+  setFiles,
+  files
+  
+}) {
+  // const [files, setFiles] = useState([]);
+  // const [imageUrl, setImageUrl] = useState(null)
+  const {
+    acceptedFiles,
+    fileRejections,
+    getRootProps,
+    getInputProps,
+  } = useDropzone({
+    accept: accept,
+    multiple: multiple,
+    maxFiles: maxFiles,
+    onDrop: (acceptedFiles) => {
+      setFiles(
+        acceptedFiles.map((file) =>
+          Object.assign(file, {
+            preview: URL.createObjectURL(file),
+          })
+        )
+      );
+    },
+    //   maxSize: 130979,
+  });
 
   const fileRejectionItems = fileRejections.map(({ file, errors }) => (
     <li key={file.path}>
@@ -41,63 +79,52 @@ export default function DropZoneComponent({ name, style, price, accept }) {
     </li>
   ));
 
-  const imageUrl = files.map((file) => file.preview);
+  const thumbs = files.map((file) => (
+    <div style={thumb} key={file.name}>
+      <div style={thumbInner}>
+        <img src={file.preview} style={img} alt="" />
+      </div>
+    </div>
+  ));
 
-  console.log({ ImageUrl: imageUrl.length });
+  // const imageUrl = files.map((file) => file.preview);
 
   return (
-    <DropZone
-      {...getRootProps({ className: "dropzone" })}
-      imageUrl={imageUrl}
-      style={style}
-    >
-      <input {...getInputProps()} type="file" name={name} />
-      {acceptedFiles.length === 0 && fileRejections.length == 0 && (
-        <>
-          <IoCloudUploadOutline className="upload_icon" />
+    <>
+      <DropZone
+        {...getRootProps({ className: "dropzone" })}
+        // imageUrl={imageUrl}
+        style={style}
+      >
+        <input {...getInputProps()} type="file" name={name} />
+        {acceptedFiles.length === 0 && fileRejections.length == 0 && (
+          <>
+            <IoCloudUploadOutline className="upload_icon" />
 
-          <p>Drag & drop file here, or click to select file</p>
-          {/* <em>(Only *.jpeg and *.png images will be accepted)</em> */}
-        </>
-      )}
-      {acceptedFiles.length > 0 && (
-        <>
-          <GiCheckMark className="accept_icon" />
-          {/* {acceptedFileItems} */}
-        </>
-      )}
-      {/* {fileRejections.length > 0 && } */}
-      {fileRejections.length > 0 && (
-        <>
-          <IoClose className="reject_icon" />
-          <p className="alert_danger"> {fileRejectionItems} </p>
-        </>
-      )}
-      <em>(Only *.jpeg and *.png images will be accepted)</em>
-      {/* <div className="price">
-        <p>price: {price} AED</p>
-      </div> */}
-    </DropZone>
+            <p>Drag & drop file here, or click to select file</p>
+          </>
+        )}
+        {acceptedFiles.length > 0 && (
+          <>
+            <GiCheckMark className="accept_icon" />
+          </>
+        )}
+        {fileRejections.length > 0 && (
+          <>
+            <IoClose className="reject_icon" />
+            <p className="alert_danger"> {fileRejectionItems} </p>
+          </>
+        )}
+        <em>(Only *.jpeg and *.png images will be accepted)</em>
+      </DropZone>
+      <aside style={thumbsContainer}>{thumbs}</aside>
+    </>
   );
 }
 
 const DropZone = styled.div`
   padding: 1rem;
-  /* background: linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.4920343137254902) 100%,
-      rgba(0, 0, 0, 0.37298669467787116) 100%
-    ),
-    ${({ imageUrl }) =>
-    imageUrl.length !== 0 ? `url('${imageUrl}')` : "#ddd"}; */
-  background: ${({ imageUrl }) =>
-    imageUrl.length !== 0
-      ? `linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.4920343137254902) 100%,
-      rgba(0, 0, 0, 0.37298669467787116) 100%
-    ), url(${imageUrl})`
-      : "#ececec"};
+  background: #ececec;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -107,8 +134,8 @@ const DropZone = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: ${({ imageUrl }) => (imageUrl.length !== 0 ? "#fff" : "#333")};
   cursor: pointer;
+  border: 3px dotted var(--orange-color);
   & .upload_icon,
   & .accept_icon,
   & .reject_icon {

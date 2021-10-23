@@ -341,7 +341,7 @@ const ButtonStyling = styled(Button)`
 `;
 
 const TitleStyling = styled.h3`
-  text-transform: uppercase;
+  text-transform: capitalize;
   font-weight: 700;
   margin-top: 3rem;
 `;

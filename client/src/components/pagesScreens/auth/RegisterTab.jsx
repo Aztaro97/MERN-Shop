@@ -39,7 +39,7 @@ function Register() {
 
   return (
     <Containber>
-      <Form onSubmit={formik.handleSubmit} >
+      <Form onSubmit={formik.handleSubmit}>
         <Row gutter={[10, 10]} justify="end">
           <Col xs={{ span: 24 }}>
             <Input
@@ -82,17 +82,17 @@ function Register() {
           </Col>
           <Col xs={{ span: 24 }}>
             {" "}
-            {formik.errors.password ? (
+            {formik.errors.password && (
               <Alert
                 message={formik.errors.password}
                 type="error"
                 showIcon
                 className="mb-1"
               />
-            ) : null}
-            {formik.errors.password2 ? (
+            )}
+            {formik.errors.password2 && (
               <Alert message={formik.errors.password2} type="error" showIcon />
-            ) : null}
+            )}
           </Col>
           <Col xs={{ span: 24 }}>
             <ButtonComponeent type="submit">register</ButtonComponeent>
