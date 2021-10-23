@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import MainContainer from "../MainContainer";
 
-import Input from "../InputComponents";
 import Button from "../ButtonComponeent";
 import { resetPassword } from "../../flux/actions/userAction";
+import { Col, Input, Row } from "antd";
 
 const ResetPasswordPage = () => {
   const [email, setEmail] = useState("");
@@ -23,21 +23,31 @@ const ResetPasswordPage = () => {
     <MainContainer>
       <Container>
         <FormStyling onSubmit={handleSubmit}>
-          <h1>Reset Password</h1>
-          <Input
-            required
-            className="input"
-            type="email"
-            placeholder="EMAIL"
-            // value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <Button className="submit_btn" type="submit">
-            reset my password
-          </Button>
-          <Link to="auth" className="link">
-            Go To Sign in
-          </Link>
+          <Row gutter={[10, 10]}>
+            <Col xs={{ span: 24 }}>
+              <h1>Reset Password</h1>
+            </Col>
+            <Col xs={{ span: 24 }}>
+              <Input
+                required
+                type="email"
+                placeholder="EMAIL"
+                // value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </Col>
+            <Col xs={{ span: 24 }}>
+              <Button className="submit_btn" type="submit">
+                reset my password
+              </Button>
+            </Col>
+            <Col xs={{ span: 24 }}>
+              {" "}
+              <Link to="auth" className="link">
+                Go To Sign in
+              </Link>
+            </Col>
+          </Row>
         </FormStyling>
       </Container>
     </MainContainer>
@@ -48,6 +58,9 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  top: 40px;
+  
 `;
 
 const FormStyling = styled.form`
@@ -66,8 +79,7 @@ const FormStyling = styled.form`
   }
   & .submit_btn {
     width: 100%;
-    margin-bottom: 1.5rem;
-    padding: 10px;
+    padding: 6px;
     &:hover {
       color: #fff;
     }

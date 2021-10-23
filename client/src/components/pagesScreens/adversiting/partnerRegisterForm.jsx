@@ -25,11 +25,20 @@ import { BiWorld } from "react-icons/bi";
 import MainContainer from "../../MainContainer";
 import { useTranslation } from "react-i18next";
 import Meta from "../../helmet";
+import axios from "axios";
 
 const { Option } = Select;
 
 function PartnerRegisterTemplate2() {
+
+
   const { loading, userInfo } = useSelector((state) => state.userLogin);
+
+  const history = useHistory();
+
+  if (!userInfo) {
+    history.push("/auth");
+  }
   return (
     <MainContainer>
       {loading ? (
@@ -37,8 +46,8 @@ function PartnerRegisterTemplate2() {
       ) : (
         <Container>
           <Meta title="Partner Registration" />
-          {!userInfo && <SignUpForm />}
-          <DetailsComponent />
+          {/* {!userInfo && <SignUpForm />} */}
+          <DetailsComponent userInfo={userInfo} />
         </Container>
       )}
     </MainContainer>
@@ -158,7 +167,7 @@ const SignUpForm = () => {
   );
 };
 
-const DetailsComponent = () => {
+const DetailsComponent = ({userInfo}) => {
   const [plan, setPlan] = useState("");
   // ////////    services fields
   const [companyName, setCompanyName] = useState("");
@@ -177,6 +186,7 @@ const DetailsComponent = () => {
   const { i18n } = useTranslation();
   const lang = i18n.language;
 
+
   const body = {
     companyName,
     companyName_ar,
@@ -194,12 +204,23 @@ const DetailsComponent = () => {
   const history = useHistory();
   const { t } = useTranslation();
 
-  const handleSubmit = (e) => {
+  const config = {
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${userInfo && userInfo.token}`,
+    },
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (plan === "free") {
-      dispatch(freeSubscription(body));
-      history.push("/advertising/thank", { data: body });
+      const res = await axios.post("/api/advertising/free", body, config);
+      const id = res.data._id;
+      console.log(res)
+      if (id) {
+        history.push(`/advertising/upload-file/${id}`);
+      }
     }
     if (plan === "premium") {
       dispatch(saveServiceInfo(body));
@@ -214,7 +235,7 @@ const DetailsComponent = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Row justify="start" >
+      <Row justify="start">
         <Col xs={{ span: 20, offset: 4 }} md={{ span: 22, offset: 2 }}>
           <h1 className="title">{t("company_info")}</h1>
         </Col>

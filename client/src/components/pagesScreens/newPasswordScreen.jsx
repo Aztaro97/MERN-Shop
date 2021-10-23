@@ -9,7 +9,7 @@ import MainContainer from "../MainContainer";
 import ButtonComponeent from "../ButtonComponeent";
 import InputComponents from "../InputComponents";
 import { useTranslation } from "react-i18next";
-import { Alert } from "antd";
+import { Alert, Col, Row, Input } from "antd";
 
 const NewPasswordScreen = () => {
   const dispatch = useDispatch();
@@ -55,49 +55,57 @@ const NewPasswordScreen = () => {
     <MainContainer>
       <Container>
         <FormStyling onSubmit={formik.handleSubmit}>
-          <h1>New Password</h1>
-          <InputComponents
-            className="mb-3"
-            required
-            type="password"
-            name="password"
-            id="password"
-            placeholder={t("password_placeholder")}
-            onChange={formik.handleChange}
-            value={formik.values.password}
-          />
-          <InputComponents
-            className="mb-3"
-            required
-            type="password"
-            name="password2"
-            id="password2"
-            onChange={formik.handleChange}
-            value={formik.values.password2}
-            placeholder={t("retype_placeholder")}
-          />
-          {formik.errors.password ? (
-            <Alert
-              message={formik.errors.password}
-              type="error"
-              showIcon
-              className="mb-3"
-            />
-          ) : null}
-          {formik.errors.password2 ? (
-            <Alert
-              message={formik.errors.password2}
-              type="error"
-              showIcon
-              className="mb-3"
-            />
-          ) : null}
-          <ButtonComponeent className="btn" type="submit">
-            update
-          </ButtonComponeent>
-          <Link to="/auth" className="link">
-            Go To Sign in
-          </Link>
+          <Row gutter={[10, 10]}>
+            <Col xs={{ span: 24 }}>
+              <h1>New Password</h1>
+            </Col>
+            <Col xs={{ span: 24 }}>
+              <Input.Password
+                required
+                type="password"
+                name="password"
+                id="password"
+                placeholder={t("password_placeholder")}
+                onChange={formik.handleChange}
+                value={formik.values.password}
+              />
+            </Col>
+            <Col xs={{ span: 24 }}>
+              <Input.Password
+                required
+                type="password"
+                name="password2"
+                id="password2"
+                onChange={formik.handleChange}
+                value={formik.values.password2}
+                placeholder={t("retype_placeholder")}
+              />
+            </Col>
+            {formik.errors.password && (
+              <Col xs={{ span: 24 }}>
+                <Alert message={formik.errors.password} type="error" showIcon />
+              </Col>
+            )}
+            {formik.errors.password2 && (
+              <Col xs={{ span: 24 }}>
+                <Alert
+                  message={formik.errors.password2}
+                  type="error"
+                  showIcon
+                />
+              </Col>
+            )}
+            <Col xs={{ span: 24 }}>
+              <ButtonComponeent  type="submit">
+                update
+              </ButtonComponeent>
+            </Col>
+            <Col xs={{ span: 24 }}>
+              <Link to="/auth" className="link">
+                Go To Sign in
+              </Link>
+            </Col>
+          </Row>
         </FormStyling>
       </Container>
     </MainContainer>
@@ -108,6 +116,8 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  top: 40px;
 `;
 
 const FormStyling = styled.form`
@@ -124,9 +134,8 @@ const FormStyling = styled.form`
   & .input {
     margin-bottom: 1.5rem;
   }
-  & .btn {
+  /* & .btn {
     width: 100%;
-    margin-bottom: 1.5rem;
     padding: 8px 0;
     text-transform: capitalize;
     font-weight: 400;
@@ -134,7 +143,7 @@ const FormStyling = styled.form`
     &:hover {
       color: #fff;
     }
-  }
+  } */
   & .link {
     color: var(--silver-color);
 

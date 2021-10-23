@@ -3,6 +3,7 @@ import styled from "styled-components";
 import InputComponents from "../../InputComponents";
 import ButtonComponeent from "../../ButtonComponeent";
 import { Link, useHistory } from "react-router-dom";
+import { Input } from "antd";
 import { useFormik } from "formik";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
@@ -27,7 +28,7 @@ function LoginForm() {
     <Containber>
       <Form onSubmit={formik.handleSubmit}>
         <Row>
-          <InputComponents
+          <Input
             type="email"
             name="email"
             id="email"
@@ -38,7 +39,7 @@ function LoginForm() {
         </Row>
 
         <Row>
-          <InputComponents
+          <Input.Password
             type="password"
             name="password"
             id="password"

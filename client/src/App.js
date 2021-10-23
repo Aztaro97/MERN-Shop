@@ -2,6 +2,7 @@ import React, { useEffect, lazy, Suspense } from "react";
 import "./App.css";
 import "antd/dist/antd.css";
 import Loading from "./components/loader";
+import ChatBotComponent from "./components/chatBot/chatBotComponent"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ReactGA from "react-ga";
 import { initGA, PageView } from "./components/Tracking/tracking";
@@ -119,6 +120,7 @@ const UserListComponent = lazy(() =>
 const ProductListComponent = lazy(() =>
   import("./components/pagesScreens/products/productsList")
 );
+const UploadServiceFile = lazy(() => import("./components/pagesScreens/adversiting/uploadComponent/uploadServiceFile"))
 // const ProfileComponent = lazy(() =>
 //   import("./components/pagesScreens/user/profile/tabs")
 // );
@@ -199,6 +201,7 @@ function App() {
             component={BillingPaymentAdvertising}
             exact
           />
+          <Route path="/advertising/upload-file/:id" component={UploadServiceFile} />
 
           <Route path="/auth" component={AuthComponents} />
 
@@ -265,6 +268,7 @@ function App() {
 
           <Route component={pageNotFound} exact />
         </Switch>
+        <ChatBotComponent />
         <Footer />
       </Suspense>
     </Router>
