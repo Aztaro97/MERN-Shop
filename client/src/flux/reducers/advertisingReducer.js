@@ -15,6 +15,9 @@ import {
   OPEN_MESSAGE_FAIL,
   OPEN_MESSAGE_REQUEST,
   OPEN_MESSAGE_SUCCESS,
+  USER_ADS_FAIL,
+  USER_ADS_REQUEST,
+  USER_ADS_SUCCESS,
 } from "../constants/advertising";
 
 export const advertisingReducer = (
@@ -42,9 +45,13 @@ export const advertisingReducer = (
     case FILTER_BUSINESS_REQUEST:
     case AD_PROFILE_REQUEST:
     case FETCH_MESSAGE_REQUEST:
+    case USER_ADS_REQUEST:
       return { ...state, loading: true };
     case AD_LIST_SUCCESS:
     case FILTER_BUSINESS_SUCCESS:
+      return { ...state, loading: false, listAdService: action.payload };
+
+    case USER_ADS_SUCCESS:
       return { ...state, loading: false, listAdService: action.payload };
 
     case AD_LIST_FAIL:
@@ -53,6 +60,9 @@ export const advertisingReducer = (
       return { ...state, loading: false, error: action.payload };
 
     case FETCH_MESSAGE_FAIL:
+      return { ...state, loading: false, error: action.payload };
+
+    case USER_ADS_FAIL:
       return { ...state, loading: false, error: action.payload };
 
     case AD_PROFILE_SUCCESS:

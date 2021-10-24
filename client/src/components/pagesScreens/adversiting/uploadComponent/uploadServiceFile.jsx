@@ -21,6 +21,7 @@ function UploadServiceFile() {
     if (!userInfo) {
       history.push("/");
     }
+    
   }, [userInfo, history]);
 
   return (
@@ -199,7 +200,7 @@ const ServiceFileUploading = ({ userInfo, id }) => {
         footer={true}
       >
         <form action="" onSubmit={handleSubmit}>
-          <Row justify="space-between" gutter={[10,10]}>
+          <Row justify="space-between" gutter={[10, 10]}>
             <Col xs={{ span: 24 }}>
               <DropzoneUploading
                 name="serviceFile"

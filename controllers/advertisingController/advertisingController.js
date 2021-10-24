@@ -158,13 +158,23 @@ const seachAdvertisingByCompanyName = asyncHandler(async (req, res) => {
     ? {
         companyName: {
           $regex: req.body.companyName,
-          $options: "i"
+          $options: "i",
         },
       }
     : {};
   const service = await advertising.find({ ...keyword });
   if (service) {
     res.status(200).json(service);
+  } else {
+    res.status(404);
+    throw new Error("Service not Fund");
+  }
+});
+
+const getUserAds = asyncHandler(async (req, res) => {
+  const ads = await advertising.find({ user: req.params.id });
+  if (ads) {
+    res.status(200).json(ads);
   } else {
     res.status(404);
     throw new Error("Service not Fund");
@@ -181,4 +191,5 @@ module.exports = {
   setUpdateAllowed,
   deleteAdService,
   seachAdvertisingByCompanyName,
+  getUserAds
 };
