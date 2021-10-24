@@ -102,8 +102,8 @@ router.post(
       if (service) {
         service.serviceUrl = imgUrls;
       }
-      await service.save();
-      res.status(200).json({ msg: "Successfully uploaded" });
+      const newService = await service.save();
+      res.status(200).json(newService);
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }

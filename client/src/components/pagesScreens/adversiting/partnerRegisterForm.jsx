@@ -217,9 +217,13 @@ const DetailsComponent = ({userInfo}) => {
     if (plan === "free") {
       const res = await axios.post("/api/advertising/free", body, config);
       const id = res.data._id;
-      console.log(res)
       if (id) {
-        history.push(`/advertising/upload-file/${id}`);
+        history.push({
+          pathname: `/advertising/upload-file/${id}`,
+          state: {
+            data: body
+          }
+        });
       }
     }
     if (plan === "premium") {

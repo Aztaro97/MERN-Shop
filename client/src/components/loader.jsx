@@ -21,7 +21,7 @@ function LoaderComponent() {
       color={`var(--orange-color)`}
       css={override}
       loading={loading}
-      size={70}
+      size={45}
       margin={15}
     />
   );

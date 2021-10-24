@@ -100,13 +100,33 @@ function NavBar() {
     </Content>
   );
   const AdminContente = (
-    <Content>
-      <LinkR href="/admin/userlist">{t("users_lists")}</LinkR>
-      <LinkR href="/admin/productlist">{t("products_lists")}</LinkR>
-      <LinkR href="/admin/orderlist">{t("orders_lists")}</LinkR>
-      <LinkR href="/admin/advertising">AD User list</LinkR>
-      <LinkR href="/admin/message">Message</LinkR>
-    </Content>
+    <ListNavigation>
+      <li>
+        <Link className="link" to="/admin/userlist">
+          {t("users_lists")}{" "}
+        </Link>
+      </li>
+      <li>
+        <Link className="link" to="/admin/productlist">
+          {t("products_lists")}
+        </Link>
+      </li>
+      <li>
+        <Link className="link" to="/admin/orderlist">
+          {t("orders_lists")}
+        </Link>
+      </li>
+      <li>
+        <Link className="link" to="/admin/advertising">
+          Lists all Ads
+        </Link>
+      </li>
+      <li>
+        <Link className="link" to="/admin/message">
+          Message
+        </Link>
+      </li>
+    </ListNavigation>
   );
 
   const marketingMenu = (
@@ -160,21 +180,30 @@ function NavBar() {
         <NavItem>
           <Popover
             placement="bottomRight"
-            // /////  E-COMMERCE POPOVER
-            // content={userInfo ? ProfileContentLogin : ProfileContentLogOut}
-
             content={
-              !userInfo ? (
-                <Content>
-                  <LinkP to="/auth" className="btn_signin">
-                    {t("signin")} / {t("signup")}
-                  </LinkP>
-                </Content>
-              ) : (
-                <Content>
-                  <LinkP onClick={handleLogOut} className="btn_logOut" >{t("logout")}</LinkP>
-                </Content>
-              )
+              <ListNavigation>
+                {userInfo && (
+                  <>
+                    <li>
+                      <Link className="link" to="/profile/my-ads">
+                        My Ads
+                      </Link>
+                    </li>
+                    <li>
+                      <Link className="link" onClick={handleLogOut}>
+                        {t("logout")}
+                      </Link>
+                    </li>
+                  </>
+                )}
+                {!userInfo && (
+                  <li>
+                    <Link to="/auth" className="link">
+                      {t("signin")} / {t("signup")}
+                    </Link>
+                  </li>
+                )}
+              </ListNavigation>
             }
             trigger="hover"
           >
@@ -243,7 +272,7 @@ const Nav = styled.ul`
   align-items: center;
   list-style: none;
   margin-bottom: 0;
-  padding: 0
+  padding: 0;
 `;
 const NavItem = styled.li`
   margin: 0 0.7rem;
@@ -363,6 +392,29 @@ const Logo = styled(Link)`
   @media only screen and (max-width: 560px) {
     span {
       display: none;
+    }
+  }
+`;
+
+const ListNavigation = styled.ul`
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0 !important;
+
+  & li {
+    color: #111;
+    font-size: 1rem;
+    text-transform: capitalize;
+    padding: 5px 0;
+    /* background: #ececec; */
+    & .link {
+      text-decoration: none;
+      color: #111;
     }
   }
 `;

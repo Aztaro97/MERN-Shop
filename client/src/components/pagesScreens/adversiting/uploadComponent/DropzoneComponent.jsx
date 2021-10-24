@@ -135,7 +135,7 @@ const DropZone = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  border: 3px dotted var(--orange-color);
+  border: 3px dotted #111;
   & .upload_icon,
   & .accept_icon,
   & .reject_icon {

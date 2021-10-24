@@ -149,7 +149,6 @@ const ServiceesContainer = ({ id, userInfo, loading, profile }) => {
   const handleSubmit = async (e) => {
     setSaveLoading(true);
     const formdata = new FormData();
-    // formdata.append("serviceFile", serviceFile);
 
     const files = e.target.serviceFile.files;
     if (files.length !== 0) {

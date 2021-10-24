@@ -12,18 +12,19 @@ const ThankScreen = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const { service } = useSelector((state) => state.advertising);
+  const location = useLocation();
+  const body = location.state.data;
 
   useEffect(() => {
-    if (!service.fullName) {
+    if (!body.fullName) {
       history.push("/");
     }
-  }, [history, service]);
+  }, [history, body]);
   return (
     <MainContainer>
       <Container>
         <HiOutlineBadgeCheck className="icon" />
-        <h3 className="title">Thanks for registering Mr {service.fullName}!</h3>
+        <h3 className="title">Thanks for registering Mr {body.fullName}!</h3>
         <p className="message">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis
           minima nisi ut sit enim quasi molestias natus expedita quos id. Est
