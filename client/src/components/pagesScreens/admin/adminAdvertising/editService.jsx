@@ -128,7 +128,7 @@ const LogoContainer = ({ id, userInfo, loading, profile }) => {
                 <Image
                   width={100}
                   height={100}
-                  src={profile.logoUrl}
+                  src={profile.logoUrl.url}
                   alt=""
                   preview={{ mask: <span></span> }}
                 />

@@ -15,6 +15,7 @@ import { Col, Popconfirm, Row, Select, Input } from "antd";
 import { BusinessList } from "../../../../utils/advertisingData";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import { destroyImages } from "../../../../flux/actions/productAction";
 const { Option } = Select;
 const { Search } = Input;
 
@@ -47,7 +48,10 @@ const AllCompanyService = () => {
     dispatch(getAllAdService());
   };
 
-  const handleDelete = (id) => {};
+  const handleDelete = (id, imageUrl) => {
+    dispatch(deleteAdService(id));
+    dispatch(destroyImages(imageUrl));
+  };
 
   return (
     <AllCompanyContainer>
@@ -154,7 +158,7 @@ const AllCompanyService = () => {
                       <Popconfirm
                         title="Are you sure to delete ?"
                         okText="Yes"
-                        onConfirm={() => dispatch(deleteAdService(ad._id))}
+                        onConfirm={() => handleDelete(ad._id, ad.serviceUrl)}
                         cancelText="No"
                       >
                         <Link>

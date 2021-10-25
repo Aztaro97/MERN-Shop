@@ -22,10 +22,12 @@ const AdvertisingServiceSchema = mongoose.Schema(
 
     // ////////   Upload IMAGESS
     logoUrl: {
-      type: String,
-      required: true,
-      default:
-        "https://www.launchgrowjoy.com/wp-content/uploads/logo-placeholder.jpg",
+      public_id: { type: String, required: false },
+      url: {
+        type: String,
+        required: true,
+        default: "/img/advertising/empty.jpg",
+      },
     },
     serviceUrl: { type: Array, required: false },
     videoUrl: { type: Array, required: false },

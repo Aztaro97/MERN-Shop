@@ -125,7 +125,12 @@ const UploadServiceFile = lazy(() =>
     "./components/pagesScreens/adversiting/uploadComponent/uploadServiceFile"
   )
 );
-const MyAdsScreen = lazy(() => import("./components/pagesScreens/adversiting/myAdsScreen"))
+const MyAdsScreen = lazy(() =>
+  import("./components/pagesScreens/adversiting/myAdsScreen")
+);
+const ConfirmPaymentMethod = lazy(() =>
+  import("./components/pagesScreens/adversiting/confirmTypePayment")
+);
 // const ProfileComponent = lazy(() =>
 //   import("./components/pagesScreens/user/profile/tabs")
 // );
@@ -209,6 +214,10 @@ function App() {
           <Route
             path="/advertising/upload-file/:id"
             component={UploadServiceFile}
+          />
+            <Route
+            path="/advertising/confirm-payment"
+            component={ConfirmPaymentMethod}
           />
           <Route path="/profile/my-ads" component={MyAdsScreen} />
           <Route path="/auth" component={AuthComponents} />

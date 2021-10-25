@@ -50,7 +50,10 @@ router.post(
       const resul = await cloudinary.v2.uploader.upload(files.tempFilePath);
       const service = await AdvertisingModel.findById(req.params.id);
       if (service) {
-        service.logoUrl = resul.url;
+        service.logoUrl = {
+          public_id: resul.public_id,
+          url: resul.secure_url,
+        };
       }
       const newService = await service.save();
       res.status(200).json(newService);

@@ -82,7 +82,12 @@ router.post(
 
       await user.save();
 
-      res.status(200).json({ results: user.company.urlImg, msg: "The images saved successfuly" });
+      res
+        .status(200)
+        .json({
+          results: user.company.urlImg,
+          msg: "The images saved successfuly",
+        });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
@@ -145,17 +150,6 @@ router.post(
 // Delete image only admin can use
 router.post("/destroy/", protect, (req, res) => {
   const images = req.body.imagesUrl;
-
-  // const images = [
-  //   {
-  //     public_id: "qcohlofdcb69o53yont7",
-  //     url: "https://res.cloudinary.com/tarositeweb/image/upload/v1629355357/rdgi5h...",
-  //   },
-  //   {
-  //     public_id: "qm3gipbv92gzeytaa9fg",
-  //     url: "https://res.cloudinary.com/tarositeweb/image/upload/v1629355357/rdgi5h...",
-  //   }
-  // ];
   try {
     for (const image of images) {
       const { public_id } = image;

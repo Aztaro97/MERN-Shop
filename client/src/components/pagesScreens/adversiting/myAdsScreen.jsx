@@ -9,6 +9,7 @@ import {
   deleteAdService,
   getUserAdsService,
 } from "../../../flux/actions/advertisingAction/advertisingAction";
+import { destroyImages } from "../../../flux/actions/productAction";
 import LoaderComponent from "../../loader";
 import MainContainer from "../../MainContainer";
 
@@ -24,14 +25,17 @@ function MyAdsScreen() {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const showModal = (id) =>
+  const showModal = (id, imageUrl) =>
     Modal.confirm({
       title: "Are you sure you want to delete",
       //   icon: <ExclamationCircleOutlined />,
       content: "When you delete your ads we'll not be show in website",
       okText: "Yes",
       cancelText: "Cancel",
-      onOk: () => dispatch(deleteAdService(id)),
+      onOk: () => {
+        dispatch(deleteAdService(id));
+        dispatch(destroyImages(imageUrl));
+      },
     });
 
   useEffect(() => {
@@ -60,37 +64,46 @@ function MyAdsScreen() {
             </Link>
           </div>
           <Row gutter={[10, 10]}>
-            {listAdService.map((ad) => (
-              <Col
-                xs={{ span: 12 }}
-                md={{ span: 8 }}
-                lg={{ span: 6 }}
-                key={ad._id}
-              >
-                <CardStyling bordered={true} hoverable>
-                  <button
-                    className="btn_delete"
-                    onClick={() => showModal(ad._id)}
-                  >
-                    <MdDelete className="icon" />
-                  </button>
-                  <img
-                    width="100%"
-                    height="150"
-                    src={
-                      ad.serviceUrl.length > 0
-                        ? ad.serviceUrl[0].url
-                        : "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-                    }
-                    alt=""
-                  />
+            {listAdService.length > 0 ? (
+              listAdService.map((ad) => (
+                <Col
+                  xs={{ span: 12 }}
+                  md={{ span: 8 }}
+                  lg={{ span: 6 }}
+                  key={ad._id}
+                >
+                  <CardStyling bordered={true} hoverable>
+                    <button
+                      className="btn_delete"
+                      onClick={() => showModal(ad._id, ad.serviceUrl)}
+                    >
+                      <MdDelete className="icon" />
+                    </button>
+                    <img
+                      width="100%"
+                      height="150"
+                      src={
+                        ad.serviceUrl.length > 0
+                          ? ad.serviceUrl[0].url
+                          : "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+                      }
+                      alt=""
+                    />
 
-                  <p className="description">
-                    Categorie: <span>{ad.typeBusiness}</span>
-                  </p>
-                </CardStyling>
+                    <p className="description">
+                      Categorie: <span>{ad.typeBusiness}</span>
+                    </p>
+                  </CardStyling>
+                </Col>
+              ))
+            ) : (
+              <Col xs={{ span: 24 }}>
+                <EmptyAdsContainer>
+                  <img src="/img/advertising/folder.svg" alt="" />
+                  <h1>You don't have any Ads</h1>
+                </EmptyAdsContainer>
               </Col>
-            ))}
+            )}
           </Row>
         </Container>
       )}
@@ -99,13 +112,12 @@ function MyAdsScreen() {
 }
 
 const Container = styled.div`
-  padding-top: 20px;
+  padding: 20px;
   & .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
-    padding: 0 20px;
+    padding:20px;
     & .title {
       color: var(--orange-color);
       margin: 0;
@@ -154,6 +166,28 @@ const CardStyling = styled(Card)`
     & span {
       color: #d35400;
     }
+  }
+`;
+
+const EmptyAdsContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 40px;
+  & img {
+    max-width: 150px;
+    max-height: 400px;
+  }
+  & h1 {
+    font-size: 1.7rem;
+    color: #111;
+  }
+  @media screen and (max-width: 768px) {
+    padding: 20px;
+    & img {
+    max-width: 100px;
+  }
   }
 `;
 

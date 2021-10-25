@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import MainContainer from "../../../MainContainer";
-import { Col, Modal, Row, Button, Space } from "antd";
+import { Col, Modal, Row, Button, Space, Upload } from "antd";
 import styled from "styled-components";
 import DropzoneUploading from "./DropzoneComponent";
 import { FiUploadCloud } from "react-icons/fi";
@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams, useLocation } from "react-router";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import ImgCrop from "antd-img-crop";
+// import UploadComponent from "./uploadComponent";
 
 function UploadServiceFile() {
   const location = useLocation();
@@ -21,13 +23,15 @@ function UploadServiceFile() {
     if (!userInfo) {
       history.push("/");
     }
-    
   }, [userInfo, history]);
 
   return (
     <MainContainer style={{ paddingTop: 44 }}>
       <COntainer>
         <Row gutter={[10, 40]}>
+          <Col xs={{ span: 24 }}>
+            <BannerUploading />
+          </Col>
           <Col xs={{ span: 24 }}>
             <LogoUploading userInfo={userInfo} id={id} />
           </Col>
@@ -37,13 +41,13 @@ function UploadServiceFile() {
           <Col xs={{ span: 24 }}>
             <LinkStyling
               to={{
-                pathname: "/advertising/thank",
+                pathname: "/advertising/confirm-payment",
                 state: {
                   data: body,
                 },
               }}
             >
-              Complete
+              next
             </LinkStyling>
           </Col>
         </Row>
@@ -52,14 +56,93 @@ function UploadServiceFile() {
   );
 }
 
+const BannerUploading = ({ id, userInfo }) => {
+  const [fileList, setFileList] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const onChange = ({ fileList: newFileList }) => {
+    setFileList(newFileList);
+  };
+
+  const onPreview = async (file) => {
+    let src = file.url;
+    if (!src) {
+      src = await new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file.originFileObj);
+        reader.onload = () => resolve(reader.result);
+      });
+    }
+    const image = new Image();
+    image.src = src;
+    const imgWindow = window.open(src);
+    imgWindow.document.write(image.outerHTML);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true)
+    const formdata = new FormData();
+    formdata.append("bannerFile", fileList[0].originFileObj);
+    const config = {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        Accept: "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+    const res = await axios.post(`/upload-images/logo/${id}`, formdata, config);
+    if (res.data) {
+      setLoading(false)
+      // setPathImage(res.data.logoUrl.url);
+      // setIsLoading(false);
+      // setIsModalVisible(false);
+    }
+  };
+
+  return (
+    <form action="" onSubmit={handleSubmit}>
+      <TitleStyling>Import Banner Images</TitleStyling>
+      <Row justify="space-between">
+        <Col xs={{ span: 12 }}>
+          <ImgCrop aspect={3 / 2}>
+            <Upload
+              name="bannerFile"
+              action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+              listType="picture-card"
+              fileList={fileList}
+              onChange={onChange}
+              onPreview={onPreview}
+            >
+              {fileList.length < 5 && "+ Upload"}
+            </Upload>
+          </ImgCrop>
+
+          <ButtonWrapper type="button" loading={loading}>
+            <FiUploadCloud className="icon" />
+            upload
+          </ButtonWrapper>
+        </Col>
+        <Col xs={{ span: 10 }}>
+          <Content>
+            <ul>
+              <li>Quisque velit nisi, pretium ut lacinia in</li>
+              <li>Quisque velit nisi, pretium ut lacinia in</li>
+              <li>Quisque velit nisi, pretium ut lacinia in</li>
+            </ul>
+          </Content>
+        </Col>
+      </Row>
+    </form>
+  );
+};
+
 const LogoUploading = ({ id, userInfo }) => {
-  const [files, setFiles] = useState([]);
   const [pathImage, setPathImage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const dispatch = useDispatch();
-  const location = useLocation();
+  const [fileList, setFileList] = useState([]);
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -72,7 +155,7 @@ const LogoUploading = ({ id, userInfo }) => {
     e.preventDefault();
     setIsLoading(true);
     const formdata = new FormData();
-    formdata.append("logoFile", files[0]);
+    formdata.append("logoFile", fileList[0].originFileObj);
     const config = {
       headers: {
         "Content-Type": "multipart/form-data",
@@ -82,7 +165,7 @@ const LogoUploading = ({ id, userInfo }) => {
     };
     const res = await axios.post(`/upload-images/logo/${id}`, formdata, config);
     if (res.data) {
-      setPathImage(res.data.logoUrl);
+      setPathImage(res.data.logoUrl.url);
       setIsLoading(false);
       setIsModalVisible(false);
     }
@@ -90,10 +173,24 @@ const LogoUploading = ({ id, userInfo }) => {
   return (
     <>
       <TitleStyling>Import Company Logo</TitleStyling>
-      <ButtonWrapper type="button" onClick={showModal}>
-        <FiUploadCloud size={45} className="icon" /> Click here to upload
-        Company Logo
-      </ButtonWrapper>
+      <Row justify="space-between">
+        <Col xs={{ span: 12 }}>
+          <img
+            src={pathImage}
+            alt=""
+            style={{ marginTop: 10, width: "auto", height: "130px" }}
+          />
+        </Col>
+        <Col xs={{ span: 12 }}>
+          <Content>
+            <ul>
+              <li>Quisque velit nisi, pretium ut lacinia in</li>
+              <li>Quisque velit nisi, pretium ut lacinia in</li>
+              <li>Quisque velit nisi, pretium ut lacinia in</li>
+            </ul>
+          </Content>
+        </Col>
+      </Row>
       <Modal
         title="COMPANY LOGO"
         visible={isModalVisible}
@@ -103,13 +200,12 @@ const LogoUploading = ({ id, userInfo }) => {
         <form action="" onSubmit={handleSubmit}>
           <Row justify="space-between">
             <Col xs={{ span: 24 }}>
-              <DropzoneUploading
+              {/* <UploadComponent
                 name="logoFile"
-                multiple={false}
-                maxFiles={1}
-                files={files}
-                setFiles={setFiles}
-              />
+                maxFile="2"
+                fileList={fileList}
+                setFileList={setFileList}
+              /> */}
             </Col>
             <Col xs={{ span: 12 }}>
               <CloseButtonStyling onClick={handleCancel} type="button">
@@ -134,9 +230,6 @@ const LogoUploading = ({ id, userInfo }) => {
           </Row>
         </form>
       </Modal>
-      <Space size={[10, 10]}>
-        <img src={pathImage} alt="" style={{ marginTop: 10, width: "150px" }} />
-      </Space>
     </>
   );
 };
@@ -190,8 +283,7 @@ const ServiceFileUploading = ({ userInfo, id }) => {
     <>
       <TitleStyling>Import your {body.typeBusiness} Images</TitleStyling>
       <ButtonWrapper type="button" onClick={showModal}>
-        <FiUploadCloud size={45} className="icon" /> Click here to upload
-        service pictures
+        <FiUploadCloud  className="icon" /> upload
       </ButtonWrapper>
       <Modal
         title={`Upload Pictures`}
@@ -248,7 +340,8 @@ const ServiceFileUploading = ({ userInfo, id }) => {
 const COntainer = styled.div`
   background-color: #ecececec;
   padding: 3rem;
-  position: relative;
+  /* position: relative; */
+  margin-bottom: 40px;
 `;
 
 const TitleStyling = styled.h1`
@@ -259,20 +352,20 @@ const TitleStyling = styled.h1`
   text-transform: capitalize;
 `;
 
-const ButtonWrapper = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  background: #fff;
+const ButtonWrapper = styled(Button)`
+  background: var(--orange-color);
   border: none;
   outline: none;
-  height: 100px;
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--orange-color);
+  font-size: 1rem;
+  color: #ffff;
+  padding: 5px 10px;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   & .icon {
     margin-right: 10px;
+    font-size: 20px;
   }
 `;
 const CloseButtonStyling = styled.button`
@@ -292,9 +385,22 @@ const LinkStyling = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
+  text-transform: uppercase;
   &:hover {
     opacity: 0.9;
     color: #fff;
+  }
+`;
+
+const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  & ul {
+    list-style: none;
+    & li {
+      color: #111;
+    }
   }
 `;
 

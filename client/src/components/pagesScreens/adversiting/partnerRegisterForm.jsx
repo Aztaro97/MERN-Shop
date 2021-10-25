@@ -30,8 +30,6 @@ import axios from "axios";
 const { Option } = Select;
 
 function PartnerRegisterTemplate2() {
-
-
   const { loading, userInfo } = useSelector((state) => state.userLogin);
 
   const history = useHistory();
@@ -167,8 +165,7 @@ const SignUpForm = () => {
   );
 };
 
-const DetailsComponent = ({userInfo}) => {
-  const [plan, setPlan] = useState("");
+const DetailsComponent = ({ userInfo }) => {
   // ////////    services fields
   const [companyName, setCompanyName] = useState("");
   const [companyName_ar, setCompanyName_ar] = useState("");
@@ -185,7 +182,6 @@ const DetailsComponent = ({userInfo}) => {
   const dispatch = useDispatch();
   const { i18n } = useTranslation();
   const lang = i18n.language;
-
 
   const body = {
     companyName,
@@ -213,22 +209,15 @@ const DetailsComponent = ({userInfo}) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (plan === "free") {
-      const res = await axios.post("/api/advertising/free", body, config);
-      const id = res.data._id;
-      if (id) {
-        history.push({
-          pathname: `/advertising/upload-file/${id}`,
-          state: {
-            data: body
-          }
-        });
-      }
-    }
-    if (plan === "premium") {
-      dispatch(saveServiceInfo(body));
-      history.push("/advertising/cart");
+    const res = await axios.post("/api/advertising/free", body, config);
+    const id = res.data._id;
+    if (id) {
+      history.push({
+        pathname: `/advertising/upload-file/${id}`,
+        state: {
+          data: body,
+        },
+      });
     }
   };
 
@@ -322,14 +311,18 @@ const DetailsComponent = ({userInfo}) => {
         <Col xs={{ span: 20 }} md={{ span: 22 }}>
           <SelectStyling
             required
-            // mode="multiple"
             allowClear
             style={{ width: "100%" }}
             placeholder={t("select_typ_business_placeholder")}
             onChange={(value) => setTypeBusiness(value)}
           >
             {BusinessList.map((item, index) => (
-              <Option key={index} value={item.value} label={item.title}>
+              <Option
+                key={index}
+                value={item.value}
+                label={item.title}
+                style={{ textTransform: "capitalize" }}
+              >
                 {item.title}
               </Option>
             ))}
@@ -425,153 +418,43 @@ const DetailsComponent = ({userInfo}) => {
             </Col>
           </Row>
         </Col>
+        <Col xs={{ span: 24 }}>
+          <CardText>
+            <ul>
+              <li>
+                Quisque velit nisi, pretium ut lacinia in, elementum id enim.
+                Vivamus magna justo, lacinia eget consectetur sed, convallis at
+                tellus.
+              </li>
+              <li>
+                Quisque velit nisi, pretium ut lacinia in, elementum id enim.
+                Vivamus magna justo, lacinia eget consectetur sed, convallis at
+                tellus.
+              </li>
+            </ul>
+            <Button style={{ marginLeft: "auto" }} type="submit">
+              continue
+            </Button>
+          </CardText>
+        </Col>
       </Row>
-
-      <PlanStyling>
-        <h1 className="title">Choose your ad type, premium or free</h1>
-        <Row gutter={{ lg: 20, md: 10, sm: 10 }}>
-          <Col
-            lg={{ span: 12 }}
-            md={{ span: 12 }}
-            sm={{ span: 12 }}
-            xs={{ span: 24 }}
-          >
-            <div className="card">
-              <h5 className="card_title premium">Premium</h5>
-              <div className="card_body">
-                <p className="price">
-                  {" "}
-                  start<span>aed 25</span>{" "}
-                </p>
-                <ul className="content">
-                  <li>Vivamus magna justo, lacinia eget consectetur</li>
-                  <li>Vivamus magna justo, lacinia consectetur</li>
-                  <li>Vivamus magna justo, lacinia eget consectetur</li>
-                  <li>Vivamus magna justo, lacinia consectetur</li>
-                </ul>
-              </div>
-              <div className="card_footer">
-                <button
-                  type="submit"
-                  // to="/advertising/cart"
-                  className="btn premium"
-                  onClick={() => setPlan("premium")}
-                >
-                  Start Now
-                </button>
-              </div>
-            </div>
-          </Col>
-          <Col
-            lg={{ span: 12 }}
-            md={{ span: 12 }}
-            sm={{ span: 12 }}
-            xs={{ span: 24 }}
-          >
-            <div className="card">
-              <h5 className="card_title free">free</h5>
-              <div className="card_body">
-                <p className="price">
-                  {" "}
-                  start<span>aed 0</span>{" "}
-                </p>
-                <ul className="content">
-                  <li>Vivamus magna justo, lacinia eget consectetur</li>
-                  <li>Vivamus magna justo, lacinia consectetur</li>
-                  <li>Vivamus magna justo, lacinia eget consectetur</li>
-                  <li>Vivamus magna justo, lacinia consectetur</li>
-                </ul>
-              </div>
-              <div className="card_footer">
-                <button
-                  type="submit"
-                  className="btn free"
-                  onClick={() => setPlan("free")}
-                >
-                  Start Now
-                </button>
-              </div>
-            </div>
-          </Col>
-        </Row>
-      </PlanStyling>
     </form>
   );
 };
 
-const PlanStyling = styled.div`
-  margin: 4rem 0;
-  & .title {
-    text-align: center;
-    margin-bottom: 2rem !important;
+const CardText = styled.div`
+  padding: 20px;
+  & ul {
+    list-style: none;
   }
-  & .card {
-    margin-bottom: 13px;
-  }
-  & .card_title {
-    color: #fff;
-    text-align: center;
-    margin: 0;
-    padding: 10px 0;
-    text-transform: capitalize;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    &.free {
-      background: #808e9b;
-    }
-    &.premium {
-      background: var(--orange-color);
-    }
-  }
-  & .card_body {
-    background: #fff;
-    text-align: center;
-    padding: 0 10px;
-
-    & .price {
-      color: var(--orange-color);
-      margin: 1.3rem 0;
-      font-weight: 700;
-      & span {
-        font-size: 3rem;
-        color: #000;
-        text-transform: uppercase;
-        margin-left: 10px;
-        font-weight: 700;
-      }
-    }
-    & .content {
-      list-style-type: none;
-      font-size: 0.9rem;
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-  }
-  & .card_footer {
-    margin: 2rem 0;
-    text-align: center;
-    & .btn {
-      background: var(--orange-color);
-      padding: 5px 40px;
-      color: #fff;
-      &:hover {
-        opacity: 0.9;
-      }
-      &.free {
-        background: #808e9b;
-      }
-      &.premium {
-        background: var(--orange-color);
-      }
-    }
-  }
+  border: 1px solid var(--orange-color);
 `;
 
 const Container = styled.div`
   background-color: #ecececec;
   padding: 3rem;
-  position: relative;
+  margin-bottom: 40px;
+  /* position: relative; */
 
   & .title {
     font-size: 1.2rem;
