@@ -20,7 +20,7 @@ const storage = new CloudinaryStorage({
     format: ["mp4", "jpg", "png", "jpeg"],
     public_id: (req, file) => file.filename,
     resource_type: ["video", "image"],
-    eager_async: true, 
+    eager_async: true,
   },
 });
 
@@ -32,8 +32,6 @@ const removeTmp = (path) => {
   });
 };
 
-
-
 // //////     Logo Upload
 router.post(
   "/logo/:id",
@@ -44,8 +42,6 @@ router.post(
 
       if (files.length == 0)
         return res.status(400).json({ msg: "No files were uploaded." });
-
-      const results = [];
 
       const resul = await cloudinary.v2.uploader.upload(files.tempFilePath);
       const service = await AdvertisingModel.findById(req.params.id);
@@ -72,28 +68,29 @@ router.post(
       const files = req.files.serviceFile;
 
       const results = [];
+      if (files.length) {
+        for (const file of files) {
+          if (file.size > 1024 * 1024) {
+            removeTmp(file.tempFilePath);
+            return res.status(400).json({ msg: "Size too large" });
+          }
 
-      // if (files.length == 0)
-      //   return res.status(400).json({ msg: "No files were uploaded." });
-
-      for (const file of files) {
-        if (file.size > 1024 * 1024) {
+          if (
+            file.mimetype !== "image/jpeg" &&
+            file.mimetype !== "image/jpg" &&
+            file.mimetype !== "image/png"
+          ) {
+            removeTmp(file.tempFilePath);
+            return res.status(400).json({ msg: "File format is incorrect." });
+          }
+          const resul = await cloudinary.v2.uploader.upload(file.tempFilePath);
           removeTmp(file.tempFilePath);
-          return res.status(400).json({ msg: "Size too large" });
-        }
 
-        if (
-          file.mimetype !== "image/jpeg" &&
-          file.mimetype !== "image/jpg" &&
-          file.mimetype !== "image/png"
-        ) {
-          removeTmp(file.tempFilePath);
-          return res.status(400).json({ msg: "File format is incorrect." });
+          results.push(resul);
         }
-        const resul = await cloudinary.v2.uploader.upload(file.tempFilePath);
-        removeTmp(file.tempFilePath);
-
-        results.push(resul);
+      } else {
+        const resul = await cloudinary.v2.uploader.upload(files.tempFilePath);
+        imgUrls.push(resul);
       }
 
       const imgUrls = results.map((result) => ({
@@ -113,23 +110,69 @@ router.post(
   }
 );
 
-
-// //////     Logo Upload
+// //////   Banner Images
 router.post(
-  "/video/:id",
-  [protect, admin],
+  "/banners/:id",
+  [protect, parser.single("bannerFile")],
   async (req, res) => {
     try {
+      const files = req.files.serviceFile;
+
+      const results = [];
+      if (files.length) {
+        for (const file of files) {
+          if (file.size > 1024 * 1024) {
+            removeTmp(file.tempFilePath);
+            return res.status(400).json({ msg: "Size too large" });
+          }
+
+          if (
+            file.mimetype !== "image/jpeg" &&
+            file.mimetype !== "image/jpg" &&
+            file.mimetype !== "image/png"
+          ) {
+            removeTmp(file.tempFilePath);
+            return res.status(400).json({ msg: "File format is incorrect." });
+          }
+          const resul = await cloudinary.v2.uploader.upload(file.tempFilePath);
+          removeTmp(file.tempFilePath);
+
+          results.push(resul);
+        }
+      } else {
+        const resul = await cloudinary.v2.uploader.upload(files.tempFilePath);
+        imgUrls.push(resul);
+      }
+
+      const imgUrls = results.map((result) => ({
+        public_id: result.public_id,
+        url: result.secure_url,
+      }));
+
       const service = await AdvertisingModel.findById(req.params.id);
       if (service) {
-        service.videoUrl = req.body.videoUrl;
+        service.bannerFile = imgUrls;
       }
-      await service.save();
-      res.status(200).json({ msg: "Successfully uploaded" });
+      const newService = await service.save();
+      res.status(200).json(newService);
     } catch (err) {
-      return res.status(500).json({ msg: err });
+      return res.status(500).json({ msg: err.message });
     }
   }
 );
+
+// //////     Video Upload
+router.post("/video/:id", [protect, admin], async (req, res) => {
+  try {
+    const service = await AdvertisingModel.findById(req.params.id);
+    if (service) {
+      service.videoUrl = req.body.videoUrl;
+    }
+    await service.save();
+    res.status(200).json({ msg: "Successfully uploaded" });
+  } catch (err) {
+    return res.status(500).json({ msg: err });
+  }
+});
 
 module.exports = router;

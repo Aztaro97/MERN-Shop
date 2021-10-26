@@ -9,6 +9,15 @@ import { useHistory, useParams, useLocation } from "react-router";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import ImgCrop from "antd-img-crop";
+import { GoPlus } from "react-icons/go";
+import { IoIosCloudDone } from "react-icons/io";
+import {
+  HomeOutlined,
+  SettingFilled,
+  SmileOutlined,
+  SyncOutlined,
+  LoadingOutlined,
+} from "@ant-design/icons";
 // import UploadComponent from "./uploadComponent";
 
 function UploadServiceFile() {
@@ -30,7 +39,7 @@ function UploadServiceFile() {
       <COntainer>
         <Row gutter={[10, 40]}>
           <Col xs={{ span: 24 }}>
-            <BannerUploading />
+            <BannerUploading userInfo={userInfo} id={id} />
           </Col>
           <Col xs={{ span: 24 }}>
             <LogoUploading userInfo={userInfo} id={id} />
@@ -59,6 +68,7 @@ function UploadServiceFile() {
 const BannerUploading = ({ id, userInfo }) => {
   const [fileList, setFileList] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [submited, isSubmited] = useState(false);
 
   const onChange = ({ fileList: newFileList }) => {
     setFileList(newFileList);
@@ -81,22 +91,35 @@ const BannerUploading = ({ id, userInfo }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true)
-    const formdata = new FormData();
-    formdata.append("bannerFile", fileList[0].originFileObj);
-    const config = {
-      headers: {
-        "Content-Type": "multipart/form-data",
-        Accept: "application/json",
-        Authorization: `Bearer ${userInfo.token}`,
-      },
-    };
-    const res = await axios.post(`/upload-images/logo/${id}`, formdata, config);
-    if (res.data) {
-      setLoading(false)
-      // setPathImage(res.data.logoUrl.url);
-      // setIsLoading(false);
-      // setIsModalVisible(false);
+    console.log(fileList)
+    try {
+      setLoading(true);
+      const formdata = new FormData();
+      for (var i = 0; i < fileList.length; i++) {
+        formdata.append("serviceFile", fileList[i].originFileObj);
+      }
+      const config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Accept: "application/json",
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      };
+      const res = await axios.post(
+        `/upload-images/services/${id}`,
+        formdata,
+        config
+      );
+      if (res.data) {
+        setLoading(false);
+        isSubmited(true);
+        // setPathImage(res.data.logoUrl.url);
+        // setIsLoading(false);
+        // setIsModalVisible(false);
+      }
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
     }
   };
 
@@ -107,20 +130,49 @@ const BannerUploading = ({ id, userInfo }) => {
         <Col xs={{ span: 12 }}>
           <ImgCrop aspect={3 / 2}>
             <Upload
-              name="bannerFile"
+              accept="image/png, image/jpeg, image/jpg"
+              name="serviceFile"
               action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
               listType="picture-card"
               fileList={fileList}
               onChange={onChange}
               onPreview={onPreview}
             >
-              {fileList.length < 5 && "+ Upload"}
+              {fileList.length < 4 && (
+                <UploadIcon>
+                  <GoPlus size={30} />
+                  <span>upload</span>
+                </UploadIcon>
+              )}
             </Upload>
           </ImgCrop>
 
-          <ButtonWrapper type="button" loading={loading}>
-            <FiUploadCloud className="icon" />
-            upload
+          <ButtonWrapper
+            disabled={fileList.length < 1 && true}
+            type="submit"
+            submited={submited}
+          >
+            {!loading ? (
+              <>
+                {" "}
+                {!submited ? (
+                  <>
+                    <FiUploadCloud className="icon" />
+                    <span>submit</span>
+                  </>
+                ) : (
+                  <>
+                    <IoIosCloudDone className="icon" />
+                    <span>submited</span>
+                  </>
+                )}
+              </>
+            ) : (
+              <>
+                <SyncOutlined spin />{" "}
+                <span style={{ paddingLeft: 4 }}> Loading...</span>
+              </>
+            )}
           </ButtonWrapper>
         </Col>
         <Col xs={{ span: 10 }}>
@@ -283,7 +335,7 @@ const ServiceFileUploading = ({ userInfo, id }) => {
     <>
       <TitleStyling>Import your {body.typeBusiness} Images</TitleStyling>
       <ButtonWrapper type="button" onClick={showModal}>
-        <FiUploadCloud  className="icon" /> upload
+        <FiUploadCloud className="icon" /> upload
       </ButtonWrapper>
       <Modal
         title={`Upload Pictures`}
@@ -352,8 +404,10 @@ const TitleStyling = styled.h1`
   text-transform: capitalize;
 `;
 
-const ButtonWrapper = styled(Button)`
-  background: var(--orange-color);
+const ButtonWrapper = styled.button`
+  /* background: {$( {submited} => !submited ? "var(--orange-color)" : "green") }; */
+  background: ${({ submited }) =>
+    !submited ? "var(--orange-color)" : "#2ed573"};
   border: none;
   outline: none;
   font-size: 1rem;
@@ -366,6 +420,10 @@ const ButtonWrapper = styled(Button)`
   & .icon {
     margin-right: 10px;
     font-size: 20px;
+  }
+  &:hover {
+    opacity: 0.9;
+    /* background: none; */
   }
 `;
 const CloseButtonStyling = styled.button`
@@ -401,6 +459,24 @@ const Content = styled.div`
     & li {
       color: #111;
     }
+  }
+`;
+
+const UploadIcon = styled.div`
+  width: 100%;
+  height: 100%;
+  color: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-transform: capitalize;
+  /* background: var(--orange-color); */
+
+  &:hover {
+    /* background: #ffffff; */
+    border: none;
+    opacity: 0.9;
   }
 `;
 

@@ -30,6 +30,7 @@ const AdvertisingServiceSchema = mongoose.Schema(
       },
     },
     serviceUrl: { type: Array, required: false },
+    bannerUrl: { type: Array, required: false },
     videoUrl: { type: Array, required: false },
 
     productsOrdered: { type: Array, required: false },
