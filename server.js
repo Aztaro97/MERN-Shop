@@ -34,17 +34,7 @@ if (process.env.NODE_ENV === "development") {
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
-app.use(
-  compression({
-    level: 6,
-    filter: (req, res) => {
-      if (req.headers["x-no-compression"]) {
-        return false;
-      }
-      return compression.filter(req, res);
-    },
-  })
-);
+app.use(compression());
 app.use(
   fileUpload({
     useTempFiles: true,
