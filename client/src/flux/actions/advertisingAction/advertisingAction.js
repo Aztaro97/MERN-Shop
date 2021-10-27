@@ -65,13 +65,11 @@ export const freeSubscription = (body) => async (dispatch, getState) => {
   }
 };
 
-export const PremiumSubscription = (body) => async (dispatch, getState) => {
+export const PremiumSubscription = (id, cartData) => async (
+  dispatch,
+  getState
+) => {
   try {
-    dispatch({
-      type: "SERVICE_REGISTER_SUCCESS",
-      payload: body,
-    });
-
     const {
       userLogin: { userInfo },
     } = getState();
@@ -82,7 +80,11 @@ export const PremiumSubscription = (body) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
-    const res = await axios.post("/api/advertising/premium", body, config);
+    const res = await axios.put(
+      `/api/advertising/premium/${id}`,
+      cartData,
+      config
+    );
   } catch (error) {
     console.log(error);
   }
@@ -236,7 +238,7 @@ export const getAdvertisingProfileByID = (id) => async (dispatch) => {
         accept: "application/json",
       },
     };
-    const res = await axios.post(`/api/advertising/profile/${id}`, config);
+    const res = await axios.get(`/api/advertising/profile/${id}`, config);
 
     dispatch({
       type: AD_PROFILE_SUCCESS,
@@ -357,9 +359,9 @@ export const updateAllowService = (id, allow) => async (dispatch, getState) => {
 
 export const deleteAdService = (id) => async (dispatch, getState) => {
   try {
-    dispatch({
-      type: DELETE_AD_PROFILE_REQUEST,
-    });
+    // dispatch({
+    //   type: DELETE_AD_PROFILE_REQUEST,
+    // });
     const {
       userLogin: { userInfo },
     } = getState();
@@ -370,7 +372,10 @@ export const deleteAdService = (id) => async (dispatch, getState) => {
       },
     };
     const res = await axios.delete(`/api/advertising/profile/${id}`, config);
-    if (res) window.location.reload();
+    // if (res)
+    //   dispatch({
+    //     type: DELETE_AD_PROFILE_SUCCESS,
+    //   });
   } catch (error) {
     console.error(error);
     dispatch({

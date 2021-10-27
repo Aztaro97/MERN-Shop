@@ -38,44 +38,19 @@ const addAdvertisingService = asyncHandler(async (req, res) => {
   res.status(200).json(createService);
 });
 
-const registerPremiumService = asyncHandler(async (req, res) => {
-  const {
-    companyName,
-    companyName_ar,
-    about,
-    about_ar,
-    typeBusiness,
-    fullName,
-    telephone,
-    email,
-    city,
-    country,
-    region,
-    productsOrdered,
-    totalPrice,
-  } = req.body;
-
-  const newService = new advertising({
-    user: req.user._id,
-    isPaid: true,
-    typePlan: "premium",
-    companyName,
-    companyName_ar,
-    about,
-    about_ar,
-    typeBusiness,
-    fullName,
-    telephone,
-    email,
-    city,
-    country,
-    region,
-    productsOrdered,
-    totalPrice,
-  });
-
-  const createService = await newService.save();
-  res.status(200).json(createService);
+const updatePremiumService = asyncHandler(async (req, res) => {
+  try {
+    const updateService = await advertising.findById(req.params.id);
+    if (updateService) {
+      updateService.typePlan = "premium";
+      updateService.productsOrdered = req.body.productsOrdered;
+      updateService.totalPrice = req.body.totalPrice;
+    }
+    const newService = await updateService.save();
+    res.status(200).json(newService);
+  } catch (error) {
+    throw new Error(error);
+  }
 });
 
 const getAllAdService = asyncHandler(async (req, res) => {
@@ -187,9 +162,9 @@ module.exports = {
   filterByTypeBusiness,
   filterByTypeBusinessPublic,
   getAdProfile,
-  registerPremiumService,
+  updatePremiumService,
   setUpdateAllowed,
   deleteAdService,
   seachAdvertisingByCompanyName,
-  getUserAds
+  getUserAds,
 };

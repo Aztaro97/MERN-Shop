@@ -1,5 +1,6 @@
 import { Card, Col, Modal, Row } from "antd";
 import React, { useEffect } from "react";
+import { AiFillEdit } from "react-icons/ai";
 import { MdDelete } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
@@ -35,6 +36,7 @@ function MyAdsScreen() {
       onOk: () => {
         dispatch(deleteAdService(id));
         dispatch(destroyImages(imageUrl));
+        setTimeout(() => dispatch(getUserAdsService(userInfo._id)), 500);
       },
     });
 
@@ -90,9 +92,14 @@ function MyAdsScreen() {
                       alt=""
                     />
 
-                    <p className="description">
-                      Categorie: <span>{ad.typeBusiness}</span>
-                    </p>
+                    <div className="card_footer">
+                      <p className="description">
+                        Categorie: <span>{ad.typeBusiness}</span>
+                      </p>
+                      <Link to={`/profile/edit-ad/${ad._id}`}>
+                        <AiFillEdit className="edit_icon" />
+                      </Link>
+                    </div>
                   </CardStyling>
                 </Col>
               ))
@@ -117,7 +124,7 @@ const Container = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding:20px;
+    padding: 20px;
     & .title {
       color: var(--orange-color);
       margin: 0;
@@ -158,13 +165,26 @@ const CardStyling = styled(Card)`
       color: var(--orange-color);
     }
   }
-  & .description {
-    padding-top: 10px;
-    margin: 0;
-    text-transform: capitalize;
-    font-weight: 700;
-    & span {
-      color: #d35400;
+  & .card_footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    & .description {
+      padding-top: 10px;
+      margin: 0;
+      text-transform: capitalize;
+      font-weight: 700;
+      & span {
+        color: #d35400;
+      }
+    }
+    & .edit_icon {
+      color: var(--orange-color);
+      font-size: 25px;
+      &:hover {
+        color: #d35400;
+      }
     }
   }
 `;
@@ -186,8 +206,8 @@ const EmptyAdsContainer = styled.div`
   @media screen and (max-width: 768px) {
     padding: 20px;
     & img {
-    max-width: 100px;
-  }
+      max-width: 100px;
+    }
   }
 `;
 

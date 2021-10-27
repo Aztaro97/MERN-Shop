@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import MainContainer from "../../../MainContainer";
-import { Col, Modal, Row, Button, Space, Upload } from "antd";
+import { Col, Modal, Row, Button, Space, Upload, Select } from "antd";
 import styled from "styled-components";
 import DropzoneUploading from "./DropzoneComponent";
-import { FiUploadCloud } from "react-icons/fi";
+import { FiLink2, FiUploadCloud } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams, useLocation } from "react-router";
 import axios from "axios";
@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import ImgCrop from "antd-img-crop";
 import { GoPlus } from "react-icons/go";
 import { IoIosCloudDone } from "react-icons/io";
+import ReactPlayer from "react-player";
 import {
   HomeOutlined,
   SettingFilled,
@@ -18,7 +19,9 @@ import {
   SyncOutlined,
   LoadingOutlined,
 } from "@ant-design/icons";
+import { AiOutlineLink } from "react-icons/ai";
 // import UploadComponent from "./uploadComponent";
+const { Option } = Select;
 
 function UploadServiceFile() {
   const location = useLocation();
@@ -45,7 +48,10 @@ function UploadServiceFile() {
             <LogoUploading userInfo={userInfo} id={id} />
           </Col>
           <Col xs={{ span: 24 }}>
-            <ServiceFileUploading userInfo={userInfo} id={id} />
+            <ServiceUploading userInfo={userInfo} id={id} />
+          </Col>
+          <Col xs={{ span: 24 }}>
+            <VideoUploading userInfo={userInfo} id={id} />
           </Col>
           <Col xs={{ span: 24 }}>
             <LinkStyling
@@ -91,12 +97,12 @@ const BannerUploading = ({ id, userInfo }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(fileList)
+    console.log(fileList);
     try {
       setLoading(true);
       const formdata = new FormData();
       for (var i = 0; i < fileList.length; i++) {
-        formdata.append("serviceFile", fileList[i].originFileObj);
+        formdata.append("bannerFile", fileList[i].originFileObj);
       }
       const config = {
         headers: {
@@ -106,16 +112,13 @@ const BannerUploading = ({ id, userInfo }) => {
         },
       };
       const res = await axios.post(
-        `/upload-images/services/${id}`,
+        `/upload-images/banners/${id}`,
         formdata,
         config
       );
       if (res.data) {
         setLoading(false);
         isSubmited(true);
-        // setPathImage(res.data.logoUrl.url);
-        // setIsLoading(false);
-        // setIsModalVisible(false);
       }
     } catch (error) {
       console.log(error);
@@ -123,24 +126,29 @@ const BannerUploading = ({ id, userInfo }) => {
     }
   };
 
+  const props = {
+    accept: "image/png, image/jpeg, image/jpg",
+    name: "bannerFile",
+    action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
+    headers: {
+      authorization: "authorization-text",
+    },
+    listType: "picture-card",
+    fileList: fileList,
+    onChange: onChange,
+    onPreview: onPreview,
+  };
+
   return (
     <form action="" onSubmit={handleSubmit}>
       <TitleStyling>Import Banner Images</TitleStyling>
       <Row justify="space-between">
         <Col xs={{ span: 12 }}>
-          <ImgCrop aspect={3 / 2}>
-            <Upload
-              accept="image/png, image/jpeg, image/jpg"
-              name="serviceFile"
-              action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-              listType="picture-card"
-              fileList={fileList}
-              onChange={onChange}
-              onPreview={onPreview}
-            >
+          <ImgCrop aspect={3 / 2} quantity={0.8}>
+            <Upload {...props}>
               {fileList.length < 4 && (
                 <UploadIcon>
-                  <GoPlus size={30} />
+                  <GoPlus size={30} className="icon" />
                   <span>upload</span>
                 </UploadIcon>
               )}
@@ -190,50 +198,116 @@ const BannerUploading = ({ id, userInfo }) => {
 };
 
 const LogoUploading = ({ id, userInfo }) => {
-  const [pathImage, setPathImage] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [isModalVisible, setIsModalVisible] = useState(false);
-
   const [fileList, setFileList] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [submited, isSubmited] = useState(false);
 
-  const showModal = () => {
-    setIsModalVisible(true);
+  const onChange = ({ fileList: newFileList }) => {
+    setFileList(newFileList);
   };
 
-  const handleCancel = () => {
-    setIsModalVisible(false);
+  const onPreview = async (file) => {
+    let src = file.url;
+    if (!src) {
+      src = await new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file.originFileObj);
+        reader.onload = () => resolve(reader.result);
+      });
+    }
+    const image = new Image();
+    image.src = src;
+    const imgWindow = window.open(src);
+    imgWindow.document.write(image.outerHTML);
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
-    const formdata = new FormData();
-    formdata.append("logoFile", fileList[0].originFileObj);
-    const config = {
-      headers: {
-        "Content-Type": "multipart/form-data",
-        Accept: "application/json",
-        Authorization: `Bearer ${userInfo.token}`,
-      },
-    };
-    const res = await axios.post(`/upload-images/logo/${id}`, formdata, config);
-    if (res.data) {
-      setPathImage(res.data.logoUrl.url);
-      setIsLoading(false);
-      setIsModalVisible(false);
+    console.log(fileList);
+    try {
+      setLoading(true);
+      const formdata = new FormData();
+      for (var i = 0; i < fileList.length; i++) {
+        formdata.append("logoFile", fileList[i].originFileObj);
+      }
+      const config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Accept: "application/json",
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      };
+      const res = await axios.post(
+        `/upload-images/logo/${id}`,
+        formdata,
+        config
+      );
+      if (res.data) {
+        setLoading(false);
+        isSubmited(true);
+      }
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
     }
   };
+
+  const props = {
+    accept: "image/png, image/jpeg, image/jpg",
+    name: "logoFile",
+    action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
+    headers: {
+      authorization: "authorization-text",
+    },
+    listType: "picture-card",
+    fileList: fileList,
+    onChange: onChange,
+    onPreview: onPreview,
+  };
+
   return (
-    <>
+    <form action="" onSubmit={handleSubmit}>
       <TitleStyling>Import Company Logo</TitleStyling>
       <Row justify="space-between">
         <Col xs={{ span: 12 }}>
-          <img
-            src={pathImage}
-            alt=""
-            style={{ marginTop: 10, width: "auto", height: "130px" }}
-          />
+          <Upload {...props}>
+            {fileList.length < 1 && (
+              <UploadIcon className="logo_card">
+                <GoPlus size={30} className="icon" />
+                <span>upload</span>
+              </UploadIcon>
+            )}
+          </Upload>
+
+          <ButtonWrapper
+            disabled={fileList.length < 1 && true}
+            type="submit"
+            submited={submited}
+          >
+            {!loading ? (
+              <>
+                {" "}
+                {!submited ? (
+                  <>
+                    <FiUploadCloud className="icon" />
+                    <span>submit</span>
+                  </>
+                ) : (
+                  <>
+                    <IoIosCloudDone className="icon" />
+                    <span>submited</span>
+                  </>
+                )}
+              </>
+            ) : (
+              <>
+                <SyncOutlined spin />{" "}
+                <span style={{ paddingLeft: 4 }}> Loading...</span>
+              </>
+            )}
+          </ButtonWrapper>
         </Col>
-        <Col xs={{ span: 12 }}>
+        <Col xs={{ span: 10 }}>
           <Content>
             <ul>
               <li>Quisque velit nisi, pretium ut lacinia in</li>
@@ -243,151 +317,267 @@ const LogoUploading = ({ id, userInfo }) => {
           </Content>
         </Col>
       </Row>
-      <Modal
-        title="COMPANY LOGO"
-        visible={isModalVisible}
-        onCancel={handleCancel}
-        footer={true}
-      >
-        <form action="" onSubmit={handleSubmit}>
-          <Row justify="space-between">
-            <Col xs={{ span: 24 }}>
-              {/* <UploadComponent
-                name="logoFile"
-                maxFile="2"
-                fileList={fileList}
-                setFileList={setFileList}
-              /> */}
-            </Col>
-            <Col xs={{ span: 12 }}>
-              <CloseButtonStyling onClick={handleCancel} type="button">
-                cancel
-              </CloseButtonStyling>
-            </Col>
-            <Col xs={{ span: 8 }}>
-              <Button
-                style={{
-                  width: "100%",
-                  textTransform: "lowercase",
-                  fontWeight: 400,
-                  background: "#111",
-                  color: "#fff",
-                }}
-                htmlType="submit"
-                loading={isLoading}
-              >
-                submit
-              </Button>
-            </Col>
-          </Row>
-        </form>
-      </Modal>
-    </>
+    </form>
   );
 };
 
-const ServiceFileUploading = ({ userInfo, id }) => {
-  const [files, setFiles] = useState([]);
-  const [pathImage, setPathImage] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isModalVisible, setIsModalVisible] = useState(false);
+const ServiceUploading = ({ id, userInfo }) => {
+  const [fileList, setFileList] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [submited, isSubmited] = useState(false);
 
   const location = useLocation();
   const body = location.state.data;
 
-  const showModal = () => {
-    setIsModalVisible(true);
+  const onChange = ({ fileList: newFileList }) => {
+    setFileList(newFileList);
   };
 
-  const handleCancel = () => {
-    setIsModalVisible(false);
+  const onPreview = async (file) => {
+    let src = file.url;
+    if (!src) {
+      src = await new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file.originFileObj);
+        reader.onload = () => resolve(reader.result);
+      });
+    }
+    const image = new Image();
+    image.src = src;
+    const imgWindow = window.open(src);
+    imgWindow.document.write(image.outerHTML);
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
-    console.log(files);
-    const formdata = new FormData();
-    // formdata.append("serviceFile", files);
-    if (files.length !== 0) {
-      for (const single_file of files) {
-        formdata.append("serviceFile", single_file);
+    console.log(fileList);
+    try {
+      setLoading(true);
+      const formdata = new FormData();
+      for (var i = 0; i < fileList.length; i++) {
+        formdata.append("serviceFile", fileList[i].originFileObj);
       }
-    }
-    const config = {
-      headers: {
-        "Content-Type": "multipart/form-data",
-        Accept: "application/json",
-        Authorization: `Bearer ${userInfo.token}`,
-      },
-    };
-    const res = await axios.post(
-      `/upload-images/services/${id}`,
-      formdata,
-      config
-    );
-    if (res.data) {
-      setPathImage(res.data.serviceUrl);
-      setIsLoading(false);
-      setIsModalVisible(false);
+      const config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Accept: "application/json",
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      };
+      const res = await axios.post(
+        `/upload-images/services/${id}`,
+        formdata,
+        config
+      );
+      if (res.data) {
+        setLoading(false);
+        isSubmited(true);
+      }
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
     }
   };
+
   return (
-    <>
-      <TitleStyling>Import your {body.typeBusiness} Images</TitleStyling>
-      <ButtonWrapper type="button" onClick={showModal}>
-        <FiUploadCloud className="icon" /> upload
-      </ButtonWrapper>
-      <Modal
-        title={`Upload Pictures`}
-        visible={isModalVisible}
-        onCancel={handleCancel}
-        footer={true}
-      >
-        <form action="" onSubmit={handleSubmit}>
-          <Row justify="space-between" gutter={[10, 10]}>
-            <Col xs={{ span: 24 }}>
-              <DropzoneUploading
-                name="serviceFile"
-                multiple={true}
-                maxFiles={6}
-                files={files}
-                setFiles={setFiles}
-              />
-            </Col>
-            <Col xs={{ span: 12 }}>
-              <CloseButtonStyling onClick={handleCancel} type="button">
-                cancel
-              </CloseButtonStyling>
-            </Col>
-            <Col xs={{ span: 8 }}>
-              <Button
-                style={{
-                  width: "100%",
-                  textTransform: "lowercase",
-                  fontWeight: 400,
-                  background: "#111",
-                  color: "#fff",
-                }}
-                type="submit"
-                htmlType="submit"
-                loading={isLoading}
-              >
-                submit
-              </Button>
-            </Col>
-          </Row>
-        </form>
-      </Modal>
-      <Space size={[5, 10]}>
-        {pathImage.map((image, index) => (
-          <div key={index} style={{ marginTop: 10 }}>
-            <img width="100" src={image.url} alt="" />
-          </div>
-        ))}
-      </Space>
-    </>
+    <form action="" onSubmit={handleSubmit}>
+      <TitleStyling>Import {body.typeBusiness} Images</TitleStyling>
+      <Row justify="space-between">
+        <Col xs={{ span: 12 }}>
+          <ImgCrop aspect={3 / 2}>
+            <Upload
+              accept="image/png, image/jpeg, image/jpg"
+              name="serviceFile"
+              action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+              listType="picture-card"
+              fileList={fileList}
+              onChange={onChange}
+              onPreview={onPreview}
+            >
+              {fileList.length < 4 && (
+                <UploadIcon>
+                  <GoPlus size={30} className="icon" />
+                  <span>upload</span>
+                </UploadIcon>
+              )}
+            </Upload>
+          </ImgCrop>
+
+          <ButtonWrapper
+            disabled={fileList.length < 1 && true}
+            type="submit"
+            submited={submited}
+          >
+            {!loading ? (
+              <>
+                {" "}
+                {!submited ? (
+                  <>
+                    <FiUploadCloud className="icon" />
+                    <span>submit</span>
+                  </>
+                ) : (
+                  <>
+                    <IoIosCloudDone className="icon" />
+                    <span>submited</span>
+                  </>
+                )}
+              </>
+            ) : (
+              <>
+                <SyncOutlined spin />{" "}
+                <span style={{ paddingLeft: 4 }}> Loading...</span>
+              </>
+            )}
+          </ButtonWrapper>
+        </Col>
+        <Col xs={{ span: 10 }}>
+          <Content>
+            <ul>
+              <li>Quisque velit nisi, pretium ut lacinia in</li>
+              <li>Quisque velit nisi, pretium ut lacinia in</li>
+              <li>Quisque velit nisi, pretium ut lacinia in</li>
+            </ul>
+          </Content>
+        </Col>
+      </Row>
+    </form>
   );
 };
+
+const VideoUploading = ({ userInfo, id }) => {
+  const [children, setChildren] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [submited, isSubmited] = useState(false);
+  const [videoData, setVideoData] = useState([]);
+
+  const dispatch = useDispatch();
+
+  const handleSubmit = async (e) => {
+    setLoading(true);
+    try {
+      e.preventDefault();
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      };
+      const res = await axios.post(
+        `/upload-images/video/${id}`,
+        { videoUrl: children },
+        config
+      );
+      if (res.data.msg) {
+        setLoading(false);
+        setVideoData(res.data.videoUrl);
+        isSubmited(true);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  for (let i = 0; i < children.lenght; i++) {
+    <Option key={i}>{i}</Option>;
+  }
+  function handleChange(value) {
+    setChildren(value);
+  }
+  return (
+    <form onSubmit={handleSubmit}>
+      <TitleStyling>Insert Video Links</TitleStyling>
+      <Row gutter={[10, 10]} justify="space-between">
+        <Col span={20}>
+          <Select
+            required
+            mode="tags"
+            placeholder="Past video link here ( Exemple: http://www.youtube.com/sxwdwhuw )"
+            onChange={handleChange}
+            style={{ width: "100%" }}
+          >
+            {children}
+          </Select>
+        </Col>
+        <Col span={4}>
+          <ButtonWrapper
+            type="submit"
+            submited={submited}
+            disabled={!children.length && true}
+          >
+            {!loading ? (
+              <>
+                {" "}
+                {!submited ? (
+                  <>
+                    <FiUploadCloud className="icon" />
+                    <span>upload</span>
+                  </>
+                ) : (
+                  <>
+                    <IoIosCloudDone className="icon" />
+                    <span>submited</span>
+                  </>
+                )}
+              </>
+            ) : (
+              <>
+                <SyncOutlined spin />{" "}
+                <span style={{ paddingLeft: 4 }}> Loading...</span>
+              </>
+            )}
+          </ButtonWrapper>
+        </Col>
+        <Col xs={{ span: 24 }}>
+          <Row gutter={[5, 10]}>
+            {videoData.map((url, index) => (
+              <Col
+                xs={{ span: 24 }}
+                md={{ span: 12 }}
+                lg={{ span: 8 }}
+                key={index}
+              >
+                <PlayerWrapper>
+                  <ReactPlayer
+                    className="react-player"
+                    width="100%"
+                    height="100%"
+                    url={url}
+                    controls
+                    config={{
+                      youtube: {
+                        playerVars: { showinfo: 1 },
+                      },
+                      facebook: {
+                        appId: "12345",
+                      },
+                      file: {
+                        autoplay: "false",
+                        height: "200px",
+                        src: url,
+                      },
+                    }}
+                  />
+                </PlayerWrapper>
+              </Col>
+            ))}
+          </Row>
+        </Col>
+      </Row>
+    </form>
+  );
+};
+
+const PlayerWrapper = styled.div`
+  position: relative;
+  padding-top: 56.25%;
+
+  .react-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+`;
 
 const COntainer = styled.div`
   background-color: #ecececec;
@@ -405,15 +595,13 @@ const TitleStyling = styled.h1`
 `;
 
 const ButtonWrapper = styled.button`
-  /* background: {$( {submited} => !submited ? "var(--orange-color)" : "green") }; */
-  background: ${({ submited }) =>
-    !submited ? "var(--orange-color)" : "#2ed573"};
+  background: ${({ submited }) => (!submited ? "#333" : "#2ed573")};
   border: none;
   outline: none;
   font-size: 1rem;
   color: #ffff;
   padding: 5px 10px;
-  width: 150px;
+  width: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -471,7 +659,10 @@ const UploadIcon = styled.div`
   align-items: center;
   flex-direction: column;
   text-transform: capitalize;
-  /* background: var(--orange-color); */
+
+  & .icon {
+    color: var(--orange-color);
+  }
 
   &:hover {
     /* background: #ffffff; */

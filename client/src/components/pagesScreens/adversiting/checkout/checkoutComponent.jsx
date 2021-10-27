@@ -18,7 +18,7 @@ const CheckoutComponent = ({ totalPrice, cardData }) => {
   const stripe_api_key =
     "pk_test_51JJfI4Bx9NV9CAAsuru5nAfIu9rF8RK6yxAf52TPNFMD7G0wnXlmH9r3MzKIlPO5kXBwkRGR8D9fK4xBod44lmRq00mT5OQdVM";
 
-  const { service: userField } = useSelector((state) => state.advertising);
+  const { service } = useSelector((state) => state.advertising);
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -27,21 +27,11 @@ const CheckoutComponent = ({ totalPrice, cardData }) => {
     setStripeToken(token);
   };
 
-  if (userField == null) {
+  if (service == null) {
     history.push("/advertising/register");
   }
 
-  const body = {
-    companyName: userField.companyName,
-    companyName_ar: userField.companyName_ar,
-    about: userField.about,
-    typeBusiness: userField.typeBusiness,
-    fullName: userField.fullName,
-    telephone: userField.telephone,
-    email: userField.email,
-    city: userField.city,
-    country: userField.country,
-    region: userField.region,
+  const cartData = {
     productsOrdered: cardData,
     totalPrice,
   };
@@ -55,7 +45,7 @@ const CheckoutComponent = ({ totalPrice, cardData }) => {
       });
       if (res.data.success) {
         setSuccessPayment(true);
-        console.log(stripeToken)
+        console.log(stripeToken);
       }
     } catch (err) {
       console.log(err);
@@ -63,8 +53,8 @@ const CheckoutComponent = ({ totalPrice, cardData }) => {
   };
 
   if (successPayment) {
-    dispatch(PremiumSubscription(body));
-    history.push("/advertising/thank");
+    dispatch(PremiumSubscription(service._id, cartData));
+    history.push({ pathname: "/advertising/thank", state: { data: service } });
   }
 
   useEffect(() => {
@@ -72,7 +62,7 @@ const CheckoutComponent = ({ totalPrice, cardData }) => {
       setIsLoading(true);
     }
     stripeToken && makeRequest();
-  }, [stripeToken, setIsLoading, makeRequest]);
+  }, [stripeToken]);
 
   return (
     <>

@@ -131,6 +131,9 @@ const MyAdsScreen = lazy(() =>
 const ConfirmPaymentMethod = lazy(() =>
   import("./components/pagesScreens/adversiting/confirmTypePayment")
 );
+const EditAdsService = lazy(() =>
+  import("./components/pagesScreens/adversiting/editAdsService")
+);
 // const ProfileComponent = lazy(() =>
 //   import("./components/pagesScreens/user/profile/tabs")
 // );
@@ -220,6 +223,7 @@ function App() {
             component={ConfirmPaymentMethod}
           />
           <Route path="/profile/my-ads" component={MyAdsScreen} />
+          <Route path="/profile/edit-ad/:id" component={EditAdsService} />
           <Route path="/auth" component={AuthComponents} />
 
           <Route path="/forgot-password" component={ResetPasswordPage} />

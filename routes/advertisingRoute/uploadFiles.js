@@ -89,8 +89,10 @@ router.post(
           results.push(resul);
         }
       } else {
-        const resul = await cloudinary.v2.uploader.upload(files.tempFilePath);
-        imgUrls.push(resul);
+        const NewResul = await cloudinary.v2.uploader.upload(
+          files.tempFilePath
+        );
+        results.push(NewResul);
       }
 
       const imgUrls = results.map((result) => ({
@@ -116,7 +118,7 @@ router.post(
   [protect, parser.single("bannerFile")],
   async (req, res) => {
     try {
-      const files = req.files.serviceFile;
+      const files = req.files.bannerFile;
 
       const results = [];
       if (files.length) {
@@ -140,8 +142,10 @@ router.post(
           results.push(resul);
         }
       } else {
-        const resul = await cloudinary.v2.uploader.upload(files.tempFilePath);
-        imgUrls.push(resul);
+        const NewResul = await cloudinary.v2.uploader.upload(
+          files.tempFilePath
+        );
+        results.push(NewResul);
       }
 
       const imgUrls = results.map((result) => ({
@@ -151,7 +155,7 @@ router.post(
 
       const service = await AdvertisingModel.findById(req.params.id);
       if (service) {
-        service.bannerFile = imgUrls;
+        service.bannerUrl = imgUrls;
       }
       const newService = await service.save();
       res.status(200).json(newService);
@@ -168,8 +172,10 @@ router.post("/video/:id", [protect, admin], async (req, res) => {
     if (service) {
       service.videoUrl = req.body.videoUrl;
     }
-    await service.save();
-    res.status(200).json({ msg: "Successfully uploaded" });
+    const newService = await service.save();
+    res
+      .status(200)
+      .json({ msg: "Successfully uploaded", videoUrl: newService.videoUrl });
   } catch (err) {
     return res.status(500).json({ msg: err });
   }

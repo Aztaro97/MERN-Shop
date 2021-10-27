@@ -66,58 +66,58 @@ const DataSection = ({ listAdService, error, type }) => {
     <DataStyling>
       <h3 className="title">all {type}</h3>
       <hr />
-      <>
+      {/* <>
         {error ? (
           <h1>{error}</h1>
         ) : (
           <>
-            {listAdService.length ? (
-              <Row gutter={[10, 10]}>
-                {listAdService.map((data) => (
-                  <Col
-                    lg={{ span: 6 }}
-                    md={{ span: 8 }}
-                    sm={{ span: 12 }}
-                    xs={{ span: 24 }}
-                  >
-                    <div className="data_item" key={data._id}>
-                      {data.serviceUrl.length > 0 ? (
-                        <img src={data.serviceUrl[0].url} alt="" />
-                      ) : (
-                        <img src={defaultImage} alt="" />
-                      )}
-                      <div className="content">
-                        <h5>{data.companyName}</h5>
-                        <hr />
-                        <p>Curabitur arcu erat, accumsan id imperdiet et</p>
-                        <Link
-                          onClick={() =>
-                            history.push(`/advertising/profile/${data._id}`)
-                          }
-                          alt=""
-                        >
-                          {t("explore")}
-                        </Link>
-                      </div>
-                    </div>
-                  </Col>
-                ))}
-              </Row>
-            ) : (
-              <div className="empty_container">
-                <h5>
-                  {" "}
-                  <span>Sorry !</span> we couldn't find any results matching "
-                  {type}"
-                </h5>
-                <Link to="/" className="link">
-                  Back home
-                </Link>
-              </div>
-            )}
+           
           </>
         )}
-      </>
+      </> */}
+      {listAdService.length ? (
+        <Row gutter={[10, 10]}>
+          {listAdService.map((data) => (
+            <Col
+              lg={{ span: 6 }}
+              md={{ span: 8 }}
+              sm={{ span: 12 }}
+              xs={{ span: 24 }}
+            >
+              <div className="data_item" key={data._id}>
+                {data.serviceUrl.length > 0 ? (
+                  <img src={data.serviceUrl[0].url} alt="" />
+                ) : (
+                  <img src={defaultImage} alt="" />
+                )}
+                <div className="content">
+                  <h5>{data.companyName}</h5>
+                  <hr />
+                  <p>Curabitur arcu erat, accumsan id imperdiet et</p>
+                  <Link
+                    onClick={() =>
+                      history.push(`/advertising/profile/${data._id}`)
+                    }
+                    alt=""
+                  >
+                    {t("explore")}
+                  </Link>
+                </div>
+              </div>
+            </Col>
+          ))}
+        </Row>
+      ) : (
+        <div className="empty_container">
+          <h5>
+            {" "}
+            <span>Sorry !</span> we couldn't find any results matching "{type}"
+          </h5>
+          <Link to="/" className="link">
+            Back home
+          </Link>
+        </div>
+      )}
     </DataStyling>
   );
 };

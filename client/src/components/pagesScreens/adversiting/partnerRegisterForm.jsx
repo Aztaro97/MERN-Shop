@@ -13,11 +13,6 @@ import { useFormik } from "formik";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import Loader from "../../loader";
 
-import {
-  freeSubscription,
-  saveServiceInfo,
-} from "../../../flux/actions/advertisingAction/advertisingAction";
-
 import { BusinessList } from "../../../utils/advertisingData";
 import { useHistory } from "react-router-dom";
 import { register } from "../../../flux/actions/userAction";
@@ -26,6 +21,7 @@ import MainContainer from "../../MainContainer";
 import { useTranslation } from "react-i18next";
 import Meta from "../../helmet";
 import axios from "axios";
+import { USER_ADS_SUCCESS } from "../../../flux/constants/advertising";
 
 const { Option } = Select;
 
@@ -171,7 +167,7 @@ const DetailsComponent = ({ userInfo }) => {
   const [companyName_ar, setCompanyName_ar] = useState("");
   const [about, setAbout] = useState("");
   const [about_ar, setAbout_ar] = useState("");
-  const [typeBusiness, setTypeBusiness] = useState([]);
+  const [typeBusiness, setTypeBusiness] = useState("");
   const [fullName, setFullName] = useState("");
   const [telephone, setTelephone] = useState("");
   const [email, setEmail] = useState("");
@@ -215,8 +211,12 @@ const DetailsComponent = ({ userInfo }) => {
       history.push({
         pathname: `/advertising/upload-file/${id}`,
         state: {
-          data: body,
+          data: res.data,
         },
+      });
+      dispatch({
+        type: "SAVE_SERVICE_INFO_SUCCESS",
+        payload: res.data,
       });
     }
   };

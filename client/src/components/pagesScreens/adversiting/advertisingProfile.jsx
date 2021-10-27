@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Slider from "react-slick";
-import { Image } from "antd";
+import { Col, Image, Row } from "antd";
 import { Video, Transformation } from "cloudinary-react";
 import { useParams, useHistory } from "react-router-dom";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
@@ -24,6 +24,7 @@ import {
 } from "../../../flux/constants/advertising";
 import { useTranslation } from "react-i18next";
 import Meta from "../../helmet";
+import ReactPlayer from "react-player";
 
 function AdvertisingProfileScreen() {
   const params = useParams();
@@ -68,39 +69,40 @@ function AdvertisingProfileScreen() {
                   {lang === "ar" && (
                     <h1 className="title">{profile.companyName_ar}</h1>
                   )}
-                  <img src={profile.logoUrl} alt="" />
+                  <img src={profile.logoUrl.url} alt="" />
                 </section>
                 <section className="about">
                   <h1 className="title">{t("about_company")}</h1>
                   {lang === "en" && <p>{profile.about}</p>}
                   {lang === "ar" && <p>{profile.about_ar}</p>}
                 </section>
-                <section className="service_two">
-                  <h1 className="title">{t("pictures")}</h1>
-                  <div className="grid">
-                    {profile.serviceUrl.map((data) => (
-                      <div className="card">
-                        <Image
-                          src={data.url}
-                          alt=""
-                          className="card-image"
-                          preview={{ mask: <span></span> }}
-                        />
-                        {/* <div className="card-body">
-                      <p className="text-center">real estate</p>
-                    </div> */}
-                      </div>
-                    ))}
-                  </div>
-                </section>
+                {profile.serviceUrl.length > 0 && (
+                  <section className="service_two">
+                    <h1 className="title">{t("pictures")}</h1>
+                    <div className="grid">
+                      {profile.serviceUrl.map((data) => (
+                        <div className="card">
+                          <Image
+                            src={data.url}
+                            alt=""
+                            className="card-image"
+                            preview={{ mask: <span></span> }}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </section>
+                )}
 
-                <section className="portfolio">
-                  <h1 className="title">{t("videos")}</h1>
-                  <PortfolioSlider
-                    profile={profile}
-                    className="slider_container"
-                  />
-                </section>
+                {profile.videoUrl.length > 0 && (
+                  <section className="portfolio">
+                    <h1 className="title">{t("videos")}</h1>
+                    <PortfolioSlider
+                      profile={profile}
+                      className="slider_container"
+                    />
+                  </section>
+                )}
                 <section className="contact">
                   <h1 className="title">{t("contact")}</h1>
                   <ContactForm profile={profile} />
@@ -130,23 +132,38 @@ const PortfolioSlider = ({ profile }) => {
     // arrows: false,
   };
   return (
-    <>
-      {profile.videoUrl.length > 0 && (
-        <Slider {...settings} className="slider_container">
-          {profile.videoUrl.map((url, index) => (
-            <div className="slide" key={index}>
-              <Video
-                  cloudName="tarositeweb"
-                  controls="true"
-                  fallback="Cannot display video"
-                  publicId={url}
-                  width={330}
+    <Row justify="center">
+      <Col xs={{ span: 24 }} md={{ span: 20 }} lg={{ span: 12 }}>
+        {profile.videoUrl.length > 0 && (
+          <Slider {...settings} className="slider_container">
+            {profile.videoUrl.map((url, index) => (
+              <PlayerWrapper k={index}>
+                <ReactPlayer
+                  className="react-player"
+                  width="100%"
+                  height="100%"
+                  url={url}
+                  controls
+                  config={{
+                    youtube: {
+                      playerVars: { showinfo: 1 },
+                    },
+                    facebook: {
+                      appId: "12345",
+                    },
+                    file: {
+                      autoplay: "false",
+                      height: "200px",
+                      src: url,
+                    },
+                  }}
                 />
-            </div>
-          ))}
-        </Slider>
-      )}
-    </>
+              </PlayerWrapper>
+            ))}
+          </Slider>
+        )}
+      </Col>
+    </Row>
   );
 };
 
@@ -642,6 +659,17 @@ const RegionDropdownCustom = styled(RegionDropdown)`
   }
   @media only screen and (max-width: 768px) {
     height: 2.5rem;
+  }
+`;
+
+const PlayerWrapper = styled.div`
+  position: relative;
+  padding-top: 56.25%;
+
+  .react-player {
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 `;
 

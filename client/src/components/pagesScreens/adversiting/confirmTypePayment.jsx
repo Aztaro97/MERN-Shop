@@ -48,7 +48,7 @@ function ConfirmTypePayment() {
               </div>
             </div>
           </Col>
-          <Col
+          {/* <Col
             lg={{ span: 12 }}
             md={{ span: 12 }}
             sm={{ span: 12 }}
@@ -80,6 +80,42 @@ function ConfirmTypePayment() {
                   }}
                 >
                   Start Now
+                </Link>
+              </div>
+            </div>
+          </Col> */}
+          <Col
+            lg={{ span: 12 }}
+            md={{ span: 12 }}
+            sm={{ span: 12 }}
+            xs={{ span: 24 }}
+          >
+            <div className="card">
+              <h5 className="card_title free">free</h5>
+              <div className="card_body">
+                <p className="price">
+                  {" "}
+                  <span>aed 0</span>{" "}
+                </p>
+                <ul className="content">
+                  <li>Vivamus magna justo, lacinia eget consectetur</li>
+                  <li>Vivamus magna justo, lacinia consectetur</li>
+                  <li>Vivamus magna justo, lacinia eget consectetur</li>
+                  <li>Vivamus magna justo, lacinia consectetur</li>
+                </ul>
+              </div>
+              <div className="card_footer">
+                <Link
+                  type="submit"
+                  className="btn free"
+                  to={{
+                    pathname: "/advertising/thank",
+                    state: {
+                      data: body,
+                    },
+                  }}
+                >
+                  Complete
                 </Link>
               </div>
             </div>

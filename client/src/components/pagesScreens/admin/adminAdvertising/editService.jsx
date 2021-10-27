@@ -14,6 +14,7 @@ import { getAdvertisingProfileByID } from "../../../../flux/actions/advertisingA
 import { AiOutlineCloudUpload } from "react-icons/ai";
 import { Select } from "antd";
 import { Video, Transformation } from "cloudinary-react";
+import ReactPlayer from "react-player";
 
 const { Option } = Select;
 
@@ -261,7 +262,6 @@ const VideoContainer = ({ id, userInfo, loading, profile }) => {
     <Option key={i}>{i}</Option>;
   }
   function handleChange(value) {
-    console.log(`Selected: ${value}`);
     setChildren(value);
   }
 
@@ -297,13 +297,28 @@ const VideoContainer = ({ id, userInfo, loading, profile }) => {
           <Row gutter={[10, 10]} className="mt-3">
             {profile.videoUrl.map((url, index) => (
               <Col lg={{ span: 4 }} className="slide" key={index}>
-                <Video
-                  cloudName="tarositeweb"
-                  controls="true"
-                  fallback="Cannot display video"
-                  publicId={url}
-                  width="100%"
-                />
+                <PlayerWrapper>
+                  <ReactPlayer
+                    className="react-player"
+                    width="100%"
+                    height="100%"
+                    url={url}
+                    controls
+                    config={{
+                      youtube: {
+                        playerVars: { showinfo: 1 },
+                      },
+                      facebook: {
+                        appId: "12345",
+                      },
+                      file: {
+                        autoplay: "false",
+                        height: "200px",
+                        src: url,
+                      },
+                    }}
+                  />
+                </PlayerWrapper>
               </Col>
             ))}
           </Row>
@@ -315,7 +330,7 @@ const VideoContainer = ({ id, userInfo, loading, profile }) => {
 
 const Container = styled.div`
   margin: 4rem 0;
-`
+`;
 
 const BackLinkStyling = styled(Link)`
   color: #111;
@@ -346,6 +361,17 @@ const TitleStyling = styled.h3`
 `;
 const SelectStyling = styled(Select)`
   width: 100% !important;
+`;
+
+const PlayerWrapper = styled.div`
+  position: relative;
+  padding-top: 56.25%;
+
+  .react-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 `;
 
 export default EditServiceScreen;

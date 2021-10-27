@@ -5,7 +5,7 @@ const {
   filterByTypeBusiness,
   filterByTypeBusinessPublic,
   getAdProfile,
-  registerPremiumService,
+  updatePremiumService,
   setUpdateAllowed,
   deleteAdService,
   seachAdvertisingByCompanyName,
@@ -28,7 +28,7 @@ router.route("/filter-business").post(filterByTypeBusinessPublic);
 router.route("/search").post(protect, admin, seachAdvertisingByCompanyName);
 router
   .route("/profile/:id")
-  .post(getAdProfile)
+  .get(getAdProfile)
   .delete(protect, admin, deleteAdService);
 
 router
@@ -36,7 +36,7 @@ router
   .post(sendingMessage)
   .get(protect, admin, fetchAllMessage);
 router.route("/message/view").put(protect, admin, openMessageById);
-router.route("/premium").post(protect, registerPremiumService);
+router.route("/premium/:id").put(protect, updatePremiumService);
 router.route("/free").post(protect, addAdvertisingService);
 router.route("/user/:id").get(protect, getUserAds);
 
