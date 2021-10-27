@@ -296,7 +296,7 @@ const JoiningUsSection = () => {
           md={{ span: 12 }}
           lg={{ span: 12 }}
         >
-          <img src="/img/advertising/union.jpg" alt="" />
+          <img src="/img/advertising/union.jpg" loading="lazy" alt="" />
         </Col>
         <Col
           xs={{ span: 24 }}
@@ -366,7 +366,7 @@ const PartnerSectionLogo = ({ lang }) => {
         {listPartnerLogo.map((item) => (
           <div key={item.profileId} className="logo-box">
             <Link to={`/advertising/profile/${item.profileId}`}>
-              <img src={item.logoUrl} alt={item.companyName} />
+              <img src={item.logoUrl} alt={item.companyName} loading="lazy" />
             </Link>
           </div>
         ))}
@@ -423,7 +423,7 @@ const ServicesSlider = ({ lang }) => {
               className="link"
               alt=""
             >
-              <img src={data.imgUrl} alt="" />
+              <img src={data.imgUrl} alt="" loading="lazy" />
             </Link>
           </div>
         ))}

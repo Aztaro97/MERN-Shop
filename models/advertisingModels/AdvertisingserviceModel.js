@@ -21,14 +21,16 @@ const AdvertisingServiceSchema = mongoose.Schema(
     typePlan: { type: String, required: true, default: "free" },
 
     // ////////   Upload IMAGESS
-    logoUrl: {
-      public_id: { type: String, required: false },
-      url: {
-        type: String,
-        required: true,
-        default: "/img/advertising/empty.jpg",
+    logoUrl: [
+      {
+        public_id: { type: String, required: false },
+        url: {
+          type: String,
+          required: true,
+          default: "/img/advertising/empty.jpg",
+        },
       },
-    },
+    ],
     serviceUrl: { type: Array, required: false },
     bannerUrl: { type: Array, required: false },
     videoUrl: { type: Array, required: false },

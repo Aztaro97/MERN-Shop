@@ -20,6 +20,9 @@ import {
   LoadingOutlined,
 } from "@ant-design/icons";
 import { AiOutlineLink } from "react-icons/ai";
+import LoaderComponent from "../../../loader";
+import { getAdvertisingProfileByID } from "../../../../flux/actions/advertisingAction/advertisingAction";
+import { destroyImages } from "../../../../flux/actions/productAction";
 // import UploadComponent from "./uploadComponent";
 const { Option } = Select;
 
@@ -28,50 +31,67 @@ function UploadServiceFile() {
   const body = location.state.data;
   const params = useParams();
   const history = useHistory();
+  const dispatch = useDispatch();
   const id = params.id;
   const { userInfo } = useSelector((state) => state.userLogin);
+  const { loading, profile } = useSelector((state) => state.advertising);
 
   useEffect(() => {
     if (!userInfo) {
       history.push("/");
     }
+    dispatch(getAdvertisingProfileByID(id));
   }, [userInfo, history]);
 
   return (
-    <MainContainer style={{ paddingTop: 44 }}>
-      <COntainer>
-        <Row gutter={[10, 40]}>
-          <Col xs={{ span: 24 }}>
-            <BannerUploading userInfo={userInfo} id={id} />
-          </Col>
-          <Col xs={{ span: 24 }}>
-            <LogoUploading userInfo={userInfo} id={id} />
-          </Col>
-          <Col xs={{ span: 24 }}>
-            <ServiceUploading userInfo={userInfo} id={id} />
-          </Col>
-          <Col xs={{ span: 24 }}>
-            <VideoUploading userInfo={userInfo} id={id} />
-          </Col>
-          <Col xs={{ span: 24 }}>
-            <LinkStyling
-              to={{
-                pathname: "/advertising/confirm-payment",
-                state: {
-                  data: body,
-                },
-              }}
-            >
-              next
-            </LinkStyling>
-          </Col>
-        </Row>
-      </COntainer>
-    </MainContainer>
+    <>
+      {loading ? (
+        <LoaderComponent />
+      ) : (
+        <MainContainer style={{ paddingTop: 44 }}>
+          <Container>
+            <Row gutter={[10, 40]}>
+              <Col xs={{ span: 24 }}>
+                <BannerUploading
+                  userInfo={userInfo}
+                  id={id}
+                  profile={profile}
+                />
+              </Col>
+              <Col xs={{ span: 24 }}>
+                <LogoUploading userInfo={userInfo} id={id} profile={profile} />
+              </Col>
+              <Col xs={{ span: 24 }}>
+                <ServiceUploading
+                  userInfo={userInfo}
+                  id={id}
+                  profile={profile}
+                />
+              </Col>
+              <Col xs={{ span: 24 }}>
+                <VideoUploading userInfo={userInfo} id={id} />
+              </Col>
+              <Col xs={{ span: 24 }}>
+                <LinkStyling
+                  to={{
+                    pathname: "/advertising/confirm-payment",
+                    state: {
+                      data: body,
+                    },
+                  }}
+                >
+                  next
+                </LinkStyling>
+              </Col>
+            </Row>
+          </Container>
+        </MainContainer>
+      )}
+    </>
   );
 }
 
-const BannerUploading = ({ id, userInfo }) => {
+export const BannerUploading = ({ id, userInfo, profile }) => {
   const [fileList, setFileList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [submited, isSubmited] = useState(false);
@@ -111,7 +131,7 @@ const BannerUploading = ({ id, userInfo }) => {
           Authorization: `Bearer ${userInfo.token}`,
         },
       };
-      const res = await axios.post(
+      const res = await axios.put(
         `/upload-images/banners/${id}`,
         formdata,
         config
@@ -138,6 +158,9 @@ const BannerUploading = ({ id, userInfo }) => {
     onChange: onChange,
     onPreview: onPreview,
   };
+  useEffect(() => {
+    if (profile.bannerUrl.length > 0) setFileList(profile.bannerUrl);
+  }, [profile]);
 
   return (
     <form action="" onSubmit={handleSubmit}>
@@ -197,7 +220,7 @@ const BannerUploading = ({ id, userInfo }) => {
   );
 };
 
-const LogoUploading = ({ id, userInfo }) => {
+export const LogoUploading = ({ id, userInfo, profile }) => {
   const [fileList, setFileList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [submited, isSubmited] = useState(false);
@@ -237,7 +260,7 @@ const LogoUploading = ({ id, userInfo }) => {
           Authorization: `Bearer ${userInfo.token}`,
         },
       };
-      const res = await axios.post(
+      const res = await axios.put(
         `/upload-images/logo/${id}`,
         formdata,
         config
@@ -264,6 +287,10 @@ const LogoUploading = ({ id, userInfo }) => {
     onChange: onChange,
     onPreview: onPreview,
   };
+
+  useEffect(() => {
+    if (profile.logoUrl) setFileList(profile.logoUrl);
+  }, [profile]);
 
   return (
     <form action="" onSubmit={handleSubmit}>
@@ -321,16 +348,36 @@ const LogoUploading = ({ id, userInfo }) => {
   );
 };
 
-const ServiceUploading = ({ id, userInfo }) => {
+export const ServiceUploading = ({ id, userInfo, profile }) => {
   const [fileList, setFileList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [submited, isSubmited] = useState(false);
 
-  const location = useLocation();
-  const body = location.state.data;
+  const dispatch = useDispatch();
 
   const onChange = ({ fileList: newFileList }) => {
     setFileList(newFileList);
+    console.log(newFileList)
+  };
+
+  const handleRemove = async (imge) => {
+    dispatch(destroyImages([imge]));
+    // const formdata = new FormData();
+    // for (var i = 0; i < fileList.length; i++) {
+    //   formdata.append("serviceFile", fileList[i].originFileObj);
+    // }
+    // const config = {
+    //   headers: {
+    //     "Content-Type": "multipart/form-data",
+    //     Accept: "application/json",
+    //     Authorization: `Bearer ${userInfo.token}`,
+    //   },
+    // };
+    // const res = await axios.put(
+    //   `/upload-images/services/${id}`,
+    //   formdata,
+    //   config
+    // );
   };
 
   const onPreview = async (file) => {
@@ -364,7 +411,7 @@ const ServiceUploading = ({ id, userInfo }) => {
           Authorization: `Bearer ${userInfo.token}`,
         },
       };
-      const res = await axios.post(
+      const res = await axios.put(
         `/upload-images/services/${id}`,
         formdata,
         config
@@ -379,9 +426,15 @@ const ServiceUploading = ({ id, userInfo }) => {
     }
   };
 
+  useEffect(() => {
+    if (profile.serviceUrl.length) setFileList(profile.serviceUrl);
+  }, [profile]);
+
   return (
     <form action="" onSubmit={handleSubmit}>
-      <TitleStyling>Import {body.typeBusiness} Images</TitleStyling>
+      <TitleStyling>
+        Import {profile && profile.typeBusiness} Images
+      </TitleStyling>
       <Row justify="space-between">
         <Col xs={{ span: 12 }}>
           <ImgCrop aspect={3 / 2}>
@@ -393,6 +446,7 @@ const ServiceUploading = ({ id, userInfo }) => {
               fileList={fileList}
               onChange={onChange}
               onPreview={onPreview}
+              onRemove={handleRemove}
             >
               {fileList.length < 4 && (
                 <UploadIcon>
@@ -445,7 +499,7 @@ const ServiceUploading = ({ id, userInfo }) => {
   );
 };
 
-const VideoUploading = ({ userInfo, id }) => {
+export const VideoUploading = ({ userInfo, id }) => {
   const [children, setChildren] = useState([]);
   const [loading, setLoading] = useState(false);
   const [submited, isSubmited] = useState(false);
@@ -463,7 +517,7 @@ const VideoUploading = ({ userInfo, id }) => {
           Authorization: `Bearer ${userInfo.token}`,
         },
       };
-      const res = await axios.post(
+      const res = await axios.put(
         `/upload-images/video/${id}`,
         { videoUrl: children },
         config
@@ -579,7 +633,7 @@ const PlayerWrapper = styled.div`
   }
 `;
 
-const COntainer = styled.div`
+const Container = styled.div`
   background-color: #ecececec;
   padding: 3rem;
   /* position: relative; */

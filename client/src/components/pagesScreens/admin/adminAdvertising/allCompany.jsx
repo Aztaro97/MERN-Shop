@@ -131,7 +131,7 @@ const AllCompanyService = () => {
                         <span>name:</span> {ad.companyName}
                       </li>
                       <li>
-                        <span>Bussiness:</span> {ad.typeBusiness.join(", ")}
+                        <span>Bussiness:</span> {ad.typeBusiness}
                       </li>
                       <li className="about">
                         <span>about:</span> {ad.about}

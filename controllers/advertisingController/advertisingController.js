@@ -146,6 +146,42 @@ const seachAdvertisingByCompanyName = asyncHandler(async (req, res) => {
   }
 });
 
+const updateAdservice = asyncHandler(async (req, res) => {
+  try {
+    const {
+      companyName,
+      companyName_ar,
+      about,
+      about_ar,
+      typeBusiness,
+      fullName,
+      telephone,
+      email,
+      city,
+      country,
+      region,
+    } = req.body;
+    const service = await advertising.findById(req.params.id);
+    if (service) {
+      service.companyName = companyName;
+      service.companyName_ar = companyName_ar;
+      service.about = about;
+      service.about_ar = about_ar;
+      service.typeBusiness = typeBusiness;
+      service.telephone = telephone;
+      service.fullName = fullName;
+      service.email = email;
+      service.city = city;
+      service.country = country;
+      service.region = region;
+    }
+    const updateService = await service.save();
+    res.status(200).json(updateService);
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+
 const getUserAds = asyncHandler(async (req, res) => {
   const ads = await advertising.find({ user: req.params.id });
   if (ads) {
@@ -167,4 +203,5 @@ module.exports = {
   deleteAdService,
   seachAdvertisingByCompanyName,
   getUserAds,
+  updateAdservice
 };

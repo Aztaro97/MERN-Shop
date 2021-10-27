@@ -33,7 +33,7 @@ const removeTmp = (path) => {
 };
 
 // //////     Logo Upload
-router.post(
+router.put(
   "/logo/:id",
   [protect, parser.single("logoFile")],
   async (req, res) => {
@@ -60,7 +60,7 @@ router.post(
 );
 
 // //////   Service Images
-router.post(
+router.put(
   "/services/:id",
   [protect, parser.single("serviceFile")],
   async (req, res) => {
@@ -113,7 +113,7 @@ router.post(
 );
 
 // //////   Banner Images
-router.post(
+router.put(
   "/banners/:id",
   [protect, parser.single("bannerFile")],
   async (req, res) => {
@@ -166,7 +166,7 @@ router.post(
 );
 
 // //////     Video Upload
-router.post("/video/:id", [protect, admin], async (req, res) => {
+router.put("/video/:id", [protect, admin], async (req, res) => {
   try {
     const service = await AdvertisingModel.findById(req.params.id);
     if (service) {

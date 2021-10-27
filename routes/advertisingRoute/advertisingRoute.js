@@ -10,6 +10,7 @@ const {
   deleteAdService,
   seachAdvertisingByCompanyName,
   getUserAds,
+  updateAdservice,
 } = require("../../controllers/advertisingController/advertisingController");
 const {
   sendingMessage,
@@ -29,7 +30,8 @@ router.route("/search").post(protect, admin, seachAdvertisingByCompanyName);
 router
   .route("/profile/:id")
   .get(getAdProfile)
-  .delete(protect, admin, deleteAdService);
+  .delete(protect, admin, deleteAdService)
+  .put(protect, updateAdservice);
 
 router
   .route("/message")
