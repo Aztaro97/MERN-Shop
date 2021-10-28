@@ -42,9 +42,8 @@ function AdvertisingProfileScreen() {
   // }
 
   useEffect(() => {
-    if (profileID !== profile._id)
-      dispatch(getAdvertisingProfileByID(profileID));
-  }, [profileID, dispatch, profile]);
+    dispatch(getAdvertisingProfileByID(profileID));
+  }, [profileID, dispatch]);
 
   return (
     <MainContainer>

@@ -1,24 +1,15 @@
 import React, { useEffect, useState } from "react";
-import MainContainer from "../../../MainContainer";
-import { Col, Modal, Row, Button, Space, Upload, Select, Input } from "antd";
+import { Col, Row, Upload, Select, Input } from "antd";
 import styled from "styled-components";
-import DropzoneUploading from "./DropzoneComponent";
-import { FiLink2, FiUploadCloud } from "react-icons/fi";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams, useLocation } from "react-router";
+import { FiUploadCloud } from "react-icons/fi";
+import { useDispatch } from "react-redux";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import ImgCrop from "antd-img-crop";
 import { GoPlus } from "react-icons/go";
 import { IoIosCloudDone } from "react-icons/io";
 import ReactPlayer from "react-player";
-import {
-  HomeOutlined,
-  SettingFilled,
-  SmileOutlined,
-  SyncOutlined,
-  LoadingOutlined,
-} from "@ant-design/icons";
+import { SyncOutlined } from "@ant-design/icons";
 import { destroyImages } from "../../../../flux/actions/productAction";
 import { IoClose } from "react-icons/io5";
 const { Option } = Select;

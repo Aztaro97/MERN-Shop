@@ -42,7 +42,7 @@ function MyAdsScreen() {
 
   useEffect(() => {
     if (!userInfo) {
-      history.push("/");
+      history.push("/auth");
     } else {
       dispatch(getUserAdsService(userInfo._id));
     }

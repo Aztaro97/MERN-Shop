@@ -1,5 +1,4 @@
 import { Col, Row, Select } from "antd";
-import { Header } from "antd/lib/layout/layout";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
@@ -8,6 +7,7 @@ import { useHistory, useParams } from "react-router";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { getAdvertisingProfileByID } from "../../../flux/actions/advertisingAction/advertisingAction";
+import { AD_PROFILE_RESET } from "../../../flux/constants/advertising";
 import { BusinessList } from "../../../utils/advertisingData";
 import ButtonComponeent from "../../ButtonComponeent";
 import LoaderComponent from "../../loader";
@@ -24,6 +24,8 @@ import {
 const { Option } = Select;
 
 function EditAdsService() {
+  const [updateSuccess, setUpdateSuccess] = useState(false);
+
   const [companyName, setCompanyName] = useState("");
   const [companyName_ar, setCompanyName_ar] = useState("");
   const [about, setAbout] = useState("");
@@ -77,27 +79,33 @@ function EditAdsService() {
       );
       if (res.data) {
         successMessage("updated successfully");
+        setUpdateSuccess(true);
       }
     } catch (error) {}
   };
 
   useEffect(() => {
-    if (!profile || profile._id !== serviceId) {
-      dispatch(getAdvertisingProfileByID(serviceId));
+    if (updateSuccess) {
+      dispatch({type: AD_PROFILE_RESET})
+      history.push("/profile/my-ads")
     } else {
-      setCompanyName(profile.companyName);
-      setCompanyName_ar(profile.companyName_ar);
-      setAbout(profile.about);
-      setAbout_ar(profile.about_ar);
-      setTypeBusiness(profile.typeBusiness);
-      setFullName(profile.fullName);
-      setTelephone(profile.telephone);
-      setEmail(profile.email);
-      setCity(profile.city);
-      setCountry(profile.country);
-      setRegion(profile.region);
+      if (!profile || profile._id !== serviceId) {
+        dispatch(getAdvertisingProfileByID(serviceId));
+      } else {
+        setCompanyName(profile.companyName);
+        setCompanyName_ar(profile.companyName_ar);
+        setAbout(profile.about);
+        setAbout_ar(profile.about_ar);
+        setTypeBusiness(profile.typeBusiness);
+        setFullName(profile.fullName);
+        setTelephone(profile.telephone);
+        setEmail(profile.email);
+        setCity(profile.city);
+        setCountry(profile.country);
+        setRegion(profile.region);
+      }
     }
-  }, [serviceId, dispatch, profile]);
+  }, [serviceId, dispatch, profile, updateSuccess, history]);
 
   return (
     <MainContainer>

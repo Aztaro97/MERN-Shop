@@ -4,6 +4,7 @@ import {
   AD_LIST_SUCCESS,
   AD_PROFILE_FAIL,
   AD_PROFILE_REQUEST,
+  AD_PROFILE_RESET,
   AD_PROFILE_SUCCESS,
   DELETE_AD_PROFILE_REQUEST,
   DELETE_AD_PROFILE_SUCCESS,
@@ -72,6 +73,8 @@ export const advertisingReducer = (
 
     case AD_PROFILE_SUCCESS:
       return { ...state, loading: false, profile: action.payload };
+    case AD_PROFILE_RESET:
+      return { ...state, loading: false, profile: {} };
 
     case FETCH_MESSAGE_SUCCESS:
       return { ...state, loading: false, allMessages: action.payload };

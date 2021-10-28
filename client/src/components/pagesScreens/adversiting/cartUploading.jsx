@@ -2,6 +2,7 @@ import { Col, Row } from "antd";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import MainContainer from "../../MainContainer";
 import CheckOutButton from "./checkout/checkoutComponent";
 
 const CartUploading = () => {
@@ -45,7 +46,6 @@ const CartUploading = () => {
     totalPriceService +
     totalPriceLogo +
     totalPriceVideo;
-
 
   //   Calculate prices
   const addDecimals = (num) => {
@@ -93,12 +93,11 @@ const CartUploading = () => {
     }
   }, [Total]);
 
-
   return (
-    <Container>
-      <div>
+    <MainContainer>
+      <Container>
         <h1 className="title">Add pictures</h1>
-        <Row>
+        <Row gutter={[15, 20]} justify="center">
           <Col span={24}>
             <FirstFraction>
               <div className="card-element">
@@ -131,8 +130,7 @@ const CartUploading = () => {
               </div>
             </FirstFraction>
           </Col>
-        </Row>
-        <Row>
+
           <Col span={24}>
             <FirstFraction>
               <div className="card-element">
@@ -166,8 +164,7 @@ const CartUploading = () => {
               </div>
             </FirstFraction>
           </Col>
-        </Row>
-        <Row gutter={10}>
+
           <Col lg={10}>
             <FirstFraction>
               <div className="card-element">
@@ -264,9 +261,8 @@ const CartUploading = () => {
               </div>
             </FirstFraction>
           </Col>
-        </Row>
-        <Row>
-          <Col lg={{ span: 12, offset: 6 }} xs={{ span: 24, offset: 0 }}>
+
+          <Col lg={{ span: 12 }} xs={{ span: 24 }} md={{span:24}}>
             <FirstFraction>
               <div className="card-element">
                 <div className="content">
@@ -298,27 +294,24 @@ const CartUploading = () => {
           </Col>
         </Row>
         <Row className="mt-4" justify="space-between">
-          <Col >
+          <Col>
             <h4 className="subtotal">
               SubTotal: <span>{addDecimals(Total)} aed</span>
             </h4>
           </Col>
-          <Col >
+          <Col>
             <CheckOutButton totalPrice={Total} cardData={data} />
           </Col>
         </Row>
-      </div>
-    </Container>
+      </Container>
+    </MainContainer>
   );
 };
 
 const Container = styled.div`
-  max-width: 800px;
-  margin: 12rem auto 0;
   background-color: #ecececec;
   padding: 3rem;
-  position: relative;
-  bottom: 5rem;
+  margin-bottom: 20px;
 
   & .subtotal {
     margin-top: 4px;
@@ -332,7 +325,6 @@ const Container = styled.div`
     }
   }
 `;
-
 
 const FirstFraction = styled.div`
   margin-bottom: 1rem;
