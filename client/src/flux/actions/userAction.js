@@ -54,7 +54,7 @@ import {
   SEND_CONTACT_FORM_FAIL,
   SEND_CONTACT_FORM_REQUEST,
   SEND_CONTACT_FORM_SUCCESS,
-} from "../constants/advertising";
+} from "../constants/userConstants";
 
 export const login = (body) => async (dispatch) => {
   try {

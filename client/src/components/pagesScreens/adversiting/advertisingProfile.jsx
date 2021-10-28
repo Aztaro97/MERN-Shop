@@ -21,7 +21,7 @@ import PageNotFund from "../pageNotFund";
 import {
   SEND_CONTACT_FORM_REQUEST,
   SEND_CONTACT_FORM_SUCCESS,
-} from "../../../flux/constants/advertising";
+} from "../../../flux/constants/userConstants";
 import { useTranslation } from "react-i18next";
 import Meta from "../../helmet";
 import ReactPlayer from "react-player";

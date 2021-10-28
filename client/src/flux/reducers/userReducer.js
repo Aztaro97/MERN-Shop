@@ -1,4 +1,4 @@
-import { SEND_CONTACT_FORM_FAIL, SEND_CONTACT_FORM_REQUEST, SEND_CONTACT_FORM_SUCCESS } from "../constants/advertising";
+import {} from "../constants/advertising";
 import {
   USER_DETAILS_FAIL,
   USER_DETAILS_REQUEST,
@@ -38,6 +38,9 @@ import {
   CRAFTMAN_LIST_REQUEST,
   CRAFTMAN_LIST_SUCCESS,
   CRAFTMAN_LIST_FAIL,
+  SEND_CONTACT_FORM_FAIL,
+  SEND_CONTACT_FORM_REQUEST,
+  SEND_CONTACT_FORM_SUCCESS,
 } from "../constants/userConstants";
 
 export const userLoginReducer = (state = {}, action) => {
@@ -208,7 +211,7 @@ export const sendingMessageContactFormReducer = (state = {}, action) => {
     case SEND_CONTACT_FORM_REQUEST:
       return { loading: true };
     case SEND_CONTACT_FORM_SUCCESS:
-      return { loading: false };
+      return { loading: false , success: true};
     case SEND_CONTACT_FORM_FAIL:
       return { loading: false, error: action.payload };
     default:
