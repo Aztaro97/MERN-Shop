@@ -17,8 +17,9 @@ import {
   BannerUploading,
   LogoUploading,
   ServiceUploading,
+  VideoTodoList,
   VideoUploading,
-} from "./uploadComponent/uploadServiceFile";
+} from "./uploadComponent/uploadComponent";
 
 const { Option } = Select;
 
@@ -75,7 +76,7 @@ function EditAdsService() {
         config
       );
       if (res.data) {
-        successMessage("Success");
+        successMessage("updated successfully");
       }
     } catch (error) {}
   };
@@ -103,181 +104,213 @@ function EditAdsService() {
       {loading ? (
         <LoaderComponent />
       ) : (
-        <FormContainer onSubmit={handleSubmit}>
-          <Row>
-            <Col xs={{ span: 24 }} md={{ span: 24 }}>
-              <div className="header">
-                <Link onClick={() => history.goBack()} className="link_back">
-                  Go Back
-                </Link>
-              </div>
-            </Col>
-          </Row>
-          <Row gutter={[10, 10]}>
-            <Col xs={24} sm={{ span: 24 }} md={{ span: 12 }} lg={{ span: 12 }}>
-              <Label>
-                Company Name
-                <InputStyling
-                  required
-                  type="text"
-                  value={companyName}
-                  onChange={(e) => setCompanyName(e.target.value)}
-                />
-              </Label>
-            </Col>
-            <Col xs={24} sm={{ span: 24 }} md={{ span: 12 }} lg={{ span: 12 }}>
-              <Label>
-                Company Name Arab{" "}
-                <InputStyling
-                  required
-                  type="text"
-                  value={companyName_ar}
-                  onChange={(e) => setCompanyName_ar(e.target.value)}
-                />
-              </Label>
-            </Col>
-            <Col xs={24} sm={{ span: 24 }} md={{ span: 12 }} lg={{ span: 12 }}>
-              <Label>
-                About{" "}
-                <TextAreaStyling
-                  required
-                  type="text"
-                  value={about}
-                  onChange={(e) => setAbout(e.target.value)}
-                />
-              </Label>
-            </Col>
-            <Col xs={24} sm={{ span: 24 }} md={{ span: 12 }} lg={{ span: 12 }}>
-              <Label>
-                About Arab
-                <TextAreaStyling
-                  required
-                  type="text"
-                  value={about_ar}
-                  onChange={(e) => setAbout_ar(e.target.value)}
-                />
-              </Label>
-            </Col>
-            <Col xs={24} sm={{ span: 24 }} md={{ span: 12 }} lg={{ span: 24 }}>
-              <Label>
-                Type Business
-                <SelectStyling
-                  required
-                  allowClear
-                  style={{ width: "100%" }}
-                  defaultValue={typeBusiness}
-                  onChange={(value) => setTypeBusiness(value)}
-                >
-                  {BusinessList.map((item, index) => (
-                    <Option
-                      key={index}
-                      value={item.value}
-                      label={item.title}
-                      style={{ textTransform: "capitalize" }}
-                    >
-                      {item.title}
-                    </Option>
-                  ))}
-                </SelectStyling>
-              </Label>
-            </Col>
-            <Col
-              xs={{ span: 24 }}
-              sm={{ span: 12 }}
-              md={{ span: 12 }}
-              lg={{ span: 8 }}
-            >
-              <Label>
-                Full Name
-                <InputStyling
-                  required
-                  type="text"
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
-                />
-              </Label>
-            </Col>
-            <Col
-              xs={{ span: 24 }}
-              sm={{ span: 12 }}
-              md={{ span: 12 }}
-              lg={{ span: 8 }}
-            >
-              <Label>
-                Telephone
-                <InputStyling
-                  required
-                  type="text"
-                  value={telephone}
-                  onChange={(e) => setTelephone(e.target.value)}
-                />
-              </Label>
-            </Col>
-            <Col
-              xs={{ span: 24 }}
-              sm={{ span: 12 }}
-              md={{ span: 12 }}
-              lg={{ span: 8 }}
-            >
-              <Label>
-                Email
-                <InputStyling
-                  required
-                  type="text"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </Label>
-            </Col>
-            <Col
-              xs={{ span: 24 }}
-              sm={{ span: 12 }}
-              md={{ span: 12 }}
-              lg={{ span: 8 }}
-            >
-              <Label>
-                City
-                <InputStyling
-                  required
-                  type="text"
-                  value={city}
-                  onChange={(e) => setCity(e.target.value)}
-                />
-              </Label>
-            </Col>
-            <Col
-              xs={{ span: 24 }}
-              sm={{ span: 12 }}
-              md={{ span: 12 }}
-              lg={{ span: 8 }}
-            >
-              <Label>
-                Country
-                <CountryDropdownStyling
-                  required
-                  type="text"
-                  value={country}
-                  onChange={(val) => setCountry(val)}
-                />
-              </Label>
-            </Col>
-            <Col
-              xs={{ span: 24 }}
-              sm={{ span: 12 }}
-              md={{ span: 12 }}
-              lg={{ span: 8 }}
-            >
-              <Label>
-                Country
-                <RegionDropdownStyling
-                  required
-                  country={country}
-                  value={region}
-                  onChange={(value) => setRegion(value)}
-                  // defaultOptionLabel={t("select_region__placeholder")}
-                />
-              </Label>
-            </Col>
+        <Container>
+          <form onSubmit={handleSubmit}>
+            <Row gutter={[20, 20]} justify="space-between">
+              <Col xs={{ span: 24 }} md={{ span: 24 }}>
+                <div className="header">
+                  <Link onClick={() => history.goBack()} className="link_back">
+                    Go Back
+                  </Link>
+                  <ButtonComponeent type="submit">update</ButtonComponeent>
+                </div>
+              </Col>
+              {/* <Col xs={{ span: 5 }}> </Col> */}
+            </Row>
+            <Row gutter={[10, 20]}>
+              <Col
+                xs={24}
+                sm={{ span: 24 }}
+                md={{ span: 12 }}
+                lg={{ span: 12 }}
+              >
+                <Label>
+                  Company Name
+                  <InputStyling
+                    required
+                    type="text"
+                    value={companyName}
+                    onChange={(e) => setCompanyName(e.target.value)}
+                  />
+                </Label>
+              </Col>
+              <Col
+                xs={24}
+                sm={{ span: 24 }}
+                md={{ span: 12 }}
+                lg={{ span: 12 }}
+              >
+                <Label>
+                  Company Name Arab{" "}
+                  <InputStyling
+                    required
+                    type="text"
+                    value={companyName_ar}
+                    onChange={(e) => setCompanyName_ar(e.target.value)}
+                  />
+                </Label>
+              </Col>
+              <Col
+                xs={24}
+                sm={{ span: 24 }}
+                md={{ span: 12 }}
+                lg={{ span: 12 }}
+              >
+                <Label>
+                  About{" "}
+                  <TextAreaStyling
+                    required
+                    type="text"
+                    value={about}
+                    onChange={(e) => setAbout(e.target.value)}
+                  />
+                </Label>
+              </Col>
+              <Col
+                xs={24}
+                sm={{ span: 24 }}
+                md={{ span: 12 }}
+                lg={{ span: 12 }}
+              >
+                <Label>
+                  About Arab
+                  <TextAreaStyling
+                    required
+                    type="text"
+                    value={about_ar}
+                    onChange={(e) => setAbout_ar(e.target.value)}
+                  />
+                </Label>
+              </Col>
+              <Col
+                xs={24}
+                sm={{ span: 24 }}
+                md={{ span: 12 }}
+                lg={{ span: 24 }}
+              >
+                <Label>
+                  Type Business
+                  <SelectStyling
+                    required
+                    allowClear
+                    style={{ width: "100%" }}
+                    defaultValue={typeBusiness}
+                    onChange={(value) => setTypeBusiness(value)}
+                  >
+                    {BusinessList.map((item, index) => (
+                      <Option
+                        key={index}
+                        value={item.value}
+                        label={item.title}
+                        style={{ textTransform: "capitalize" }}
+                      >
+                        {item.title}
+                      </Option>
+                    ))}
+                  </SelectStyling>
+                </Label>
+              </Col>
+              <Col
+                xs={{ span: 24 }}
+                sm={{ span: 12 }}
+                md={{ span: 12 }}
+                lg={{ span: 8 }}
+              >
+                <Label>
+                  Full Name
+                  <InputStyling
+                    required
+                    type="text"
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                  />
+                </Label>
+              </Col>
+              <Col
+                xs={{ span: 24 }}
+                sm={{ span: 12 }}
+                md={{ span: 12 }}
+                lg={{ span: 8 }}
+              >
+                <Label>
+                  Telephone
+                  <InputStyling
+                    required
+                    type="text"
+                    value={telephone}
+                    onChange={(e) => setTelephone(e.target.value)}
+                  />
+                </Label>
+              </Col>
+              <Col
+                xs={{ span: 24 }}
+                sm={{ span: 12 }}
+                md={{ span: 12 }}
+                lg={{ span: 8 }}
+              >
+                <Label>
+                  Email
+                  <InputStyling
+                    required
+                    type="text"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </Label>
+              </Col>
+              <Col
+                xs={{ span: 24 }}
+                sm={{ span: 12 }}
+                md={{ span: 12 }}
+                lg={{ span: 8 }}
+              >
+                <Label>
+                  City
+                  <InputStyling
+                    required
+                    type="text"
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                  />
+                </Label>
+              </Col>
+              <Col
+                xs={{ span: 24 }}
+                sm={{ span: 12 }}
+                md={{ span: 12 }}
+                lg={{ span: 8 }}
+              >
+                <Label>
+                  Country
+                  <CountryDropdownStyling
+                    required
+                    type="text"
+                    value={country}
+                    onChange={(val) => setCountry(val)}
+                  />
+                </Label>
+              </Col>
+              <Col
+                xs={{ span: 24 }}
+                sm={{ span: 12 }}
+                md={{ span: 12 }}
+                lg={{ span: 8 }}
+              >
+                <Label>
+                  Country
+                  <RegionDropdownStyling
+                    required
+                    country={country}
+                    value={region}
+                    onChange={(value) => setRegion(value)}
+                    // defaultOptionLabel={t("select_region__placeholder")}
+                  />
+                </Label>
+              </Col>
+            </Row>
+          </form>
+          <Row gutter={[20, 50]} style={{ marginTop: 40 }}>
+            {" "}
             <Col xs={{ span: 24 }}>
               <BannerUploading
                 id={serviceId}
@@ -300,21 +333,28 @@ function EditAdsService() {
               />
             </Col>
             <Col xs={{ span: 24 }}>
-              {" "}
-              <ButtonComponeent type="submit">Save</ButtonComponeent>
+              <VideoTodoList
+                id={serviceId}
+                userInfo={userInfo}
+                profile={profile}
+              />
             </Col>
           </Row>
-        </FormContainer>
+        </Container>
       )}
     </MainContainer>
   );
 }
 
-const FormContainer = styled.form`
+const Container = styled.div`
   padding: 20px;
   background: #ececec;
+  margin-bottom: 20px;
   & .header {
     padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     & .link_back {
       font-weight: 700;
       color: var(--orange-color);
@@ -334,6 +374,7 @@ const Label = styled.label`
   color: #333;
   font-weight: 700;
   text-transform: uppercase;
+  width: 100%;
 `;
 
 const SelectStyling = styled(Select)`

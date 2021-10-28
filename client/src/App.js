@@ -122,7 +122,7 @@ const ProductListComponent = lazy(() =>
 );
 const UploadServiceFile = lazy(() =>
   import(
-    "./components/pagesScreens/adversiting/uploadComponent/uploadServiceFile"
+    "./components/pagesScreens/adversiting/uploadServiceFile"
   )
 );
 const MyAdsScreen = lazy(() =>

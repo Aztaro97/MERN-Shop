@@ -468,7 +468,6 @@ export const destroyImages = (imagesUrl) => async (dispatch, getState) => {
     console.log(imagesUrl);
 
     const res = await axios.post(`/api/upload/destroy/`, {imagesUrl}, config);
-    console.log(res)
     dispatch({
       type: "IMAGE DELETED FROM CLOUDINARY",
     });
