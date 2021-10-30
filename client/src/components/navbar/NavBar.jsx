@@ -154,6 +154,8 @@ function NavBar() {
     </Menu>
   );
 
+  const screenWidth = window.screen.width;
+
   return (
     <Header scrollNav={scrollNav}>
       <Logo to="/">
@@ -171,7 +173,7 @@ function NavBar() {
             <Popover
               placement="bottomRight"
               content={AdminContente}
-              trigger="hover"
+              trigger={screenWidth > 768 ? "hover" : "click"}
             >
               <NavLink>
                 <AiTwotoneSetting className="icon" />
@@ -182,6 +184,7 @@ function NavBar() {
         <NavItem>
           <Popover
             placement="bottomRight"
+            trigger={screenWidth > 768 ? "hover" : "click"}
             content={
               <ListNavigation>
                 {userInfo && (
@@ -207,7 +210,6 @@ function NavBar() {
                 )}
               </ListNavigation>
             }
-            trigger="hover"
           >
             <NavLink>
               <FaUser className="icon" />
