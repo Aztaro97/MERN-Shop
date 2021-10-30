@@ -3,7 +3,7 @@ import styled from "styled-components";
 import InputComponents from "../../InputComponents";
 import ButtonComponeent from "../../ButtonComponeent";
 import { Link, useHistory } from "react-router-dom";
-import { Input } from "antd";
+import { Col, Input, Row } from "antd";
 import { useFormik } from "formik";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
@@ -27,30 +27,38 @@ function LoginForm() {
   return (
     <Containber>
       <Form onSubmit={formik.handleSubmit}>
-        <Row>
-          <Input
-            type="email"
-            name="email"
-            id="email"
-            placeholder={t("email_placeholder")}
-            onChange={formik.handleChange}
-            value={formik.values.email}
-          />
-        </Row>
-
-        <Row>
-          <Input.Password
-            type="password"
-            name="password"
-            id="password"
-            placeholder={t("password_placeholder")}
-            onChange={formik.handleChange}
-            value={formik.values.password}
-          />
-        </Row>
-        <Row>
-          <LinkE to="/forgot-password">{t("forget_password")}</LinkE>
-          <ButtonComponeent type="submit">{t("login")}</ButtonComponeent>
+        <Row gutter={[10, 10]} justify="space-between">
+          <Col xs={{ span: 24 }}>
+            <Input
+              type="email"
+              name="email"
+              id="email"
+              placeholder={t("email_placeholder")}
+              onChange={formik.handleChange}
+              value={formik.values.email}
+            />
+          </Col>
+          <Col xs={{ span: 24 }}>
+            {" "}
+            <Input.Password
+              type="password"
+              name="password"
+              id="password"
+              placeholder={t("password_placeholder")}
+              onChange={formik.handleChange}
+              value={formik.values.password}
+            />
+          </Col>
+          <Col>
+            <LinkStyling to="/forgot-password">
+              {t("forget_password")}
+            </LinkStyling>
+          </Col>
+          <Col>
+            <ButtonComponeent className="login_btn" type="submit">
+              {t("login")}
+            </ButtonComponeent>
+          </Col>
         </Row>
       </Form>
     </Containber>
@@ -60,6 +68,13 @@ function LoginForm() {
 const Containber = styled.div`
   width: 500px;
   padding: 2rem;
+
+  & .login_btn {
+    @media only screen and (max-width: 768px) {
+      padding: 5px 30px;
+      height: 100%;
+    }
+  }
 
   @media only screen and (max-width: 768px) {
     padding: 1rem;
@@ -71,26 +86,15 @@ const Form = styled.form`
   padding: 2rem;
 `;
 
-const Row = styled.div`
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const LinkE = styled(Link)`
+const LinkStyling = styled(Link)`
   text-decoration: none;
   text-transform: uppercase;
   color: var(--silver-color);
-  font-size: 0.8rem;
+  font-size: 1rem;
 
   &:hover {
     color: var(--orange-color);
     text-decoration: none;
-  }
-  @media only screen and (max-width: 653px) {
-    font-size: 0.6rem;
-    padding-right: 0.5rem;
   }
 `;
 

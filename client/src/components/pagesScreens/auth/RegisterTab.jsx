@@ -51,7 +51,6 @@ function Register() {
               value={formik.values.email}
             />
           </Col>
-
           {formik.errors.email && (
             <Col xs={{ span: 24 }}>
               <Alert message={formik.errors.email} type="error" showIcon>
@@ -59,7 +58,6 @@ function Register() {
               </Alert>
             </Col>
           )}
-
           <Col xs={{ span: 24 }}>
             <Input.Password
               type="password"
@@ -79,21 +77,22 @@ function Register() {
               value={formik.values.password2}
               placeholder={t("retype_placeholder")}
             />
-          </Col>
-          <Col xs={{ span: 24 }}>
-            {" "}
-            {formik.errors.password && (
+          </Col>{" "}
+          {formik.errors.password && (
+            <Col xs={{ span: 24 }}>
               <Alert
                 message={formik.errors.password}
                 type="error"
                 showIcon
                 className="mb-1"
               />
-            )}
-            {formik.errors.password2 && (
+            </Col>
+          )}
+          {formik.errors.password2 && (
+            <Col xs={{ span: 24 }}>
               <Alert message={formik.errors.password2} type="error" showIcon />
-            )}
-          </Col>
+            </Col>
+          )}
           <Col xs={{ span: 24 }}>
             <ButtonComponeent type="submit">register</ButtonComponeent>
           </Col>
