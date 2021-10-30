@@ -572,7 +572,7 @@ const JoiningUsStyling = styled.section`
       text-align: center;
       letter-spacing: 3px;
       color: var(--silver-color);
-      font-size: 1.4rem;
+      font-size: 1rem;
       margin-bottom: 2rem;
     }
   }

@@ -102,6 +102,9 @@ const Container = styled.div`
   padding: 3rem;
   /* position: relative; */
   margin-bottom: 40px;
+  @media only screen and (max-width: 768px ) {
+    padding: 1rem;
+  }
 `;
 
 const LinkStyling = styled(Link)`

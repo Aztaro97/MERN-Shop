@@ -44,7 +44,7 @@ export const LandingStyling = styled.section`
     content: "" !important;
     position: relative;
   }
-  .next-slick-arrow,
+  .slick-next .next-slick-arrow,
   .prev-slick-arrow {
     color: #fff;
     font-size: 30px;
@@ -66,10 +66,21 @@ export const LandingStyling = styled.section`
       font-size: 20px;
     }
   }
-  .next-slick-arrow {
-    right: ${({ currentLang }) => (currentLang === "en" ? "3rem" : "-4rem")};
+  .slick-next .next-slick-arrow {
+    right: ${({ currentLang }) =>
+      currentLang === "en" ? "1rem" : "-4rem"} !important;
   }
   .prev-slick-arrow {
-    left: ${({ currentLang }) => (currentLang === "en" ? "3rem" : "-4rem")};
+    left: ${({ currentLang }) =>
+      currentLang === "en" ? "3rem" : "-4rem"} !important;
+  }
+
+  .slick-next {
+    right: ${({ currentLang }) => (currentLang === "en" ? "0" : "0")};
+    left: ${({ currentLang }) => (currentLang === "en" ? "auto" : "0")};
+    @media only screen and (max-width: 756px) {
+      /* left: ${({ currentLang }) =>
+        currentLang === "en" ? "24rem" : "0"}; */
+    }
   }
 `;
