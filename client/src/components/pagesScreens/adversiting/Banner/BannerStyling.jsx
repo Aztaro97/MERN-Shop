@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const LandingStyling = styled.div`
+export const LandingStyling = styled.section`
   max-width: var(--max-width);
   margin: 0 auto;
   /* overflow-x: hidden; */

@@ -17,10 +17,10 @@ export const GlobalStyle = createGlobalStyle `
         /* background: #000; */
 
         @media only screen and (max-width: 768px) {
-            font-size: 14px;
+            font-size: 15px;
         }
         @media only screen and (max-width: 425px) {
-            font-size: 12px;
+            font-size: 14px;
         }
     } 
 

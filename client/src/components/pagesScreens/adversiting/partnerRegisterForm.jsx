@@ -228,18 +228,18 @@ const DetailsComponent = ({ userInfo }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Row justify="start">
-        <Col xs={{ span: 20, offset: 4 }} md={{ span: 22, offset: 2 }}>
+      <Row justify="end">
+        <Col xs={{ span: 22, offset: lang === "en" ? 2 : -2 }}>
           <h1 className="title">{t("company_info")}</h1>
         </Col>
       </Row>
-      <Row gutter={[10, 10]} justify="end">
-        <Col xs={{ span: 4 }} md={{ span: 2 }}>
+      <Row gutter={[10, 10]} justify="end" style={{marginBottom:10}}>
+        <Col xs={{ span: 2 }} md={{ span: 2 }}>
           <IconStyling>
             <BsBuilding className="icon" />
           </IconStyling>
         </Col>
-        <Col xs={{ span: 20 }} md={{ span: 11 }}>
+        <Col xs={{ span: 22 }} md={{ span: 11 }}>
           <InputStyling
             style={{ direction: lang === "ar" && "ltr" }}
             required
@@ -252,7 +252,10 @@ const DetailsComponent = ({ userInfo }) => {
           />
         </Col>
         <Col
-          xs={{ span: 20, offset: lang === "en" ? 4 : 1 }}
+          xs={{
+            span: lang === "en" ? 22 : 22,
+            offset: lang === "en" ? 2 : -2,
+          }}
           md={{ span: 11, offset: 0 }}
         >
           <InputStyling
@@ -266,12 +269,14 @@ const DetailsComponent = ({ userInfo }) => {
             onChange={(e) => setCompanyName_ar(e.target.value)}
           />
         </Col>
-        <Col xs={{ span: 4 }} md={{ span: 2 }}>
+      </Row>
+      <Row gutter={[10, 10]} justify="end">
+        <Col xs={{ span: 2 }} md={{ span: 2 }}>
           <IconStyling>
             <FaPencilAlt className="icon" />
           </IconStyling>
         </Col>
-        <Col xs={{ span: 20 }} md={{ span: 11 }}>
+        <Col xs={{ span: 22 }} md={{ span: 11 }}>
           <TextAreaStyling
             style={{ direction: lang === "ar" && "ltr" }}
             required
@@ -286,7 +291,10 @@ const DetailsComponent = ({ userInfo }) => {
           />
         </Col>
         <Col
-          xs={{ span: 20, offset: lang === "en" ? 4 : 1 }}
+          xs={{
+            span: lang === "en" ? 22 : 22,
+            offset: lang === "en" ? 2 : -2,
+          }}
           md={{ span: 11, offset: 0 }}
         >
           <TextAreaStyling
@@ -302,13 +310,14 @@ const DetailsComponent = ({ userInfo }) => {
             onChange={(e) => setAbout_ar(e.target.value)}
           />
         </Col>
-
-        <Col xs={{ span: 4 }} md={{ span: 2 }}>
+      </Row>
+      <Row gutter={[10, 10]}>
+        <Col xs={{ span: 2 }}>
           <IconStyling>
             <MdBusinessCenter className="icon" />
           </IconStyling>
         </Col>
-        <Col xs={{ span: 20 }} md={{ span: 22 }}>
+        <Col xs={{ span: 22 }}>
           <SelectStyling
             required
             allowClear
@@ -330,18 +339,18 @@ const DetailsComponent = ({ userInfo }) => {
         </Col>
       </Row>
 
-      <Row style={{ marginTop: 20 }}>
-        <Col xs={{ span: 20, offset: 4 }} md={{ span: 22, offset: 2 }}>
+      <Row style={{ marginTop: 20 }} justify="end">
+        <Col xs={{ span: 22, offset: lang === "en" ? 2 : -2 }}>
           <h1 className="title">{t("contact_details")}</h1>
         </Col>
       </Row>
-      <Row gutter={[10, 10]}>
-        <Col xs={{ span: 4 }} md={{ span: 2 }}>
+      <Row gutter={[10, 10]} justify="end">
+        <Col xs={{ span: 2 }}>
           <IconStyling>
             <FaUser className="icon" />
           </IconStyling>
         </Col>
-        <Col xs={{ span: 20 }} md={{ span: 22 }}>
+        <Col xs={{ span: 22 }}>
           <InputStyling
             required
             type="text"
@@ -351,12 +360,12 @@ const DetailsComponent = ({ userInfo }) => {
             onChange={(e) => setFullName(e.target.value)}
           />
         </Col>
-        <Col xs={{ span: 4 }} md={{ span: 2 }}>
+        <Col xs={{ span: 2 }}>
           <IconStyling>
             <ImPhone className="icon" />
           </IconStyling>
         </Col>
-        <Col xs={{ span: 20 }} md={{ span: 22 }}>
+        <Col xs={{ span: 22 }}>
           <InputStyling
             required
             type="tel"
@@ -365,12 +374,12 @@ const DetailsComponent = ({ userInfo }) => {
             onChange={(e) => setTelephone(e.target.value)}
           />
         </Col>
-        <Col xs={{ span: 4 }} md={{ span: 2 }}>
+        <Col xs={{ span: 2 }}>
           <IconStyling>
             <AiOutlineMail className="icon" />
           </IconStyling>
         </Col>
-        <Col xs={{ span: 20 }} md={{ span: 22 }}>
+        <Col xs={{ span: 22 }}>
           <InputStyling
             required
             type="email"
@@ -379,12 +388,12 @@ const DetailsComponent = ({ userInfo }) => {
             onChange={(e) => setEmail(e.target.value)}
           />
         </Col>
-        <Col xs={{ span: 4 }} md={{ span: 2 }}>
+        <Col xs={{ span: 2 }}>
           <IconStyling>
             <FaMapMarkerAlt className="icon" />
           </IconStyling>
         </Col>
-        <Col xs={{ span: 20 }} md={{ span: 22 }}>
+        <Col xs={{ span: 22 }}>
           <InputStyling
             required
             type="text"
@@ -393,32 +402,29 @@ const DetailsComponent = ({ userInfo }) => {
             onChange={(e) => setCity(e.target.value)}
           />
         </Col>
-        <Col xs={{ span: 4 }} md={{ span: 2 }}>
+        <Col xs={{ span: 2 }}>
           <IconStyling>
             <BiWorld className="icon" />
           </IconStyling>
         </Col>
-        <Col xs={{ span: 20 }} md={{ span: 22 }}>
-          <Row gutter={20}>
-            <Col xs={{ span: 12 }}>
-              <CountryDropdownStyling
-                value={country}
-                defaultOptionLabel={t("select_country__placeholder")}
-                onChange={(val) => setCountry(val)}
-              />
-            </Col>
-            <Col xs={{ span: 12 }}>
-              <RegionDropdownStyling
-                required
-                country={country}
-                value={region}
-                onChange={(value) => setRegion(value)}
-                defaultOptionLabel={t("select_region__placeholder")}
-              />
-            </Col>
-          </Row>
+        <Col xs={{ span: 11 }}>
+          <CountryDropdownStyling
+            value={country}
+            defaultOptionLabel={t("select_country__placeholder")}
+            onChange={(val) => setCountry(val)}
+          />
         </Col>
-        <Col xs={{ span: 24 }}>
+        <Col xs={{ span: 11 }}>
+          <RegionDropdownStyling
+            required
+            country={country}
+            value={region}
+            onChange={(value) => setRegion(value)}
+            defaultOptionLabel={t("select_region__placeholder")}
+          />
+        </Col>
+
+        <Col xs={{ span: 22, offset: lang === "en" ? 2 : -2 }}>
           <CardText>
             <ul>
               <li>
@@ -473,6 +479,7 @@ const Container = styled.div`
     margin-bottom: 10px;
   }
   @media only screen and (max-width: 768px) {
+    padding: 3rem 1rem;
     & .title {
       font-size: 1.1rem;
     }
@@ -486,6 +493,11 @@ const IconStyling = styled.div`
   color: var(--orange-color);
   & .icon {
     font-size: 1.5rem;
+  }
+  @media only screen and (max-width: 320px) {
+    & .icon {
+      font-size: 20px;
+    }
   }
 `;
 const InputStyling = styled.input`

@@ -125,6 +125,7 @@ const DataSection = ({ listAdService, error, type }) => {
 const DataStyling = styled.section`
   text-align: center;
   margin: 5rem 0;
+  height: 100%;
   & .title {
     font-size: 1.5rem;
     text-transform: capitalize;
@@ -177,6 +178,7 @@ const DataStyling = styled.section`
 
   & .empty_container {
     margin: 20px 0 25px 0;
+    height: 100%;
     & h5 {
       & span {
         font-size: 1.4rem;

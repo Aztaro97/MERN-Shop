@@ -433,6 +433,7 @@ const ServicesSlider = ({ lang }) => {
 };
 
 const ServiceStyling = styled.section`
+  padding: 0 1rem;
   & .title {
     text-align: center;
     text-transform: uppercase;
@@ -480,6 +481,7 @@ const ServiceStyling = styled.section`
 `;
 
 const PartnerLogoStyling = styled.section`
+  padding: 0 1rem;
   & .title {
     text-align: center;
     text-transform: uppercase;

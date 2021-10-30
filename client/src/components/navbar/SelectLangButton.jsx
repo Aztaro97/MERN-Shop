@@ -110,7 +110,8 @@ const SelectStyling = styled(Select)`
       padding: 0 3px !important;
     }
     & .ant-select-selector {
-      border-radius: 10px !important;
+      border-radius: 0px !important;
+      /* border: none !important; */
       padding: 0 !important;
     }
   }

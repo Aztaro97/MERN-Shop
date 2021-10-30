@@ -47,7 +47,7 @@ function UploadServiceFile() {
       history.push("/");
     }
     dispatch(getAdvertisingProfileByID(id));
-  }, [userInfo, history, userInfo, dispatch]);
+  }, [userInfo, history,  dispatch, id]);
 
   return (
     <>

@@ -19,7 +19,7 @@ const { Meta } = Card;
 function MyAdsScreen() {
   const { userInfo } = useSelector((state) => state.userLogin);
 
-  const { loading, listAdService, error } = useSelector(
+  const { loading, listAdService } = useSelector(
     (state) => state.advertising
   );
 
@@ -52,8 +52,6 @@ function MyAdsScreen() {
     <MainContainer>
       {loading ? (
         <LoaderComponent />
-      ) : error ? (
-        <h1>{error}</h1>
       ) : (
         <Container>
           <div className="header">
@@ -69,8 +67,8 @@ function MyAdsScreen() {
             {listAdService.length > 0 ? (
               listAdService.map((ad) => (
                 <Col
-                  xs={{ span: 12 }}
-                  md={{ span: 8 }}
+                  xs={{ span: 24 }}
+                  md={{ span: 12 }}
                   lg={{ span: 6 }}
                   key={ad._id}
                 >
@@ -87,7 +85,7 @@ function MyAdsScreen() {
                       src={
                         ad.serviceUrl.length > 0
                           ? ad.serviceUrl[0].url
-                          : "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+                          : "/img/advertising/empty.jpg"
                       }
                       alt=""
                     />

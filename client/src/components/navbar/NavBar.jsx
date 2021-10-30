@@ -18,12 +18,14 @@ import "./navbar.css";
 import Logo_SVG from "../../img/logo.svg";
 
 function NavBar() {
-  const { t } = useTranslation();
   const [scrollNav, setScrollNav] = useState(false);
   const [showToggleMenu, setShowToggleMenu] = useState(false);
 
   const dispatch = useDispatch();
   const history = useHistory();
+  const { t, i18n } = useTranslation();
+
+  const currentLang = i18n.language;
 
   const { cartItems } = useSelector((state) => state.cart);
 
@@ -213,7 +215,7 @@ function NavBar() {
           </Popover>
         </NavItem>
         {/* <NavItem>
-          <NavLink to="/cart" currentLanguageCode={currentLanguageCode}>
+          <NavLink to="/cart" currentLang={currentLang}>
             <FaShoppingCart className="icon" />
             {cartItems.length > 0 ? (
               <span className="count">{cartItems.length}</span>
@@ -238,8 +240,8 @@ function NavBar() {
             <span></span>
             <span></span>
           </ToggleBtn>
-        </NavItem> */}
-        <ToggleMenu open={showToggleMenu} />
+        </NavItem>
+        <ToggleMenu open={showToggleMenu} /> */}
       </Nav>
     </Header>
   );
@@ -264,6 +266,7 @@ const Header = styled.header`
     scrollNav ? "background 0s ease-in-out" : "background .5s ease-in-out"};
   @media only screen and (max-width: 768px) {
     height: 80px;
+    padding: 0 0.9rem;
   }
 `;
 const Nav = styled.ul`
@@ -284,20 +287,17 @@ const NavLink = styled(Link)`
   text-decoration: none;
   color: var(--silver-color);
   & .icon {
-    font-size: 1.4rem;
+    font-size: 1.9rem;
   }
 
   & .count {
     position: relative;
     bottom: 1rem;
-    right: ${({ currentLanguageCode }) =>
-      currentLanguageCode === "ar" ? "-.3rem" : ".4rem"};
+    right: ${({ currentLang }) => (currentLang === "ar" ? "-.3rem" : ".4rem")};
     background: var(--orange-color);
     color: #fff;
     padding: 6px;
     border-radius: 50%;
-    /* width:70px;
-    height:70px; */
     font-size: 1rem;
   }
   &:hover {
