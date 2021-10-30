@@ -42,18 +42,16 @@ function AdvertisingProfileScreen() {
   // }
 
   useEffect(() => {
-    dispatch(getAdvertisingProfileByID(profileID));
+  dispatch(getAdvertisingProfileByID(profileID));
   }, [profileID, dispatch]);
 
   return (
     <MainContainer>
       {loading ? (
         <LoaderComponent />
-      ) : error ? (
-        <PageNotFund />
       ) : (
         <>
-          {profile && (
+          {profile._id && (
             <>
               <Meta
                 title={
@@ -69,14 +67,17 @@ function AdvertisingProfileScreen() {
                   {lang === "ar" && (
                     <h1 className="title">{profile.companyName_ar}</h1>
                   )}
-                  <img src={profile.logoUrl[0].url} alt="" />
+                  <img
+                    src={profile.logoUrl[0].url}
+                    alt=""
+                  />
                 </section>
                 <section className="about">
                   <h1 className="title">{t("about_company")}</h1>
                   {lang === "en" && <p>{profile.about}</p>}
                   {lang === "ar" && <p>{profile.about_ar}</p>}
                 </section>
-                {profile.serviceUrl.length > 0 && (
+                {profile.serviceUrl && (
                   <section className="service_two">
                     <h1 className="title">{t("pictures")}</h1>
                     <div className="grid">
@@ -94,7 +95,7 @@ function AdvertisingProfileScreen() {
                   </section>
                 )}
 
-                {profile.videoUrl.length > 0 && (
+                {profile.videoUrl && (
                   <section className="portfolio">
                     <h1 className="title">{t("videos")}</h1>
                     <PortfolioSlider
