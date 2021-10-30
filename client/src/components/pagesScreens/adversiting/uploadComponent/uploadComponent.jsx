@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Col, Row, Upload, Select, Input } from "antd";
 import styled from "styled-components";
 import { FiUploadCloud } from "react-icons/fi";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import ImgCrop from "antd-img-crop";
@@ -14,12 +14,13 @@ import { destroyImages } from "../../../../flux/actions/productAction";
 import { IoClose } from "react-icons/io5";
 const { Option } = Select;
 
-export const BannerUploading = ({ id, userInfo, profile }) => {
+export const BannerUploading = ({ id, userInfo }) => {
   const [fileList, setFileList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [submited, isSubmited] = useState(false);
 
   const dispatch = useDispatch();
+  const { profile } = useSelector((state) => state.advertising);
 
   const onChange = ({ fileList: newFileList }) => {
     setFileList(newFileList);
@@ -89,7 +90,7 @@ export const BannerUploading = ({ id, userInfo, profile }) => {
     onRemove: handleRemove,
   };
   useEffect(() => {
-    setFileList(profile.bannerUrl);
+    profile && setFileList(profile.bannerUrl);
   }, [profile]);
 
   return (
@@ -150,12 +151,13 @@ export const BannerUploading = ({ id, userInfo, profile }) => {
   );
 };
 
-export const LogoUploading = ({ id, userInfo, profile }) => {
+export const LogoUploading = ({ id, userInfo }) => {
   const [fileList, setFileList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [submited, isSubmited] = useState(false);
 
   const dispatch = useDispatch();
+  const { profile } = useSelector((state) => state.advertising);
 
   const onChange = ({ fileList: newFileList }) => {
     setFileList(newFileList);
@@ -226,7 +228,7 @@ export const LogoUploading = ({ id, userInfo, profile }) => {
   };
 
   useEffect(() => {
-    setFileList(profile.logoUrl);
+    profile && setFileList(profile.logoUrl);
   }, [profile]);
 
   return (
@@ -285,12 +287,13 @@ export const LogoUploading = ({ id, userInfo, profile }) => {
   );
 };
 
-export const ServiceUploading = ({ id, userInfo, profile }) => {
+export const ServiceUploading = ({ id, userInfo }) => {
   const [fileList, setFileList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [submited, isSubmited] = useState(false);
 
   const dispatch = useDispatch();
+  const { profile } = useSelector((state) => state.advertising);
 
   const onChange = ({ fileList: newFileList }) => {
     setFileList(newFileList);
@@ -347,7 +350,7 @@ export const ServiceUploading = ({ id, userInfo, profile }) => {
   };
 
   useEffect(() => {
-    setFileList(profile.serviceUrl);
+    profile && setFileList(profile.serviceUrl);
   }, [profile]);
 
   return (
@@ -541,11 +544,13 @@ export const VideoUploading = ({ userInfo, id }) => {
   );
 };
 
-export const VideoTodoList = ({ userInfo, id, profile }) => {
+export const VideoTodoList = ({ userInfo, id }) => {
   const [value, setValue] = useState("");
   const [videoList, setVideoList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [submited, isSubmited] = useState(false);
+
+  const { profile } = useSelector((state) => state.advertising);
 
   const handleAdd = () => {
     const existValue = videoList.indexOf(value) !== -1;
@@ -587,7 +592,7 @@ export const VideoTodoList = ({ userInfo, id, profile }) => {
     }
   };
   useEffect(() => {
-    setVideoList(profile.videoUrl);
+    profile.videoUrl && setVideoList([...profile.videoUrl]);
   }, [profile]);
   return (
     <FormVideoStyling onSubmit={handleSubmit}>

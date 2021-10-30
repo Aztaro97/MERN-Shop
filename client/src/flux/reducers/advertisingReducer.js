@@ -23,7 +23,7 @@ import {
 } from "../constants/advertising";
 
 export const advertisingReducer = (
-  state = { cardItemData: [], service: {}, loading: true, listAdService: [] },
+  state = { cardItemData: [], service: {}, loading: true, listAdService: [], profile: {} },
   action
 ) => {
   switch (action.type) {
