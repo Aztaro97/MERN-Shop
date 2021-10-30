@@ -239,16 +239,11 @@ export const getAdvertisingProfileByID = (id) => async (dispatch) => {
       },
     };
     const res = await axios.get(`/api/advertising/profile/${id}`, config);
-    if (res.data)
-      dispatch({
-        type: AD_PROFILE_SUCCESS,
-        payload: res.data,
-      });
+    dispatch({
+      type: AD_PROFILE_SUCCESS,
+      payload: res.data,
+    });
   } catch (error) {
-    // dispatch({
-    //   type: AD_PROFILE_FAIL,
-    //   payload: error,
-    // });
     dispatch({
       type: AD_PROFILE_FAIL,
       payload:

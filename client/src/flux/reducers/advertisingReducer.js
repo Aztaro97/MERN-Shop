@@ -23,7 +23,7 @@ import {
 } from "../constants/advertising";
 
 export const advertisingReducer = (
-  state = { cardItemData: [], service: {}, loading: true, listAdService: [], profile: {} },
+  state = { cardItemData: [], service: {}, loading: true, listAdService: [], profile: {}, error: {} },
   action
 ) => {
   switch (action.type) {
@@ -50,7 +50,7 @@ export const advertisingReducer = (
     case USER_ADS_REQUEST:
     case DELETE_AD_PROFILE_REQUEST:
       return { ...state, loading: true };
-      
+
     case AD_LIST_SUCCESS:
     case FILTER_BUSINESS_SUCCESS:
       return { ...state, loading: false, listAdService: action.payload };

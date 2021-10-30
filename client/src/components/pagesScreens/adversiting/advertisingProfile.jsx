@@ -42,14 +42,16 @@ function AdvertisingProfileScreen() {
   // }
 
   useEffect(() => {
-  dispatch(getAdvertisingProfileByID(profileID));
-  }, [profileID, dispatch]);
+    if ( profileID !== profile._id) {
+      dispatch(getAdvertisingProfileByID(profileID));
+    }
+  }, [profileID, dispatch, profile]);
 
   return (
     <MainContainer>
       {loading ? (
         <LoaderComponent />
-      ) : (
+      )  : (
         <>
           {profile._id && (
             <>
@@ -67,10 +69,7 @@ function AdvertisingProfileScreen() {
                   {lang === "ar" && (
                     <h1 className="title">{profile.companyName_ar}</h1>
                   )}
-                  <img
-                    src={profile.logoUrl[0].url}
-                    alt=""
-                  />
+                  <img src={profile.logoUrl[0].url} alt="" />
                 </section>
                 <section className="about">
                   <h1 className="title">{t("about_company")}</h1>
