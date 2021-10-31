@@ -261,14 +261,12 @@ const AdvertisingNavgation = ({ lang }) => {
         {BusinessList.map((data, index) => (
           <div key={index}>
             <div
-              href={`/advertising/type/${data.value}`}
               onClick={() =>
                 history.push(`/advertising/type/${data.value}`, {
                   type: data.value,
                 })
               }
               className="card_container"
-              // onClick={() => history.push(`/advertising/type/${data.value}`)}
             >
               <div className="card_body">
                 <i className="icon">{data.icon}</i>
@@ -608,7 +606,7 @@ const NavStyling = styled.section`
     margin: 0 10px;
     cursor: pointer;
     @media only screen and (max-width: 768px) {
-      height: 100px;
+      height: 110px;
     }
 
     &:hover {
@@ -626,8 +624,7 @@ const NavStyling = styled.section`
     & .card_body {
       /* height: 150px; */
       width: 100%;
-      box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-        rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+      box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
       display: flex;
       align-items: center;
       justify-content: center;
