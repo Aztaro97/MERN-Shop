@@ -1,12 +1,16 @@
 import { Col, Row } from "antd";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
+import { clearCardAd } from "../../../flux/actions/advertisingAction/advertisingAction";
 import MainContainer from "../../MainContainer";
 
 function ConfirmTypePayment() {
   const location = useLocation();
   const body = location.state.data;
+
+  const dispatch = useDispatch();
   return (
     <MainContainer>
       <Container>
@@ -108,6 +112,7 @@ function ConfirmTypePayment() {
                 <Link
                   type="submit"
                   className="btn free"
+                  onClick={() => dispatch(clearCardAd())}
                   to={{
                     pathname: "/advertising/thank",
                     state: {

@@ -25,6 +25,7 @@ import {
 import { useTranslation } from "react-i18next";
 import Meta from "../../helmet";
 import ReactPlayer from "react-player";
+import { AD_PROFILE_RESET } from "../../../flux/constants/advertising";
 
 function AdvertisingProfileScreen() {
   const params = useParams();
@@ -42,16 +43,18 @@ function AdvertisingProfileScreen() {
   // }
 
   useEffect(() => {
-    if ( profileID !== profile._id) {
+    if (profileID) {
       dispatch(getAdvertisingProfileByID(profileID));
     }
-  }, [profileID, dispatch, profile]);
+  }, [profileID ,dispatch]);
 
   return (
     <MainContainer>
       {loading ? (
         <LoaderComponent />
-      )  : (
+      ) : error === "Profile not fund" ? (
+        <PageNotFund />
+      ) : (
         <>
           {profile._id && (
             <>

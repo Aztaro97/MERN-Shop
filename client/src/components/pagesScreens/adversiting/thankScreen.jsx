@@ -16,6 +16,7 @@ const ThankScreen = () => {
   const body = location.state.data;
 
   useEffect(() => {
+    
     if (!body.fullName) {
       history.push("/");
     }
@@ -30,7 +31,7 @@ const ThankScreen = () => {
           minima nisi ut sit enim quasi molestias natus expedita quos id. Est
           dolorem quisquam qui consectetur ipsum iure magnam iste maxime.
         </p>
-        <LinkStyling to="/" onClick={() => dispatch(clearCardAd())}>
+        <LinkStyling to="/" >
           continue to home
         </LinkStyling>
       </Container>

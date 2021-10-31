@@ -73,9 +73,9 @@ export const advertisingReducer = (
       return { ...state, loading: false, error: action.payload };
 
     case AD_PROFILE_SUCCESS:
-      return { ...state, loading: false, profile: action.payload };
+      return { ...state, loading: false, profile: action.payload, error: {} };
     case AD_PROFILE_RESET:
-      return { ...state, loading: false, profile: {} };
+      return { ...state, loading: false, profile: {}, error: {} };
 
     case FETCH_MESSAGE_SUCCESS:
       return { ...state, loading: false, allMessages: action.payload };
