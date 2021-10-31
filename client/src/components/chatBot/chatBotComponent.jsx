@@ -5,6 +5,8 @@ import { VscChromeClose } from "react-icons/vsc";
 import ChatBot from "react-simple-chatbot";
 import styled, { ThemeProvider } from "styled-components";
 
+// import robotIcon from ""
+
 function ChatBotComponent() {
   const [open, setOpen] = useState(false);
   const logoUrl = "/img/logo/logo96.png";
@@ -88,6 +90,7 @@ function ChatBotComponent() {
           <ChatBotStyling
             steps={steps}
             headerTitle={headerBot}
+            // botAvatar="/img/icons/robot.png"
           />
         )}
         <Button onClick={() => setOpen(!open)}>

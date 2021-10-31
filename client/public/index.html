@@ -27,10 +27,7 @@
       sizes="16x16"
       href="img/logo/favicon-16x16.png"
     />
-    <link
-      rel="icon"
-      href="favicon.ico"
-    />
+    <link rel="icon" href="favicon.ico" />
     <link rel="manifest" href="./manifest.json" />
     <link rel="preload" as="font" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -62,5 +59,23 @@
     <script src="./js/popper.min.js" defer></script>
     <script src="./js/bootstrap.min.js"></script>
     <script src="./js/main.js"></script> -->
+
+    <script>
+      (function(d, t) {
+        var BASE_URL = "https://app.chatwoot.com";
+        var g = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+        g.src = BASE_URL + "/packs/js/sdk.js";
+        g.defer = true;
+        g.async = true;
+        s.parentNode.insertBefore(g, s);
+        g.onload = function() {
+          window.chatwootSDK.run({
+            websiteToken: "GakSbgbuhKNEYP4nq6tb161q",
+            baseUrl: BASE_URL,
+          });
+        };
+      })(document, "script");
+    </script>
   </body>
 </html>

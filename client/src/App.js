@@ -2,7 +2,7 @@ import React, { useEffect, lazy, Suspense } from "react";
 import "./App.css";
 import "antd/dist/antd.css";
 import Loading from "./components/loader";
-import ChatBotComponent from "./components/chatBot/chatBotComponent";
+import ChatBotComponent from "./components/chatBot/chatWooWidget";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ReactGA from "react-ga";
 import { initGA, PageView } from "./components/Tracking/tracking";
