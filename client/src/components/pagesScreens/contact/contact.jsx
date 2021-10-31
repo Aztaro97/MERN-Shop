@@ -72,11 +72,7 @@ function Contact() {
               >
                 <div className="followUs">
                   <h3 className="title">Follow us</h3>
-                  <div className="group">
-                    {/* <!-- Repeating link  --> */}
-                    {/* <a href="#/" className="btn media_link">
-                    <FaTumblr className="icon" />
-                  </a> */}
+                  <div className="lint_container">
                     <a
                       href="https://api.whatsapp.com/send?phone=+971502022251"
                       className="media_link"
@@ -85,7 +81,7 @@ function Contact() {
                     >
                       <FaWhatsapp className="icon" />
                     </a>
-                    {/* <!-- Repeating link  --> */}
+
                     <a
                       href="https://www.instagram.com/au_79_code/"
                       className="media_link"
@@ -94,7 +90,7 @@ function Contact() {
                     >
                       <FaInstagram className="icon" />
                     </a>
-                    {/* <!-- Repeating link  --> */}
+
                     <a
                       href="https://twitter.com/79_code"
                       className="media_link"
@@ -103,7 +99,7 @@ function Contact() {
                     >
                       <FaTwitter className="icon" />
                     </a>
-                    {/* <!-- Repeating link  --> */}
+
                     <a
                       href="https://www.snapchat.com/add/au79code"
                       className="media_link"
@@ -112,7 +108,7 @@ function Contact() {
                     >
                       <FaSnapchatGhost className="icon" />
                     </a>
-                    {/* <!-- Repeating link  --> */}
+
                     <a
                       href="https://www.facebook.com/pages/category/Marketing-Agency/AU-79-CODE-103505425005079/"
                       className="media_link"
@@ -182,8 +178,8 @@ function Contact() {
                 </div>
               </Col>
               <Col
-                xs={{ span: 24 }}
-                sm={{ span: 24 }}
+                xs={{ span: 0 }}
+                sm={{ span: 0 }}
                 md={{ span: 12 }}
                 lg={{ span: 12 }}
                 className=""
@@ -217,26 +213,33 @@ function Contact() {
 const ContactContainer = styled.section`
   background: rgba(236, 236, 236, 0.925);
   height: 100% !important;
-  padding: 2rem;
-  margin-top: 4rem;
+  padding: 3rem 2rem;
+  /* margin-top: 4rem; */
   & .title {
     color: #111;
     font-weight: 500;
-    margin-bottom: 4px;
+    margin-bottom: 7px;
+    display: block;
+    text-transform: capitalize;
   }
   .followUs {
     margin-bottom: 20px;
-    & .media_link {
-      color: #fff;
-      background: var(--orange-color);
-      transition: all 0.5s ease-in-out;
-      padding: 7px;
-      margin-right: 2px;
-      &:hover {
-        transform: scale(1.2);
-      }
-      & .icon {
-        font-size: 22px;
+    padding: 5px 0;
+    & .lint_container {
+      display: flex;
+      height: 100%;
+      & .media_link {
+        color: #fff;
+        background: var(--orange-color);
+        transition: all 0.5s ease-in-out;
+        padding: 7px;
+        margin-right: 2px;
+        &:hover {
+          transform: scale(1.2);
+        }
+        & .icon {
+          font-size: 22px;
+        }
       }
     }
   }
@@ -268,6 +271,9 @@ const ContactContainer = styled.section`
       text-decoration: none;
       padding: 10px 20px;
     }
+  }
+  @media only screen and (max-width: 768px) {
+    margin: 0;
   }
 `;
 
