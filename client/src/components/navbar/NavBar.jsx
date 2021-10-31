@@ -276,7 +276,7 @@ const Nav = styled.ul`
   justify-content: center;
   align-items: center;
   list-style: none;
-  margin-bottom: 0;
+  margin-bottom: 0 !important;
   padding: 0;
 `;
 const NavItem = styled.li`
@@ -407,6 +407,7 @@ const ListNavigation = styled.ul`
   width: 100%;
   height: 100%;
   padding: 0 !important;
+  margin-bottom: 0 !important;
 
   & li {
     color: #111;
