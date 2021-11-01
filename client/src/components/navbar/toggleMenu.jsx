@@ -13,103 +13,152 @@ function ToggleMenu({ open, setOpen }) {
   const handleCloseMenu = () => {
     setOpen(false);
   };
+  const handleClick = () => {
+    console.log("clicker");
+  };
   return (
     <Nav open={open} className="toggleMenu open" id="menu">
-      <Row justify="center" gutter={[10, 10]} className="row_container">
+      <Row justify="center" gutter={[10, 50]} className="row_container">
         <Col xs={{ span: 24 }} md={{ span: 6 }}>
-          <NavItem className="nav_item">
-            <Link to="/" onClick={handleCloseMenu} className="link">
-              <span> {t("nav_home")}</span>
-            </Link>
-          </NavItem>
+          <LinkStyling to="/" onClick={handleCloseMenu} className="link">
+            <span> {t("nav_home")}</span>
+          </LinkStyling>
         </Col>
         <Col xs={{ span: 24 }} md={{ span: 6 }}>
-          <NavItem className="nav_item">
-            <Link className="link service" to="#/" >
+          <DropDownList>
+            <LinkStyling className="link service" to="#/">
               <span>{t("nav_services")}</span>
-            </Link>
-            <SubLinksStyling className="subLinks">
-              <li>
-                <Link  to="/advertising" onClick={handleCloseMenu}>{t("adv_service")}</Link>
-              </li>
-              <li>
-                <Link to="#/">
+            </LinkStyling>
+            <DropDownContent>
+              <SubLink to="/advertising" onClick={handleCloseMenu}>
+                {t("adv_service")}
+              </SubLink>
+              <SubDropList>
+                <SubLink to="#/">
                   MARKETING <FiChevronDown />
-                </Link>
-                <ul className="sub__nav">
-                  <li>
-                    <Link to="/marketing" onClick={handleCloseMenu}>
-                      {t("e_marketing")}{" "}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/out-marketing" onClick={handleCloseMenu}>
-                      {t("out_marketing")}
-                    </Link>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <Link to="#/">
-                  ECOMMERCE <FiChevronDown />
-                </Link>
-                <ul className="sub__nav">
-                  <li>
-                    <Link to="/e-commerce" onClick={handleCloseMenu}>
-                      {" "}
-                      {t("delivery")}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/pageScreen" onClick={handleCloseMenu}>
-                      {t("payment")}
-                    </Link>
-                  </li>
-                </ul>
-              </li>
+                </SubLink>
 
-              <li>
-                <Link to="/production" onClick={handleCloseMenu}>
-                  {t("prod_service")}
-                </Link>
-              </li>
-              <li>
-                <Link to="/design" onClick={handleCloseMenu}>
-                  {t("design_service")}
-                </Link>
-              </li>
-              <li>
-                <Link to="/photography" onClick={handleCloseMenu}>
-                  {t("photo_service")}
-                </Link>
-              </li>
-              <li>
-                <Link to="/programming" onClick={handleCloseMenu}>
-                  {t("prog_service")}
-                </Link>
-              </li>
-            </SubLinksStyling>
-          </NavItem>
+                <SubContent>
+                  <Link
+                    to="/marketing"
+                    className="link"
+                    onClick={handleCloseMenu}
+                  >
+                    {t("e_marketing")}{" "}
+                  </Link>
+                  <Link
+                    to="/out-marketing"
+                    className="link"
+                    onClick={handleCloseMenu}
+                  >
+                    {t("out_marketing")}
+                  </Link>
+                </SubContent>
+              </SubDropList>
+              <SubDropList>
+                <SubLink to="#/">
+                  ECOMMERCE <FiChevronDown />
+                </SubLink>
+
+                <SubContent>
+                  <Link
+                    className="link"
+                    to="/e-commerce"
+                    onClick={handleCloseMenu}
+                  >
+                    {" "}
+                    {t("delivery")}
+                  </Link>
+                  <Link
+                    className="link"
+                    to="/pageScreen"
+                    onClick={handleCloseMenu}
+                  >
+                    {t("payment")}
+                  </Link>
+                </SubContent>
+              </SubDropList>
+
+              <SubLink to="/production" onClick={handleCloseMenu}>
+                {t("prod_service")}
+              </SubLink>
+              <SubLink to="/design" onClick={handleCloseMenu}>
+                {t("design_service")}
+              </SubLink>
+              <SubLink to="/photography" onClick={handleCloseMenu}>
+                {t("photo_service")}
+              </SubLink>
+              <SubLink to="/programming" onClick={handleCloseMenu}>
+                {t("prog_service")}
+              </SubLink>
+            </DropDownContent>
+          </DropDownList>
         </Col>
         <Col xs={{ span: 24 }} md={{ span: 6 }}>
-          <NavItem className="nav_item">
-            <Link onClick={handleCloseMenu} className="link" to="/about">
-              <span> {t("nav_about")}</span>
-            </Link>
-          </NavItem>
+          <LinkStyling onClick={handleCloseMenu} className="link" to="/about">
+            <span> {t("nav_about")}</span>
+          </LinkStyling>
         </Col>
         <Col xs={{ span: 24 }} md={{ span: 6 }}>
-          <NavItem className="nav_item">
-            <Link onClick={handleCloseMenu} className="link" to="/contact-us/">
-              <span> {t("nav_contact")}</span>
-            </Link>
-          </NavItem>
+          <LinkStyling
+            onClick={handleCloseMenu}
+            className="link"
+            to="/contact-us/"
+          >
+            <span> {t("nav_contact")}</span>
+          </LinkStyling>
         </Col>
       </Row>
     </Nav>
   );
 }
+const DropDownContent = styled.div`
+  display: none;
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+  padding: 25px 0;
+`;
+const SubContent = styled.div`
+  display: none;
+  & .link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: #93a3b3;
+    text-decoration: none;
+    padding:2px 0;
+    &:hover {
+    color: var(--orange-color);
+  }
+  }
+`;
+const SubDropList = styled.div`
+  &:hover ${SubContent} {
+    display: block;
+  }
+`;
 
+const SubLink = styled(Link)`
+  display: block;
+  color: #93a3b3;
+  text-decoration: none;
+  padding: 5px 0;
+  /* margin: 2px 0; */
+  &:hover {
+    color: var(--orange-color);
+  }
+`;
+
+const DropDownList = styled.div`
+  text-align: center;
+  width: 100%;
+  &:hover ${DropDownContent} {
+    display: block;
+    transition: all 1s ease-in-out;
+  }
+`;
 const Nav = styled.nav`
   position: fixed;
   top: 0px;
@@ -138,71 +187,33 @@ const Nav = styled.nav`
   }
 `;
 
-const SubLinksStyling = styled.ul`
-  /* display: none; */
-  padding:2rem 0;
+const LinkStyling = styled(Link)`
+  color: #fff;
+  border: 1px solid var(--orange-color);
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  transform: rotate(45deg);
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: 0.2s all ease-in;
+  margin: auto;
 
-  & a {
-    color: #93a3b3;
-    font-size: 0.95rem;
-    text-transform: capitalize;
-    letter-spacing: 0.5px;
-    text-decoration: none;
-    &:hover {
-      text-decoration: none;
-    }
-  }
-  & li.navItem:hover {
-    transition: 0.3s all ease-in-out;
-    color: #93a3b3;
-  }
-  & .sub__nav {
-    z-index: 9999;
-  }
-  & .sub__nav a {
-    color: #93a3b3;
-    font-size: 0.95rem;
-    text-transform: capitalize;
-    letter-spacing: 0.5px;
-  }
-  & .sub__nav a:hover {
-    text-decoration: none;
+  &:hover {
+    background: #ffffff32;
     color: var(--orange-color);
-  }
-`;
-
-const NavItem = styled.div`
-  text-align: center;
-
-  & .link {
-    color: #fff;
-    border: 1px solid var(--orange-color);
-    text-transform: capitalize;
-    letter-spacing: 0.5px;
     text-decoration: none;
-    transform: rotate(45deg);
-    width: 120px;
-    height: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    transition: 0.2s all ease-in;
-    margin: auto;
-
-    &:hover {
-      background: #ffffff42;
-      color: var(--orange-color);
-      text-decoration: none;
-    }
-    & span {
-      transform: rotate(-45deg);
-    }
   }
-  & .link.service {
-    &:hover ${SubLinksStyling} {
-      display: none !important;
-    }
+  & span {
+    transform: rotate(-45deg);
+  }
+  @media only screen and (max-width: 995px) {
+    width: 90px;
+    height: 90px;
   }
 `;
 
