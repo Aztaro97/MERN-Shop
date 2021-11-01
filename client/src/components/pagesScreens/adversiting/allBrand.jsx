@@ -113,7 +113,7 @@ const DataSection = ({ listAdService, error, type }) => {
             {" "}
             <span>Sorry !</span> we couldn't find any results matching "{type}"
           </h5>
-          <Link to="/" className="link">
+          <Link to="/advertising" className="link">
             Back home
           </Link>
         </div>
