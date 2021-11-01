@@ -57,15 +57,14 @@ const HomeSection = () => {
               <div>
                 <Zoom>
                   <h1>
-                    <span>We</span>are the best e-marketing companies in dubai,
+                    <span>We</span>are the best e-commerce companies in dubai,
                     uae.
                   </h1>
-                
-                <p>
-                  Our marketing strategies for getting your website publicized
-                  give effective results, there are no excuses, It's that simple
-                </p>
-                
+
+                  <p>
+                    Our marketing strategies for getting your website publicized
+                    give effective results
+                  </p>
                 </Zoom>
                 <Link className="link1" to="/register">
                   Get Your Commercial page Free
@@ -95,7 +94,7 @@ const HomeSection = () => {
 };
 
 const Slide = styled.div`
-  height: 1000px;
+  height: 400px;
   width: 100%;
   & .bg1 {
     background-image: linear-gradient(
@@ -122,7 +121,7 @@ const Slide = styled.div`
     align-items: flex-end;
   }
   @media only screen and (max-width: 768px) {
-    height: 400px;
+    height: 200px;
   }
 `;
 
@@ -131,7 +130,7 @@ const SlideOverlay = styled.div`
 
   & div {
     position: relative;
-    bottom: 6rem;
+    bottom: 4rem;
     /* padding-right: 9rem; */
     width: 80%;
     z-index: 99999999;
@@ -140,13 +139,13 @@ const SlideOverlay = styled.div`
       margin: 0;
       font-weight: 700;
       text-transform: uppercase;
-      font-size: 2.81rem;
+      font-size: 1.8rem;
 
       & span {
         color: #c68787;
         display: block;
         text-transform: capitalize;
-        font-size: 7.8rem;
+        font-size: 4.8rem;
         font-family: weFont, sans-serif;
       }
     }
@@ -154,7 +153,7 @@ const SlideOverlay = styled.div`
       color: #fff;
       /* margin-bottom: 0; */
       margin: 5px 0;
-      font-size: 1.25em;
+      font-size: 1em;
     }
     & .link1 {
       display: block;
@@ -162,7 +161,7 @@ const SlideOverlay = styled.div`
       outline: none;
       border: none;
       border-radius: 30px;
-      padding: 0.8rem 2rem;
+      padding: 0.5rem .5rem;
       background: var(--orange-color);
       text-transform: uppercase;
       color: #fff;
@@ -178,13 +177,17 @@ const SlideOverlay = styled.div`
     }
 
     @media only screen and (max-width: 768px) {
-      bottom: 6rem;
+      bottom: .6rem;
       padding-right: 1rem;
       & h1 {
-        font-size: 1.4rem;
+        font-size: 1rem;
+        margin: 0;
+        & span {
+          font-size: 2rem;
+        }
       }
       & p {
-        font-size: 0.8rem;
+        font-size: .9rem;
       }
       & .link1 {
         font-size: 0.8rem;
@@ -201,7 +204,7 @@ const SlideOverlay = styled.div`
       text-decoration: none;
       background: var(--orange-color);
       border-radius: 30px;
-      padding: 0.8rem 2rem;
+      padding: .5rem 1rem;
       text-transform: uppercase;
       color: #fff;
       text-align: center;

@@ -11,43 +11,41 @@ const { TabPane } = Tabs;
 
 function Tabulation() {
   return (
-    <>
+    <MainContainer>
       <LandingPage />
       <Tab>
-        <MainContainer style={{ marginTop: 0, paddingTop: 30 }}>
-          <TabsE defaultActiveKey="1" centered size="default">
-            <TabPane
-              tab={
-                <span>
-                  <BsBuilding
-                    className="tab_icons"
-                    style={{ marginRight: ".6rem" }}
-                  />
-                  companies
-                </span>
-              }
-              key="1"
-            >
-              <CompanyList />
-            </TabPane>
-            <TabPane
-              tab={
-                <span>
-                  <FaUserTie
-                    className="tab_icons"
-                    style={{ marginRight: ".6rem" }}
-                  />
-                  personnel
-                </span>
-              }
-              key="2"
-            >
-              <CraftMenList />
-            </TabPane>
-          </TabsE>
-        </MainContainer>
+        <TabsE defaultActiveKey="1" centered size="default">
+          <TabPane
+            tab={
+              <span>
+                <BsBuilding
+                  className="tab_icons"
+                  style={{ marginRight: ".6rem" }}
+                />
+                companies
+              </span>
+            }
+            key="1"
+          >
+            <CompanyList />
+          </TabPane>
+          <TabPane
+            tab={
+              <span>
+                <FaUserTie
+                  className="tab_icons"
+                  style={{ marginRight: ".6rem" }}
+                />
+                personnel
+              </span>
+            }
+            key="2"
+          >
+            <CraftMenList />
+          </TabPane>
+        </TabsE>
       </Tab>
-    </>
+    </MainContainer>
   );
 }
 

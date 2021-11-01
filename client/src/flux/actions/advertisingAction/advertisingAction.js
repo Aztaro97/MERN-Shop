@@ -112,7 +112,6 @@ export const getAllAdService = () => async (dispatch, getState) => {
       payload: res.data,
     });
   } catch (error) {
-    console.error(error);
     dispatch({
       type: AD_LIST_FAIL,
       payload:

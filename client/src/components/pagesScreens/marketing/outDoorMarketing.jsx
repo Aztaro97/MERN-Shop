@@ -1,21 +1,23 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import MainContainer from "../../MainContainer";
 
 import "./outMarketing.css"
 
 function OutDoorMarketing() {
   return (
-    <main>
+    <MainContainer>
       {/* <!-- Start outdoor marketing Section  --> */}
       <section className="outMarketing">
         {/* <!-- outdoor marketing top image  --> */}
         <div className="topImg">
           <div className="topLinks" style={{paddingTop:"2.5rem"}}>
-            <a href="/marketing" className=" normalText weight-500">
+            <Link to="/marketing" className=" normalText weight-500">
               E-marketing
-            </a>
-            <a href="/out-marketing" className="normalText weight-500 active">
+            </Link>
+            <Link to="/out-marketing" className="normalText weight-500 active">
               Outdoor marketing
-            </a>
+            </Link>
           </div>
           <div className="imgCover">
             <img alt="" src="./img/outMarketing.jpg" />
@@ -30,7 +32,7 @@ function OutDoorMarketing() {
               Our marketing strategies for getting your website publicized give
               effective results. there are no excuses, It's that simple.
             </p>
-            <div className="marketingSelect">
+            {/* <div className="marketingSelect">
               <div className="dropdown">
                 <button
                   className="btn  dropdown-toggle"
@@ -61,7 +63,7 @@ function OutDoorMarketing() {
               >
                 Try for free
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
 
@@ -209,7 +211,7 @@ function OutDoorMarketing() {
           </div>
         </div>
       </section>
-    </main>
+    </MainContainer>
   );
 }
 

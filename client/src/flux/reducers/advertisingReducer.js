@@ -53,7 +53,7 @@ export const advertisingReducer = (
 
     case AD_LIST_SUCCESS:
     case FILTER_BUSINESS_SUCCESS:
-      return { ...state, loading: false, listAdService: action.payload };
+      return { ...state, loading: false, listAdService: action.payload, error: {} };
 
     case USER_ADS_SUCCESS:
       return { ...state, loading: false, listAdService: action.payload };

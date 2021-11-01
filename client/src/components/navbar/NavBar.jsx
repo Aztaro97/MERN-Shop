@@ -190,13 +190,28 @@ function NavBar() {
                 {userInfo && (
                   <>
                     <li>
-                      <Link className="link" to="/profile/my-ads">
+                      <Link className="link" to="/advertising/profile">
                         My Ads
                       </Link>
                     </li>
                     <li>
                       <Link className="link" onClick={handleLogOut}>
                         {t("logout")}
+                      </Link>
+                    </li>
+                  </>
+                )}
+                {(userInfo && userInfo.typeUser === "merchant") && (
+                  <>
+                    <li>
+                      <Link className="link" to="/myproducts"> {t("my_products")} </Link>
+                    </li>
+                    <li>
+                      <Link className="link" to="/myorder">{t("my_order")}</Link>
+                    </li>
+                    <li>
+                      <Link className="link" onClick={handleCreateProduct}>
+                        {t("add_more_products")}
                       </Link>
                     </li>
                   </>
@@ -216,7 +231,7 @@ function NavBar() {
             </NavLink>
           </Popover>
         </NavItem>
-        {/* <NavItem>
+        <NavItem>
           <NavLink to="/cart" currentLang={currentLang}>
             <FaShoppingCart className="icon" />
             {cartItems.length > 0 ? (
@@ -243,7 +258,7 @@ function NavBar() {
             <span></span>
           </ToggleBtn>
         </NavItem>
-        <ToggleMenu open={showToggleMenu} /> */}
+        <ToggleMenu open={showToggleMenu} setOpen={setShowToggleMenu} />
       </Nav>
     </Header>
   );

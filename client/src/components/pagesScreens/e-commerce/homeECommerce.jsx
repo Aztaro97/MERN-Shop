@@ -17,6 +17,7 @@ import svg1 from "../../../img/svg1.svg";
 import bg_rounded from "../../../img/bg_rounded.svg";
 
 import compayn_pic from "../../../img/company_pic2.png";
+import { Col, Row } from "antd";
 
 function HomeECommerce() {
   const dispatch = useDispatch();
@@ -34,7 +35,7 @@ function HomeECommerce() {
   console.log(company == null && "vide");
 
   return (
-    <>
+    <MainContainer>
       <LandingPage />
 
       <Section1>
@@ -70,8 +71,8 @@ function HomeECommerce() {
       {/* <!-- Social Media container  --> */}
       <div className="socialMedia" id="socialMediaContent">
         <div className="bgGrediant">
-          <div className="row no-gutters">
-            <div className="col-lg-5 col-md-12 col-sm-12">
+          <Row>
+            <Col xs={{span:24}} md={{span:24}} lg={{span:6}} >
               <div className="socialText">
                 <img src="./img/shape1.png" className="shape" alt="" />
                 <div className="contente">
@@ -88,8 +89,8 @@ function HomeECommerce() {
                   </p>
                 </div>
               </div>
-            </div>
-            <div className="col-lg-7 col-md-12 col-sm-12">
+            </Col>
+            <Col xs={{span:24}} md={{span:24}} lg={{span:18}}>
               <div className="popSocial">
                 <p className="largeText weight-500 thirdColor text-uppercase ">
                   how
@@ -132,8 +133,8 @@ function HomeECommerce() {
                 </div> */}
                 </div>
               </div>
-            </div>
-          </div>
+            </Col>
+          </Row>
         </div>
       </div>
 
@@ -234,7 +235,7 @@ function HomeECommerce() {
           see more
         </Link>
       </CardSection>
-    </>
+    </MainContainer>
   );
 }
 

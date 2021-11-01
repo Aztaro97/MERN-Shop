@@ -101,74 +101,75 @@ const AllCompanyService = () => {
               </tr>
             </thead>
             <tbody>
-              {listAdService.map((ad) => (
-                <tr key={ad._id}>
-                  <td>{ad.fullName}</td>
-                  <td>
-                    {" "}
-                    <a href={`mailto:${ad.email}`}> {ad.email} </a>{" "}
-                  </td>
-                  <td>
-                    {" "}
-                    <a href={`tel:${ad.telephone}`}> {ad.telephone}</a>{" "}
-                  </td>
-                  <td>
-                    <ul>
-                      <li>
-                        <span>city:</span> {ad.city}
-                      </li>
-                      <li>
-                        <span>region:</span> {ad.region}
-                      </li>
-                      <li>
-                        <span>country:</span> {ad.country}
-                      </li>
-                    </ul>
-                  </td>
-                  <td>
-                    <ul>
-                      <li>
-                        <span>name:</span> {ad.companyName}
-                      </li>
-                      <li>
-                        <span>Bussiness:</span> {ad.typeBusiness}
-                      </li>
-                      <li className="about">
-                        <span>about:</span> {ad.about}
-                      </li>
-                    </ul>
-                  </td>
-                  <td>
-                    <ul>
-                      <li>Type: {ad.typePlan}</li>
-                      {ad.isPaid && <li>Price: {ad.totalPrice} dh</li>}
-                    </ul>
-                  </td>
-                  <td>
-                    <Switch
-                      onChange={(check) => handleToggleChange(ad._id, check)}
-                      checked={ad.allow}
-                    />
-                  </td>
-                  <td>
-                    <div className="control_container">
-                      <Link href={`/admin/advertising/edit/${ad._id}`}>
-                        <FaRegEdit className="icon edit" />
-                      </Link>
-                      <Popconfirm
-                        title="Are you sure to delete ?"
-                        okText="Yes"
-                        onConfirm={() => handleDelete(ad._id, ad.serviceUrl)}
-                        cancelText="No"
-                      >
-                        <Link>
-                          <MdDelete className="icon delete" />
+              {listAdService.length > 0 &&
+                listAdService.map((ad) => (
+                  <tr key={ad._id}>
+                    <td>{ad.fullName}</td>
+                    <td>
+                      {" "}
+                      <a href={`mailto:${ad.email}`}> {ad.email} </a>{" "}
+                    </td>
+                    <td>
+                      {" "}
+                      <a href={`tel:${ad.telephone}`}> {ad.telephone}</a>{" "}
+                    </td>
+                    <td>
+                      <ul>
+                        <li>
+                          <span>city:</span> {ad.city}
+                        </li>
+                        <li>
+                          <span>region:</span> {ad.region}
+                        </li>
+                        <li>
+                          <span>country:</span> {ad.country}
+                        </li>
+                      </ul>
+                    </td>
+                    <td>
+                      <ul>
+                        <li>
+                          <span>name:</span> {ad.companyName}
+                        </li>
+                        <li>
+                          <span>Bussiness:</span> {ad.typeBusiness}
+                        </li>
+                        <li className="about">
+                          <span>about:</span> {ad.about}
+                        </li>
+                      </ul>
+                    </td>
+                    <td>
+                      <ul>
+                        <li>Type: {ad.typePlan}</li>
+                        {ad.isPaid && <li>Price: {ad.totalPrice} dh</li>}
+                      </ul>
+                    </td>
+                    <td>
+                      <Switch
+                        onChange={(check) => handleToggleChange(ad._id, check)}
+                        checked={ad.allow}
+                      />
+                    </td>
+                    <td>
+                      <div className="control_container">
+                        <Link href={`/admin/advertising/edit/${ad._id}`}>
+                          <FaRegEdit className="icon edit" />
                         </Link>
-                      </Popconfirm>
-                    </div>
-                  </td>
-                </tr>
-              ))}
+                        <Popconfirm
+                          title="Are you sure to delete ?"
+                          okText="Yes"
+                          onConfirm={() => handleDelete(ad._id, ad.serviceUrl)}
+                          cancelText="No"
+                        >
+                          <Link>
+                            <MdDelete className="icon delete" />
+                          </Link>
+                        </Popconfirm>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </Table>
         </>

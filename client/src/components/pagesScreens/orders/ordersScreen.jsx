@@ -36,43 +36,41 @@ function OrdersScreen() {
                   <th>delivered</th>
                 </tr>
               </thead>
+              <tbody>
+                {orders.map((order) => (
+                  <tr key={order._id}>
+                    <td>{order._id}</td>
+                    <td>{order.createdAt.substring(0, 10)}</td>
+                    <td>{order.totalPrice} dh</td>
+                    {/* <td>{order.user && order.user.name}</td> */}
 
-              {orders.length === 0 ? (
-                <div className="Empty_content">
-                  <h1>You have not placed any orders !!!</h1>
-                </div>
-              ) : (
-                <tbody>
-                  {orders.map((order) => (
-                    <tr key={order._id}>
-                      <td>{order._id}</td>
-                      <td>{order.createdAt.substring(0, 10)}</td>
-                      <td>{order.totalPrice} dh</td>
-                      {/* <td>{order.user && order.user.name}</td> */}
-
-                      <td>
-                        {order.isPaid ? (
-                          <>
-                            {" "}
-                            <FcPaid size={20} style={{ color: "green" }} />{" "}
-                            {order.paidAt.substring(0, 10)}{" "}
-                          </>
-                        ) : (
-                          <FaTimesCircle style={{ color: "#ff7979" }} />
-                        )}
-                      </td>
-                      <td>
-                        {order.isDelivered ? (
-                          order.deliveredAt.substring(0, 10)
-                        ) : (
-                          <FaTimesCircle style={{ color: "#ff7979" }} />
-                        )}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              )}
+                    <td>
+                      {order.isPaid ? (
+                        <>
+                          {" "}
+                          <FcPaid size={20} style={{ color: "green" }} />{" "}
+                          {order.paidAt.substring(0, 10)}{" "}
+                        </>
+                      ) : (
+                        <FaTimesCircle style={{ color: "#ff7979" }} />
+                      )}
+                    </td>
+                    <td>
+                      {order.isDelivered ? (
+                        order.deliveredAt.substring(0, 10)
+                      ) : (
+                        <FaTimesCircle style={{ color: "#ff7979" }} />
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
             </Table>
+            {orders.length === 0 && (
+              <div className="Empty_content">
+                <h1>You have not placed any orders !!!</h1>
+              </div>
+            )}
           </OrderContainer>
         </MainContainer>
       )}
@@ -116,9 +114,12 @@ const Table = styled.table`
   & .Empty_content {
     text-align: center;
     width: 100%;
+    padding: 2rem 0;
     & h1 {
       margin-top: 1em;
-      font-size: 1.6rem;
+      font-size: 1rem;
+      text-align: center;
+      
     }
   }
 `;

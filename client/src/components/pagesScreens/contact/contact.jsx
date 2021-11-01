@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import {
   FaWhatsapp,
@@ -9,6 +9,7 @@ import {
   FaInstagram,
 } from "react-icons/fa";
 import MainContainer from "../../MainContainer";
+import { Typography } from "antd";
 
 import { useDispatch, useSelector } from "react-redux";
 import { sendContactFormMessage } from "../../../flux/actions/userAction";
@@ -18,8 +19,8 @@ import TextArea from "../../TextAreaComponent";
 import Button from "../../ButtonComponeent";
 import { Col, Row } from "antd";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import { SyncOutlined } from "@ant-design/icons";
+import emailjs from "emailjs-com";
 
 function Contact() {
   const [name, setName] = useState("");
@@ -28,26 +29,29 @@ function Contact() {
   const [sended, setSended] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  // const { loading, success } = useSelector((state) => state.contactForm);
+  const form = useRef();
 
-  const body = {
-    name,
-    email,
-    message,
-  };
+  const serviceId = process.env.REACT_APP_EMAIL_JS_SERVICE_ID;
+  const templateId = process.env.REACT_APP_EMAIL_JS_TEMPLATE_ID;
+  const userId = process.env.REACT_APP_EMAIL_USER_ID_;
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    const res = await axios.post("/api/contact-us", body, config);
-    if (res.data) {
-      setSended(true);
-      setLoading(false);
+    try {
+      e.preventDefault();
+      setLoading(true);
+      const res = await emailjs.sendForm(
+        serviceId,
+        templateId,
+        form.current,
+        userId
+      );
+      if (res.text) {
+        setSended(true);
+        setLoading(false);
+        console.log(res);
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
   return (
@@ -71,7 +75,7 @@ function Contact() {
                 lg={{ span: 12 }}
               >
                 <div className="followUs">
-                  <h3 className="title">Follow us</h3>
+                  <Typography.Title level={3}>Follow us</Typography.Title>
                   <div className="lint_container">
                     <a
                       href="https://api.whatsapp.com/send?phone=+971502022251"
@@ -120,7 +124,7 @@ function Contact() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="title">Contact US</h3>
+                  <Typography.Title level={3}>Contact US</Typography.Title>
                   <p>
                     You Have a question
                     <br /> a request for information, a project{" "}
@@ -128,13 +132,18 @@ function Contact() {
                   {/* <a href="#/" className="btn sec-outline-btn">
                   WRITE US
                 </a> */}
-                  <form className="form_contact" onSubmit={handleSubmit}>
+                  <form
+                    ref={form}
+                    className="form_contact"
+                    onSubmit={handleSubmit}
+                  >
                     <Row gutter={[10, 10]}>
                       <Col xs={{ span: 24 }}>
                         <Input
                           type="text"
-                          name="name"
+                          name="user_name"
                           id="name"
+                          value={name}
                           placeholder="FULL NAME"
                           onChange={(e) => setName(e.target.value)}
                           required
@@ -143,8 +152,9 @@ function Contact() {
                       <Col xs={{ span: 24 }}>
                         <Input
                           type="mail"
-                          name="email"
+                          name="user_email"
                           id="email"
+                          value={email}
                           placeholder="EMAIL"
                           onChange={(e) => setEmail(e.target.value)}
                           required
@@ -158,6 +168,7 @@ function Contact() {
                           cols="30"
                           rows="5"
                           placeholder="MESSAGE"
+                          value={message}
                           onChange={(e) => setMessage(e.target.value)}
                           required
                         ></TextArea>

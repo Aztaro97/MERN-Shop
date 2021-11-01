@@ -1,7 +1,7 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { Tabs } from "antd";
 import styled from "styled-components";
-import {Redirect} from "react-router-dom"
+import { Redirect } from "react-router-dom";
 import MainContainer from "./../../MainContainer";
 import ViewProducts from "./viewProducts";
 import CompanyInfo from "./companyDetails";
@@ -10,31 +10,30 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { getCompanyDetails } from "../../../flux/actions/userAction";
 
-
 const { TabPane } = Tabs;
 
 function Tabulation() {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   // const {products} = useSelector((state => state.products))
 
-  const { loading, user: {company} } = useSelector((state) => state.userDetails);
-  const { userInfo} = useSelector((state) => state.userLogin);
+  const {
+    loading,
+    user: { company },
+  } = useSelector((state) => state.userDetails);
+  const { userInfo } = useSelector((state) => state.userLogin);
   const dispatch = useDispatch();
-
 
   useEffect(() => {
     if (!company) {
       dispatch(getCompanyDetails());
     }
-  }, [dispatch, getCompanyDetails]);
+  }, [dispatch, company]);
 
   if (!userInfo) {
-    return (<Redirect to="/auth" />)
+    return <Redirect to="/auth" />;
   }
 
-
-  
   return (
     <MainContainer>
       <Tab>
@@ -55,7 +54,7 @@ const Tab = styled.div`
   /* height: ; */
   display: flex;
   justify-content: center;
-  padding: 4rem 0;
+  margin-bottom: 20px;
 `;
 
 const TabsE = styled(Tabs)`

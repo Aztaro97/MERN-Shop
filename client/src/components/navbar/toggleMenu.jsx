@@ -1,154 +1,111 @@
 import React from "react";
-import { Popover, Menu } from "antd";
+import { Popover, Menu, Row, Col } from "antd";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { FiChevronDown } from "react-icons/fi";
+import { Link } from "react-router-dom";
+// import "/css/style.css";
 
-const { SubMenu } = Menu;
+// const { SubMenu } = Menu;
 
-function ToggleMenu({ open }) {
+function ToggleMenu({ open, setOpen }) {
   const { t } = useTranslation();
+  const handleCloseMenu = () => {
+    setOpen(false);
+  };
   return (
     <Nav open={open} className="toggleMenu open" id="menu">
-      <div className="row">
-        <div className="col">
-          <div className="item">
-            <a
-              href="/"
-              // onClick={() => (document.location.href = "/")}
-              className="btn itemLink text-uppercase weight-600"
-            >
-              {t("nav_home")}
-            </a>
-          </div>
-        </div>
-        <div className="col">
-          <div className="item">
-            <a
-              onClick="homePage(1)"
-              className="itemLink text-uppercase weight-600"
-              href="#/"
-            >
-              {t("nav_services")}
-            </a>
-            <SubLinks className="subLinks">
+      <Row justify="center" gutter={[10, 10]} className="row_container">
+        <Col xs={{ span: 24 }} md={{ span: 6 }}>
+          <NavItem className="nav_item">
+            <Link to="/" onClick={handleCloseMenu} className="link">
+              <span> {t("nav_home")}</span>
+            </Link>
+          </NavItem>
+        </Col>
+        <Col xs={{ span: 24 }} md={{ span: 6 }}>
+          <NavItem className="nav_item">
+            <Link className="link service" to="#/" >
+              <span>{t("nav_services")}</span>
+            </Link>
+            <SubLinksStyling className="subLinks">
               <li>
-                <a
-                  href="/advertising"
-                  onClick="menuToggling()"
-                  className="subLink text-uppercase weight-500"
-                >
-                  {t("adv_service")}
-                </a>
+                <Link  to="/advertising" onClick={handleCloseMenu}>{t("adv_service")}</Link>
               </li>
-              <li className="navItem">
-                <a
-                  href="#/"
-                  // onClick="menuToggling()"
-                  className="subLink text-uppercase weight-500"
-                >
+              <li>
+                <Link to="#/">
                   MARKETING <FiChevronDown />
-                </a>
+                </Link>
                 <ul className="sub__nav">
                   <li>
-                    <a href="/marketing">{t("e_marketing")}</a>
+                    <Link to="/marketing" onClick={handleCloseMenu}>
+                      {t("e_marketing")}{" "}
+                    </Link>
                   </li>
                   <li>
-                    <a href="/out-marketing">{t("out_marketing")}</a>
+                    <Link to="/out-marketing" onClick={handleCloseMenu}>
+                      {t("out_marketing")}
+                    </Link>
                   </li>
                 </ul>
               </li>
-
-              <li className="navItem">
-                <a
-                  href="#/"
-                  // onClick="menuToggling()"
-                  className="subLink text-uppercase weight-500"
-                >
+              <li>
+                <Link to="#/">
                   ECOMMERCE <FiChevronDown />
-                </a>
+                </Link>
                 <ul className="sub__nav">
                   <li>
-                    <a href="/e-commerce"> {t("delivery")}</a>
+                    <Link to="/e-commerce" onClick={handleCloseMenu}>
+                      {" "}
+                      {t("delivery")}
+                    </Link>
                   </li>
                   <li>
-                    <a href="/pageScreen">{t("payment")}</a>
+                    <Link to="/pageScreen" onClick={handleCloseMenu}>
+                      {t("payment")}
+                    </Link>
                   </li>
                 </ul>
               </li>
 
               <li>
-                <a
-                  href="/production"
-                  onClick="menuToggling()"
-                  className="subLink text-uppercase weight-500"
-                >
+                <Link to="/production" onClick={handleCloseMenu}>
                   {t("prod_service")}
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/design"
-                  onClick="menuToggling()"
-                  className="subLink text-uppercase weight-500"
-                >
+                <Link to="/design" onClick={handleCloseMenu}>
                   {t("design_service")}
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/photography"
-                  onClick="menuToggling()"
-                  className="subLink text-uppercase weight-500"
-                >
+                <Link to="/photography" onClick={handleCloseMenu}>
                   {t("photo_service")}
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/programming"
-                  onClick="menuToggling()"
-                  className="subLink text-uppercase weight-500"
-                >
+                <Link to="/programming" onClick={handleCloseMenu}>
                   {t("prog_service")}
-                </a>
+                </Link>
               </li>
-            </SubLinks>
-          </div>
-        </div>
-        <div className="col">
-          <div className="item">
-            <a
-              // onClick="homePage(2)"
-              className="itemLink text-uppercase weight-600"
-              href="/about"
-            >
-              {t("nav_about")}
-            </a>
-          </div>
-        </div>
-        <div className="col">
-          <div className="item">
-            <a
-              // onClick="homePage(3)"
-              className="itemLink text-uppercase weight-600"
-              href="/contact-us/"
-            >
-              {t("nav_contact")}
-            </a>
-          </div>
-        </div>
-      </div>
-      <div className="menuShapes">
-        <div className="a a1"></div>
-        <div className="a a2"></div>
-        <div className="a a3"></div>
-        <div className="a a4"></div>
-        <div className="s s1"></div>
-        <div className="s s2"></div>
-        <div className="s s3"></div>
-        <div className="s s4"></div>
-      </div>
+            </SubLinksStyling>
+          </NavItem>
+        </Col>
+        <Col xs={{ span: 24 }} md={{ span: 6 }}>
+          <NavItem className="nav_item">
+            <Link onClick={handleCloseMenu} className="link" to="/about">
+              <span> {t("nav_about")}</span>
+            </Link>
+          </NavItem>
+        </Col>
+        <Col xs={{ span: 24 }} md={{ span: 6 }}>
+          <NavItem className="nav_item">
+            <Link onClick={handleCloseMenu} className="link" to="/contact-us/">
+              <span> {t("nav_contact")}</span>
+            </Link>
+          </NavItem>
+        </Col>
+      </Row>
     </Nav>
   );
 }
@@ -175,25 +132,77 @@ const Nav = styled.nav`
   & span {
     animation: ${({ open }) => open && "menuBtnAnim .4s"};
   }
+  & .row_container {
+    position: relative;
+    top: 80px;
+  }
 `;
 
-const SubLinks = styled.ul`
+const SubLinksStyling = styled.ul`
+  /* display: none; */
+  padding:2rem 0;
+
+  & a {
+    color: #93a3b3;
+    font-size: 0.95rem;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+    }
+  }
   & li.navItem:hover {
-    max-height: 200px !important;
     transition: 0.3s all ease-in-out;
+    color: #93a3b3;
   }
   & .sub__nav {
     z-index: 9999;
   }
   & .sub__nav a {
     color: #93a3b3;
-    font-size: .95rem;
+    font-size: 0.95rem;
     text-transform: capitalize;
-    letter-spacing:.5px;
+    letter-spacing: 0.5px;
   }
   & .sub__nav a:hover {
     text-decoration: none;
     color: var(--orange-color);
+  }
+`;
+
+const NavItem = styled.div`
+  text-align: center;
+
+  & .link {
+    color: #fff;
+    border: 1px solid var(--orange-color);
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    transform: rotate(45deg);
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: 0.2s all ease-in;
+    margin: auto;
+
+    &:hover {
+      background: #ffffff42;
+      color: var(--orange-color);
+      text-decoration: none;
+    }
+    & span {
+      transform: rotate(-45deg);
+    }
+  }
+  & .link.service {
+    &:hover ${SubLinksStyling} {
+      display: none !important;
+    }
   }
 `;
 

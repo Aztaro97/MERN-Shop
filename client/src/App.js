@@ -2,47 +2,90 @@ import React, { useEffect, lazy, Suspense } from "react";
 import "./App.css";
 import "antd/dist/antd.css";
 import Loading from "./components/loader";
-import ChatBotComponent from "./components/chatBot/chatWooWidget";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ReactGA from "react-ga";
 import { initGA, PageView } from "./components/Tracking/tracking";
 import { GlobalStyle } from "./globalStyle";
 
-// import HomeComponents from "./components/pagesScreens/Home/HomeComponents";
-// import CreateProductComponent from "./components/pagesScreens/products/createProduct";
-// import ProductsShop from "./components/pagesScreens/AllproductsShop/productsShop";
-// import EditProductScreen from "./components/pagesScreens/EditProductsAndCompany/editProductScreen";
-// import EditProductAndCompanyComponent from "./components/pagesScreens/EditProductsAndCompany/tabs";
-// import CartComponent from "./components/pagesScreens/cart/cart";
-// import ShippingComponenet from "./components/pagesScreens/checkout/shipping";
-// import ThankComponenet from "./components/pagesScreens/checkout/thankPage";
-// import RegisterComponenet from "./components/pagesScreens/auth/RegisterPage";
-// import PayementStep from "./components/pagesScreens/checkout/completePayement";
-// import CompanyListComponent from "./components/pagesScreens/CompanyList/index";
-// import EcommerceHomeComponent from "./components/pagesScreens/e-commerce/homeECommerce";
-// import PaymentCompopnent from "./components/pagesScreens/checkout/payment";
-// import ListOrderScreen from "./components/pagesScreens/orders/ordersScreen";
-// import CompleteOrder from "./components/pagesScreens/orders/placeOrder";
-// import MapScreen from "./components/pagesScreens/checkout/googleMap/mapScreen";
+const HomeComponents = lazy(() =>
+  import("./components/pagesScreens/Home/HomeComponents")
+);
+const CreateProductComponent = lazy(() =>
+  import("./components/pagesScreens/products/createProduct")
+);
+const ProductsShop = lazy(() =>
+  import("./components/pagesScreens/AllproductsShop/productsShop")
+);
+const EditProductScreen = lazy(() =>
+  import("./components/pagesScreens/EditProductsAndCompany/editProductScreen")
+);
+const EditProductAndCompanyComponent = lazy(() =>
+  import("./components/pagesScreens/EditProductsAndCompany/tabs")
+);
+const CartComponent = lazy(() => import("./components/pagesScreens/cart/cart"));
+const ShippingComponenet = lazy(() =>
+  import("./components/pagesScreens/checkout/shipping")
+);
+const ThankComponenet = lazy(() =>
+  import("./components/pagesScreens/checkout/thankPage")
+);
+const RegisterComponenet = lazy(() =>
+  import("./components/pagesScreens/auth/RegisterPage")
+);
+const PayementStep = lazy(() =>
+  import("./components/pagesScreens/checkout/completePayement")
+);
+const CompanyListComponent = lazy(() =>
+  import("./components/pagesScreens/CompanyList/index")
+);
+const EcommerceHomeComponent = lazy(() =>
+  import("./components/pagesScreens/e-commerce/homeECommerce")
+);
+const PaymentCompopnent = lazy(() =>
+  import("./components/pagesScreens/checkout/payment")
+);
+const ListOrderScreen = lazy(() =>
+  import("./components/pagesScreens/orders/ordersScreen")
+);
+const CompleteOrder = lazy(() =>
+  import("./components/pagesScreens/orders/placeOrder")
+);
+const MapScreen = lazy(() =>
+  import("./components/pagesScreens/checkout/googleMap/mapScreen")
+);
 
-// // /////////////////   Marketing Component   ///////////////
-// import EMarketingComponent from "./components/pagesScreens/marketing/eMarketingScreen";
-// const OutMarketingComponent = lazy(() => import("./components/pagesScreens/marketing/outDoorMarketing"))
+// /////////////////   Marketing Component   ///////////////
+const EMarketingComponent = lazy(() =>
+  import("./components/pagesScreens/marketing/eMarketingScreen")
+);
+const OutMarketingComponent = lazy(() =>
+  import("./components/pagesScreens/marketing/outDoorMarketing")
+);
 
-// // ////////////////  Design Component    /////////////////////
-// const DesignComponent = lazy(() => import("./components/pagesScreens/design/designScreen"))
+// ////////////////  Design Component    /////////////////////
+const DesignComponent = lazy(() =>
+  import("./components/pagesScreens/design/designScreen")
+);
 
-// // ////////////////  PROGRAMMING Component    /////////////////////
-// const ProgrammingComponent = lazy(() => import("./components/pagesScreens/programmingScreen/programmingScreen"))
+// ////////////////  PROGRAMMING Component    /////////////////////
+const ProgrammingComponent = lazy(() =>
+  import("./components/pagesScreens/programmingScreen/programmingScreen")
+);
 
-// // ////////////////  PHOTOGRAPHY Component    /////////////////////
-// const PhotographyComponent = lazy(() => import("./components/pagesScreens/photographyScreen/photographyScreen"))
+// ////////////////  PHOTOGRAPHY Component    /////////////////////
+const PhotographyComponent = lazy(() =>
+  import("./components/pagesScreens/photographyScreen/photographyScreen")
+);
 
-// // ////////////////  PRODUCTION Component    /////////////////////
-// const ProductionComponent = lazy(() => import("./components/pagesScreens/productionScreen/productionScreen"))
+// ////////////////  PRODUCTION Component    /////////////////////
+const ProductionComponent = lazy(() =>
+  import("./components/pagesScreens/productionScreen/productionScreen")
+);
 
-// // ////////////////  ABOUT Component    /////////////////////
-// const AboutComponent = lazy(() => import("./components/pagesScreens/AboutScreen/aboutScreen") )
+// ////////////////  ABOUT Component    /////////////////////
+const AboutComponent = lazy(() =>
+  import("./components/pagesScreens/AboutScreen/aboutScreen")
+);
 
 const pageNotFound = lazy(() =>
   import("./components/pagesScreens/pageNotFund")
@@ -121,9 +164,7 @@ const ProductListComponent = lazy(() =>
   import("./components/pagesScreens/products/productsList")
 );
 const UploadServiceFile = lazy(() =>
-  import(
-    "./components/pagesScreens/adversiting/uploadServiceFile"
-  )
+  import("./components/pagesScreens/adversiting/uploadServiceFile")
 );
 const MyAdsScreen = lazy(() =>
   import("./components/pagesScreens/adversiting/myAdsScreen")
@@ -134,9 +175,9 @@ const ConfirmPaymentMethod = lazy(() =>
 const EditAdsService = lazy(() =>
   import("./components/pagesScreens/adversiting/editAdsService")
 );
-// const ProfileComponent = lazy(() =>
-//   import("./components/pagesScreens/user/profile/tabs")
-// );
+const ProfileComponent = lazy(() =>
+  import("./components/pagesScreens/user/profile/tabs")
+);
 
 function App() {
   useEffect(() => {
@@ -153,38 +194,42 @@ function App() {
         <GlobalStyle />
         <NavBar />
         <Switch>
-          {/* <Route exact path="/" component={HomeComponents} />
-        
-        
-        <Route path="/add-product/:id" component={CreateProductComponent} />
-        <Route path="/products/page/:pageNumber" component={ProductsShop} />
-        <Route path="/products" component={ProductsShop} />
-        <Route path="/product/:id" component={EditProductScreen} />
-        <Route path="/myproducts" component={EditProductAndCompanyComponent} />
-        <Route path="/e-commerce" component={EcommerceHomeComponent} />
-        <Route path="/companies" component={CompanyListComponent} />
-        <Route path="/cart" component={CartComponent} />
-        <Route path="/shipping" component={ShippingComponenet} />
-        <Route
-          path="/profile/:id/page/:pageNumber"
-          component={ProfileComponent}
-        />
-        <Route path="/profile/:id" component={ProfileComponent} />
-        <Route path="/thank" component={ThankComponenet} />
-        <Route path="/register" component={RegisterComponenet} />
-        <Route path="/completepayment" component={PayementStep} />
-        <Route path="/payment" component={PaymentCompopnent} />
-        <Route path="/order/:id" component={CompleteOrder} />
-        <Route path="/myorder" component={ListOrderScreen} />
-        <Route path="/map" component={MapScreen} />
-         */}
+          <Route exact path="/" component={HomeComponents} />
+
+          <Route path="/add-product/:id" component={CreateProductComponent} />
+          <Route path="/products/page/:pageNumber" component={ProductsShop} />
+          <Route path="/products" component={ProductsShop} />
+          <Route path="/product/:id" component={EditProductScreen} />
+          <Route
+            path="/myproducts"
+            component={EditProductAndCompanyComponent}
+          />
+          <Route path="/e-commerce" component={EcommerceHomeComponent} />
+          <Route path="/companies" component={CompanyListComponent} />
+          <Route path="/cart" component={CartComponent} />
+          <Route path="/shipping" component={ShippingComponenet} />
+          <Route
+            path="/profile/:id/page/:pageNumber"
+            component={ProfileComponent}
+          />
+          <Route path="/profile/:id" component={ProfileComponent} />
+          <Route path="/thank" component={ThankComponenet} />
+          <Route path="/register" component={RegisterComponenet} />
+          <Route path="/completepayment" component={PayementStep} />
+          <Route path="/payment" component={PaymentCompopnent} />
+          <Route path="/order/:id" component={CompleteOrder} />
+          <Route path="/myorder" component={ListOrderScreen} />
+          <Route path="/map" component={MapScreen} />
 
           {/* /////////////////////   Markeing Router   ///////////////////// */}
-          {/* <Route path="/marketing" component={EMarketingComponent} />
-        <Route path="/out-marketing" component={OutMarketingComponent} /> */}
+          <Route path="/marketing" component={EMarketingComponent} />
+          <Route path="/out-marketing" component={OutMarketingComponent} />
+
+          {/* /////////////////  CONTACT US   ////////////////////////// */}
           <Route exact path="/contact-us" component={ContactUsComponents} />
+
           {/* ///////////////////   ADVERSITING ROUTER  /////////////////// */}
-          <Route path="/" component={AdversitingComponent} exact />
+          <Route path="/advertising" component={AdversitingComponent} exact />
           <Route
             path="/advertising/profile/:id"
             component={AdversitingProfileComponent}
@@ -218,11 +263,11 @@ function App() {
             path="/advertising/upload-file/:id"
             component={UploadServiceFile}
           />
-            <Route
+          <Route
             path="/advertising/confirm-payment"
             component={ConfirmPaymentMethod}
           />
-          <Route path="/profile/my-ads" component={MyAdsScreen} />
+          <Route path="/advertising/profile" component={MyAdsScreen} />
           <Route path="/profile/edit-ad/:id" component={EditAdsService} />
           <Route path="/auth" component={AuthComponents} />
 
@@ -235,19 +280,19 @@ function App() {
           />
 
           {/* ////////////////////    DESIGNPAGE ROUTER   ////////////////// */}
-          {/* <Route path="/design" component={DesignComponent} /> */}
+          <Route path="/design" component={DesignComponent} />
 
           {/* ////////////////////    PROGRAMMING ROUTER   ////////////////// */}
-          {/* <Route path="/programming" component={ProgrammingComponent} /> */}
+          <Route path="/programming" component={ProgrammingComponent} />
 
           {/* ////////////////////    PHOTOGRAPHY ROUTER   ////////////////// */}
-          {/* <Route path="/photography" component={PhotographyComponent} /> */}
+          <Route path="/photography" component={PhotographyComponent} />
 
           {/* ////////////////////    PRODUCTION ROUTER   ////////////////// */}
-          {/* <Route path="/production" component={ProductionComponent} /> */}
+          <Route path="/production" component={ProductionComponent} />
 
           {/* ////////////////////    ABOUT ROUTER   ////////////////// */}
-          {/* <Route path="/about" component={AboutComponent} /> */}
+          <Route path="/about" component={AboutComponent} />
 
           {/*////////////////  ADMIN ROUTER  ///////////// */}
           <Route path="/admin/orderlist" component={OrderListComponent} exact />
@@ -289,7 +334,6 @@ function App() {
 
           <Route component={pageNotFound} exact />
         </Switch>
-        <ChatBotComponent />
         <Footer />
       </Suspense>
     </Router>
