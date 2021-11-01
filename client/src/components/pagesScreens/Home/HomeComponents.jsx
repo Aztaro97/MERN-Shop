@@ -6,7 +6,9 @@ import MainContainer from "../../MainContainer";
 function HomeComponents() {
   return (
     <MainContainer>
-      <Container></Container>
+      <Container>
+        <h1>Home</h1>
+      </Container>
     </MainContainer>
   );
 }
