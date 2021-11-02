@@ -28,21 +28,27 @@ function PhotographyScreen() {
             </Title>
           </Col>
         </Row>
-        <Row gutter={[40, 20]}>
+        <Row gutter={[50, 20]}>
           <Col
             xs={{ span: 24 }}
             sm={{ span: 24 }}
             md={{ span: 24 }}
             lg={{ span: 12 }}
           >
-            <Space size={[5, 3]} wrap={false} align="center">
-              <Image
-                src={imageUrl}
-                alt=""
-                style={{ height: "100% !important" }}
-              />
-              <Image src={imageUrl} alt="" />
-            </Space>
+            <Image.PreviewGroup>
+              <Row gutter={[5, 0]} align="center">
+                <Col xs={{ span: 12 }}>
+                  <Image src={imageUrl} alt="" className="height-image" />
+                </Col>
+                <Col xs={{ span: 12 }}>
+                  <Image
+                    src="https://images.unsplash.com/photo-1544961371-516024f8e267?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=774&q=80"
+                    alt=""
+                    className="height-image"
+                  />
+                </Col>
+              </Row>
+            </Image.PreviewGroup>
           </Col>
           <Col
             xs={{ span: 24 }}
@@ -50,27 +56,105 @@ function PhotographyScreen() {
             md={{ span: 24 }}
             lg={{ span: 12 }}
           >
-            <Row gutter={[5, 5]}>
-              <Col xs={{ span: 12 }}>
-                <Image src={imageUrl} alt="" />
-              </Col>
-              <Col xs={{ span: 12 }}>
-                <Image src={imageUrl} alt="" />
-              </Col>
-              <Col xs={{ span: 12 }}>
-                <Image src={imageUrl} alt="" />
-              </Col>
-              <Col xs={{ span: 12 }}>
-                <Image src={imageUrl} alt="" />
-              </Col>
-            </Row>
+            <Image.PreviewGroup>
+              <Row gutter={[5, 0]}>
+                <Col xs={{ span: 12 }}>
+                  <Image src={imageUrl} alt="" width="100%" className="image" />
+                </Col>
+                <Col xs={{ span: 12 }}>
+                  <Image
+                    src="https://images.unsplash.com/photo-1588866054175-c8347662ec72?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80"
+                    alt=""
+                    width="100%"
+                    className="image"
+                  />
+                </Col>
+                <Col xs={{ span: 12 }}>
+                  <Image src={imageUrl} alt="" width="100%" className="image" />
+                </Col>
+                <Col xs={{ span: 12 }}>
+                  <Image
+                    src="https://images.unsplash.com/photo-1544961371-516024f8e267?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=774&q=80"
+                    alt=""
+                    width="100%"
+                    className="image"
+                  />
+                </Col>
+              </Row>
+            </Image.PreviewGroup>
           </Col>
           <Col xs={{ span: 24 }}>
-            <img
+            <Image
+              className="image-full"
+              height="200px"
+              width="100%"
               src={imageUrl}
               alt=""
-              style={{ width: "100% !important", height: "200px" }}
             />
+          </Col>
+          <Col
+            xs={{ span: 24 }}
+            sm={{ span: 24 }}
+            md={{ span: 24 }}
+            lg={{ span: 12 }}
+          >
+            <Image.PreviewGroup>
+              <Row gutter={[5, 0]}>
+                <Col xs={{ span: 12 }}>
+                  <Image
+                    src="https://via.placeholder.com/200"
+                    alt=""
+                    width="100%"
+                    className="image"
+                  />
+                </Col>
+                <Col xs={{ span: 12 }}>
+                  <Image
+                    src="https://via.placeholder.com/200"
+                    alt=""
+                    width="100%"
+                    className="image"
+                  />
+                </Col>
+                <Col xs={{ span: 12 }}>
+                  <Image
+                    src="https://via.placeholder.com/200"
+                    alt=""
+                    width="100%"
+                    className="image"
+                  />
+                </Col>
+                <Col xs={{ span: 12 }}>
+                  <Image
+                    src="https://via.placeholder.com/200"
+                    alt=""
+                    width="100%"
+                    className="image"
+                  />
+                </Col>
+              </Row>
+            </Image.PreviewGroup>
+          </Col>
+          <Col
+            xs={{ span: 24 }}
+            sm={{ span: 24 }}
+            md={{ span: 24 }}
+            lg={{ span: 12 }}
+          >
+            <Image.PreviewGroup>
+              <Row gutter={[5, 0]} align="center">
+                <Col xs={{ span: 12 }}>
+                  <Image src={imageUrl} alt="" className="height-image" />
+                </Col>
+                <Col xs={{ span: 12 }}>
+                  <Image
+                    src="https://images.unsplash.com/photo-1544961371-516024f8e267?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=774&q=80"
+                    alt=""
+                    className="height-image"
+                  />
+                </Col>
+              </Row>
+            </Image.PreviewGroup>
           </Col>
         </Row>
       </GalleryContainer>
@@ -105,14 +189,23 @@ const Banner = styled.div`
 `;
 
 const GalleryContainer = styled.div`
-  padding: 20px 0;
+  padding: 40px 0;
   & .title {
     color: var(--orange-color);
     text-transform: capitalize;
   }
-  & .img {
+  & .image {
     width: 100%;
-    height: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  & .image-full {
+    width: 100% !important;
+    object-fit: cover;
+  }
+  & .height-image {
+    height: 410px;
+    object-fit: cover;
   }
 `;
 

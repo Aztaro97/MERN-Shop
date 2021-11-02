@@ -201,13 +201,18 @@ function NavBar() {
                     </li>
                   </>
                 )}
-                {(userInfo && userInfo.typeUser === "merchant") && (
+                {userInfo && userInfo.typeUser === "merchant" && (
                   <>
                     <li>
-                      <Link className="link" to="/myproducts"> {t("my_products")} </Link>
+                      <Link className="link" to="/myproducts">
+                        {" "}
+                        {t("my_products")}{" "}
+                      </Link>
                     </li>
                     <li>
-                      <Link className="link" to="/myorder">{t("my_order")}</Link>
+                      <Link className="link" to="/myorder">
+                        {t("my_order")}
+                      </Link>
                     </li>
                     <li>
                       <Link className="link" onClick={handleCreateProduct}>

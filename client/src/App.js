@@ -61,6 +61,9 @@ const EMarketingComponent = lazy(() =>
 const OutMarketingComponent = lazy(() =>
   import("./components/pagesScreens/marketing/outDoorMarketing")
 );
+const DigitalMarketingComponent = lazy(() =>
+  import("./components/pagesScreens/marketing/digital-marketing")
+);
 
 // ////////////////  Design Component    /////////////////////
 const DesignComponent = lazy(() =>
@@ -224,6 +227,8 @@ function App() {
           {/* /////////////////////   Markeing Router   ///////////////////// */}
           <Route path="/marketing" component={EMarketingComponent} />
           <Route path="/out-marketing" component={OutMarketingComponent} />
+          <Route path="/digital-marketing" component={DigitalMarketingComponent} />
+
 
           {/* /////////////////  CONTACT US   ////////////////////////// */}
           <Route exact path="/contact-us" component={ContactUsComponents} />

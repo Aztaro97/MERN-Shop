@@ -18,7 +18,7 @@ function ToggleMenu({ open, setOpen }) {
   };
   return (
     <Nav open={open} className="toggleMenu open" id="menu">
-      <Row justify="center" gutter={[10, 50]} className="row_container">
+      <Row justify="center" gutter={[50, 50]} className="row_container">
         <Col xs={{ span: 24 }} md={{ span: 6 }}>
           <LinkStyling to="/" onClick={handleCloseMenu} className="link">
             <span> {t("nav_home")}</span>
@@ -113,11 +113,13 @@ function ToggleMenu({ open, setOpen }) {
   );
 }
 const DropDownContent = styled.div`
-  display: none;
+  /* display: none; */
+  opacity: 0;
   text-align: center;
   width: 100%;
-  z-index: 1;
-  padding: 25px 0;
+  padding: 30px 0 0 0;
+  position: absolute;
+  top: -4000px;
 `;
 const SubContent = styled.div`
   display: none;
@@ -128,10 +130,10 @@ const SubContent = styled.div`
     text-align: center;
     color: #93a3b3;
     text-decoration: none;
-    padding:2px 0;
+    padding: 2px 0;
     &:hover {
-    color: var(--orange-color);
-  }
+      color: var(--orange-color);
+    }
   }
 `;
 const SubDropList = styled.div`
@@ -152,11 +154,28 @@ const SubLink = styled(Link)`
 `;
 
 const DropDownList = styled.div`
-  text-align: center;
-  width: 100%;
+  /* text-align: center; */
+  /* width: 100%; */
+  @keyframes Styleanimatin {
+    0% {
+      transform: translateY(-30px);
+      opacity: 0;
+    }
+    50% {
+      transform: translateY(-10px);
+      /* opacity: 0.7; */
+    }
+    100% {
+      transform: translateY(0%);
+      opacity: 1;
+    }
+  }
   &:hover ${DropDownContent} {
     display: block;
-    transition: all 1s ease-in-out;
+    opacity: 1;
+    position: inherit;
+    animation-name: Styleanimatin;
+    animation-duration: 0.7s;
   }
 `;
 const Nav = styled.nav`
