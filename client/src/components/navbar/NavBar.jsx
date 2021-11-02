@@ -309,7 +309,7 @@ const NavLink = styled(Link)`
   text-decoration: none;
   color: var(--silver-color);
   & .icon {
-    font-size: 1.9rem;
+    font-size: 1.5rem;
   }
 
   & .count {

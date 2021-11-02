@@ -53,6 +53,7 @@ function DigitalMarketingScreen() {
               src="https://images.unsplash.com/photo-1562577309-4932fdd64cd1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1548&q=80"
               alt=""
               width="100%"
+              loading="lazy"
             />
           </Col>
         </Row>
