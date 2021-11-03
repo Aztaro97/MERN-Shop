@@ -11,13 +11,15 @@ import {
   getCraftmanList,
 } from "../../../flux/actions/userAction";
 import Loader from "../../loader";
-import "./ecommerce.css";
+// import "./ecommerce.css";
 
 import svg1 from "../../../img/svg1.svg";
 import bg_rounded from "../../../img/bg_rounded.svg";
 
-import compayn_pic from "../../../img/company_pic2.png";
+
 import { Col, Row } from "antd";
+
+const compayn_pic = "/img/advertising/empty.jpg";
 
 function HomeECommerce() {
   const dispatch = useDispatch();
@@ -69,10 +71,15 @@ function HomeECommerce() {
       </Section1>
 
       {/* <!-- Social Media container  --> */}
-      <div className="socialMedia" id="socialMediaContent">
+      {/* <SocialMedia className="socialMedia" id="socialMediaContent">
         <div className="bgGrediant">
           <Row>
-            <Col xs={{span:24}} md={{span:24}} lg={{span:6}} >
+            <Col
+              xs={{ span: 24 }}
+              sm={{ span: 24 }}
+              md={{ span: 24 }}
+              lg={{ span: 12 }}
+            >
               <div className="socialText">
                 <img src="./img/shape1.png" className="shape" alt="" />
                 <div className="contente">
@@ -90,7 +97,7 @@ function HomeECommerce() {
                 </div>
               </div>
             </Col>
-            <Col xs={{span:24}} md={{span:24}} lg={{span:18}}>
+            <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 12 }}>
               <div className="popSocial">
                 <p className="largeText weight-500 thirdColor text-uppercase ">
                   how
@@ -126,24 +133,13 @@ function HomeECommerce() {
                       <span className="social_btn">file data</span>
                     </a>
                   </div>
-                  {/* <div className="item">
-                  <a href="/#" className="btn" type="button">
-                    <img src="./img/s4.png" alt="" />
-                  </a>
-                </div> */}
                 </div>
               </div>
             </Col>
           </Row>
         </div>
-      </div>
+      </SocialMedia> */}
 
-      {/* <SocialSection>
-        <div className="grid">
-          <img src={content_img} alt="" className="svg_left" />
-          <img src={svg_right} alt="" className="svg_right" />
-        </div>
-      </SocialSection> */}
       <CardSection>
         <h4>companies for you</h4>
         <hr />
@@ -239,6 +235,72 @@ function HomeECommerce() {
   );
 }
 
+const SocialMedia = styled.section`
+  & .bgGrediant {
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      rgba(91, 185, 198, 1) 0%,
+      rgba(91, 185, 198, 1) 1%,
+      rgba(33, 127, 140, 1) 28%,
+      rgba(29, 24, 74, 1) 99%,
+      rgba(29, 24, 74, 1) 100%
+    );
+    width: 100%;
+    border-radius: 20%;
+    padding: 5rem 0;
+    overflow: hidden;
+  }
+  .socialText > div {
+    padding: 45px 10px 10px;
+    padding-inline-start: 70px;
+    position: absolute;
+    top: 0px;
+    width: 420px;
+  }
+  .popSocial {
+    width: 30vw;
+    height: 30vw;
+    margin-right: 0;
+    text-align: center;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    right: 2.4rem;
+    background: url("/img/dots2.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    @media only screen and (max-width: 764px) {
+      & p {
+        font-size: 0.6rem !important;
+      }
+      & .socials img {
+        font-size: 0.6rem !important;
+      }
+      & .socials img {
+        width: 40px;
+        height: 40px;
+      }
+      & > .btn {
+        background: #c68787;
+        color: #fff;
+        border-radius: 30px;
+        height: 45px;
+        padding: 0px 10px;
+        line-height: 45px;
+        font-size: 14px;
+        font-weight: 400;
+        width: 100px;
+        margin: 10px auto 0px;
+        box-shadow: 0px 0px 20px 2px rgba(198, 135, 135, 65%) !important;
+      }
+    }
+  }
+`;
+
 const Section1 = styled.section`
   max-width: var(--max-width);
   margin: 1rem auto 0;
@@ -319,63 +381,6 @@ const Section1 = styled.section`
     & p {
       font-size: 0.9rem;
     }
-  }
-`;
-
-const SocialSection = styled.section`
-  background: linear-gradient(
-    to bottom,
-    rgba(91, 185, 198, 1) 0%,
-    rgba(91, 185, 198, 1) 1%,
-    rgba(33, 127, 140, 1) 28%,
-    rgba(29, 24, 74, 1) 99%,
-    rgba(29, 24, 74, 1) 100%
-  );
-  /* background-image: url(${bg_rounded}); */
-  /* border-radius: 30%; */
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-origin: content-box;
-  width: 100%;
-  margin-top: 5rem;
-  padding: 1rem 0;
-
-  & .grid {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    /* grid-template-columns: 1fr 1fr;
-    grid-gap: 2rem; */
-
-    & .svg_left {
-      width: 28.125rem;
-      height: auto;
-      position: relative;
-      bottom: 2rem;
-
-      @media only screen and (max-width: 768px) {
-        width: 20rem;
-      }
-    }
-    & .svg_right {
-      height: 20rem;
-      display: block;
-      text-align: end;
-      @media only screen and (max-width: 655px) {
-        width: 15rem;
-        height: 15rem;
-        /* right: -8rem;
-        top: -2rem; */
-      }
-    }
-    @media only screen and (max-width: 640px) {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  @media only screen and (max-width: 768px) {
-    background-position: inherit;
   }
 `;
 

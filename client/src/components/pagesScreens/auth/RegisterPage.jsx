@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
@@ -24,7 +24,6 @@ import {
 } from "../../../flux/actions/userAction";
 import { useFormik } from "formik";
 import MainContainer from "../../MainContainer";
-import logOutForm from "../auth/logOutForm";
 import InputRadio from "../../InputRadioComponent";
 import ButtonC from "../../ButtonComponeent";
 import InputC from "../../InputComponents";
@@ -32,42 +31,23 @@ import SelectC from "../../SelectComponents";
 import Ratio from "../../antRatio";
 import { successMessage } from "../../message";
 
-
 function RegisterPage() {
   const { t } = useTranslation();
-  const [typeUser, setTypeUser] = useState("company");
 
   const history = useHistory();
 
   const { userInfo } = useSelector((state) => state.userLogin);
 
-  const handleClickRadio = (e) => {
-    setTypeUser(e.target.value);
-    console.log(e.target.value);
-  };
-
-  // useEffect(() => {
-  //   if (!userInfo) {
-  //     history.push("/auth")
-  //   }
-  // },[userInfo])
+  useEffect(() => {
+    if (!userInfo) {
+      history.push("/auth");
+    }
+  }, [userInfo, history]);
 
   return (
     <MainContainer>
       <FormContainer>
-        <Header>
-          <a href="#/" onClick={() => history.goBack()}>
-            {t("back")}
-          </a>
-          <div className="radio_container">
-            <Radio.Group onChange={handleClickRadio} defaultValue={typeUser}>
-              <RadioCustom value="company"> {t("company")} </RadioCustom>
-              <RadioCustom value="personnel">{t("personnel")}</RadioCustom>
-            </Radio.Group>
-          </div>
-        </Header>
-        {!userInfo && <logOutForm />}
-        <CompanyInfo typeUser={typeUser} />
+        <CompanyInfo />
         <BankInfo />
         <GalleryPhotos />
         {/* <div className="row">
@@ -82,7 +62,7 @@ function RegisterPage() {
   );
 }
 
-const CompanyInfo = ({ typeUser }) => {
+const CompanyInfo = () => {
   const { t } = useTranslation();
   // Finish State
   const [cellular, setCellular] = useState("");
@@ -98,12 +78,13 @@ const CompanyInfo = ({ typeUser }) => {
   const [ListHour, setListHour] = useState([]);
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const formik = useFormik({
     initialValues: {
       company: {
         name: "",
-        type: "",
+        type: "company",
         scopeBusiness: "",
         licenceNumber: "",
         expireDate: "",
@@ -125,15 +106,22 @@ const CompanyInfo = ({ typeUser }) => {
       },
     },
     onSubmit: (values) => {
-      formik.setFieldValue("company.type", typeUser);
       const body = JSON.stringify(values, null, 2);
-      // setfield(formik.company.type, typeUser)
 
-      dispatch(registerCompanyInfo(body));
+      setTimeout(() => {
+        dispatch(registerCompanyInfo(body));
+      }, 500);
 
       console.log(body);
     },
   });
+
+  let typeUser = formik.values.company.type;
+
+  const handleClickRadio = (e) => {
+    formik.setFieldValue("company.type", e.target.value);
+    console.log(e.target.value);
+  };
 
   //  Cellular function
   const addCellular = (e) => {
@@ -170,6 +158,17 @@ const CompanyInfo = ({ typeUser }) => {
 
   return (
     <Form onSubmit={formik.handleSubmit}>
+      <Header>
+        <a href="#/" onClick={() => history.goBack()}>
+          {t("back")}
+        </a>
+        <div className="radio_container">
+          <Radio.Group onChange={handleClickRadio} defaultValue={typeUser}>
+            <RadioCustom value="company"> {t("company")} </RadioCustom>
+            <RadioCustom value="personnel">{t("personnel")}</RadioCustom>
+          </Radio.Group>
+        </div>
+      </Header>
       <h1>{typeUser} information</h1>
 
       <div className="card">
