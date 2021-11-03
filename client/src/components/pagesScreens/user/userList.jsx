@@ -43,7 +43,7 @@ function UserListScreen() {
     if (userInfo && userInfo.isAdmin) {
       dispatch(listUsers());
     } else {
-      history.push("/login");
+      history.push("/auth");
     }
   }, [dispatch, history, userInfo, successDelete]);
   return (

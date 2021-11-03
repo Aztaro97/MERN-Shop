@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import MainContainer from "../../MainContainer";
 import { Col, Image, Row, Space, Typography } from "antd";
-
+import Button from "../../ButtonComponeent"
 const { Title, Paragraph } = Typography;
 
 function PhotographyScreen() {
@@ -18,6 +18,9 @@ function PhotographyScreen() {
             cupiditate dolore earum perferendis asperiores culpa id esse laborum
             quaerat
           </Paragraph>
+          <Button type="button" className="link">
+            contact today
+          </Button>
         </div>
       </Banner>
       <GalleryContainer>
@@ -178,9 +181,13 @@ const Banner = styled.div`
     padding: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: center;
+    max-width: 400px;
     & > * {
       color: #fff;
+    }
+    & .link {
+      padding: 10px 0;
     }
   }
   @media screen and (max-width: 678px) {

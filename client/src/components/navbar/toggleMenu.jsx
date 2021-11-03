@@ -40,6 +40,13 @@ function ToggleMenu({ open, setOpen }) {
 
                 <SubContent>
                   <Link
+                    to="/digital-marketing"
+                    className="link"
+                    onClick={handleCloseMenu}
+                  >
+                    Digital marketing
+                  </Link>
+                  {/* <Link
                     to="/marketing"
                     className="link"
                     onClick={handleCloseMenu}
@@ -52,7 +59,7 @@ function ToggleMenu({ open, setOpen }) {
                     onClick={handleCloseMenu}
                   >
                     {t("out_marketing")}
-                  </Link>
+                  </Link> */}
                 </SubContent>
               </SubDropList>
               <SubDropList>
