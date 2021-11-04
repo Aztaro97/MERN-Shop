@@ -33,7 +33,7 @@ function ToggleMenu({ open, setOpen }) {
               <SubLink to="/advertising" onClick={handleCloseMenu}>
                 {t("adv_service")}
               </SubLink>
-              <SubDropList>
+              {/* <SubDropList>
                 <SubLink to="#/">
                   MARKETING <FiChevronDown />
                 </SubLink>
@@ -46,7 +46,7 @@ function ToggleMenu({ open, setOpen }) {
                   >
                     Digital marketing
                   </Link>
-                  {/* <Link
+                  <Link
                     to="/marketing"
                     className="link"
                     onClick={handleCloseMenu}
@@ -59,7 +59,7 @@ function ToggleMenu({ open, setOpen }) {
                     onClick={handleCloseMenu}
                   >
                     {t("out_marketing")}
-                  </Link> */}
+                  </Link>
                 </SubContent>
               </SubDropList>
               <SubDropList>
@@ -84,7 +84,17 @@ function ToggleMenu({ open, setOpen }) {
                     {t("payment")}
                   </Link>
                 </SubContent>
-              </SubDropList>
+              </SubDropList> */}
+
+              <SubLink to="/digital-marketing" onClick={handleCloseMenu}>
+                Digital Marketing
+              </SubLink>
+              <SubLink to="/e-commerce" onClick={handleCloseMenu}>
+                E-commerce
+              </SubLink>
+              <SubLink to="/printing" onClick={handleCloseMenu}>
+                Printing
+              </SubLink>
 
               <SubLink to="/production" onClick={handleCloseMenu}>
                 {t("prod_service")}
@@ -210,6 +220,8 @@ const Nav = styled.nav`
   & .row_container {
     position: relative;
     top: 80px;
+    max-width: var(--max-width);
+    margin: 0 auto !important;
   }
 `;
 

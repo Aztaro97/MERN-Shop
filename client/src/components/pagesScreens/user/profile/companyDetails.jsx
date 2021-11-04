@@ -16,7 +16,7 @@ import Loader from "../../../loader";
 import { getUserDetails } from "../../../../flux/actions/userAction";
 import ButtonC from "../../../ButtonComponeent";
 
-const BgImg = "/img/advertising/empty.jpg";
+const EmptyImg = "/img/advertising/empty.jpg";
 
 const CompanyInfo = ({ loading, user, error }) => {
   const { company } = user;
@@ -47,7 +47,7 @@ const CompanyInfo = ({ loading, user, error }) => {
               <Row gutter={[10, 10]}>
                 <Col xs={{ span: 24 }}>
                   <img
-                    src={company.urlImg.length !== 0 ? company.urlImg : BgImg}
+                    src={company.urlImg.length !== 0 ? company.urlImg : EmptyImg}
                     alt=""
                   />
                 </Col>
@@ -152,7 +152,7 @@ const CompanyInfo = ({ loading, user, error }) => {
               <div className="container">
                 <img
                   src={
-                    company.urlImg.length !== 0 ? company.urlImg[0].url : BgImg
+                    company.urlImg.length !== 0 ? company.urlImg[0].url : EmptyImg
                   }
                   alt=""
                   className="bg-right"

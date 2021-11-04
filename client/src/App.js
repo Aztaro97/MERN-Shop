@@ -85,6 +85,11 @@ const ProductionComponent = lazy(() =>
   import("./components/pagesScreens/productionScreen/productionScreen")
 );
 
+// ////////////////  Printing Component    /////////////////////
+const PrintingComponent = lazy(() =>
+  import("./components/pagesScreens/printing/printingScreen")
+);
+
 // ////////////////  ABOUT Component    /////////////////////
 const AboutComponent = lazy(() =>
   import("./components/pagesScreens/AboutScreen/aboutScreen")
@@ -227,8 +232,10 @@ function App() {
           {/* /////////////////////   Markeing Router   ///////////////////// */}
           <Route path="/marketing" component={EMarketingComponent} />
           <Route path="/out-marketing" component={OutMarketingComponent} />
-          <Route path="/digital-marketing" component={DigitalMarketingComponent} />
-
+          <Route
+            path="/digital-marketing"
+            component={DigitalMarketingComponent}
+          />
 
           {/* /////////////////  CONTACT US   ////////////////////////// */}
           <Route exact path="/contact-us" component={ContactUsComponents} />
@@ -295,6 +302,9 @@ function App() {
 
           {/* ////////////////////    PRODUCTION ROUTER   ////////////////// */}
           <Route path="/production" component={ProductionComponent} />
+
+          {/* ////////////////////    PRINTING ROUTER   ////////////////// */}
+          <Route path="/printing" component={PrintingComponent} />
 
           {/* ////////////////////    ABOUT ROUTER   ////////////////// */}
           <Route path="/about" component={AboutComponent} />

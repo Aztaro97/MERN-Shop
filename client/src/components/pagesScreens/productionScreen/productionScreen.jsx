@@ -34,7 +34,7 @@ function ProductionScreen() {
         </section>
         <CardProductList />
         <section className="contact_section">
-          <Button className="button">Order Now</Button>
+          <Button className="button">contact us</Button>
           <h4>Lorem ipsum dolor sit amet consectetur</h4>
         </section>
       </Container>
@@ -235,6 +235,14 @@ const Container = styled.div`
       text-transform: capitalize;
       letter-spacing: 1px;
     }
+    @media only screen and (max-width: 600px) {
+      & .button {
+        font-size: 0.8rem;
+      }
+      & h4 {
+        font-size: 1.2rem;
+      }
+    }
   }
   & .contact_section {
     margin: 20px 0;
@@ -258,6 +266,14 @@ const Container = styled.div`
       font-size: 1.6rem;
       margin-bottom: 0;
       padding: 10px;
+    }
+    @media only screen and (max-width: 600px) {
+      & .button {
+        font-size: 0.8rem;
+      }
+      & h4 {
+        font-size: 1.2rem;
+      }
     }
   }
 `;
