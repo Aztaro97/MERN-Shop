@@ -9,6 +9,8 @@ import LandingPage from "../landing/LandingPage";
 
 const { TabPane } = Tabs;
 
+
+
 function Tabulation() {
   return (
     <MainContainer>

@@ -46,7 +46,7 @@ const ViewProducts = () => {
     if (successCreate) {
       history.push(`/add-product/${createdProduct._id}`);
     }
-  }, [dispatch, getMyProducts, createdProduct, history]);
+  }, [dispatch, successCreate, createdProduct, history]);
 
   const showConfirm = (productID, images) => {
     console.log(images);
@@ -201,7 +201,7 @@ const Card = styled.div`
     & h2 {
       font-weight: 700;
       text-transform: uppercase;
-      margin: .3rem 0;
+      margin: 0.3rem 0;
       font-size: 1rem;
     }
     & p {

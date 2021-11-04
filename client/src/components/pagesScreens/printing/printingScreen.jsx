@@ -92,15 +92,15 @@ const ProductSelling = () => {
         },
       },
       {
-        breakpoint: 700,
+        breakpoint: 650,
         settings: {
           slidesToShow: 2,
         },
       },
       {
-        breakpoint: 400,
+        breakpoint: 420,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
         },
       },
     ],
@@ -384,6 +384,10 @@ const ProductStyling = styled.section`
         height: 200px;
         margin: auto;
         object-fit: contain;
+        @media only screen and (max-width: 425px) {
+          width: 100%;
+          margin: auto 20px;
+        }
       }
     }
   }

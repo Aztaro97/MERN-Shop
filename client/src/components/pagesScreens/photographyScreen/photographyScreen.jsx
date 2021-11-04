@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import MainContainer from "../../MainContainer";
 import { Col, Image, Row, Space, Typography } from "antd";
-import Button from "../../ButtonComponeent"
+import Button from "../../ButtonComponeent";
 const { Title, Paragraph } = Typography;
 
 function PhotographyScreen() {
@@ -41,12 +41,18 @@ function PhotographyScreen() {
             <Image.PreviewGroup>
               <Row gutter={[5, 0]} align="center">
                 <Col xs={{ span: 12 }}>
-                  <Image src={imageUrl} alt="" className="height-image" />
+                  <Image
+                    src={imageUrl}
+                    alt=""
+                    width="100%"
+                    className="height-image"
+                  />
                 </Col>
                 <Col xs={{ span: 12 }}>
                   <Image
                     src="https://images.unsplash.com/photo-1544961371-516024f8e267?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=774&q=80"
                     alt=""
+                    width="100%"
                     className="height-image"
                   />
                 </Col>
@@ -147,12 +153,18 @@ function PhotographyScreen() {
             <Image.PreviewGroup>
               <Row gutter={[5, 0]} align="center">
                 <Col xs={{ span: 12 }}>
-                  <Image src={imageUrl} alt="" className="height-image" />
+                  <Image
+                    src={imageUrl}
+                    alt=""
+                    width="100%"
+                    className="height-image"
+                  />
                 </Col>
                 <Col xs={{ span: 12 }}>
                   <Image
                     src="https://images.unsplash.com/photo-1544961371-516024f8e267?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=774&q=80"
                     alt=""
+                    width="100%"
                     className="height-image"
                   />
                 </Col>
@@ -161,12 +173,54 @@ function PhotographyScreen() {
           </Col>
         </Row>
       </GalleryContainer>
+      <ContactSection className="contact_section">
+        <Button className="button">contact us</Button>
+        <h4>Lorem ipsum dolor sit amet consectetur</h4>
+      </ContactSection>
     </MainContainer>
   );
 }
 
+const ContactSection = styled.section`
+  margin-bottom: 20px;
+  background: linear-gradient(to bottom, #11111176 0%, #00000099 100%),
+    url("https://images.unsplash.com/photo-1633114128814-11fac33f707b?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80");
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  height: 200px;
+  & > * {
+    color: #fff;
+  }
+  & .button {
+    border-radius: 50px;
+    color: var(--orange-color);
+    padding: 20px auto !important;
+    background: #fff;
+  }
+  & h4 {
+    font-weight: 700;
+    font-size: 1.6rem;
+    margin-bottom: 0;
+    padding: 10px;
+  }
+  @media only screen and (max-width: 600px) {
+    & .button {
+      font-size: 0.8rem;
+    }
+    & h4 {
+      font-size: 1.2rem;
+    }
+  }
+`;
+
 const Banner = styled.div`
-  background: url("https://images.unsplash.com/photo-1563126153-74b8e04c1070?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80");
+  background: linear-gradient(
+      90deg,
+      rgba(51, 51, 51, 1) 0%,
+      rgba(2, 0, 36, 0.8701855742296919) 0%
+    ),
+    url("/img/photography/bannerPhotography.png");
   position: relative;
   height: 400px;
   object-fit: cover;
@@ -211,6 +265,7 @@ const GalleryContainer = styled.div`
     object-fit: cover;
   }
   & .height-image {
+    width: 100% !important;
     height: 410px;
     object-fit: cover;
   }

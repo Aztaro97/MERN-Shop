@@ -9,6 +9,7 @@ import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
 
 import { getCompanyDetails } from "../../../flux/actions/userAction";
+import LoaderComponent from "../../loader";
 
 const { TabPane } = Tabs;
 
@@ -36,16 +37,20 @@ function Tabulation() {
 
   return (
     <MainContainer>
-      <Tab>
-        <TabsE defaultActiveKey="1" centered size="default">
-          <TabPane tab={t("view_products")} key="1">
-            <ViewProducts />
-          </TabPane>
-          <TabPane tab={t("company_info")} key="2">
-            <CompanyInfo company={company} />
-          </TabPane>
-        </TabsE>
-      </Tab>
+      {loading ? (
+        <LoaderComponent />
+      ) : (
+        <Tab>
+          <TabsE defaultActiveKey="1" centered size="default">
+            <TabPane tab={t("view_products")} key="1">
+              <ViewProducts />
+            </TabPane>
+            <TabPane tab={t("company_info")} key="2">
+              <CompanyInfo company={company} />
+            </TabPane>
+          </TabsE>
+        </Tab>
+      )}
     </MainContainer>
   );
 }

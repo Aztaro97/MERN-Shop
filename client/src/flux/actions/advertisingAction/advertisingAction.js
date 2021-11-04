@@ -106,12 +106,13 @@ export const getAllAdService = () => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
-    const res = await axios.get("/api/advertising", config);
+    const { data } = await axios.get("/api/advertising", config);
     dispatch({
       type: AD_LIST_SUCCESS,
-      payload: res.data,
+      payload: data,
     });
   } catch (error) {
+    console.log(error)
     dispatch({
       type: AD_LIST_FAIL,
       payload:

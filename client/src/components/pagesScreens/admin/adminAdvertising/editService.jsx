@@ -24,7 +24,7 @@ function EditServiceScreen() {
 
   const { userInfo } = useSelector((state) => state.userLogin);
 
-  const { profile, loading, error } = useSelector((state) => state.advertising);
+  const { profile, loading } = useSelector((state) => state.advertising);
 
   const dispatch = useDispatch();
 
@@ -36,8 +36,6 @@ function EditServiceScreen() {
     <MainContainer>
       {loading ? (
         <Loader />
-      ) : error ? (
-        <h3>error</h3>
       ) : (
         <Container>
           <LogoContainer

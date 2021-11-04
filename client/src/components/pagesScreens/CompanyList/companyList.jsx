@@ -7,7 +7,7 @@ import { getCompanyList } from "../../../flux/actions/userAction";
 import Loader from "../../loader";
 import TextTruncate from "react-text-truncate";
 
-import company_pic2 from "../../../img/company_pic2.png";
+const empty_pic = "/img/advertising/empty.jpg";
 
 const CarouselButton = () => {
   const settings = {
@@ -79,7 +79,7 @@ const CompanyList = () => {
                       src={
                         user.company.urlImg.length !== 0
                           ? user.company.urlImg[0].url
-                          : company_pic2
+                          : empty_pic
                       }
                       alt=""
                     />
@@ -110,7 +110,7 @@ const CompanyList = () => {
 };
 
 const Container = styled.div`
-  margin: 0 auto;
+   margin-bottom: 20px;
 `;
 
 const SliderCarousel = styled(Slider)`

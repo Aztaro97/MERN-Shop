@@ -11,10 +11,7 @@ import {
   CRAFTMAN_LIST_REQUEST,
 } from "../../../flux/constants/userConstants";
 
-import company_pic1 from "../../../img/company_pic1.png";
-import company_pic2 from "../../../img/company_pic2.png";
-import company_pic3 from "../../../img/company_pic3.png";
-import company_pic4 from "../../../img/company_pic4.png";
+const empty_pic = "/img/advertising/empty.jpg";
 
 const CarouselButton = () => {
   const settings = {
@@ -95,7 +92,7 @@ function CraftManList() {
                         src={
                           user.company.urlImg.length !== 0
                             ? user.company.urlImg[0].url
-                            : company_pic2
+                            : empty_pic
                         }
                         alt=""
                       />
@@ -126,7 +123,7 @@ function CraftManList() {
 
 const Container = styled.div`
   /* max-width: 1600px; */
-  margin: 0 auto;
+  margin-bottom: 20px;
 `;
 
 const SliderCarousel = styled(Slider)`
@@ -182,8 +179,8 @@ const CardContainer = styled.div`
       object-fit: cover;
       /* border-radius: 1rem 1rem 0 0; */
       @media only screen and (max-width: 768px) {
-      height: 17rem;
-    }
+        height: 17rem;
+      }
     }
 
     & .card_body {

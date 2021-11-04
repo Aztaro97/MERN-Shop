@@ -16,6 +16,7 @@ import { BusinessList } from "../../../../utils/advertisingData";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { destroyImages } from "../../../../flux/actions/productAction";
+import { Link } from "react-router-dom";
 const { Option } = Select;
 const { Search } = Input;
 
@@ -55,7 +56,7 @@ const AllCompanyService = () => {
 
   return (
     <AllCompanyContainer>
-      <h3 className="title">list all services</h3>
+      <h3 className="title">list all Ads</h3>
       <Row>
         <Col xs={{ span: 12 }}>
           <SelectStyling
@@ -81,8 +82,6 @@ const AllCompanyService = () => {
       </Row>
       {loading ? (
         <LoaderComponent />
-      ) : error ? (
-        <h3>Error: {error} </h3>
       ) : (
         <>
           <Table>
@@ -153,7 +152,7 @@ const AllCompanyService = () => {
                     </td>
                     <td>
                       <div className="control_container">
-                        <Link href={`/admin/advertising/edit/${ad._id}`}>
+                        <Link to={`/admin/advertising/edit/${ad._id}`}>
                           <FaRegEdit className="icon edit" />
                         </Link>
                         <Popconfirm
@@ -162,9 +161,7 @@ const AllCompanyService = () => {
                           onConfirm={() => handleDelete(ad._id, ad.serviceUrl)}
                           cancelText="No"
                         >
-                          <Link>
-                            <MdDelete className="icon delete" />
-                          </Link>
+                          <MdDelete className="icon delete" />
                         </Popconfirm>
                       </div>
                     </td>
@@ -244,6 +241,7 @@ const Table = styled.table`
             transition: all 0.3s ease-in-out;
             &.delete {
               color: #e74c3c;
+              cursor: pointer;
               &:hover {
                 transform: scale(1.2);
               }
@@ -270,7 +268,5 @@ const SelectStyling = styled(Select)`
     /* outline: none; */
   }
 `;
-
-const Link = styled.a``;
 
 export default AllCompanyService;
