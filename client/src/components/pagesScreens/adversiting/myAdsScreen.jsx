@@ -19,9 +19,7 @@ const { Meta } = Card;
 function MyAdsScreen() {
   const { userInfo } = useSelector((state) => state.userLogin);
 
-  const { loading, listAdService } = useSelector(
-    (state) => state.advertising
-  );
+  const { loading, listAdService } = useSelector((state) => state.advertising);
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -68,7 +66,8 @@ function MyAdsScreen() {
               listAdService.map((ad) => (
                 <Col
                   xs={{ span: 24 }}
-                  md={{ span: 12 }}
+                  sm={{ span: 12 }}
+                  md={{ span: 8 }}
                   lg={{ span: 6 }}
                   key={ad._id}
                 >

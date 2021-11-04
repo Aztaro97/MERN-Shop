@@ -159,6 +159,7 @@ const OrderContainer = styled.div`
   margin: 7rem auto 0;
   max-width: 2000px;
   padding: 0 1rem;
+  min-height: 50vh;
   & h3 {
     text-align: center;
     text-transform: uppercase;

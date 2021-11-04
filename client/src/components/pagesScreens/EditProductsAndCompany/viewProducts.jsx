@@ -38,18 +38,11 @@ const ViewProducts = () => {
     product: createdProduct,
   } = useSelector((state) => state.productCreate);
 
-  console.log(products);
-
-  useEffect(() => {
-    dispatch(getMyProducts());
-
-    if (successCreate) {
-      history.push(`/add-product/${createdProduct._id}`);
-    }
-  }, [dispatch, successCreate, createdProduct, history]);
+  const { success: successDelete } = useSelector(
+    (state) => state.productDelete
+  );
 
   const showConfirm = (productID, images) => {
-    console.log(images);
     confirm({
       title: "Do you Want to delete this product ?",
       icon: <ExclamationCircleOutlined />,
@@ -64,6 +57,17 @@ const ViewProducts = () => {
       },
     });
   };
+
+  useEffect(() => {
+    if (successDelete) {
+      dispatch(getMyProducts());
+    } else {
+      dispatch(getMyProducts());
+    }
+    if (successCreate) {
+      history.push(`/add-product/${createdProduct._id}`);
+    }
+  }, [dispatch, successDelete, successCreate, createdProduct, history]);
 
   return (
     <>

@@ -452,6 +452,7 @@ const CardText = styled.div`
   padding: 20px;
   & ul {
     list-style: none;
+    padding: 0;
   }
   border: 1px solid var(--orange-color);
 `;

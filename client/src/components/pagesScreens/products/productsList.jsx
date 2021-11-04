@@ -55,6 +55,9 @@ function ProductsListScreen({ match }) {
       },
     });
   };
+  if (successDelete) {
+    dispatch(listProductsAdmin("", pageNumber));
+  }
 
   const handleSetAllow = async (id) => {
     dispatch(setProductAllow(id, true));
@@ -67,11 +70,10 @@ function ProductsListScreen({ match }) {
   function handleMenuClick(e, productId) {
     if (e.key === "accept") {
       dispatch(setProductAllow(productId, true));
-    } 
+    }
     if (e.key === "refuse") {
       dispatch(setProductAllow(productId, false));
     }
-
   }
 
   // const menu =;
@@ -142,13 +144,12 @@ function ProductsListScreen({ match }) {
                         <p>
                           Accepted
                           <AiOutlineCheck className="allow_btn_accept" />{" "}
-                          
                         </p>
                       )}
                       {!product.allow && (
                         <p>
                           Refused
-                          <FaTimes className="allow_btn_refuse" /> 
+                          <FaTimes className="allow_btn_refuse" />
                         </p>
                       )}
                     </td>
@@ -255,7 +256,7 @@ const Table = styled.table`
           align-items: center;
           color: #111;
           position: relative;
-          top:11px;
+          top: 11px;
           &:hover {
             text-decoration: none;
             opacity: 0.9;

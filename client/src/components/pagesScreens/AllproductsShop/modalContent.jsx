@@ -21,8 +21,7 @@ import { addToCart } from "../../../flux/actions/cartAction";
 import { warningMessage } from "../../message";
 import {Event} from "../../Tracking/tracking"
 
-import picture from "../../../img/Background.png";
-import picture1 from "../../../img/productimg.png";
+const empty_pc = "/img/ecommerce/empty.jpg";
 
 const ModalContent = ({ product, setShowModal }) => {
   return (
@@ -53,7 +52,7 @@ const GalleryImg = ({ product }) => {
     <GallerieStyling>
       <img
         className="current-img"
-        src={product.imageUrl.length > 0 ? currentImg : picture1}
+        src={product.imageUrl.length > 0 ? currentImg : empty_pc}
         alt=""
       />
       <div className="aside-img">
@@ -155,7 +154,7 @@ const ProductDetails = ({ product, setShowModal }) => {
           )}
           <h1 className="price">
             {" "}
-            <span>{product.price}</span> DR{" "}
+            <span>{product.price}</span> AED{" "}
           </h1>
           <Btn>
             <button

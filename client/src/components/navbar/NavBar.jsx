@@ -35,7 +35,7 @@ function NavBar() {
     loading: loadingCreate,
     error: errorCreate,
     success: successCreate,
-    product: createdProduct,
+    product: newProduct,
   } = useSelector((state) => state.productCreate);
 
   const handleLogOut = () => {
@@ -51,9 +51,6 @@ function NavBar() {
   };
 
   const handleCreateProduct = () => {
-    if (userInfo) {
-      history.push("/auth");
-    }
     dispatch(createProduct());
   };
 
@@ -61,9 +58,9 @@ function NavBar() {
     window.addEventListener("scroll", ChangeNav);
 
     if (successCreate) {
-      history.push(`/add-product/${createdProduct._id}`);
+      history.push(`/add-product/${newProduct._id}`);
     }
-  }, [successCreate, history, createdProduct]);
+  }, [successCreate, history, newProduct]);
 
   const ProfileContentLogin = (
     <Content>
@@ -71,7 +68,7 @@ function NavBar() {
         <>
           <LinkR href="/myproducts"> {t("my_products")} </LinkR>
           <LinkR href="/myorder">{t("my_order")}</LinkR>
-          <LinkR onClick={handleCreateProduct}>{t("add_more_products")}</LinkR>
+          <LinkR  onClick={handleCreateProduct}>{t("add_more_products")}</LinkR>
         </>
       ) : (
         <>
@@ -188,18 +185,11 @@ function NavBar() {
             content={
               <ListNavigation>
                 {userInfo && (
-                  <>
-                    <li>
-                      <Link className="link" to="/advertising/profile">
-                        My Ads
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="link" onClick={handleLogOut}>
-                        {t("logout")}
-                      </Link>
-                    </li>
-                  </>
+                  <li>
+                    <Link className="link" to="/advertising/profile">
+                      My Ads
+                    </Link>
+                  </li>
                 )}
                 {userInfo && userInfo.typeUser === "merchant" && (
                   <>
@@ -225,6 +215,13 @@ function NavBar() {
                   <li>
                     <Link to="/auth" className="link">
                       {t("signin")} / {t("signup")}
+                    </Link>
+                  </li>
+                )}
+                {userInfo && (
+                  <li>
+                    <Link className="link" onClick={handleLogOut}>
+                      {t("logout")}
                     </Link>
                   </li>
                 )}

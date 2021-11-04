@@ -27,7 +27,10 @@ function CompanyDetails({ loading, company }) {
         <>
           <Grid>
             <Col>
-              <img src={company.urlImg.length !== 0 ? company.urlImg : BgImg } alt="" />
+              <img
+                src={company.urlImg.length !== 0 ? company.urlImg : BgImg}
+                alt=""
+              />
               <Container>
                 <Row>
                   <h1>{company.name}</h1>
@@ -65,22 +68,39 @@ function CompanyDetails({ loading, company }) {
                     <h1>Find us on</h1>
                     <div className="social-media">
                       {company.mediaLink.facebook && (
-                        <a href={company.mediaLink.facebook} target="_blank">
+                        <a
+                          href={company.mediaLink.facebook}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
                           <FaFacebookF className="facebook" />
                         </a>
                       )}
                       {company.mediaLink.insta && (
-                        <a href={company.mediaLink.insta} target="_blank">
+                        <a
+                          href={company.mediaLink.insta}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
                           <FaInstagram className="insta" />
                         </a>
                       )}
                       {company.mediaLink.twitter && (
-                        <a href={company.mediaLink.twitter} target="_blank">
+                        <a
+                          href={company.mediaLink.twitter}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
                           <FaTwitter className="twitter" />
                         </a>
                       )}
                       {company.mediaLink.whatsapp && (
-                        <a href={company.mediaLink.twitter} target="_blank">
+                        <a
+                          href={company.mediaLink.twitter}
+                          target="_blank"
+                          rel="noreferrer"
+                          alt=""
+                        >
                           <FaTwitter className="twitter" />
                         </a>
                       )}
@@ -94,24 +114,33 @@ function CompanyDetails({ loading, company }) {
                   <p>Holiday on {company.holidays}</p>
                   <hr />
                 </Row>
-               {company.videoLink && (
+                {company.videoLink && (
                   <Row>
-                  <a href={company.videoLink} className="video_link" target="_blank">
-                    Check video
-                  </a>
-                </Row>
-               )}
+                    <a
+                      href={company.videoLink}
+                      className="video_link"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Check video
+                    </a>
+                  </Row>
+                )}
               </Container>
             </Col>
             <Col>
               <div className="container">
-                <img src={company.urlImg.length !== 0 ? company.urlImg[0].url : BgImg} alt="" className="bg-right" />
-                <ImageGallerie>
-                  {
-                    company.urlImg.map((item,index) => (
-                      <ImageA key={index} src={item.url} />
-                    ))
+                <img
+                  src={
+                    company.urlImg.length !== 0 ? company.urlImg[0].url : BgImg
                   }
+                  alt=""
+                  className="bg-right"
+                />
+                <ImageGallerie>
+                  {company.urlImg.map((item, index) => (
+                    <ImageA key={index} src={item.url} />
+                  ))}
                   {/* <ImageA src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" />
                   <ImageA src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1490&q=80" />
                   <ImageA src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" />
@@ -162,25 +191,23 @@ const Grid = styled.div`
   grid-template-columns: 1fr 2fr;
   grid-column-gap: 1rem;
 
-  @media only screen and (max-width: 1080px) {
+  @media only screen and (max-width: 768px) {
     grid-template-columns: 1fr;
   }
 `;
 const Col = styled.div`
   .container {
-    /* border: 1px solid #e9e6e6; */
     border-radius: 20px;
     padding: 0 0.7rem;
 
     & img {
-      max-height:38rem;
+      max-height: 38rem;
     }
   }
 
   & img {
     width: 100%;
     object-fit: cover;
-    /* border-radius: 20px; */
   }
 
   & .bg-right {

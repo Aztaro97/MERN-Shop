@@ -29,6 +29,7 @@ export const advertisingReducer = (
     loading: true,
     listAdService: [],
     profile: {},
+    allMessages: [],
     error: {},
   },
   action

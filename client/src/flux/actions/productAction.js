@@ -29,72 +29,67 @@ import {
   FILTER_PRODUCT_FAIL,
 } from "../constants/productConstants";
 import { logout } from "./userAction";
-import {toast} from "react-toastify"
-import {
-  errorMessage
-} from "../../components/message";
+import { toast } from "react-toastify";
+import { errorMessage } from "../../components/message";
 
-export const listProducts =
-  (pageNumber = "") =>
-  async (dispatch) => {
-    try {
-      dispatch({ type: PRODUCT_LIST_REQUEST });
+export const listProducts = (pageNumber = "") => async (dispatch) => {
+  try {
+    dispatch({ type: PRODUCT_LIST_REQUEST });
 
-      const { data } = await axios.get(
-        `/api/products?pageNumber=${pageNumber}`
-      );
+    const { data } = await axios.get(`/api/products?pageNumber=${pageNumber}`);
 
-      dispatch({
-        type: PRODUCT_LIST_SUCCESS,
-        payload: data,
-      });
-    } catch (error) {
-      dispatch({
-        type: PRODUCT_LIST_FAIL,
-        payload:
-          error.response && error.response.data.message
-            ? error.response.data.message
-            : error.message,
-      });
-    }
-  };
+    dispatch({
+      type: PRODUCT_LIST_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_LIST_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
 
-export const listProductsAdmin =
-  (keyword = "", pageNumber = "") =>
-  async (dispatch, getState) => {
-    try {
-      const {
-        userLogin: { userInfo },
-      } = getState();
+export const listProductsAdmin = (keyword = "", pageNumber = "") => async (
+  dispatch,
+  getState
+) => {
+  try {
+    const {
+      userLogin: { userInfo },
+    } = getState();
 
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${userInfo.token}`,
-        },
-      };
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
 
-      dispatch({ type: PRODUCT_LIST_REQUEST });
+    dispatch({ type: PRODUCT_LIST_REQUEST });
 
-      const { data } = await axios.get(
-        `/api/products/admin?keyword=${keyword}&pageNumber=${pageNumber}`,
-        config
-      );
+    const { data } = await axios.get(
+      `/api/products/admin?keyword=${keyword}&pageNumber=${pageNumber}`,
+      config
+    );
 
-      dispatch({
-        type: PRODUCT_LIST_SUCCESS,
-        payload: data,
-      });
-    } catch (error) {
-      dispatch({
-        type: PRODUCT_LIST_FAIL,
-        payload:
-          error.response && error.response.data.message
-            ? error.response.data.message
-            : error.message,
-      });
-    }
-  };
+    dispatch({
+      type: PRODUCT_LIST_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_LIST_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
 
 export const listProductDetails = (id) => async (dispatch) => {
   try {
@@ -133,15 +128,13 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
       },
     };
 
-    await axios.delete(`/api/products/${id}`, config);
+    const { message } = await axios.delete(`/api/products/${id}`, config);
+    if (message) {
+      dispatch({
+        type: PRODUCT_DELETE_SUCCESS,
+      });
+    }
 
-    dispatch({
-      type: PRODUCT_DELETE_SUCCESS,
-    });
-
-    window.location.reload();
-
-    // localStorage.setItem("cartItems", JSON.stringify(data));
   } catch (error) {
     const message =
       error.response && error.response.data.message
@@ -202,7 +195,7 @@ export const updateProduct = (product) => async (dispatch, getState) => {
     dispatch({
       type: PRODUCT_UPDATE_REQUEST,
     });
-     toast.success("Product Create");
+    toast.success("Product Create");
 
     const {
       userLogin: { userInfo },
@@ -220,15 +213,14 @@ export const updateProduct = (product) => async (dispatch, getState) => {
       product,
       config
     );
-    
 
     dispatch({
       type: PRODUCT_UPDATE_SUCCESS,
       payload: data,
     });
     dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data });
-   
-    window.location.href = "/myproducts"
+
+    window.location.href = "/myproducts";
   } catch (error) {
     const message =
       error.response && error.response.data.message
@@ -245,43 +237,45 @@ export const updateProduct = (product) => async (dispatch, getState) => {
   }
 };
 
-export const createProductReview =
-  (productId, review) => async (dispatch, getState) => {
-    try {
-      dispatch({
-        type: PRODUCT_CREATE_REVIEW_REQUEST,
-      });
+export const createProductReview = (productId, review) => async (
+  dispatch,
+  getState
+) => {
+  try {
+    dispatch({
+      type: PRODUCT_CREATE_REVIEW_REQUEST,
+    });
 
-      const {
-        userLogin: { userInfo },
-      } = getState();
+    const {
+      userLogin: { userInfo },
+    } = getState();
 
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${userInfo.token}`,
-        },
-      };
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
 
-      await axios.post(`/api/products/${productId}/reviews`, review, config);
+    await axios.post(`/api/products/${productId}/reviews`, review, config);
 
-      dispatch({
-        type: PRODUCT_CREATE_REVIEW_SUCCESS,
-      });
-    } catch (error) {
-      const message =
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message;
-      if (message === "Not authorized, token failed") {
-        dispatch(logout());
-      }
-      dispatch({
-        type: PRODUCT_CREATE_REVIEW_FAIL,
-        payload: message,
-      });
+    dispatch({
+      type: PRODUCT_CREATE_REVIEW_SUCCESS,
+    });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    if (message === "Not authorized, token failed") {
+      dispatch(logout());
     }
-  };
+    dispatch({
+      type: PRODUCT_CREATE_REVIEW_FAIL,
+      payload: message,
+    });
+  }
+};
 
 export const listTopProducts = () => async (dispatch) => {
   try {
@@ -306,6 +300,9 @@ export const listTopProducts = () => async (dispatch) => {
 
 export const getMyProducts = () => async (dispatch, getState) => {
   try {
+    dispatch({
+      type: MY_PRODUCT_REQUEST,
+    });
     const {
       userLogin: { userInfo },
     } = getState();
@@ -318,10 +315,6 @@ export const getMyProducts = () => async (dispatch, getState) => {
     };
 
     const { data } = await axios.get("/api/products/my", config);
-
-    dispatch({
-      type: MY_PRODUCT_REQUEST,
-    });
 
     dispatch({
       type: MY_PRODUCT_SUCCESS,
@@ -398,60 +391,58 @@ export const filterProductsById = (body, userID) => async (dispatch) => {
   }
 };
 
-export const getProductUserById =
-  (userId, pageNumber = "") =>
-  async (dispatch) => {
-    try {
-      dispatch({ type: PRODUCT_LIST_REQUEST });
+export const getProductUserById = (userId, pageNumber = "") => async (
+  dispatch
+) => {
+  try {
+    dispatch({ type: PRODUCT_LIST_REQUEST });
 
-      const { data } = await axios.get(
-        `/api/products/user/${userId}?pageNumber=${pageNumber}`
-      );
+    const { data } = await axios.get(
+      `/api/products/user/${userId}?pageNumber=${pageNumber}`
+    );
 
-      // const { data } = await axios.get(
-      //   `/api/products?pageNumber=${pageNumber}`
-      // );
+    // const { data } = await axios.get(
+    //   `/api/products?pageNumber=${pageNumber}`
+    // );
 
-      dispatch({
-        type: PRODUCT_LIST_SUCCESS,
-        payload: data,
-      });
-    } catch (error) {
-      dispatch({
-        type: PRODUCT_LIST_FAIL,
-        payload:
-          error.response && error.response.data.message
-            ? error.response.data.message
-            : error.message,
-      });
-    }
-  };
+    dispatch({
+      type: PRODUCT_LIST_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_LIST_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
 
-export const setProductAllow =
-  (id, permission) => async (dispatch, getState) => {
-    try {
-      const {
-        userLogin: { userInfo },
-      } = getState();
+export const setProductAllow = (id, permission) => async (
+  dispatch,
+  getState
+) => {
+  try {
+    const {
+      userLogin: { userInfo },
+    } = getState();
 
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${userInfo.token}`,
-        },
-      };
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
 
-      const res = await axios.post(
-        `/api/products/${id}`,
-        { permission },
-        config
-      );
+    const res = await axios.post(`/api/products/${id}`, { permission }, config);
 
-      if (res) window.location.reload();
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
+    if (res) window.location.reload();
+  } catch (error) {
+    console.log(error.message);
+  }
+};
 
 export const destroyImages = (imagesUrl) => async (dispatch, getState) => {
   try {
@@ -467,7 +458,7 @@ export const destroyImages = (imagesUrl) => async (dispatch, getState) => {
     };
     console.log(imagesUrl);
 
-    const res = await axios.post(`/api/upload/destroy/`, {imagesUrl}, config);
+    const res = await axios.post(`/api/upload/destroy/`, { imagesUrl }, config);
     dispatch({
       type: "IMAGE DELETED FROM CLOUDINARY",
     });
@@ -479,6 +470,6 @@ export const destroyImages = (imagesUrl) => async (dispatch, getState) => {
         ? error.response.data.message
         : error.message;
     // console.log(message);
-    errorMessage(message)
+    errorMessage(message);
   }
 };

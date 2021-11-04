@@ -15,8 +15,7 @@ function PhotographyScreen() {
           <Title level={2}>Blind</Title>
           <Paragraph>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
-            cupiditate dolore earum perferendis asperiores culpa id esse laborum
-            quaerat
+            cupiditate dolore 
           </Paragraph>
           <Button type="button" className="link">
             contact today
@@ -217,8 +216,8 @@ const ContactSection = styled.section`
 const Banner = styled.div`
   background: linear-gradient(
       90deg,
-      rgba(51, 51, 51, 1) 0%,
-      rgba(2, 0, 36, 0.8701855742296919) 0%
+      #33333365 0%,
+      rgba(2, 0, 36, 0) 0%
     ),
     url("/img/photography/bannerPhotography.png");
   position: relative;
@@ -232,7 +231,7 @@ const Banner = styled.div`
     left: 0;
     height: 100%;
     width: 100%;
-    padding: 10px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;

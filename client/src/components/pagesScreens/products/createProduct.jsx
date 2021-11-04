@@ -126,10 +126,6 @@ function AddProductScreen() {
     history.push("/auth");
   }
 
-  // useEffect(() => {
-
-  // }, [userInfo])
-
   return (
     <MainContainer>
       <Header>

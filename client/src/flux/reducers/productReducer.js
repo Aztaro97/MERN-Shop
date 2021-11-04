@@ -45,7 +45,7 @@ export const productListReducer = (state = { products: [] }, action) => {
         page: action.payload.page,
       };
     case PRODUCT_LIST_FAIL:
-      case FILTER_PRODUCT_FAIL:
+    case FILTER_PRODUCT_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;
@@ -71,7 +71,7 @@ export const productDetailsReducer = (
 export const productDeleteReducer = (state = {}, action) => {
   switch (action.type) {
     case PRODUCT_DELETE_REQUEST:
-      return { loading: true };
+      return { loading: true, success: false };
     case PRODUCT_DELETE_SUCCESS:
     case MY_PRODUCT_SUCCESS:
       return { loading: false, success: true };

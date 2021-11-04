@@ -4,7 +4,7 @@ import TextTruncate from "react-text-truncate";
 import { Image, Modal } from "antd";
 import ModalContent from "./modalContent";
 
-import productImg from "../../../img/productimg.png";
+const empty_pc = "/img/ecommerce/empty.jpg";
 
 function Product({ product }) {
   const [showModal, setShowModal] = useState(false);
@@ -12,7 +12,13 @@ function Product({ product }) {
   return (
     <Card>
       <div className="img_card">
-        <Image src={product.imageUrl.length > 0 ? product.imageUrl[0].url : productImg} alt="" preview={true} />
+        <Image
+          src={
+            product.imageUrl.length > 0 ? product.imageUrl[0].url : empty_pc
+          }
+          alt=""
+          preview={true}
+        />
       </div>
       <div className="card-body">
         <TextTruncate

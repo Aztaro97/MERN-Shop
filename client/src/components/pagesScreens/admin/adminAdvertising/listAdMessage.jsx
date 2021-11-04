@@ -22,7 +22,7 @@ const ListAdMessage = () => {
     }
 
     dispatch(fetchAllClientMessage());
-  }, [fetchAllClientMessage, dispatch, userInfo, history]);
+  }, [dispatch, userInfo, history]);
 
   return (
     <Container>
@@ -36,17 +36,13 @@ const ListAdMessage = () => {
 };
 
 const AsideComponent = () => {
-  const [actived, setActived] = useState(true)
-  const { loading, error, allMessages } = useSelector(
-    (state) => state.advertising
-  );
+  const [actived, setActived] = useState(true);
+  const { loading, allMessages } = useSelector((state) => state.advertising);
   const dispatch = useDispatch();
   return (
     <AsideStyling>
       {loading ? (
         <LoaderComponent />
-      ) : error ? (
-        <h4>{error}</h4>
       ) : (
         <>
           {allMessages.length > 0 &&
@@ -57,7 +53,9 @@ const AsideComponent = () => {
                   view={item.view}
                 >
                   {item.firstName} {item.lastName}
-                  {item.view === false && (<span className="view_text">new</span>)}
+                  {item.view === false && (
+                    <span className="view_text">new</span>
+                  )}
                 </CardItem>
               </div>
             ))}
@@ -102,8 +100,7 @@ const CardItem = styled.a`
   box-shadow: var(--box-shadow-value);
   background: ${({ view }) =>
     view === true ? "rgba(242,245,245,0.8)" : "#fff"};
-    color: ${({ view }) =>
-    view === true ? "#333" : "inehrit"};
+  color: ${({ view }) => (view === true ? "#333" : "inehrit")};
   &:hover {
     background: var(--orange-color);
     color: #000 !important;

@@ -15,49 +15,49 @@ export const categoryAdversiting = [
     profileId: "61683883bb90435d90a1bd24",
     title: TranslateContent("real estate"),
     image:
-      "https://res.cloudinary.com/tarositeweb/image/upload/v1634220205/tmp-6-1634220194284_gvhktf.jpg",
+      "/img/advertising/real_state.jpg",
   },
   {
     profileId: "61683883bb90435d90a1bd24",
     title: TranslateContent("restaurant"),
     image:
-      "https://res.cloudinary.com/tarositeweb/image/upload/v1634568758/image/exemple_rqi6yl.jpg",
+      "/img/advertising/exemple.jpg",
   },
   {
     profileId: "61683883bb90435d90a1bd24",
     title: TranslateContent("vehicule"),
     image:
-      "https://res.cloudinary.com/tarositeweb/image/upload/v1634568758/image/exemple_rqi6yl.jpg",
+      "/img/advertising/exemple.jpg",
   },
   {
     profileId: "61683883bb90435d90a1bd24",
     title: TranslateContent("pharmacy"),
     image:
-      "https://res.cloudinary.com/tarositeweb/image/upload/v1634568758/image/exemple_rqi6yl.jpg",
+      "/img/advertising/exemple.jpg",
   },
   {
     profileId: "61683883bb90435d90a1bd24",
     title: TranslateContent("marketing"),
     image:
-      "https://res.cloudinary.com/tarositeweb/image/upload/v1634568758/image/exemple_rqi6yl.jpg",
+      "/img/advertising/exemple.jpg",
   },
   {
     profileId: "61683883bb90435d90a1bd24",
     title: TranslateContent("construction"),
     image:
-      "https://res.cloudinary.com/tarositeweb/image/upload/v1634568758/image/exemple_rqi6yl.jpg",
+      "/img/advertising/exemple.jpg",
   },
   {
     profileId: "61683883bb90435d90a1bd24",
     title: TranslateContent("construction"),
     image:
-      "https://res.cloudinary.com/tarositeweb/image/upload/v1634568758/image/exemple_rqi6yl.jpg",
+      "/img/advertising/exemple.jpg",
   },
   {
     profileId: "61683883bb90435d90a1bd24",
     title: TranslateContent("construction"),
     image:
-      "https://res.cloudinary.com/tarositeweb/image/upload/v1634568758/image/exemple_rqi6yl.jpg",
+      "/img/advertising/exemple.jpg",
   },
 ];
 

@@ -5,11 +5,18 @@ import MainContainer from "../../MainContainer";
 import { useDispatch, useSelector } from "react-redux";
 import { listMyOrders } from "../../../flux/actions/orderAction";
 import LoaderComponent from "../../loader";
+import { useHistory } from "react-router";
 
 function OrdersScreen() {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const { loading, error, orders } = useSelector((state) => state.orderListMy);
+  const { userInfo } = useSelector((state) => state.userLogin);
+
+  if (!userInfo) {
+    history.push("/auth");
+  }
 
   useEffect(() => {
     dispatch(listMyOrders());
@@ -119,7 +126,6 @@ const Table = styled.table`
       margin-top: 1em;
       font-size: 1rem;
       text-align: center;
-      
     }
   }
 `;
