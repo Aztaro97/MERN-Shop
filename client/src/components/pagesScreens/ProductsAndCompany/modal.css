@@ -1,0 +1,15 @@
+.modal_container  .ant-btn.ant-btn-primary {
+    background: var(--orange-color);
+    border-color: var(--orange-color);
+    color: #fff !important;
+}
+
+.modal_container  .ant-btn.ant-btn-primary:hover {
+    opacity: .9;
+    color: #fff;
+}
+
+.modal_container .ant-btn:hover,  .modal_container .ant-btn:focus {
+    border-color: var(--orange-) !important; 
+    color: var(--orange-color);
+}

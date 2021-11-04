@@ -78,7 +78,7 @@ export const userDetailsReducer = (state = { user: {} }, action) => {
     case USER_DETAILS_REQUEST:
       return { ...state, loading: true };
     case USER_DETAILS_SUCCESS:
-      return { loading: false, user: action.payload };
+      return { loading: false, user: action.payload , saveSuccess: true};
     case USER_DETAILS_FAIL:
       return { loading: false, error: action.payload };
     case USER_DETAILS_RESET:
@@ -185,7 +185,7 @@ export const userRegisterCompanyInfo = (state = {}, action) => {
     case USER_REGISTER_COMPANY_INFO_REQUEST:
       return { loading: true };
     case USER_REGISTER_COMPANY_INFO_SUCCESS:
-      return { loading: false, info: action.payload };
+      return { loading: false, info: action.payload, saveSuccess: true };
     case USER_REGISTER_COMPANY_INFO_FAIL:
       return { loading: false, error: action.payload };
     default:

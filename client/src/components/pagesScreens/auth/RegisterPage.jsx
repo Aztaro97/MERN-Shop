@@ -21,6 +21,7 @@ import {
   register,
   registerCompanyInfo,
   registerBankInfo,
+  getCompanyDetails,
 } from "../../../flux/actions/userAction";
 import { useFormik } from "formik";
 import MainContainer from "../../MainContainer";
@@ -155,6 +156,52 @@ const CompanyInfo = () => {
     console.log(newListCellular);
     console.log(ListHour);
   };
+
+  const {
+    loading,
+    user: { company },
+  } = useSelector((state) => state.userDetails);
+  const { saveSuccess } = useSelector((state) => state.userCompany);
+
+  useEffect(() => {
+    if (saveSuccess) {
+      history.push("/myproducts");
+    } else {
+      if (!company ) {
+        dispatch(getCompanyDetails());
+      } else {
+        formik.setFieldValue("company.name", company.name);
+        formik.setFieldValue("company.scopeBusiness", company.scopeBusiness);
+        formik.setFieldValue("company.licenceNumber", company.licenceNumber);
+        formik.setFieldValue("company.expireDate", company.expireDate);
+        // formik.setFieldValue("company.phoneNumber", company.phoneNumber);
+        formik.setFieldValue("company.location", company.location);
+        formik.setFieldValue("company.email", company.email);
+        formik.setFieldValue("company.workHoursFrom", company.workHoursFrom);
+        formik.setFieldValue("company.workHoursTo", company.workHoursTo);
+        formik.setFieldValue("company.holidays", company.holidays);
+        formik.setFieldValue("company.about", company.about);
+        formik.setFieldValue("company.services", company.services);
+        formik.setFieldValue("company.videoLink", company.videoLink);
+        formik.setFieldValue(
+          "company.mediaLink.facebook",
+          company.mediaLink.facebook
+        );
+        formik.setFieldValue(
+          "company.mediaLink.insta",
+          company.mediaLink.insta
+        );
+        formik.setFieldValue(
+          "company.mediaLink.twitter",
+          company.mediaLink.twitter
+        );
+        formik.setFieldValue(
+          "company.mediaLink.whatsapp",
+          company.mediaLink.whatsapp
+        );
+      }
+    }
+  }, [company, dispatch, history, saveSuccess]);
 
   return (
     <Form onSubmit={formik.handleSubmit}>

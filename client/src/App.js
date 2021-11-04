@@ -17,10 +17,10 @@ const ProductsShop = lazy(() =>
   import("./components/pagesScreens/AllproductsShop/productsShop")
 );
 const EditProductScreen = lazy(() =>
-  import("./components/pagesScreens/EditProductsAndCompany/editProductScreen")
+  import("./components/pagesScreens/ProductsAndCompany/editProductScreen")
 );
-const EditProductAndCompanyComponent = lazy(() =>
-  import("./components/pagesScreens/EditProductsAndCompany/tabs")
+const MyProductAndCompanyComponent = lazy(() =>
+  import("./components/pagesScreens/ProductsAndCompany/tabs")
 );
 const CartComponent = lazy(() => import("./components/pagesScreens/cart/cart"));
 const ShippingComponenet = lazy(() =>
@@ -210,7 +210,7 @@ function App() {
           <Route path="/product/:id" component={EditProductScreen} />
           <Route
             path="/myproducts"
-            component={EditProductAndCompanyComponent}
+            component={MyProductAndCompanyComponent}
           />
           <Route path="/e-commerce" component={EcommerceHomeComponent} />
           <Route path="/companies" component={CompanyListComponent} />
