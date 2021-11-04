@@ -22,7 +22,7 @@ const Tabulation = ({match}) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if (user === null || user._id !== userId) {
+    if (user === null || (user._id !== userId)) {
       dispatch(getUserDetails(userId));
     }
   }, [dispatch, userId, user]);

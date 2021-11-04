@@ -280,7 +280,7 @@ function App() {
             component={ConfirmPaymentMethod}
           />
           <Route path="/advertising/profile" component={MyAdsScreen} />
-          <Route path="/profile/edit-ad/:id" component={EditAdsService} />
+          <Route path="/advertising/edit/:id" component={EditAdsService} />
           <Route path="/auth" component={AuthComponents} />
 
           <Route path="/forgot-password" component={ResetPasswordPage} />

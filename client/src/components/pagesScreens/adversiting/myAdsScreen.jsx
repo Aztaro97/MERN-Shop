@@ -94,7 +94,7 @@ function MyAdsScreen() {
                       <p className="description">
                         Categorie: <span>{ad.typeBusiness}</span>
                       </p>
-                      <Link to={`/profile/edit-ad/${ad._id}`}>
+                      <Link to={`/advertising/edit/${ad._id}`}>
                         <AiFillEdit className="edit_icon" />
                       </Link>
                     </div>
