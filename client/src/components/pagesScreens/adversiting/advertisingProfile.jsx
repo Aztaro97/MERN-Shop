@@ -27,6 +27,8 @@ import Meta from "../../helmet";
 import ReactPlayer from "react-player";
 import { AD_PROFILE_RESET } from "../../../flux/constants/advertising";
 
+const emptyImg = "/img/advertising/empty.jpg";
+
 function AdvertisingProfileScreen() {
   const params = useParams();
   const profileID = params.id;
@@ -46,7 +48,7 @@ function AdvertisingProfileScreen() {
     if (profileID) {
       dispatch(getAdvertisingProfileByID(profileID));
     }
-  }, [profileID ,dispatch]);
+  }, [profileID, dispatch]);
 
   return (
     <MainContainer>
@@ -72,7 +74,12 @@ function AdvertisingProfileScreen() {
                   {lang === "ar" && (
                     <h1 className="title">{profile.companyName_ar}</h1>
                   )}
-                  <img src={profile.logoUrl[0].url} alt="" />
+                  <img
+                    src={
+                      profile.logoUrl.length ? profile.logoUrl[0].url : emptyImg
+                    }
+                    alt=""
+                  />
                 </section>
                 <section className="about">
                   <h1 className="title">{t("about_company")}</h1>

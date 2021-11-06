@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { listMyOrders } from "../../../flux/actions/orderAction";
 import LoaderComponent from "../../loader";
 import { useHistory } from "react-router";
+import moment from "moment";
 
 function OrdersScreen() {
   const dispatch = useDispatch();
@@ -47,7 +48,9 @@ function OrdersScreen() {
                 {orders.map((order) => (
                   <tr key={order._id}>
                     <td>{order._id}</td>
-                    <td>{order.createdAt.substring(0, 10)}</td>
+                    <td>
+                      {moment(order.createdAt).format("DD-MM-YYYY")}
+                    </td>
                     <td>{order.totalPrice} dh</td>
                     {/* <td>{order.user && order.user.name}</td> */}
 
@@ -64,7 +67,8 @@ function OrdersScreen() {
                     </td>
                     <td>
                       {order.isDelivered ? (
-                        order.deliveredAt.substring(0, 10)
+                        // order.deliveredAt.substring(0, 10)
+                        moment(order.deliveredAt).format("DD-MM-YYYY, h:mm a")
                       ) : (
                         <FaTimesCircle style={{ color: "#ff7979" }} />
                       )}
@@ -75,7 +79,7 @@ function OrdersScreen() {
             </Table>
             {orders.length === 0 && (
               <div className="Empty_content">
-                <h1>You have not placed any orders !!!</h1>
+                <h4>You have not placed any orders !!!</h4>
               </div>
             )}
           </OrderContainer>
@@ -100,10 +104,13 @@ const Table = styled.table`
       background: var(--orange-color);
       & th {
         border: 1px solid rgba(0, 0, 0, 0.05);
-        padding: 10px;
-        text-transform: uppercase;
-        font-weight: 700;
+        padding: 10px auto;
+        text-transform: capitalize;
+        /* font-weight: 700; */
         color: #fff;
+        font-size: 1rem;
+        text-align: center;
+        border-right: 1px solid #ececec9d;
       }
     }
   }
@@ -114,6 +121,7 @@ const Table = styled.table`
         border: 1px solid rgba(0, 0, 0, 0.05);
         padding: 10px;
         text-transform: uppercase;
+        font-size: 1rem;
       }
     }
   }
@@ -122,8 +130,10 @@ const Table = styled.table`
     text-align: center;
     width: 100%;
     padding: 2rem 0;
-    & h1 {
-      margin-top: 1em;
+    display: flex;
+    justify-content: center;
+    & h4 {
+      margin-top: 25px;
       font-size: 1rem;
       text-align: center;
     }

@@ -30,10 +30,10 @@ function OrdersListScreen() {
 
   const handleAction = ({ value }, { order }) => {
     setActionValue(value);
-    console.log(value);
     // dispatch(deliverOrder(order))
     if (value === "accept") {
       dispatch(deliverOrder(order));
+      dispatch(listOrders());
     }
   };
 

@@ -437,8 +437,6 @@ export const setProductAllow = (id, permission) => async (
     };
 
     const res = await axios.post(`/api/products/${id}`, { permission }, config);
-
-    if (res) window.location.reload();
   } catch (error) {
     console.log(error.message);
   }

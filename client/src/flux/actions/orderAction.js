@@ -215,8 +215,6 @@ export const deliverOrder = (order) => async (dispatch, getState) => {
       type: ORDER_DELIVER_SUCCESS,
       payload: data,
     });
-    window.location.reload();
-
   } catch (error) {
     const message =
       error.response && error.response.data.message

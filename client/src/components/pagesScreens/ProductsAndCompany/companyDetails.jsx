@@ -15,6 +15,8 @@ import BgImg from "../../../img/Background.png";
 import Loader from "../../loader";
 import { Link } from "react-router-dom";
 
+const emptyImg = "/img/advertising/empty.jpg";
+
 // const dispatch = useDispatch();
 function CompanyDetails({ loading, company }) {
   // const { loading, user: {company} } = useSelector((state) => state.userDetails);
@@ -29,7 +31,7 @@ function CompanyDetails({ loading, company }) {
           <Grid>
             <Col>
               <img
-                src={company.urlImg.length !== 0 ? company.urlImg : BgImg}
+                src={company.urlImg.length !== 0 ? company.urlImg : emptyImg}
                 alt=""
               />
               <Container>
@@ -133,7 +135,9 @@ function CompanyDetails({ loading, company }) {
               <div className="container">
                 <img
                   src={
-                    company.urlImg.length !== 0 ? company.urlImg[0].url : BgImg
+                    company.urlImg.length !== 0
+                      ? company.urlImg[0].url
+                      : emptyImg
                   }
                   alt=""
                   className="bg-right"
@@ -173,7 +177,7 @@ function CompanyDetails({ loading, company }) {
           >
             <Link to="/register" style={{ textDecoration: "none" }}>
               <ButtonC style={{ padding: ".5rem 4rem", letterSpacing: "2px" }}>
-                edit
+                edit my profil
               </ButtonC>
             </Link>
           </div>

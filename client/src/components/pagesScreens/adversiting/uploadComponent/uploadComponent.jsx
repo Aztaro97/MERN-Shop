@@ -98,7 +98,7 @@ export const BannerUploading = ({ id, userInfo }) => {
       <TitleStyling>Import Banner Images</TitleStyling>
       <Row justify="space-between">
         <Col xs={{ span: 12 }}>
-          <ImgCrop aspect={3 / 2} quantity={0.8}>
+          <ImgCrop aspect={2 / 1} quantity={0.8}>
             <Upload {...props}>
               {fileList.length < 4 && (
                 <UploadIcon>
@@ -360,7 +360,7 @@ export const ServiceUploading = ({ id, userInfo }) => {
       </TitleStyling>
       <Row justify="space-between">
         <Col xs={{ span: 12 }}>
-          <ImgCrop aspect={3 / 2}>
+          <ImgCrop aspect={2 / 1}>
             <Upload
               accept="image/png, image/jpeg, image/jpg"
               name="serviceFile"

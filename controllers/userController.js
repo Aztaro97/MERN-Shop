@@ -30,6 +30,7 @@ const authUser = asyncHandler(async (req, res) => {
       name: user.name,
       email: user.email,
       typeUser: user.typeUser,
+      company: user.company,
       isAdmin: user.isAdmin,
       token: generateToken(user._id),
     });
@@ -309,6 +310,7 @@ const registerUser = asyncHandler(async (req, res) => {
       email: user.email,
       isAdmin: user.isAdmin,
       typeUser: user.typeUser,
+      company: user.company,
       token: generateToken(user._id),
     });
   } else {

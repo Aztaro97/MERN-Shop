@@ -13,6 +13,7 @@ import {
   FaTwitter,
   AiFillDelete,
 } from "react-icons/all";
+import { FiUploadCloud } from "react-icons/fi";
 import { Link, useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Upload, Radio, DatePicker } from "antd";
@@ -23,6 +24,7 @@ import {
   registerBankInfo,
   getCompanyDetails,
 } from "../../../flux/actions/userAction";
+import { SyncOutlined } from "@ant-design/icons";
 import { useFormik } from "formik";
 import MainContainer from "../../MainContainer";
 import InputRadio from "../../InputRadioComponent";
@@ -30,6 +32,8 @@ import ButtonC from "../../ButtonComponeent";
 import InputC from "../../InputComponents";
 import SelectC from "../../SelectComponents";
 import Ratio from "../../antRatio";
+import moment from "moment";
+import { IoIosCloudDone } from "react-icons/io";
 import { successMessage } from "../../message";
 
 function RegisterPage() {
@@ -49,7 +53,7 @@ function RegisterPage() {
     <MainContainer>
       <FormContainer>
         <CompanyInfo />
-        <BankInfo />
+        {/* <BankInfo /> */}
         <GalleryPhotos />
         {/* <div className="row">
           <Link to="/add-product" className="submittion_btn">
@@ -163,45 +167,41 @@ const CompanyInfo = () => {
   } = useSelector((state) => state.userDetails);
   const { saveSuccess } = useSelector((state) => state.userCompany);
 
+  const Timeformat = moment();
+
   useEffect(() => {
-    if (saveSuccess) {
-      history.push("/myproducts");
+    if (!company) {
+      dispatch(getCompanyDetails());
     } else {
-      if (!company ) {
-        dispatch(getCompanyDetails());
-      } else {
-        formik.setFieldValue("company.name", company.name);
-        formik.setFieldValue("company.scopeBusiness", company.scopeBusiness);
-        formik.setFieldValue("company.licenceNumber", company.licenceNumber);
-        formik.setFieldValue("company.expireDate", company.expireDate);
-        // formik.setFieldValue("company.phoneNumber", company.phoneNumber);
-        formik.setFieldValue("company.location", company.location);
-        formik.setFieldValue("company.email", company.email);
-        formik.setFieldValue("company.workHoursFrom", company.workHoursFrom);
-        formik.setFieldValue("company.workHoursTo", company.workHoursTo);
-        formik.setFieldValue("company.holidays", company.holidays);
-        formik.setFieldValue("company.about", company.about);
-        formik.setFieldValue("company.services", company.services);
-        formik.setFieldValue("company.videoLink", company.videoLink);
-        formik.setFieldValue(
-          "company.mediaLink.facebook",
-          company.mediaLink.facebook
-        );
-        formik.setFieldValue(
-          "company.mediaLink.insta",
-          company.mediaLink.insta
-        );
-        formik.setFieldValue(
-          "company.mediaLink.twitter",
-          company.mediaLink.twitter
-        );
-        formik.setFieldValue(
-          "company.mediaLink.whatsapp",
-          company.mediaLink.whatsapp
-        );
-      }
+      formik.setFieldValue("company.type", company.type);
+      formik.setFieldValue("company.name", company.name);
+      formik.setFieldValue("company.scopeBusiness", company.scopeBusiness);
+      formik.setFieldValue("company.licenceNumber", company.licenceNumber);
+      formik.setFieldValue("company.expireDate", company.expireDate);
+      // formik.setFieldValue("company.phoneNumber", company.phoneNumber);
+      formik.setFieldValue("company.location", company.location);
+      formik.setFieldValue("company.email", company.email);
+      formik.setFieldValue("company.workHoursFrom", company.workHoursFrom);
+      formik.setFieldValue("company.workHoursTo", company.workHoursTo);
+      formik.setFieldValue("company.holidays", company.holidays);
+      formik.setFieldValue("company.about", company.about);
+      formik.setFieldValue("company.services", company.services);
+      formik.setFieldValue("company.videoLink", company.videoLink);
+      formik.setFieldValue(
+        "company.mediaLink.facebook",
+        company.mediaLink.facebook
+      );
+      formik.setFieldValue("company.mediaLink.insta", company.mediaLink.insta);
+      formik.setFieldValue(
+        "company.mediaLink.twitter",
+        company.mediaLink.twitter
+      );
+      formik.setFieldValue(
+        "company.mediaLink.whatsapp",
+        company.mediaLink.whatsapp
+      );
     }
-  }, [company, dispatch, history, saveSuccess]);
+  }, [company, dispatch]);
 
   return (
     <Form onSubmit={formik.handleSubmit}>
@@ -210,7 +210,10 @@ const CompanyInfo = () => {
           {t("back")}
         </a>
         <div className="radio_container">
-          <Radio.Group onChange={handleClickRadio} defaultValue={typeUser}>
+          <Radio.Group
+            onChange={handleClickRadio}
+            defaultValue={formik.values.company.type}
+          >
             <RadioCustom value="company"> {t("company")} </RadioCustom>
             <RadioCustom value="personnel">{t("personnel")}</RadioCustom>
           </Radio.Group>
@@ -260,11 +263,15 @@ const CompanyInfo = () => {
                 <div className="row">
                   <DatePickerStyling
                     style={{ width: "100%", borderColor: "var(--orange-color" }}
+                    defaultValue={moment(
+                      formik.values.company.expireDate,
+                      "DD-MM-YYYY"
+                    )}
                     onChange={(date, dateString) =>
                       formik.setFieldValue("company.expireDate", dateString)
                     }
                     picker="date"
-                    format="DD-MM-YYYY"
+                    format={moment().format("DD-MM-YYYY")}
                     placeholder={t("expiry_placeholder")}
                     showNow={false}
                   />
@@ -404,6 +411,7 @@ const CompanyInfo = () => {
                 type="text"
                 style={{ height: 100 }}
                 name="company.about"
+                value={formik.values.company.about}
                 onChange={formik.handleChange}
               />
             </div>
@@ -582,6 +590,9 @@ const BankInfo = () => {
 };
 
 const GalleryPhotos = () => {
+  const [loading, setLoading] = useState(false);
+  const [submited, isSubmited] = useState(false);
+
   const { t } = useTranslation();
   const { userInfo } = useSelector((state) => state.userLogin);
 
@@ -590,7 +601,6 @@ const GalleryPhotos = () => {
 
   const handleChangeImage = ({ fileList: newFileList }) => {
     setFileList(newFileList);
-    console.log(newFileList);
   };
   const onPreview = async (file) => {
     let src = file.url;
@@ -611,6 +621,7 @@ const GalleryPhotos = () => {
   const handleSendImage = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
       const config = {
         headers: {
           "content-type": "multipart/form-data",
@@ -629,10 +640,11 @@ const GalleryPhotos = () => {
         config
       );
 
-      successMessage(res.data.msg);
-      setTimeout(() => {
+      if (res.data) {
+        successMessage(res.data.msg);
+        setLoading(true);
         return history.push("/myproducts");
-      }, 1000);
+      }
     } catch (error) {
       console.log(error.message);
     }
@@ -666,8 +678,35 @@ const GalleryPhotos = () => {
           <p style={{ fontSize: ".8rem" }}> {t("cover_photo")}</p>
         </div>
       </div>
-      <ButtonC style={{ margin: "2rem auto 0" }} type="submit">
-        {t("save_and_continue")}
+      <ButtonC
+        style={{
+          margin: "2rem auto 0",
+          textTransform: "capitalize",
+          fontWeight: 400,
+        }}
+        type="submit"
+      >
+        {!loading ? (
+          <>
+            {" "}
+            {!submited ? (
+              <>
+                <FiUploadCloud className="icon" />
+                <span>upload and save</span>
+              </>
+            ) : (
+              <>
+                <IoIosCloudDone className="icon" />
+                <span>uploaded successfully</span>
+              </>
+            )}
+          </>
+        ) : (
+          <>
+            <SyncOutlined spin />{" "}
+            <span style={{ paddingLeft: 4 }}> Loading...</span>
+          </>
+        )}
       </ButtonC>
     </Form>
   );
@@ -746,6 +785,9 @@ const Form = styled.form`
       display: flex;
       align-items: center;
       justify-content: space-between;
+      & h1 {
+        padding: 0;
+      }
       .time_container {
         display: grid;
         grid-template-columns: 3fr 3fr 1fr;
@@ -792,6 +834,7 @@ const Form = styled.form`
         margin-bottom: 15px;
         border-radius: 20px;
         height: 2.5rem;
+        padding: 0;
 
         & .icon {
           padding: 0.6rem;

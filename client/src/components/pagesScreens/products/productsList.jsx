@@ -70,9 +70,11 @@ function ProductsListScreen({ match }) {
   function handleMenuClick(e, productId) {
     if (e.key === "accept") {
       dispatch(setProductAllow(productId, true));
+      dispatch(listProductsAdmin("", pageNumber));
     }
     if (e.key === "refuse") {
       dispatch(setProductAllow(productId, false));
+      dispatch(listProductsAdmin("", pageNumber));
     }
   }
 
