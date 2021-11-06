@@ -47,7 +47,9 @@ const CompanyInfo = ({ loading, user, error }) => {
               <Row gutter={[10, 10]}>
                 <Col xs={{ span: 24 }}>
                   <img
-                    src={company.urlImg.length !== 0 ? company.urlImg : EmptyImg}
+                    src={
+                      company.urlImg.length !== 0 ? company.urlImg : EmptyImg
+                    }
                     alt=""
                   />
                 </Col>
@@ -129,7 +131,7 @@ const CompanyInfo = ({ loading, user, error }) => {
                   )}
                   <div>
                     <h1>Work hours</h1>
-                    <p>Form 7.00 am to 5.00 pm all week day</p>
+                    <p>From {company.workHoursFrom} am to {company.workHoursTo} pm</p>
                     <p>Holiday on {company.holidays}</p>
                     <hr />
                   </div>
@@ -152,7 +154,9 @@ const CompanyInfo = ({ loading, user, error }) => {
               <div className="container">
                 <img
                   src={
-                    company.urlImg.length !== 0 ? company.urlImg[0].url : EmptyImg
+                    company.urlImg.length !== 0
+                      ? company.urlImg[0].url
+                      : EmptyImg
                   }
                   alt=""
                   className="bg-right"

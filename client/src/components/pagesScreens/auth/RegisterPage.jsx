@@ -35,6 +35,9 @@ import Ratio from "../../antRatio";
 import moment from "moment";
 import { IoIosCloudDone } from "react-icons/io";
 import { successMessage } from "../../message";
+import LoaderComponent from "../../loader";
+
+const { RangePicker } = DatePicker;
 
 function RegisterPage() {
   const { t } = useTranslation();
@@ -93,7 +96,7 @@ const CompanyInfo = () => {
         scopeBusiness: "",
         licenceNumber: "",
         expireDate: "",
-        phoneNumber: ListCellular,
+        phoneNumber: [],
         location: "",
         email: "",
         workHoursFrom: "",
@@ -132,6 +135,7 @@ const CompanyInfo = () => {
   const addCellular = (e) => {
     e.preventDefault();
     ListCellular.push(cellular);
+    formik.setFieldValue("company.phoneNumber", cellular);
     setCellular("");
   };
   const deleteCellular = (itemIndex) => {
@@ -167,10 +171,8 @@ const CompanyInfo = () => {
   } = useSelector((state) => state.userDetails);
   const { saveSuccess } = useSelector((state) => state.userCompany);
 
-  const Timeformat = moment();
-
   useEffect(() => {
-    if (!company) {
+    if (company === undefined) {
       dispatch(getCompanyDetails());
     } else {
       formik.setFieldValue("company.type", company.type);
@@ -179,6 +181,7 @@ const CompanyInfo = () => {
       formik.setFieldValue("company.licenceNumber", company.licenceNumber);
       formik.setFieldValue("company.expireDate", company.expireDate);
       // formik.setFieldValue("company.phoneNumber", company.phoneNumber);
+      setListCellular(company.phoneNumber);
       formik.setFieldValue("company.location", company.location);
       formik.setFieldValue("company.email", company.email);
       formik.setFieldValue("company.workHoursFrom", company.workHoursFrom);
@@ -204,177 +207,175 @@ const CompanyInfo = () => {
   }, [company, dispatch]);
 
   return (
-    <Form onSubmit={formik.handleSubmit}>
-      <Header>
-        <a href="#/" onClick={() => history.goBack()}>
-          {t("back")}
-        </a>
-        <div className="radio_container">
-          <Radio.Group
-            onChange={handleClickRadio}
-            defaultValue={formik.values.company.type}
-          >
-            <RadioCustom value="company"> {t("company")} </RadioCustom>
-            <RadioCustom value="personnel">{t("personnel")}</RadioCustom>
-          </Radio.Group>
-        </div>
-      </Header>
-      <h1>{typeUser} information</h1>
-
-      <div className="card">
-        <div className="grid">
-          <div className="col">
-            <div className="row">
-              <InputC
-                style={{ textTransform: "uppercase" }}
-                required
-                type="text"
-                placeholder={`${typeUser} NAME`}
-                name="company.name"
-                value={formik.values.company.name}
-                onChange={formik.handleChange}
-              />
+    <>
+      {loading ? (
+        <LoaderComponent />
+      ) : (
+        <Form onSubmit={formik.handleSubmit}>
+          <Header>
+            <a href="#/" onClick={() => history.goBack()}>
+              {t("back")}
+            </a>
+            <div className="radio_container">
+              <Radio.Group
+                onChange={handleClickRadio}
+                defaultValue={formik.values.company.type}
+              >
+                <RadioCustom value="company"> {t("company")} </RadioCustom>
+                <RadioCustom value="personnel">{t("personnel")}</RadioCustom>
+              </Radio.Group>
             </div>
-            <div className="row">
-              <InputC
-                required
-                type="text"
-                style={{ textTransform: "uppercase" }}
-                placeholder={`${typeUser} SCOPE OF BUSINESS`}
-                name="company.scopeBusiness"
-                value={formik.values.company.scopeBusiness}
-                onChange={formik.handleChange}
-              />
-            </div>
+          </Header>
+          <h1>{typeUser} information</h1>
 
-            {typeUser === "company" && (
-              <>
+          <div className="card">
+            <div className="grid">
+              <div className="col">
+                <div className="row">
+                  <InputC
+                    style={{ textTransform: "uppercase" }}
+                    required
+                    type="text"
+                    placeholder={`${typeUser} NAME`}
+                    name="company.name"
+                    value={formik.values.company.name}
+                    onChange={formik.handleChange}
+                  />
+                </div>
                 <div className="row">
                   <InputC
                     required
-                    type="currency"
-                    placeholder={`LICENCE NUMBER`}
-                    name="company.licenceNumber"
-                    value={formik.values.company.licenceNumber}
+                    type="text"
+                    style={{ textTransform: "uppercase" }}
+                    placeholder={`${typeUser} SCOPE OF BUSINESS`}
+                    name="company.scopeBusiness"
+                    value={formik.values.company.scopeBusiness}
                     onChange={formik.handleChange}
                   />
                 </div>
 
+                {typeUser === "company" && (
+                  <>
+                    <div className="row">
+                      <InputC
+                        required
+                        type="currency"
+                        placeholder={`LICENCE NUMBER`}
+                        name="company.licenceNumber"
+                        value={formik.values.company.licenceNumber}
+                        onChange={formik.handleChange}
+                      />
+                    </div>
+                    {/* <h2>ddd: {formik.values.company.expireDate}</h2> */}
+                    <div className="row">
+                      <DatePickerStyling
+                        style={{
+                          width: "100%",
+                          borderColor: "var(--orange-color",
+                        }}
+                        defaultValue={moment(
+                          formik.values.company.expireDate,
+                          "MM-DD-YYYY"
+                        )}
+                        onChange={(date, dateString) =>
+                          formik.setFieldValue("company.expireDate", dateString)
+                        }
+                        picker="date"
+                        format="MM-DD-YYYY"
+                        placeholder={t("expiry_placeholder")}
+                        showNow={false}
+                      />
+                    </div>
+                  </>
+                )}
+
                 <div className="row">
-                  <DatePickerStyling
-                    style={{ width: "100%", borderColor: "var(--orange-color" }}
-                    defaultValue={moment(
-                      formik.values.company.expireDate,
-                      "DD-MM-YYYY"
-                    )}
-                    onChange={(date, dateString) =>
-                      formik.setFieldValue("company.expireDate", dateString)
-                    }
-                    picker="date"
-                    format={moment().format("DD-MM-YYYY")}
-                    placeholder={t("expiry_placeholder")}
-                    showNow={false}
-                  />
+                  <h1>{t("nav_contact")}</h1>
+                  <div className="input-container">
+                    <ImPhone className="icon" />
+                    <input
+                      className="input-field"
+                      type="tel"
+                      placeholder={t("phone_number_placeholder")}
+                      name="company.phone"
+                      value={cellular}
+                      onChange={(e) => setCellular(e.target.value)}
+                    />
+                    <ButtonC
+                      style={{ padding: "1rem", margin: "0 5px" }}
+                      type="button"
+                      onClick={addCellular}
+                    >
+                      <GoPlus />
+                    </ButtonC>
+                  </div>
+                  <Ul>
+                    {ListCellular.length > 0
+                      ? ListCellular.map((item, index) => (
+                          <li key={index}>
+                            <p>{item}</p>
+                            <AiFillDelete
+                              className="delete_icon"
+                              onClick={() => deleteCellular(index)}
+                            />
+                          </li>
+                        ))
+                      : null}
+                  </Ul>
                 </div>
-              </>
-            )}
+                <div className="row">
+                  <div className="input-container">
+                    <FaMapMarkerAlt className="icon" />
+                    <input
+                      className="input-field"
+                      type="url"
+                      placeholder={t("location_placeholder")}
+                      value={formik.values.company.location}
+                      onChange={formik.handleChange}
+                      name="company.location"
+                    />
+                    <ButtonC
+                      style={{ padding: "1rem", margin: "0 5px" }}
+                      type="button"
+                    >
+                      <FaMapMarkerAlt />
+                    </ButtonC>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="input-container">
+                    <MdMail className="icon" />
+                    <input
+                      required
+                      type="mail"
+                      className="input-field"
+                      placeholder={t("email_placeholder")}
+                      name="company.email"
+                      value={formik.values.company.email}
+                      onChange={formik.handleChange}
+                    />
+                  </div>
+                </div>
+                <div className="row">
+                  <h1>{t("work_hours")}</h1>
 
-            <div className="row">
-              <h1>{t("nav_contact")}</h1>
-              <div className="input-container">
-                <ImPhone className="icon" />
-                <input
-                  className="input-field"
-                  type="tel"
-                  placeholder={t("phone_number_placeholder")}
-                  name="company.phone"
-                  value={cellular}
-                  onChange={(e) => setCellular(e.target.value)}
-                />
-                <ButtonC
-                  style={{ padding: "1rem", margin: "0 5px" }}
-                  type="button"
-                  onClick={addCellular}
-                >
-                  <GoPlus />
-                </ButtonC>
-              </div>
-              <Ul>
-                {ListCellular.length > 0
-                  ? ListCellular.map((item, index) => (
-                      <li key={index}>
-                        <p>{item}</p>
-                        <AiFillDelete
-                          className="delete_icon"
-                          onClick={() => deleteCellular(index)}
-                        />
-                      </li>
-                    ))
-                  : null}
-              </Ul>
-            </div>
-            <div className="row">
-              <div className="input-container">
-                <FaMapMarkerAlt className="icon" />
-                <input
-                  className="input-field"
-                  type="url"
-                  placeholder={t("location_placeholder")}
-                  name="company.location"
-                />
-                <ButtonC
-                  style={{ padding: "1rem", margin: "0 5px" }}
-                  type="button"
-                >
-                  <FaMapMarkerAlt />
-                </ButtonC>
-              </div>
-            </div>
-            <div className="row">
-              <div className="input-container">
-                <MdMail className="icon" />
-                <input
-                  required
-                  type="mail"
-                  className="input-field"
-                  placeholder={t("email_placeholder")}
-                  name="company.email"
-                  onChange={formik.handleChange}
-                />
-              </div>
-            </div>
-            <div className="row">
-              <h1>{t("work_hours")}</h1>
-
-              <div className="time_container">
-                <DatePickerStyling
-                  onChange={(date, dateString) =>
-                    formik.setFieldValue("company.workHoursFrom", dateString)
-                  }
-                  picker="time"
-                  format="HH:mm"
-                  placeholder={t("from_placeholder")}
-                  showNow={false}
-                />
-                <DatePickerStyling
-                  onChange={(date, dateString) =>
-                    formik.setFieldValue("company.workHoursTo", dateString)
-                  }
-                  picker="time"
-                  format="HH:mm"
-                  placeholder={t("to_placeholder")}
-                  showNow={false}
-                />
-                {/* <ButtonC
-                  type="button"
-                  style={{ padding: "0rem" }}
-                  onClick={addHour}
-                  disabled={ListHour.length > 1 ? true : false}
-                >
-                  <GoPlus />
-                </ButtonC> */}
-              </div>
-              {/* <Ul>
+                  <div className="time_container">
+                    <RangePickerStyling
+                      onChange={(date, dateString) => {
+                        formik.setFieldValue(
+                          "company.workHoursFrom",
+                          dateString
+                        );
+                        console.log(dateString);
+                      }}
+                      picker="time"
+                      // mode="time"
+                      format="HH:mm"
+                      placeholder={[t("from_placeholder"), t("to_placeholder")]}
+                      showNow={false}
+                    />
+                  </div>
+                  {/* <Ul>
                 {ListHour.length > 0
                   ? ListHour.map((item, index) => (
                       <li key={index}>
@@ -389,93 +390,95 @@ const CompanyInfo = () => {
                     ))
                   : null}
               </Ul> */}
-            </div>
-            <div className="row">
-              <h1>{t("add_holidays")}</h1>
-              <InputC
-                required
-                type="text"
-                name="company.holidays"
-                placeholder={t("type_day_placeholder")}
-                value={formik.values.company.holidays}
-                onChange={formik.handleChange}
-              />
-            </div>
-          </div>
-
-          <div className="col">
-            <div className="row">
-              <h1>{t("about_company")}</h1>
-              <TextArea
-                required
-                type="text"
-                style={{ height: 100 }}
-                name="company.about"
-                value={formik.values.company.about}
-                onChange={formik.handleChange}
-              />
-            </div>
-            <div className="row">
-              <h1>{t("our_services")}</h1>
-              <TextArea
-                required
-                type="text"
-                style={{ height: 100 }}
-                name="company.services"
-                value={formik.values.company.services}
-                onChange={formik.handleChange}
-              />
-            </div>
-            <div className="row">
-              <h1>{t("add_video_link")}</h1>
-              <InputC
-                type="url"
-                name="company.videoLink"
-                placeholder={t("type_video_link_placeholder")}
-                value={formik.values.company.videoLink}
-                onChange={formik.handleChange}
-              />
-            </div>
-            <div className="row" style={{ display: "block" }}>
-              <h1>{t("add_your_page")}</h1>
-              <div className="social-media">
-                <FaFacebookF className="facebook" />
-                <FaInstagram className="insta" />
-                <FaTwitter className="twitter" />
-                <ImPhone className="whatsapp" />
+                </div>
+                <div className="row">
+                  <h1>{t("add_holidays")}</h1>
+                  <InputC
+                    required
+                    type="text"
+                    name="company.holidays"
+                    placeholder={t("type_day_placeholder")}
+                    value={formik.values.company.holidays}
+                    onChange={formik.handleChange}
+                  />
+                </div>
               </div>
-              <InputC
-                type="url"
-                style={{ marginTop: 15 }}
-                value={formik.values.company.mediaLink.facebook}
-                name="company.mediaLink.facebook"
-                placeholder={t("type_facebook_placeholder")}
-                onChange={formik.handleChange}
-              />
-              <InputC
-                type="url"
-                style={{ marginTop: 15 }}
-                name="company.mediaLink.insta"
-                value={formik.values.company.mediaLink.insta}
-                placeholder={t("type_insta_placeholder")}
-                onChange={formik.handleChange}
-              />
-              <InputC
-                type="url"
-                style={{ marginTop: 15 }}
-                value={formik.values.company.mediaLink.twitter}
-                name="company.mediaLink.twitter"
-                placeholder={t("type_twitter_placeholder")}
-                onChange={formik.handleChange}
-              />
+
+              <div className="col">
+                <div className="row">
+                  <h1>{t("about_company")}</h1>
+                  <TextArea
+                    required
+                    type="text"
+                    style={{ height: 100 }}
+                    name="company.about"
+                    value={formik.values.company.about}
+                    onChange={formik.handleChange}
+                  />
+                </div>
+                <div className="row">
+                  <h1>{t("our_services")}</h1>
+                  <TextArea
+                    required
+                    type="text"
+                    style={{ height: 100 }}
+                    name="company.services"
+                    value={formik.values.company.services}
+                    onChange={formik.handleChange}
+                  />
+                </div>
+                <div className="row">
+                  <h1>{t("add_video_link")}</h1>
+                  <InputC
+                    type="url"
+                    name="company.videoLink"
+                    placeholder={t("type_video_link_placeholder")}
+                    value={formik.values.company.videoLink}
+                    onChange={formik.handleChange}
+                  />
+                </div>
+                <div className="row" style={{ display: "block" }}>
+                  <h1>{t("add_your_page")}</h1>
+                  <div className="social-media">
+                    <FaFacebookF className="facebook" />
+                    <FaInstagram className="insta" />
+                    <FaTwitter className="twitter" />
+                    <ImPhone className="whatsapp" />
+                  </div>
+                  <InputC
+                    type="url"
+                    style={{ marginTop: 15 }}
+                    value={formik.values.company.mediaLink.facebook}
+                    name="company.mediaLink.facebook"
+                    placeholder={t("type_facebook_placeholder")}
+                    onChange={formik.handleChange}
+                  />
+                  <InputC
+                    type="url"
+                    style={{ marginTop: 15 }}
+                    name="company.mediaLink.insta"
+                    value={formik.values.company.mediaLink.insta}
+                    placeholder={t("type_insta_placeholder")}
+                    onChange={formik.handleChange}
+                  />
+                  <InputC
+                    type="url"
+                    style={{ marginTop: 15 }}
+                    value={formik.values.company.mediaLink.twitter}
+                    name="company.mediaLink.twitter"
+                    placeholder={t("type_twitter_placeholder")}
+                    onChange={formik.handleChange}
+                  />
+                </div>
+              </div>
             </div>
+            <ButtonC style={{ margin: "10px auto 10px 0" }} type="submit">
+              {t("save")}
+            </ButtonC>
           </div>
-        </div>
-        <ButtonC style={{ margin: "10px auto 10px 0" }} type="submit">
-          {t("save")}
-        </ButtonC>
-      </div>
-    </Form>
+        </Form>
+      )}
+    </>
   );
 };
 
@@ -792,6 +795,7 @@ const Form = styled.form`
         display: grid;
         grid-template-columns: 3fr 3fr 1fr;
         grid-gap: 0.8rem;
+        padding: 0;
       }
       & .social-media {
         display: flex;
@@ -924,6 +928,16 @@ const RadioCustom = styled(Radio)`
 `;
 
 const DatePickerStyling = styled(DatePicker)`
+  &.ant-picker:hover {
+    border-color: var(--orange-color) !important ;
+  }
+  &.ant-picker-focused {
+    border-color: var(--orange-color) !important ;
+    box-shadow: none;
+  }
+`;
+
+const RangePickerStyling = styled(RangePicker)`
   &.ant-picker:hover {
     border-color: var(--orange-color) !important ;
   }
