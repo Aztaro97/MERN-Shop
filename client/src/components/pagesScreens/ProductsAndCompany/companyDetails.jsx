@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { Image } from "antd";
+import { Col, Image, Row } from "antd";
 import {
   FaPhoneAlt,
   FaMapMarkerAlt,
@@ -18,30 +18,30 @@ const emptyImg = "/img/advertising/empty.jpg";
 // const dispatch = useDispatch();
 function CompanyDetails({ company }) {
   return (
-    <>
-      <Grid>
-        <Col>
+    <Container>
+      <Row gutter={[10, 50]}>
+        <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 12 }}>
           <img
             src={company.urlImg.length !== 0 ? company.urlImg : emptyImg}
             alt=""
           />
-          <Container>
-            <Row>
+          <div>
+            <div>
               <h1>{company.name}</h1>
               <p>{company.scopeBusiness}</p>
               <hr />
-            </Row>
-            <Row>
+            </div>
+            <div>
               <h1>about us</h1>
               <p>{company.about}</p>
               <hr />
-            </Row>
-            <Row>
+            </div>
+            <div>
               <h1>Our Services</h1>
               <p>{company.services}</p>
               <hr />
-            </Row>
-            <Row>
+            </div>
+            <div>
               <h1>Contact us</h1>
               <div className="info">
                 <FaPhoneAlt className="info-icon" />
@@ -56,9 +56,9 @@ function CompanyDetails({ company }) {
                 <p>{company.email}</p>
               </div>
               <hr />
-            </Row>
+            </div>
             {company.mediaLink && (
-              <Row>
+              <div>
                 <h1>Find us on</h1>
                 <div className="social-media">
                   {company.mediaLink.facebook && (
@@ -100,16 +100,18 @@ function CompanyDetails({ company }) {
                   )}
                 </div>
                 <hr />
-              </Row>
+              </div>
             )}
-            <Row>
+            <div>
               <h1>Work hours</h1>
-              <p>Form 7.00 am to 5.00 pm all week day</p>
+              <p>
+                From {company.workHours[0]} to {company.workHours[1]}
+              </p>
               <p>Holiday on {company.holidays}</p>
               <hr />
-            </Row>
+            </div>
             {company.videoLink && (
-              <Row>
+              <div>
                 <a
                   href={company.videoLink}
                   className="video_link"
@@ -118,11 +120,11 @@ function CompanyDetails({ company }) {
                 >
                   Check video
                 </a>
-              </Row>
+              </div>
             )}
-          </Container>
+          </div>
         </Col>
-        <Col>
+        <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 12 }}>
           <div className="container">
             <img
               src={
@@ -135,27 +137,10 @@ function CompanyDetails({ company }) {
               {company.urlImg.map((item, index) => (
                 <ImageA key={index} src={item.url} />
               ))}
-              {/* <ImageA src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" />
-                  <ImageA src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1490&q=80" />
-                  <ImageA src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" />
-                  <ImageA src="https://images.unsplash.com/photo-1551836022-8b2858c9c69b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80" />
-                  <ImageA src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" />
-                  <ImageA src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80" />
-                  <ImageA src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" />
-                  <ImageA src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" />
-                  <ImageA src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" />
-                  <ImageA src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" />
-                  <ImageA src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" />
-                  <ImageA src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" />
-                  <ImageA src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" />
-                  <ImageA src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" />
-                  <ImageA src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" />
-                  <ImageA src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" />
-                  <ImageA src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" /> */}
             </ImageGallerie>
           </div>
         </Col>
-      </Grid>
+      </Row>
       <div
         className="edit_btn"
         style={{
@@ -170,33 +155,14 @@ function CompanyDetails({ company }) {
           </ButtonC>
         </Link>
       </div>
-    </>
+    </Container>
   );
 }
 
 const Container = styled.div`
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 1rem 1rem 0;
-`;
-
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-column-gap: 1rem;
-
-  @media only screen and (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
-`;
-const Col = styled.div`
-  .container {
-    border-radius: 20px;
-    padding: 0 0.7rem;
-
-    & img {
-      max-height: 38rem;
-    }
+  & img {
+    max-height: 38rem;
+    margin-bottom: 10px;
   }
 
   & img {
@@ -215,8 +181,7 @@ const Col = styled.div`
       height: 300px;
     }
   }
-`;
-const Row = styled.div`
+
   margin-bottom: 0.7rem;
 
   & h1 {
@@ -292,6 +257,12 @@ const Row = styled.div`
     }
   }
 `;
+
+// const Container = styled.div`
+//   max-width: var(--max-width);
+//   margin: 0 auto;
+//   padding: 1rem 1rem 0;
+// `;
 
 const ImageGallerie = styled.div`
   display: grid;

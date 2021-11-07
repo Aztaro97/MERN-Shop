@@ -26,10 +26,8 @@ function Tabulation() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!company) {
-      dispatch(getCompanyDetails());
-    }
-  }, [dispatch, company]);
+    dispatch(getCompanyDetails());
+  }, [dispatch]);
 
   if (!userInfo) {
     return <Redirect to="/auth" />;

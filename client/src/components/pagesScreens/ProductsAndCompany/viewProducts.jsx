@@ -270,12 +270,12 @@ const Button = styled.button`
 
 const Empty = styled.div`
   & p {
-    font-size: 1.2rem;
+    font-size: 1rem;
     & .btn {
       text-decoration: none;
       color: #fff;
       background: var(--orange-color);
-      padding: 0.2rem 1rem;
+      padding: 2px 1rem;
       margin-left: 0.4rem;
       &:hover {
         opacity: 0.9;

@@ -99,8 +99,7 @@ const CompanyInfo = () => {
         phoneNumber: [],
         location: "",
         email: "",
-        workHoursFrom: "",
-        workHoursTo: "",
+        workHours: [],
         holidays: "",
         about: "",
         services: "",
@@ -115,12 +114,9 @@ const CompanyInfo = () => {
     },
     onSubmit: (values) => {
       const body = JSON.stringify(values, null, 2);
-
       setTimeout(() => {
         dispatch(registerCompanyInfo(body));
       }, 500);
-
-      console.log(body);
     },
   });
 
@@ -150,8 +146,6 @@ const CompanyInfo = () => {
   //  WorkHour function
   const addHour = (e) => {
     e.preventDefault();
-    // formik.setFieldValue("company.workHoursFrom", workHourFrom)
-    // formik.setFieldValue("company.workHoursTo", workHourTo)
     // ListHour.push(hour);
     console.log(formik.values.company);
     // console.log({workHourFrom})
@@ -184,8 +178,7 @@ const CompanyInfo = () => {
       setListCellular(company.phoneNumber);
       formik.setFieldValue("company.location", company.location);
       formik.setFieldValue("company.email", company.email);
-      formik.setFieldValue("company.workHoursFrom", company.workHoursFrom);
-      formik.setFieldValue("company.workHoursTo", company.workHoursTo);
+      formik.setFieldValue("company.workHours", company.workHours);
       formik.setFieldValue("company.holidays", company.holidays);
       formik.setFieldValue("company.about", company.about);
       formik.setFieldValue("company.services", company.services);
@@ -361,12 +354,9 @@ const CompanyInfo = () => {
 
                   <div className="time_container">
                     <RangePickerStyling
+                      defaultPickerValue={moment(formik.values.workHours)}
                       onChange={(date, dateString) => {
-                        formik.setFieldValue(
-                          "company.workHoursFrom",
-                          dateString
-                        );
-                        console.log(dateString);
+                        formik.setFieldValue("company.workHours", dateString);
                       }}
                       picker="time"
                       // mode="time"
@@ -694,12 +684,12 @@ const GalleryPhotos = () => {
             {" "}
             {!submited ? (
               <>
-                <FiUploadCloud className="icon" />
+                <FiUploadCloud style={{ margin: "0 5px" }} />
                 <span>upload and save</span>
               </>
             ) : (
               <>
-                <IoIosCloudDone className="icon" />
+                <IoIosCloudDone style={{ margin: "0 5px" }} />
                 <span>uploaded successfully</span>
               </>
             )}
@@ -938,6 +928,7 @@ const DatePickerStyling = styled(DatePicker)`
 `;
 
 const RangePickerStyling = styled(RangePicker)`
+  min-width: 200px;
   &.ant-picker:hover {
     border-color: var(--orange-color) !important ;
   }

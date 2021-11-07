@@ -388,6 +388,7 @@ export const registerCompanyInfo = (body) => async (dispatch, getState) => {
       type: USER_REGISTER_COMPANY_INFO_SUCCESS,
       payload: data,
     });
+    
     localStorage.setItem("userInfo", JSON.stringify(data));
     successMessage("COMPANY INFORMATION SUCCESSFULL SAVED");
   } catch (error) {

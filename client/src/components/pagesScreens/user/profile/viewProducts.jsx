@@ -14,6 +14,7 @@ import Loader from "../../../loader";
 import Paginate from "../../../pagination";
 import {brandList, colorList, sizeList} from "../../../../utils/listItems"
 
+
 const Brand = () => {
   const OptionList = ["Iphone", "Samsumg", "Nokia"];
   return <SelectC placeholder="Brand">{OptionList}</SelectC>;
