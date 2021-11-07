@@ -42,7 +42,7 @@ function DigitalMarketingScreen() {
         </Paragraph>
         <MarketingService />
         <Row gutter={[10, 10]} style={{ padding: "30px 0" }}>
-          <Col xs={{ span: 24 }} md={{ spam: 24 }} lg={{ span: 12 }}>
+          <Col xs={{ span: 24 }} md={{ spam: 24 }} lg={{ span: 12 }} style={{margin:"auto"}} >
             <Title level={2} className="title">
               Our package
             </Title>
