@@ -6,47 +6,59 @@ import MainContainer from "./../../MainContainer";
 import CraftMenList from "./craftMenList";
 import CompanyList from "./companyList";
 import LandingPage from "../landing/LandingPage";
+import { useDispatch, useSelector } from "react-redux";
+import ErrorServerPage from "../ErrorServerPage";
 
 const { TabPane } = Tabs;
 
-
-
 function Tabulation() {
+  const dispatch = useDispatch();
+
+  const { error: errorCompany } = useSelector((state) => state.companyList);
+  const { error: errorCraftman } = useSelector((state) => state.craftmanList);
+
   return (
     <MainContainer>
-      <LandingPage />
-      <Tab>
-        <TabsE defaultActiveKey="1" centered size="default">
-          <TabPane
-            tab={
-              <span>
-                <BsBuilding
-                  className="tab_icons"
-                  style={{ marginRight: ".6rem" }}
-                />
-                companies
-              </span>
-            }
-            key="1"
-          >
-            <CompanyList />
-          </TabPane>
-          <TabPane
-            tab={
-              <span>
-                <FaUserTie
-                  className="tab_icons"
-                  style={{ marginRight: ".6rem" }}
-                />
-                personnel
-              </span>
-            }
-            key="2"
-          >
-            <CraftMenList />
-          </TabPane>
-        </TabsE>
-      </Tab>
+      {errorCompany === "Request failed with status code 500" ||
+      errorCraftman === "Request failed with status code 500" ? (
+        <ErrorServerPage />
+      ) : (
+        <>
+          <LandingPage />
+          <Tab>
+            <TabsE defaultActiveKey="1" centered size="default">
+              <TabPane
+                tab={
+                  <span>
+                    <BsBuilding
+                      className="tab_icons"
+                      style={{ marginRight: ".6rem" }}
+                    />
+                    companies
+                  </span>
+                }
+                key="1"
+              >
+                <CompanyList />
+              </TabPane>
+              <TabPane
+                tab={
+                  <span>
+                    <FaUserTie
+                      className="tab_icons"
+                      style={{ marginRight: ".6rem" }}
+                    />
+                    personnel
+                  </span>
+                }
+                key="2"
+              >
+                <CraftMenList />
+              </TabPane>
+            </TabsE>
+          </Tab>
+        </>
+      )}
     </MainContainer>
   );
 }

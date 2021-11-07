@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCompanyList } from "../../../flux/actions/userAction";
 import Loader from "../../loader";
 import TextTruncate from "react-text-truncate";
+import ErrorServerPage from "../ErrorServerPage";
 
 const empty_pic = "/img/advertising/empty.jpg";
 
@@ -56,7 +57,7 @@ const CompanyList = () => {
   const params = useParams();
   const dispatch = useDispatch();
 
-  const { loading, company } = useSelector((state) => state.companyList);
+  const { loading, company, error } = useSelector((state) => state.companyList);
 
   useEffect(() => {
     dispatch(getCompanyList());
@@ -65,6 +66,8 @@ const CompanyList = () => {
     <>
       {loading ? (
         <Loader />
+      ) : error === "Request failed with status code 500" ? (
+        <ErrorServerPage />
       ) : (
         <Container>
           {/* <hr /> */}
@@ -110,7 +113,7 @@ const CompanyList = () => {
 };
 
 const Container = styled.div`
-   margin-bottom: 20px;
+  margin-bottom: 20px;
 `;
 
 const SliderCarousel = styled(Slider)`
@@ -166,8 +169,8 @@ const CardContainer = styled.div`
       object-fit: cover;
       /* border-radius: 1rem 1rem 0 0; */
       @media only screen and (max-width: 768px) {
-      height: 17rem;
-    }
+        height: 17rem;
+      }
     }
 
     & .card_body {

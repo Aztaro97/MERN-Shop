@@ -11,21 +11,20 @@ import {
   getCraftmanList,
 } from "../../../flux/actions/userAction";
 import Loader from "../../loader";
+import ErrorServerPage from "../ErrorServerPage";
 // import "./ecommerce.css";
 
 import svg1 from "../../../img/svg1.svg";
-import bg_rounded from "../../../img/bg_rounded.svg";
 
-
-import { Col, Row } from "antd";
-
-const compayn_pic = "/img/advertising/empty.jpg";
+const empty_pic = "/img/advertising/empty.jpg";
 
 function HomeECommerce() {
   const dispatch = useDispatch();
 
-  const { loading, company } = useSelector((state) => state.companyList);
-  const { loading: loadingCraft, craftman } = useSelector(
+  const { loading, company, error: errorCompany } = useSelector(
+    (state) => state.companyList
+  );
+  const { loading: loadingCraft, craftman, error: errorCraftman } = useSelector(
     (state) => state.craftmanList
   );
 
@@ -38,199 +37,208 @@ function HomeECommerce() {
 
   return (
     <MainContainer>
-      <LandingPage />
+      {errorCompany === "Request failed with status code 500" ||
+      errorCraftman === "Request failed with status code 500" ? (
+        <>
+          <ErrorServerPage />
+        </>
+      ) : (
+        <>
+          <LandingPage />
 
-      <Section1>
-        <Fade top>
-          <h3>Share your company with</h3>
-          <h1>our E-Commerce service</h1>
-          <hr />
-          <p>
-            is simply dummy text of the printing and typesetting industry. Lorem
-            Ipsum has been the industry's standard dummy text ever since the
-            1500s, when an unknown printer took a galley of type and scrambled
-            it to make a type specimen book
-          </p>
-        </Fade>
-
-        <Slide left cascade>
-          <div className="content">
-            <div className="svg_img">
-              <img src={svg1} alt="" />
-            </div>
-            <div className="contete_para">
+          <Section1>
+            <Fade top>
+              <h3>Share your company with</h3>
+              <h1>our E-Commerce service</h1>
+              <hr />
               <p>
                 is simply dummy text of the printing and typesetting industry.
                 Lorem Ipsum has been the industry's standard dummy text ever
                 since the 1500s, when an unknown printer took a galley of type
                 and scrambled it to make a type specimen book
               </p>
+            </Fade>
+
+            <Slide left cascade>
+              <div className="content">
+                <div className="svg_img">
+                  <img src={svg1} alt="" />
+                </div>
+                <div className="contete_para">
+                  <p>
+                    is simply dummy text of the printing and typesetting
+                    industry. Lorem Ipsum has been the industry's standard dummy
+                    text ever since the 1500s, when an unknown printer took a
+                    galley of type and scrambled it to make a type specimen book
+                  </p>
+                </div>
+              </div>
+            </Slide>
+          </Section1>
+
+          {/* <!-- Social Media container  --> */}
+          {/* <SocialMedia className="socialMedia" id="socialMediaContent">
+  <div className="bgGrediant">
+    <Row>
+      <Col
+        xs={{ span: 24 }}
+        sm={{ span: 24 }}
+        md={{ span: 24 }}
+        lg={{ span: 12 }}
+      >
+        <div className="socialText">
+          <img src="./img/shape1.png" className="shape" alt="" />
+          <div className="contente">
+            <p className="thirdColor mediumText weight-400 text-uppercase mb-0 mb-lg-1">
+              Be The Attentionence
+            </p>
+            <h2 className="secColor largestTitle weight-600  text-uppercase mb-0 mb-lg-2">
+              Social Media
+            </h2>
+            <div className="customBorder"></div>
+            <p className="weight-400 normalText grayBlueColor">
+              Increase your company's monthly leads by 327% with our
+              expert on social media promotion
+            </p>
+          </div>
+        </div>
+      </Col>
+      <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 12 }}>
+        <div className="popSocial">
+          <p className="largeText weight-500 thirdColor text-uppercase ">
+            how
+          </p>
+          <p className="largeTitle weight-600 whiteColor text-uppercase">
+            to make your ad
+          </p>
+          <a
+            className="btn text-uppercase social_btn_center"
+            type="button"
+            href="#/"
+            style={{ width: "auto" }}
+          >
+            easy and fast
+          </a>
+          <div className="socials">
+            <div className="item">
+              <a href="/#" className="btn" type="button">
+                <img src="./img/share.png" alt="" width="10" />
+                <span className="social_btn">share</span>
+              </a>
+            </div>
+            <div className="item">
+              <a href="/register" className="btn" type="button">
+                <img src="./img/profile3.png" alt="" />
+                <span className="social_btn">register</span>
+              </a>
+            </div>
+
+            <div className="item">
+              <a href="/#" className="btn" type="button">
+                <img src="./img/file.png" alt="" />
+                <span className="social_btn">file data</span>
+              </a>
             </div>
           </div>
-        </Slide>
-      </Section1>
-
-      {/* <!-- Social Media container  --> */}
-      {/* <SocialMedia className="socialMedia" id="socialMediaContent">
-        <div className="bgGrediant">
-          <Row>
-            <Col
-              xs={{ span: 24 }}
-              sm={{ span: 24 }}
-              md={{ span: 24 }}
-              lg={{ span: 12 }}
-            >
-              <div className="socialText">
-                <img src="./img/shape1.png" className="shape" alt="" />
-                <div className="contente">
-                  <p className="thirdColor mediumText weight-400 text-uppercase mb-0 mb-lg-1">
-                    Be The Attentionence
-                  </p>
-                  <h2 className="secColor largestTitle weight-600  text-uppercase mb-0 mb-lg-2">
-                    Social Media
-                  </h2>
-                  <div className="customBorder"></div>
-                  <p className="weight-400 normalText grayBlueColor">
-                    Increase your company's monthly leads by 327% with our
-                    expert on social media promotion
-                  </p>
-                </div>
-              </div>
-            </Col>
-            <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 12 }}>
-              <div className="popSocial">
-                <p className="largeText weight-500 thirdColor text-uppercase ">
-                  how
-                </p>
-                <p className="largeTitle weight-600 whiteColor text-uppercase">
-                  to make your ad
-                </p>
-                <a
-                  className="btn text-uppercase social_btn_center"
-                  type="button"
-                  href="#/"
-                  style={{ width: "auto" }}
-                >
-                  easy and fast
-                </a>
-                <div className="socials">
-                  <div className="item">
-                    <a href="/#" className="btn" type="button">
-                      <img src="./img/share.png" alt="" width="10" />
-                      <span className="social_btn">share</span>
-                    </a>
-                  </div>
-                  <div className="item">
-                    <a href="/register" className="btn" type="button">
-                      <img src="./img/profile3.png" alt="" />
-                      <span className="social_btn">register</span>
-                    </a>
-                  </div>
-
-                  <div className="item">
-                    <a href="/#" className="btn" type="button">
-                      <img src="./img/file.png" alt="" />
-                      <span className="social_btn">file data</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </Col>
-          </Row>
         </div>
-      </SocialMedia> */}
+      </Col>
+    </Row>
+  </div>
+</SocialMedia> */}
 
-      <CardSection>
-        <h4>companies for you</h4>
-        <hr />
-        {loading ? (
-          <Loader />
-        ) : (
-          <GridCard>
-            {company.users !== null && (
-              <>
-                {company.users.slice(0, 4).map((user) => (
-                  <Fade right cascade>
-                    <Card>
-                      <img
-                        className="card_img"
-                        src={
-                          user.company.urlImg.length !== 0
-                            ? user.company.urlImg[0].url
-                            : compayn_pic
-                        }
-                        alt=""
-                      />
-                      <div className="card_body">
-                        <h3>{user.company.name}</h3>
-                        <TextTruncate
-                          line={3}
-                          element="span"
-                          text={user.company.about}
-                          truncateText="…"
-                        />
-                        <hr />
-                        <Link className="link" to={`profile/${user._id}`}>
-                          see more
-                        </Link>
-                      </div>
-                    </Card>
-                  </Fade>
-                ))}
-              </>
+          <CardSection>
+            <h4>companies for you</h4>
+            <hr />
+            {loading ? (
+              <Loader />
+            ) : (
+              <GridCard>
+                {company.users !== null && (
+                  <>
+                    {company.users.slice(0, 4).map((user) => (
+                      <Fade right cascade>
+                        <Card>
+                          <img
+                            className="card_img"
+                            src={
+                              user.company.urlImg.length !== 0
+                                ? user.company.urlImg[0].url
+                                : empty_pic
+                            }
+                            alt=""
+                          />
+                          <div className="card_body">
+                            <h3>{user.company.name}</h3>
+                            <TextTruncate
+                              line={3}
+                              element="span"
+                              text={user.company.about}
+                              truncateText="…"
+                            />
+                            <hr />
+                            <Link className="link" to={`profile/${user._id}`}>
+                              see more
+                            </Link>
+                          </div>
+                        </Card>
+                      </Fade>
+                    ))}
+                  </>
+                )}
+              </GridCard>
             )}
-          </GridCard>
-        )}
-        <Link className="link" to="/companies">
-          see more
-        </Link>
-      </CardSection>
+            <Link className="link" to="/companies">
+              see more
+            </Link>
+          </CardSection>
 
-      <CardSection>
-        <h4>craftman for you</h4>
-        <hr />
-        {loadingCraft ? (
-          <Loader />
-        ) : (
-          <GridCard>
-            {craftman.users !== null && (
-              <>
-                {craftman.users.slice(0, 4).map((user) => (
-                  <Fade left cascade>
-                    <Card>
-                      <img
-                        className="card_img"
-                        src={
-                          user.company.urlImg.length !== 0
-                            ? user.company.urlImg[0].url
-                            : compayn_pic
-                        }
-                        alt=""
-                      />
-                      <div className="card_body">
-                        <h3>{user.company.name}</h3>
-                        <TextTruncate
-                          line={3}
-                          element="span"
-                          text={user.company.about}
-                          truncateText="…"
-                        />
-                        <hr />
-                        <Link className="link" to={`profile/${user._id}`}>
-                          see more
-                        </Link>
-                      </div>
-                    </Card>
-                  </Fade>
-                ))}
-              </>
+          <CardSection>
+            <h4>craftman for you</h4>
+            <hr />
+            {loadingCraft ? (
+              <Loader />
+            ) : (
+              <GridCard>
+                {craftman.users !== null && (
+                  <>
+                    {craftman.users.slice(0, 4).map((user) => (
+                      <Fade left cascade>
+                        <Card>
+                          <img
+                            className="card_img"
+                            src={
+                              user.company.urlImg.length !== 0
+                                ? user.company.urlImg[0].url
+                                : empty_pic
+                            }
+                            alt=""
+                          />
+                          <div className="card_body">
+                            <h3>{user.company.name}</h3>
+                            <TextTruncate
+                              line={3}
+                              element="span"
+                              text={user.company.about}
+                              truncateText="…"
+                            />
+                            <hr />
+                            <Link className="link" to={`profile/${user._id}`}>
+                              see more
+                            </Link>
+                          </div>
+                        </Card>
+                      </Fade>
+                    ))}
+                  </>
+                )}
+              </GridCard>
             )}
-          </GridCard>
-        )}
-        <Link className="link" to="/companies">
-          see more
-        </Link>
-      </CardSection>
+            <Link className="link" to="/companies">
+              see more
+            </Link>
+          </CardSection>
+        </>
+      )}
     </MainContainer>
   );
 }

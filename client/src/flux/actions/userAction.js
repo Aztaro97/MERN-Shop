@@ -491,6 +491,7 @@ export const getCompanyList = () => async (dispatch) => {
       payload: data,
     });
   } catch (error) {
+    console.log(error.response)
     dispatch({
       type: COMPANY_LIST_FAIL,
       payload:

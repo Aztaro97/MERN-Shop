@@ -12,6 +12,7 @@ import "./advertising.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getAdvertisingProfileByID } from "../../../flux/actions/advertisingAction/advertisingAction";
 import LoaderComponent from "../../loader";
+import ErrorServerPage from "../ErrorServerPage"
 import TextAreaComponent from "../../TextAreaComponent";
 import axios from "axios";
 import { successMessage } from "../../message";
@@ -56,6 +57,8 @@ function AdvertisingProfileScreen() {
         <LoaderComponent />
       ) : error === "Profile not fund" ? (
         <PageNotFund />
+      ) : error === "Request failed with status code 500" ? (
+        <ErrorServerPage />
       ) : (
         <>
           {profile._id && (

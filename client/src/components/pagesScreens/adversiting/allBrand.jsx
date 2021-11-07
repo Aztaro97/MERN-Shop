@@ -6,6 +6,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { filterBusiness } from "../../../flux/actions/advertisingAction/advertisingAction";
 import { useDispatch, useSelector } from "react-redux";
 import LoaderComponent from "../../loader";
+import ErrorServerPage from "../ErrorServerPage";
 import SecondeLandingSlider from "./Banner/secondeLanding";
 import MainContainer from "../../MainContainer";
 import { Col, Row } from "antd";
@@ -27,6 +28,8 @@ function AllBrandScreen() {
     <MainContainer>
       {loading ? (
         <LoaderComponent />
+      ) : error === "Request failed with status code 500" ? (
+        <ErrorServerPage />
       ) : (
         <>
           <Meta title={`All ${type}`} />
@@ -57,7 +60,7 @@ function AllBrandScreen() {
 //   );
 // };
 
-const DataSection = ({ listAdService, error, type }) => {
+const DataSection = ({ listAdService, type }) => {
   const { t } = useTranslation();
   const history = useHistory();
   const defaultImage =

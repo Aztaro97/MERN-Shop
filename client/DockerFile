@@ -1,11 +1,19 @@
 # Pull Docker Hub base image
-FROM node:14.16.0-alpine3.10
+FROM node:12.2.0-alpine as build
 # Set working directory
 WORKDIR /usr/src/app
 # Install app dependencies
+
 COPY package*.json ./
+
+
+
 RUN npm ci
+RUN npm install react-scripts@3.0.1 -g --silent
 # Copy app to container
 COPY . .
-# Run the "dev" script in package.json
-CMD ["npm", "start"]
+
+# Make port 3000 available to the world outside this container
+EXPOSE 3000
+
+RUN npm run build

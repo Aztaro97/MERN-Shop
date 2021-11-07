@@ -624,7 +624,8 @@ const NavStyling = styled.section`
     & .card_body {
       /* height: 150px; */
       width: 100%;
-      box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+      box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
+        rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
       display: flex;
       align-items: center;
       justify-content: center;
