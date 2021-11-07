@@ -67,6 +67,7 @@ const Tab = styled.div`
   /* height: ; */
   display: flex;
   justify-content: center;
+  margin-bottom: 20px;
   /* padding: 4rem 0; */
 `;
 
