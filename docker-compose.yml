@@ -1,0 +1,60 @@
+version: "3.9"
+
+services:
+  react-app:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    image: react-app
+    stdin_open: true
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client/src:/usr/app/src
+      - ./client/public:/usr/app/public
+    environment:
+      REACT_APP_API_KEY_GOOGLE_MAPS: HBSIVJHBSIUVBUIBVUIEBVIUEBVUIEIU
+      REACT_APP_STRIPE_SECRET_KEY: sk_test_51JJfI4Bx9NV9CAAsSQdUOsnA9mNook2RuXf0uqQdsir5d524Dl8bJlqqvkdtfEPP2LTkryyaRB4RxoA2q0Gk6SFG00NUMXzvGP
+      REACT_APP_STRIPE_PUBLISHABLE_KEY: pk_test_51JJfI4Bx9NV9CAAsuru5nAfIu9rF8RK6yxAf52TPNFMD7G0wnXlmH9r3MzKIlPO5kXBwkRGR8D9fK4xBod44lmRq00mT5OQdVM
+      REACT_APP_EMAIL_USER_ID_: user_rwa8tQb6PCr7V8nwSKwLZ
+      REACT_APP_EMAIL_JS_SERVICE_ID: service_6y3qpbe
+      REACT_APP_EMAIL_JS_TEMPLATE_ID: contactFaunqc34lwefuigas
+      tty: true
+    networks:
+      - mern-app
+
+  # MongoDb services
+  mongo_db:
+    container_name: db_container
+    image: mongo:latest
+    restart: always
+    volumes:
+      - mongo_db:/data/db
+    networks:
+      - mern-app
+
+  # Node Api services
+  api:
+    build: .
+    ports:
+      - "4000:3000"
+    environment:
+      NODE_ENV: development
+      PORT: 3000
+      MONGO_URI: mongodb://mongo_db:27017/au79code
+      JWT_SECRET: "abmposdsjdbvjsclkjsohdhcklsdug9564c123"
+      SENDGRID_API_KEYS: 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
+      CLOUDINARY_CLOUD_NAME: tarositeweb
+      CLOUDINARY_API_KEY: 474848126984384
+      CLOUDINARY_API_SECRET: BWFY6C_AE8a2zI0YHfcVC8wsrjM
+      STRIPE_API_KEY: sk_test_51JJfI4Bx9NV9CAAsdpOsySQlf2vLAMfcysbMGn0kP7QF7Cwy4oNgfHQEvVdkYdKCdFuy30ADHyd2uTio72uqBH7J00Wo9lKQyi
+    depends_on:
+      - mongo_db
+    networks:
+      - mern-app
+networks:
+  mern-app:
+    driver: bridge
+volumes:
+  mongo_db:
+    driver: local

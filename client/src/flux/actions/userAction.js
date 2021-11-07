@@ -153,16 +153,6 @@ export const getUserDetails = (id) => async (dispatch) => {
       type: USER_DETAILS_REQUEST,
     });
 
-    // const {
-    //   userLogin: { userInfo },
-    // } = getState();
-
-    // const config = {
-    //   headers: {
-    //     Authorization: `Bearer ${userInfo.token}`,
-    //   },
-    // };
-
     const { data } = await axios.get(`/api/users/${id}`);
 
     dispatch({
@@ -583,7 +573,7 @@ export const newPassword = (token, password) => async (dispatch) => {
     if (res.data.msg === "success") {
       successMessage(res.data.msg, 2000, 3);
       setTimeout(() => {
-        window.location.href= "/auth"
+        window.location.href = "/auth";
       }, 2000);
     }
     dispatch({

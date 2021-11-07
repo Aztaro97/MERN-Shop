@@ -11,142 +11,131 @@ import {
 import { MdMail } from "react-icons/md";
 
 import ButtonC from "../../ButtonComponeent";
-import BgImg from "../../../img/Background.png";
-import Loader from "../../loader";
 import { Link } from "react-router-dom";
 
 const emptyImg = "/img/advertising/empty.jpg";
 
 // const dispatch = useDispatch();
-function CompanyDetails({ loading, company }) {
-  // const { loading, user: {company} } = useSelector((state) => state.userDetails);
-  // const {company} = user;
-
+function CompanyDetails({ company }) {
   return (
     <>
-      {loading ? (
-        <Loader />
-      ) : (
-        <>
-          <Grid>
-            <Col>
-              <img
-                src={company.urlImg.length !== 0 ? company.urlImg : emptyImg}
-                alt=""
-              />
-              <Container>
-                <Row>
-                  <h1>{company.name}</h1>
-                  <p>{company.scopeBusiness}</p>
-                  <hr />
-                </Row>
-                <Row>
-                  <h1>about us</h1>
-                  <p>{company.about}</p>
-                  <hr />
-                </Row>
-                <Row>
-                  <h1>Our Services</h1>
-                  <p>{company.services}</p>
-                  <hr />
-                </Row>
-                <Row>
-                  <h1>Contact us</h1>
-                  <div className="info">
-                    <FaPhoneAlt className="info-icon" />
-                    <p>{company.phoneNumber.join(" / ")}</p>
-                  </div>
-                  <div className="info">
-                    <FaMapMarkerAlt className="info-icon" />
-                    <p>freedom Street</p>
-                  </div>
-                  <div className="info">
-                    <MdMail className="info-icon" />
-                    <p>{company.email}</p>
-                  </div>
-                  <hr />
-                </Row>
-                {company.mediaLink && (
-                  <Row>
-                    <h1>Find us on</h1>
-                    <div className="social-media">
-                      {company.mediaLink.facebook && (
-                        <a
-                          href={company.mediaLink.facebook}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          <FaFacebookF className="facebook" />
-                        </a>
-                      )}
-                      {company.mediaLink.insta && (
-                        <a
-                          href={company.mediaLink.insta}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          <FaInstagram className="insta" />
-                        </a>
-                      )}
-                      {company.mediaLink.twitter && (
-                        <a
-                          href={company.mediaLink.twitter}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          <FaTwitter className="twitter" />
-                        </a>
-                      )}
-                      {company.mediaLink.whatsapp && (
-                        <a
-                          href={company.mediaLink.twitter}
-                          target="_blank"
-                          rel="noreferrer"
-                          alt=""
-                        >
-                          <FaTwitter className="twitter" />
-                        </a>
-                      )}
-                    </div>
-                    <hr />
-                  </Row>
-                )}
-                <Row>
-                  <h1>Work hours</h1>
-                  <p>Form 7.00 am to 5.00 pm all week day</p>
-                  <p>Holiday on {company.holidays}</p>
-                  <hr />
-                </Row>
-                {company.videoLink && (
-                  <Row>
+      <Grid>
+        <Col>
+          <img
+            src={company.urlImg.length !== 0 ? company.urlImg : emptyImg}
+            alt=""
+          />
+          <Container>
+            <Row>
+              <h1>{company.name}</h1>
+              <p>{company.scopeBusiness}</p>
+              <hr />
+            </Row>
+            <Row>
+              <h1>about us</h1>
+              <p>{company.about}</p>
+              <hr />
+            </Row>
+            <Row>
+              <h1>Our Services</h1>
+              <p>{company.services}</p>
+              <hr />
+            </Row>
+            <Row>
+              <h1>Contact us</h1>
+              <div className="info">
+                <FaPhoneAlt className="info-icon" />
+                <p>{company.phoneNumber.join(" / ")}</p>
+              </div>
+              <div className="info">
+                <FaMapMarkerAlt className="info-icon" />
+                <p>freedom Street</p>
+              </div>
+              <div className="info">
+                <MdMail className="info-icon" />
+                <p>{company.email}</p>
+              </div>
+              <hr />
+            </Row>
+            {company.mediaLink && (
+              <Row>
+                <h1>Find us on</h1>
+                <div className="social-media">
+                  {company.mediaLink.facebook && (
                     <a
-                      href={company.videoLink}
-                      className="video_link"
+                      href={company.mediaLink.facebook}
                       target="_blank"
                       rel="noreferrer"
                     >
-                      Check video
+                      <FaFacebookF className="facebook" />
                     </a>
-                  </Row>
-                )}
-              </Container>
-            </Col>
-            <Col>
-              <div className="container">
-                <img
-                  src={
-                    company.urlImg.length !== 0
-                      ? company.urlImg[0].url
-                      : emptyImg
-                  }
-                  alt=""
-                  className="bg-right"
-                />
-                <ImageGallerie>
-                  {company.urlImg.map((item, index) => (
-                    <ImageA key={index} src={item.url} />
-                  ))}
-                  {/* <ImageA src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" />
+                  )}
+                  {company.mediaLink.insta && (
+                    <a
+                      href={company.mediaLink.insta}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <FaInstagram className="insta" />
+                    </a>
+                  )}
+                  {company.mediaLink.twitter && (
+                    <a
+                      href={company.mediaLink.twitter}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <FaTwitter className="twitter" />
+                    </a>
+                  )}
+                  {company.mediaLink.whatsapp && (
+                    <a
+                      href={company.mediaLink.twitter}
+                      target="_blank"
+                      rel="noreferrer"
+                      alt=""
+                    >
+                      <FaTwitter className="twitter" />
+                    </a>
+                  )}
+                </div>
+                <hr />
+              </Row>
+            )}
+            <Row>
+              <h1>Work hours</h1>
+              <p>Form 7.00 am to 5.00 pm all week day</p>
+              <p>Holiday on {company.holidays}</p>
+              <hr />
+            </Row>
+            {company.videoLink && (
+              <Row>
+                <a
+                  href={company.videoLink}
+                  className="video_link"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Check video
+                </a>
+              </Row>
+            )}
+          </Container>
+        </Col>
+        <Col>
+          <div className="container">
+            <img
+              src={
+                company.urlImg.length !== 0 ? company.urlImg[0].url : emptyImg
+              }
+              alt=""
+              className="bg-right"
+            />
+            <ImageGallerie>
+              {company.urlImg.map((item, index) => (
+                <ImageA key={index} src={item.url} />
+              ))}
+              {/* <ImageA src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" />
                   <ImageA src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1490&q=80" />
                   <ImageA src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" />
                   <ImageA src="https://images.unsplash.com/photo-1551836022-8b2858c9c69b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80" />
@@ -163,26 +152,24 @@ function CompanyDetails({ loading, company }) {
                   <ImageA src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" />
                   <ImageA src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" />
                   <ImageA src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" /> */}
-                </ImageGallerie>
-              </div>
-            </Col>
-          </Grid>
-          <div
-            className="edit_btn"
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              margin: "2rem 0",
-            }}
-          >
-            <Link to="/register" style={{ textDecoration: "none" }}>
-              <ButtonC style={{ padding: ".5rem 4rem", letterSpacing: "2px" }}>
-                edit my profil
-              </ButtonC>
-            </Link>
+            </ImageGallerie>
           </div>
-        </>
-      )}
+        </Col>
+      </Grid>
+      <div
+        className="edit_btn"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          margin: "2rem 0",
+        }}
+      >
+        <Link to="/register" style={{ textDecoration: "none" }}>
+          <ButtonC style={{ padding: ".5rem 4rem", letterSpacing: "2px" }}>
+            edit my profil
+          </ButtonC>
+        </Link>
+      </div>
     </>
   );
 }
