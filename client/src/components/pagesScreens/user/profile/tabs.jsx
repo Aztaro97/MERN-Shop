@@ -15,10 +15,8 @@ import ErrorServerPage from "../../ErrorServerPage";
 const { TabPane } = Tabs;
 
 const Tabulation = () => {
-  const [company, setComapy] = useState({});
   const { loading, user, error } = useSelector((state) => state.userDetails);
 
-  // const company = user && user.company;
   const params = useParams();
 
   const userId = params.id;

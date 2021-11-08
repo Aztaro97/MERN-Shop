@@ -276,6 +276,7 @@ function DesignScreen() {
 }
 
 const ContactService = styled.section`
+  margin: 30px 0;
   background: var(--orange-color);
   padding: 20px;
   margin-bottom: 20px;
@@ -306,6 +307,7 @@ const ContactService = styled.section`
 
 const FifthServiceStyling = styled.div`
   padding: 20px 0;
+  margin: 30px 0;
   & .contenteContainer {
     display: flex;
     /* align-items: center; */
@@ -332,6 +334,7 @@ const FifthServiceStyling = styled.div`
 
 const ThirstServiceStyling = styled.section`
   padding: 20px 0;
+  margin: 30px 0;
   & .image_down,
   .image_up {
     width: 100%;
@@ -381,7 +384,7 @@ const ThirstServiceStyling = styled.section`
 
 const SecondServiceStyling = styled.section`
   padding: 20px 0;
-
+  margin: 30px 0;
   & .image_down,
   .image_up {
     width: 100%;
@@ -436,6 +439,7 @@ const SecondServiceStyling = styled.section`
 
 const FirstServiceStyling = styled.section`
   padding: 20px 0;
+  margin: 30px 0;
   & .small_title {
     font-size: 0.7rem;
     text-transform: uppercase;

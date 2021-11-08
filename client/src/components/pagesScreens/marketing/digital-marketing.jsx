@@ -396,7 +396,7 @@ const Banner = styled.section`
     /* top: 0;
     bottom: 0;
     left: 0; */
-    opacity: 0.6;
+    opacity: 0.9;
     /* position: relative; */
     height: 100%;
     width: 700px;

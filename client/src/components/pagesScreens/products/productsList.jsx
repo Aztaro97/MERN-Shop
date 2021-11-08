@@ -79,14 +79,15 @@ function ProductsListScreen({ match }) {
   }
 
   // const menu =;
+  if (!userInfo || !userInfo.isAdmin) {
+    history.push("/login");
+  }
 
   useEffect(() => {
-    if (!userInfo || !userInfo.isAdmin) {
-      history.push("/login");
+    if (products.length === 0) {
+      dispatch(listProductsAdmin("", pageNumber));
     }
-
-    dispatch(listProductsAdmin("", pageNumber));
-  }, [dispatch, history, userInfo, pageNumber]);
+  }, [dispatch, pageNumber, products]);
 
   return (
     <MainContainer>
