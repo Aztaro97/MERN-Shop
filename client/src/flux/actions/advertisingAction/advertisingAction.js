@@ -23,6 +23,7 @@ import {
   USER_ADS_REQUEST,
   USER_ADS_SUCCESS,
 } from "../../constants/advertising";
+import { logout } from "../userAction";
 
 export const clearCardAd = () => (dispatch) => {
   dispatch({
@@ -112,7 +113,7 @@ export const getAllAdService = () => async (dispatch, getState) => {
       payload: data,
     });
   } catch (error) {
-    console.log(error)
+    console.log(error);
     dispatch({
       type: AD_LIST_FAIL,
       payload:
@@ -399,9 +400,18 @@ export const getUserAdsService = (id) => async (dispatch, getState) => {
       payload: res.data,
     });
   } catch (error) {
-    console.error(error);
+    
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.response
     dispatch({
       type: USER_ADS_FAIL,
+      payload: message,
     });
+    console.error(error);
+    if (message === "Not authorized, token failed") {
+      dispatch(logout());
+    }
   }
 };

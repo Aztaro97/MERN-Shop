@@ -1,12 +1,324 @@
-import React from 'react';
-import MainComponent from '../../MainContainer'
+import React, { useState } from "react";
+import MainComponent from "../../MainContainer";
+import { Card, Col, Image, Row, Space, Typography } from "antd";
+import Button from "../../ButtonComponeent";
+import styled from "styled-components";
+import { BiPaint } from "react-icons/bi";
+import CountUp from "react-countup";
+import VisibilitySensor from "react-visibility-sensor";
+
+const { Title, Paragraph } = Typography;
+const { Meta } = Card;
+
+const NumberConter = ({ className, ...rest }) => {
+  const [viewPortEntered, setViewPortEntered] = useState(false);
+  return (
+    <CountUp {...rest} start={viewPortEntered ? null : 0}>
+      {({ countUpRef }) => {
+        return (
+          <VisibilitySensor
+            active={!viewPortEntered}
+            onChange={(isVisible) => {
+              if (isVisible) {
+                setViewPortEntered(true);
+              }
+            }}
+            delayedCall
+          >
+            <h4 className={className} ref={countUpRef} />
+          </VisibilitySensor>
+        );
+      }}
+    </CountUp>
+  );
+};
 
 function DesignScreen() {
-    return (
-        <MainComponent>
-            <h1>Design Screen</h1>
-        </MainComponent>
-    )
+  return (
+    <MainComponent>
+      <Banner>
+        <div className="content">
+          <Title level={2}>The Prefect Templat for Freshers or Senpais</Title>
+          <Paragraph className="para">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
+            cupiditate dolore
+          </Paragraph>
+          <Button type="button" className="link">
+            contact us
+          </Button>
+        </div>
+      </Banner>
+      <>
+        <FirstServiceStyling>
+          <p className="small_title">lorem ip lorem</p>
+          <h1 className="title">provides feature</h1>
+          <Row gutter={[10, 10]}>
+            <Col xs={{ span: 24 }} sm={{span:12}} md={{ span: 12 }} lg={{ span: 8 }}>
+              <div className="service_card">
+                <BiPaint className="service_card_icon" />
+                <h5 className="service_card_title">service 1</h5>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Molestiae, minus corrupti. Porro
+                </p>
+              </div>
+            </Col>
+            <Col xs={{ span: 24 }} sm={{span:12}} md={{ span: 12 }} lg={{ span: 8 }}>
+              <div className="service_card">
+                <BiPaint className="service_card_icon" />
+                <h5 className="service_card_title">service 1</h5>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Molestiae, minus corrupti. Porro
+                </p>
+              </div>
+            </Col>
+            <Col xs={{ span: 24 }} sm={{span:12}} md={{ span: 12 }} lg={{ span: 8 }}>
+              <div className="service_card">
+                <BiPaint className="service_card_icon" />
+                <h5 className="service_card_title">service 1</h5>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Molestiae, minus corrupti. Porro
+                </p>
+              </div>
+            </Col>
+            <Col xs={{ span: 24 }} sm={{span:12}} md={{ span: 12 }} lg={{ span: 8 }}>
+              <div className="service_card">
+                <BiPaint className="service_card_icon" />
+                <h5 className="service_card_title">service 1</h5>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Molestiae, minus corrupti. Porro
+                </p>
+              </div>
+            </Col>
+            <Col xs={{ span: 24 }} sm={{span:12}} md={{ span: 12 }} lg={{ span: 8 }}>
+              <div className="service_card">
+                <BiPaint className="service_card_icon" />
+                <h5 className="service_card_title">service 1</h5>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Molestiae, minus corrupti. Porro
+                </p>
+              </div>
+            </Col>
+            <Col xs={{ span: 24 }} sm={{span:12}} md={{ span: 12 }} lg={{ span: 8 }}>
+              <div className="service_card">
+                <BiPaint className="service_card_icon" />
+                <h5 className="service_card_title">service 1</h5>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Molestiae, minus corrupti. Porro
+                </p>
+              </div>
+            </Col>
+          </Row>
+        </FirstServiceStyling>
+        <SecondServiceStyling>
+          <Row gutter={[10, 10]}>
+            <Col xs={{ span: 24 }} lg={{ span: 12 }}>
+              <img
+                src="https://images.unsplash.com/photo-1475669698648-2f144fcaaeb1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
+                alt=""
+                className="image_down"
+              />
+              {/* <img
+                src="https://images.unsplash.com/photo-1475669698648-2f144fcaaeb1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
+                alt=""
+                className="image_up"
+              /> */}
+            </Col>
+            <Col xs={{ span: 24 }} lg={{ span: 12 }}>
+              <div className="contenteContainer">
+                <p> lorem Ipsum</p>
+                <h1>we are the leader in web design</h1>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Veniam iure dolore, vitae porro eum ullam esse, cumque sit
+                  sapiente vero ut sint maiores est error enim et mollitia
+                  soluta illum!
+                </p>
+              </div>
+              <div className="numberContainer">
+                <div>
+                  <NumberConter
+                    className="number"
+                    duration={2}
+                    end={36}
+                    delay={1}
+                  />
+                  <h4>project</h4>
+                </div>
+                <div>
+                  <NumberConter
+                    className="number"
+                    duration={3}
+                    end={120}
+                    delay={1}
+                  />
+                  <h4>project</h4>
+                </div>
+                <div>
+                  <NumberConter
+                    className="number"
+                    duration={3}
+                    end={85}
+                    delay={1}
+                  />
+                  <h4>project</h4>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </SecondServiceStyling>
+      </>
+    </MainComponent>
+  );
 }
 
-export default DesignScreen
+const Container = styled.div``;
+
+const SecondServiceStyling = styled.section`
+  padding: 20px 0;
+
+  & .image_down,
+  .image_up {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+  }
+  & .image_up {
+    position: absolute;
+    /* bottom: 200px; */
+    left: 0;
+  }
+
+  & .contenteContainer {
+    padding: 20px;
+    & p:first-child {
+      color: var(--orange-color);
+      margin-bottom: 0;
+    }
+    & h1 {
+      font-weight: 700;
+      text-transform: capitalize;
+    }
+  }
+
+  & .numberContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    & {
+      & .number {
+        font-size: 2rem;
+        font-weight: bold;
+        color: var(--orange-color);
+        letter-spacing: 2px;
+      }
+      & h4 {
+        font-size: 20px;
+        font-weight: 700;
+        text-transform: capitalize;
+      }
+    }
+  }
+`;
+
+const FirstServiceStyling = styled.section`
+  padding: 20px 0;
+  & .small_title {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 0;
+    letter-spacing: 1px;
+    color: var(--orange-color);
+  }
+  & .title {
+    font-size: 1.8rem;
+    text-transform: capitalize;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  & .service_card {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    text-align: center;
+    cursor: pointer;
+    & .service_card_icon {
+      font-size: 40px;
+      color: var(--orange-color);
+      margin-bottom: 10px;
+    }
+    & .service_card_title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    & p {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+  }
+`;
+
+const Banner = styled.section`
+  background: url("https://images.unsplash.com/photo-1563126153-74b8e04c1070?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80");
+  position: relative;
+  height: 400px;
+  object-fit: cover;
+  background-position: center center;
+  background-size: cover;
+  & .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    max-width: 500px;
+    padding-left: 20px;
+
+    margin: 0 auto;
+    & > * {
+      color: #fff;
+    }
+    & .para {
+      max-width: 400px;
+      /* text-align: center; */
+    }
+    & .link {
+      padding: 10px;
+      background: #fff;
+      color: #333;
+      max-width: 200px;
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+  @media screen and (max-width: 678px) {
+    height: 300px;
+    & .content {
+      & > * {
+        margin: 0;
+      }
+      & .para {
+        margin-bottom: 5px;
+      }
+    }
+  }
+`;
+
+export default DesignScreen;

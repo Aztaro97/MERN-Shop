@@ -17,6 +17,7 @@ import Loader from "../../loader";
 import "./modal.css";
 
 import TextTruncate from "react-text-truncate";
+import ErrorServerPage from "../ErrorServerPage";
 
 const { confirm } = Modal;
 const empty_pic = "/img/ecommerce/empty.jpg";
@@ -73,8 +74,8 @@ const ViewProducts = () => {
     <>
       {loading ? (
         <Loader />
-      ) : error ? (
-        <h1>Error: {error}</h1>
+      ) : error === "Request failed with status code 500" ? (
+        <ErrorServerPage />
       ) : (
         <Container>
           <Row>

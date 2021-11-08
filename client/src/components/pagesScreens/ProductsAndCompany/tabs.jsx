@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { getCompanyDetails } from "../../../flux/actions/userAction";
 import LoaderComponent from "../../loader";
+import ErrorServerPage from "../ErrorServerPage";
 
 const { TabPane } = Tabs;
 
@@ -20,10 +21,13 @@ function Tabulation() {
 
   const {
     loading,
-    user: { company },
+    error,
+    user,
   } = useSelector((state) => state.userDetails);
   const { userInfo } = useSelector((state) => state.userLogin);
   const dispatch = useDispatch();
+
+  const companyDetails = user?.company
 
   useEffect(() => {
     dispatch(getCompanyDetails());
@@ -37,6 +41,8 @@ function Tabulation() {
     <MainContainer>
       {loading ? (
         <LoaderComponent />
+      ) : error === "Request failed with status code 500" ? (
+        <ErrorServerPage />
       ) : (
         <Tab>
           <TabsE defaultActiveKey="1" centered size="default">
@@ -44,7 +50,7 @@ function Tabulation() {
               <ViewProducts />
             </TabPane>
             <TabPane tab={t("company_info")} key="2">
-              <CompanyInfo company={company} />
+              <CompanyInfo company={companyDetails} />
             </TabPane>
           </TabsE>
         </Tab>

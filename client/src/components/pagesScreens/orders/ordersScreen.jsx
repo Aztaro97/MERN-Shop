@@ -7,6 +7,7 @@ import { listMyOrders } from "../../../flux/actions/orderAction";
 import LoaderComponent from "../../loader";
 import { useHistory } from "react-router";
 import moment from "moment";
+import ErrorServerPage from "../ErrorServerPage";
 
 function OrdersScreen() {
   const dispatch = useDispatch();
@@ -28,8 +29,8 @@ function OrdersScreen() {
     <>
       {loading ? (
         <LoaderComponent />
-      ) : error ? (
-        <h5>Error : {error}</h5>
+      ) : error === "Request failed with status code 500" ? (
+        <ErrorServerPage />
       ) : (
         <MainContainer>
           <OrderContainer>

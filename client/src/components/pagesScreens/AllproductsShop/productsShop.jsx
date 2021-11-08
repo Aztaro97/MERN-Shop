@@ -13,6 +13,7 @@ import Loader from "../../loader";
 import Paginate from "../../pagination";
 import MainContainer from "../../MainContainer";
 import { brandList, colorList, sizeList } from "../../../utils/listItems";
+import ErrorServerPage from "../ErrorServerPage";
 
 const ViewProducts = ({ match }) => {
   // const keyword = match.params.keyword
@@ -98,8 +99,8 @@ const ViewProducts = ({ match }) => {
           <>
             {loading ? (
               <Loader />
-            ) : error ? (
-              <h1>Errorrrr du chargement {error} .....</h1>
+            ) : error === "Request failed with status code 500" ? (
+              <ErrorServerPage />
             ) : (
               <>
                 {products.length ? (

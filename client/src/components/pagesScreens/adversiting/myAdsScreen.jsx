@@ -13,13 +13,16 @@ import {
 import { destroyImages } from "../../../flux/actions/productAction";
 import LoaderComponent from "../../loader";
 import MainContainer from "../../MainContainer";
+import ErrorServerPage from "../ErrorServerPage";
 
 const { Meta } = Card;
 
 function MyAdsScreen() {
   const { userInfo } = useSelector((state) => state.userLogin);
 
-  const { loading, listAdService } = useSelector((state) => state.advertising);
+  const { loading, listAdService, error } = useSelector(
+    (state) => state.advertising
+  );
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -50,6 +53,8 @@ function MyAdsScreen() {
     <MainContainer>
       {loading ? (
         <LoaderComponent />
+      ) : error.status === 500 ? (
+        <ErrorServerPage />
       ) : (
         <Container>
           <div className="header">

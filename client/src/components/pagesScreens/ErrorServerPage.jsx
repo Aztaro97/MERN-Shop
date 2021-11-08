@@ -4,7 +4,7 @@ import MainContainer from "../MainContainer";
 import Button from "../ButtonComponeent";
 import { useHistory } from "react-router";
 
-function ServerError() {
+function ErrorServerPage() {
   const history = useHistory();
   return (
     <MainContainer>
@@ -49,4 +49,4 @@ const Container = styled.div`
   /* display: flex; */
 `;
 
-export default ServerError;
+export default ErrorServerPage;

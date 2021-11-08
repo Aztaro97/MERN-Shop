@@ -183,12 +183,16 @@ const updateAdservice = asyncHandler(async (req, res) => {
 });
 
 const getUserAds = asyncHandler(async (req, res) => {
-  const ads = await advertising.find({ user: req.params.id });
-  if (ads) {
-    res.status(200).json(ads);
-  } else {
-    res.status(404);
-    throw new Error("Service not Fund");
+  try {
+    const ads = await advertising.find({ user: req.params.id });
+    if (ads) {
+      res.status(200).json(ads);
+    } else {
+      res.status(404);
+      throw new Error("Service not Fund");
+    }
+  } catch (error) {
+    throw new Error(error);
   }
 });
 
@@ -203,5 +207,5 @@ module.exports = {
   deleteAdService,
   seachAdvertisingByCompanyName,
   getUserAds,
-  updateAdservice
+  updateAdservice,
 };
