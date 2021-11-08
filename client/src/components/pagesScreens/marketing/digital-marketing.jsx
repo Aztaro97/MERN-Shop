@@ -396,10 +396,10 @@ const Banner = styled.section`
     /* top: 0;
     bottom: 0;
     left: 0; */
-    opacity: 0.9;
+    opacity: 0.7;
     /* position: relative; */
     height: 100%;
-    width: 700px;
+    width: 600px;
     /* right: 0; */
     z-index: 1;
     float: right;
