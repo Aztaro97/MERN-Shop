@@ -53,7 +53,12 @@ function DesignScreen() {
           <p className="small_title">lorem ip lorem</p>
           <h1 className="title">provides feature</h1>
           <Row gutter={[10, 10]}>
-            <Col xs={{ span: 24 }} sm={{span:12}} md={{ span: 12 }} lg={{ span: 8 }}>
+            <Col
+              xs={{ span: 24 }}
+              sm={{ span: 12 }}
+              md={{ span: 12 }}
+              lg={{ span: 8 }}
+            >
               <div className="service_card">
                 <BiPaint className="service_card_icon" />
                 <h5 className="service_card_title">service 1</h5>
@@ -63,7 +68,12 @@ function DesignScreen() {
                 </p>
               </div>
             </Col>
-            <Col xs={{ span: 24 }} sm={{span:12}} md={{ span: 12 }} lg={{ span: 8 }}>
+            <Col
+              xs={{ span: 24 }}
+              sm={{ span: 12 }}
+              md={{ span: 12 }}
+              lg={{ span: 8 }}
+            >
               <div className="service_card">
                 <BiPaint className="service_card_icon" />
                 <h5 className="service_card_title">service 1</h5>
@@ -73,7 +83,12 @@ function DesignScreen() {
                 </p>
               </div>
             </Col>
-            <Col xs={{ span: 24 }} sm={{span:12}} md={{ span: 12 }} lg={{ span: 8 }}>
+            <Col
+              xs={{ span: 24 }}
+              sm={{ span: 12 }}
+              md={{ span: 12 }}
+              lg={{ span: 8 }}
+            >
               <div className="service_card">
                 <BiPaint className="service_card_icon" />
                 <h5 className="service_card_title">service 1</h5>
@@ -83,7 +98,12 @@ function DesignScreen() {
                 </p>
               </div>
             </Col>
-            <Col xs={{ span: 24 }} sm={{span:12}} md={{ span: 12 }} lg={{ span: 8 }}>
+            <Col
+              xs={{ span: 24 }}
+              sm={{ span: 12 }}
+              md={{ span: 12 }}
+              lg={{ span: 8 }}
+            >
               <div className="service_card">
                 <BiPaint className="service_card_icon" />
                 <h5 className="service_card_title">service 1</h5>
@@ -93,7 +113,12 @@ function DesignScreen() {
                 </p>
               </div>
             </Col>
-            <Col xs={{ span: 24 }} sm={{span:12}} md={{ span: 12 }} lg={{ span: 8 }}>
+            <Col
+              xs={{ span: 24 }}
+              sm={{ span: 12 }}
+              md={{ span: 12 }}
+              lg={{ span: 8 }}
+            >
               <div className="service_card">
                 <BiPaint className="service_card_icon" />
                 <h5 className="service_card_title">service 1</h5>
@@ -103,7 +128,12 @@ function DesignScreen() {
                 </p>
               </div>
             </Col>
-            <Col xs={{ span: 24 }} sm={{span:12}} md={{ span: 12 }} lg={{ span: 8 }}>
+            <Col
+              xs={{ span: 24 }}
+              sm={{ span: 12 }}
+              md={{ span: 12 }}
+              lg={{ span: 8 }}
+            >
               <div className="service_card">
                 <BiPaint className="service_card_icon" />
                 <h5 className="service_card_title">service 1</h5>
@@ -172,12 +202,80 @@ function DesignScreen() {
             </Col>
           </Row>
         </SecondServiceStyling>
+        <ThirstServiceStyling>
+          <Row gutter={[10, 10]}>
+            <Col xs={{ span: 24 }} lg={{ span: 12 }}>
+              <div className="contenteContainer">
+                <p> lorem Ipsum</p>
+                <h1>we are the leader in web design</h1>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Veniam iure dolore, vitae porro eum ullam esse, cumque sit
+                  sapiente vero ut sint maiores est error enim et mollitia
+                  soluta illum!
+                </p>
+              </div>
+            </Col>
+            <Col xs={{ span: 24 }} lg={{ span: 12 }}>
+              <img
+                src="https://images.unsplash.com/photo-1475669698648-2f144fcaaeb1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
+                alt=""
+                className="image_down"
+              />
+            </Col>
+          </Row>
+        </ThirstServiceStyling>
       </>
     </MainComponent>
   );
 }
 
-const Container = styled.div``;
+const ThirstServiceStyling = styled.section`
+  padding: 20px 0;
+  & .image_down,
+  .image_up {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+  }
+  & .image_up {
+    position: absolute;
+    /* bottom: 200px; */
+    left: 0;
+  }
+
+  & .contenteContainer {
+    padding: 20px;
+    & p:first-child {
+      color: var(--orange-color);
+      margin-bottom: 0;
+    }
+    & h1 {
+      font-weight: 700;
+      text-transform: capitalize;
+    }
+  }
+
+  & .numberContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    & {
+      & .number {
+        font-size: 2rem;
+        font-weight: bold;
+        color: var(--orange-color);
+        letter-spacing: 2px;
+      }
+      & h4 {
+        font-size: 20px;
+        font-weight: 700;
+        text-transform: capitalize;
+      }
+    }
+  }
+`;
 
 const SecondServiceStyling = styled.section`
   padding: 20px 0;
