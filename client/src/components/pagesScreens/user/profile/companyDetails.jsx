@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Col, Image, Row } from "antd";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,160 +15,159 @@ import Loader from "../../../loader";
 
 import { getUserDetails } from "../../../../flux/actions/userAction";
 import ButtonC from "../../../ButtonComponeent";
+import ErrorServerPage from "../../ErrorServerPage";
+import LoaderComponent from "../../../loader";
+import PageNotFund from "../../pageNotFund";
 
 const EmptyImg = "/img/advertising/empty.jpg";
 
-const CompanyInfo = ({ loading, user, error }) => {
-  const { company } = user;
-  // const params = useParams();
-
-  // const userId = params.id;
-
-  // const { loading, error, user } = useSelector((state) => state.userDetails);
-
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   if (user === null || user._id !== userId) {
-  //     dispatch(getUserDetails(userId));
-  //   }
-  // }, [dispatch, userId, user]);
+const CompanyInfo = () => {
+  const {
+    loading,
+    user: { company },
+    error,
+  } = useSelector((state) => state.userDetails);
 
   return (
     <>
       {loading ? (
-        <Loader />
-      ) : error ? (
-        <h1>Errror : {error}</h1>
+        <LoaderComponent />
+      ) : error === "Error: User not found" ? (
+        <PageNotFund />
+      ) : error === "Request failed with status code 500" ? (
+        <ErrorServerPage />
       ) : (
         <Container>
-          <Row gutter={[10, 50]}>
-            <Col xs={{ span: 24 }} md={{ span: 12 }}>
-              <Row gutter={[10, 10]}>
-                <Col xs={{ span: 24 }}>
-                  <img
-                    src={
-                      company.urlImg.length !== 0 ? company.urlImg : EmptyImg
-                    }
-                    alt=""
-                  />
-                </Col>
-                <Col xs={{ span: 24 }}>
-                  <div>
-                    <h1>{company.name}</h1>
-                    <p>{company.scopeBusiness}</p>
-                    <hr />
-                  </div>
-                  <div>
-                    <h1>about us</h1>
-                    <p>{company.about}</p>
-                    <hr />
-                  </div>
-                  <div>
-                    <h1>Our Services</h1>
-                    <p>{company.services}</p>
-                    <hr />
-                  </div>
-                  <div>
-                    <h1>Contact us</h1>
-                    <div className="info">
-                      <FaPhoneAlt className="info-icon" />
-                      <p>{company.phoneNumber.join(" / ")}</p>
-                    </div>
-                    <div className="info">
-                      <FaMapMarkerAlt className="info-icon" />
-                      <p>freedom Street</p>
-                    </div>
-                    <div className="info">
-                      <MdMail className="info-icon" />
-                      <p>{company.email}</p>
-                    </div>
-                    <hr />
-                  </div>
-                  {company.mediaLink && (
+          {company && (
+            <Row gutter={[10, 50]}>
+              <Col xs={{ span: 24 }} md={{ span: 12 }}>
+                <Row gutter={[10, 10]}>
+                  <Col xs={{ span: 24 }}>
+                    <img
+                      src={company.urlImg.length ? company.urlImg : EmptyImg}
+                      alt=""
+                    />
+                  </Col>
+                  <Col xs={{ span: 24 }}>
                     <div>
-                      <h1>Find us on</h1>
-                      <div className="social-media">
-                        {company.mediaLink.facebook && (
-                          <a
-                            href={company.mediaLink.facebook}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            <FaFacebookF className="facebook" />
-                          </a>
-                        )}
-                        {company.mediaLink.insta && (
-                          <a
-                            href={company.mediaLink.insta}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            <FaInstagram className="insta" />
-                          </a>
-                        )}
-                        {company.mediaLink.twitter && (
-                          <a
-                            href={company.mediaLink.twitter}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            <FaTwitter className="twitter" />
-                          </a>
-                        )}
-                        {company.mediaLink.whatsapp && (
-                          <a
-                            href={company.mediaLink.twitter}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            <FaTwitter className="twitter" />
-                          </a>
-                        )}
+                      <h1>{company.name}</h1>
+                      <p>{company.scopeBusiness}</p>
+                      <hr />
+                    </div>
+                    <div>
+                      <h1>about us</h1>
+                      <p>{company.about}</p>
+                      <hr />
+                    </div>
+                    <div>
+                      <h1>Our Services</h1>
+                      <p>{company.services}</p>
+                      <hr />
+                    </div>
+                    <div>
+                      <h1>Contact us</h1>
+                      <div className="info">
+                        <FaPhoneAlt className="info-icon" />
+                        <p>{company.phoneNumber.join(" / ")}</p>
+                      </div>
+                      <div className="info">
+                        <FaMapMarkerAlt className="info-icon" />
+                        <p>freedom Street</p>
+                      </div>
+                      <div className="info">
+                        <MdMail className="info-icon" />
+                        <p>{company.email}</p>
                       </div>
                       <hr />
                     </div>
-                  )}
-                  <div>
-                    <h1>Work hours</h1>
-                    <p>From {company.workHoursFrom} am to {company.workHoursTo} pm</p>
-                    <p>Holiday on {company.holidays}</p>
-                    <hr />
-                  </div>
-                  {company.videoLink && (
+                    {company.mediaLink && (
+                      <div>
+                        <h1>Find us on</h1>
+                        <div className="social-media">
+                          {company.mediaLink.facebook && (
+                            <a
+                              href={company.mediaLink.facebook}
+                              target="_blank"
+                              rel="noreferrer"
+                            >
+                              <FaFacebookF className="facebook" />
+                            </a>
+                          )}
+                          {company.mediaLink.insta && (
+                            <a
+                              href={company.mediaLink.insta}
+                              target="_blank"
+                              rel="noreferrer"
+                            >
+                              <FaInstagram className="insta" />
+                            </a>
+                          )}
+                          {company.mediaLink.twitter && (
+                            <a
+                              href={company.mediaLink.twitter}
+                              target="_blank"
+                              rel="noreferrer"
+                            >
+                              <FaTwitter className="twitter" />
+                            </a>
+                          )}
+                          {company.mediaLink.whatsapp && (
+                            <a
+                              href={company.mediaLink.twitter}
+                              target="_blank"
+                              rel="noreferrer"
+                            >
+                              <FaTwitter className="twitter" />
+                            </a>
+                          )}
+                        </div>
+                        <hr />
+                      </div>
+                    )}
                     <div>
-                      <a
-                        href={company.videoLink}
-                        className="video_link"
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        Check video
-                      </a>
+                      <h1>Work hours</h1>
+                      <p>
+                        From {company.workHoursFrom} am to {company.workHoursTo}{" "}
+                        pm
+                      </p>
+                      <p>Holiday on {company.holidays}</p>
+                      <hr />
                     </div>
-                  )}
-                </Col>
-              </Row>
-            </Col>
-            <Col xs={{ span: 24 }} md={{ span: 12 }}>
-              <div className="container">
-                <img
-                  src={
-                    company.urlImg.length !== 0
-                      ? company.urlImg[0].url
-                      : EmptyImg
-                  }
-                  alt=""
-                  className="bg-right"
-                />
-                <ImageGallerie>
-                  {company.urlImg.map((item, index) => (
-                    <ImageA key={index} src={item.url} />
-                  ))}
-                </ImageGallerie>
-              </div>
-            </Col>
-          </Row>
+                    {company.videoLink && (
+                      <div>
+                        <a
+                          href={company.videoLink}
+                          className="video_link"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          Check video
+                        </a>
+                      </div>
+                    )}
+                  </Col>
+                </Row>
+              </Col>
+              <Col xs={{ span: 24 }} md={{ span: 12 }}>
+                <div className="container">
+                  <img
+                    src={
+                      company.urlImg.length !== 0
+                        ? company.urlImg[0].url
+                        : EmptyImg
+                    }
+                    alt=""
+                    className="bg-right"
+                  />
+                  <ImageGallerie>
+                    {company.urlImg.map((item, index) => (
+                      <ImageA key={index} src={item.url} />
+                    ))}
+                  </ImageGallerie>
+                </div>
+              </Col>
+            </Row>
+          )}
         </Container>
       )}
     </>

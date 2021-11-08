@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Tabs } from "antd";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
@@ -9,16 +9,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUserDetails } from "../../../../flux/actions/userAction";
 import PageNotFund from "../../pageNotFund";
 import LoaderComponent from "../../../loader";
+import ErrorServerPage from "../../ErrorServerPage";
 // import {filterProducts} from
 
 const { TabPane } = Tabs;
 
-const Tabulation = ({ match }) => {
+const Tabulation = () => {
+  const [company, setComapy] = useState({});
+  const { loading, user, error } = useSelector((state) => state.userDetails);
+
+  // const company = user && user.company;
   const params = useParams();
 
   const userId = params.id;
-
-  const { loading, error, user } = useSelector((state) => state.userDetails);
 
   const dispatch = useDispatch();
 
@@ -28,26 +31,18 @@ const Tabulation = ({ match }) => {
     }
   }, [dispatch, userId, user]);
   return (
-    <>
-      {loading ? (
-        <LoaderComponent />
-      ) : error ? (
-        <PageNotFund />
-      ) : (
-        <MainContainer>
-          <Tab>
-            <TabsE defaultActiveKey="1" centered size="default">
-              <TabPane tab="View Products" key="1">
-                <ViewProducts />
-              </TabPane>
-              <TabPane tab="Company Information" key="2">
-                <CompanyInfo loading={loading} user={user} error={error} />
-              </TabPane>
-            </TabsE>
-          </Tab>
-        </MainContainer>
-      )}
-    </>
+    <MainContainer>
+      <Tab>
+        <TabsE defaultActiveKey="1" centered size="default">
+          <TabPane tab="View Products" key="1">
+            <ViewProducts />
+          </TabPane>
+          <TabPane tab="Company Information" key="2">
+            <CompanyInfo />
+          </TabPane>
+        </TabsE>
+      </Tab>
+    </MainContainer>
   );
 };
 

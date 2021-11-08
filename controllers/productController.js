@@ -342,27 +342,36 @@ const filterProductsUser = asyncHandler(async (req, res) => {
 // @route   GET /api/products/user/:id
 // @access  Public
 const getUserProducts = asyncHandler(async (req, res) => {
-  const pageSize = 8;
-  const page = Number(req.query.pageNumber) || 1;
+  try {
+    const pageSize = 8;
+    const page = Number(req.query.pageNumber) || 1;
 
-  const keyword = req.query.keyword
-    ? {
-        name: {
-          $regex: req.query.keyword,
-          $options: "i",
-        },
-      }
-    : {};
+    const keyword = req.query.keyword
+      ? {
+          name: {
+            $regex: req.query.keyword,
+            $options: "i",
+          },
+        }
+      : {};
 
-  const count = await Product.countDocuments({
-    user: req.params.id,
-    allow: true,
-  });
-  const products = await Product.find({ user: req.params.id, allow: true }).populate("user",[ "company"])
-    .limit(pageSize)
-    .skip(pageSize * (page - 1));
-
-  res.json({ products, page, pages: Math.ceil(count / pageSize) });
+    const count = await Product.countDocuments({
+      user: req.params.id,
+      allow: true,
+    });
+    const products = await Product.find({ user: req.params.id, allow: true })
+      .populate("user", ["company"])
+      .limit(pageSize)
+      .skip(pageSize * (page - 1));
+    if (products) {
+      res.json({ products, page, pages: Math.ceil(count / pageSize) });
+    } else {
+      res.status(404);
+      throw new Error("Product not found");
+    }
+  } catch (error) {
+    throw new Error(error);
+  }
 });
 
 // @desc    Allow products sell

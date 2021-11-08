@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from "styled-components"
 
-function ButtonComponeent({children, type, onClick, style, className, disabled}) {
+function ButtonComponent({children, type, onClick, style, className, disabled}) {
     return (
         <Button className={className} style={style} type={type} onClick={onClick} disabled={disabled}>
             {children}
@@ -36,4 +36,4 @@ const Button = styled.button`
     }
 `
 
-export default ButtonComponeent
+export default ButtonComponent

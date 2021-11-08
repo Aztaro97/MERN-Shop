@@ -154,11 +154,11 @@ export const getUserDetails = (id) => async (dispatch) => {
     });
 
     const { data } = await axios.get(`/api/users/${id}`);
-
-    dispatch({
-      type: USER_DETAILS_SUCCESS,
-      payload: data,
-    });
+    if (data)
+      dispatch({
+        type: USER_DETAILS_SUCCESS,
+        payload: data,
+      });
   } catch (error) {
     const message =
       error.response && error.response.data.message
@@ -388,7 +388,7 @@ export const registerCompanyInfo = (body) => async (dispatch, getState) => {
       type: USER_REGISTER_COMPANY_INFO_SUCCESS,
       payload: data,
     });
-    
+
     localStorage.setItem("userInfo", JSON.stringify(data));
     successMessage("COMPANY INFORMATION SUCCESSFULL SAVED");
   } catch (error) {
@@ -492,7 +492,7 @@ export const getCompanyList = () => async (dispatch) => {
       payload: data,
     });
   } catch (error) {
-    console.log(error.response)
+    console.log(error.response);
     dispatch({
       type: COMPANY_LIST_FAIL,
       payload:

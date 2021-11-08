@@ -396,18 +396,22 @@ const deleteUser = asyncHandler(async (req, res) => {
 // @route   GET /api/users/:id
 // @access  Private/Admin
 const getUserById = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.params.id).select("-password");
+  try {
+    const user = await User.findById(req.params.id).select("-password");
 
-  if (user) {
-    res.json({
-      _id: user._id,
-      isAdmin: user.isAdmin,
-      company: user.company,
-      typeUser: user.typeUser,
-    });
-  } else {
-    res.status(404);
-    throw new Error("User not found");
+    if (user) {
+      res.json({
+        _id: user._id,
+        isAdmin: user.isAdmin,
+        company: user.company,
+        typeUser: user.typeUser,
+      });
+    } else {
+      res.status(404);
+      throw new Error("User not found");
+    }
+  } catch (error) {
+    throw new Error(error);
   }
 });
 

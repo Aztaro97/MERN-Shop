@@ -12,8 +12,8 @@ import {
 import CardProduct from "./cardProducts";
 import Loader from "../../../loader";
 import Paginate from "../../../pagination";
-import {brandList, colorList, sizeList} from "../../../../utils/listItems"
-
+import { brandList, colorList, sizeList } from "../../../../utils/listItems";
+import ErrorServerPage from "../../ErrorServerPage";
 
 const Brand = () => {
   const OptionList = ["Iphone", "Samsumg", "Nokia"];
@@ -29,7 +29,7 @@ const ViewProducts = () => {
 
   const formik = useFormik({
     initialValues: {
-       brand: null,
+      brand: null,
       color: null,
       size: null,
       price: 1,
@@ -45,7 +45,6 @@ const ViewProducts = () => {
   const { loading, error, products, page, pages } = useSelector(
     (state) => state.productList
   );
-
 
   useEffect(() => {
     dispatch(getProductUserById(userId, pageNumber));
@@ -101,8 +100,10 @@ const ViewProducts = () => {
         <>
           {loading ? (
             <Loader />
-          ) : error ? (
+          ) : error === "Product User not found" ? (
             <h1>Errorrrr du chargement {error} .....</h1>
+          ) : error === "Request failed with status code 500" ? (
+            <ErrorServerPage />
           ) : (
             <>
               {products.length ? (
@@ -149,7 +150,6 @@ const Row = styled.div`
   &.products_items {
     margin-top: 4rem;
   }
-
 
   & .cart_empty {
     & button {
