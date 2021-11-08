@@ -159,7 +159,7 @@ function DesignScreen() {
                 className="image_up"
               /> */}
             </Col>
-            <Col xs={{ span: 24 }} lg={{ span: 12 }}>
+            <Col xs={{ span: 24 }} lg={{ span: 12 }} style={{ margin:"auto"}}>
               <div className="contenteContainer">
                 <p> lorem Ipsum</p>
                 <h1>we are the leader in web design</h1>
@@ -236,16 +236,18 @@ function DesignScreen() {
             </Col>
             <Col xs={{ span: 24 }} lg={{ span: 12 }}>
               <div className="contenteContainer">
-                <h1>lorem Ipsum</h1>
-                <p>Lorem ipsum dolor sit amet consectetur </p>
-              </div>
-              <div className="contenteContainer">
-                <h1>lorem Ipsum</h1>
-                <p>Lorem ipsum dolor sit amet consectetur </p>
-              </div>
-              <div className="contenteContainer">
-                <h1>lorem Ipsum</h1>
-                <p>Lorem ipsum dolor sit amet consectetur </p>
+                <div className="contente">
+                  <h1>lorem Ipsum</h1>
+                  <p>Lorem ipsum dolor sit amet consectetur </p>
+                </div>
+                <div className="contente">
+                  <h1>lorem Ipsum</h1>
+                  <p>Lorem ipsum dolor sit amet consectetur </p>
+                </div>
+                <div className="contente">
+                  <h1>lorem Ipsum</h1>
+                  <p>Lorem ipsum dolor sit amet consectetur </p>
+                </div>
               </div>
             </Col>
           </Row>
@@ -258,12 +260,19 @@ function DesignScreen() {
 const FifthServiceStyling = styled.div`
   padding: 20px 0;
   & .contenteContainer {
-    padding: 10px 0;
-    & h1 {
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    & .contente {
+      padding: 10px 0;
+      & h1 {
         font-size: 1.3rem;
         text-transform: capitalize;
         font-weight: 700;
         color: var(--orange-color);
+      }
     }
   }
   .image_down {
