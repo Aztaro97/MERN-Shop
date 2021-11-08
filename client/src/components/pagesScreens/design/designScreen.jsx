@@ -52,7 +52,7 @@ function DesignScreen() {
         <FirstServiceStyling>
           <p className="small_title">lorem ip lorem</p>
           <h1 className="title">provides feature</h1>
-          <Row gutter={[10, 10]}>
+          <Row gutter={[40, 10]}>
             <Col
               xs={{ span: 24 }}
               sm={{ span: 12 }}
@@ -146,7 +146,7 @@ function DesignScreen() {
           </Row>
         </FirstServiceStyling>
         <SecondServiceStyling>
-          <Row gutter={[10, 10]}>
+          <Row gutter={[40, 10]}>
             <Col xs={{ span: 24 }} lg={{ span: 12 }}>
               <img
                 src="https://images.unsplash.com/photo-1475669698648-2f144fcaaeb1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
@@ -203,7 +203,7 @@ function DesignScreen() {
           </Row>
         </SecondServiceStyling>
         <ThirstServiceStyling>
-          <Row gutter={[10, 10]}>
+          <Row gutter={[40, 10]}>
             <Col xs={{ span: 24 }} lg={{ span: 12 }}>
               <div className="contenteContainer">
                 <p> lorem Ipsum</p>
@@ -218,17 +218,61 @@ function DesignScreen() {
             </Col>
             <Col xs={{ span: 24 }} lg={{ span: 12 }}>
               <img
-                src="https://images.unsplash.com/photo-1475669698648-2f144fcaaeb1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
+                src="https://images.unsplash.com/photo-1461344577544-4e5dc9487184?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
                 alt=""
                 className="image_down"
               />
             </Col>
           </Row>
         </ThirstServiceStyling>
+        <FifthServiceStyling>
+          <Row gutter={[40, 10]}>
+            <Col xs={{ span: 24 }} lg={{ span: 12 }}>
+              <img
+                src="https://images.unsplash.com/photo-1461344577544-4e5dc9487184?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+                alt=""
+                className="image_down"
+              />
+            </Col>
+            <Col xs={{ span: 24 }} lg={{ span: 12 }}>
+              <div className="contenteContainer">
+                <h1>lorem Ipsum</h1>
+                <p>Lorem ipsum dolor sit amet consectetur </p>
+              </div>
+              <div className="contenteContainer">
+                <h1>lorem Ipsum</h1>
+                <p>Lorem ipsum dolor sit amet consectetur </p>
+              </div>
+              <div className="contenteContainer">
+                <h1>lorem Ipsum</h1>
+                <p>Lorem ipsum dolor sit amet consectetur </p>
+              </div>
+            </Col>
+          </Row>
+        </FifthServiceStyling>
       </>
     </MainComponent>
   );
 }
+
+const FifthServiceStyling = styled.div`
+  padding: 20px 0;
+  & .contenteContainer {
+    padding: 10px 0;
+    & h1 {
+        font-size: 1.3rem;
+        text-transform: capitalize;
+        font-weight: 700;
+        color: var(--orange-color);
+    }
+  }
+  .image_down {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+`;
 
 const ThirstServiceStyling = styled.section`
   padding: 20px 0;
@@ -240,12 +284,14 @@ const ThirstServiceStyling = styled.section`
   }
   & .image_up {
     position: absolute;
-    /* bottom: 200px; */
     left: 0;
   }
 
   & .contenteContainer {
-    padding: 20px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     & p:first-child {
       color: var(--orange-color);
       margin-bottom: 0;
@@ -293,7 +339,6 @@ const SecondServiceStyling = styled.section`
   }
 
   & .contenteContainer {
-    padding: 20px;
     & p:first-child {
       color: var(--orange-color);
       margin-bottom: 0;
@@ -308,7 +353,6 @@ const SecondServiceStyling = styled.section`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
     & {
       & .number {
         font-size: 2rem;

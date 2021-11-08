@@ -121,7 +121,7 @@ const Slide = styled.div`
     align-items: flex-end;
   }
   @media only screen and (max-width: 768px) {
-    height: 200px;
+    height: 300px;
   }
 `;
 

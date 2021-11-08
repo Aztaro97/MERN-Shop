@@ -196,6 +196,7 @@ const ContactSection = styled.section`
     color: var(--orange-color);
     padding: 20px auto !important;
     background: #fff;
+    min-width:120px;
   }
   & h4 {
     font-weight: 700;
@@ -244,7 +245,7 @@ const Banner = styled.div`
     }
   }
   @media screen and (max-width: 678px) {
-    height: 200px;
+    height: 300px;
   }
 `;
 

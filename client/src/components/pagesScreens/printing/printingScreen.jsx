@@ -430,7 +430,7 @@ const Banner = styled.section`
     }
   }
   @media screen and (max-width: 678px) {
-    height: 200px;
+    height: 300px;
     & .content {
       & > * {
         margin: 0;

@@ -34,7 +34,7 @@ function ProductionScreen() {
         </section>
         <CardProductList />
         <section className="contact_section">
-          <Button className="button">contact us</Button>
+          <Button className="button">contact Us</Button>
           <h4>Lorem ipsum dolor sit amet consectetur</h4>
         </section>
       </Container>
@@ -260,6 +260,7 @@ const Container = styled.div`
       color: var(--orange-color);
       padding: 20px auto !important;
       background: #fff;
+      min-width:120px;
     }
     & h4 {
       font-weight: 700;
@@ -355,7 +356,7 @@ const Banner = styled.section`
     }
   }
   @media screen and (max-width: 678px) {
-    height: 200px;
+    height: 300px;
     & .content {
       & > * {
         margin: 0;
