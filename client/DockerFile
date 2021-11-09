@@ -6,9 +6,8 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-
-
 RUN npm ci
+
 RUN npm install react-scripts@3.0.1 -g --silent
 # Copy app to container
 COPY . .

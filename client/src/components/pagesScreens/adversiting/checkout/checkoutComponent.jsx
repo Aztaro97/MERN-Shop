@@ -45,7 +45,6 @@ const CheckoutComponent = ({ totalPrice, cardData }) => {
       });
       if (res.data.success) {
         setSuccessPayment(true);
-        console.log(stripeToken);
       }
     } catch (err) {
       console.log(err);

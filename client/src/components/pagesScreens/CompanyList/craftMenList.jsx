@@ -122,7 +122,6 @@ function CraftManList() {
 }
 
 const Container = styled.div`
-  /* max-width: 1600px; */
   margin-bottom: 20px;
 `;
 

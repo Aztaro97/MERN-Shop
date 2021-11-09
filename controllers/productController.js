@@ -367,7 +367,7 @@ const getUserProducts = asyncHandler(async (req, res) => {
       res.json({ products, page, pages: Math.ceil(count / pageSize) });
     } else {
       res.status(404);
-      throw new Error("Product not found");
+      throw new Error("Product User not found");
     }
   } catch (error) {
     throw new Error(error);
