@@ -12,7 +12,7 @@ import {
 } from "../../../flux/actions/productAction";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import SelectC from "../../SelectComponents";
-import {brandList} from "../../../utils/listItems"
+import { brandList } from "../../../utils/listItems";
 
 import {
   Card,
@@ -137,8 +137,8 @@ function AddProductScreen() {
       <MainProductForm onSubmit={handleProductCreate}>
         <Col>
           <ProductSection1
-          selling={selling}
-          delivery={delivery}
+            selling={selling}
+            delivery={delivery}
             setCode={setCode}
             setSelling={setSelling}
             setDelivery={setDelivery}
@@ -379,12 +379,9 @@ const FormRight = ({
 
   const history = useHistory();
 
-  const {
-    loading,
-    error,
-    success,
-    product: createdProduct,
-  } = useSelector((state) => state.productCreate);
+  const { loading, error, success, product: createdProduct } = useSelector(
+    (state) => state.productCreate
+  );
 
   const dispatch = useDispatch();
 
@@ -446,20 +443,6 @@ const FormRight = ({
             </UploadIcon>
           )}
         </Upload>
-
-        {/* <ImgCrop rotate>
-          <Upload
-            listType="picture-card"
-            beforeUpload={() => false}
-            onChange={handleUpload}
-            onPreview={handlePreview}
-            onRemove={() => console.log("Image remove")}
-            fileList={fileList}
-            name="imgfiles"
-          >
-            {fileList.length < 5 && <UploadIcon><GoPlus size={30} /></UploadIcon>}
-          </Upload>
-        </ImgCrop> */}
       </Row>
 
       <Row>
@@ -785,7 +768,13 @@ const FormRight = ({
   );
 };
 
-const ProductSection1 = ({selling, delivery, setCode, setSelling, setDelivery }) => {
+const ProductSection1 = ({
+  selling,
+  delivery,
+  setCode,
+  setSelling,
+  setDelivery,
+}) => {
   return (
     <>
       <Row>

@@ -112,24 +112,31 @@ router.post(
 
       const results = [];
 
-      for (const file of files) {
-        if (file.size > 1024 * 1024) {
-          removeTmp(file.tempFilePath);
-          return res.status(400).json({ msg: "Size too large" });
-        }
+      if (files.length) {
+        for (const file of files) {
+          if (file.size > 1024 * 1024) {
+            removeTmp(file.tempFilePath);
+            return res.status(400).json({ msg: "Size too large" });
+          }
 
-        if (
-          file.mimetype !== "image/jpeg" &&
-          file.mimetype !== "image/jpg" &&
-          file.mimetype !== "image/png"
-        ) {
+          if (
+            file.mimetype !== "image/jpeg" &&
+            file.mimetype !== "image/jpg" &&
+            file.mimetype !== "image/png"
+          ) {
+            removeTmp(file.tempFilePath);
+            return res.status(400).json({ msg: "File format is incorrect." });
+          }
+          const resul = await cloudinary.v2.uploader.upload(file.tempFilePath);
           removeTmp(file.tempFilePath);
-          return res.status(400).json({ msg: "File format is incorrect." });
-        }
-        const resul = await cloudinary.v2.uploader.upload(file.tempFilePath);
-        removeTmp(file.tempFilePath);
 
-        results.push(resul);
+          results.push(resul);
+        }
+      } else {
+        const NewResul = await cloudinary.v2.uploader.upload(
+          files.tempFilePath
+        );
+        results.push(NewResul);
       }
 
       const imgUrls = results.map((result) => ({
