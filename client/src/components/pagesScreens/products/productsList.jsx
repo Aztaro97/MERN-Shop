@@ -84,10 +84,8 @@ function ProductsListScreen({ match }) {
   }
 
   useEffect(() => {
-    if (products.length === 0) {
-      dispatch(listProductsAdmin("", pageNumber));
-    }
-  }, [dispatch, pageNumber, products]);
+    dispatch(listProductsAdmin("", pageNumber));
+  }, [dispatch, pageNumber]);
 
   return (
     <MainContainer>
