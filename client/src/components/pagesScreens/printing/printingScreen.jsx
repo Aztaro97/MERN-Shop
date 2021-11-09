@@ -100,7 +100,7 @@ const ProductSelling = () => {
       {
         breakpoint: 420,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
         },
       },
     ],
@@ -241,6 +241,7 @@ const Container = styled.div`
       text-transform: uppercase;
       text-align: center;
       color: var(--orange-color);
+      font-size: 1.8rem;
     }
     & .s1,
     .s2,
@@ -358,6 +359,7 @@ const ProductListStyling = styled.section`
     color: var(--orange-color);
     text-align: center;
     text-transform: uppercase;
+    font-size: 1.8rem;
   }
   & .product_card {
     max-width: 240px;
@@ -375,6 +377,7 @@ const ProductStyling = styled.section`
     text-transform: uppercase;
     text-align: center;
     color: var(--orange-color);
+    font-size: 1.8rem;
   }
   & .slider {
     width: 100%;
@@ -385,8 +388,9 @@ const ProductStyling = styled.section`
         margin: auto;
         object-fit: contain;
         @media only screen and (max-width: 425px) {
-          width: 100%;
-          margin: auto 20px;
+          width: 140px;
+          height: 140px;
+          /* margin: auto 20px; */
         }
       }
     }

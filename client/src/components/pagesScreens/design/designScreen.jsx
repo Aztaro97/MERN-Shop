@@ -438,7 +438,7 @@ const SecondServiceStyling = styled.section`
 `;
 
 const FirstServiceStyling = styled.section`
-  padding: 20px 0;
+  padding: 20px;
   margin: 30px 0;
   & .small_title {
     font-size: 0.7rem;
@@ -463,6 +463,7 @@ const FirstServiceStyling = styled.section`
     margin-bottom: 20px;
     text-align: center;
     cursor: pointer;
+    transition: all 0.3s ease;
     & .service_card_icon {
       font-size: 40px;
       color: var(--orange-color);
@@ -477,6 +478,9 @@ const FirstServiceStyling = styled.section`
     & p {
       font-size: 14px;
       line-height: 1.5;
+    }
+    &:hover {
+      transform: translateY(-7px);
     }
   }
 `;
