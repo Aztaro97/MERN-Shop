@@ -58,6 +58,7 @@ export const listProductsAdmin = (keyword = "", pageNumber = "") => async (
   getState
 ) => {
   try {
+    dispatch({ type: PRODUCT_LIST_REQUEST });
     const {
       userLogin: { userInfo },
     } = getState();
@@ -68,8 +69,6 @@ export const listProductsAdmin = (keyword = "", pageNumber = "") => async (
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
-
-    dispatch({ type: PRODUCT_LIST_REQUEST });
 
     const { data } = await axios.get(
       `/api/products/admin?keyword=${keyword}&pageNumber=${pageNumber}`,
@@ -134,7 +133,6 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
         type: PRODUCT_DELETE_SUCCESS,
       });
     }
-
   } catch (error) {
     const message =
       error.response && error.response.data.message

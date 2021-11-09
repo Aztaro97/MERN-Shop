@@ -35,7 +35,7 @@ export const productListReducer = (state = { products: [] }, action) => {
   switch (action.type) {
     case PRODUCT_LIST_REQUEST:
     case FILTER_PRODUCT_REQUEST:
-      return { loading: true, products: [] };
+      return { ...state, loading: true };
     case PRODUCT_LIST_SUCCESS:
     case FILTER_PRODUCT_SUCCESS:
       return {

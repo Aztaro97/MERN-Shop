@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { Zoom } from "react-reveal";
 import { Link, useHistory } from "react-router-dom";
 
-import bg_landing1 from "../../../img/bg_landing.png";
+const bg_landing1 = "/img/ecommerce/bg_landing.png";
 
 const HomeSection = () => {
   const [currentSlide, setCurrentSlide] = useState(null);
@@ -106,7 +106,12 @@ const Slide = styled.div`
   }
 
   & .bg2 {
-    background-image: url("https://images.unsplash.com/photo-1529460608-bc455fccd5a4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1190&q=80");
+    background-image: linear-gradient(
+        90deg,
+        #333333a4 0%,
+        rgba(2, 0, 36, 0.5) 0%
+      ),
+      url("/img/ecommerce/bg_landing2.png");
   }
 
   & .bg_image {
@@ -161,7 +166,7 @@ const SlideOverlay = styled.div`
       outline: none;
       border: none;
       border-radius: 30px;
-      padding: 0.5rem .5rem;
+      padding: 0.5rem 0.5rem;
       background: var(--orange-color);
       text-transform: uppercase;
       color: #fff;
@@ -177,7 +182,7 @@ const SlideOverlay = styled.div`
     }
 
     @media only screen and (max-width: 768px) {
-      bottom: .6rem;
+      bottom: 0.6rem;
       padding-right: 1rem;
       width: 100%;
       & h1 {
@@ -188,7 +193,7 @@ const SlideOverlay = styled.div`
         }
       }
       & p {
-        font-size: .9rem;
+        font-size: 0.9rem;
       }
       & .link1 {
         font-size: 0.8rem;
@@ -205,7 +210,7 @@ const SlideOverlay = styled.div`
       text-decoration: none;
       background: var(--orange-color);
       border-radius: 30px;
-      padding: .5rem 1rem;
+      padding: 0.5rem 1rem;
       text-transform: uppercase;
       color: #fff;
       text-align: center;
