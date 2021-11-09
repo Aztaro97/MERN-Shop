@@ -335,32 +335,6 @@ const FormRight = ({
     console.log(fileList);
   };
 
-  // const handleUpload = async (e) => {
-  //   try {
-  //     const config = {
-  //       headers: {
-  //         "content-type": "multipart/form-data",
-  //         // Authorization: `Bearer ${userInfo.token}`,
-  //       },
-  //     };
-
-  //     let formdata = new FormData();
-  //     for (var i = 0; i < fileList.length; i++) {
-  //       formdata.append("imgfiles", fileList[i].originFileObj);
-  //     }
-
-  //     const res = await axios.post(
-  //       "/api/upload/company-images",
-  //       formdata,
-  //       config
-  //     );
-
-  //     console.log(res.data);
-  //   } catch (error) {
-  //     console.log(error.message);
-  //   }
-  // };
-
   const handlePreview = async (file) => {
     let src = file.url;
     if (!src) {
