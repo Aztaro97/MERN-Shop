@@ -1,6 +1,16 @@
 FROM node:alpine
+
+LABEL version="1.0"
+LABEL description="Development Image for Au79code Api"
+
 WORKDIR /usr/src/app
+
 COPY package*.json .
+
 RUN npm ci
+
 COPY . .
+
+EXPOSE 8080
+
 CMD ["npm", "run", "dev"]

@@ -1,6 +1,11 @@
 # Pull Docker Hub base image
 FROM node:12.2.0-alpine as build
 # Set working directory
+
+# Label React PRojected
+LABEL version="1.0.0"
+LABEL description="REACT FRONTEND FRO The library API"
+
 WORKDIR /usr/src/app
 # Install app dependencies
 

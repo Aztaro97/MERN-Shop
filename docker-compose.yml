@@ -5,14 +5,15 @@ services:
     build:
       context: ./client
       dockerfile: Dockerfile
+    container_name: frontEnd_container
     command: npm start
     image: react-app
     stdin_open: true
     ports:
       - "3000:3000"
-    # volumes:
-    #   - ./client:/usr/src/app/client
-    #   - ./client/public:/usr/src/app/client/public
+    volumes:
+      - ./client:/usr/src/app/client
+      - ./client/public:/usr/src/app/client/public
     environment:
       REACT_APP_API_KEY_GOOGLE_MAPS: HBSIVJHBSIUVBUIBVUIEBVIUEBVUIEIU
       REACT_APP_STRIPE_SECRET_KEY: sk_test_51JJfI4Bx9NV9CAAsSQdUOsnA9mNook2RuXf0uqQdsir5d524Dl8bJlqqvkdtfEPP2LTkryyaRB4RxoA2q0Gk6SFG00NUMXzvGP
@@ -41,6 +42,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    container_name: api_container
     ports:
       - "8080:8080"
     image: api-server
@@ -48,7 +50,7 @@ services:
       - .:/usr/src/app
     environment:
       NODE_ENV: development
-      PORT: 3000
+      PORT: 8080
       MONGO_URI: mongodb://mongo_db:27017/au79code
       JWT_SECRET: "abmposdsjdbvjsclkjsohdhcklsdug9564c123"
       SENDGRID_API_KEYS: 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
@@ -60,6 +62,21 @@ services:
       - mongo_db
     networks:
       - mern-app
+
+  # nginx:
+  #   restart: always
+  #   depends_on:
+  #     - api
+  #     - react-app
+  #   build:
+  #     context: ./nginx
+  #     dockerfile: Dockerfile
+  #   port:
+  #     - 8080:80
+  #   networks:
+  #     - mern-app
+
+
 networks:
   mern-app:
     driver: bridge

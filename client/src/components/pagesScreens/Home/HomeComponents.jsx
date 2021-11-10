@@ -7,7 +7,7 @@ function HomeComponents() {
   return (
     <MainContainer>
       <Container>
-        <h1>Home Deee efccccfe</h1>
+        <h1>Home Deee ddd</h1>
       </Container>
     </MainContainer>
   );

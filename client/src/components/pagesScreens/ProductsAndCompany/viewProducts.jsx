@@ -270,6 +270,10 @@ const Button = styled.button`
 `;
 
 const Empty = styled.div`
+& h1 {
+  font-size: 1.7rem;
+  text-align: center;
+}
   & p {
     font-size: 1rem;
     & .btn {

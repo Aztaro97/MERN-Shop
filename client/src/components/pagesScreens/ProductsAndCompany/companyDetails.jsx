@@ -125,7 +125,7 @@ function CompanyDetails({ company }) {
           </div>
         </Col>
         <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 12 }}>
-          <div className="container">
+          <div>
             <img
               src={
                 company.urlImg.length !== 0 ? company.urlImg[0].url : emptyImg
@@ -186,7 +186,7 @@ const Container = styled.div`
 
   & h1 {
     font-weight: 700;
-    font-size: 1rem;
+    font-size: 1.3rem;
     text-transform: uppercase;
     margin-bottom: 0.3rem;
   }
@@ -220,12 +220,13 @@ const Container = styled.div`
   & .social-media {
     display: flex;
     align-items: center;
+    justify-content:space-between;
     color: #fff;
-
+    max-width: 130px;
     & a {
       text-decoration: none;
       color: inherit;
-      margin-left: 0.6rem;
+      /* margin-left: 0.6rem; */
       /* color: in; */
       & .facebook {
         border-radius: 50%;

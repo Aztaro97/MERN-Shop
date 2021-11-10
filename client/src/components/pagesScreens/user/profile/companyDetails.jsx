@@ -149,7 +149,7 @@ const CompanyInfo = () => {
                 </Row>
               </Col>
               <Col xs={{ span: 24 }} md={{ span: 12 }}>
-                <div className="container">
+                <div>
                   <img
                     src={
                       company.urlImg.length !== 0
@@ -189,7 +189,7 @@ const Container = styled.div`
   }
 
   & .bg-right {
-    height: 800px;
+    height: 700px;
     border-radius: 10px;
     object-fit: cover;
     @media only screen and (max-width: 1080px) {
