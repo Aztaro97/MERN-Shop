@@ -390,7 +390,6 @@ const ProductStyling = styled.section`
         @media only screen and (max-width: 425px) {
           width: 140px;
           height: 140px;
-          /* margin: auto 20px; */
         }
       }
     }
