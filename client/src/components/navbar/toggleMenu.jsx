@@ -222,6 +222,9 @@ const Nav = styled.nav`
     top: 80px;
     max-width: var(--max-width);
     margin: 0 auto !important;
+    @media only screen and (max-width: 768px) {
+      top: 50px;
+    }
   }
 `;
 
