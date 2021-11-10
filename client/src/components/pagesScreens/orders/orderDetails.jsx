@@ -159,48 +159,7 @@ function OrderDetailsScreen({ match }) {
                           </li>
                         </ul>
                       </td>
-                      {/* <td>
-                      <div className="images_lists">
-                        {item.image.map((img) => (
-                          <Image className="img" src={img.url} />
-                        ))}
-                      </div>
-                    </td>
-                    <td>{item.brand}</td>
-                    <td>{item.user.company.name}</td>
-                    <td>
-                      <a
-                        style={{
-                          fontSize: ".7rem",
-                          textTransform: "lowercase",
-                        }}
-                        href={`mailto:${item.user.email}`}
-                      >
-                        {item.user.email}
-                      </a>
-                    </td>
-                    <td className="allow_btn">
-                      {item.allow && (
-                        <button onClick={() => handleSetNotAllow(item._id)}>
-                          <AiOutlineCheck className="allow_btn_accept" /> Accept
-                        </button>
-                      )}
-                      {!item.allow && (
-                        <button onClick={() => handleSetAllow(item._id)}>
-                          <FaTimes className="allow_btn_refuse" /> Refuse
-                        </button>
-                      )}
-                    </td>
-                      */}
-                      {/* <td>
-                        <button
-                          type="button"
-                          className="delete_btn"
-                          onClick={() => showConfirm(item._id)}
-                        >
-                          <MdDelete />
-                        </button>
-                      </td> */}
+                    
                     </tr>
                   ))}
                 </tbody>

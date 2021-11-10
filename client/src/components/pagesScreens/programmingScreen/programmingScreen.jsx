@@ -385,7 +385,7 @@ const SecondServiceStyling = styled.section`
           max-width: 200px;
         }
         & h5 {
-          padding: 20px;
+          padding: 20px 10px;
         }
         @media screen and (max-width: 500px) {
           flex-direction: column;
