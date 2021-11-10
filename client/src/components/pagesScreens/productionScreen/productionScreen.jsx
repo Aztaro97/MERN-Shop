@@ -26,7 +26,6 @@ function ProductionScreen() {
             </Button>
           </div>
         </Banner>
-        <section className="service"></section>
         <ProductSelling />
         <section className="portfolio">
           <Button className="button">Portfolio</Button>
@@ -74,7 +73,7 @@ const ProductSelling = () => {
       {
         breakpoint: 420,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
         },
       },
     ],
@@ -260,7 +259,7 @@ const Container = styled.div`
       color: var(--orange-color);
       padding: 20px auto !important;
       background: #fff;
-      min-width:120px;
+      min-width: 120px;
     }
     & h4 {
       font-weight: 700;
@@ -301,6 +300,7 @@ const ProductStyling = styled.section`
     text-transform: uppercase;
     text-align: center;
     color: var(--orange-color);
+    font-size: 1.8rem;
   }
   & .slider {
     width: 100%;
@@ -311,8 +311,8 @@ const ProductStyling = styled.section`
         margin: auto;
         object-fit: contain;
         @media only screen and (max-width: 425px) {
-          width: 100%;
-          margin: auto 20px;
+          width: 140px;
+          height: 140px;
         }
       }
     }
