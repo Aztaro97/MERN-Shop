@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import LandingPage from "../landing/LandingPage";
+import LandingPage from "./banner/bannerComponent";
 import TextTruncate from "react-text-truncate";
 import MainContainer from "../../MainContainer";
 import { useSelector, useDispatch } from "react-redux";

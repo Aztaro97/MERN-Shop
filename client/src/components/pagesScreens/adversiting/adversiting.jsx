@@ -59,7 +59,7 @@ const TypeBusinessSection = ({ lang }) => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 1000,
     autoplay: true,
     autoplaySpeed: 4000,
     slidesToShow: 3,
@@ -323,7 +323,7 @@ const PartnerSectionLogo = ({ lang }) => {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 400,
+    speed: 700,
     autoplay: true,
     slidesToShow: 7,
     rtl: lang === "ar" ? true : false,
@@ -377,7 +377,7 @@ const ServicesSlider = ({ lang }) => {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 400,
+    speed: 700,
     autoplay: true,
     slidesToShow: 4,
     slidesToScroll: 1,

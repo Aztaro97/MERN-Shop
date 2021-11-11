@@ -13,9 +13,9 @@ const SecondeLandingSlider = () => {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 500,
+    speed: 1500,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 5000,
     slidesToShow: 1,
     slidesToScroll: 1,
     rtl: currentLang === "ar" ? true : false,

@@ -5,7 +5,7 @@ import { BsBuilding, FaUserTie } from "react-icons/all";
 import MainContainer from "./../../MainContainer";
 import CraftMenList from "./craftMenList";
 import CompanyList from "./companyList";
-import LandingPage from "../landing/LandingPage";
+import LandingPage from "../e-commerce/banner/bannerComponent";
 import { useDispatch, useSelector } from "react-redux";
 import ErrorServerPage from "../ErrorServerPage";
 
