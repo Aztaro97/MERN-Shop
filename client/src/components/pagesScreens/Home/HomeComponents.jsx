@@ -101,7 +101,7 @@ const Banner = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     rtl: currentLang === "ar" ? true : false,
-    dotsClass: "dots__bar",
+    dotsClass: "dots_bar",
     // nextArrow: (
     //   <div>
     //     <div className="next-slick-arrow">
