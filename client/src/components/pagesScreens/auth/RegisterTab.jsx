@@ -40,7 +40,7 @@ function Register() {
   return (
     <Containber>
       <Form onSubmit={formik.handleSubmit}>
-        <Row gutter={[10, 10]} justify="end">
+        <Row gutter={[10, 15]} justify="end">
           <Col xs={{ span: 24 }}>
             <Input
               type="email"

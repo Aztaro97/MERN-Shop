@@ -27,7 +27,7 @@ function LoginForm() {
   return (
     <Containber>
       <Form onSubmit={formik.handleSubmit}>
-        <Row gutter={[10, 10]} justify="space-between">
+        <Row gutter={[10, 15]} justify="space-between">
           <Col xs={{ span: 24 }}>
             <Input
               type="email"
@@ -88,9 +88,10 @@ const Form = styled.form`
 
 const LinkStyling = styled(Link)`
   text-decoration: none;
-  text-transform: uppercase;
+  text-transform: capitalize;
   color: var(--silver-color);
   font-size: 1rem;
+  font-weight: 400;
 
   &:hover {
     color: var(--orange-color);

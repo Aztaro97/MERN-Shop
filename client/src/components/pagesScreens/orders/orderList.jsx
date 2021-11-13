@@ -43,7 +43,7 @@ function OrdersListScreen() {
     if (userInfo && userInfo.isAdmin) {
       dispatch(listOrders());
     } else {
-      history.push("/login");
+      history.push("/auth");
     }
   }, [dispatch, history, userInfo, listOrders]);
   return (

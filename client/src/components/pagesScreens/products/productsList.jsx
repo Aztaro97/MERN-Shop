@@ -80,7 +80,7 @@ function ProductsListScreen({ match }) {
 
   // const menu =;
   if (!userInfo || !userInfo.isAdmin) {
-    history.push("/login");
+    history.push("/auth");
   }
 
   useEffect(() => {
