@@ -9,60 +9,74 @@ import MainContainer from "../../MainContainer";
 import { Col, Row, Image } from "antd";
 import { IoCartSharp } from "react-icons/io5";
 import { MdOutlineAddAPhoto } from "react-icons/md";
+import Scrollspy from "react-scrollspy";
 import { FaCreativeCommonsNcJp } from "react-icons/fa";
 
 function HomeComponents() {
   return (
     <MainContainer>
       <Banner />
-      <NavStyling>
-        <h1 className="title">our services</h1>
-        <Row gutter={[10, 30]} justify="center">
-          <Col xs={{ span: 12 }} sm={{ span: 8 }} md={{ span: 6 }}>
-            <div className="nav_item">
-              <IoCartSharp className="nav_icon" />
-              <h4 className="nav_title">design</h4>
-            </div>
-          </Col>
-          <Col xs={{ span: 12 }} sm={{ span: 8 }} md={{ span: 6 }}>
-            <div className="nav_item">
-              <IoCartSharp className="nav_icon" />
-              <h4 className="nav_title">photography</h4>
-            </div>
-          </Col>
-          <Col xs={{ span: 12 }} sm={{ span: 8 }} md={{ span: 6 }}>
-            <div className="nav_item">
-              <IoCartSharp className="nav_icon" />
-              <h4 className="nav_title">printing press</h4>
-            </div>
-          </Col>
-          <Col xs={{ span: 12 }} sm={{ span: 8 }} md={{ span: 6 }}>
-            <div className="nav_item">
-              <IoCartSharp className="nav_icon" />
-              <h4 className="nav_title">exhibition management</h4>
-            </div>
-          </Col>
-          <Col xs={{ span: 12 }} sm={{ span: 8 }} md={{ span: 6 }}>
-            <div className="nav_item">
-              <IoCartSharp className="nav_icon" />
-              <h4 className="nav_title">programming</h4>
-            </div>
-          </Col>
-          <Col xs={{ span: 12 }} sm={{ span: 8 }} md={{ span: 6 }}>
-            <div className="nav_item">
-              <IoCartSharp className="nav_icon" />
-              <h4 className="nav_title">marketing</h4>
-            </div>
-          </Col>
-          <Col xs={{ span: 12 }} sm={{ span: 8 }} md={{ span: 6 }}>
-            <div className="nav_item">
-              <IoCartSharp className="nav_icon" />
-              <h4 className="nav_title">products</h4>
-            </div>
-          </Col>
-        </Row>
-      </NavStyling>
-      <SectionStyling>
+      <Scrollspy
+        items={[
+          "design",
+          "photography",
+          "printing",
+          "exhibition",
+          "programming",
+          "marketing",
+          "products",
+        ]}
+        currentClassName="is-current"
+      >
+        <NavStyling>
+          <h1 className="title">our services</h1>
+          <Row gutter={[10, 30]} justify="center">
+            <Col xs={{ span: 12 }} sm={{ span: 8 }} md={{ span: 6 }}>
+              <a href="#design" className="nav_item">
+                <IoCartSharp className="nav_icon" />
+                <h4 className="nav_title">design</h4>
+              </a>
+            </Col>
+            <Col xs={{ span: 12 }} sm={{ span: 8 }} md={{ span: 6 }}>
+              <a href="#photography" className="nav_item">
+                <IoCartSharp className="nav_icon" />
+                <h4 className="nav_title">photography</h4>
+              </a>
+            </Col>
+            <Col xs={{ span: 12 }} sm={{ span: 8 }} md={{ span: 6 }}>
+              <a href="#printing" className="nav_item">
+                <IoCartSharp className="nav_icon" />
+                <h4 className="nav_title">printing press</h4>
+              </a>
+            </Col>
+            <Col xs={{ span: 12 }} sm={{ span: 8 }} md={{ span: 6 }}>
+              <a href="#exhibition" className="nav_item">
+                <IoCartSharp className="nav_icon" />
+                <h4 className="nav_title">exhibition management</h4>
+              </a>
+            </Col>
+            <Col xs={{ span: 12 }} sm={{ span: 8 }} md={{ span: 6 }}>
+              <a href="#programming" className="nav_item">
+                <IoCartSharp className="nav_icon" />
+                <h4 className="nav_title">programming</h4>
+              </a>
+            </Col>
+            <Col xs={{ span: 12 }} sm={{ span: 8 }} md={{ span: 6 }}>
+              <a href="#marketing" className="nav_item">
+                <IoCartSharp className="nav_icon" />
+                <h4 className="nav_title">marketing</h4>
+              </a>
+            </Col>
+            <Col xs={{ span: 12 }} sm={{ span: 8 }} md={{ span: 6 }}>
+              <a href="#products" className="nav_item">
+                <IoCartSharp className="nav_icon" />
+                <h4 className="nav_title">products</h4>
+              </a>
+            </Col>
+          </Row>
+        </NavStyling>
+      </Scrollspy>
+      <SectionStyling id="design">
         <h1 className="title">design</h1>
         <h3 className="sub_title">
           Want to know what your audiences thinks of your brand ?
@@ -155,7 +169,7 @@ function HomeComponents() {
           </Col>
         </Row>
       </SectionStyling>
-      <SectionStyling>
+      <SectionStyling id="photography">
         <h1 className="title">PHOTOGRAPHY</h1>
         <h3 className="sub_title">
           It's simple keep calm, AU79CODE you got it covered !
@@ -246,7 +260,7 @@ function HomeComponents() {
           </Col>
         </Row>
       </SectionStyling>
-      <SectionStyling>
+      <SectionStyling id="printing">
         <h1 className="title">printing press</h1>
         <h3 className="sub_title">
           It's simple keep calm, AU79CODE you got it covered !
@@ -342,7 +356,7 @@ function HomeComponents() {
           </Col>
         </Row>
       </SectionStyling>
-      <SectionStyling>
+      <SectionStyling id="exhibition">
         <h1 className="title">exhibition management</h1>
         <h3 className="sub_title">You dream about it we run it!</h3>
         <Row gutter={[10, 10]}>
@@ -433,7 +447,7 @@ function HomeComponents() {
           </Col>
         </Row>
       </SectionStyling>
-      <SectionStyling>
+      <SectionStyling id="programming">
         <h1 className="title">PROGRAMMING</h1>
         <h3 className="sub_title">You dream about it we run it!</h3>
         <Row gutter={[10, 10]}>
@@ -554,7 +568,7 @@ function HomeComponents() {
           </Row>
         </ProgrammingCardStyling>
       </SectionStyling>
-      <SectionStyling>
+      <SectionStyling id="marketing">
         <h1 className="title">marketing</h1>
         <h3 className="sub_title">
           Our services will make all thes gaps covered !
@@ -631,7 +645,7 @@ function HomeComponents() {
           </Row>
         </MarketingCardStyling>
       </SectionStyling>
-      <SectionStyling>
+      <SectionStyling id="products">
         <h1 className="title">productions</h1>
         <h3 className="sub_title">You dream about it we run it!</h3>
         <Row gutter={[10, 10]}>
@@ -832,8 +846,10 @@ const NavStyling = styled.section`
     cursor: pointer;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease-in-out;
+    text-decoration: none;
     &:hover {
       box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      text-decoration: none;
     }
     & .nav_icon {
       font-size: 2.5rem;
