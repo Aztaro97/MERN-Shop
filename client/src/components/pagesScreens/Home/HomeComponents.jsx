@@ -38,6 +38,7 @@ function HomeComponents() {
             "products",
           ]}
           currentClassName="is-current"
+          style={{padding:0}}
         >
           <h1 className="title">our services</h1>
           <Row gutter={[10, 30]} justify="center">
