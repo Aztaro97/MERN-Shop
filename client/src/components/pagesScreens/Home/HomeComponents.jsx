@@ -6,9 +6,9 @@ import Slider from "react-slick";
 import "./sliderStyling.css";
 
 import MainContainer from "../../MainContainer";
-import { Col, Row } from "antd";
+import { Col, Row, Image } from "antd";
 import { IoCartSharp } from "react-icons/io5";
-import {MdOutlineAddAPhoto} from "react-icons/md"
+import { MdOutlineAddAPhoto } from "react-icons/md";
 
 function HomeComponents() {
   return (
@@ -17,43 +17,43 @@ function HomeComponents() {
       <NavStyling>
         <h1 className="title">our services</h1>
         <Row gutter={[10, 30]} justify="center">
-          <Col xs={{ span: 12 }} md={{ span: 6 }}>
+          <Col xs={{ span: 12 }} sm={{ span: 8 }} md={{ span: 6 }}>
             <div className="nav_item">
               <IoCartSharp className="nav_icon" />
               <h4 className="nav_title">design</h4>
             </div>
           </Col>
-          <Col xs={{ span: 12 }} md={{ span: 6 }}>
+          <Col xs={{ span: 12 }} sm={{ span: 8 }} md={{ span: 6 }}>
             <div className="nav_item">
               <IoCartSharp className="nav_icon" />
               <h4 className="nav_title">photography</h4>
             </div>
           </Col>
-          <Col xs={{ span: 12 }} md={{ span: 6 }}>
+          <Col xs={{ span: 12 }} sm={{ span: 8 }} md={{ span: 6 }}>
             <div className="nav_item">
               <IoCartSharp className="nav_icon" />
               <h4 className="nav_title">printing press</h4>
             </div>
           </Col>
-          <Col xs={{ span: 12 }} md={{ span: 6 }}>
+          <Col xs={{ span: 12 }} sm={{ span: 8 }} md={{ span: 6 }}>
             <div className="nav_item">
               <IoCartSharp className="nav_icon" />
               <h4 className="nav_title">exhibition management</h4>
             </div>
           </Col>
-          <Col xs={{ span: 12 }} md={{ span: 6 }}>
+          <Col xs={{ span: 12 }} sm={{ span: 8 }} md={{ span: 6 }}>
             <div className="nav_item">
               <IoCartSharp className="nav_icon" />
               <h4 className="nav_title">programming</h4>
             </div>
           </Col>
-          <Col xs={{ span: 12 }} md={{ span: 6 }}>
+          <Col xs={{ span: 12 }} sm={{ span: 8 }} md={{ span: 6 }}>
             <div className="nav_item">
               <IoCartSharp className="nav_icon" />
               <h4 className="nav_title">marketing</h4>
             </div>
           </Col>
-          <Col xs={{ span: 12 }} md={{ span: 6 }}>
+          <Col xs={{ span: 12 }} sm={{ span: 8 }} md={{ span: 6 }}>
             <div className="nav_item">
               <IoCartSharp className="nav_icon" />
               <h4 className="nav_title">products</h4>
@@ -61,14 +61,98 @@ function HomeComponents() {
           </Col>
         </Row>
       </NavStyling>
-      <Container>
-        <h1>Home Deee ddd</h1>
-      </Container>
+      <DesignStyling>
+        <h1 className="title">design</h1>
+        <h3 className="sub_title">
+          Want to know what your audiences thinks of your brand ?
+        </h3>
+        <Row gutter={[10, 10]}>
+          <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 8 }}>
+            <p className="para">
+              Are you wondering why other companies do less and benefit more
+              from their brand presence in the market? Well here at AU 79 CODE,
+              we've made a recipe for exactly that! We welcome your challenges
+              and offer you an open feast of beautifully crafted solutions to
+              complex problems. Whatever your business, we have our heart and
+              passion in it, using the right channels and methods to reach the
+              right customers at the right time by designing and building your
+              brand identity.
+            </p>
+          </Col>
+          <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 16 }}>
+            <div className="circle">
+              <img src="https://via.placeholder.com/300" alt="" />
+            </div>
+          </Col>
+        </Row>
+        <Row className="second_row">
+          <Col xs={{ span: 24 }} md={{ span: 4 }} lg={{ span: 4 }}>
+            <div className="card_large_container">
+              <h1 className="large_title">design</h1>
+            </div>
+          </Col>
+          <Col xs={{ span: 24 }} md={{ span: 20 }} lg={{ span: 20 }}>
+            <Row className="card_container" gutter={[20, 10]}>
+              <Col xs={{ span: 9 }} md={{ span: 9 }} lg={{ span: 9 }}>
+                <Image
+                  className="large_img"
+                  src="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
+                  alt=""
+                />
+              </Col>
+              <Col xs={{ span: 6 }} md={{ span: 6 }} lg={{ span: 6 }}>
+                <div className="medium_container">
+                  <Image
+                    className="medium_img"
+                    src="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
+                    alt=""
+                  />
+                  <Image
+                    className="medium_img"
+                    src="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
+                    alt=""
+                  />
+                </div>
+              </Col>
+              <Col xs={{ span: 9 }} md={{ span: 9 }} lg={{ span: 9 }}>
+                <Image
+                  className="large_img"
+                  src="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
+                  alt=""
+                />
+              </Col>
+
+              <Col xs={{ span: 9 }} md={{ span: 9 }} lg={{ span: 9 }}>
+                <Image
+                  className="small_img"
+                  width="100%"
+                  src="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
+                  alt=""
+                />
+              </Col>
+              <Col xs={{ span: 6 }} md={{ span: 6 }} lg={{ span: 6 }}>
+                <Image
+                  className="small_img"
+                  width="100%"
+                  src="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
+                  alt=""
+                />
+              </Col>
+              <Col xs={{ span: 9 }} md={{ span: 9 }} lg={{ span: 9 }}>
+                <Image
+                  className="small_img"
+                  width="100%"
+                  src="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
+                  alt=""
+                />
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+      </DesignStyling>
     </MainContainer>
   );
 }
-
-const Container = styled.div``;
 
 const Banner = () => {
   const { t, i18n } = useTranslation();
@@ -102,21 +186,6 @@ const Banner = () => {
     slidesToScroll: 1,
     rtl: currentLang === "ar" ? true : false,
     dotsClass: "dots_bar",
-    // nextArrow: (
-    //   <div>
-    //     <div className="next-slick-arrow">
-    //       {" "}
-    //       {currentLang === "en" ? ">" : "<"}{" "}
-    //     </div>
-    //   </div>
-    // ),
-    // prevArrow: (
-    //   <div>
-    //     <div className="prev-slick-arrow">
-    //       {currentLang === "en" ? "<" : ">"}{" "}
-    //     </div>
-    //   </div>
-    // ),
   };
   return (
     <BannerStyling data={data}>
@@ -171,7 +240,7 @@ const Banner = () => {
 
 const NavStyling = styled.section`
   /* margin: 20px 0; */
-  padding: 40px 10px;
+  padding: 40px 40px;
   background: #ececec;
   & .title {
     font-weight: 700;
@@ -181,8 +250,8 @@ const NavStyling = styled.section`
     margin-bottom: 20px;
   }
   & .nav_item {
-    max-width: 200px;
-    height: 200px;
+    max-width: 180px;
+    height: 180px;
     background: #fff;
     margin: auto;
     display: flex;
@@ -196,8 +265,9 @@ const NavStyling = styled.section`
       box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     }
     & .nav_icon {
-      font-size: 50px;
+      font-size: 2.5rem;
       color: var(--orange-color);
+      margin-bottom: 10px;
     }
     & .nav_title {
       color: var(--orange-color);
@@ -208,6 +278,96 @@ const NavStyling = styled.section`
       font-weight: 700;
       text-align: center;
     }
+  }
+  @media only screen and (max-width: 768px) {
+    padding: 40px 10px;
+  }
+`;
+
+const DesignStyling = styled.section`
+  padding: 40px 40px;
+  & .title {
+    font-weight: 700;
+    font-size: 2rem;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  & .sub_title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+  }
+  & .para {
+    margin: auto;
+    padding: 10px 0;
+    letter-spacing: 1px;
+  }
+  & .circle {
+    width: 350px;
+    height: 350px;
+    margin-left: auto;
+    background: var(--orange-color);
+    border-radius: 50%;
+    @media only screen and (max-width: 500px) {
+      width: 300px;
+      height: 300px;
+      & img {
+        /* display: none; */
+      }
+    }
+    & img {
+      /* width: 100%; */
+      height: 300px;
+      position: relative;
+    }
+  }
+
+  /* //////////////////  /////////////// */
+  & .second_row {
+    background: var(--orange-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & .card_large_container {
+      height: 100%;
+      & .large_title {
+        color: #ecececc3;
+        transform: rotate(180deg);
+        /* padding: 30px 10px; */
+        font-size: 3rem;
+        writing-mode: vertical-rl;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        font-weight: 700;
+        margin: auto;
+      }
+    }
+    & .card_container {
+      background: #ececec;
+      padding: 30px;
+      & .large_img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+      }
+      & .medium_container {
+        height: 100%;
+        & .medium_img {
+          width: 100%;
+          height: 200px;
+          object-fit: cover;
+        }
+      }
+      & .small_img {
+        width: 100% !important;
+        height: 100px;
+        object-fit: cover;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 500px) {
+    padding: 40px 10px;
   }
 `;
 
