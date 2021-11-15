@@ -31,18 +31,14 @@ function DigitalMarketingScreen() {
         </div>
       </Banner>
       <Container>
-        <Title level={2} className="title">
-          Digital Marketing
-        </Title>
-        <Paragraph level={1} className="description">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus
-          aperiam sapiente maxime dolor, eos aut eaque error pariatur soluta
-          officia voluptatum dicta laboriosam minima velit sequi illum!
-          Praesentium, nesciunt laborum.
-        </Paragraph>
         <MarketingService />
         <Row gutter={[10, 10]} style={{ padding: "30px 0" }}>
-          <Col xs={{ span: 24 }} md={{ spam: 24 }} lg={{ span: 12 }} style={{margin:"auto"}} >
+          <Col
+            xs={{ span: 24 }}
+            md={{ spam: 24 }}
+            lg={{ span: 12 }}
+            style={{ margin: "auto" }}
+          >
             <Title level={2} className="title">
               Our package
             </Title>
@@ -107,6 +103,15 @@ const MarketingService = () => {
   };
   return (
     <ServiceContainer>
+      <Title level={2} className="title">
+        Digital Marketing
+      </Title>
+      <Paragraph level={1} className="description">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus aperiam
+        sapiente maxime dolor, eos aut eaque error pariatur soluta officia
+        voluptatum dicta laboriosam minima velit sequi illum! Praesentium,
+        nesciunt laborum.
+      </Paragraph>
       <Title level={2} className="title">
         provide awesome services with our tools
       </Title>
@@ -316,26 +321,27 @@ const ServiceContainer = styled.div`
   & .title {
     max-width: 400px;
     margin: 0 auto 15px;
-    text-transform:capitalize;
+    text-transform: capitalize;
   }
   & .card_body {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    border-radius: 30px;
-    border: 1px solid #f0f0f0;
+    border-radius: 10px;
+    /* border: 1px solid #f0f0f0; */
+    /* background: #ececec; */
     width: 200px;
     height: 150px;
-    margin: 0 auto 10px;
+    margin: 10px auto 10px;
     padding: 10px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 
     & .card_title {
       color: #333;
       text-transform: uppercase;
       font-size: 1rem;
       font-weight: bold;
-      
     }
     & .icon {
       font-size: 2.5rem;
@@ -361,6 +367,7 @@ const ServiceContainer = styled.div`
 const Banner = styled.section`
   /* background: url("https://images.unsplash.com/photo-1563126153-74b8e04c1070?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80"); */
   height: 400px;
+  background: #ececec;
   /* padding: 10px; */
   /* text-align: end; */
   & div {
@@ -373,13 +380,13 @@ const Banner = styled.section`
     justify-content: center;
     max-width: 400px;
     text-align: center;
-    padding:0 20px;
+    padding: 0 20px;
     & .title {
       color: #333;
       font-size: 2rem;
       letter-spacing: 1px;
       font-weight: 700;
-      text-shadow: 1px 2px 3px #a5a4a4;
+      /* text-shadow: 1px 2px 3px #a5a4a4; */
     }
     & .para {
       color: #333;
@@ -408,7 +415,7 @@ const Banner = styled.section`
 `;
 
 const Container = styled.div`
-  padding: 40px 0;
+  /* padding: 40px 0; */
   overflow: hidden;
   & .title {
     color: var(--orange-color);
