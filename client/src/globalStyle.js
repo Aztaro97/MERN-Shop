@@ -13,8 +13,7 @@ export const GlobalStyle = createGlobalStyle `
         margin: 0;
         padding: 0;
         width: 100%;
-        /* overflow-x: hidden; */
-        /* background: #000; */
+
 
         @media only screen and (max-width: 768px) {
             font-size: 15px;
