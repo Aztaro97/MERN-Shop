@@ -21,13 +21,14 @@ export const MarketingCardStyling = styled.div`
       justify-content: center;
       flex-direction: column;
       margin: auto;
+      padding: 5px;
       & .icon {
         color: var(--orange-color);
         font-size: 2.5rem;
         margin-bottom: 10px;
       }
       & .card_title {
-        font-size: 1.1rem;
+        font-size: 1rem;
         font-weight: 700;
         margin: 0;
       }
@@ -229,16 +230,16 @@ export const BannerStyling = styled.section`
         font-size: 1em;
       }
 
-      & .btn_register {
-        display: block;
+      & .btn_banner {
+        display: inline-block;
         text-decoration: none;
         outline: none;
         border: none;
         border-radius: 5px;
         padding: 5px 20px;
-        background: var(--orange-color);
-        text-transform: capitalize;
-        color: #fff;
+        background: #fff;
+        text-transform: uppercase !important;
+        color: #333;
         text-align: center;
         letter-spacing: 1px;
         margin: 10px 0;
@@ -389,5 +390,26 @@ export const NavStyling = styled.section`
   }
   @media only screen and (max-width: 768px) {
     padding: 40px 10px;
+  }
+`;
+
+export const OurClientStyling = styled.section`
+  padding: 20px 0;
+  max-width: 800px;
+  margin: auto;
+  & .title {
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+  & .box {
+    & img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin: auto;
+    }
   }
 `;

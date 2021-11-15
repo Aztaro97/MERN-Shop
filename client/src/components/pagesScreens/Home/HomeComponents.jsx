@@ -10,14 +10,25 @@ import { Col, Row, Image } from "antd";
 import { IoCameraOutline, IoCartSharp } from "react-icons/io5";
 import { MdOutlineAddAPhoto } from "react-icons/md";
 import Scrollspy from "react-scrollspy";
-import { FaCode, FaCreativeCommonsNcJp } from "react-icons/fa";
-import {AiOutlinePrinter} from "react-icons/ai"
-import {FcAdvertising} from "react-icons/fc"
-import {ImPencil2} from "react-icons/im"
+import {
+  FaCode,
+  FaCreativeCommonsNcJp,
+  FiTrendingUp,
+  ImPencil2,
+  FcAdvertising,
+  AiOutlinePrinter,
+  BsGlobe,
+  MdScreenSearchDesktop,
+  GoMegaphone,
+  SiMinds,
+  AiTwotoneGold,
+  IoQrCodeOutline,
+} from "react-icons/all";
 import {
   BannerStyling,
   MarketingCardStyling,
   NavStyling,
+  OurClientStyling,
   ProgrammingCardStyling,
   SectionStyling,
 } from "./homeStyling";
@@ -38,7 +49,7 @@ function HomeComponents() {
             "products",
           ]}
           currentClassName="is-current"
-          style={{padding:0}}
+          style={{ padding: 0 }}
         >
           <h1 className="title">our services</h1>
           <Row gutter={[10, 30]} justify="center">
@@ -74,13 +85,13 @@ function HomeComponents() {
             </Col>
             <Col xs={{ span: 12 }} sm={{ span: 8 }} md={{ span: 6 }}>
               <a href="#marketing" className="nav_item">
-                <FcAdvertising className="nav_icon" />
+                <GoMegaphone className="nav_icon" />
                 <h4 className="nav_title">marketing</h4>
               </a>
             </Col>
             <Col xs={{ span: 12 }} sm={{ span: 8 }} md={{ span: 6 }}>
               <a href="#products" className="nav_item">
-                <IoCartSharp className="nav_icon" />
+                <IoQrCodeOutline className="nav_icon" />
                 <h4 className="nav_title">productions</h4>
               </a>
             </Col>
@@ -124,7 +135,7 @@ function HomeComponents() {
                 <Image
                   className="large_img"
                   width="100%"
-                  src="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
+                  src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=772&q=80"
                   alt=""
                 />
               </Col>
@@ -133,13 +144,13 @@ function HomeComponents() {
                   <Image
                     className="medium_img"
                     width="100%"
-                    src="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
+                    src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=772&q=80"
                     alt=""
                   />
                   <Image
                     className="medium_img"
                     width="100%"
-                    src="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
+                    src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=772&q=80"
                     alt=""
                   />
                 </div>
@@ -148,7 +159,7 @@ function HomeComponents() {
                 <Image
                   className="large_img"
                   width="100%"
-                  src="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
+                  src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=772&q=80"
                   alt=""
                 />
               </Col>
@@ -157,7 +168,7 @@ function HomeComponents() {
                 <Image
                   className="small_img"
                   width="100%"
-                  src="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
+                  src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=772&q=80"
                   alt=""
                 />
               </Col>
@@ -165,7 +176,7 @@ function HomeComponents() {
                 <Image
                   className="small_img"
                   width="100%"
-                  src="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
+                  src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=772&q=80"
                   alt=""
                 />
               </Col>
@@ -173,7 +184,7 @@ function HomeComponents() {
                 <Image
                   className="small_img"
                   width="100%"
-                  src="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
+                  src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=772&q=80"
                   alt=""
                 />
               </Col>
@@ -402,7 +413,7 @@ function HomeComponents() {
                 <Image
                   className="large_img"
                   width="100%"
-                  src="https://images.unsplash.com/photo-1563968743333-044cef800494?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1516&q=80"
+                  src="https://images.unsplash.com/photo-1504326787394-e6d75cae8027?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
                   alt=""
                 />
               </Col>
@@ -411,13 +422,13 @@ function HomeComponents() {
                   <Image
                     className="medium_img"
                     width="100%"
-                    src="https://images.unsplash.com/photo-1563968743333-044cef800494?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1516&q=80"
+                    src="https://images.unsplash.com/photo-1504326787394-e6d75cae8027?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
                     alt=""
                   />
                   <Image
                     className="medium_img"
                     width="100%"
-                    src="https://images.unsplash.com/photo-1563968743333-044cef800494?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1516&q=80"
+                    src="https://images.unsplash.com/photo-1504326787394-e6d75cae8027?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
                     alt=""
                   />
                 </div>
@@ -426,7 +437,7 @@ function HomeComponents() {
                 <Image
                   className="large_img"
                   width="100%"
-                  src="https://images.unsplash.com/photo-1563968743333-044cef800494?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1516&q=80"
+                  src="https://images.unsplash.com/photo-1504326787394-e6d75cae8027?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
                   alt=""
                 />
               </Col>
@@ -435,7 +446,7 @@ function HomeComponents() {
                 <Image
                   className="small_img"
                   width="100%"
-                  src="https://images.unsplash.com/photo-1563968743333-044cef800494?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1516&q=80"
+                  src="https://images.unsplash.com/photo-1504326787394-e6d75cae8027?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
                   alt=""
                 />
               </Col>
@@ -443,7 +454,7 @@ function HomeComponents() {
                 <Image
                   className="small_img"
                   width="100%"
-                  src="https://images.unsplash.com/photo-1563968743333-044cef800494?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1516&q=80"
+                  src="https://images.unsplash.com/photo-1504326787394-e6d75cae8027?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
                   alt=""
                 />
               </Col>
@@ -451,7 +462,7 @@ function HomeComponents() {
                 <Image
                   className="small_img"
                   width="100%"
-                  src="https://images.unsplash.com/photo-1563968743333-044cef800494?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1516&q=80"
+                  src="https://images.unsplash.com/photo-1504326787394-e6d75cae8027?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
                   alt=""
                 />
               </Col>
@@ -617,8 +628,8 @@ function HomeComponents() {
               lg={{ span: 6 }}
             >
               <div className="card_item">
-                <FaCreativeCommonsNcJp className="icon" />
-                <h3 className="card_title">discover, explore the product</h3>
+                <FiTrendingUp className="icon" />
+                <h3 className="card_title">Discover, explore the product</h3>
               </div>
             </Col>
             <Col
@@ -628,8 +639,8 @@ function HomeComponents() {
               lg={{ span: 6 }}
             >
               <div className="card_item">
-                <FaCreativeCommonsNcJp className="icon" />
-                <h3 className="card_title">discover, explore the product</h3>
+                <AiTwotoneGold className="icon" />
+                <h3 className="card_title">Art Direction & Brand Strategy</h3>
               </div>
             </Col>
             <Col
@@ -639,8 +650,8 @@ function HomeComponents() {
               lg={{ span: 6 }}
             >
               <div className="card_item">
-                <FaCreativeCommonsNcJp className="icon" />
-                <h3 className="card_title">discover, explore the product</h3>
+                <BsGlobe className="icon" />
+                <h3 className="card_title">Product UX, Design & Development</h3>
               </div>
             </Col>
             <Col
@@ -650,8 +661,10 @@ function HomeComponents() {
               lg={{ span: 6 }}
             >
               <div className="card_item">
-                <FaCreativeCommonsNcJp className="icon" />
-                <h3 className="card_title">discover, explore the product</h3>
+                <MdScreenSearchDesktop className="icon" />
+                <h3 className="card_title">
+                  Marketing Strategy & SEO Campaigns
+                </h3>
               </div>
             </Col>
           </Row>
@@ -690,7 +703,7 @@ function HomeComponents() {
                 <Image
                   className="large_img"
                   width="100%"
-                  src="https://images.unsplash.com/photo-1563968743333-044cef800494?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1516&q=80"
+                  src="https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1932&q=80"
                   alt=""
                 />
               </Col>
@@ -699,13 +712,13 @@ function HomeComponents() {
                   <Image
                     className="medium_img"
                     width="100%"
-                    src="https://images.unsplash.com/photo-1563968743333-044cef800494?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1516&q=80"
+                    src="https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1932&q=80"
                     alt=""
                   />
                   <Image
                     className="medium_img"
                     width="100%"
-                    src="https://images.unsplash.com/photo-1563968743333-044cef800494?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1516&q=80"
+                    src="https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1932&q=80"
                     alt=""
                   />
                 </div>
@@ -714,7 +727,7 @@ function HomeComponents() {
                 <Image
                   className="large_img"
                   width="100%"
-                  src="https://images.unsplash.com/photo-1563968743333-044cef800494?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1516&q=80"
+                  src="https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1932&q=80"
                   alt=""
                 />
               </Col>
@@ -723,7 +736,7 @@ function HomeComponents() {
                 <Image
                   className="small_img"
                   width="100%"
-                  src="https://images.unsplash.com/photo-1563968743333-044cef800494?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1516&q=80"
+                  src="https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1932&q=80"
                   alt=""
                 />
               </Col>
@@ -731,7 +744,7 @@ function HomeComponents() {
                 <Image
                   className="small_img"
                   width="100%"
-                  src="https://images.unsplash.com/photo-1563968743333-044cef800494?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1516&q=80"
+                  src="https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1932&q=80"
                   alt=""
                 />
               </Col>
@@ -747,6 +760,7 @@ function HomeComponents() {
           </Col>
         </Row>
       </SectionStyling>
+      <OurClient />
     </MainContainer>
   );
 }
@@ -797,8 +811,8 @@ const Banner = () => {
                 give effective results
               </p>
 
-              <Link className="btn_register" to="/e-commerce">
-                contact us
+              <Link className="btn_banner" to="/advertising">
+                advertising
               </Link>
             </div>
           </div>
@@ -806,8 +820,8 @@ const Banner = () => {
         <div>
           <div className="landing_overlay bg_img2">
             <div className="content_overlay">
-              <Link className="btn_register" to="/register">
-                create your company
+              <Link className="btn_banner" to="/digital-marketing">
+                marketing
               </Link>
             </div>
           </div>
@@ -815,8 +829,8 @@ const Banner = () => {
         <div>
           <div className="landing_overlay bg_img3">
             <div className="content_overlay">
-              <Link className="btn_register" to="/register">
-                create your company
+              <Link className="btn_banner" to="/printing">
+                printing
               </Link>
             </div>
           </div>
@@ -824,14 +838,119 @@ const Banner = () => {
         <div>
           <div className="landing_overlay bg_img4">
             <div className="content_overlay">
-              <Link className="btn_register" to="/register">
-                create your company
+              <Link className="btn_banner" to="/photography">
+                photography
               </Link>
             </div>
           </div>
         </div>
       </Slider>
     </BannerStyling>
+  );
+};
+
+const OurClient = () => {
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 700,
+    autoplay: true,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    // rtl: lang === "ar" ? true : false,
+    responsive: [
+      {
+        breakpoint: 1120,
+        settings: {
+          slidesToShow: 5,
+        },
+      },
+      {
+        breakpoint: 977,
+        settings: {
+          slidesToShow: 5,
+        },
+      },
+      {
+        breakpoint: 760,
+        settings: {
+          slidesToShow: 4,
+        },
+      },
+      {
+        breakpoint: 400,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+    ],
+  };
+  return (
+    <OurClientStyling>
+      <h1 className="title">our clients</h1>
+      <Slider {...settings} className="slider">
+        <div className="box">
+          <img
+            src="https://images.unsplash.com/photo-1518107616985-bd48230d3b20?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+            alt=""
+          />
+        </div>
+        <div className="box">
+          <img
+            src="https://images.unsplash.com/photo-1518107616985-bd48230d3b20?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+            alt=""
+          />
+        </div>
+        <div className="box">
+          <img
+            src="https://images.unsplash.com/photo-1518107616985-bd48230d3b20?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+            alt=""
+          />
+        </div>
+        <div className="box">
+          <img
+            src="https://images.unsplash.com/photo-1518107616985-bd48230d3b20?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+            alt=""
+          />
+        </div>
+        <div className="box">
+          <img
+            src="https://images.unsplash.com/photo-1518107616985-bd48230d3b20?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+            alt=""
+          />
+        </div>
+        <div className="box">
+          <img
+            src="https://images.unsplash.com/photo-1518107616985-bd48230d3b20?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+            alt=""
+          />
+        </div>
+        <div className="box">
+          <img
+            src="https://images.unsplash.com/photo-1518107616985-bd48230d3b20?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+            alt=""
+          />
+        </div>
+        <div className="box">
+          <img
+            src="https://images.unsplash.com/photo-1518107616985-bd48230d3b20?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+            alt=""
+          />
+        </div>
+        <div className="box">
+          <img
+            src="https://images.unsplash.com/photo-1518107616985-bd48230d3b20?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+            alt=""
+          />
+        </div>
+        <div className="box">
+          <img
+            src="https://images.unsplash.com/photo-1518107616985-bd48230d3b20?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+            alt=""
+          />
+        </div>
+      </Slider>
+    </OurClientStyling>
   );
 };
 
