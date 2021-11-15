@@ -22,7 +22,8 @@ import {
   GoMegaphone,
   SiMinds,
   AiTwotoneGold,
-  IoQrCodeOutline,
+  BsCameraReels,
+  GiMonumentValley
 } from "react-icons/all";
 import {
   BannerStyling,
@@ -75,7 +76,7 @@ function HomeComponents() {
             </Col>
             <Col xs={{ span: 12 }} sm={{ span: 8 }} md={{ span: 6 }}>
               <a href="#exhibition" className="nav_item">
-                <IoCartSharp className="nav_icon" />
+                <GiMonumentValley className="nav_icon" />
                 <h4 className="nav_title">exhibition management</h4>
               </a>
             </Col>
@@ -93,7 +94,7 @@ function HomeComponents() {
             </Col>
             <Col xs={{ span: 12 }} sm={{ span: 8 }} md={{ span: 6 }}>
               <a href="#products" className="nav_item">
-                <IoQrCodeOutline className="nav_icon" />
+                <BsCameraReels className="nav_icon" />
                 <h4 className="nav_title">productions</h4>
               </a>
             </Col>
