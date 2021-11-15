@@ -19,15 +19,11 @@ function Tabulation() {
 
   // const {products} = useSelector((state => state.products))
 
-  const {
-    loading,
-    error,
-    user,
-  } = useSelector((state) => state.userDetails);
+  const { loading, error, user } = useSelector((state) => state.userDetails);
   const { userInfo } = useSelector((state) => state.userLogin);
   const dispatch = useDispatch();
 
-  const companyDetails = user?.company
+  const companyDetails = user?.company;
 
   useEffect(() => {
     dispatch(getCompanyDetails());
@@ -70,9 +66,14 @@ const TabsE = styled(Tabs)`
   color: var(--silver-color);
   font-weight: 700;
 
-  & .ant-tabs-tab:hover {
-    color: var(--orange-color) !important;
+  & .ant-tabs-tab {
+    margin: 0 10px;
+    &:hover {
+      color: var(--orange-color) !important;
+    }
   }
+
+  /* & .ant-tabs-tab */
 
   & .ant-tabs-tab.ant-tabs-tab-active {
     border-bottom: 4px solid var(--orange-color) !important;

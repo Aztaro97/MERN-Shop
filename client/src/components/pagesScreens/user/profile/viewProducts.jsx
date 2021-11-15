@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { Slider, Image, Modal } from "antd";
+import { Slider, Image, Modal, Row, Col } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { useFormik } from "formik";
 import { useParams } from "react-router-dom";
@@ -56,47 +56,62 @@ const ViewProducts = () => {
 
   return (
     <Container>
-      <Row>
+      <RowCustom>
         <FilterForm onSubmit={formik.handleSubmit}>
-          <SelectC
-            className="form_select"
-            placeholder="Brand"
-            name="formik.brand"
-            options={brandList}
-            value={formik.values.brand}
-            onChange={(e) => formik.setFieldValue("brand", e.target.value)}
-          />
-          <SelectC
-            className="form_select"
-            name="formik.color"
-            placeholder="Color"
-            options={colorList}
-            value={formik.values.color}
-            onChange={(e) => formik.setFieldValue("color", e.target.value)}
-          />
-          <SelectC
-            className="form_select"
-            name="formik.size"
-            placeholder="Size"
-            options={sizeList}
-            value={formik.values.size}
-            onChange={(e) => formik.setFieldValue("size", e.target.value)}
-          />
-          <div className="form_select slider">
-            <p>Price Less than Aed 500</p>
-            <SliderE
-              defaultValue={30}
-              onChange={handleChangeSlider}
-              max={500}
-              min={2}
-            />
-          </div>
-          <button type="submit" className="btn">
-            Clear
-          </button>
+          <Row gutter={[15, 10]} justify="end">
+            <Col xs={{ span: 12 }} md={{ span: 8 }} lg={{ span: 5 }}>
+              <SelectC
+                className="form_select"
+                placeholder="Brand"
+                name="formik.brand"
+                options={brandList}
+                value={formik.values.brand}
+                onChange={(e) => formik.setFieldValue("brand", e.target.value)}
+              />
+            </Col>
+            <Col xs={{ span: 12 }} md={{ span: 8 }} lg={{ span: 5 }}>
+              <SelectC
+                className="form_select"
+                name="formik.color"
+                placeholder="Color"
+                options={colorList}
+                value={formik.values.color}
+                onChange={(e) => formik.setFieldValue("color", e.target.value)}
+              />
+            </Col>
+            <Col xs={{ span: 12 }} md={{ span: 8 }} lg={{ span: 5 }}>
+              {" "}
+              <SelectC
+                className="form_select"
+                name="formik.size"
+                placeholder="Size"
+                options={sizeList}
+                value={formik.values.size}
+                onChange={(e) => formik.setFieldValue("size", e.target.value)}
+              />
+            </Col>
+            <Col xs={{ span: 12 }} md={{ span: 8 }} lg={{ span: 5 }}>
+              {" "}
+              <div className="form_select slider">
+                <p>Price Less than Aed 500</p>
+                <SliderE
+                  defaultValue={30}
+                  onChange={handleChangeSlider}
+                  max={500}
+                  min={2}
+                />
+              </div>
+            </Col>
+            <Col xs={{ span: 12 }} md={{ span: 8 }} lg={{ span: 4 }}>
+              {" "}
+              <button type="submit" className="btn">
+                Clear
+              </button>
+            </Col>
+          </Row>
         </FilterForm>
-      </Row>
-      <Row className="products_items">
+      </RowCustom>
+      <RowCustom className="products_items">
         <>
           {loading ? (
             <Loader />
@@ -125,24 +140,25 @@ const ViewProducts = () => {
             </>
           )}
         </>
-      </Row>
-      <Row>
+      </RowCustom>
+      <RowCustom>
         <Paginate
           pages={pages}
           page={page}
           // keyword={keyword ? keyword : ''}
         />
-      </Row>
+      </RowCustom>
     </Container>
   );
 };
 
 const Container = styled.div`
+  margin-top:20px;
   @media only screen and (max-width: 1000px) {
     padding: 0 1rem;
   }
 `;
-const Row = styled.div`
+const RowCustom = styled.div`
   display: block;
   width: 100%;
   /* flex-direction: column; */
@@ -166,12 +182,6 @@ const Row = styled.div`
 `;
 
 const FilterForm = styled.form`
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-gap: 1rem;
-  width: 100%;
-  align-items: center;
-
   & .form_select {
     width: 100%;
   }
@@ -179,9 +189,10 @@ const FilterForm = styled.form`
   & .slider {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     & p {
-      margin-bottom: 0;
-      font-size: 0.9rem;
+      margin-bottom: 5px;
+      font-size: 0.8rem;
     }
   }
 
@@ -190,6 +201,7 @@ const FilterForm = styled.form`
     border: none;
     background: var(--orange-color);
     color: #fff;
+    width: 100%;
     &:hover {
       opacity: 0.9;
     }
@@ -212,8 +224,8 @@ const FilterForm = styled.form`
   }
 `;
 const SliderE = styled(Slider)`
-  /* background: red; */
   width: 100%;
+  margin: auto 0;
 
   & .ant-slider-rail {
     background: var(--silver-color);
@@ -232,6 +244,7 @@ const SliderE = styled(Slider)`
   @media only screen and (max-width: 1000px) {
     width: 100%;
     font-size: 0.7rem;
+    margin: auto 0;
   }
 `;
 const Grid = styled.div`

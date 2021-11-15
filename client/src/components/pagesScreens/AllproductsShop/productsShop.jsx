@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { Slider, Image, Modal } from "antd";
+import { Slider, Image, Modal, Row, Col } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { useFormik } from "formik";
 import SelectC from "../../SelectComponents";
@@ -50,52 +50,61 @@ const ViewProducts = ({ match }) => {
   return (
     <MainContainer>
       <Container>
-        <Row>
+        <FilterForm onSubmit={formik.handleSubmit}>
           <h3 className="title">Products Shop :</h3>
-        </Row>
-        <Row>
-          <FilterForm onSubmit={formik.handleSubmit}>
-            <SelectC
-              className="form_select"
-              placeholder="Brand"
-              name="formik.brand"
-              options={brandList}
-              value={formik.values.brand}
-              onChange={(e) => formik.setFieldValue("brand", e.target.value)}
-            />
-            <SelectC
-              className="form_select"
-              name="formik.color"
-              placeholder="Color"
-              options={colorList}
-              value={formik.values.color}
-              onChange={(e) => formik.setFieldValue("color", e.target.value)}
-            />
-            <SelectC
-              className="form_select"
-              name="formik.size"
-              placeholder="Size"
-              options={sizeList}
-              value={formik.values.size}
-              onChange={(e) =>
-                formik.setFieldValue("size", parseInt(e.target.value))
-              }
-            />
-            <div className="form_select slider">
-              <p>Price Less than Aed 2000</p>
-              <SliderE
-                value={formik.values.price}
-                onChange={handleChangeSlider}
-                max={2000}
-                min={2}
+          <Row gutter={[15,10]} justify="end">
+            <Col xs={{ span: 12 }} md={{ span: 8 }} lg={{ span: 5 }}>
+              <SelectC
+                className="form_select"
+                placeholder="Brand"
+                name="formik.brand"
+                options={brandList}
+                value={formik.values.brand}
+                onChange={(e) => formik.setFieldValue("brand", e.target.value)}
               />
-            </div>
-            <button type="submit" className="btn">
-              Clear
-            </button>
-          </FilterForm>
-        </Row>
-        <Row className="products_items">
+            </Col>
+            <Col xs={{ span: 12 }} md={{ span: 8 }} lg={{ span: 5 }}>
+              <SelectC
+                className="form_select"
+                name="formik.color"
+                placeholder="Color"
+                options={colorList}
+                value={formik.values.color}
+                onChange={(e) => formik.setFieldValue("color", e.target.value)}
+              />
+            </Col>
+            <Col xs={{ span: 12 }} md={{ span: 8 }} lg={{ span: 5 }}>
+              <SelectC
+                className="form_select"
+                name="formik.size"
+                placeholder="Size"
+                options={sizeList}
+                value={formik.values.size}
+                onChange={(e) =>
+                  formik.setFieldValue("size", parseInt(e.target.value))
+                }
+              />
+            </Col>
+            <Col xs={{ span: 12 }} md={{ span: 8 }} lg={{ span: 5 }}>
+              {" "}
+              <div className="form_select slider">
+                <p>Price Less than Aed 2000</p>
+                <SliderE
+                  value={formik.values.price}
+                  onChange={handleChangeSlider}
+                  max={2000}
+                  min={2}
+                />
+              </div>
+            </Col>
+            <Col xs={{ span: 12 }} md={{ span: 8 }} lg={{ span: 4 }}>
+              <button type="submit" className="btn">
+                Clear
+              </button>
+            </Col>
+          </Row>
+        </FilterForm>
+        <RowCustom className="products_items">
           <>
             {loading ? (
               <Loader />
@@ -122,14 +131,14 @@ const ViewProducts = ({ match }) => {
               </>
             )}
           </>
-        </Row>
-        <Row style={{ marginTop: "1rem" }}>
+        </RowCustom>
+        <RowCustom style={{ marginTop: "1rem" }}>
           <Paginate
             pages={pages}
             page={page}
             // keyword={keyword ? keyword : ''}
           />
-        </Row>
+        </RowCustom>
       </Container>
     </MainContainer>
   );
@@ -139,6 +148,8 @@ const Container = styled.div`
   margin-top: 2rem;
 
   & .cart_empty {
+    margin-bottom: 50px;
+    text-align: center;
     & button {
       background: var(--orange-color);
       color: #fff;
@@ -152,30 +163,24 @@ const Container = styled.div`
   }
 
   @media only screen and (max-width: 1000px) {
-    padding: 0 1rem;
+    padding: 0 .5rem;
   }
 `;
-const Row = styled.div`
+const RowCustom = styled.div`
   display: block;
   width: 100%;
 
   &.products_items {
     margin-top: 4rem;
   }
+`;
 
+const FilterForm = styled.form`
   & .title {
     font-weight: 700;
     letter-spacing: 1px;
     /* text-decoration: underline; */
   }
-`;
-
-const FilterForm = styled.form`
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-gap: 1rem;
-  width: 100%;
-  align-items: center;
 
   & .form_select {
     width: 100%;
@@ -184,6 +189,8 @@ const FilterForm = styled.form`
   & .slider {
     display: flex;
     flex-direction: column;
+    justify-content:space-between;
+    align-items: space-between;
     & p {
       margin-bottom: 0;
       font-size: 0.9rem;
@@ -195,6 +202,7 @@ const FilterForm = styled.form`
     border: none;
     background: var(--orange-color);
     color: #fff;
+    width: 100%;
     &:hover {
       opacity: 0.9;
     }
@@ -210,7 +218,7 @@ const FilterForm = styled.form`
     }
     & .slider {
       & p {
-        margin-bottom: 0;
+        margin-bottom: 5px;
         font-size: 0.8rem;
       }
     }
@@ -219,6 +227,7 @@ const FilterForm = styled.form`
 const SliderE = styled(Slider)`
   /* background: red; */
   width: 100%;
+  margin:auto 0;
 
   & .ant-slider-rail {
     background: var(--silver-color);
@@ -237,6 +246,7 @@ const SliderE = styled(Slider)`
   @media only screen and (max-width: 1000px) {
     width: 100%;
     font-size: 0.7rem;
+    margin:auto 0;
   }
 `;
 const Grid = styled.div`

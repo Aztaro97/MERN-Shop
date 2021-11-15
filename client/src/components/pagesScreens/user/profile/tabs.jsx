@@ -10,6 +10,7 @@ import { getUserDetails } from "../../../../flux/actions/userAction";
 import PageNotFund from "../../pageNotFund";
 import LoaderComponent from "../../../loader";
 import ErrorServerPage from "../../ErrorServerPage";
+import { useTranslation } from "react-i18next";
 // import {filterProducts} from
 
 const { TabPane } = Tabs;
@@ -18,6 +19,7 @@ const Tabulation = () => {
   const { loading, user, error } = useSelector((state) => state.userDetails);
 
   const params = useParams();
+  const { t } = useTranslation();
 
   const userId = params.id;
 
@@ -32,10 +34,10 @@ const Tabulation = () => {
     <MainContainer>
       <Tab>
         <TabsE defaultActiveKey="1" centered size="default">
-          <TabPane tab="View Products" key="1">
+          <TabPane tab={t("view_products")} key="1">
             <ViewProducts />
           </TabPane>
-          <TabPane tab="Company Information" key="2">
+          <TabPane tab={t("company_info")} key="2">
             <CompanyInfo />
           </TabPane>
         </TabsE>
@@ -53,9 +55,13 @@ const Tab = styled.div`
 const TabsE = styled(Tabs)`
   color: var(--silver-color);
   font-weight: 700;
+  
 
-  & .ant-tabs-tab:hover {
-    color: var(--orange-color) !important;
+  & .ant-tabs-tab {
+    margin: 0 10px;
+    &:hover {
+      color: var(--orange-color) !important;
+    }
   }
 
   & .ant-tabs-tab.ant-tabs-tab-active {
