@@ -10,7 +10,8 @@ const Container = styled.main`
   margin: 0 auto;
   min-height: 51vh;
   display: block;
-  /* padding-bottom: 20px; */
+  overflow-x: hidden;
+
 
   @media only screen and (max-width: 1040px) {
     padding: 0 0.5rem;

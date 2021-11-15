@@ -6,6 +6,8 @@ import Slider from "react-slick";
 import {
   MdOutlineScreenSearchDesktop,
   SiGoogleclassroom,
+  GoMegaphone,
+  ImRss
 } from "react-icons/all";
 import "./DigitalMarketing.css";
 import ButtonComponeent from "../../ButtonComponeent";
@@ -112,8 +114,8 @@ const MarketingService = () => {
         voluptatum dicta laboriosam minima velit sequi illum! Praesentium,
         nesciunt laborum.
       </Paragraph>
-      <Title level={2} className="title">
-        provide awesome services with our tools
+      <Title level={4} className="title">
+        provide awesome services <br /> with our tools
       </Title>
       <Slider {...settings}>
         <div>
@@ -121,7 +123,7 @@ const MarketingService = () => {
             <Title level={4} className="card_title">
               seo
             </Title>
-            <SiGoogleclassroom className="icon" />
+            <MdOutlineScreenSearchDesktop className="icon" />
             <p>Lorem ipsum Lorem ipsum Lorem ipsum</p>
           </div>
         </div>
@@ -130,7 +132,7 @@ const MarketingService = () => {
             <Title level={4} className="card_title">
               Ads
             </Title>
-            <SiGoogleclassroom className="icon" />
+            <GoMegaphone className="icon" />
             <p>Lorem ipsum Lorem ipsum Lorem ipsum</p>
           </div>
         </div>
@@ -139,7 +141,7 @@ const MarketingService = () => {
             <Title level={4} className="card_title">
               social media
             </Title>
-            <SiGoogleclassroom className="icon" />
+            <ImRss className="icon" />
             <p>Lorem ipsum Lorem ipsum Lorem ipsum</p>
           </div>
         </div>
@@ -335,7 +337,8 @@ const ServiceContainer = styled.div`
     height: 150px;
     margin: 10px auto 10px;
     padding: 10px;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+      rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 
     & .card_title {
       color: #333;
@@ -435,15 +438,18 @@ const Container = styled.div`
 `;
 
 const TestimonialStyling = styled.section`
+  background: #ececec;
   padding: 20px 0;
   & .tm_card {
     border: 1px solid #ececec;
     margin: 0 20px 20px 20px;
     padding: 20px;
+    background: #fff;
     & .tm_card_header {
       display: flex;
       align-items: center;
       /* justify-content: space-between; */
+
       & img {
         width: 100px;
         border-radius: 50%;
