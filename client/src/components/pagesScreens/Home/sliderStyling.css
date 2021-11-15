@@ -45,3 +45,49 @@
   background: var(--background-color);
   outline: 0;
 }
+
+
+
+
+
+/* ///////////////////  STYLING DOTS CLIENT SECTION   ////////// */
+.client_dots_bar {
+  display: inline-block;
+  vertical-align: middle;
+  margin: auto;
+  padding: 10px 0;
+  /* background: rgba(255, 255, 255, 0.3); */
+  border-radius: 40px;
+  /* width: 100px; */
+  text-align: center;
+}
+
+.client_dots_bar li {
+  list-style: none;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 3px;
+  padding: 0;
+}
+
+.client_dots_bar li button {
+  border: none;
+  background: #fff;
+  color: transparent;
+  cursor: pointer;
+  display: block;
+  height: 15px;
+  width: 15px;
+  border-radius: 7.5px;
+  border: 1px solid rgba(156, 156, 156, 0.466);
+}
+
+.client_dots_bar li.slick-active button {
+  background-color: var(--orange-color);
+}
+
+.client_dots_bar li button:hover,
+.client_dots_bar li button:focus {
+  background: var(--background-color);
+  outline: 0;
+}

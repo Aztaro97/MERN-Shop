@@ -22,6 +22,11 @@ export const MarketingCardStyling = styled.div`
       flex-direction: column;
       margin: auto;
       padding: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      }
       & .icon {
         color: var(--orange-color);
         font-size: 2.5rem;
@@ -37,7 +42,8 @@ export const MarketingCardStyling = styled.div`
 `;
 
 export const SectionStyling = styled.section`
-  padding: 40px 0;
+  /* margin: 80px 0; */
+  padding: 60px 0;
   & .title {
     font-weight: 700;
     font-size: 2rem;

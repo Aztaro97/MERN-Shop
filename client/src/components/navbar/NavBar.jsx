@@ -280,7 +280,7 @@ const Header = styled.header`
   padding: 0 2rem;
   background: ${({ scrollNav }) => (scrollNav ? "#fff" : "transparent")};
   box-shadow: ${({ scrollNav }) =>
-    scrollNav ? "0px 5px 0px 0px rgba(0,0,0,0.11)" : "none"};
+    scrollNav ? "0px 2px 0px 0px rgba(0,0,0,0.11)" : "none"};
   transition: ${({ scrollNav }) =>
     scrollNav ? "background 0s ease-in-out" : "background .5s ease-in-out"};
   @media only screen and (max-width: 768px) {

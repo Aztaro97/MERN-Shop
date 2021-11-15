@@ -37,20 +37,21 @@ function HomeComponents() {
   return (
     <MainContainer>
       <Banner />
-      <NavStyling>
-        <Scrollspy
-          items={[
-            "design",
-            "photography",
-            "printing",
-            "exhibition",
-            "programming",
-            "marketing",
-            "products",
-          ]}
-          currentClassName="is-current"
-          style={{ padding: 0 }}
-        >
+      <Scrollspy
+        items={[
+          "design",
+          "photography",
+          "printing",
+          "exhibition",
+          "programming",
+          "marketing",
+          "products",
+        ]}
+        currentClassName="is-current"
+        style={{ padding: 0 }}
+        offset={20}
+      >
+        <NavStyling>
           <h1 className="title">our services</h1>
           <Row gutter={[10, 30]} justify="center">
             <Col xs={{ span: 12 }} sm={{ span: 8 }} md={{ span: 6 }}>
@@ -96,8 +97,8 @@ function HomeComponents() {
               </a>
             </Col>
           </Row>
-        </Scrollspy>
-      </NavStyling>
+        </NavStyling>
+      </Scrollspy>
 
       <SectionStyling id="design">
         <h1 className="title">design</h1>
@@ -851,13 +852,14 @@ const Banner = () => {
 
 const OurClient = () => {
   const settings = {
-    dots: false,
+    dots: true,
     infinite: true,
     speed: 700,
     autoplay: true,
     slidesToShow: 4,
     slidesToScroll: 1,
     // rtl: lang === "ar" ? true : false,
+    dotsClass: "client_dots_bar",
     responsive: [
       {
         breakpoint: 1120,

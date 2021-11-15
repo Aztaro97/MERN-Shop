@@ -54,7 +54,7 @@ export const LandingStyling = styled.section`
       }
 
       & .btn_register {
-        display: block;
+        display: inline-block;
         text-decoration: none;
         outline: none;
         border: none;
