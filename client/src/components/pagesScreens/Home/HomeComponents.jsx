@@ -37,6 +37,7 @@ function HomeComponents() {
   return (
     <MainContainer>
       <Banner />
+
       <Scrollspy
         items={[
           "design",
@@ -119,9 +120,9 @@ function HomeComponents() {
             </p>
           </Col>
           <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 16 }}>
-            <div className="circle">
+            <div className="circle_container"> <div className="circle">
               <img src="https://via.placeholder.com/300" alt="" />
-            </div>
+            </div> </div>
           </Col>
         </Row>
         <Row className="second_row">
@@ -210,9 +211,9 @@ function HomeComponents() {
             </p>
           </Col>
           <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 16 }}>
-            <div className="circle">
+            <div className="circle_container"> <div className="circle">
               <img src="https://via.placeholder.com/300" alt="" />
-            </div>
+            </div> </div>
           </Col>
         </Row>
         <Row className="second_row">
@@ -304,9 +305,9 @@ function HomeComponents() {
             </p>
           </Col>
           <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 16 }}>
-            <div className="circle">
+            <div className="circle_container"> <div className="circle">
               <img src="https://via.placeholder.com/300" alt="" />
-            </div>
+            </div> </div>
           </Col>
         </Row>
         <Row className="second_row">
@@ -395,9 +396,9 @@ function HomeComponents() {
             </p>
           </Col>
           <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 16 }}>
-            <div className="circle">
+            <div className="circle_container"> <div className="circle">
               <img src="https://via.placeholder.com/300" alt="" />
-            </div>
+            </div> </div>
           </Col>
         </Row>
         <Row className="second_row">
@@ -489,9 +490,9 @@ function HomeComponents() {
             </p>
           </Col>
           <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 16 }}>
-            <div className="circle">
+            <div className="circle_container"> <div className="circle">
               <img src="https://via.placeholder.com/300" alt="" />
-            </div>
+            </div> </div>
           </Col>
         </Row>
         <ProgrammingCardStyling>
@@ -612,9 +613,9 @@ function HomeComponents() {
             </p>
           </Col>
           <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 16 }}>
-            <div className="circle">
+            <div className="circle_container"> <div className="circle">
               <img src="https://via.placeholder.com/300" alt="" />
-            </div>
+            </div> </div>
           </Col>
         </Row>
         <MarketingCardStyling>
@@ -687,9 +688,9 @@ function HomeComponents() {
             </p>
           </Col>
           <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 16 }}>
-            <div className="circle">
+            <div className="circle_container"> <div className="circle">
               <img src="https://via.placeholder.com/300" alt="" />
-            </div>
+            </div> </div>
           </Col>
         </Row>
         <Row className="second_row">

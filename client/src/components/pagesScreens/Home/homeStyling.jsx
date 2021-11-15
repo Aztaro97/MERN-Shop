@@ -72,23 +72,28 @@ export const SectionStyling = styled.section`
     padding: 10px 0;
     letter-spacing: 1px;
   }
-  & .circle {
-    width: 350px;
-    height: 350px;
-    margin-left: auto;
-    background: var(--orange-color);
-    border-radius: 50%;
-    @media only screen and (max-width: 500px) {
-      width: 300px;
-      height: 300px;
-      & img {
-        /* display: none; */
+  & .circle_container {
+    display: flex;
+    justify-content: end;
+
+    & .circle {
+      width: 350px;
+      height: 350px;
+      /* margin-left: auto; */
+      background: var(--orange-color);
+      border-radius: 50%;
+      @media only screen and (max-width: 500px) {
+        width: 300px;
+        height: 300px;
+        & img {
+          /* display: none; */
+        }
       }
-    }
-    & img {
-      /* width: 100%; */
-      height: 300px;
-      position: relative;
+      & img {
+        /* width: 100%; */
+        height: 300px;
+        position: relative;
+      }
     }
   }
 
