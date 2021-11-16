@@ -80,7 +80,7 @@ function HomeECommerce() {
             <h4>companies for you</h4>
             <hr />
             {loading ? (
-              <Loader />
+              <h2>Loading ...</h2>
             ) : (
               <GridCard>
                 {company.users !== null && (
@@ -126,7 +126,7 @@ function HomeECommerce() {
             <h4>craftman for you</h4>
             <hr />
             {loadingCraft ? (
-              <Loader />
+              <h2>Loading ...</h2>
             ) : (
               <GridCard>
                 {craftman.users !== null && (

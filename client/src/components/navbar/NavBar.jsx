@@ -279,13 +279,16 @@ const Header = styled.header`
   z-index: 99;
   padding: 0 2rem;
   background: ${({ scrollNav }) => (scrollNav ? "#fff" : "transparent")};
-  box-shadow: ${({ scrollNav }) =>
-    scrollNav ? "0px 2px 0px 0px rgba(0,0,0,0.11)" : "none"};
+  /* box-shadow: ${({ scrollNav }) =>
+    scrollNav ? "0px 2px 0px 0px rgba(0,0,0,0.11)" : "none"}; */
   transition: ${({ scrollNav }) =>
     scrollNav ? "background 0s ease-in-out" : "background .5s ease-in-out"};
   @media only screen and (max-width: 768px) {
     height: 80px;
     padding: 0 0.9rem;
+  }
+  & > div {
+    position: fixed;
   }
 `;
 const Nav = styled.ul`
@@ -295,6 +298,7 @@ const Nav = styled.ul`
   list-style: none;
   margin-bottom: 0 !important;
   padding: 0;
+  
 `;
 const NavItem = styled.li`
   margin: 0 0.7rem;
