@@ -20,10 +20,15 @@ function CartComponent({ location }) {
     dispatch(removeFromCart(productId));
   };
 
-  const handleCheckOut = () => {
-    history.push("/auth?redirect=shipping");
-  };
+  const { userInfo } = useSelector((state) => state.userLogin);
 
+  const handleCheckOut = () => {
+    if (userInfo) {
+      history.push("/shipping");
+    } else {
+      history.push("/auth");
+    }
+  };
 
   return (
     <MainContainer>
@@ -66,7 +71,7 @@ function CartComponent({ location }) {
                             Size : <span>{item.sizeSelected}</span>{" "}
                           </h3>
                         )}
-                         {item.colorSelected && (
+                        {item.colorSelected && (
                           <h3 className="cart_size">
                             Color : <span>{item.colorSelected}</span>{" "}
                           </h3>
@@ -167,7 +172,7 @@ const Row = styled.div`
     text-transform: uppercase;
     margin-top: 1.3rem;
 
-    & P {
+    & p {
       font-weight: 700;
       &:nth-child(1) {
         color: var(--orange-color);
@@ -265,7 +270,6 @@ const Grid = styled.div`
         letter-spacing: 1px;
       }
       & .cart_size {
-        
         font-weight: 700;
         margin-bottom: 0.3rem;
         &.cart_size span {

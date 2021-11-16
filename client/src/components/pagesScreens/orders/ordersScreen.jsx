@@ -8,6 +8,7 @@ import LoaderComponent from "../../loader";
 import { useHistory } from "react-router";
 import moment from "moment";
 import ErrorServerPage from "../ErrorServerPage";
+import { Link } from "react-router-dom";
 
 function OrdersScreen() {
   const dispatch = useDispatch();
@@ -43,15 +44,14 @@ function OrdersScreen() {
                   <th>total</th>
                   <th>paid</th>
                   <th>delivered</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
                 {orders.map((order) => (
                   <tr key={order._id}>
                     <td>{order._id}</td>
-                    <td>
-                      {moment(order.createdAt).format("DD-MM-YYYY")}
-                    </td>
+                    <td>{moment(order.createdAt).format("DD-MM-YYYY")}</td>
                     <td>{order.totalPrice} dh</td>
                     {/* <td>{order.user && order.user.name}</td> */}
 
@@ -74,6 +74,7 @@ function OrdersScreen() {
                         <FaTimesCircle style={{ color: "#ff7979" }} />
                       )}
                     </td>
+                    <LinkStyling to={`/order/${order._id}`} >details</LinkStyling>
                   </tr>
                 ))}
               </tbody>
@@ -138,6 +139,21 @@ const Table = styled.table`
       font-size: 1rem;
       text-align: center;
     }
+  }
+`;
+
+const LinkStyling = styled(Link)`
+  color: #333;
+  background-color: #ececec;
+  text-decoration: none;
+  text-transform: capitalize;
+  padding: 5px 10px;
+  display: inline-block;
+  margin: auto;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    background-color: #333;
+    color: #fff;
   }
 `;
 

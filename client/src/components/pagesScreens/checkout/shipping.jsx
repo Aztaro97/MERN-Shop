@@ -244,11 +244,11 @@ const SectionRight = () => {
           </Card>
         ))}
 
-      <hr />
+      {/* <hr />
       <form action="">
         <input type="text" placeholder="DISCOUNT CODE" />
         <ButtonC>apply</ButtonC>
-      </form>
+      </form> */}
       <hr />
       <div className="solde">
         <h1>subtotal</h1>
@@ -357,7 +357,7 @@ const CheckBox = styled(CheckBoxC)`
 `;
 
 const ContainerCart = styled.div`
-  background: var(--background-color);
+  background: var(--orange-color);
   padding: 2rem;
   & hr {
     border: none;

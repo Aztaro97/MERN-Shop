@@ -189,7 +189,7 @@ export const SectionLeft = styled.form`
 `;
 
 export const ContainerCart = styled.div`
-  background: var(--background-color);
+  background: var(--orange-color);
   padding: 2rem;
 
   & hr {

@@ -332,11 +332,11 @@ const SectionRight = ({ cartItems, ShippingCost, totalPrice }) => {
         </Card>
       ))}
 
-      <hr />
+      {/* <hr />
       <form action="">
         <input type="text" placeholder="DISCOUNT CODE" />
         <ButtonC>apply</ButtonC>
-      </form>
+      </form> */}
       <hr />
       <div className="solde">
         <h1>subtotal</h1>

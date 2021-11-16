@@ -3,6 +3,7 @@ import styled from "styled-components";
 import TextTruncate from "react-text-truncate";
 import { Image, Modal } from "antd";
 import ModalContent from "./modalContent";
+import { GrView } from "react-icons/gr";
 
 const empty_pc = "/img/ecommerce/empty.jpg";
 
@@ -13,9 +14,7 @@ function Product({ product }) {
     <Card>
       <div className="img_card">
         <Image
-          src={
-            product.imageUrl.length > 0 ? product.imageUrl[0].url : empty_pc
-          }
+          src={product.imageUrl.length > 0 ? product.imageUrl[0].url : empty_pc}
           alt=""
           preview={true}
         />
@@ -45,7 +44,7 @@ function Product({ product }) {
           </h2>
         </div>
         <Button type="button" onClick={() => setShowModal(true)}>
-          add to cart
+          <GrView className="icon" /> view
         </Button>
         <Modal
           centered
@@ -130,16 +129,19 @@ const Button = styled.button`
   font-weight: 700;
   background: #e7eaea;
   color: #000;
-  text-transform: uppercase;
+  text-transform: capitalize;
   text-align: center;
   border-radius: 1rem;
   padding: 0.4rem 0;
-  display: block;
+  /* display: block; */
   width: 100%;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  font-size: 0.8rem;
-
+  transition: all 0.3s ease-in-out;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  & .icon {
+    color: #fff !important;
+  }
   &:hover {
     background: var(--orange-color);
     color: #fff;
