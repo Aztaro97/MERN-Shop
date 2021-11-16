@@ -175,7 +175,7 @@ function Contact() {
                       </Col>
                     </Row>
 
-                    <Button type="submit">
+                    <ButtonStyling type="submit">
                       {loading ? (
                         <>
                           <SyncOutlined spin />{" "}
@@ -184,7 +184,7 @@ function Contact() {
                       ) : (
                         <span>send</span>
                       )}
-                    </Button>
+                    </ButtonStyling>
                   </form>
                 </div>
               </Col>
@@ -220,6 +220,13 @@ function Contact() {
     </>
   );
 }
+
+const ButtonStyling = styled(Button)`
+  letter-spacing: 1px;
+  font-size: 1rem ;
+  font-weight: 400;
+  padding: 5px 40px;
+`
 
 const ContactContainer = styled.section`
   background: rgba(236, 236, 236, 0.925);
