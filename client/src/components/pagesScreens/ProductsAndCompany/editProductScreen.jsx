@@ -1082,13 +1082,13 @@ const RateSection = ({ arrayZone, setArrayZone }) => {
             ))}
         </Row>
 
-        <ButtonC
+        {/* <ButtonC
           style={{ margin: "0 auto" }}
           disabled={!rateName && true}
           onClick={handleAdd}
         >
           save
-        </ButtonC>
+        </ButtonC> */}
       </Card>
     </>
   );
@@ -1197,7 +1197,7 @@ const ShippingSection = ({
           {arraryRegionSelected &&
             arraryRegionSelected.map((item, index) => (
               <RowCheck key={index}>
-                <InputCheck type="checkbox" id={item} name={item}>
+                <InputCheck type="checkbox" id={item} name={item}  >
                   {item}
                 </InputCheck>
               </RowCheck>

@@ -321,7 +321,12 @@ const NavLink = styled(Link)`
     color: #fff;
     padding: 6px;
     border-radius: 50%;
-    font-size: 1rem;
+    font-size: .9rem;
+    width: 21px !important;
+    height: 21px !important;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
   }
   &:hover {
     color: var(--orange-color);

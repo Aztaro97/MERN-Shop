@@ -29,6 +29,9 @@ import {
   FILTER_PRODUCT_REQUEST,
   FILTER_PRODUCT_SUCCESS,
   FILTER_PRODUCT_FAIL,
+  PRODUCT_ALLOW_SUCCESS,
+  PRODUCT_ALLOW_REQUEST,
+  PRODUCT_ALLOW_FAIL,
 } from "../constants/productConstants";
 
 export const productListReducer = (state = { products: [] }, action) => {
@@ -100,12 +103,15 @@ export const productCreateReducer = (state = {}, action) => {
 export const productUpdateReducer = (state = { product: {} }, action) => {
   switch (action.type) {
     case PRODUCT_UPDATE_REQUEST:
+    case PRODUCT_ALLOW_REQUEST:
       return { loading: true };
     case PRODUCT_UPDATE_SUCCESS:
+    case PRODUCT_ALLOW_SUCCESS:
       return { loading: false, success: true, product: action.payload };
     case PRODUCT_UPDATE_FAIL:
       return { loading: false, error: action.payload };
     case PRODUCT_UPDATE_RESET:
+    case PRODUCT_ALLOW_FAIL:
       return { product: {} };
     default:
       return state;

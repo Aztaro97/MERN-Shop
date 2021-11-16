@@ -39,6 +39,10 @@ function ProductsListScreen({ match }) {
     success: successDelete,
   } = useSelector((state) => state.productDelete);
 
+  const { loading: loadingAccepted, success: successUpdate } = useSelector(
+    (state) => state.productUpdate
+  );
+
   const { userInfo } = useSelector((state) => state.userLogin);
 
   const showConfirm = (id) => {
@@ -55,9 +59,6 @@ function ProductsListScreen({ match }) {
       },
     });
   };
-  if (successDelete) {
-    dispatch(listProductsAdmin("", pageNumber));
-  }
 
   const handleSetAllow = async (id) => {
     dispatch(setProductAllow(id, true));
@@ -70,11 +71,9 @@ function ProductsListScreen({ match }) {
   function handleMenuClick(e, productId) {
     if (e.key === "accept") {
       dispatch(setProductAllow(productId, true));
-      dispatch(listProductsAdmin("", pageNumber));
     }
     if (e.key === "refuse") {
       dispatch(setProductAllow(productId, false));
-      dispatch(listProductsAdmin("", pageNumber));
     }
   }
 
@@ -84,8 +83,12 @@ function ProductsListScreen({ match }) {
   }
 
   useEffect(() => {
-    dispatch(listProductsAdmin("", pageNumber));
-  }, [dispatch, pageNumber]);
+    if (successUpdate || successDelete) {
+      dispatch(listProductsAdmin("", pageNumber));
+    } else {
+      dispatch(listProductsAdmin("", pageNumber));
+    }
+  }, [dispatch, successUpdate, successDelete, pageNumber]);
 
   return (
     <MainContainer>
@@ -94,7 +97,7 @@ function ProductsListScreen({ match }) {
           <h3>{t("product_list.title")}</h3>
         </Row>
         <Row>
-          {loadingDelete && <Loader />}
+          {(loadingDelete || loadingAccepted) && <Loader />}
 
           {loading ? (
             <Loader />

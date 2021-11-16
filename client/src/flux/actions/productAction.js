@@ -27,6 +27,9 @@ import {
   FILTER_PRODUCT_REQUEST,
   FILTER_PRODUCT_SUCCESS,
   FILTER_PRODUCT_FAIL,
+  PRODUCT_ALLOW_REQUEST,
+  PRODUCT_ALLOW_SUCCESS,
+  PRODUCT_ALLOW_FAIL,
 } from "../constants/productConstants";
 import { logout } from "./userAction";
 import { toast } from "react-toastify";
@@ -423,6 +426,7 @@ export const setProductAllow = (id, permission) => async (
   getState
 ) => {
   try {
+    dispatch({ type: PRODUCT_ALLOW_REQUEST });
     const {
       userLogin: { userInfo },
     } = getState();
@@ -435,8 +439,10 @@ export const setProductAllow = (id, permission) => async (
     };
 
     const res = await axios.post(`/api/products/${id}`, { permission }, config);
+    dispatch({ type: PRODUCT_ALLOW_SUCCESS, payload: res.data });
   } catch (error) {
     console.log(error.message);
+    dispatch({ type: PRODUCT_ALLOW_FAIL });
   }
 };
 
