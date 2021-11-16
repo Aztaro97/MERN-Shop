@@ -12,6 +12,7 @@ import {
 
 import { Col, Row } from "antd";
 import { useTranslation } from "react-i18next";
+import { GrEdit } from "react-icons/gr";
 
 function FooterScrren() {
   const currentPage = document.location.pathname;
@@ -99,7 +100,7 @@ function FooterScrren() {
                   <br /> {t("footer.request")}{" "}
                 </p>
                 <Link to="/contact-us" className="btn write_us">
-                  {t("footer.write")}
+                  <GrEdit className="icon"/> {t("footer.write")}
                 </Link>
               </div>
             </Col>
@@ -126,6 +127,7 @@ function FooterScrren() {
             </Col>
           </Row>
         </div>
+        <hr />
         <div className="bottom-footer">
           <div className="contract-link">
             <Link to="/terms" className="link">
@@ -149,7 +151,8 @@ const Footer = styled.footer`
   width: 100%;
   color: #fff;
   background: var(--dark-color);
-  padding: 20px;
+  padding: 0 1rem;
+  /* padding-bottom: 5rem; */
   & section {
     max-width: var(--max-width);
     margin: 0 auto;
@@ -157,10 +160,11 @@ const Footer = styled.footer`
   }
   & .title {
     color: var(--orange-color);
-    font-size: 1.1rem;
+    font-size: 1.4rem;
   }
   & .para {
     color: var(--gray-color);
+    font-size: 1rem;
   }
 
   & h4 {
@@ -190,14 +194,20 @@ const Footer = styled.footer`
   }
 
   .write_us {
+    display: inline-block;
     border: 1px solid var(--gray-color);
+    background: var(--gray-color);
     border-radius: 10px;
-    color: var(--gray-color);
-    width: 100%;
-    max-width: 400px;
+    color: #333;
+    padding: auto 20px;
     transition: all 0.3 ease-in-out;
+    font-weight: 700;
+    letter-spacing:1px;
     &:hover {
       background: var(--orange-color);
+      color: #333;
+    }
+    & .icon {
       color: #fff;
     }
   }
@@ -208,7 +218,7 @@ const Footer = styled.footer`
 
   & .bottom-footer {
     display: flex;
-    align-items: center;
+    align-items: end;
     justify-content: space-between;
     color: #93a3b3;
     max-width: var(--max-width);
@@ -271,10 +281,6 @@ const Footer = styled.footer`
         transform: rotate(0deg);
       }
     }
-  }
-
-  @media only screen and (max-width: 1040px) {
-    padding: 0 1rem;
   }
 `;
 

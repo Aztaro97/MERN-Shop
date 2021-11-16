@@ -96,7 +96,7 @@ const CompanyInfo = () => {
         scopeBusiness: "",
         licenceNumber: "",
         expireDate: "",
-        phoneNumber: [],
+        phoneNumber: "",
         location: "",
         email: "",
         workHours: [],
@@ -174,8 +174,7 @@ const CompanyInfo = () => {
       formik.setFieldValue("company.scopeBusiness", company.scopeBusiness);
       formik.setFieldValue("company.licenceNumber", company.licenceNumber);
       formik.setFieldValue("company.expireDate", company.expireDate);
-      // formik.setFieldValue("company.phoneNumber", company.phoneNumber);
-      setListCellular(company.phoneNumber);
+      formik.setFieldValue("company.phoneNumber", company.phoneNumber);
       formik.setFieldValue("company.location", company.location);
       formik.setFieldValue("company.email", company.email);
       formik.setFieldValue("company.workHours", company.workHours);
@@ -290,19 +289,19 @@ const CompanyInfo = () => {
                       className="input-field"
                       type="tel"
                       placeholder={t("phone_number_placeholder")}
-                      name="company.phone"
-                      value={cellular}
-                      onChange={(e) => setCellular(e.target.value)}
+                      name="company.phoneNumber"
+                      value={formik.values.company.phoneNumber}
+                      onChange={formik.handleChange}
                     />
-                    <ButtonC
+                    {/* <ButtonC
                       style={{ padding: "1rem", margin: "0 5px" }}
                       type="button"
                       onClick={addCellular}
                     >
                       <GoPlus />
-                    </ButtonC>
+                    </ButtonC> */}
                   </div>
-                  <Ul>
+                  {/* <Ul>
                     {ListCellular.length > 0
                       ? ListCellular.map((item, index) => (
                           <li key={index}>
@@ -314,7 +313,7 @@ const CompanyInfo = () => {
                           </li>
                         ))
                       : null}
-                  </Ul>
+                  </Ul> */}
                 </div>
                 <div className="row">
                   <div className="input-container">
