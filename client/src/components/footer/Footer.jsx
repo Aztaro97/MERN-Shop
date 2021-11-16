@@ -99,7 +99,7 @@ function FooterScrren() {
                   {t("footer.question")}
                   <br /> {t("footer.request")}{" "}
                 </p>
-                <Link to="/contact-us" className="btn write_us">
+                <Link to="/contact-us" className="write_us">
                   <GrEdit className="icon"/> {t("footer.write")}
                 </Link>
               </div>
@@ -195,14 +195,15 @@ const Footer = styled.footer`
 
   .write_us {
     display: inline-block;
-    border: 1px solid var(--gray-color);
     background: var(--gray-color);
     border-radius: 10px;
     color: #333;
-    padding: auto 20px;
+    padding: 7px 20px !important;
     transition: all 0.3 ease-in-out;
     font-weight: 700;
     letter-spacing:1px;
+    text-decoration: none;
+    transition: all .3 s ease-in-out;
     &:hover {
       background: var(--orange-color);
       color: #333;
