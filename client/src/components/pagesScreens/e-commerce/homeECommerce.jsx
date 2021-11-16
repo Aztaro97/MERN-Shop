@@ -64,7 +64,7 @@ function HomeECommerce() {
                 <div className="svg_img">
                   <img src={svg1} alt="" />
                 </div>
-                <div className="contete_para">
+                <div className="content_para">
                   <p>
                     is simply dummy text of the printing and typesetting
                     industry. Lorem Ipsum has been the industry's standard dummy
@@ -75,76 +75,6 @@ function HomeECommerce() {
               </div>
             </Slide>
           </Section1>
-
-          {/* <!-- Social Media container  --> */}
-          {/* <SocialMedia className="socialMedia" id="socialMediaContent">
-  <div className="bgGrediant">
-    <Row>
-      <Col
-        xs={{ span: 24 }}
-        sm={{ span: 24 }}
-        md={{ span: 24 }}
-        lg={{ span: 12 }}
-      >
-        <div className="socialText">
-          <img src="./img/shape1.png" className="shape" alt="" />
-          <div className="contente">
-            <p className="thirdColor mediumText weight-400 text-uppercase mb-0 mb-lg-1">
-              Be The Attentionence
-            </p>
-            <h2 className="secColor largestTitle weight-600  text-uppercase mb-0 mb-lg-2">
-              Social Media
-            </h2>
-            <div className="customBorder"></div>
-            <p className="weight-400 normalText grayBlueColor">
-              Increase your company's monthly leads by 327% with our
-              expert on social media promotion
-            </p>
-          </div>
-        </div>
-      </Col>
-      <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 12 }}>
-        <div className="popSocial">
-          <p className="largeText weight-500 thirdColor text-uppercase ">
-            how
-          </p>
-          <p className="largeTitle weight-600 whiteColor text-uppercase">
-            to make your ad
-          </p>
-          <a
-            className="btn text-uppercase social_btn_center"
-            type="button"
-            href="#/"
-            style={{ width: "auto" }}
-          >
-            easy and fast
-          </a>
-          <div className="socials">
-            <div className="item">
-              <a href="/#" className="btn" type="button">
-                <img src="./img/share.png" alt="" width="10" />
-                <span className="social_btn">share</span>
-              </a>
-            </div>
-            <div className="item">
-              <a href="/register" className="btn" type="button">
-                <img src="./img/profile3.png" alt="" />
-                <span className="social_btn">register</span>
-              </a>
-            </div>
-
-            <div className="item">
-              <a href="/#" className="btn" type="button">
-                <img src="./img/file.png" alt="" />
-                <span className="social_btn">file data</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </Col>
-    </Row>
-  </div>
-</SocialMedia> */}
 
           <CardSection>
             <h4>companies for you</h4>
@@ -366,7 +296,7 @@ const Section1 = styled.section`
         }
       }
     }
-    & .contete_para {
+    & .content_para {
       display: flex;
       align-items: center;
       text-align: start;
