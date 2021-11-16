@@ -23,7 +23,7 @@ import {
   SiMinds,
   AiTwotoneGold,
   BsCameraReels,
-  GiMonumentValley
+  GiMonumentValley,
 } from "react-icons/all";
 import {
   BannerStyling,
@@ -121,9 +121,16 @@ function HomeComponents() {
             </p>
           </Col>
           <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 16 }}>
-            <div className="circle_container"> <div className="circle">
-              <img src="https://via.placeholder.com/300" alt="" />
-            </div> </div>
+            <div className="circle_container">
+              {" "}
+              <div className="circle">
+                <img
+                  loading="lazy"
+                  src="https://via.placeholder.com/300"
+                  alt=""
+                />
+              </div>{" "}
+            </div>
           </Col>
         </Row>
         <Row className="second_row">
@@ -137,6 +144,7 @@ function HomeComponents() {
               <Col xs={{ span: 12 }} md={{ span: 9 }} lg={{ span: 9 }}>
                 <Image
                   className="large_img"
+                  loading="lazy"
                   width="100%"
                   src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=772&q=80"
                   alt=""
@@ -146,12 +154,14 @@ function HomeComponents() {
                 <div className="medium_container">
                   <Image
                     className="medium_img"
+                    loading="lazy"
                     width="100%"
                     src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=772&q=80"
                     alt=""
                   />
                   <Image
                     className="medium_img"
+                    loading="lazy"
                     width="100%"
                     src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=772&q=80"
                     alt=""
@@ -161,6 +171,7 @@ function HomeComponents() {
               <Col xs={{ span: 12 }} md={{ span: 9 }} lg={{ span: 9 }}>
                 <Image
                   className="large_img"
+                  loading="lazy"
                   width="100%"
                   src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=772&q=80"
                   alt=""
@@ -170,6 +181,7 @@ function HomeComponents() {
               <Col xs={{ span: 12 }} md={{ span: 9 }} lg={{ span: 9 }}>
                 <Image
                   className="small_img"
+                  loading="lazy"
                   width="100%"
                   src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=772&q=80"
                   alt=""
@@ -178,6 +190,7 @@ function HomeComponents() {
               <Col xs={{ span: 12 }} md={{ span: 6 }} lg={{ span: 6 }}>
                 <Image
                   className="small_img"
+                  loading="lazy"
                   width="100%"
                   src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=772&q=80"
                   alt=""
@@ -186,6 +199,7 @@ function HomeComponents() {
               <Col xs={{ span: 12 }} md={{ span: 9 }} lg={{ span: 9 }}>
                 <Image
                   className="small_img"
+                  loading="lazy"
                   width="100%"
                   src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=772&q=80"
                   alt=""
@@ -212,9 +226,16 @@ function HomeComponents() {
             </p>
           </Col>
           <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 16 }}>
-            <div className="circle_container"> <div className="circle">
-              <img src="https://via.placeholder.com/300" alt="" />
-            </div> </div>
+            <div className="circle_container">
+              {" "}
+              <div className="circle">
+                <img
+                  loading="lazy"
+                  src="https://via.placeholder.com/300"
+                  alt=""
+                />
+              </div>{" "}
+            </div>
           </Col>
         </Row>
         <Row className="second_row">
@@ -228,6 +249,7 @@ function HomeComponents() {
               <Col xs={{ span: 12 }} md={{ span: 9 }} lg={{ span: 9 }}>
                 <Image
                   className="large_img"
+                  loading="lazy"
                   width="100%"
                   src="https://images.unsplash.com/photo-1554080353-a576cf803bda?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
                   alt=""
@@ -237,12 +259,14 @@ function HomeComponents() {
                 <div className="medium_container">
                   <Image
                     className="medium_img"
+                    loading="lazy"
                     width="100%"
                     src="https://images.unsplash.com/photo-1554080353-a576cf803bda?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
                     alt=""
                   />
                   <Image
                     className="medium_img"
+                    loading="lazy"
                     width="100%"
                     src="https://images.unsplash.com/photo-1554080353-a576cf803bda?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
                     alt=""
@@ -252,6 +276,7 @@ function HomeComponents() {
               <Col xs={{ span: 12 }} md={{ span: 9 }} lg={{ span: 9 }}>
                 <Image
                   className="large_img"
+                  loading="lazy"
                   width="100%"
                   src="https://images.unsplash.com/photo-1554080353-a576cf803bda?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
                   alt=""
@@ -261,6 +286,7 @@ function HomeComponents() {
               <Col xs={{ span: 12 }} md={{ span: 9 }} lg={{ span: 9 }}>
                 <Image
                   className="small_img"
+                  loading="lazy"
                   width="100%"
                   src="https://images.unsplash.com/photo-1554080353-a576cf803bda?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
                   alt=""
@@ -269,6 +295,7 @@ function HomeComponents() {
               <Col xs={{ span: 12 }} md={{ span: 6 }} lg={{ span: 6 }}>
                 <Image
                   className="small_img"
+                  loading="lazy"
                   width="100%"
                   src="https://images.unsplash.com/photo-1554080353-a576cf803bda?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
                   alt=""
@@ -277,6 +304,7 @@ function HomeComponents() {
               <Col xs={{ span: 12 }} md={{ span: 9 }} lg={{ span: 9 }}>
                 <Image
                   className="small_img"
+                  loading="lazy"
                   width="100%"
                   src="https://images.unsplash.com/photo-1554080353-a576cf803bda?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
                   alt=""
@@ -306,9 +334,16 @@ function HomeComponents() {
             </p>
           </Col>
           <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 16 }}>
-            <div className="circle_container"> <div className="circle">
-              <img src="https://via.placeholder.com/300" alt="" />
-            </div> </div>
+            <div className="circle_container">
+              {" "}
+              <div className="circle">
+                <img
+                  loading="lazy"
+                  src="https://via.placeholder.com/300"
+                  alt=""
+                />
+              </div>{" "}
+            </div>
           </Col>
         </Row>
         <Row className="second_row">
@@ -324,6 +359,7 @@ function HomeComponents() {
               <Col xs={{ span: 12 }} md={{ span: 9 }} lg={{ span: 9 }}>
                 <Image
                   className="large_img"
+                  loading="lazy"
                   width="100%"
                   src="https://images.unsplash.com/photo-1563968743333-044cef800494?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1516&q=80"
                   alt=""
@@ -333,12 +369,14 @@ function HomeComponents() {
                 <div className="medium_container">
                   <Image
                     className="medium_img"
+                    loading="lazy"
                     width="100%"
                     src="https://images.unsplash.com/photo-1563968743333-044cef800494?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1516&q=80"
                     alt=""
                   />
                   <Image
                     className="medium_img"
+                    loading="lazy"
                     width="100%"
                     src="https://images.unsplash.com/photo-1563968743333-044cef800494?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1516&q=80"
                     alt=""
@@ -348,6 +386,7 @@ function HomeComponents() {
               <Col xs={{ span: 12 }} md={{ span: 9 }} lg={{ span: 9 }}>
                 <Image
                   className="large_img"
+                  loading="lazy"
                   width="100%"
                   src="https://images.unsplash.com/photo-1563968743333-044cef800494?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1516&q=80"
                   alt=""
@@ -357,6 +396,7 @@ function HomeComponents() {
               <Col xs={{ span: 12 }} md={{ span: 9 }} lg={{ span: 9 }}>
                 <Image
                   className="small_img"
+                  loading="lazy"
                   width="100%"
                   src="https://images.unsplash.com/photo-1563968743333-044cef800494?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1516&q=80"
                   alt=""
@@ -365,6 +405,7 @@ function HomeComponents() {
               <Col xs={{ span: 12 }} md={{ span: 6 }} lg={{ span: 6 }}>
                 <Image
                   className="small_img"
+                  loading="lazy"
                   width="100%"
                   src="https://images.unsplash.com/photo-1563968743333-044cef800494?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1516&q=80"
                   alt=""
@@ -373,6 +414,7 @@ function HomeComponents() {
               <Col xs={{ span: 12 }} md={{ span: 9 }} lg={{ span: 9 }}>
                 <Image
                   className="small_img"
+                  loading="lazy"
                   width="100%"
                   src="https://images.unsplash.com/photo-1563968743333-044cef800494?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1516&q=80"
                   alt=""
@@ -397,9 +439,16 @@ function HomeComponents() {
             </p>
           </Col>
           <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 16 }}>
-            <div className="circle_container"> <div className="circle">
-              <img src="https://via.placeholder.com/300" alt="" />
-            </div> </div>
+            <div className="circle_container">
+              {" "}
+              <div className="circle">
+                <img
+                  loading="lazy"
+                  src="https://via.placeholder.com/300"
+                  alt=""
+                />
+              </div>{" "}
+            </div>
           </Col>
         </Row>
         <Row className="second_row">
@@ -415,6 +464,7 @@ function HomeComponents() {
               <Col xs={{ span: 12 }} md={{ span: 9 }} lg={{ span: 9 }}>
                 <Image
                   className="large_img"
+                  loading="lazy"
                   width="100%"
                   src="https://images.unsplash.com/photo-1504326787394-e6d75cae8027?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
                   alt=""
@@ -424,12 +474,14 @@ function HomeComponents() {
                 <div className="medium_container">
                   <Image
                     className="medium_img"
+                    loading="lazy"
                     width="100%"
                     src="https://images.unsplash.com/photo-1504326787394-e6d75cae8027?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
                     alt=""
                   />
                   <Image
                     className="medium_img"
+                    loading="lazy"
                     width="100%"
                     src="https://images.unsplash.com/photo-1504326787394-e6d75cae8027?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
                     alt=""
@@ -439,6 +491,7 @@ function HomeComponents() {
               <Col xs={{ span: 12 }} md={{ span: 9 }} lg={{ span: 9 }}>
                 <Image
                   className="large_img"
+                  loading="lazy"
                   width="100%"
                   src="https://images.unsplash.com/photo-1504326787394-e6d75cae8027?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
                   alt=""
@@ -448,6 +501,7 @@ function HomeComponents() {
               <Col xs={{ span: 12 }} md={{ span: 9 }} lg={{ span: 9 }}>
                 <Image
                   className="small_img"
+                  loading="lazy"
                   width="100%"
                   src="https://images.unsplash.com/photo-1504326787394-e6d75cae8027?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
                   alt=""
@@ -456,6 +510,7 @@ function HomeComponents() {
               <Col xs={{ span: 12 }} md={{ span: 6 }} lg={{ span: 6 }}>
                 <Image
                   className="small_img"
+                  loading="lazy"
                   width="100%"
                   src="https://images.unsplash.com/photo-1504326787394-e6d75cae8027?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
                   alt=""
@@ -464,6 +519,7 @@ function HomeComponents() {
               <Col xs={{ span: 12 }} md={{ span: 9 }} lg={{ span: 9 }}>
                 <Image
                   className="small_img"
+                  loading="lazy"
                   width="100%"
                   src="https://images.unsplash.com/photo-1504326787394-e6d75cae8027?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
                   alt=""
@@ -491,9 +547,16 @@ function HomeComponents() {
             </p>
           </Col>
           <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 16 }}>
-            <div className="circle_container"> <div className="circle">
-              <img src="https://via.placeholder.com/300" alt="" />
-            </div> </div>
+            <div className="circle_container">
+              {" "}
+              <div className="circle">
+                <img
+                  loading="lazy"
+                  src="https://via.placeholder.com/300"
+                  alt=""
+                />
+              </div>{" "}
+            </div>
           </Col>
         </Row>
         <ProgrammingCardStyling>
@@ -614,9 +677,16 @@ function HomeComponents() {
             </p>
           </Col>
           <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 16 }}>
-            <div className="circle_container"> <div className="circle">
-              <img src="https://via.placeholder.com/300" alt="" />
-            </div> </div>
+            <div className="circle_container">
+              {" "}
+              <div className="circle">
+                <img
+                  loading="lazy"
+                  src="https://via.placeholder.com/300"
+                  alt=""
+                />
+              </div>{" "}
+            </div>
           </Col>
         </Row>
         <MarketingCardStyling>
@@ -689,9 +759,16 @@ function HomeComponents() {
             </p>
           </Col>
           <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 16 }}>
-            <div className="circle_container"> <div className="circle">
-              <img src="https://via.placeholder.com/300" alt="" />
-            </div> </div>
+            <div className="circle_container">
+              {" "}
+              <div className="circle">
+                <img
+                  loading="lazy"
+                  src="https://via.placeholder.com/300"
+                  alt=""
+                />
+              </div>{" "}
+            </div>
           </Col>
         </Row>
         <Row className="second_row">
@@ -705,6 +782,7 @@ function HomeComponents() {
               <Col xs={{ span: 12 }} md={{ span: 9 }} lg={{ span: 9 }}>
                 <Image
                   className="large_img"
+                  loading="lazy"
                   width="100%"
                   src="https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1932&q=80"
                   alt=""
@@ -714,12 +792,14 @@ function HomeComponents() {
                 <div className="medium_container">
                   <Image
                     className="medium_img"
+                    loading="lazy"
                     width="100%"
                     src="https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1932&q=80"
                     alt=""
                   />
                   <Image
                     className="medium_img"
+                    loading="lazy"
                     width="100%"
                     src="https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1932&q=80"
                     alt=""
@@ -729,6 +809,7 @@ function HomeComponents() {
               <Col xs={{ span: 12 }} md={{ span: 9 }} lg={{ span: 9 }}>
                 <Image
                   className="large_img"
+                  loading="lazy"
                   width="100%"
                   src="https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1932&q=80"
                   alt=""
@@ -738,6 +819,7 @@ function HomeComponents() {
               <Col xs={{ span: 12 }} md={{ span: 9 }} lg={{ span: 9 }}>
                 <Image
                   className="small_img"
+                  loading="lazy"
                   width="100%"
                   src="https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1932&q=80"
                   alt=""
@@ -746,6 +828,7 @@ function HomeComponents() {
               <Col xs={{ span: 12 }} md={{ span: 6 }} lg={{ span: 6 }}>
                 <Image
                   className="small_img"
+                  loading="lazy"
                   width="100%"
                   src="https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1932&q=80"
                   alt=""
@@ -754,6 +837,7 @@ function HomeComponents() {
               <Col xs={{ span: 12 }} md={{ span: 9 }} lg={{ span: 9 }}>
                 <Image
                   className="small_img"
+                  loading="lazy"
                   width="100%"
                   src="https://images.unsplash.com/photo-1563968743333-044cef800494?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1516&q=80"
                   alt=""
@@ -895,60 +979,70 @@ const OurClient = () => {
       <Slider {...settings} className="slider">
         <div className="box">
           <img
+            loading="lazy"
             src="https://images.unsplash.com/photo-1518107616985-bd48230d3b20?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
             alt=""
           />
         </div>
         <div className="box">
           <img
+            loading="lazy"
             src="https://images.unsplash.com/photo-1518107616985-bd48230d3b20?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
             alt=""
           />
         </div>
         <div className="box">
           <img
+            loading="lazy"
             src="https://images.unsplash.com/photo-1518107616985-bd48230d3b20?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
             alt=""
           />
         </div>
         <div className="box">
           <img
+            loading="lazy"
             src="https://images.unsplash.com/photo-1518107616985-bd48230d3b20?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
             alt=""
           />
         </div>
         <div className="box">
           <img
+            loading="lazy"
             src="https://images.unsplash.com/photo-1518107616985-bd48230d3b20?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
             alt=""
           />
         </div>
         <div className="box">
           <img
+            loading="lazy"
             src="https://images.unsplash.com/photo-1518107616985-bd48230d3b20?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
             alt=""
           />
         </div>
         <div className="box">
           <img
+            loading="lazy"
             src="https://images.unsplash.com/photo-1518107616985-bd48230d3b20?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
             alt=""
           />
         </div>
         <div className="box">
           <img
+            loading="lazy"
             src="https://images.unsplash.com/photo-1518107616985-bd48230d3b20?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
             alt=""
           />
         </div>
         <div className="box">
           <img
+            loading="lazy"
             src="https://images.unsplash.com/photo-1518107616985-bd48230d3b20?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
             alt=""
           />
         </div>
         <div className="box">
           <img
+            loading="lazy"
             src="https://images.unsplash.com/photo-1518107616985-bd48230d3b20?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
             alt=""
           />

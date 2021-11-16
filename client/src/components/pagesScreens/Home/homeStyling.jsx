@@ -132,7 +132,7 @@ export const SectionStyling = styled.section`
       background: #ececec;
       padding: 30px;
       & .large_img {
-        width: 100%;
+        max-width: 300px;
         height: 400px;
         object-fit: cover;
         @media only screen and (max-width: 768px) {
@@ -145,7 +145,7 @@ export const SectionStyling = styled.section`
         flex-direction: column;
         justify-content: space-between;
         & .medium_img {
-          width: 100%;
+          max-width: 300px;
           height: 190px;
           object-fit: cover;
         }
@@ -157,7 +157,7 @@ export const SectionStyling = styled.section`
         }
       }
       & .small_img {
-        width: 100% !important;
+        max-width: 300px !important;
         height: 100px;
         object-fit: cover;
         @media only screen and (max-width: 768px) {
