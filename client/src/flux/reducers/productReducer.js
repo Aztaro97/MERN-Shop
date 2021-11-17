@@ -100,7 +100,10 @@ export const productCreateReducer = (state = {}, action) => {
   }
 };
 
-export const productUpdateReducer = (state = { product: {} }, action) => {
+export const productUpdateReducer = (
+  state = { product: {}, success: false },
+  action
+) => {
   switch (action.type) {
     case PRODUCT_UPDATE_REQUEST:
     case PRODUCT_ALLOW_REQUEST:

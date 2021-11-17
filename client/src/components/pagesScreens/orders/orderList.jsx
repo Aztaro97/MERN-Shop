@@ -9,7 +9,7 @@ import {
   GrDeliver,
   FaMoneyBillAlt,
 } from "react-icons/all";
-import {useTranslation} from "react-i18next"
+import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { listOrders, deliverOrder } from "../../../flux/actions/orderAction";
@@ -23,9 +23,10 @@ function OrdersListScreen() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const {t} = useTranslation()
+  const { t } = useTranslation();
 
   const { userInfo } = useSelector((state) => state.userLogin);
+  const { success } = useSelector((state) => state.orderDeliver);
   const { loading, error, orders } = useSelector((state) => state.orderList);
 
   const handleAction = ({ value }, { order }) => {
@@ -33,11 +34,11 @@ function OrdersListScreen() {
     // dispatch(deliverOrder(order))
     if (value === "accept") {
       dispatch(deliverOrder(order));
-      dispatch(listOrders());
+      if (success) {
+        dispatch(listOrders());
+      }
     }
   };
-
-
 
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
@@ -45,7 +46,7 @@ function OrdersListScreen() {
     } else {
       history.push("/auth");
     }
-  }, [dispatch, history, userInfo, listOrders]);
+  }, [dispatch, history, userInfo]);
   return (
     <>
       <OrderContainer>
@@ -125,7 +126,10 @@ function OrdersListScreen() {
                     )}
                   </td>
                   <td>
-                    <Link to={`/admin/order/${order._id}`} className="view_link">
+                    <Link
+                      to={`/admin/order/${order._id}`}
+                      className="view_link"
+                    >
                       <span>{t("view")}</span> <GrView className="icon" />
                     </Link>
                   </td>

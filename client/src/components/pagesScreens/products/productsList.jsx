@@ -60,20 +60,18 @@ function ProductsListScreen({ match }) {
     });
   };
 
-  const handleSetAllow = async (id) => {
-    dispatch(setProductAllow(id, true));
-  };
-
-  const handleSetNotAllow = async (id) => {
-    dispatch(setProductAllow(id, false));
-  };
-
   function handleMenuClick(e, productId) {
     if (e.key === "accept") {
       dispatch(setProductAllow(productId, true));
+      if (successUpdate) {
+        dispatch(listProductsAdmin("", pageNumber));
+      }
     }
     if (e.key === "refuse") {
       dispatch(setProductAllow(productId, false));
+      if (successUpdate) {
+        dispatch(listProductsAdmin("", pageNumber));
+      }
     }
   }
 
@@ -83,12 +81,12 @@ function ProductsListScreen({ match }) {
   }
 
   useEffect(() => {
-    if (successUpdate || successDelete) {
+    if (successDelete) {
       dispatch(listProductsAdmin("", pageNumber));
     } else {
       dispatch(listProductsAdmin("", pageNumber));
     }
-  }, [dispatch, successUpdate, successDelete, pageNumber]);
+  }, [dispatch, pageNumber, successDelete]);
 
   return (
     <MainContainer>
