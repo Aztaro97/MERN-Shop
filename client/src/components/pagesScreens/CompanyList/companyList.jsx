@@ -7,6 +7,7 @@ import { getCompanyList } from "../../../flux/actions/userAction";
 import Loader from "../../loader";
 import TextTruncate from "react-text-truncate";
 import ErrorServerPage from "../ErrorServerPage";
+import { Col, Row } from "antd";
 
 const empty_pic = "/img/advertising/empty.jpg";
 
@@ -72,40 +73,48 @@ const CompanyList = () => {
         <Container>
           {/* <hr /> */}
           {/* <CarouselButton /> */}
-          <CardContainer>
+          <Row gutter={[10, 10]}>
             {company.users && (
               <>
                 {company.users.map((user) => (
-                  <div className="card" key={user._id}>
-                    <img
-                      className="card_img"
-                      src={
-                        user.company.urlImg.length !== 0
-                          ? user.company.urlImg[0].url
-                          : empty_pic
-                      }
-                      alt=""
-                    />
-                    <div className="card_body">
-                      <h3>{user.company.name}</h3>
-                      <TextTruncate
-                        line={2}
-                        element="p"
-                        truncateText="…"
-                        text={user.company.about}
-                        // textTruncateChild={<a href="#">Read on</a>}
+                  <Col
+                    xs={{ span: 12 }}
+                    sm={{ span: 12 }}
+                    md={{ span: 8 }}
+                    lg={{ span: 6 }}
+                    key={user._id}
+                  >
+                    <Card key={user._id}>
+                      <img
+                        className="card_img"
+                        src={
+                          user.company.urlImg.length !== 0
+                            ? user.company.urlImg[0].url
+                            : empty_pic
+                        }
+                        alt=""
                       />
-                      {/* <p>{user.company.about}</p> */}
-                      <hr />
-                      <Link className="link" to={`profile/${user._id}`}>
-                        see more
-                      </Link>
-                    </div>
-                  </div>
+                      <div className="card_body">
+                        <h3>{user.company.name}</h3>
+                        <TextTruncate
+                          line={2}
+                          element="p"
+                          truncateText="…"
+                          text={user.company.about}
+                          // textTruncateChild={<a href="#">Read on</a>}
+                        />
+                        {/* <p>{user.company.about}</p> */}
+                        <hr />
+                        <Link className="link" to={`profile/${user._id}`}>
+                          see more
+                        </Link>
+                      </div>
+                    </Card>
+                  </Col>
                 ))}
               </>
             )}
-          </CardContainer>
+          </Row>
         </Container>
       )}
     </>
@@ -152,77 +161,55 @@ const SliderCarousel = styled(Slider)`
   }
 `;
 
-const CardContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 1rem;
-  /* margin-left: auto;
-  margin-right: auto; */
+const Card = styled.div`
+  width: 100%;
+  box-shadow: var(--box-shadow-value);
 
-  .card {
+  & .card_img {
     width: 100%;
-    box-shadow: var(--box-shadow-value);
+    height: 12.5rem;
+    object-fit: cover;
+    /* border-radius: 1rem 1rem 0 0; */
+    @media only screen and (max-width: 768px) {
+      height: 17rem;
+    }
+  }
 
-    & .card_img {
+  & .card_body {
+    padding: 1rem;
+    text-align: center;
+
+    & h3 {
+      margin-bottom: 0;
+      text-transform: uppercase;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+    & p {
+      color: var(--silver-color);
+      margin-bottom: 0;
+    }
+    & hr {
+      border: none;
+      background: #ececec;
+      height: 1px;
+      outline: none;
+    }
+    & .link {
+      text-decoration: none;
       width: 100%;
-      height: 12.5rem;
-      object-fit: cover;
-      /* border-radius: 1rem 1rem 0 0; */
-      @media only screen and (max-width: 768px) {
-        height: 17rem;
-      }
-    }
-
-    & .card_body {
-      padding: 1rem;
+      padding: 0.6rem 0;
       text-align: center;
+      text-transform: uppercase;
+      border-radius: 10px;
+      background: var(--orange-color);
+      display: block;
+      color: #fff;
 
-      & h3 {
-        margin-bottom: 0;
-        text-transform: uppercase;
-        font-size: 1.2rem;
-        font-weight: 700;
-      }
-      & p {
-        color: var(--silver-color);
-        margin-bottom: 0;
-      }
-      & hr {
-        border: none;
-        background: #ececec;
-        height: 1px;
-        outline: none;
-      }
-      & .link {
-        text-decoration: none;
-        width: 100%;
-        padding: 0.6rem 0;
-        text-align: center;
-        text-transform: uppercase;
-        border-radius: 10px;
-        background: var(--orange-color);
-        display: block;
-        color: #fff;
-
-        &:hover {
-          opacity: 0.9;
-        }
+      &:hover {
+        opacity: 0.9;
       }
     }
-  }
-
-  @media only screen and (max-width: 1020px) {
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 1rem;
-  }
-  @media only screen and (max-width: 800px) {
-    grid-template-columns: 1fr 1fr;
-    /* padding: 0 10rem; */
-  }
-  @media only screen and (max-width: 500px) {
-    grid-template-columns: 1fr;
-    /* padding: 0 1rem; */
   }
 `;
-
 export default CompanyList;

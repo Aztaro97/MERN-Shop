@@ -11,17 +11,30 @@ import MainContainer from "../../MainContainer";
 import { Modal, Button } from "antd";
 
 function PlaceOrder() {
+  const [items, setItems] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const history = useHistory();
 
   const { id: paramId } = useParams();
   const dispatch = useDispatch();
 
-  const { paymentMethod } = useSelector((state) => state.cart);
-
   const { loading, success, error, order } = useSelector(
     (state) => state.orderDetails
   );
+
+  //   Calculate prices
+  const addDecimals = (num) => {
+    return (Math.round(num * 100) / 100).toFixed(2);
+  };
+
+  const itemsPrice = addDecimals(
+    order &&
+      order.orderItems.reduce((acc, item) => acc + item.price * item.qty, 0)
+  );
+
+  const shippingCost = order && order.shippingPrice.toFixed(2);
+
+  const SubTotalPrice = (Number(itemsPrice) + Number(shippingCost)).toFixed(2);
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -36,8 +49,8 @@ function PlaceOrder() {
   };
 
   useEffect(() => {
-    dispatch(getOrderDetails(paramId));
-  }, [paramId, dispatch]);
+    if (order?._id !== paramId) dispatch(getOrderDetails(paramId));
+  }, [paramId, order, dispatch]);
 
   return (
     <MainContainer>
@@ -103,11 +116,12 @@ function PlaceOrder() {
                       <p>
                         Price: {item.qty} x {item.price} AED
                       </p>
-                      <Modal
-                        // title="Basic Modal"
+                      <ModalStyling
+                        cancelText="close"
                         visible={isModalVisible}
                         onOk={handleOk}
                         onCancel={handleCancel}
+                        className="modal_container"
                       >
                         <Row gutter={[10, 10]}>
                           {item.image.map((url, index) => (
@@ -116,7 +130,7 @@ function PlaceOrder() {
                             </Col>
                           ))}
                         </Row>
-                      </Modal>
+                      </ModalStyling>
                     </li>
                   ))}
                 </ul>
@@ -125,9 +139,9 @@ function PlaceOrder() {
             <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 10 }}>
               <div className="card_summary">
                 <h1 className="title">Order Summary</h1>
-                <p>Items: $0</p>
-                <p>Shipping: {order.shippingPrice} AED</p>
-                <p>Total Price: {order.totalPrice} AED</p>
+                <p>Total Items: {itemsPrice}</p>
+                <p>Shipping: {shippingCost} AED</p>
+                <p>Total Price: {SubTotalPrice} AED</p>
               </div>
             </Col>
           </Row>
@@ -217,6 +231,29 @@ const Container = styled.div`
       &:hover {
         color: var(--orange-color);
       }
+    }
+  }
+`;
+
+const ModalStyling = styled(Modal)`
+  & .ant-modal-footer {
+    /* STYLING BTN CLOSE  */
+    & > button.ant-btn {
+      display: block;
+      margin-left: auto;
+      border: 1px solid #ececec;
+      color: #333;
+      &:hover {
+        background: #333;
+        border: none;
+        color: #fff;
+        border: 1px solid #ececec;
+      }
+    }
+
+    /*   HIDE CLOSE BTN   */
+    & > button.ant-btn.ant-btn-primary {
+      display: none;
     }
   }
 `;

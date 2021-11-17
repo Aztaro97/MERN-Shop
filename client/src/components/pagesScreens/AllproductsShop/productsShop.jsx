@@ -52,7 +52,7 @@ const ViewProducts = ({ match }) => {
       <Container>
         <FilterForm onSubmit={formik.handleSubmit}>
           <h3 className="title">Products Shop :</h3>
-          <Row gutter={[15,10]} justify="end">
+          <Row gutter={[15, 10]} justify="end">
             <Col xs={{ span: 12 }} md={{ span: 8 }} lg={{ span: 5 }}>
               <SelectC
                 className="form_select"
@@ -113,13 +113,20 @@ const ViewProducts = ({ match }) => {
             ) : (
               <>
                 {products.length ? (
-                  <Grid>
+                  <Row gutter={[10, 10]}>
                     {products.map((product, index) => (
-                      <div key={index} style={{ width: "100%" }}>
-                        <ProductItems product={product} />
-                      </div>
+                      <Col
+                        xs={{ span: 12 }}
+                        sm={{ span: 12 }}
+                        md={{ span: 8 }}
+                        lg={{ span: 6 }}
+                      >
+                        <div key={index} style={{ width: "100%" }}>
+                          <ProductItems product={product} />
+                        </div>
+                      </Col>
                     ))}
-                  </Grid>
+                  </Row>
                 ) : (
                   <div className="cart_empty">
                     <h1>No matches found for your search</h1>
@@ -163,7 +170,7 @@ const Container = styled.div`
   }
 
   @media only screen and (max-width: 1000px) {
-    padding: 0 .5rem;
+    padding: 0 0.5rem;
   }
 `;
 const RowCustom = styled.div`
@@ -189,7 +196,7 @@ const FilterForm = styled.form`
   & .slider {
     display: flex;
     flex-direction: column;
-    justify-content:space-between;
+    justify-content: space-between;
     align-items: space-between;
     & p {
       margin-bottom: 0;
@@ -227,7 +234,7 @@ const FilterForm = styled.form`
 const SliderE = styled(Slider)`
   /* background: red; */
   width: 100%;
-  margin:auto 0;
+  margin: auto 0;
 
   & .ant-slider-rail {
     background: var(--silver-color);
@@ -246,7 +253,7 @@ const SliderE = styled(Slider)`
   @media only screen and (max-width: 1000px) {
     width: 100%;
     font-size: 0.7rem;
-    margin:auto 0;
+    margin: auto 0;
   }
 `;
 const Grid = styled.div`

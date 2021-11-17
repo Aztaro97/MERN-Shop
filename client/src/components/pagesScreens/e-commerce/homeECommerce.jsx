@@ -5,7 +5,7 @@ import TextTruncate from "react-text-truncate";
 import MainContainer from "../../MainContainer";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { Fade, Slide } from "react-reveal";
+import { Fade, Slide, Zoom  } from "react-reveal";
 import {
   getCompanyList,
   getCraftmanList,
@@ -15,6 +15,7 @@ import ErrorServerPage from "../ErrorServerPage";
 // import "./ecommerce.css";
 
 import svg1 from "../../../img/svg1.svg";
+import { Col, Row } from "antd";
 
 const empty_pic = "/img/advertising/empty.jpg";
 
@@ -33,7 +34,6 @@ function HomeECommerce() {
     dispatch(getCraftmanList());
   }, [dispatch]);
 
-  console.log(company == null && "vide");
 
   return (
     <MainContainer>
@@ -82,40 +82,48 @@ function HomeECommerce() {
             {loading ? (
               <h2>Loading ...</h2>
             ) : (
-              <GridCard>
+              <Row gutter={[10, 10]}>
                 {company.users !== null && (
                   <>
-                    {company.users.slice(0, 4).map((user) => (
-                      <Fade right cascade>
-                        <Card>
-                          <img
-                            className="card_img"
-                            src={
-                              user.company.urlImg.length !== 0
-                                ? user.company.urlImg[0].url
-                                : empty_pic
-                            }
-                            alt=""
-                          />
-                          <div className="card_body">
-                            <h3>{user.company.name}</h3>
-                            <TextTruncate
-                              line={3}
-                              element="span"
-                              text={user.company.about}
-                              truncateText="…"
+                    {company.users.slice(0, 4).map((user, index) => (
+                      <Col
+                        key={index}
+                        xs={{ span: 12 }}
+                        sm={{ span: 12 }}
+                        md={{ span: 8 }}
+                        lg={{ span: 6 }}
+                      >
+                        <Zoom  right cascade>
+                          <Card>
+                            <img
+                              className="card_img"
+                              src={
+                                user.company.urlImg.length !== 0
+                                  ? user.company.urlImg[0].url
+                                  : empty_pic
+                              }
+                              alt=""
                             />
-                            <hr />
-                            <Link className="link" to={`profile/${user._id}`}>
-                              see more
-                            </Link>
-                          </div>
-                        </Card>
-                      </Fade>
+                            <div className="card_body">
+                              <h3>{user.company.name}</h3>
+                              <TextTruncate
+                                line={3}
+                                element="span"
+                                text={user.company.about}
+                                truncateText="…"
+                              />
+                              <hr />
+                              <Link className="link" to={`profile/${user._id}`}>
+                                see more
+                              </Link>
+                            </div>
+                          </Card>
+                        </Zoom >
+                      </Col>
                     ))}
                   </>
                 )}
-              </GridCard>
+              </Row>
             )}
             <Link className="link" to="/companies">
               see more
@@ -128,40 +136,49 @@ function HomeECommerce() {
             {loadingCraft ? (
               <h2>Loading ...</h2>
             ) : (
-              <GridCard>
+              <Row gutter={[10, 10]}>
                 {craftman.users !== null && (
                   <>
-                    {craftman.users.slice(0, 4).map((user) => (
-                      <Fade left cascade>
-                        <Card>
-                          <img
-                            className="card_img"
-                            src={
-                              user.company.urlImg.length !== 0
-                                ? user.company.urlImg[0].url
-                                : empty_pic
-                            }
-                            alt=""
-                          />
-                          <div className="card_body">
-                            <h3>{user.company.name}</h3>
-                            <TextTruncate
-                              line={3}
-                              element="span"
-                              text={user.company.about}
-                              truncateText="…"
+                    {craftman.users.slice(0, 4).map((user, index) => (
+                      <Col
+                        key={index}
+                        xs={{ span: 12 }}
+                        sm={{ span: 12 }}
+                        md={{ span: 8 }}
+                        lg={{ span: 6 }}
+                      >
+                        {" "}
+                        <Zoom  left cascade>
+                          <Card>
+                            <img
+                              className="card_img"
+                              src={
+                                user.company.urlImg.length !== 0
+                                  ? user.company.urlImg[0].url
+                                  : empty_pic
+                              }
+                              alt=""
                             />
-                            <hr />
-                            <Link className="link" to={`profile/${user._id}`}>
-                              see more
-                            </Link>
-                          </div>
-                        </Card>
-                      </Fade>
+                            <div className="card_body">
+                              <h3>{user.company.name}</h3>
+                              <TextTruncate
+                                line={3}
+                                element="span"
+                                text={user.company.about}
+                                truncateText="…"
+                              />
+                              <hr />
+                              <Link className="link" to={`profile/${user._id}`}>
+                                see more
+                              </Link>
+                            </div>
+                          </Card>
+                        </Zoom >
+                      </Col>
                     ))}
                   </>
                 )}
-              </GridCard>
+              </Row>
             )}
             <Link className="link" to="/companies">
               see more
@@ -172,72 +189,6 @@ function HomeECommerce() {
     </MainContainer>
   );
 }
-
-const SocialMedia = styled.section`
-  & .bgGrediant {
-    height: 100%;
-    background: linear-gradient(
-      to bottom,
-      rgba(91, 185, 198, 1) 0%,
-      rgba(91, 185, 198, 1) 1%,
-      rgba(33, 127, 140, 1) 28%,
-      rgba(29, 24, 74, 1) 99%,
-      rgba(29, 24, 74, 1) 100%
-    );
-    width: 100%;
-    border-radius: 20%;
-    padding: 5rem 0;
-    overflow: hidden;
-  }
-  .socialText > div {
-    padding: 45px 10px 10px;
-    padding-inline-start: 70px;
-    position: absolute;
-    top: 0px;
-    width: 420px;
-  }
-  .popSocial {
-    width: 30vw;
-    height: 30vw;
-    margin-right: 0;
-    text-align: center;
-    display: flex;
-    align-self: center;
-    justify-content: center;
-    flex-direction: column;
-    position: relative;
-    right: 2.4rem;
-    background: url("/img/dots2.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    @media only screen and (max-width: 764px) {
-      & p {
-        font-size: 0.6rem !important;
-      }
-      & .socials img {
-        font-size: 0.6rem !important;
-      }
-      & .socials img {
-        width: 40px;
-        height: 40px;
-      }
-      & > .btn {
-        background: #c68787;
-        color: #fff;
-        border-radius: 30px;
-        height: 45px;
-        padding: 0px 10px;
-        line-height: 45px;
-        font-size: 14px;
-        font-weight: 400;
-        width: 100px;
-        margin: 10px auto 0px;
-        box-shadow: 0px 0px 20px 2px rgba(198, 135, 135, 65%) !important;
-      }
-    }
-  }
-`;
 
 const Section1 = styled.section`
   max-width: var(--max-width);
@@ -358,16 +309,16 @@ const CardSection = styled.div`
 `;
 
 const Card = styled.div`
-  margin-bottom: 0.9rem;
+  margin: 20px 0;
   box-shadow: var(--box-shadow-value);
   & .card_img {
     width: 100%;
-    height: 12.5rem;
+    height: 150px;
     object-fit: cover;
     object-position: center;
     /* border-radius: 1rem 1rem 0 0; */
     @media only screen and (max-width: 768px) {
-      height: 17rem;
+      height: 150px;
     }
   }
 
@@ -408,19 +359,6 @@ const Card = styled.div`
         opacity: 0.9;
       }
     }
-  }
-`;
-
-const GridCard = styled.div`
-  margin: 2rem 0 3rem 0;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 15px;
-  @media only screen and (max-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  @media only screen and (max-width: 450px) {
-    grid-template-columns: repeat(1, 1fr);
   }
 `;
 

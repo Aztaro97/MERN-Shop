@@ -26,7 +26,7 @@ function Tabulation() {
         <>
           <LandingPage />
           <Tab>
-            <TabsE defaultActiveKey="1" centered size="default">
+            <TabsE defaultActiveKey="1" centered >
               <TabPane
                 tab={
                   <span>
@@ -69,6 +69,10 @@ const Tab = styled.div`
   justify-content: center;
   margin-bottom: 20px;
   /* padding: 4rem 0; */
+  & .ant-tabs-top {
+    width: 100%;
+    /* padding: 0 20px; */
+  }
 `;
 
 const TabsE = styled(Tabs)`

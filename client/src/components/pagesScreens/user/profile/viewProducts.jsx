@@ -122,13 +122,20 @@ const ViewProducts = () => {
           ) : (
             <>
               {products.length ? (
-                <Grid>
+                <Row gutter={[10, 10]}>
                   {products.map((product, index) => (
-                    <div key={index} style={{ width: "100%" }}>
-                      <CardProduct product={product} />
-                    </div>
+                    <Col
+                      xs={{ span: 12 }}
+                      sm={{ span: 12 }}
+                      md={{ span: 8 }}
+                      lg={{ span: 6 }}
+                    >
+                      <div key={index} style={{ width: "100%" }}>
+                        <CardProduct product={product} />
+                      </div>
+                    </Col>
                   ))}
-                </Grid>
+                </Row>
               ) : (
                 <div className="cart_empty">
                   <h1>No matches found for your search</h1>
@@ -153,7 +160,7 @@ const ViewProducts = () => {
 };
 
 const Container = styled.div`
-  margin-top:20px;
+  margin-top: 20px;
   @media only screen and (max-width: 1000px) {
     padding: 0 1rem;
   }

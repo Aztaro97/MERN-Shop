@@ -9,7 +9,7 @@ import { removeFromCart, addToCart } from "../../../flux/actions/cartAction";
 import ButtonC from "../../ButtonComponeent";
 // import {} from ""
 
-import picture from "../../../img/productimg.png";
+const picture = "/img/ecommerce/empty.jpg";
 
 function CartComponent({ location }) {
   const { cartItems, error } = useSelector((state) => state.cart);
