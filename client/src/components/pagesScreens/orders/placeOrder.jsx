@@ -71,7 +71,7 @@ function PlaceOrder() {
                 </p>
 
                 <p>Phone Number: {order.shippingAddress.phoneNumber}</p>
-                <p>Address: {order.shippingAddress.Adress}</p>
+                <p>Address: {order.shippingAddress.address}</p>
                 <p>City: {order.shippingAddress.city}</p>
                 <p>
                   Country: {order.shippingAddress.country} / Region:{" "}

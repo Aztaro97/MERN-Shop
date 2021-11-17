@@ -202,6 +202,7 @@ function App() {
         <GlobalStyle />
         <NavBar />
         <Switch>
+          {/* <Route exact path="/loading" component={Loading} /> */}
           <Route exact path="/" component={HomeComponents} />
 
           <Route path="/add-product/:id" component={CreateProductComponent} />

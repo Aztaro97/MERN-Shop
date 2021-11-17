@@ -351,19 +351,7 @@ const FormRight = ({
     imgWindow.document.write(image.outerHTML);
   };
 
-  const history = useHistory();
-
-  const { loading, error, success, product: createdProduct } = useSelector(
-    (state) => state.productCreate
-  );
-
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (success) {
-      window.location.href = `/add-product/${createdProduct._id}`;
-    }
-  }, [success, history, createdProduct]);
 
   return (
     <div>

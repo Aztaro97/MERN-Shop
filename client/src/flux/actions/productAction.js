@@ -33,7 +33,7 @@ import {
 } from "../constants/productConstants";
 import { logout } from "./userAction";
 import { toast } from "react-toastify";
-import { errorMessage } from "../../components/message";
+import { errorMessage, successMessage } from "../../components/message";
 
 export const listProducts = (pageNumber = "") => async (dispatch) => {
   try {
@@ -169,7 +169,6 @@ export const createProduct = () => async (dispatch, getState) => {
     };
 
     const { data } = await axios.post(`/api/products`, {}, config);
-    // successMessage("Product Created");
 
     dispatch({
       type: PRODUCT_CREATE_SUCCESS,
@@ -219,9 +218,9 @@ export const updateProduct = (product) => async (dispatch, getState) => {
       type: PRODUCT_UPDATE_SUCCESS,
       payload: data,
     });
+    successMessage("Products successfully updated");
     dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data });
 
-    window.location.href = "/myproducts";
   } catch (error) {
     const message =
       error.response && error.response.data.message

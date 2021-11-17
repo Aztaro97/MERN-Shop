@@ -6,10 +6,7 @@ import MainContainer from "../../MainContainer";
 import { Upload, Modal } from "antd";
 import { FaPlus, AiFillDelete, GoPlus } from "react-icons/all";
 import axios from "axios";
-import {
-  CountryDropdown,
-  RegionDropdown,
-} from "react-country-region-selector";
+import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import {
   listProductDetails,
   updateProduct,
@@ -39,6 +36,7 @@ import InputC from "../../InputComponents";
 import ButtonC from "../../ButtonComponeent";
 import InputCheck from "../../CheckBoxComponent";
 import LoaderComponent from "../../loader";
+import { successMessage } from "../../message";
 
 function EditProductScreen() {
   const params = useParams();
@@ -154,29 +152,7 @@ function EditProductScreen() {
       setVariantStyle(product.variantStyle);
       setUnited(product.united);
       setArrayZone(product.shippingTo);
-      // console.log(product)
-      // setBody({
-      //   code: product.code,
-      //   typeService: product.typeService,
-      //   shippingFrom: product.shippingFrom,
-      //   shippingTo: product.shippingTo,
-      //   rateShipping: product.rateShipping,
-      //   name: product.name,
-      //   description: product.description,
-      //   imageUrl: product.imageUrl,
-      //   variantColor: product.variantColor,
-      //   variantSize: product.variantSize,
-      //   variantFinish: product.variantFinish,
-      //   variantMaterial: product.variantMaterial,
-      //   variantStyle: product.variantStyle,
-      //   united: product.united,
-      //   size: product.size,
-      //   price: product.price,
-      //   compareAtPrice: product.compareAtPrice,
-      // });
     }
-    // setName(product.name)
-    // console.log(body);
   }, [dispatch, params, product]);
 
   return (
@@ -448,12 +424,9 @@ const FormRight = ({
 
   const history = useHistory();
 
-  const {
-    loading,
-    error,
-    success,
-    product: createdProduct,
-  } = useSelector((state) => state.productCreate);
+  const { loading, error, success, product: createdProduct } = useSelector(
+    (state) => state.productCreate
+  );
 
   const dispatch = useDispatch();
 
@@ -465,7 +438,7 @@ const FormRight = ({
     if (variantStyle.lenght) {
       setVariantStyle(variantStyle);
     }
-  }, [success, history, createdProduct]);
+  }, [success, window, variantStyle, history, createdProduct]);
 
   return (
     <div>
@@ -848,7 +821,6 @@ const FormRight = ({
       >
         update
       </ButtonC>
-      {/* <Link onClick={() => dispatch(createProduct())}>ADD ANOTHER PRODUCT</Link> */}
     </div>
   );
 };
@@ -1197,7 +1169,7 @@ const ShippingSection = ({
           {arraryRegionSelected &&
             arraryRegionSelected.map((item, index) => (
               <RowCheck key={index}>
-                <InputCheck type="checkbox" id={item} name={item}  >
+                <InputCheck type="checkbox" id={item} name={item}>
                   {item}
                 </InputCheck>
               </RowCheck>

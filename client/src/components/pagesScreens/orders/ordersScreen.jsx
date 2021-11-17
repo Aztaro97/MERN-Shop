@@ -50,8 +50,10 @@ function OrdersScreen() {
               <tbody>
                 {orders.map((order) => (
                   <tr key={order._id}>
-                    <td>{order._id}</td>
-                    <td>{moment(order.createdAt).format("DD-MM-YYYY")}</td>
+                    <td className="orderId">{order._id}</td>
+                    <td className="date">
+                      {moment(order.createdAt).format("MMM DD, YYYY")}
+                    </td>
                     <td>{order.totalPrice} dh</td>
                     {/* <td>{order.user && order.user.name}</td> */}
 
@@ -69,12 +71,14 @@ function OrdersScreen() {
                     <td>
                       {order.isDelivered ? (
                         // order.deliveredAt.substring(0, 10)
-                        moment(order.deliveredAt).format("DD-MM-YYYY, h:mm a")
+                        moment(order.deliveredAt).format("DD.MM.YYYY, h:mm a")
                       ) : (
                         <FaTimesCircle style={{ color: "#ff7979" }} />
                       )}
                     </td>
-                    <LinkStyling to={`/order/${order._id}`} >details</LinkStyling>
+                    <LinkStyling to={`/order/${order._id}`}>
+                      details
+                    </LinkStyling>
                   </tr>
                 ))}
               </tbody>
@@ -104,6 +108,7 @@ const Table = styled.table`
   & thead {
     & tr {
       background: var(--orange-color);
+      padding: 10px 0;
       & th {
         border: 1px solid rgba(0, 0, 0, 0.05);
         padding: 10px auto;
@@ -124,6 +129,13 @@ const Table = styled.table`
         padding: 10px;
         text-transform: uppercase;
         font-size: 1rem;
+        text-align: center;
+      }
+      & td.orderId {
+        /* font-size: 1rem; */
+      }
+      & td.date {
+        text-transform: capitalize;
       }
     }
   }

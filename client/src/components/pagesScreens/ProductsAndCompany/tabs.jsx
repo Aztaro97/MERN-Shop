@@ -60,6 +60,9 @@ const Tab = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
+  & .ant-tabs-top {
+    width: 100%;
+  }
 `;
 
 const TabsE = styled(Tabs)`

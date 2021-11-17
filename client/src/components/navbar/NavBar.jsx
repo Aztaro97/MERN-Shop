@@ -68,7 +68,7 @@ function NavBar() {
         <>
           <LinkR href="/myproducts"> {t("my_products")} </LinkR>
           <LinkR href="/myorder">{t("my_order")}</LinkR>
-          <LinkR  onClick={handleCreateProduct}>{t("add_more_products")}</LinkR>
+          <LinkR href="/#" onClick={handleCreateProduct}>{t("add_more_products")}</LinkR>
         </>
       ) : (
         <>
@@ -298,7 +298,6 @@ const Nav = styled.ul`
   list-style: none;
   margin-bottom: 0 !important;
   padding: 0;
-  
 `;
 const NavItem = styled.li`
   margin: 0 0.7rem;
@@ -321,7 +320,7 @@ const NavLink = styled(Link)`
     color: #fff;
     padding: 6px;
     border-radius: 50%;
-    font-size: .9rem;
+    font-size: 0.9rem;
     width: 21px !important;
     height: 21px !important;
     /* display: flex;

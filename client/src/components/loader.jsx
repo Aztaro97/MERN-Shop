@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
-import BeatLoader from "react-spinners/BeatLoader";
+import ClipLoader from "react-spinners/ClipLoader";
+import styled from "styled-components";
 
 function LoaderComponent() {
   const override = `
@@ -17,14 +18,28 @@ function LoaderComponent() {
   `;
   let [loading, setLoading] = useState(true);
   return (
-    <BeatLoader
-      color={`var(--orange-color)`}
-      css={override}
-      loading={loading}
-      size={45}
-      margin={15}
-    />
+    <Container>
+      <ClipLoader
+        color={`var(--orange-color)`}
+        loading={loading}
+        size={90}
+        // margin={58}
+      />
+    </Container>
   );
 }
+
+const Container = styled.div`
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999999999999999999999999999999999999999999;
+  background: #34495e;
+`;
 
 export default LoaderComponent;

@@ -160,6 +160,7 @@ function CompanyDetails({ company }) {
 }
 
 const Container = styled.div`
+  padding: 20px;
   & img {
     max-height: 38rem;
     margin-bottom: 10px;
@@ -220,7 +221,7 @@ const Container = styled.div`
   & .social-media {
     display: flex;
     align-items: center;
-    justify-content:space-between;
+    justify-content: space-between;
     color: #fff;
     max-width: 130px;
     & a {
