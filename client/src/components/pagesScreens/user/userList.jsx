@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { Modal } from "antd";
-import {useTranslation} from "react-i18next"
+import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
 import { MdDelete, FaCheckCircle, FaTimesCircle } from "react-icons/all";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
@@ -14,7 +14,7 @@ import LoaderComponent from "../../loader";
 const { confirm } = Modal;
 
 function UserListScreen() {
-  const {t} = useTranslation()
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -48,15 +48,13 @@ function UserListScreen() {
   }, [dispatch, history, userInfo, successDelete]);
   return (
     <MainContainer>
-      <UserContainer>
-        <Row>
+      {loading ? (
+        <LoaderComponent />
+      ) : error ? (
+        <h1>error : {error}</h1>
+      ) : (
+        <UserContainer>
           <h3>{t("all_user_lists")}</h3>
-        </Row>
-        {loading ? (
-          <LoaderComponent />
-        ) : error ? (
-          <h1>error : {error}</h1>
-        ) : (
           <Table>
             <thead>
               <tr>
@@ -74,11 +72,7 @@ function UserListScreen() {
                   <td>{user._id}</td>
                   <td>{user.company != null ? user.company.name : "NULL"}</td>
                   <td>
-                    <a
-                      href={`mailto:${user.email}`}
-                    >
-                      {user.email}
-                    </a>
+                    <a href={`mailto:${user.email}`}>{user.email}</a>
                   </td>
                   <td>
                     {user.isAdmin ? (
@@ -101,14 +95,14 @@ function UserListScreen() {
               ))}
             </tbody>
           </Table>
-        )}
-      </UserContainer>
+        </UserContainer>
+      )}
     </MainContainer>
   );
 }
 
 const UserContainer = styled.div`
-padding: 0 10px;
+  padding: 0 10px;
   & h3 {
     text-align: center;
     text-transform: uppercase;

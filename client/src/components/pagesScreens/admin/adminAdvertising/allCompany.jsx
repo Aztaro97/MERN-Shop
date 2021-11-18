@@ -100,7 +100,7 @@ const AllCompanyService = () => {
               </tr>
             </thead>
             <tbody>
-              {listAdService.length > 0 &&
+              {listAdService?.length > 0 &&
                 listAdService.map((ad) => (
                   <tr key={ad._id}>
                     <td>{ad.fullName}</td>

@@ -24,6 +24,12 @@ function MyAdsScreen() {
     (state) => state.advertising
   );
 
+  const {
+    loading: loadingDelete,
+    success: successDelete,
+    error: errorDelete,
+  } = useSelector((state) => state.adsDelete);
+
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -37,7 +43,6 @@ function MyAdsScreen() {
       onOk: () => {
         dispatch(deleteAdService(id));
         dispatch(destroyImages(imageUrl));
-        setTimeout(() => dispatch(getUserAdsService(userInfo._id)), 500);
       },
     });
 
@@ -47,10 +52,11 @@ function MyAdsScreen() {
     } else {
       dispatch(getUserAdsService(userInfo._id));
     }
-  }, [userInfo, history, dispatch]);
+  }, [userInfo, history, dispatch, successDelete]);
 
   return (
     <MainContainer>
+      {loadingDelete && <LoaderComponent />}
       {loading ? (
         <LoaderComponent />
       ) : error.status === 500 ? (
@@ -67,7 +73,7 @@ function MyAdsScreen() {
             </Link>
           </div>
           <Row gutter={[10, 10]}>
-            {listAdService.length > 0 ? (
+            {listAdService?.length > 0 ? (
               listAdService.map((ad) => (
                 <Col
                   xs={{ span: 24 }}
@@ -132,8 +138,8 @@ const Container = styled.div`
       margin: 0;
     }
     & hr {
-      height: 7px;
-      background-color: var(--orange-color);
+      height: 4px;
+      background: var(--orange-color);
       outline: none;
       width: 100%;
       margin: 0;

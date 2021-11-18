@@ -91,115 +91,111 @@ function ProductsListScreen({ match }) {
   return (
     <MainContainer>
       <ProductContainer>
-        <Row>
-          <h3>{t("product_list.title")}</h3>
-        </Row>
-        <Row>
-          {(loadingDelete || loadingAccepted) && <Loader />}
+        {(loadingDelete || loadingAccepted) && <Loader />}
 
-          {loading ? (
-            <Loader />
-          ) : error ? (
-            <h1>Error : {error}</h1>
-          ) : (
-            <>
-              <Table>
-                <thead>
-                  <tr>
-                    <th>name</th>
-                    <th>price</th>
-                    <th>images</th>
-                    <th>brand</th>
-                    <th>Company Name / Personnel</th>
-                    <th>Email</th>
-                    <th>status</th>
-                    <th>Action</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {products.map((product) => (
-                    <tr key={product._id}>
-                      <td>{product.name}</td>
-                      <td>{product.price} dirham</td>
-                      <td>
-                        <div className="images_lists">
-                          {product.imageUrl.map((img) => (
-                            <Image className="img" src={img.url} />
-                          ))}
-                        </div>
-                      </td>
-                      <td>{product.brand}</td>
-                      <td>{product.user.company.name}</td>
-                      <td>
-                        <a
-                          style={{
-                            fontSize: ".7rem",
-                            textTransform: "lowercase",
-                          }}
-                          href={`mailto:${product.user.email}`}
-                        >
-                          {product.user.email}
-                        </a>
-                      </td>
-                      <td className="status">
-                        {product.allow && (
-                          <p>
-                            Accepted
-                            <AiOutlineCheck className="allow_btn_accept" />{" "}
-                          </p>
-                        )}
-                        {!product.allow && (
-                          <p>
-                            Refused
-                            <FaTimes className="allow_btn_refuse" />
-                          </p>
-                        )}
-                      </td>
-                      <td>
-                        <Dropdown
-                          overlay={
-                            <Menu
-                              onClick={(e) => handleMenuClick(e, product._id)}
-                            >
-                              <Menu.Item key="accept">accept</Menu.Item>
-                              <Menu.Item key="refuse">refuse</Menu.Item>
-                            </Menu>
-                          }
-                          trigger={["click"]}
-                        >
-                          <a
-                            href="#/"
-                            className="action_btn"
-                            onClick={(e) => e.preventDefault()}
+        {loading ? (
+          <Loader />
+        ) : error ? (
+          <h1>Error : {error}</h1>
+        ) : (
+          <>
+            <h3 className="title">{t("product_list.title")}</h3>
+            <Table>
+              <thead>
+                <tr>
+                  <th>name</th>
+                  <th>price</th>
+                  <th>images</th>
+                  <th>brand</th>
+                  <th>Company Name / Personnel</th>
+                  <th>Email</th>
+                  <th>status</th>
+                  <th>Action</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {products.map((product) => (
+                  <tr key={product._id}>
+                    <td>{product.name}</td>
+                    <td>{product.price} dirham</td>
+                    <td>
+                      <div className="images_lists">
+                        {product.imageUrl.map((img) => (
+                          <Image className="img" src={img.url} />
+                        ))}
+                      </div>
+                    </td>
+                    <td>{product.brand}</td>
+                    <td>{product.user.company.name}</td>
+                    <td>
+                      <a
+                        style={{
+                          fontSize: ".7rem",
+                          textTransform: "lowercase",
+                        }}
+                        href={`mailto:${product.user.email}`}
+                      >
+                        {product.user.email}
+                      </a>
+                    </td>
+                    <td className="status">
+                      {product.allow && (
+                        <p>
+                          Accepted
+                          <AiOutlineCheck className="allow_btn_accept" />{" "}
+                        </p>
+                      )}
+                      {!product.allow && (
+                        <p>
+                          Refused
+                          <FaTimes className="allow_btn_refuse" />
+                        </p>
+                      )}
+                    </td>
+                    <td>
+                      <Dropdown
+                        overlay={
+                          <Menu
+                            onClick={(e) => handleMenuClick(e, product._id)}
                           >
-                            select
-                            <DownOutlined style={{ paddingLeft: 2 }} />
-                          </a>
-                        </Dropdown>
-                        ,
-                      </td>
-                      <td>
-                        <button
-                          type="button"
-                          className="delete_btn"
-                          onClick={() => showConfirm(product._id)}
+                            <Menu.Item key="accept">accept</Menu.Item>
+                            <Menu.Item key="refuse">refuse</Menu.Item>
+                          </Menu>
+                        }
+                        trigger={["click"]}
+                      >
+                        <a
+                          href="#/"
+                          className="action_btn"
+                          onClick={(e) => e.preventDefault()}
                         >
-                          <MdDelete />
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </Table>
-              {!products.length && (
-                <div className="no_product">
-                  <h1>Any products exist in DataBase</h1>
-                </div>
-              )}
-            </>
-          )}
-        </Row>
+                          select
+                          <DownOutlined style={{ paddingLeft: 2 }} />
+                        </a>
+                      </Dropdown>
+                      ,
+                    </td>
+                    <td>
+                      <button
+                        type="button"
+                        className="delete_btn"
+                        onClick={() => showConfirm(product._id)}
+                      >
+                        <MdDelete />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+            {!products.length && (
+              <div className="no_product">
+                <h1>Any products exist in DataBase</h1>
+              </div>
+            )}
+          </>
+        )}
         <Pagination page={page} pages={pages} isAdmin={true} />
       </ProductContainer>
     </MainContainer>
@@ -209,14 +205,10 @@ function ProductsListScreen({ match }) {
 const ProductContainer = styled.div`
   padding: 0 10px;
 
-  & h3 {
+  & .title {
     text-align: center;
     text-transform: uppercase;
   }
-`;
-
-const Row = styled.div`
-  margin-bottom: 10px;
 `;
 
 const Table = styled.table`

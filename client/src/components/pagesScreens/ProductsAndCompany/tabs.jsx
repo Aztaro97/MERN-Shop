@@ -1,56 +1,28 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Tabs } from "antd";
 import styled from "styled-components";
-import { Redirect } from "react-router-dom";
 import MainContainer from "../../MainContainer";
 import ViewProducts from "./viewProducts";
 import CompanyInfo from "./companyDetails";
 import { useTranslation } from "react-i18next";
-import { useSelector, useDispatch } from "react-redux";
-
-import { getCompanyDetails } from "../../../flux/actions/userAction";
-import LoaderComponent from "../../loader";
-import ErrorServerPage from "../ErrorServerPage";
 
 const { TabPane } = Tabs;
 
 function Tabulation() {
   const { t } = useTranslation();
 
-  // const {products} = useSelector((state => state.products))
-
-  const { loading, error, user } = useSelector((state) => state.userDetails);
-  const { userInfo } = useSelector((state) => state.userLogin);
-  const dispatch = useDispatch();
-
-  const companyDetails = user?.company;
-
-  useEffect(() => {
-    dispatch(getCompanyDetails());
-  }, [dispatch]);
-
-  if (!userInfo) {
-    return <Redirect to="/auth" />;
-  }
-
   return (
     <MainContainer>
-      {loading ? (
-        <LoaderComponent />
-      ) : error === "Request failed with status code 500" ? (
-        <ErrorServerPage />
-      ) : (
-        <Tab>
-          <TabsE defaultActiveKey="1" centered size="default">
-            <TabPane tab={t("view_products")} key="1">
-              <ViewProducts />
-            </TabPane>
-            <TabPane tab={t("company_info")} key="2">
-              <CompanyInfo company={companyDetails} />
-            </TabPane>
-          </TabsE>
-        </Tab>
-      )}
+      <Tab>
+        <TabsE defaultActiveKey="1" centered size="default">
+          <TabPane tab={t("view_products")} key="1">
+            <ViewProducts />
+          </TabPane>
+          <TabPane tab={t("company_info")} key="2">
+            <CompanyInfo />
+          </TabPane>
+        </TabsE>
+      </Tab>
     </MainContainer>
   );
 }

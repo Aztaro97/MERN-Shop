@@ -33,7 +33,7 @@ const ViewProducts = () => {
     (state) => state.myProductDetails
   );
 
-  const { success: successDelete } = useSelector(
+  const { loading: loadingDelete, success: successDelete } = useSelector(
     (state) => state.productDelete
   );
 
@@ -54,15 +54,12 @@ const ViewProducts = () => {
   };
 
   useEffect(() => {
-    if (successDelete) {
-      dispatch(getMyProducts());
-    } else {
-      dispatch(getMyProducts());
-    }
+    dispatch(getMyProducts());
   }, [dispatch, successDelete, history]);
 
   return (
     <>
+      {loadingDelete && <Loader />}
       {loading ? (
         <Loader />
       ) : error === "Request failed with status code 500" ? (

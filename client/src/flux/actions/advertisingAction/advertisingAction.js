@@ -355,9 +355,9 @@ export const updateAllowService = (id, allow) => async (dispatch, getState) => {
 
 export const deleteAdService = (id) => async (dispatch, getState) => {
   try {
-    // dispatch({
-    //   type: DELETE_AD_PROFILE_REQUEST,
-    // });
+    dispatch({
+      type: DELETE_AD_PROFILE_REQUEST,
+    });
     const {
       userLogin: { userInfo },
     } = getState();
@@ -367,11 +367,10 @@ export const deleteAdService = (id) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
-    const res = await axios.delete(`/api/advertising/profile/${id}`, config);
-    // if (res)
-    //   dispatch({
-    //     type: DELETE_AD_PROFILE_SUCCESS,
-    //   });
+    await axios.delete(`/api/advertising/profile/${id}`, config);
+    dispatch({
+      type: DELETE_AD_PROFILE_SUCCESS,
+    });
   } catch (error) {
     console.error(error);
     dispatch({
@@ -400,11 +399,10 @@ export const getUserAdsService = (id) => async (dispatch, getState) => {
       payload: res.data,
     });
   } catch (error) {
-    
     const message =
       error.response && error.response.data.message
         ? error.response.data.message
-        : error.response
+        : error.response;
     dispatch({
       type: USER_ADS_FAIL,
       payload: message,

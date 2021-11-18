@@ -6,6 +6,7 @@ import {
   AD_PROFILE_REQUEST,
   AD_PROFILE_RESET,
   AD_PROFILE_SUCCESS,
+  DELETE_AD_PROFILE_FAIL,
   DELETE_AD_PROFILE_REQUEST,
   DELETE_AD_PROFILE_SUCCESS,
   FETCH_MESSAGE_FAIL,
@@ -56,7 +57,6 @@ export const advertisingReducer = (
     case AD_PROFILE_REQUEST:
     case FETCH_MESSAGE_REQUEST:
     case USER_ADS_REQUEST:
-    case DELETE_AD_PROFILE_REQUEST:
       return { ...state, loading: true };
 
     case FILTER_BUSINESS_SUCCESS:
@@ -70,9 +70,6 @@ export const advertisingReducer = (
 
     case USER_ADS_SUCCESS:
       return { ...state, loading: false, listAdService: action.payload };
-
-    case DELETE_AD_PROFILE_SUCCESS:
-      return { ...state, loading: false };
 
     case AD_LIST_FAIL:
     case FILTER_BUSINESS_FAIL:
@@ -93,6 +90,19 @@ export const advertisingReducer = (
     case FETCH_MESSAGE_SUCCESS:
       return { ...state, loading: false, allMessages: action.payload };
 
+    default:
+      return state;
+  }
+};
+
+export const adsDeleteReducer = (state = {}, action) => {
+  switch (action.type) {
+    case DELETE_AD_PROFILE_REQUEST:
+      return { ...state, loading: true };
+    case DELETE_AD_PROFILE_SUCCESS:
+      return { loading: false, success: true };
+    case DELETE_AD_PROFILE_FAIL:
+      return { loading: false, error: action.payload };
     default:
       return state;
   }

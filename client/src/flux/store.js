@@ -39,6 +39,7 @@ import {
 } from "./reducers/orderReducer";
 
 import {
+  adsDeleteReducer,
   advertisingReducer,
   messageReducer,
 } from "./reducers/advertisingReducer";
@@ -71,6 +72,7 @@ const reducer = combineReducers({
   orderListMy: orderListMyReducer,
   orderList: orderListReducer,
   advertising: advertisingReducer,
+  adsDelete: adsDeleteReducer,
   userMessage: messageReducer,
 });
 

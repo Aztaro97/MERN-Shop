@@ -40,128 +40,14 @@ function PartnerRegisterTemplate2() {
       ) : (
         <Container>
           <Meta title="Partner Registration" />
-          {/* {!userInfo && <SignUpForm />} */}
-          <DetailsComponent userInfo={userInfo} />
+          <FormComponent userInfo={userInfo} />
         </Container>
       )}
     </MainContainer>
   );
 }
 
-const SignUpForm = () => {
-  const dispatch = useDispatch();
-  const { t } = useTranslation();
-
-  const validate = (values) => {
-    const errors = {};
-    if (!values.email) errors.email = "Email est requis !";
-    if (values.password.length < 6)
-      errors.password = "Enter a password longer than 6 characters";
-    if (values.password !== values.password2)
-      errors.password2 = "Error Please Make sure your passwords match";
-    return errors;
-  };
-
-  const formik = useFormik({
-    initialValues: {
-      email: "",
-      password: "",
-      password2: "",
-    },
-    validate,
-    onSubmit: (values) => {
-      const body = JSON.stringify(values, null, 2);
-      dispatch(register(body));
-    },
-  });
-  return (
-    <form action="" onSubmit={formik.handleSubmit}>
-      <Row gutter={[10, 10]}>
-        <Col xs={{ span: 4 }} md={{ span: 2 }}>
-          <IconStyling>
-            <AiOutlineMail className="icon" />
-          </IconStyling>
-        </Col>
-        <Col xs={{ span: 20 }} md={{ span: 22 }}>
-          <InputStyling
-            type="email"
-            name="email"
-            placeholder={t("email_placeholder")}
-            onChange={formik.handleChange}
-            value={formik.values.email}
-          />
-        </Col>
-
-        <Col xs={{ span: 20 }} md={{ span: 22 }} offset={2}>
-          {formik.errors.email && (
-            <Alert message={formik.errors.email} type="error" banner>
-              {formik.errors.email}
-            </Alert>
-          )}
-        </Col>
-
-        <Col xs={{ span: 4 }} md={{ span: 2 }}>
-          <IconStyling>
-            <IoMdKey className="icon" />
-          </IconStyling>
-        </Col>
-        <Col xs={{ span: 20 }} md={{ span: 22 }}>
-          <InputStyling
-            type="password"
-            placeholder={t("password_placeholder")}
-            name="password"
-            id="password"
-            onChange={formik.handleChange}
-            value={formik.values.password}
-          />
-        </Col>
-
-        <Col xs={{ span: 4 }} md={{ span: 2 }}>
-          <IconStyling>
-            <IoMdKey className="icon" />
-          </IconStyling>
-        </Col>
-        <Col xs={{ span: 20 }} md={{ span: 22 }}>
-          <InputStyling
-            type="password"
-            placeholder={t("retype_placeholder")}
-            name="password2"
-            id="password2"
-            onChange={formik.handleChange}
-            value={formik.values.password2}
-          />
-        </Col>
-
-        <Col xs={{ span: 24, offset: 0 }} md={{ span: 22, offset: 2 }}>
-          {formik.errors.password ? (
-            <Alert type="error" message={formik.errors.password} banner />
-          ) : null}
-          {formik.errors.password2 ? (
-            <Alert type="error" message={formik.errors.password2} banner />
-          ) : null}
-        </Col>
-      </Row>
-
-      <Row gutter={[10, 10]} justify="end">
-        <Col>
-          <Button
-            type="submit"
-            style={{
-              fontWeight: 400,
-              letterSpacing: "1px",
-              textTransform: "capitalize",
-            }}
-            className="mt-2"
-          >
-            {t("signup")}
-          </Button>
-        </Col>
-      </Row>
-    </form>
-  );
-};
-
-const DetailsComponent = ({ userInfo }) => {
+const FormComponent = ({ userInfo }) => {
   // ////////    services fields
   const [companyName, setCompanyName] = useState("");
   const [companyName_ar, setCompanyName_ar] = useState("");
@@ -174,6 +60,8 @@ const DetailsComponent = ({ userInfo }) => {
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
   const [region, setRegion] = useState("");
+
+  const [error, setError] = useState(false);
 
   const dispatch = useDispatch();
   const { i18n } = useTranslation();
@@ -205,26 +93,25 @@ const DetailsComponent = ({ userInfo }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await axios.post("/api/advertising/free", body, config);
-    const id = res.data._id;
-    if (id) {
-      history.push({
-        pathname: `/advertising/upload-file/${id}`,
-        state: {
-          data: res.data,
-        },
-      });
-      dispatch({
-        type: "SAVE_SERVICE_INFO_SUCCESS",
-        payload: res.data,
-      });
+    if (!typeBusiness) {
+      setError(true);
+    } else {
+      const res = await axios.post("/api/advertising/free", body, config);
+      const id = res.data._id;
+      if (id) {
+        history.push({
+          pathname: `/advertising/upload-file/${id}`,
+          state: {
+            data: res.data,
+          },
+        });
+        dispatch({
+          type: "SAVE_SERVICE_INFO_SUCCESS",
+          payload: res.data,
+        });
+      }
     }
   };
-
-  // const handleClickFree = () => {
-  //   dispatch(saveServiceInfo(body));
-  //   history.push("/advertising/cart")
-  // };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -233,7 +120,7 @@ const DetailsComponent = ({ userInfo }) => {
           <h1 className="title">{t("company_info")}</h1>
         </Col>
       </Row>
-      <Row gutter={[10, 10]} justify="end" style={{marginBottom:10}}>
+      <Row gutter={[10, 10]} justify="end" style={{ marginBottom: 10 }}>
         <Col xs={{ span: 2 }} md={{ span: 2 }}>
           <IconStyling>
             <BsBuilding className="icon" />
@@ -338,6 +225,19 @@ const DetailsComponent = ({ userInfo }) => {
           </SelectStyling>
         </Col>
       </Row>
+
+      {error && (
+        <Row gutter={[10, 10]} style={{ marginTop: 10 }}>
+          <Col xs={{ span: 2 }}></Col>
+          <Col xs={{ span: 22 }}>
+            <Alert
+              message="Pease select your typ of business"
+              type="error"
+              closable
+            />
+          </Col>
+        </Row>
+      )}
 
       <Row style={{ marginTop: 20 }} justify="end">
         <Col xs={{ span: 22, offset: lang === "en" ? 2 : -2 }}>
