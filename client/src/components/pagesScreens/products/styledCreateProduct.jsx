@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Header = styled.div`
@@ -134,7 +135,7 @@ export const Column = styled.div`
   margin-top: 1rem;
   color: #aaaaac;
 `;
-export const Link = styled.a`
+export const LinkStyling = styled(Link)`
   text-decoration: none;
   font-weight: 700;
   color: #aaaaac;

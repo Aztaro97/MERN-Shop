@@ -117,15 +117,12 @@ const ViewProducts = () => {
               <Col xs={{ span: 24 }}>
                 <Empty>
                   <h1>You don't have any products</h1>
-                  <p>
-                    To create a new product, please click on this{" "}
-                    <Link
-                      className="btn"
-                      onClick={() => dispatch(createProduct())}
-                    >
-                      button
-                    </Link>
-                  </p>
+                  <Link
+                    className="_btn"
+                    onClick={() => dispatch(createProduct())}
+                  >
+                    Create new product
+                  </Link>
                 </Empty>
               </Col>
             )}
@@ -234,19 +231,22 @@ const Button = styled.button`
 const Empty = styled.div`
   text-align: center;
   & h1 {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
   }
-  & p {
-    font-size: 1rem;
-    & .btn {
-      text-decoration: none;
-      color: #fff;
-      background: var(--orange-color);
-      padding: 2px 1rem;
-      margin-left: 0.4rem;
-      &:hover {
-        opacity: 0.9;
-      }
+  & ._btn {
+    text-decoration: none;
+    color: #fff;
+    background: var(--orange-color);
+    padding: 5px 1rem;
+    margin-left: 0.4rem;
+    text-transform: capitalize;
+    font-weight: 400;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    margin: 5px 0;
+    display: inline-block;
+    &:hover {
+      opacity: 0.9;
     }
   }
 `;

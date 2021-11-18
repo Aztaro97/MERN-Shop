@@ -55,7 +55,7 @@ function HomeComponents() {
       >
         <NavStyling>
           <h1 className="title">our services</h1>
-          <Row gutter={[10, 30]} justify="center">
+          <Row gutter={[10, 20]} justify="center">
             <Col xs={{ span: 12 }} sm={{ span: 8 }} md={{ span: 6 }}>
               <a href="#design" className="nav_item">
                 <ImPencil2 className="nav_icon" />

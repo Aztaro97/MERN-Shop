@@ -368,8 +368,9 @@ export const NavStyling = styled.section`
     margin-bottom: 20px;
   }
   & .nav_item {
-    max-width: 180px;
-    height: 180px;
+    max-width: 150px;
+    height: 130px;
+    padding: 5px;
     background: #fff;
     margin: auto;
     display: flex;

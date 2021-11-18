@@ -50,102 +50,101 @@ const ViewProducts = ({ match }) => {
   return (
     <MainContainer>
       <Container>
-        <FilterForm onSubmit={formik.handleSubmit}>
-          <h3 className="title">Products Shop :</h3>
-          <Row gutter={[15, 10]} justify="end">
-            <Col xs={{ span: 12 }} md={{ span: 8 }} lg={{ span: 5 }}>
-              <SelectC
-                className="form_select"
-                placeholder="Brand"
-                name="formik.brand"
-                options={brandList}
-                value={formik.values.brand}
-                onChange={(e) => formik.setFieldValue("brand", e.target.value)}
-              />
-            </Col>
-            <Col xs={{ span: 12 }} md={{ span: 8 }} lg={{ span: 5 }}>
-              <SelectC
-                className="form_select"
-                name="formik.color"
-                placeholder="Color"
-                options={colorList}
-                value={formik.values.color}
-                onChange={(e) => formik.setFieldValue("color", e.target.value)}
-              />
-            </Col>
-            <Col xs={{ span: 12 }} md={{ span: 8 }} lg={{ span: 5 }}>
-              <SelectC
-                className="form_select"
-                name="formik.size"
-                placeholder="Size"
-                options={sizeList}
-                value={formik.values.size}
-                onChange={(e) =>
-                  formik.setFieldValue("size", parseInt(e.target.value))
-                }
-              />
-            </Col>
-            <Col xs={{ span: 12 }} md={{ span: 8 }} lg={{ span: 5 }}>
-              {" "}
-              <div className="form_select slider">
-                <p>Price Less than Aed 2000</p>
-                <SliderE
-                  value={formik.values.price}
-                  onChange={handleChangeSlider}
-                  max={2000}
-                  min={2}
-                />
-              </div>
-            </Col>
-            <Col xs={{ span: 12 }} md={{ span: 8 }} lg={{ span: 4 }}>
-              <button type="submit" className="btn">
-                Clear
-              </button>
-            </Col>
-          </Row>
-        </FilterForm>
-        <RowCustom className="products_items">
+        {loading ? (
+          <Loader />
+        ) : error === "Request failed with status code 500" ? (
+          <ErrorServerPage />
+        ) : (
           <>
-            {loading ? (
-              <Loader />
-            ) : error === "Request failed with status code 500" ? (
-              <ErrorServerPage />
-            ) : (
-              <>
-                {products.length ? (
-                  <Row gutter={[10, 10]}>
-                    {products.map((product, index) => (
-                      <Col
-                        xs={{ span: 12 }}
-                        sm={{ span: 12 }}
-                        md={{ span: 8 }}
-                        lg={{ span: 6 }}
-                      >
-                        <div key={index} style={{ width: "100%" }}>
-                          <ProductItems product={product} />
-                        </div>
-                      </Col>
-                    ))}
-                  </Row>
-                ) : (
-                  <div className="cart_empty">
-                    <h1>No matches found for your search</h1>
-                    <button onClick={() => dispatch(listProducts())}>
-                      click to show all products
-                    </button>
+            <FilterForm onSubmit={formik.handleSubmit}>
+              <h3 className="title">Products Shop :</h3>
+              <Row gutter={[15, 10]} justify="end">
+                <Col xs={{ span: 12 }} md={{ span: 8 }} lg={{ span: 5 }}>
+                  <SelectC
+                    className="form_select"
+                    placeholder="Brand"
+                    name="formik.brand"
+                    options={brandList}
+                    value={formik.values.brand}
+                    onChange={(e) =>
+                      formik.setFieldValue("brand", e.target.value)
+                    }
+                  />
+                </Col>
+                <Col xs={{ span: 12 }} md={{ span: 8 }} lg={{ span: 5 }}>
+                  <SelectC
+                    className="form_select"
+                    name="formik.color"
+                    placeholder="Color"
+                    options={colorList}
+                    value={formik.values.color}
+                    onChange={(e) =>
+                      formik.setFieldValue("color", e.target.value)
+                    }
+                  />
+                </Col>
+                <Col xs={{ span: 12 }} md={{ span: 8 }} lg={{ span: 5 }}>
+                  <SelectC
+                    className="form_select"
+                    name="formik.size"
+                    placeholder="Size"
+                    options={sizeList}
+                    value={formik.values.size}
+                    onChange={(e) =>
+                      formik.setFieldValue("size", parseInt(e.target.value))
+                    }
+                  />
+                </Col>
+                <Col xs={{ span: 12 }} md={{ span: 8 }} lg={{ span: 5 }}>
+                  {" "}
+                  <div className="form_select slider">
+                    <p>Price Less than Aed 2000</p>
+                    <SliderE
+                      value={formik.values.price}
+                      onChange={handleChangeSlider}
+                      max={2000}
+                      min={2}
+                    />
                   </div>
-                )}
-              </>
+                </Col>
+                <Col xs={{ span: 12 }} md={{ span: 8 }} lg={{ span: 4 }}>
+                  <button type="submit" className="btn">
+                    Clear
+                  </button>
+                </Col>
+              </Row>
+            </FilterForm>
+            {products.length ? (
+              <Row gutter={[10, 10]}>
+                {products.map((product, index) => (
+                  <Col
+                    xs={{ span: 12 }}
+                    sm={{ span: 12 }}
+                    md={{ span: 8 }}
+                    lg={{ span: 6 }}
+                  >
+                    <div key={index} style={{ width: "100%" }}>
+                      <ProductItems product={product} />
+                    </div>
+                  </Col>
+                ))}
+              </Row>
+            ) : (
+              <div className="cart_empty">
+                <h1>No matches found for your search</h1>
+                <button onClick={() => dispatch(listProducts())}>
+                  click to show all products
+                </button>
+              </div>
             )}
           </>
-        </RowCustom>
-        <RowCustom style={{ marginTop: "1rem" }}>
-          <Paginate
-            pages={pages}
-            page={page}
-            // keyword={keyword ? keyword : ''}
-          />
-        </RowCustom>
+        )}
+
+        <Paginate
+          pages={pages}
+          page={page}
+          // keyword={keyword ? keyword : ''}
+        />
       </Container>
     </MainContainer>
   );
@@ -155,7 +154,7 @@ const Container = styled.div`
   margin-top: 2rem;
 
   & .cart_empty {
-    margin-bottom: 50px;
+    margin: 50px 0;
     text-align: center;
     & button {
       background: var(--orange-color);
@@ -169,16 +168,12 @@ const Container = styled.div`
     }
   }
 
-  @media only screen and (max-width: 1000px) {
-    padding: 0 0.5rem;
-  }
-`;
-const RowCustom = styled.div`
-  display: block;
-  width: 100%;
-
   &.products_items {
     margin-top: 4rem;
+  }
+
+  @media only screen and (max-width: 1000px) {
+    padding: 0 0.5rem;
   }
 `;
 

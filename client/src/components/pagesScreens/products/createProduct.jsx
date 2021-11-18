@@ -25,7 +25,7 @@ import {
   RowCheck,
   GridRow,
   Column,
-  Link,
+  LinkStyling,
   Drop,
   UploadIcon,
   Ul,
@@ -725,7 +725,7 @@ const FormRight = ({
       >
         save & share
       </ButtonC>
-      <Link onClick={() => dispatch(createProduct())}>ADD ANOTHER PRODUCT</Link>
+      <LinkStyling to="/myproducts">Show all my products</LinkStyling>
     </div>
   );
 };
