@@ -39,7 +39,7 @@ function ProductsListScreen({ match }) {
     success: successDelete,
   } = useSelector((state) => state.productDelete);
 
-  const { loading: loadingAccepted, success: successUpdate } = useSelector(
+  const { loading: loadingUpdate, success: successUpdate } = useSelector(
     (state) => state.productUpdate
   );
 
@@ -81,17 +81,13 @@ function ProductsListScreen({ match }) {
   }
 
   useEffect(() => {
-    if (successDelete) {
-      dispatch(listProductsAdmin("", pageNumber));
-    } else {
-      dispatch(listProductsAdmin("", pageNumber));
-    }
-  }, [dispatch, pageNumber, successDelete]);
+    dispatch(listProductsAdmin("", pageNumber));
+  }, [dispatch, pageNumber, successDelete, successUpdate]);
 
   return (
     <MainContainer>
       <ProductContainer>
-        {(loadingDelete || loadingAccepted) && <Loader />}
+        {(loadingDelete || loadingUpdate) && <Loader />}
 
         {loading ? (
           <Loader />
@@ -140,18 +136,8 @@ function ProductsListScreen({ match }) {
                       </a>
                     </td>
                     <td className="status">
-                      {product.allow && (
-                        <p>
-                          Accepted
-                          <AiOutlineCheck className="allow_btn_accept" />{" "}
-                        </p>
-                      )}
-                      {!product.allow && (
-                        <p>
-                          Refused
-                          <FaTimes className="allow_btn_refuse" />
-                        </p>
-                      )}
+                      {product.allow && <p className="para_accept">Accepted</p>}
+                      {!product.allow && <p className="para_refuse">Refused</p>}
                     </td>
                     <td>
                       <Dropdown
@@ -265,21 +251,21 @@ const Table = styled.table`
         }
       }
       & .status {
-        & p {
+        & .para_accept,
+        & .para_refuse {
           display: flex;
           text-transform: capitalize;
           background: transparent;
           margin-bottom: 0;
-          & .allow_btn_accept {
-            color: green;
-            font-size: 1rem;
-            margin-left: 2px;
-          }
-          & .allow_btn_refuse {
-            color: red;
-            font-size: 1rem;
-            margin-left: 2px;
-          }
+          padding: 4px 10px;
+        }
+        & .para_refuse {
+          background: #34495e;
+          color: #fff;
+        }
+        & .para_accept {
+          background: #1abc9c;
+          color: #fff;
         }
       }
     }

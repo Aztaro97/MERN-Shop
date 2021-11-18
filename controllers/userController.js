@@ -331,7 +331,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
       name: user.name,
       email: user.email,
       company: user.company,
-      shippindAddress: user.shippindAddress,
+      shippingAddress: user.shippingAddress,
       urlImg: user.urlImg,
       isAdmin: user.isAdmin,
     });
@@ -404,6 +404,7 @@ const getUserById = asyncHandler(async (req, res) => {
         _id: user._id,
         isAdmin: user.isAdmin,
         company: user.company,
+        shippingAddress: user.shippingAddress,
         typeUser: user.typeUser,
       });
     } else {
@@ -658,13 +659,13 @@ const saveShippingAddress = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
 
   if (user) {
-    user.shippindAddress = req.body.shippindAddress;
+    user.shippingAddress = req.body;
 
     const userUpdate = await user.save();
 
     res.status(200).json({
       // _id: userUpdate._id,
-      shippindAddress: userUpdate.shippindAddress,
+      shippingAddress: userUpdate.shippingAddress,
     });
   } else {
     res.status(400);
@@ -679,7 +680,7 @@ const getShippingAddress = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
   if (user) {
     res.status(200).json({
-      shippindAddress: user.shippindAddress,
+      shippingAddress: user.shippingAddress,
     });
   } else {
     res.status(400);

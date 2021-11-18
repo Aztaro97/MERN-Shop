@@ -36,7 +36,7 @@ const CARD_OPTIONS = {
   },
 };
 
-export default function PaymentForm() {
+export default function PaymentForm({totalPrice}) {
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [numbercard, setnumbercar] = useState("");
   const stripe = useStripe();
@@ -48,22 +48,7 @@ export default function PaymentForm() {
   const { shippingAddress, cartItems } = useSelector((state) => state.cart);
   const { order, loading, error } = useSelector((state) => state.orderCreate);
 
-  //   Calculate prices
-  const addDecimals = (num) => {
-    return (Math.round(num * 100) / 100).toFixed(2);
-  };
-
-  const itemsPrice = addDecimals(
-    cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)
-  );
-  const shippingPrice = addDecimals(itemsPrice > 100 ? 0 : 100);
-  const taxPrice = addDecimals(Number((0.15 * itemsPrice).toFixed(2)));
-
-  const totalPrice = (
-    Number(itemsPrice) +
-    Number(shippingPrice) +
-    Number(taxPrice)
-  ).toFixed(2);
+ 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -156,7 +141,7 @@ export default function PaymentForm() {
                 <CardElement options={CARD_OPTIONS} />
               </Row> */}
               <button type="submit"  disabled={!stripe}>
-                Pay {order.totalPrice} AED
+                Pay {totalPrice} AED
               </button>
             </Form>
           ) : (

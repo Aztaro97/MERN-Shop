@@ -9,6 +9,7 @@ import { getOrderDetails } from "../../../flux/actions/orderAction";
 import LoaderComponent from "../../loader";
 import MainContainer from "../../MainContainer";
 import { Modal, Button } from "antd";
+import { TiShoppingCart } from "react-icons/ti";
 
 function PlaceOrder() {
   const [items, setItems] = useState(null);
@@ -137,11 +138,20 @@ function PlaceOrder() {
               </div>
             </Col>
             <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 10 }}>
-              <div className="card_summary">
-                <h1 className="title">Order Summary</h1>
-                <p>Total Items: {itemsPrice}</p>
-                <p>Shipping: {shippingCost} AED</p>
-                <p>Total Price: {SubTotalPrice} AED</p>
+              <div>
+                <div className="card_summary">
+                  <h1 className="title">Order Summary</h1>
+                  <p>Total Items: {itemsPrice}</p>
+                  <p>Shipping: {shippingCost} AED</p>
+                  <p>Total Price: {SubTotalPrice} AED</p>
+                </div>
+                {!order.isPaid && (
+                  <div className="checkout">
+                    <Link className="link" to={`/checkout/${order._id}`}>
+                      <TiShoppingCart className="icon" /> checkout
+                    </Link>
+                  </div>
+                )}
               </div>
             </Col>
           </Row>
@@ -217,6 +227,24 @@ const Container = styled.div`
     }
     & p {
       color: #333;
+    }
+  }
+
+  & .checkout {
+    text-align: center;
+
+    & .link {
+      background: #22a6b3;
+      text-align: center;
+      padding: 10px 20px;
+      color: #fff !important;
+      font-size: 1.4rem;
+      text-decoration: none;
+      margin: 10px 0;
+      display: inline-block;
+      & .icon {
+        font-size: 4rem;
+      }
     }
   }
 

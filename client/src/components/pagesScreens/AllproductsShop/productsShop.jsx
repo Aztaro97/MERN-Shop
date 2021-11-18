@@ -115,7 +115,13 @@ const ViewProducts = ({ match }) => {
               </Row>
             </FilterForm>
             {products.length ? (
-              <Row gutter={[10, 10]}>
+              <Row
+                gutter={[10, 10]}
+                style={{
+                  padding: "20px 0",
+                  margin: "20px 0",
+                }}
+              >
                 {products.map((product, index) => (
                   <Col
                     xs={{ span: 12 }}
@@ -178,6 +184,7 @@ const Container = styled.div`
 `;
 
 const FilterForm = styled.form`
+  margin: 20px 0;
   & .title {
     font-weight: 700;
     letter-spacing: 1px;
@@ -211,9 +218,6 @@ const FilterForm = styled.form`
   }
 
   @media only screen and (max-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 0.3rem;
-    height: 100%;
     & .form_select {
       margin-bottom: 0.5rem;
       width: 100%;

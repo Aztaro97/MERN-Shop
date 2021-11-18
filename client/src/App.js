@@ -224,7 +224,7 @@ function App() {
           <Route path="/profile/:id" component={ProfileComponent} />
           <Route path="/thank" component={ThankComponenet} />
           <Route path="/register" component={RegisterComponenet} />
-          <Route path="/completepayment" component={PayementStep} />
+          <Route path="/checkout/:id" component={PayementStep} />
           <Route path="/payment" component={PaymentCompopnent} />
           <Route path="/order/:id" component={CompleteOrder} exact />
           <Route path="/myorder" component={ListOrderScreen} />

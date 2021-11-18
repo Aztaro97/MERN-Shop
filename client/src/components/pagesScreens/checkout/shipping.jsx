@@ -9,14 +9,18 @@ import InputC from "../../InputComponents";
 import CheckBoxC from "../../CheckBoxComponent";
 import SelectC from "../../SelectComponents";
 import ButtonC from "../../ButtonComponeent";
-import { registerShippingInfo } from "../../../flux/actions/userAction";
+import {
+  getUserDetails,
+  registerShippingInfo,
+} from "../../../flux/actions/userAction";
 import { saveShippingAddress } from "../../../flux/actions/cartAction";
 import MainContainer from "../../MainContainer";
 
 // import MapComponent from "./map/getCurrentPosition";
 import MapComponent from "./googleMap/mapScreen";
+import LoaderComponent from "../../loader";
 
-function Checkout({ history }) {
+function Checkout() {
   const [saveShippingCheck, setSaveShippingCheck] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -48,6 +52,8 @@ function Checkout({ history }) {
     email,
   };
 
+  const history = useHistory();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (saveShippingCheck) {
@@ -55,173 +61,210 @@ function Checkout({ history }) {
     }
     dispatch(saveShippingAddress(shipping));
     history.push("/payment");
-    // window.location.assign = "/payment";
-    console.log(shipping);
   };
 
-  // const history = useHistory();
   const { shippingAddress } = useSelector((state) => state.cart);
 
   if (shippingAddress !== null) {
     // history.push("/payment");
   }
 
+  const {
+    loading,
+    user: { shippingAddress: userAddress },
+    error,
+  } = useSelector((state) => state.userDetails);
+  const { userInfo } = useSelector((state) => state.userLogin);
+
+  // const userAddress = user?.shippingAddress;
+  if (!userAddress) {
+    console.log(userAddress);
+  }
+
+  useEffect(() => {
+    if (!userInfo) {
+      history.push("/auth");
+    } else {
+      if (!userAddress) {
+        dispatch(getUserDetails(userInfo._id));
+      } else {
+        setFirstName(userAddress.firstName);
+        setLastName(userAddress.lastName);
+        setAddress(userAddress.address);
+        setAppartment(userAddress.appartment);
+        setCity(userAddress.city);
+        setCountry(userAddress.country);
+        setRegion(userAddress.region);
+        setPhoneNumber(userAddress.phoneNumber);
+        setEmail(userAddress.email);
+      }
+    }
+  }, [dispatch, userAddress, history, userInfo]);
+
   return (
     <MainContainer>
-      <Header>
-        <a href="#/" onClick={() => history.goBack()}>
-          Back
-        </a>
-        <h2>CHECK OUT</h2>
-      </Header>
-      <Grid>
-        <Form onSubmit={handleSubmit}>
-          <Row>
-            <Label htmlFor="email">Contact information</Label>
-          </Row>
-          <Row>
-            <InputC
-              required
-              style={{ marginBottom: ".5rem" }}
-              name="email"
-              id="email"
-              placeholder="EMAIL OR PHONE NUMBER"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </Row>
-          <Row>
-            <CheckBox>keep up to date on news and offers</CheckBox>
-          </Row>
-          <Row>
-            <Label name="address" id="address" placeholder="">
-              Shipping address{" "}
-            </Label>
-          </Row>
-          <Row>
-            <div className="inputRow">
-              <InputC
-                required
-                style={{ marginRight: ".3rem" }}
-                name="firstName"
-                id="firstName"
-                placeholder="FIRST NAME"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-              />
-              <InputC
-                required
-                style={{ marginLeft: ".3rem" }}
-                name="lastName"
-                id="lastName"
-                placeholder="LAST NAME"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-              />
-            </div>
-          </Row>
-          <Row>
-            <InputC
-              required
-              name="address"
-              id="address"
-              placeholder="ADRESS"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-            />
-          </Row>
-          <Row>
-            <InputC
-              required
-              name="appartment"
-              id="appartment"
-              placeholder="APPARTMENT NO"
-              value={appartment}
-              onChange={(e) => setAppartment(e.target.value)}
-            />
-          </Row>
-          <Row>
-            <div className="grid_input">
-              <InputC
-                required
-                type="text"
-                name="city"
-                id="city"
-                placeholder="CITY"
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-              />
-              <CountryDropdownCustom
-                required
-                name="country"
-                value={country}
-                onChange={(val) => setCountry(val)}
-              />
-              <RegionDropdownCustom
-                required
-                name="region"
-                country={country}
-                value={region}
-                onChange={(val) => setRegion(val)}
-              />
-            </div>
-          </Row>
-          <Row>
-            <ButtonC
-              type="button"
-              style={{ width: "100%" }}
-              onClick={() => setVisible(true)}
-            >
-              Select your localisation on map
-            </ButtonC>
-            <Modal
-              centered
-              visible={visible}
-              onOk={() => setVisible(false)}
-              onCancel={() => setVisible(false)}
-              width={1000}
-              footer={null}
-            >
-              <MapComponent
-                setLocalistion={setLocalistion}
-                setVisible={setVisible}
-              />
-            </Modal>
-          </Row>
+      {loading ? (
+        <LoaderComponent />
+      ) : error ? (
+        <h3>{error}</h3>
+      ) : (
+        <>
+          <Header>
+            <a href="#/" onClick={() => history.goBack()}>
+              Back
+            </a>
+            <h2>CHECK OUT</h2>
+          </Header>
+          <Grid>
+            <Form onSubmit={handleSubmit}>
+              <Row>
+                <Label htmlFor="email">Contact information</Label>
+              </Row>
+              <Row>
+                <InputC
+                  required
+                  style={{ marginBottom: ".5rem" }}
+                  name="email"
+                  id="email"
+                  placeholder="EMAIL OR PHONE NUMBER"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </Row>
+              <Row>
+                <CheckBox>keep up to date on news and offers</CheckBox>
+              </Row>
+              <Row>
+                <Label name="address" id="address" placeholder="">
+                  Shipping address{" "}
+                </Label>
+              </Row>
+              <Row>
+                <div className="inputRow">
+                  <InputC
+                    required
+                    style={{ marginRight: ".3rem" }}
+                    name="firstName"
+                    id="firstName"
+                    placeholder="FIRST NAME"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                  />
+                  <InputC
+                    required
+                    style={{ marginLeft: ".3rem" }}
+                    name="lastName"
+                    id="lastName"
+                    placeholder="LAST NAME"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                  />
+                </div>
+              </Row>
+              <Row>
+                <InputC
+                  required
+                  name="address"
+                  id="address"
+                  placeholder="ADRESS"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                />
+              </Row>
+              <Row>
+                <InputC
+                  required
+                  name="appartment"
+                  id="appartment"
+                  placeholder="APPARTMENT NO"
+                  value={appartment}
+                  onChange={(e) => setAppartment(e.target.value)}
+                />
+              </Row>
+              <Row>
+                <div className="grid_input">
+                  <InputC
+                    required
+                    type="text"
+                    name="city"
+                    id="city"
+                    placeholder="CITY"
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                  />
+                  <CountryDropdownCustom
+                    required
+                    name="country"
+                    value={country}
+                    onChange={(val) => setCountry(val)}
+                  />
+                  <RegionDropdownCustom
+                    required
+                    name="region"
+                    country={country}
+                    value={region}
+                    onChange={(val) => setRegion(val)}
+                  />
+                </div>
+              </Row>
+              {/* <Row>
+                <ButtonC
+                  type="button"
+                  style={{ width: "100%" }}
+                  onClick={() => setVisible(true)}
+                >
+                  Select your localisation on map
+                </ButtonC>
+                <Modal
+                  centered
+                  visible={visible}
+                  onOk={() => setVisible(false)}
+                  onCancel={() => setVisible(false)}
+                  width={1000}
+                  footer={null}
+                >
+                  <MapComponent
+                    setLocalistion={setLocalistion}
+                    setVisible={setVisible}
+                  />
+                </Modal>
+              </Row> */}
 
-          <Row>
-            <InputC
-              required
-              type="tel"
-              name="phoneNumber"
-              id="phoneNumber"
-              placeholder="PHONE NUMBER"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-            />
-          </Row>
-          <Row>
-            <CheckBox
-              style={{ marginBottom: "1rem" }}
-              onChange={(e) => setSaveShippingCheck(e.target.checked)}
-            >
-              Save this information for next time
-            </CheckBox>
-          </Row>
-          <Row>
-            <ButtonC type="submit">continue to payment</ButtonC>
-            <Link
-              className="link"
-              to="/cart"
-              style={{ textDecoration: "none" }}
-            >
-              Back To Cart
-            </Link>
-          </Row>
-        </Form>
-        <SectionRight className="section_right" />
-        {/* <MapComponent /> */}
-      </Grid>
+              <Row>
+                <InputC
+                  required
+                  type="tel"
+                  name="phoneNumber"
+                  id="phoneNumber"
+                  placeholder="PHONE NUMBER"
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                />
+              </Row>
+              <Row>
+                <CheckBox
+                  style={{ marginBottom: "1rem" }}
+                  onChange={(e) => setSaveShippingCheck(e.target.checked)}
+                >
+                  Save this information for next time
+                </CheckBox>
+              </Row>
+              <Row>
+                <ButtonC type="submit">continue to payment</ButtonC>
+                <Link
+                  className="link"
+                  to="/cart"
+                  style={{ textDecoration: "none" }}
+                >
+                  Back To Cart
+                </Link>
+              </Row>
+            </Form>
+            <SectionRight className="section_right" />
+            {/* <MapComponent /> */}
+          </Grid>
+        </>
+      )}
     </MainContainer>
   );
 }
@@ -340,7 +383,7 @@ const Header = styled.div`
 const Form = styled.form`
   padding: 2rem;
   border: 1px solid #ececec;
-  
+
   /* border-radius: 10px; */
   @media only screen and (max-width: 768px) {
     margin-top: 1rem;

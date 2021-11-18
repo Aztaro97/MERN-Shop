@@ -49,7 +49,7 @@ const userSchema = mongoose.Schema(
     },
 
     // //////////////   SHIPPING ADDRESS   //////////////////
-    shippindAddress: {
+    shippingAddress: {
       firstName: { type: String },
       lastName: { type: String },
       address: { type: String },

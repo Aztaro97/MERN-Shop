@@ -15,7 +15,7 @@ import { CART_CLEAR_ITEMS } from "../../../flux/constants/cartConstants";
 import { USER_DETAILS_RESET } from "../../../flux/constants/userConstants";
 import { registerShippingInfo } from "../../../flux/actions/userAction";
 import InputRadio from "../../InputRadioComponent";
-import MainContainer from "../../MainContainer"
+import MainContainer from "../../MainContainer";
 import Loader from "../../loader";
 
 import piture from "../../../img/card_pic.png";
@@ -69,6 +69,11 @@ function Payment() {
   const { loading, shippingAddress, cartItems } = useSelector(
     (state) => state.cart
   );
+
+  const { order: newOrder, success: successCreate } = useSelector(
+    (state) => state.orderCreate
+  );
+
   const { userInfo } = useSelector((state) => state.userLogin);
 
   //   Calculate prices
@@ -86,8 +91,7 @@ function Payment() {
 
   // Calculate Shipping Cost
 
-
-//   Function to get All shipping Cost
+  //   Function to get All shipping Cost
   const ShippingCostCalculate = () => {
     // Loop Cart Item
     for (let i = 0; i < cartItems.length; i++) {
@@ -104,19 +108,12 @@ function Payment() {
     }
   };
 
-  //   CALCULATE TOTAL PRICE AND SHIPPING PRICE
-  // // const totalPrice = cartItems
-  //   .reduce((acc, item) => acc + item.qty * item.price, 0)
-  //   .toFixed(2);
-
   if (!loading) {
     ShippingCostCalculate();
-    // ShippingCost = shippingOptions[indexShip].amount;
     console.log(ShippingCost);
   }
 
   const handlePlaceOrder = () => {
-    console.log("heced", saveShippingCheck);
     dispatch(savePaymentMethod(paymentMethod));
     dispatch(saveShippingAddress(shipping));
     if (saveShippingCheck) {
@@ -134,32 +131,27 @@ function Payment() {
         totalPrice: totalPrice,
       })
     );
+  };
 
+  if (successCreate && newOrder) {
     if (paymentMethod === "credit") {
-      history.push("/completepayment");
+      history.push(`/checkout/${newOrder._id}`);
+      dispatch({ type: USER_DETAILS_RESET });
+      dispatch({ type: ORDER_CREATE_RESET });
     } else {
       dispatch({
         type: CART_CLEAR_ITEMS,
-        // payload: data,
       });
-      localStorage.removeItem("cartItems");
+      // localStorage.removeItem("cartItems");
       history.push("/thank");
     }
-  };
-
-  const { order, success, error } = useSelector((state) => state.orderCreate);
+  }
 
   useEffect(() => {
     if (!userInfo) {
       history.push("/auth");
     }
-    if (success) {
-      history.push(`/order/${order._id}`);
-      dispatch({ type: USER_DETAILS_RESET });
-      dispatch({ type: ORDER_CREATE_RESET });
-    }
-    // ShippingCostCalculate();
-  }, [dispatch, userInfo, shippingAddress, success]);
+  }, [dispatch, userInfo, paymentMethod, newOrder, history, successCreate]);
 
   const onChangeRadiGroup = (e) => {
     console.log("radio checked", e.target.value);
@@ -295,7 +287,7 @@ function Payment() {
                 <ButtonC type="submit" className="btn">
                   place order
                 </ButtonC>
-                <Link to="/products" className="link_back">
+                <Link to="/shipping" className="link_back">
                   back to information
                 </Link>
               </div>

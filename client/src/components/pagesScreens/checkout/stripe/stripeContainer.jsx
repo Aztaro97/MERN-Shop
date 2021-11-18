@@ -10,10 +10,10 @@ import StripeForme from "./stripeForm";
 // const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_API_KEY);
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
 
-function stripeContainer() {
+function stripeContainer({totalPrice}) {
   return (
     <Elements stripe={stripePromise}>
-      <StripeForme />
+      <StripeForme totalPrice={totalPrice} />
     </Elements>
   );
 }

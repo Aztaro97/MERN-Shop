@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import ButtonC from "../../ButtonComponeent";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getOrderDetails } from "../../../flux/actions/orderAction";
 import {
@@ -13,156 +13,112 @@ import StripePayment from "../checkout/stripe/stripeContainer";
 
 import piture from "../../../img/card_pic.png";
 import LoaderComponent from "../../loader";
+import { Col, Row } from "antd";
 
 function CompletePayement() {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const { loading: loadingShipping, shippingAddress } = useSelector(
-    (state) => state.cart
+  const { id: paramId } = useParams();
+
+  const { loading: loadingOrder, success, error, order } = useSelector(
+    (state) => state.orderDetails
   );
-  // const {shippingAddress} = useSelector(state => state.cart)
+
+  const cartItems = order?.cartItems
+
+  // const { loading: loadingShipping, shippingAddress, cartItems } = useSelector(
+  //   (state) => state.cart
+  // );
   const { loading: loadingPay, success: successPay } = useSelector(
     (state) => state.orderPay
   );
-  const { loading: loadingDeliver, success: successDeliver } = useSelector(
-    (state) => state.orderDeliver
-  );
-  const { order, loading, error } = useSelector((state) => state.orderCreate);
+
   const { userInfo } = useSelector((state) => state.userLogin);
+
+  // COST CALCULATE  ///////////////////////////////
+  //   Calculate prices
+  const addDecimals = (num) => {
+    return (Math.round(num * 100) / 100).toFixed(2);
+  };
+
+  const itemsPrice = addDecimals(
+    cartItems?.reduce((acc, item) => acc + item.price * item.qty, 0)
+  );
+  const shippingPrice = addDecimals(itemsPrice < 100 ? 50 : 100);
+
+  const totalPrice = (Number(itemsPrice) + Number(shippingPrice)).toFixed(2);
 
   useEffect(() => {
     if (!userInfo) {
       history.push("/auth");
     }
-    // if (!order || successPay || successDeliver) {
-    //   dispatch({ type: ORDER_PAY_RESET });
-    //   dispatch({ type: ORDER_DELIVER_RESET });
-    // dispatch(getOrderDetails(order._id));
-    // }
-  }, [dispatch, userInfo]);
+    if (order?._id !== paramId) dispatch(getOrderDetails(paramId));
+  }, [dispatch, history, paramId, order, userInfo]);
 
   return (
     <>
-      {loadingShipping || loading ? (
+      {loadingPay || loadingOrder ? (
         <LoaderComponent />
       ) : (
         <MainContainer>
           <Header>
-            <a href="#/" onClick={() => history.goBack()}>
+            <Link className="link" onClick={() => history.goBack()}>
               Back
-            </a>
+            </Link>
             <h2>COMPLETE PAYEMENT</h2>
           </Header>
-          <Grid>
-            <SectionLeft>
-              <Border>
-                <div className="row">
-                  <div>
-                    <h2>contact</h2>
-                    <p>{shippingAddress.email}</p>
-                  </div>
+          <Row>
+            <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 12 }}>
+              <SectionLeft>
+                <div>
+                  <h4>Card Information</h4>
+                  <StripePayment totalPrice={totalPrice} />
+                </div>
+              </SectionLeft>
+            </Col>
+            <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 12 }}>
+              <ContainerCart>
+                {cartItems?.length > 0 &&
+                  cartItems.map((item) => (
+                    <Card key={item._id}>
+                      <div class="card__image">
+                        <img src={item.image} alt="" />
+                        <p className="quantity">{item.qty}</p>
+                      </div>
+                      <div class="card__details">
+                        <h1 class="card__title">{item.name}</h1>
+                        <h1 class="card__price">{item.price} AED</h1>
+                      </div>
+                    </Card>
+                  ))}
+
+                <hr />
+                <div className="solde">
+                  <h1>subtotal</h1>
+                  <h1>
+                    aed{" "}
+                    {cartItems?.reduce((acc, item) => acc + item.qty * item.price, 0)
+                      .toFixed(2)}{" "}
+                  </h1>
+                </div>
+                <div className="solde">
+                  <h1>shipping</h1>
+                  <h1>aed {shippingPrice}</h1>
                 </div>
                 <hr />
-                <div className="row">
-                  <div>
-                    <h2>address</h2>
-                    <p>
-                      {shippingAddress.address}, {shippingAddress.city},
-                      {shippingAddress.country}
-                    </p>
-                  </div>
+                <div className="solde">
+                  <h1>subtotal</h1>
+                  <h1>aed {totalPrice}</h1>
                 </div>
-              </Border>
-              <Border>
-                <div className="price">
-                  <h2>shipping cost</h2>
-                  {/* <p>aed {order.shippingPrice}</p> */}
-                </div>
-              </Border>
-              <Border>
-                <div className="price">
-                  <h2>Total price</h2>
-                  <p>aed {order.totalPrice}</p>
-                </div>
-              </Border>
-
-              <div>
-                <h4>Card Information</h4>
-                <StripePayment />
-              </div>
-            </SectionLeft>
-            <SectionRight />
-          </Grid>
+              </ContainerCart>
+            </Col>
+          </Row>
         </MainContainer>
       )}
     </>
   );
 }
-
-const Border = styled.div`
-  border: 1px solid var(--orange-color);
-  padding: 1rem 2rem;
-  border-radius: 20px;
-  margin-bottom: 2rem;
-
-  & hr {
-    margin: 0.7rem 0;
-    border: none;
-    background: var(--silver-color);
-    height: 1px;
-  }
-
-  & .row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    @media only screen and (max-width: 453px) {
-      display: block;
-    }
-
-    & div {
-      display: flex;
-      align-items: center;
-      & h2 {
-        color: var(--orange-color);
-        margin: 0;
-        margin-right: 1rem;
-        text-transform: uppercase;
-        font-size: 1rem;
-        font-weight: 700;
-      }
-      & p {
-        display: flex;
-        margin: 0;
-        max-width: 300px;
-      }
-    }
-    & .link {
-      margin-left: auto;
-      outline: none;
-      border: none;
-      background: transparent;
-      color: var(--orange-color);
-      &:hover {
-        opacity: 0.9;
-      }
-    }
-  }
-  .price {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-transform: uppercase;
-
-    & h2 {
-      margin: 0;
-      color: var(--orange-color);
-      font-size: 1rem;
-      font-weight: 700;
-    }
-  }
-`;
 
 const SectionLeft = styled.div`
   padding: 2rem;
@@ -203,55 +159,12 @@ const SectionLeft = styled.div`
   }
 `;
 
-const SectionRight = () => {
-  const { cartItems } = useSelector((state) => state.cart);
-  const { order, loading, error } = useSelector((state) => state.orderCreate);
-  return (
-    <ContainerCart>
-      {cartItems.length > 0 &&
-        cartItems.map((item) => (
-          <Card key={item._id}>
-            <div class="card__image">
-              <img src={item.image} alt="" />
-              <p className="quantity">{item.qty}</p>
-            </div>
-            <div class="card__details">
-              <h1 class="card__title">{item.name}</h1>
-              <h1 class="card__price">{item.price} AED</h1>
-            </div>
-          </Card>
-        ))}
-
-      <hr />
-      <div className="solde">
-        <h1>subtotal</h1>
-        <h1>
-          aed{" "}
-          {cartItems
-            .reduce((acc, item) => acc + item.qty * item.price, 0)
-            .toFixed(2)}{" "}
-        </h1>
-      </div>
-      <div className="solde">
-        <h1>shipping</h1>
-        <h1>aed {order.shippingPrice}</h1>
-      </div>
-      <hr />
-      <div className="solde">
-        <h1>subtotal</h1>
-        <h1>aed {order.totalPrice}</h1>
-      </div>
-    </ContainerCart>
-  );
-};
-
-
 const Header = styled.div`
   height: 5rem;
   width: 100%;
   padding: 0 1rem;
 
-  & a {
+  & .link {
     text-decoration: none;
     color: #000;
     font-weight: 700;
@@ -265,16 +178,6 @@ const Header = styled.div`
     margin-bottom: 0;
     font-weight: 700;
     font-size: 1.1rem;
-  }
-`;
-
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: 60% 40%;
-  margin-bottom: 3rem;
-
-  @media only screen and (max-width: 768px) {
-    grid-template-columns: 1fr;
   }
 `;
 

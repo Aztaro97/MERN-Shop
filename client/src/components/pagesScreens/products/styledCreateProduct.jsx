@@ -61,11 +61,8 @@ export const Card = styled.div`
       height: 2rem;
       border: 3px solid var(--background-color);
       outline: none;
-      /* border-radius: 10px 0 0 10px; */
-      text-transform:uppercase;
       transition: all 0.3s;
       background: #fff;
-      /* width: 100%; */
     }
     & .add_btn {
       font-size: 0.9rem;

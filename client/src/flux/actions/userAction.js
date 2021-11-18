@@ -460,7 +460,7 @@ export const registerShippingInfo = (body) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.post("/api/users/shipping", body, config);
+    const { data } = await axios.post("/api/users/shipping", JSON.stringify(body), config);
 
     dispatch({
       type: USER_REGISTER_SHIPPING_INFO_SUCCESS,
