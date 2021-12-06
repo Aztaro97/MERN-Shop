@@ -20,11 +20,6 @@ const languages = [
     dir: "rtl",
     country_code: "ae",
   },
-  // {
-  //   code: "fr",
-  //   name: "Français",
-  //   country_code: "fr",
-  // },
 ];
 
 function SelectLangButton() {
