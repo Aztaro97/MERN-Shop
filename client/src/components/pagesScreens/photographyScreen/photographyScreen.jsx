@@ -15,7 +15,7 @@ function PhotographyScreen() {
           <Title level={2}>Blind</Title>
           <Paragraph>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
-            cupiditate dolore 
+            cupiditate dolore
           </Paragraph>
           <Button type="button" className="link">
             contact today
@@ -196,7 +196,7 @@ const ContactSection = styled.section`
     color: var(--orange-color);
     padding: 20px auto !important;
     background: #fff;
-    min-width:120px;
+    min-width: 120px;
   }
   & h4 {
     font-weight: 700;
@@ -215,11 +215,7 @@ const ContactSection = styled.section`
 `;
 
 const Banner = styled.div`
-  background: linear-gradient(
-      90deg,
-      #33333365 0%,
-      rgba(2, 0, 36, 0) 0%
-    ),
+  background: linear-gradient(90deg, #33333365 0%, rgba(2, 0, 36, 0) 0%),
     url("/img/photography/bannerPhotography.png");
   position: relative;
   height: 400px;
@@ -249,11 +245,12 @@ const Banner = styled.div`
   }
 `;
 
-const GalleryContainer = styled.div`
-  padding: 40px 0;
+const GalleryContainer = styled.section`
+  padding: 4rem 2rem;
   & .title {
-    color: var(--orange-color);
-    text-transform: capitalize;
+    text-transform: uppercase;
+    color: var(--white-color);
+    margin-bottom: 2rem;
   }
   & .image {
     width: 100%;

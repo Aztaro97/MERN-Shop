@@ -252,15 +252,14 @@ const Banner = styled.section`
 `;
 
 const FirstServiceStyling = styled.section`
-  padding: 20px 0;
-  margin: 30px 0;
+  padding: 4rem 2rem;
   & .small_title {
     font-size: 0.7rem;
     text-transform: uppercase;
     text-align: center;
     margin-bottom: 0;
     letter-spacing: 1px;
-    color: var(--orange-color);
+    color: var(--silver-color);
   }
   & .title {
     font-size: 1.8rem;
@@ -272,16 +271,17 @@ const FirstServiceStyling = styled.section`
   & .service_card {
     padding: 20px;
     border-radius: 10px;
-    background-color: #fff;
+    background-color: var(--dark-light-color);
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     text-align: center;
     cursor: pointer;
     height: 200px;
     transition: all 0.3s ease;
+    border: 1px solid var(--silver-color);
     & .service_card_icon {
       font-size: 40px;
-      color: var(--orange-color);
+      color: var(--silver-color);
       margin-bottom: 10px;
     }
     & .service_card_title {
@@ -289,18 +289,19 @@ const FirstServiceStyling = styled.section`
       font-weight: bold;
       margin-bottom: 10px;
       text-transform: capitalize;
-      color: var(--orange-color);
+      color: var(--silver-color);
     }
     & p {
       font-size: 14px;
       line-height: 1.5;
+      color: var(--silver-color);
     }
 
     &.first_card {
       text-align: start;
       box-shadow: none !important;
       & .service_card_title {
-        color: #333333d5;
+        color: var(--silver-color);
         letter-spacing: 1px;
       }
     }

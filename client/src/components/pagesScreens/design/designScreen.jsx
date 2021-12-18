@@ -276,19 +276,20 @@ function DesignScreen() {
 }
 
 const ContactService = styled.section`
-  margin: 30px 0;
-  background: var(--orange-color);
-  padding: 20px;
-  margin-bottom: 20px;
-  & h1,
+  background: var(--black-color);
+  padding: 4rem 2rem;
+  & h1 {
+    color: var(--white-color);
+  }
   & p {
-    color: #fff;
+    color: var(--silver-color);
   }
 
   & .contact_container {
     height: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
     & .button {
       margin: auto;
       background: #fff;
@@ -298,7 +299,7 @@ const ContactService = styled.section`
       padding: 10px;
       transition: 0.3s ease-in;
       &:hover {
-        background: #333;
+        background: var(--orange-color);
         color: #fff;
       }
     }
@@ -306,8 +307,7 @@ const ContactService = styled.section`
 `;
 
 const FifthServiceStyling = styled.div`
-  padding: 20px 0;
-  margin: 30px 0;
+  padding: 4rem 2rem;
   & .contenteContainer {
     display: flex;
     /* align-items: center; */
@@ -321,7 +321,7 @@ const FifthServiceStyling = styled.div`
         font-size: 1.3rem;
         text-transform: capitalize;
         font-weight: 700;
-        color: var(--orange-color);
+        color: var(--white-color);
       }
     }
   }
@@ -334,8 +334,8 @@ const FifthServiceStyling = styled.div`
 `;
 
 const ThirstServiceStyling = styled.section`
-  padding: 20px 0;
-  margin: 30px 0;
+  padding: 4rem 2rem;
+  background: var(--black-color);
   & .image_down,
   .image_up {
     width: 100%;
@@ -359,6 +359,10 @@ const ThirstServiceStyling = styled.section`
     & h1 {
       font-weight: 700;
       text-transform: capitalize;
+      color: var(--white-color);
+    }
+    & p {
+      color: var(--silver-color);
     }
   }
 
@@ -384,8 +388,7 @@ const ThirstServiceStyling = styled.section`
 `;
 
 const SecondServiceStyling = styled.section`
-  padding: 20px 0;
-  margin: 30px 0;
+  padding: 4rem 2rem;
   & .image_down,
   .image_up {
     width: 100%;
@@ -406,6 +409,10 @@ const SecondServiceStyling = styled.section`
     & h1 {
       font-weight: 700;
       text-transform: capitalize;
+      color: var(--white-color);
+    }
+    & p {
+      color: var(--silver-color);
     }
   }
 
@@ -433,6 +440,7 @@ const SecondServiceStyling = styled.section`
         font-size: 20px;
         font-weight: 700;
         text-transform: capitalize;
+        color: var(--orange-color);
       }
     }
   }
@@ -440,7 +448,6 @@ const SecondServiceStyling = styled.section`
 
 const FirstServiceStyling = styled.section`
   padding: 4rem 2rem;
-  margin: 30px 0;
   background: var(--black-color);
   & .small_title {
     font-size: 0.7rem;

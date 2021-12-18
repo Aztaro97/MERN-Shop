@@ -233,15 +233,16 @@ const CardProductList = () => {
 
 const Container = styled.div`
   & section {
-    padding: 20px 0;
+    padding: 4rem 2rem;
   }
 
   & .service_provider {
     & .title {
       text-transform: uppercase;
       text-align: center;
-      color: var(--orange-color);
+      color: var(--white-color);
       font-size: 1.8rem;
+      margin-bottom: 2rem;
     }
     & .s1,
     .s2,
@@ -355,11 +356,13 @@ const Container = styled.div`
 `;
 
 const ProductListStyling = styled.section`
+  padding: 4rem 2rem;
   & .title {
-    color: var(--orange-color);
+    color: var(--white-color);
     text-align: center;
     text-transform: uppercase;
     font-size: 1.8rem;
+    margin-bottom: 2rem;
   }
   & .product_card {
     max-width: 240px;
@@ -373,11 +376,13 @@ const ProductListStyling = styled.section`
 `;
 
 const ProductStyling = styled.section`
+  padding: 4rem 2rem;
   & .title {
     text-transform: uppercase;
     text-align: center;
-    color: var(--orange-color);
+    color: var(--white-color);
     font-size: 1.8rem;
+    margin-bottom: 2rem;
   }
   & .slider {
     width: 100%;
@@ -397,6 +402,7 @@ const ProductStyling = styled.section`
 `;
 
 const Banner = styled.section`
+  padding: 4rem 2rem;
   background: url("https://images.unsplash.com/photo-1563126153-74b8e04c1070?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80");
   position: relative;
   height: 400px;
