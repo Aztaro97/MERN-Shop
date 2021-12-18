@@ -122,7 +122,7 @@ export const SectionStyling = styled.section`
         letter-spacing: 5px;
         font-weight: 700;
         width: 100%;
-        background: var(--orange-color);
+        background: transparent;
         /* background: transparent; */
         display: flex;
         align-items: center;

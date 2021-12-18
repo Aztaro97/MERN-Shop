@@ -34,9 +34,9 @@ function HomeECommerce() {
   const settings = {
     dots: false,
     className: "center",
-    centerMode: true,
+    // centerMode: true,
     infinite: true,
-    centerPadding: "100px",
+    // centerPadding: "100px",
     slidesToShow: 1,
     autoplay: true,
     // fade: true,
@@ -269,14 +269,14 @@ const Section1 = styled.section`
   & h3 {
     color: var(--orange-color);
     text-transform: uppercase;
-    margin-bottom: 0.7rem;
+    margin-bottom: 1rem;
     font-size: 1rem;
     font-weight: bold;
   }
   & h1 {
     font-weight: 700;
     text-transform: uppercase;
-    margin-bottom: 0;
+    margin-bottom: 1.2rem;
     font-size: 1.6rem;
     color: var(--white-color);
   }
@@ -291,6 +291,7 @@ const Section1 = styled.section`
   & p {
     color: var(--silver-color);
     font-size: 1rem;
+    padding: 1rem 2rem;
   }
   & .content {
     display: flex;

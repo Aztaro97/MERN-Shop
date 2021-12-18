@@ -316,6 +316,7 @@ const FifthServiceStyling = styled.div`
     height: 100%;
     & .contente {
       padding: 10px 0;
+      color: var(--silver-color);
       & h1 {
         font-size: 1.3rem;
         text-transform: capitalize;
@@ -438,8 +439,9 @@ const SecondServiceStyling = styled.section`
 `;
 
 const FirstServiceStyling = styled.section`
-  padding: 20px;
+  padding: 4rem 2rem;
   margin: 30px 0;
+  background: var(--black-color);
   & .small_title {
     font-size: 0.7rem;
     text-transform: uppercase;
@@ -454,19 +456,20 @@ const FirstServiceStyling = styled.section`
     font-weight: 700;
     text-align: center;
     margin-bottom: 20px;
+    color: var(--white-color);
   }
   & .service_card {
     padding: 20px;
     border-radius: 10px;
-    background-color: #fff;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     text-align: center;
+    background: var(--dark-light-color);
     cursor: pointer;
     transition: all 0.3s ease;
     & .service_card_icon {
       font-size: 40px;
-      color: var(--orange-color);
+      color: var(--silver-color);
       margin-bottom: 10px;
     }
     & .service_card_title {
@@ -474,10 +477,12 @@ const FirstServiceStyling = styled.section`
       font-weight: bold;
       margin-bottom: 10px;
       text-transform: capitalize;
+      color: var(--silver-color);
     }
     & p {
       font-size: 14px;
       line-height: 1.5;
+      color: var(--silver-color);
     }
     &:hover {
       transform: translateY(-7px);
