@@ -13,6 +13,8 @@ export const GlobalStyle = createGlobalStyle `
         margin: 0;
         padding: 0;
         width: 100%;
+        background: var(--dark-light-color);
+        color:#fff;
 
 
         @media only screen and (max-width: 768px) {

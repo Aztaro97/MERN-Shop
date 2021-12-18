@@ -1,19 +1,21 @@
 import styled from "styled-components";
 
 export const MarketingCardStyling = styled.div`
-  background: #ececec;
   padding: 40px 20px;
+  color: #000;
   & .title {
     font-weight: 700;
     text-align: center;
     text-transform: uppercase;
     font-size: 1.4rem !important;
-    color: var(--orange-color);
+    color: #fff !important;
   }
   & .card_container {
     text-align: center;
     & .card_item {
-      background: #fff;
+      background: var(--dark-light-color);
+      /* border: 1px solid #00000032; */
+      border-radius: 10px;
       max-width: 200px;
       height: 150px;
       display: flex;
@@ -21,14 +23,14 @@ export const MarketingCardStyling = styled.div`
       justify-content: center;
       flex-direction: column;
       margin: auto;
-      padding: 5px;
+      padding: 10px;
       cursor: pointer;
       transition: all 0.3s ease-in-out;
       &:hover {
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
       }
       & .icon {
-        color: var(--orange-color);
+        color: var(--silver-color);
         font-size: 2.5rem;
         margin-bottom: 10px;
       }
@@ -36,6 +38,7 @@ export const MarketingCardStyling = styled.div`
         font-size: 1rem;
         font-weight: 700;
         margin: 0;
+        color: var(--silver-color);
       }
     }
   }
@@ -43,21 +46,24 @@ export const MarketingCardStyling = styled.div`
 
 export const SectionStyling = styled.section`
   /* margin: 80px 0; */
-  padding: 60px 0;
+  padding: 100px 40px;
   & .title {
     font-weight: 700;
     font-size: 2rem;
     text-transform: uppercase;
     margin-bottom: 20px;
+    color: #fff;
   }
   & .sub_title {
     font-weight: 700;
     font-size: 1.2rem;
     letter-spacing: 1px;
+    color: var(--silver-color);
   }
   & .list_item {
     list-style: none;
     font-weight: 700;
+    color: var(--silver-color);
     & li::before {
       content: "• ";
       color: var(--orange-color);
@@ -71,6 +77,7 @@ export const SectionStyling = styled.section`
     margin: auto;
     padding: 10px 0;
     letter-spacing: 1px;
+    color: var(--silver-color);
   }
   & .circle_container {
     display: flex;
@@ -116,6 +123,7 @@ export const SectionStyling = styled.section`
         font-weight: 700;
         width: 100%;
         background: var(--orange-color);
+        /* background: transparent; */
         display: flex;
         align-items: center;
         justify-content: center;
@@ -194,31 +202,40 @@ export const BannerStyling = styled.section`
     &.bg_img1 {
       background: ${({ data }) =>
         data
-          ? `linear-gradient(0deg, #00000073 0%, rgba(0, 0, 0, 0.459) 0%),
+          ? `radial-gradient(circle, rgba(2,0,36,0.4962359943977591) 0%, rgba(0,0,0,0.896796218487395) 81%),
         url(${data[0].url})`
           : null};
     }
     &.bg_img2 {
       background: ${({ data }) =>
         data
-          ? `linear-gradient(0deg, #00000073 0%, rgba(0, 0, 0, 0.459) 0%),
+          ? `radial-gradient(circle, rgba(2,0,36,0.4962359943977591) 0%, rgba(0,0,0,0.896796218487395) 81%),
         url(${data[1].url})`
           : null};
     }
     &.bg_img3 {
       background: ${({ data }) =>
         data
-          ? `linear-gradient(0deg, #00000073 0%, rgba(0, 0, 0, 0.459) 0%),
+          ? `radial-gradient(circle, rgba(2,0,36,0.4962359943977591) 0%, rgba(0,0,0,0.896796218487395) 81%),
         url(${data[2].url})`
           : null};
     }
     &.bg_img4 {
       background: ${({ data }) =>
         data
-          ? `linear-gradient(0deg, #00000073 0%, rgba(0, 0, 0, 0.459) 0%),
+          ? `radial-gradient(circle, rgba(2,0,36,0.4962359943977591) 0%, rgba(0,0,0,0.896796218487395) 81%),
         url(${data[3].url})`
           : null};
     }
+
+    & #myVideo {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+    }
+
     @media only screen and (max-width: 768px) {
       height: 300px;
     }
@@ -312,13 +329,13 @@ export const BannerStyling = styled.section`
 `;
 
 export const ProgrammingCardStyling = styled.section`
-  background: #ececec;
+  background: transparent;
   padding: 20px;
   margin: 30px 0;
   & .service_card {
     padding: 20px;
     border-radius: 10px;
-    background-color: #fff;
+    background-color: var(--dark-color);
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     text-align: center;
@@ -327,7 +344,7 @@ export const ProgrammingCardStyling = styled.section`
     transition: all 0.3s ease;
     & .service_card_icon {
       font-size: 40px;
-      color: var(--orange-color);
+      color: var(--silver-color);
       margin-bottom: 10px;
     }
     & .service_card_title {
@@ -335,19 +352,26 @@ export const ProgrammingCardStyling = styled.section`
       font-weight: bold;
       margin-bottom: 10px;
       text-transform: capitalize;
-      color: var(--orange-color);
+      color: var(--silver-color);
     }
     & p {
       font-size: 14px;
       line-height: 1.5;
+      color: var(--silver-color);
+    }
+    & .card_content {
+      color: var(--silver-color);
     }
 
     &.first_card {
       text-align: start;
       box-shadow: none !important;
       & .service_card_title {
-        color: #333333d5;
+        /* color: #333333d5; */
         letter-spacing: 1px;
+      }
+      & p {
+        color: var(--silver-color);
       }
     }
     &:hover {
@@ -359,19 +383,20 @@ export const ProgrammingCardStyling = styled.section`
 export const NavStyling = styled.section`
   /* margin: 20px 0; */
   padding: 40px 40px;
-  background: #ececec;
+  background: var(--dark-color);
   & .title {
     font-weight: 700;
     text-align: center;
     text-transform: uppercase;
     font-size: 1.8rem;
     margin-bottom: 20px;
+    color: #fff;
   }
   & .nav_item {
     max-width: 150px;
     height: 130px;
     padding: 5px;
-    background: #fff;
+    background: var(--dark-light-color);
     margin: auto;
     display: flex;
     align-items: center;
@@ -387,11 +412,13 @@ export const NavStyling = styled.section`
     }
     & .nav_icon {
       font-size: 2.5rem;
-      color: var(--orange-color);
+      /* color: var(--orange-color); */
+      color: var(--silver-color);
       margin-bottom: 10px;
     }
     & .nav_title {
-      color: var(--orange-color);
+      /* color: var(--orange-color); */
+      color: var(--silver-color);
       text-transform: uppercase;
       margin: 0;
       font-size: 1rem;
@@ -409,19 +436,25 @@ export const OurClientStyling = styled.section`
   padding: 20px 0;
   max-width: 800px;
   margin: auto;
+
+  /* background: var(--dark-color); */
   & .title {
     font-weight: 700;
     text-align: center;
     text-transform: uppercase;
     font-size: 1.8rem;
     margin-bottom: 20px;
+    color: var(--white-color);
   }
-  & .box {
-    & img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      margin: auto;
+  & .slider {
+    & .box {
+      padding: 20px 0;
+      & img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin: auto;
+      }
     }
   }
 `;

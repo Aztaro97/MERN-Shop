@@ -381,6 +381,7 @@ const ServicesSlider = ({ lang }) => {
     autoplay: true,
     slidesToShow: 4,
     slidesToScroll: 1,
+    dotsClass: "dots__bar",
     rtl: lang === "ar" ? true : false,
     responsive: [
       {
@@ -435,13 +436,13 @@ const ServiceStyling = styled.section`
   & .title {
     text-align: center;
     text-transform: uppercase;
-    color: var(--orange-color);
+    color: var(--white-color);
     font-size: 1.6rem;
   }
   & hr {
     width: 100px;
-    background: var(--orange-color);
-    height: 1px;
+    background: var(--white-color);
+    height: 3px;
     margin: 0 auto 1.8rem;
     @media only screen and (max-width: 768px) {
       width: 100px;
@@ -480,16 +481,17 @@ const ServiceStyling = styled.section`
 
 const PartnerLogoStyling = styled.section`
   padding: 0 1rem;
+  background: var(--black-color);
   & .title {
     text-align: center;
     text-transform: uppercase;
-    color: var(--orange-color);
+    color: var(--white-color);
     font-size: 1.6rem;
   }
   & hr {
     width: 150px;
-    background: var(--orange-color);
-    height: 1px;
+    background: var(--white-color);
+    height: 3px;
     margin: 0 auto 1.8rem;
     @media only screen and (max-width: 768px) {
       width: 100px;
@@ -533,14 +535,14 @@ const JoiningUsStyling = styled.section`
   & .title {
     text-align: center;
     /* letter-spacing: 3px; */
-    color: var(--orange-color);
+    color: var(--white-color);
     margin-bottom: 1rem;
     font-size: 1.6rem;
   }
   & hr {
     width: 150px;
-    background: var(--orange-color);
-    height: 1px;
+    background: var(--white-color);
+    height: 3px;
     margin: 0 auto 1.8rem;
     @media only screen and (max-width: 768px) {
       width: 100px;
@@ -597,6 +599,7 @@ const NavStyling = styled.section`
   padding: 1rem;
   margin: 0 auto;
   width: 100%;
+  background: var(--black-color);
   & .card_container {
     height: 120px;
     display: flex;
@@ -605,6 +608,7 @@ const NavStyling = styled.section`
     text-decoration: none;
     margin: 0 10px;
     cursor: pointer;
+
     @media only screen and (max-width: 768px) {
       height: 110px;
     }
@@ -630,17 +634,17 @@ const NavStyling = styled.section`
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      background: #fff;
+      background: var(--dark-color);
       transition: background 0.2s ease-in;
       padding: 10px;
       & .icon {
         font-size: 2.3rem;
-        color: var(--orange-color);
+        color: var(--silver-color);
         margin-bottom: 0.7rem;
         transition: color 0.3s ease-in-out;
       }
       & span {
-        color: var(--orange-color);
+        color: var(--silver-color);
         text-transform: capitalize;
         font-size: 1rem;
         transition: color 0.1s ease-in-out;
@@ -675,27 +679,27 @@ const NavStyling = styled.section`
 `;
 
 const Container = styled.div`
-  padding: 0rem 1rem;
   max-width: 1400px;
   margin: 0 auto;
 
   & section {
-    margin: 1rem 0 4rem 0;
+    padding: 4rem 2rem;
   }
 `;
 
 const IntroVideoStyling = styled.section`
+  background: var(--black-color);
   & .title {
     text-align: center;
     text-transform: uppercase;
-    color: var(--orange-color);
+    color: var(--white-color);
     font-size: 1.6rem;
     /* margin-bottom: 0; */
   }
   & hr {
     width: 150px;
-    background: var(--orange-color);
-    height: 1px;
+    background: var(--white-color);
+    height: 3px;
     margin: 0 auto 1.8rem;
   }
 

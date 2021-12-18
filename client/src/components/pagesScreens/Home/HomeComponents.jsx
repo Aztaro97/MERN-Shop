@@ -21,6 +21,7 @@ import {
   MdScreenSearchDesktop,
   GoMegaphone,
   SiMinds,
+  RiComputerLine,
   AiTwotoneGold,
   BsCameraReels,
   GiMonumentValley,
@@ -96,6 +97,12 @@ function HomeComponents() {
               <a href="#products" className="nav_item">
                 <BsCameraReels className="nav_icon" />
                 <h4 className="nav_title">productions</h4>
+              </a>
+            </Col>
+            <Col xs={{ span: 12 }} sm={{ span: 8 }} md={{ span: 6 }}>
+              <a href="#products" className="nav_item">
+                <RiComputerLine className="nav_icon" />
+                <h4 className="nav_title">POS</h4>
               </a>
             </Col>
           </Row>
@@ -209,7 +216,10 @@ function HomeComponents() {
           </Col>
         </Row>
       </SectionStyling>
-      <SectionStyling id="photography">
+      <SectionStyling
+        id="photography"
+        style={{ backgroundColor: "var(--dark-color)" }}
+      >
         <h1 className="title">PHOTOGRAPHY</h1>
         <h3 className="sub_title">
           It's simple keep calm, AU79CODE you got it covered !
@@ -424,7 +434,10 @@ function HomeComponents() {
           </Col>
         </Row>
       </SectionStyling>
-      <SectionStyling id="exhibition">
+      <SectionStyling
+        id="exhibition"
+        style={{ backgroundColor: "var(--dark-color)" }}
+      >
         <h1 className="title">exhibition management</h1>
         <h3 className="sub_title">You dream about it we run it!</h3>
         <Row gutter={[10, 10]}>
@@ -588,7 +601,7 @@ function HomeComponents() {
               <div className="service_card">
                 <BsCodeSlash className="service_card_icon" />
                 <h5 className="service_card_title">service 2</h5>
-                <p>
+                <p className="card_content">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Molestiae, minus corrupti. Porro
                 </p>
@@ -603,7 +616,7 @@ function HomeComponents() {
               <div className="service_card">
                 <BsCodeSlash className="service_card_icon" />
                 <h5 className="service_card_title">service 3</h5>
-                <p>
+                <p className="card_content">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Molestiae, minus corrupti. Porro
                 </p>
@@ -618,7 +631,7 @@ function HomeComponents() {
               <div className="service_card">
                 <BsCodeSlash className="service_card_icon" />
                 <h5 className="service_card_title">service 4</h5>
-                <p>
+                <p className="card_content">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Molestiae, minus corrupti. Porro
                 </p>
@@ -633,7 +646,7 @@ function HomeComponents() {
               <div className="service_card">
                 <BsCodeSlash className="service_card_icon" />
                 <h5 className="service_card_title">service 5</h5>
-                <p>
+                <p className="card_content">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Molestiae, minus corrupti. Porro
                 </p>
@@ -648,7 +661,7 @@ function HomeComponents() {
               <div className="service_card">
                 <BsCodeSlash className="service_card_icon" />
                 <h5 className="service_card_title">service 6</h5>
-                <p>
+                <p className="card_content">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Molestiae, minus corrupti. Porro
                 </p>
@@ -657,7 +670,10 @@ function HomeComponents() {
           </Row>
         </ProgrammingCardStyling>
       </SectionStyling>
-      <SectionStyling id="marketing">
+      <SectionStyling
+        id="marketing"
+        style={{ backgroundColor: "var(--dark-color)" }}
+      >
         <h1 className="title">marketing</h1>
         <h3 className="sub_title">
           Our services will make all thes gaps covered !
@@ -860,6 +876,10 @@ const Banner = () => {
       url:
         "https://images.unsplash.com/photo-1518107616985-bd48230d3b20?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
     },
+    // {
+    //   url:
+    //     "https://images.unsplash.com/photo-1518107616985-bd48230d3b20?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+    // },
     {
       url:
         "https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2076&q=80",

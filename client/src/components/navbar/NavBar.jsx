@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Link, useHistory } from "react-router-dom";
 import { FaUser, FaShoppingCart } from "react-icons/fa";
 import { AiTwotoneSetting } from "react-icons/ai";
+import { MdArrowDropDown, MdKeyboardArrowDown } from "react-icons/md";
 import { Popover, Menu } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../flux/actions/userAction";
@@ -17,9 +18,12 @@ import "./navbar.css";
 //   Logo Import State
 import Logo_SVG from "../../img/logo.svg";
 
+const { SubMenu } = Menu;
+
 function NavBar() {
   const [scrollNav, setScrollNav] = useState(false);
   const [showToggleMenu, setShowToggleMenu] = useState(false);
+  const [current, setCurrent] = useState(false);
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -42,6 +46,10 @@ function NavBar() {
     dispatch(logout());
   };
 
+  const handleClick = (e) => {
+    setCurrent({ current: e.key });
+  };
+
   const ChangeNav = () => {
     if (window.scrollY >= 1) {
       setScrollNav(true);
@@ -62,26 +70,6 @@ function NavBar() {
     }
   }, [successCreate, history, newProduct]);
 
-  const ProfileContentLogin = (
-    <Content>
-      {userInfo && (userInfo.typeUser === "merchant" || userInfo.isAdmin) ? (
-        <>
-          <LinkR href="/myproducts"> {t("my_products")} </LinkR>
-          <LinkR href="/myorder">{t("my_order")}</LinkR>
-          <LinkR href="/#" onClick={handleCreateProduct}>{t("add_more_products")}</LinkR>
-        </>
-      ) : (
-        <>
-          <LinkR href="/myorder">{t("my_order")}</LinkR>
-          <LinkR href="/register">{t("create_your_shop")}</LinkR>
-        </>
-      )}
-
-      <LinkP className="btn_logOut" onClick={handleLogOut}>
-        {t("logout")}
-      </LinkP>
-    </Content>
-  );
   const ProfileContentLogOut = (
     <Content>
       <LinkR href="/register">{t("create_your_shop")}</LinkR>
@@ -128,164 +116,248 @@ function NavBar() {
     </ListNavigation>
   );
 
-  const marketingMenu = (
-    <Menu>
-      <Menu.Item>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.antgroup.com"
-        >
-          1st menu item
-        </a>
-      </Menu.Item>
-      <Menu.Item>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.antgroup.com"
-        >
-          1st menu item
-        </a>
-      </Menu.Item>
-    </Menu>
-  );
-
   const screenWidth = window.screen.width;
 
   return (
-    <Header scrollNav={scrollNav}>
-      <Logo to="/">
-        <img src={Logo_SVG} alt="" width="auto" height="auto" />{" "}
-        <span>au 79 code</span>
-      </Logo>
-      {/* <Lang href="/" onClick={handleChangeLang} >{t("language")}</Lang> */}
+    <HeaderContainer>
+      <HeaderTop scrollNav={scrollNav}>
+        <Logo to="/">
+          <img src={Logo_SVG} alt="" width="auto" height="auto" />{" "}
+          <span>au 79 code</span>
+        </Logo>
+        {/* <Lang href="/" onClick={handleChangeLang} >{t("language")}</Lang> */}
 
-      <Nav>
-        <NavItem>
-          <SelectLangue />
-        </NavItem>
-        {userInfo && userInfo.isAdmin && (
+        <Nav>
+          <NavItem>
+            <SelectLangue />
+          </NavItem>
+          {userInfo && userInfo.isAdmin && (
+            <NavItem>
+              <Popover
+                placement="bottomRight"
+                content={AdminContente}
+                trigger={screenWidth > 768 ? "hover" : "click"}
+              >
+                <NavLink>
+                  <AiTwotoneSetting className="icon" />
+                </NavLink>
+              </Popover>
+            </NavItem>
+          )}
           <NavItem>
             <Popover
               placement="bottomRight"
-              content={AdminContente}
               trigger={screenWidth > 768 ? "hover" : "click"}
+              content={
+                <ListNavigation>
+                  {userInfo && (
+                    <li>
+                      <Link className="link" to="/advertising/profile">
+                        My Ads
+                      </Link>
+                    </li>
+                  )}
+                  {userInfo && userInfo.typeUser === "merchant" && (
+                    <>
+                      <li>
+                        <Link className="link" to="/myproducts">
+                          {" "}
+                          {t("my_products")}{" "}
+                        </Link>
+                      </li>
+                      <li>
+                        <Link className="link" to="/myorder">
+                          {t("my_order")}
+                        </Link>
+                      </li>
+                      <li>
+                        <Link className="link" onClick={handleCreateProduct}>
+                          {t("add_more_products")}
+                        </Link>
+                      </li>
+                    </>
+                  )}
+                  {!userInfo && (
+                    <li>
+                      <Link to="/auth" className="link">
+                        {t("signin")} / {t("signup")}
+                      </Link>
+                    </li>
+                  )}
+                  {userInfo && (
+                    <li>
+                      <Link className="link" onClick={handleLogOut}>
+                        {t("logout")}
+                      </Link>
+                    </li>
+                  )}
+                </ListNavigation>
+              }
             >
               <NavLink>
-                <AiTwotoneSetting className="icon" />
+                <FaUser className="icon" />
               </NavLink>
             </Popover>
           </NavItem>
-        )}
-        <NavItem>
-          <Popover
-            placement="bottomRight"
-            trigger={screenWidth > 768 ? "hover" : "click"}
-            content={
-              <ListNavigation>
-                {userInfo && (
-                  <li>
-                    <Link className="link" to="/advertising/profile">
-                      My Ads
-                    </Link>
-                  </li>
-                )}
-                {userInfo && userInfo.typeUser === "merchant" && (
-                  <>
-                    <li>
-                      <Link className="link" to="/myproducts">
-                        {" "}
-                        {t("my_products")}{" "}
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="link" to="/myorder">
-                        {t("my_order")}
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="link" onClick={handleCreateProduct}>
-                        {t("add_more_products")}
-                      </Link>
-                    </li>
-                  </>
-                )}
-                {!userInfo && (
-                  <li>
-                    <Link to="/auth" className="link">
-                      {t("signin")} / {t("signup")}
-                    </Link>
-                  </li>
-                )}
-                {userInfo && (
-                  <li>
-                    <Link className="link" onClick={handleLogOut}>
-                      {t("logout")}
-                    </Link>
-                  </li>
-                )}
-              </ListNavigation>
-            }
-          >
-            <NavLink>
-              <FaUser className="icon" />
+          <NavItem>
+            <NavLink to="/cart" currentLang={currentLang}>
+              <FaShoppingCart className="icon" />
+              {cartItems.length > 0 ? (
+                <span className="count">{cartItems.length}</span>
+              ) : (
+                <span className="count">0</span>
+              )}
             </NavLink>
-          </Popover>
-        </NavItem>
-        <NavItem>
-          <NavLink to="/cart" currentLang={currentLang}>
-            <FaShoppingCart className="icon" />
-            {cartItems.length > 0 ? (
-              <span className="count">{cartItems.length}</span>
-            ) : (
-              <span className="count">0</span>
-            )}
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <ToggleBtn
-            showToggleMenu={showToggleMenu}
-            className="menuButton"
-            onClick={() => setShowToggleMenu(!showToggleMenu)}
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-          </ToggleBtn>
-        </NavItem>
-        <ToggleMenu open={showToggleMenu} setOpen={setShowToggleMenu} />
-      </Nav>
-    </Header>
+          </NavItem>
+          {/* <NavItem>
+            <ToggleBtn
+              showToggleMenu={showToggleMenu}
+              className="menuButton"
+              onClick={() => setShowToggleMenu(!showToggleMenu)}
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </ToggleBtn>
+          </NavItem>
+          <ToggleMenu open={showToggleMenu} setOpen={setShowToggleMenu} /> */}
+        </Nav>
+      </HeaderTop>
+      <BottomHeader scrollNav={scrollNav}>
+        <Menu
+          onClick={handleClick}
+          // selectedKeys={[current]}
+          mode="horizontal"
+          style={{ background: "transparent", border: "none", color: "#000" }}
+        >
+          <Menu.Item key="advertising">
+            <Link to="/advertising" className="link">
+              advertising
+            </Link>
+          </Menu.Item>
+          <Menu.Item key="ecommerce">
+            <Link to="/e-commerce" className="link">
+              E-commerce
+            </Link>
+          </Menu.Item>
+          <SubMenu key="services" title={`Our Services `}>
+            <Menu.Item key="setting:1">
+              <Link to="/design">Design</Link>
+            </Menu.Item>
+            <Menu.Item key="setting:2">
+              <Link to="/design">Photography</Link>
+            </Menu.Item>
+            <Menu.Item key="setting:3">
+              <Link to="/design">Printing Press</Link>
+            </Menu.Item>
+            <Menu.Item key="setting:4">
+              <Link to="/design">Exhibition Management</Link>
+            </Menu.Item>
+            <Menu.Item key="setting:5">
+              <Link to="/design">Programming</Link>
+            </Menu.Item>
+            <Menu.Item key="setting:6">
+              <Link to="/design">Marketing</Link>
+            </Menu.Item>
+            <Menu.Item key="setting:6">
+              <Link to="/design">Production</Link>
+            </Menu.Item>
+            <Menu.Item key="setting:6">
+              <Link to="/design">POS</Link>
+            </Menu.Item>
+          </SubMenu>
+        </Menu>
+      </BottomHeader>
+    </HeaderContainer>
   );
 }
 
-const Header = styled.header`
+const HeaderContainer = styled.header`
   max-width: var(--max-width);
   margin: 0 auto !important;
-  height: 100px;
+  height: 100% !important;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+`;
+
+const BottomHeader = styled.div`
+  height: 60px;
+  line-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background: #834912; */
+  text-transform: uppercase;
+
+  background: ${({ scrollNav }) =>
+    scrollNav ? "var(--orange-color)" : "var(--orange-color)"};
+
+  /* position: fixed;
+  right: 0;
+  left: 0; */
+  /* top: 0; */
+
+  & .ant-menu-item,
+  & .ant-menu-submenu,
+  & .ant-menu-submenu-title {
+    color: #fff !important;
+    &:hover {
+      color: #111 !important;
+    }
+    &:after {
+      border-bottom: none !important;
+    }
+  }
+
+  & .ant-menu-submenu {
+    & .ant-menu-submenu-title {
+      &:after {
+        border-bottom: none !important;
+      }
+    }
+    &:hover {
+      color: #111 !important;
+      & .ant-menu-submenu-arrow {
+        color: #111 !important;
+      }
+    }
+  }
+  & .ant-menu-submenu-arrow {
+    color: #fff !important;
+    display: flex;
+    position: absolute !important;
+    right: -16px !important;
+    top: 46%;
+    &:hover {
+      color: #111 !important;
+    }
+  }
+`;
+
+const HeaderTop = styled.div`
+  height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
-  top: 0;
+  
   width: 100%;
   z-index: 99;
   padding: 0 2rem;
-  background: ${({ scrollNav }) => (scrollNav ? "#fff" : "transparent")};
+  background: ${({ scrollNav }) => (scrollNav ? "#fff" : "#fff")};
   /* box-shadow: ${({ scrollNav }) =>
     scrollNav ? "0px 2px 0px 0px rgba(0,0,0,0.11)" : "none"}; */
   transition: ${({ scrollNav }) =>
     scrollNav ? "background 0s ease-in-out" : "background .5s ease-in-out"};
   @media only screen and (max-width: 768px) {
     height: 80px;
-    padding: 0 0.9rem;
+    padding: 0 0.7rem;
   }
   & > div {
     position: fixed;

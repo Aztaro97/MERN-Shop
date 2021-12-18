@@ -1,10 +1,14 @@
 :root {
   --background-color: #e2c3c3;
-  --orange-color: #c68787;
+  /* --orange-color: #c68787; */
+  --orange-color: #aa7a13;
   --silver-color: #9e9fa1;
+  --white-color: #fff;
+  --black-color: #000;
   --border-color: #e9e6e6;
   --jungle-color: #49c4d3;
-  --dark-color: #0b1b34;
+  --dark-color: #181818;
+  --dark-light-color: #2A2A2A;
   --gray-color: #93a3b3;
   --max-width: 1000px;
   --box-shadow-value: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,

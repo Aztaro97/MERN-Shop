@@ -134,11 +134,12 @@ const DataStyling = styled.section`
     text-transform: capitalize;
     font-weight: 700;
     margin-top: 20px;
+    color: var(--white-color);
   }
   & hr {
     width: 100px;
     height: 2px;
-    background: var(--orange-color);
+    background: var(--white-color);
     margin: 10px auto;
   }
   & .data_item {
@@ -184,9 +185,9 @@ const DataStyling = styled.section`
     /* margin: 20px 0 25px 0; */
     height: 100%;
     & h5 {
+      color: var(--white-color);
       & span {
         font-size: 1.4rem;
-        color: var(--orange-color);
         font-weight: 700;
       }
     }

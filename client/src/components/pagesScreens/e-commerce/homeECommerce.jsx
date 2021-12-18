@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import LandingPage from "./banner/bannerComponent";
 import TextTruncate from "react-text-truncate";
 import MainContainer from "../../MainContainer";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { Fade, Slide, Zoom  } from "react-reveal";
+import { Fade, Slide, Zoom } from "react-reveal";
 import {
   getCompanyList,
   getCraftmanList,
@@ -16,10 +16,12 @@ import ErrorServerPage from "../ErrorServerPage";
 
 import svg1 from "../../../img/svg1.svg";
 import { Col, Row } from "antd";
+import Slider from "react-slick";
 
 const empty_pic = "/img/advertising/empty.jpg";
 
 function HomeECommerce() {
+  const [currentSlide, setcurrentSlide] = useState(null);
   const dispatch = useDispatch();
 
   const { loading, company, error: errorCompany } = useSelector(
@@ -29,11 +31,49 @@ function HomeECommerce() {
     (state) => state.craftmanList
   );
 
+  const settings = {
+    dots: false,
+    className: "center",
+    centerMode: true,
+    infinite: true,
+    centerPadding: "100px",
+    slidesToShow: 1,
+    autoplay: true,
+    // fade: true,
+    // vertical: true,
+    verticalSwiping: true,
+    swipeToSlide: true,
+    speed: 500,
+    nextArrow: <></>,
+    prevArrow: <></>,
+    beforeChange: function(current, nextSlide) {
+      console.log("before change", current, nextSlide);
+      setcurrentSlide(currentSlide);
+    },
+  };
+
+  const imageData = [
+    {
+      id: 0,
+      url:
+        "https://images.unsplash.com/photo-1639592396001-5f5017b960a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80",
+    },
+    {
+      id: 0,
+      url:
+        "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80",
+    },
+    {
+      id: 0,
+      url:
+        "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+    },
+  ];
+
   useEffect(() => {
     dispatch(getCompanyList());
     dispatch(getCraftmanList());
   }, [dispatch]);
-
 
   return (
     <MainContainer>
@@ -46,7 +86,7 @@ function HomeECommerce() {
         <>
           <LandingPage />
 
-          <Section1>
+          <Section1 current={currentSlide} data={imageData}>
             <Fade top>
               <h3>Share your company with</h3>
               <h1>our E-Commerce service</h1>
@@ -60,23 +100,54 @@ function HomeECommerce() {
             </Fade>
 
             <Slide left cascade>
-              <div className="content">
-                <div className="svg_img">
-                  <img src={svg1} alt="" />
-                </div>
-                <div className="content_para">
-                  <p>
-                    is simply dummy text of the printing and typesetting
-                    industry. Lorem Ipsum has been the industry's standard dummy
-                    text ever since the 1500s, when an unknown printer took a
-                    galley of type and scrambled it to make a type specimen book
-                  </p>
-                </div>
-              </div>
+              <Row gutter={[40, 10]}>
+                <Col xs={{ span: 24 }} lg={{ span: 12 }}>
+                  <Slider {...settings} className="slider_container">
+                    {imageData.map((data) => (
+                      <div key={data.id}>
+                        <img
+                          src={data.url}
+                          alt=""
+                          className={`img-${data.id}`}
+                        />
+                      </div>
+                    ))}
+                    {/* <div>
+                      <img
+                        src="https://images.unsplash.com/photo-1639592396001-5f5017b960a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80"
+                        alt=""
+                      />
+                    </div>
+                    <div>
+                      <img
+                        src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80"
+                        alt=""
+                      />
+                    </div>
+                    <div>
+                      <img
+                        src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+                        alt=""
+                      />
+                    </div> */}
+                  </Slider>
+                </Col>
+                <Col xs={{ span: 24 }} lg={{ span: 12 }}>
+                  <div className="content">
+                    <p className="para">
+                      is simply dummy text of the printing and typesetting
+                      industry. Lorem Ipsum has been the industry's standard
+                      dummy text ever since the 1500s, when an unknown printer
+                      took a galley of type and scrambled it to make a type
+                      specimen book
+                    </p>
+                  </div>
+                </Col>
+              </Row>
             </Slide>
           </Section1>
 
-          <CardSection>
+          <CardSection style={{ backgroundColor: "var(--black-color)" }}>
             <h4>companies for you</h4>
             <hr />
             {loading ? (
@@ -93,7 +164,7 @@ function HomeECommerce() {
                         md={{ span: 8 }}
                         lg={{ span: 6 }}
                       >
-                        <Zoom  right cascade>
+                        <Zoom right cascade>
                           <Card>
                             <img
                               className="card_img"
@@ -118,7 +189,7 @@ function HomeECommerce() {
                               </Link>
                             </div>
                           </Card>
-                        </Zoom >
+                        </Zoom>
                       </Col>
                     ))}
                   </>
@@ -148,7 +219,7 @@ function HomeECommerce() {
                         lg={{ span: 6 }}
                       >
                         {" "}
-                        <Zoom  left cascade>
+                        <Zoom left cascade>
                           <Card>
                             <img
                               className="card_img"
@@ -173,7 +244,7 @@ function HomeECommerce() {
                               </Link>
                             </div>
                           </Card>
-                        </Zoom >
+                        </Zoom>
                       </Col>
                     ))}
                   </>
@@ -192,12 +263,11 @@ function HomeECommerce() {
 
 const Section1 = styled.section`
   max-width: var(--max-width);
-  margin: 1rem auto 0;
-  padding: 0rem 6rem 2rem;
+  padding: 4rem 2rem;
   text-align: center;
 
   & h3 {
-    color: var(--jungle-color);
+    color: var(--orange-color);
     text-transform: uppercase;
     margin-bottom: 0.7rem;
     font-size: 1rem;
@@ -208,12 +278,13 @@ const Section1 = styled.section`
     text-transform: uppercase;
     margin-bottom: 0;
     font-size: 1.6rem;
+    color: var(--white-color);
   }
   & hr {
     width: 100px;
     border: none;
     outline: none;
-    background-color: var(--jungle-color);
+    background-color: var(--white-color);
     height: 1px;
     margin: 1rem auto;
   }
@@ -221,14 +292,30 @@ const Section1 = styled.section`
     color: var(--silver-color);
     font-size: 1rem;
   }
-
   & .content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 2rem;
-    /* max-width: 1000px; */
-    margin: 1rem auto;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    & .para {
+      padding: 2rem;
+    }
+  }
 
+  & .slider_container {
+    padding: 2rem 0;
+    & img {
+      /* width: 100%; */
+      max-height: 400px;
+      object-fit: cover;
+    }
+    & .img-0,
+    & .img-1,
+    & .img-2 {
+      width: ${({ current, data }) => (current === data.id ? "50px" : "900px")};
+    }
+  }
+
+  /* & .content {
     @media only screen and (max-width: 1000px) {
       display: block;
     }
@@ -247,15 +334,8 @@ const Section1 = styled.section`
         }
       }
     }
-    & .content_para {
-      display: flex;
-      align-items: center;
-      text-align: start;
-      @media only screen and (max-width: 1000px) {
-        text-align: center;
-      }
-    }
-  }
+   
+  } */
 
   @media only screen and (max-width: 768px) {
     margin-top: 0;
@@ -274,29 +354,28 @@ const Section1 = styled.section`
 `;
 
 const CardSection = styled.div`
-  margin: 4rem auto;
+  padding: 4rem 2rem;
   max-width: var(--max-width);
-  padding: 0 1.5rem;
 
   & h4 {
     font-size: 1.4rem;
     text-align: center;
     font-weight: 700;
     text-transform: uppercase;
-    color: var(--orange-color);
+    color: var(--white-color);
   }
   & hr {
     width: 100px;
     margin: 0 auto;
     height: 2px;
-    background-color: var(--orange-color);
+    background-color: var(--white-color);
   }
   & .link {
     text-decoration: none;
     text-align: center;
     display: block;
-    color: #fff;
-    background: #92a4b3;
+    color: var(--white-color);
+    background: var(--orange-color);
     margin: 2rem auto 0 auto;
     width: 200px;
     padding: 5px;
@@ -331,6 +410,7 @@ const Card = styled.div`
       text-transform: uppercase;
       font-size: 1rem;
       font-weight: 700;
+      color: var(--white-color);
     }
     & p {
       color: var(--silver-color);
