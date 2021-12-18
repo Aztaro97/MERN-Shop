@@ -259,7 +259,7 @@ const FirstServiceStyling = styled.section`
     text-align: center;
     margin-bottom: 0;
     letter-spacing: 1px;
-    color: var(--silver-color);
+    color: var(--orange-color);
   }
   & .title {
     font-size: 1.8rem;
@@ -267,6 +267,7 @@ const FirstServiceStyling = styled.section`
     font-weight: 700;
     text-align: center;
     margin-bottom: 20px;
+    color: var(--white-color);
   }
   & .service_card {
     padding: 20px;
@@ -321,16 +322,17 @@ const SecondServiceStyling = styled.section`
     text-transform: capitalize;
     font-weight: 700;
     margin-bottom: 0;
-    color: #333333b9;
+    color: var(--white-color);
   }
   & .para {
     font-size: 1rem;
+    color: var(--silver-color);
   }
 
   & .rectangle {
     width: 200px;
     height: 250px;
-    border: 20px solid var(--background-color);
+    border: 20px solid var(--silver-color);
     position: absolute;
     right: 30%;
     bottom: -18px;
@@ -347,7 +349,7 @@ const SecondServiceStyling = styled.section`
   & .contact_container {
     max-width: calc((var(--max-width) - 150px));
     margin-left: auto;
-    background: #ececec;
+    background: var(--black-color);
     padding: 30px;
     & .contact_card {
       & img {
@@ -355,9 +357,9 @@ const SecondServiceStyling = styled.section`
       }
       & .contact_card_body {
         padding: 20px;
-        background: #fff;
+        background: var(--dark-light-color);
         & h3 {
-          color: #333;
+          color: var(--white-color);
           font-size: 1.1rem;
           font-weight: 700;
           letter-spacing: 1px;
@@ -376,7 +378,7 @@ const SecondServiceStyling = styled.section`
     }
 
     & .content_right {
-      background: #fff;
+      background: var(--dark-light-color);
       padding: 20px;
       & div {
         display: flex;
@@ -387,6 +389,7 @@ const SecondServiceStyling = styled.section`
         }
         & h5 {
           padding: 20px 10px;
+          color: var(--silver-color)
         }
         @media screen and (max-width: 500px) {
           flex-direction: column;

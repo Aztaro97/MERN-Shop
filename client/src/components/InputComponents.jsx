@@ -10,7 +10,7 @@ function InputComponents({
   onChange,
   style,
   required,
-  className
+  className,
 }) {
   return (
     <Input
@@ -31,26 +31,27 @@ const Input = styled.input`
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  color: #111;
+  color: var(--white-color);
   list-style: none;
   width: 100%;
   min-width: 0;
   padding: 5px 11px;
   font-size: 0.7rem;
   height: 2.5rem;
-  border: 2px solid var(--background-color);
+  border: 1px solid var(--silver-color);
   outline: none;
   border-radius: 5px;
   transition: all 0.3s;
-  background: #fff;
+  background: var(--dark-light-color);
   letter-spacing: 2px;
 
   &:focus {
     /* border-color: var(--orange-color); */
     /* border-right-width: 0.3px !important; */
     outline: none;
-    box-shadow: 0 0 0 0.5px var(--background-color);
-    background: #fff;
+    /* box-shadow: 0 0 0 0.5px var(--background-color); */
+    background: var(--dark-color);
+    color: var(--white-color);
   }
 
   @media only screen and (max-width: 900px) {

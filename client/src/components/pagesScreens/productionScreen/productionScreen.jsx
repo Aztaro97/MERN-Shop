@@ -206,7 +206,7 @@ const CardProductList = () => {
 
 const Container = styled.div`
   & section {
-    padding: 20px 0;
+    padding: 4rem 2rem;
   }
   & .portfolio {
     margin: 20px 0;
@@ -280,9 +280,10 @@ const Container = styled.div`
 
 const ProductListStyling = styled.section`
   & .title {
-    color: var(--orange-color);
+    color: var(--white-color);
     text-align: center;
     text-transform: uppercase;
+    margin-bottom: 2rem;
   }
   & .product_card {
     max-width: 240px;
@@ -296,11 +297,13 @@ const ProductListStyling = styled.section`
 `;
 
 const ProductStyling = styled.section`
+  padding: 4rem 2rem;
   & .title {
     text-transform: uppercase;
     text-align: center;
     color: var(--orange-color);
     font-size: 1.8rem;
+    margin-bottom: 2rem;
   }
   & .slider {
     width: 100%;

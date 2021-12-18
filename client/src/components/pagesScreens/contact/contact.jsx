@@ -75,7 +75,9 @@ function Contact() {
                 lg={{ span: 12 }}
               >
                 <div className="followUs">
-                  <Typography.Title level={3}>Follow us</Typography.Title>
+                  <Typography.Title level={3} className="title">
+                    Follow us
+                  </Typography.Title>
                   <div className="lint_container">
                     <a
                       href="https://api.whatsapp.com/send?phone=+971502022251"
@@ -124,8 +126,10 @@ function Contact() {
                   </div>
                 </div>
                 <div>
-                  <Typography.Title level={3}>Contact US</Typography.Title>
-                  <p>
+                  <Typography.Title level={3} className="title">
+                    Contact US
+                  </Typography.Title>
+                  <p className="para">
                     You Have a question
                     <br /> a request for information, a project{" "}
                   </p>
@@ -216,29 +220,31 @@ function Contact() {
           )}
         </ContactContainer>
       </MainContainer>
-      }
     </>
   );
 }
 
 const ButtonStyling = styled(Button)`
   letter-spacing: 1px;
-  font-size: 1rem ;
+  font-size: 1rem;
   font-weight: 400;
   padding: 5px 40px;
-`
+`;
 
 const ContactContainer = styled.section`
-  background: rgba(236, 236, 236, 0.925);
+  background: var(--black-color);
   height: 100% !important;
-  padding: 3rem 2rem;
+  padding: 4rem 2rem 6rem;
   /* margin-top: 4rem; */
   & .title {
-    color: #111;
+    color: var(--white-color);
     font-weight: 500;
     margin-bottom: 7px;
     display: block;
     text-transform: capitalize;
+  }
+  & .para {
+    color: var(--silver-color);
   }
   .followUs {
     margin-bottom: 20px;
@@ -248,10 +254,11 @@ const ContactContainer = styled.section`
       height: 100%;
       & .media_link {
         color: #fff;
-        background: var(--orange-color);
-        transition: all 0.5s ease-in-out;
+        /* background: var(--orange-color); */
+        border: 1px solid var(--silver-color);
+        transition: all 0.3s ease-in-out;
         padding: 7px;
-        margin-right: 2px;
+        margin-right: 10px;
         &:hover {
           transform: scale(1.2);
         }

@@ -498,7 +498,12 @@ const FirstServiceStyling = styled.section`
 `;
 
 const Banner = styled.section`
-  background: url("https://images.unsplash.com/photo-1563126153-74b8e04c1070?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80");
+  background: linear-gradient(
+      225deg,
+      rgba(2, 0, 36, 0.5606617647058824) 5%,
+      rgba(0, 0, 0, 0.7035189075630253) 70%
+    ),
+    url("https://images.unsplash.com/photo-1587440871875-191322ee64b0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1771&q=80");
   position: relative;
   height: 400px;
   object-fit: cover;
