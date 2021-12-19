@@ -230,9 +230,11 @@ function NavBar() {
         </Nav>
       </HeaderTop>
       <BottomHeader scrollNav={scrollNav}>
+        {/* <p>fffff</p> */}
         <Menu
           onClick={handleClick}
-          // selectedKeys={[current]}
+          selectedKeys={[current]}
+          className="menu"
           mode="horizontal"
           style={{ background: "transparent", border: "none", color: "#000" }}
         >
@@ -246,30 +248,34 @@ function NavBar() {
               E-commerce
             </Link>
           </Menu.Item>
-          <SubMenu key="services" title={`Our Services `}>
+          <SubMenu
+            key="services"
+            title={`Our Services `}
+            className="submenu_content"
+          >
             <Menu.Item key="setting:1">
               <Link to="/design">Design</Link>
             </Menu.Item>
             <Menu.Item key="setting:2">
-              <Link to="/design">Photography</Link>
+              <Link to="/photography">Photography</Link>
             </Menu.Item>
             <Menu.Item key="setting:3">
-              <Link to="/design">Printing Press</Link>
+              <Link to="/print">Printing Press</Link>
             </Menu.Item>
             <Menu.Item key="setting:4">
-              <Link to="/design">Exhibition Management</Link>
+              <Link to="/exhibition">Exhibition Management</Link>
             </Menu.Item>
             <Menu.Item key="setting:5">
-              <Link to="/design">Programming</Link>
+              <Link to="/programming">Programming</Link>
             </Menu.Item>
             <Menu.Item key="setting:6">
-              <Link to="/design">Marketing</Link>
+              <Link to="/marketing">Marketing</Link>
             </Menu.Item>
             <Menu.Item key="setting:6">
-              <Link to="/design">Production</Link>
+              <Link to="/production">Production</Link>
             </Menu.Item>
             <Menu.Item key="setting:6">
-              <Link to="/design">POS</Link>
+              <Link to="/pos">POS</Link>
             </Menu.Item>
           </SubMenu>
         </Menu>
@@ -288,12 +294,9 @@ const HeaderContainer = styled.header`
 `;
 
 const BottomHeader = styled.div`
-  height: 60px;
-  line-height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* background: #834912; */
   text-transform: uppercase;
 
   background: ${({ scrollNav }) =>
@@ -303,11 +306,20 @@ const BottomHeader = styled.div`
   right: 0;
   left: 0; */
   /* top: 0; */
+  & .ant-menu {
+    & .ant-menu-item {
+      position: static !important;
+    }
+  }
 
   & .ant-menu-item,
   & .ant-menu-submenu,
-  & .ant-menu-submenu-title {
+  & .ant-menu-submenu-title,
+  & .link {
     color: #fff !important;
+    text-decoration: none !important;
+    /* //  Import Do not remove   ///// */
+    position: relative !important;
     &:hover {
       color: #111 !important;
     }
@@ -339,22 +351,25 @@ const BottomHeader = styled.div`
       color: #111 !important;
     }
   }
+
+  & .submenu_content {
+    & .link {
+      text-decoration: none !important;
+    }
+  }
 `;
 
 const HeaderTop = styled.div`
-  height: 80px;
+  /* height: 80px; */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
   width: 100%;
   z-index: 99;
-  padding: 0 2rem;
+  padding:1rem 2rem;
   background: ${({ scrollNav }) => (scrollNav ? "#fff" : "#fff")};
   /* box-shadow: ${({ scrollNav }) =>
     scrollNav ? "0px 2px 0px 0px rgba(0,0,0,0.11)" : "none"}; */
-  transition: ${({ scrollNav }) =>
-    scrollNav ? "background 0s ease-in-out" : "background .5s ease-in-out"};
   @media only screen and (max-width: 768px) {
     height: 80px;
     padding: 0 0.7rem;
@@ -363,6 +378,7 @@ const HeaderTop = styled.div`
     position: fixed;
   }
 `;
+
 const Nav = styled.ul`
   display: flex;
   justify-content: center;

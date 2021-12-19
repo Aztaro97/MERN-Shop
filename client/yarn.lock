@@ -3221,6 +3221,11 @@
   "resolved" "https://registry.npmjs.org/babylon/-/babylon-6.18.0.tgz"
   "version" "6.18.0"
 
+"background-cover@0.1.1":
+  "integrity" "sha512-JXa8vLJdCk5IQtbFBmdgRjdmNA7rwKWXw5VFn4fxahW8kLMLtBvgzczkaMANYddbAMZdtNQLjkW+elac2qLqXw=="
+  "resolved" "https://registry.npmjs.org/background-cover/-/background-cover-0.1.1.tgz"
+  "version" "0.1.1"
+
 "balanced-match@^1.0.0":
   "integrity" "sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw=="
   "resolved" "https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.2.tgz"
@@ -6794,6 +6799,11 @@
     "validate-npm-package-license" "^3.0.4"
     "validate-npm-package-name" "^3.0.0"
 
+"insert-rule@^2.1.0":
+  "integrity" "sha1-e6JDhwMawktWfCVNqnyd8DYZH1o="
+  "resolved" "https://registry.npmjs.org/insert-rule/-/insert-rule-2.1.0.tgz"
+  "version" "2.1.0"
+
 "internal-ip@^4.3.0":
   "integrity" "sha512-S1zBo1D6zcsyuC6PMmY5+55YMILQ9av8lotMx447Bq6SAgo/sDK6y6uUKmuYhW7eacnIhFfsPmCNYdDzsnnDCg=="
   "resolved" "https://registry.npmjs.org/internal-ip/-/internal-ip-4.3.0.tgz"
@@ -6810,6 +6820,11 @@
     "get-intrinsic" "^1.1.0"
     "has" "^1.0.3"
     "side-channel" "^1.0.4"
+
+"intervalometer@^1.0.4":
+  "integrity" "sha512-JzEThNp7ZB26jJYQTTLZ0SCSr5cfOKS5EBOJ77ff6ba66IW59hRD3P66Ailv82XAG+ISsMGGNQohC1fOYjjeWw=="
+  "resolved" "https://registry.npmjs.org/intervalometer/-/intervalometer-1.0.5.tgz"
+  "version" "1.0.5"
 
 "invariant@2.2.4":
   "integrity" "sha512-phJfQVBuaJM5raOpJjSfkiD6BpbCE4Ns//LaXl6wGYtUBY83nWS6Rf9tXm2e8VaK60JEjYldbPif/A2B1C2gNA=="
@@ -6835,6 +6850,14 @@
   "integrity" "sha512-0KI/607xoxSToH7GjN1FfSbLoU0+btTicjsQSWQlh/hZykN8KpmMf7uYwPW3R+akZ6R/w18ZlXSHBYXiYUPO3g=="
   "resolved" "https://registry.npmjs.org/ipaddr.js/-/ipaddr.js-1.9.1.tgz"
   "version" "1.9.1"
+
+"iphone-inline-video@^2.2.2":
+  "integrity" "sha1-tc2NU9DGD7yxJIz9u+RNNv9hD7I="
+  "resolved" "https://registry.npmjs.org/iphone-inline-video/-/iphone-inline-video-2.2.2.tgz"
+  "version" "2.2.2"
+  dependencies:
+    "intervalometer" "^1.0.4"
+    "poor-mans-symbol" "^1.0.1"
 
 "is-absolute-url@^2.0.0":
   "integrity" "sha1-UFMN+4T8yap9vnhS6Do3uTufKqY="
@@ -9608,6 +9631,11 @@
   dependencies:
     "ts-pnp" "^1.1.6"
 
+"poor-mans-symbol@^1.0.1":
+  "integrity" "sha1-DBtl/x1JwHQCsiNeViB30SBnHQw="
+  "resolved" "https://registry.npmjs.org/poor-mans-symbol/-/poor-mans-symbol-1.0.1.tgz"
+  "version" "1.0.1"
+
 "portfinder@^1.0.26":
   "integrity" "sha512-Se+2isanIcEqf2XMHjyUKskczxbPH7dQnlMjXX6+dybayyHvAf/TCgyMRlzf/B6QDhAEFOGes0pzRo3by4AbMA=="
   "resolved" "https://registry.npmjs.org/portfinder/-/portfinder-1.0.28.tgz"
@@ -10916,6 +10944,18 @@
     "regenerator-runtime" "^0.13.7"
     "whatwg-fetch" "^3.4.1"
 
+"react-background-video-player@^1.1.8":
+  "integrity" "sha512-stGl6dNhcybOIdbMq5nnKQ15AAvEBqdBMc4r+EfBnUuUH7bBWhs7/JK++NmviFHjgVgQJoGraqFCKnreGWpUWg=="
+  "resolved" "https://registry.npmjs.org/react-background-video-player/-/react-background-video-player-1.1.8.tgz"
+  "version" "1.1.8"
+  dependencies:
+    "background-cover" "0.1.1"
+    "insert-rule" "^2.1.0"
+    "iphone-inline-video" "^2.2.2"
+    "prop-types" "^15.7.2"
+    "react" "^16.3.2"
+    "react-dom" "^16.14.0"
+
 "react-country-region-selector@^3.2.0":
   "integrity" "sha512-ouCl7ZEC4CzJIfjEqk492x2WfePj8ehfU/4y9tfCHJwhKqzjiByF2Mnf079sr6vYZdfz3yyPDnLP5eloM3Jvjw=="
   "resolved" "https://registry.npmjs.org/react-country-region-selector/-/react-country-region-selector-3.2.0.tgz"
@@ -10966,6 +11006,16 @@
     "loose-envify" "^1.1.0"
     "object-assign" "^4.1.1"
     "scheduler" "^0.20.2"
+
+"react-dom@^16.14.0":
+  "integrity" "sha512-1gCeQXDLoIqMgqD3IO2Ah9bnf0w9kzhwN5q4FGnHZ67hBm9yePzB5JJAIQCc8x3pFnNlwFq4RidZggNAAkzWWw=="
+  "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-16.14.0.tgz"
+  "version" "16.14.0"
+  dependencies:
+    "loose-envify" "^1.1.0"
+    "object-assign" "^4.1.1"
+    "prop-types" "^15.6.2"
+    "scheduler" "^0.19.1"
 
 "react-dom@^16.4.1":
   "integrity" "sha512-1gCeQXDLoIqMgqD3IO2Ah9bnf0w9kzhwN5q4FGnHZ67hBm9yePzB5JJAIQCc8x3pFnNlwFq4RidZggNAAkzWWw=="
@@ -11336,7 +11386,7 @@
     "loose-envify" "^1.1.0"
     "object-assign" "^4.1.1"
 
-"react@^16.14.0", "react@^16.4.1", "react@16.14.0":
+"react@^16.14.0", "react@^16.3.2", "react@^16.4.1", "react@16.14.0":
   "integrity" "sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g=="
   "resolved" "https://registry.npmjs.org/react/-/react-16.14.0.tgz"
   "version" "16.14.0"

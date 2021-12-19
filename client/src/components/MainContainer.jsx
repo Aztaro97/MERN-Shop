@@ -11,6 +11,7 @@ const Container = styled.main`
   min-height: 51vh;
   display: block;
   overflow-x: hidden;
+  overflow-y: hidden;
 
 
   @media only screen and (max-width: 1040px) {

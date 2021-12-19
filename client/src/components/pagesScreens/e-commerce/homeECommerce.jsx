@@ -5,7 +5,7 @@ import TextTruncate from "react-text-truncate";
 import MainContainer from "../../MainContainer";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { Fade, Slide, Zoom } from "react-reveal";
+import { Fade } from "react-reveal";
 import {
   getCompanyList,
   getCraftmanList,
@@ -87,7 +87,7 @@ function HomeECommerce() {
           <LandingPage />
 
           <Section1 current={currentSlide} data={imageData}>
-            <Fade top>
+            <Fade bottom>
               <h3>Share your company with</h3>
               <h1>our E-Commerce service</h1>
               <hr />
@@ -97,9 +97,7 @@ function HomeECommerce() {
                 since the 1500s, when an unknown printer took a galley of type
                 and scrambled it to make a type specimen book
               </p>
-            </Fade>
 
-            <Slide left cascade>
               <Row gutter={[40, 10]}>
                 <Col xs={{ span: 24 }} lg={{ span: 12 }}>
                   <Slider {...settings} className="slider_container">
@@ -144,27 +142,27 @@ function HomeECommerce() {
                   </div>
                 </Col>
               </Row>
-            </Slide>
+            </Fade>
           </Section1>
 
-          <CardSection style={{ backgroundColor: "var(--black-color)" }}>
-            <h4>companies for you</h4>
-            <hr />
-            {loading ? (
-              <h2>Loading ...</h2>
-            ) : (
-              <Row gutter={[10, 10]}>
-                {company.users !== null && (
-                  <>
-                    {company.users.slice(0, 4).map((user, index) => (
-                      <Col
-                        key={index}
-                        xs={{ span: 12 }}
-                        sm={{ span: 12 }}
-                        md={{ span: 8 }}
-                        lg={{ span: 6 }}
-                      >
-                        <Zoom right cascade>
+          <CardSectionStyling style={{ backgroundColor: "var(--black-color)" }}>
+            <Fade bottom>
+              <h4>companies for you</h4>
+              <hr />
+              {loading ? (
+                <h2>Loading ...</h2>
+              ) : (
+                <Row gutter={[10, 10]}>
+                  {company.users !== null && (
+                    <>
+                      {company.users.slice(0, 4).map((user, index) => (
+                        <Col
+                          key={index}
+                          xs={{ span: 12 }}
+                          sm={{ span: 12 }}
+                          md={{ span: 8 }}
+                          lg={{ span: 6 }}
+                        >
                           <Card>
                             <img
                               className="card_img"
@@ -189,72 +187,77 @@ function HomeECommerce() {
                               </Link>
                             </div>
                           </Card>
-                        </Zoom>
-                      </Col>
-                    ))}
-                  </>
-                )}
-              </Row>
-            )}
-            <Link className="link" to="/companies">
-              see more
-            </Link>
-          </CardSection>
+                        </Col>
+                      ))}
+                    </>
+                  )}
+                </Row>
+              )}
+              <Link className="link" to="/companies">
+                see more
+              </Link>
+            </Fade>
+          </CardSectionStyling>
 
-          <CardSection>
-            <h4>craftman for you</h4>
-            <hr />
-            {loadingCraft ? (
-              <h2>Loading ...</h2>
-            ) : (
-              <Row gutter={[10, 10]}>
-                {craftman.users !== null && (
-                  <>
-                    {craftman.users.slice(0, 4).map((user, index) => (
-                      <Col
-                        key={index}
-                        xs={{ span: 12 }}
-                        sm={{ span: 12 }}
-                        md={{ span: 8 }}
-                        lg={{ span: 6 }}
-                      >
-                        {" "}
-                        <Zoom left cascade>
-                          <Card>
-                            <img
-                              className="card_img"
-                              src={
-                                user.company.urlImg.length !== 0
-                                  ? user.company.urlImg[0].url
-                                  : empty_pic
-                              }
-                              alt=""
-                            />
-                            <div className="card_body">
-                              <h3>{user.company.name}</h3>
-                              <TextTruncate
-                                line={3}
-                                element="span"
-                                text={user.company.about}
-                                truncateText="…"
+          <CardSectionStyling>
+            <Fade bottom>
+              <h4>craftman for you</h4>
+              <hr />
+              {loadingCraft ? (
+                <h2>Loading ...</h2>
+              ) : (
+                <Row gutter={[10, 10]}>
+                  {craftman.users !== null && (
+                    <>
+                      {craftman.users.slice(0, 4).map((user, index) => (
+                        <Col
+                          key={index}
+                          xs={{ span: 12 }}
+                          sm={{ span: 12 }}
+                          md={{ span: 8 }}
+                          lg={{ span: 6 }}
+                        >
+                          {" "}
+                          <Fade bottom>
+                            <Card>
+                              <img
+                                className="card_img"
+                                src={
+                                  user.company.urlImg.length !== 0
+                                    ? user.company.urlImg[0].url
+                                    : empty_pic
+                                }
+                                alt=""
                               />
-                              <hr />
-                              <Link className="link" to={`profile/${user._id}`}>
-                                see more
-                              </Link>
-                            </div>
-                          </Card>
-                        </Zoom>
-                      </Col>
-                    ))}
-                  </>
-                )}
-              </Row>
-            )}
-            <Link className="link" to="/companies">
-              see more
-            </Link>
-          </CardSection>
+                              <div className="card_body">
+                                <h3>{user.company.name}</h3>
+                                <TextTruncate
+                                  line={3}
+                                  element="span"
+                                  text={user.company.about}
+                                  truncateText="…"
+                                />
+                                <hr />
+                                <Link
+                                  className="link"
+                                  to={`profile/${user._id}`}
+                                >
+                                  see more
+                                </Link>
+                              </div>
+                            </Card>
+                          </Fade>
+                        </Col>
+                      ))}
+                    </>
+                  )}
+                </Row>
+              )}
+              <Link className="link" to="/companies">
+                see more
+              </Link>
+            </Fade>
+          </CardSectionStyling>
         </>
       )}
     </MainContainer>
@@ -354,7 +357,8 @@ const Section1 = styled.section`
   }
 `;
 
-const CardSection = styled.div`
+const CardSectionStyling = styled.div`
+  overflow-y: hidden;
   padding: 4rem 2rem;
   max-width: var(--max-width);
 

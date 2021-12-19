@@ -46,6 +46,7 @@ export const MarketingCardStyling = styled.div`
 
 export const SectionStyling = styled.section`
   /* margin: 80px 0; */
+  overflow-y: hidden;
   padding: 100px 40px;
   & .title {
     font-weight: 700;
@@ -433,6 +434,7 @@ export const NavStyling = styled.section`
 `;
 
 export const OurClientStyling = styled.section`
+  overflow: hidden;
   padding: 20px 0;
   max-width: 800px;
   margin: auto;

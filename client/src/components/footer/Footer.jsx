@@ -153,7 +153,7 @@ function FooterScrren() {
     // </Footer>
     <FooterContainer>
       <div className="footer-row">
-        <div xs={{ span: 24 }} lg={{ span: 8 }}>
+        <div className="collumn">
           {/* <h3 className="footer-heading">
             <Link className="link">advertising</Link>
           </h3>
@@ -204,7 +204,7 @@ function FooterScrren() {
             </li>
           </ul>
         </div>
-        <div xs={{ span: 24 }} lg={{ span: 8 }}>
+        <div className="collumn">
           <h3 className="footer-heading">Contact us</h3>
           <ul className="footer-group">
             <li className="footer-item">
@@ -229,7 +229,7 @@ function FooterScrren() {
             </li>
           </ul>
         </div>
-        <div xs={{ span: 24 }} lg={{ span: 8 }}>
+        <div className="collumn">
           <h3 className="footer-heading">au79code</h3>
           <ul className="footer-group">
             <li className="footer-item">
@@ -243,7 +243,7 @@ function FooterScrren() {
               </Link>
             </li>
             <li className="footer-item">
-              <Link to="/" className="link">
+              <Link to="/private-policy" className="link">
                 privacy policy
               </Link>
             </li>
@@ -451,6 +451,13 @@ const FooterContainer = styled.footer`
     /* margin:auto; */
     display: flex;
     justify-content: space-around;
+    & .collumn {
+      /* padding: 10px; */
+    }
+
+    @media only screen and (max-width: 600px) {
+      flex-direction: column;
+    }
   }
 
   & .footer-group {

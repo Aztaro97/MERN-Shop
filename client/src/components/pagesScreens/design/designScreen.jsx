@@ -7,6 +7,7 @@ import { BiPaint } from "react-icons/bi";
 import CountUp from "react-countup";
 import VisibilitySensor from "react-visibility-sensor";
 import { Link } from "react-router-dom";
+import { Fade } from "react-reveal";
 import ButtonComponent from "../../ButtonComponeent";
 
 const { Title, Paragraph } = Typography;
@@ -50,226 +51,238 @@ function DesignScreen() {
           </Button>
         </div>
       </Banner>
-
       <FirstServiceStyling>
-        <p className="small_title">lorem ip lorem</p>
-        <h1 className="title">provides feature</h1>
-        <Row gutter={[40, 10]}>
-          <Col
-            xs={{ span: 24 }}
-            sm={{ span: 12 }}
-            md={{ span: 12 }}
-            lg={{ span: 8 }}
-          >
-            <div className="service_card">
-              <BiPaint className="service_card_icon" />
-              <h5 className="service_card_title">service 1</h5>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Molestiae, minus corrupti. Porro
-              </p>
-            </div>
-          </Col>
-          <Col
-            xs={{ span: 24 }}
-            sm={{ span: 12 }}
-            md={{ span: 12 }}
-            lg={{ span: 8 }}
-          >
-            <div className="service_card">
-              <BiPaint className="service_card_icon" />
-              <h5 className="service_card_title">service 2</h5>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Molestiae, minus corrupti. Porro
-              </p>
-            </div>
-          </Col>
-          <Col
-            xs={{ span: 24 }}
-            sm={{ span: 12 }}
-            md={{ span: 12 }}
-            lg={{ span: 8 }}
-          >
-            <div className="service_card">
-              <BiPaint className="service_card_icon" />
-              <h5 className="service_card_title">service 3</h5>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Molestiae, minus corrupti. Porro
-              </p>
-            </div>
-          </Col>
-          <Col
-            xs={{ span: 24 }}
-            sm={{ span: 12 }}
-            md={{ span: 12 }}
-            lg={{ span: 8 }}
-          >
-            <div className="service_card">
-              <BiPaint className="service_card_icon" />
-              <h5 className="service_card_title">service 4</h5>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Molestiae, minus corrupti. Porro
-              </p>
-            </div>
-          </Col>
-          <Col
-            xs={{ span: 24 }}
-            sm={{ span: 12 }}
-            md={{ span: 12 }}
-            lg={{ span: 8 }}
-          >
-            <div className="service_card">
-              <BiPaint className="service_card_icon" />
-              <h5 className="service_card_title">service 5</h5>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Molestiae, minus corrupti. Porro
-              </p>
-            </div>
-          </Col>
-          <Col
-            xs={{ span: 24 }}
-            sm={{ span: 12 }}
-            md={{ span: 12 }}
-            lg={{ span: 8 }}
-          >
-            <div className="service_card">
-              <BiPaint className="service_card_icon" />
-              <h5 className="service_card_title">service 6</h5>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Molestiae, minus corrupti. Porro
-              </p>
-            </div>
-          </Col>
-        </Row>
+        <Fade bottom>
+          <p className="small_title">lorem ip lorem</p>
+          <h1 className="title">provides feature</h1>
+          <Row gutter={[40, 10]}>
+            <Col
+              xs={{ span: 24 }}
+              sm={{ span: 12 }}
+              md={{ span: 12 }}
+              lg={{ span: 8 }}
+            >
+              <div className="service_card">
+                <BiPaint className="service_card_icon" />
+                <h5 className="service_card_title">service 1</h5>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Molestiae, minus corrupti. Porro
+                </p>
+              </div>
+            </Col>
+            <Col
+              xs={{ span: 24 }}
+              sm={{ span: 12 }}
+              md={{ span: 12 }}
+              lg={{ span: 8 }}
+            >
+              <div className="service_card">
+                <BiPaint className="service_card_icon" />
+                <h5 className="service_card_title">service 2</h5>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Molestiae, minus corrupti. Porro
+                </p>
+              </div>
+            </Col>
+            <Col
+              xs={{ span: 24 }}
+              sm={{ span: 12 }}
+              md={{ span: 12 }}
+              lg={{ span: 8 }}
+            >
+              <div className="service_card">
+                <BiPaint className="service_card_icon" />
+                <h5 className="service_card_title">service 3</h5>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Molestiae, minus corrupti. Porro
+                </p>
+              </div>
+            </Col>
+            <Col
+              xs={{ span: 24 }}
+              sm={{ span: 12 }}
+              md={{ span: 12 }}
+              lg={{ span: 8 }}
+            >
+              <div className="service_card">
+                <BiPaint className="service_card_icon" />
+                <h5 className="service_card_title">service 4</h5>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Molestiae, minus corrupti. Porro
+                </p>
+              </div>
+            </Col>
+            <Col
+              xs={{ span: 24 }}
+              sm={{ span: 12 }}
+              md={{ span: 12 }}
+              lg={{ span: 8 }}
+            >
+              <div className="service_card">
+                <BiPaint className="service_card_icon" />
+                <h5 className="service_card_title">service 5</h5>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Molestiae, minus corrupti. Porro
+                </p>
+              </div>
+            </Col>
+            <Col
+              xs={{ span: 24 }}
+              sm={{ span: 12 }}
+              md={{ span: 12 }}
+              lg={{ span: 8 }}
+            >
+              <div className="service_card">
+                <BiPaint className="service_card_icon" />
+                <h5 className="service_card_title">service 6</h5>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Molestiae, minus corrupti. Porro
+                </p>
+              </div>
+            </Col>
+          </Row>
+        </Fade>
       </FirstServiceStyling>
       <SecondServiceStyling>
-        <Row gutter={[40, 10]}>
-          <Col xs={{ span: 24 }} lg={{ span: 12 }}>
-            <img
-              src="https://images.unsplash.com/photo-1475669698648-2f144fcaaeb1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
-              alt=""
-              className="image_down"
-            />
-            {/* <img
+        <Fade bottom>
+          <Row gutter={[40, 10]}>
+            <Col xs={{ span: 24 }} lg={{ span: 12 }}>
+              <img
+                src="https://images.unsplash.com/photo-1475669698648-2f144fcaaeb1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
+                alt=""
+                className="image_down"
+              />
+              {/* <img
             src="https://images.unsplash.com/photo-1475669698648-2f144fcaaeb1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
             alt=""
             className="image_up"
             /> */}
-          </Col>
-          <Col xs={{ span: 24 }} lg={{ span: 12 }} style={{ margin: "auto" }}>
-            <div className="contenteContainer">
-              <p> lorem Ipsum</p>
-              <h1>we are the leader in web design</h1>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam
-                iure dolore, vitae porro eum ullam esse, cumque sit sapiente
-                vero ut sint maiores est error enim et mollitia soluta illum!
-              </p>
-            </div>
-            <div className="numberContainer">
-              <div>
-                <NumberConter
-                  className="number"
-                  duration={2}
-                  end={36}
-                  delay={1}
-                />
-                <h4>project</h4>
+            </Col>
+            <Col xs={{ span: 24 }} lg={{ span: 12 }} style={{ margin: "auto" }}>
+              <div className="contenteContainer">
+                <p> lorem Ipsum</p>
+                <h1>we are the leader in web design</h1>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Veniam iure dolore, vitae porro eum ullam esse, cumque sit
+                  sapiente vero ut sint maiores est error enim et mollitia
+                  soluta illum!
+                </p>
               </div>
-              <div>
-                <NumberConter
-                  className="number"
-                  duration={3}
-                  end={120}
-                  delay={1}
-                />
-                <h4>project</h4>
+              <div className="numberContainer">
+                <div>
+                  <NumberConter
+                    className="number"
+                    duration={2}
+                    end={36}
+                    delay={1}
+                  />
+                  <h4>project</h4>
+                </div>
+                <div>
+                  <NumberConter
+                    className="number"
+                    duration={3}
+                    end={120}
+                    delay={1}
+                  />
+                  <h4>project</h4>
+                </div>
+                <div>
+                  <NumberConter
+                    className="number"
+                    duration={3}
+                    end={85}
+                    delay={1}
+                  />
+                  <h4>project</h4>
+                </div>
               </div>
-              <div>
-                <NumberConter
-                  className="number"
-                  duration={3}
-                  end={85}
-                  delay={1}
-                />
-                <h4>project</h4>
-              </div>
-            </div>
-          </Col>
-        </Row>
+            </Col>
+          </Row>
+        </Fade>
       </SecondServiceStyling>
       <ThirstServiceStyling>
-        <Row gutter={[40, 10]}>
-          <Col xs={{ span: 24 }} lg={{ span: 12 }}>
-            <div className="contenteContainer">
-              <p> lorem Ipsum</p>
-              <h1>we are the leader in web design</h1>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam
-                iure dolore, vitae porro eum ullam esse, cumque sit sapiente
-                vero ut sint maiores est error enim et mollitia soluta illum!
-              </p>
-            </div>
-          </Col>
-          <Col xs={{ span: 24 }} lg={{ span: 12 }}>
-            <img
-              src="https://images.unsplash.com/photo-1461344577544-4e5dc9487184?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-              alt=""
-              className="image_down"
-            />
-          </Col>
-        </Row>
+        <Fade bottom>
+          <Row gutter={[40, 10]}>
+            <Col xs={{ span: 24 }} lg={{ span: 12 }}>
+              <div className="contenteContainer">
+                <p> lorem Ipsum</p>
+                <h1>we are the leader in web design</h1>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Veniam iure dolore, vitae porro eum ullam esse, cumque sit
+                  sapiente vero ut sint maiores est error enim et mollitia
+                  soluta illum!
+                </p>
+              </div>
+            </Col>
+            <Col xs={{ span: 24 }} lg={{ span: 12 }}>
+              <img
+                src="https://images.unsplash.com/photo-1461344577544-4e5dc9487184?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+                alt=""
+                className="image_down"
+              />
+            </Col>
+          </Row>
+        </Fade>
       </ThirstServiceStyling>
       <FifthServiceStyling>
-        <Row gutter={[40, 10]}>
-          <Col xs={{ span: 24 }} lg={{ span: 12 }}>
-            <img
-              src="https://images.unsplash.com/photo-1461344577544-4e5dc9487184?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-              alt=""
-              className="image_down"
-            />
-          </Col>
-          <Col xs={{ span: 24 }} lg={{ span: 12 }}>
-            <div className="contenteContainer">
-              <div className="contente">
-                <h1>lorem Ipsum</h1>
-                <p>Lorem ipsum dolor sit amet consectetur </p>
+        <Fade bottom>
+          <Row gutter={[40, 10]}>
+            <Col xs={{ span: 24 }} lg={{ span: 12 }}>
+              <img
+                src="https://images.unsplash.com/photo-1461344577544-4e5dc9487184?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+                alt=""
+                className="image_down"
+              />
+            </Col>
+            <Col xs={{ span: 24 }} lg={{ span: 12 }}>
+              <div className="contenteContainer">
+                <div className="contente">
+                  <h1>lorem Ipsum</h1>
+                  <p>Lorem ipsum dolor sit amet consectetur </p>
+                </div>
+                <div className="contente">
+                  <h1>lorem Ipsum</h1>
+                  <p>Lorem ipsum dolor sit amet consectetur </p>
+                </div>
+                <div className="contente">
+                  <h1>lorem Ipsum</h1>
+                  <p>Lorem ipsum dolor sit amet consectetur </p>
+                </div>
               </div>
-              <div className="contente">
-                <h1>lorem Ipsum</h1>
-                <p>Lorem ipsum dolor sit amet consectetur </p>
-              </div>
-              <div className="contente">
-                <h1>lorem Ipsum</h1>
-                <p>Lorem ipsum dolor sit amet consectetur </p>
-              </div>
-            </div>
-          </Col>
-        </Row>
+            </Col>
+          </Row>
+        </Fade>
       </FifthServiceStyling>
 
       <ContactService>
-        <Row gutter={[40, 10]}>
-          <Col xs={{ span: 24 }} lg={{ span: 12 }}>
-            <h1>lorem ipsum</h1>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia
-              non beatae sint possimus ipsa ducimus vero, neque, qui nulla
-            </p>
-          </Col>
-          <Col xs={{ span: 24 }} lg={{ span: 12 }}>
-            <div className="contact_container">
-              <Link to="/contact-us">
-                <button className="button">Contact us</button>
-              </Link>
-            </div>
-          </Col>
-        </Row>
+        <Fade bottom>
+          <Row gutter={[40, 10]}>
+            <Col xs={{ span: 24 }} lg={{ span: 12 }}>
+              <h1>lorem ipsum</h1>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Mollitia non beatae sint possimus ipsa ducimus vero, neque, qui
+                nulla
+              </p>
+            </Col>
+            <Col xs={{ span: 24 }} lg={{ span: 12 }}>
+              <div className="contact_container">
+                <Link to="/contact-us">
+                  <button className="button">Contact us</button>
+                </Link>
+              </div>
+            </Col>
+          </Row>
+        </Fade>
       </ContactService>
     </MainComponent>
   );

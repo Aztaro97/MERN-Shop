@@ -4,6 +4,7 @@ import MainContainer from "../../MainContainer";
 import { Card, Col, Image, Row, Space, Typography } from "antd";
 import Button from "../../ButtonComponeent";
 import Slider from "react-slick";
+import { Fade } from "react-reveal";
 import "./production.css";
 
 const { Title, Paragraph } = Typography;
@@ -28,13 +29,17 @@ function ProductionScreen() {
         </Banner>
         <ProductSelling />
         <section className="portfolio">
-          <Button className="button">Portfolio</Button>
-          <h4>Your one-step printing solution</h4>
+          <Fade bottom>
+            <Button className="button">Portfolio</Button>
+            <h4>Your one-step printing solution</h4>
+          </Fade>
         </section>
         <CardProductList />
         <section className="contact_section">
-          <Button className="button">contact Us</Button>
-          <h4>Lorem ipsum dolor sit amet consectetur</h4>
+          <Fade bottom>
+            <Button className="button">contact Us</Button>
+            <h4>Lorem ipsum dolor sit amet consectetur</h4>
+          </Fade>
         </section>
       </Container>
     </MainContainer>
@@ -80,29 +85,31 @@ const ProductSelling = () => {
   };
   return (
     <ProductStyling>
-      <Title level={2} className="title">
-        best selling products
-      </Title>
-      <Slider {...settings} className="slider">
-        <div>
-          <img src="https://via.placeholder.com/500" alt="" />
-        </div>
-        <div>
-          <img src="https://via.placeholder.com/300" alt="" />
-        </div>
-        <div>
-          <img src="https://via.placeholder.com/300" alt="" />
-        </div>
-        <div>
-          <img src="https://via.placeholder.com/500" alt="" />
-        </div>
-        <div>
-          <img src="https://via.placeholder.com/300" alt="" />
-        </div>
-        <div>
-          <img src="https://via.placeholder.com/300" alt="" />
-        </div>
-      </Slider>
+      <Fade bottom>
+        <Title level={2} className="title">
+          best selling products
+        </Title>
+        <Slider {...settings} className="slider">
+          <div>
+            <img src="https://via.placeholder.com/500" alt="" />
+          </div>
+          <div>
+            <img src="https://via.placeholder.com/300" alt="" />
+          </div>
+          <div>
+            <img src="https://via.placeholder.com/300" alt="" />
+          </div>
+          <div>
+            <img src="https://via.placeholder.com/500" alt="" />
+          </div>
+          <div>
+            <img src="https://via.placeholder.com/300" alt="" />
+          </div>
+          <div>
+            <img src="https://via.placeholder.com/300" alt="" />
+          </div>
+        </Slider>
+      </Fade>
     </ProductStyling>
   );
 };
@@ -110,96 +117,116 @@ const ProductSelling = () => {
 const CardProductList = () => {
   return (
     <ProductListStyling>
-      <Title level={2} className="title">
-        Featured products
-      </Title>
-      <Row gutter={[10, 40]} justify="center">
-        <Col xs={{ span: 12 }} md={{ span: 8 }}>
-          <Card
-            hoverable
-            className="product_card"
-            cover={
-              <img
-                alt="example"
-                src="https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
-                height="200px"
+      <Fade bottom>
+        <Title level={2} className="title">
+          Featured products
+        </Title>
+        <Row gutter={[10, 40]} justify="center">
+          <Col xs={{ span: 12 }} md={{ span: 8 }}>
+            <Card
+              hoverable
+              className="product_card"
+              cover={
+                <img
+                  alt="example"
+                  src="https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+                  height="200px"
+                />
+              }
+            >
+              <Meta
+                title="Product Name"
+                description="lorem upsum description"
               />
-            }
-          >
-            <Meta title="Product Name" description="lorem upsum description" />
-          </Card>
-        </Col>
-        <Col xs={{ span: 12 }} md={{ span: 8 }}>
-          <Card
-            hoverable
-            className="product_card"
-            cover={
-              <img
-                alt="example"
-                src="https://images.unsplash.com/photo-1513521773210-0cc22dfee8db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+            </Card>
+          </Col>
+          <Col xs={{ span: 12 }} md={{ span: 8 }}>
+            <Card
+              hoverable
+              className="product_card"
+              cover={
+                <img
+                  alt="example"
+                  src="https://images.unsplash.com/photo-1513521773210-0cc22dfee8db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+                />
+              }
+            >
+              <Meta
+                title="Product Name"
+                description="lorem upsum description"
               />
-            }
-          >
-            <Meta title="Product Name" description="lorem upsum description" />
-          </Card>
-        </Col>
-        <Col xs={{ span: 12 }} md={{ span: 8 }}>
-          <Card
-            hoverable
-            className="product_card"
-            cover={
-              <img
-                alt="example"
-                src="https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+            </Card>
+          </Col>
+          <Col xs={{ span: 12 }} md={{ span: 8 }}>
+            <Card
+              hoverable
+              className="product_card"
+              cover={
+                <img
+                  alt="example"
+                  src="https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+                />
+              }
+            >
+              <Meta
+                title="Product Name"
+                description="lorem upsum description"
               />
-            }
-          >
-            <Meta title="Product Name" description="lorem upsum description" />
-          </Card>
-        </Col>
-        <Col xs={{ span: 12 }} md={{ span: 8 }}>
-          <Card
-            hoverable
-            className="product_card"
-            cover={
-              <img
-                alt="example"
-                src="https://images.unsplash.com/photo-1513521773210-0cc22dfee8db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+            </Card>
+          </Col>
+          <Col xs={{ span: 12 }} md={{ span: 8 }}>
+            <Card
+              hoverable
+              className="product_card"
+              cover={
+                <img
+                  alt="example"
+                  src="https://images.unsplash.com/photo-1513521773210-0cc22dfee8db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+                />
+              }
+            >
+              <Meta
+                title="Product Name"
+                description="lorem upsum description"
               />
-            }
-          >
-            <Meta title="Product Name" description="lorem upsum description" />
-          </Card>
-        </Col>
-        <Col xs={{ span: 12 }} md={{ span: 8 }}>
-          <Card
-            hoverable
-            className="product_card"
-            cover={
-              <img
-                alt="example"
-                src="https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+            </Card>
+          </Col>
+          <Col xs={{ span: 12 }} md={{ span: 8 }}>
+            <Card
+              hoverable
+              className="product_card"
+              cover={
+                <img
+                  alt="example"
+                  src="https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+                />
+              }
+            >
+              <Meta
+                title="Product Name"
+                description="lorem upsum description"
               />
-            }
-          >
-            <Meta title="Product Name" description="lorem upsum description" />
-          </Card>
-        </Col>
-        <Col xs={{ span: 12 }} md={{ span: 8 }}>
-          <Card
-            hoverable
-            className="product_card"
-            cover={
-              <img
-                alt="example"
-                src="https://images.unsplash.com/photo-1513521773210-0cc22dfee8db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+            </Card>
+          </Col>
+          <Col xs={{ span: 12 }} md={{ span: 8 }}>
+            <Card
+              hoverable
+              className="product_card"
+              cover={
+                <img
+                  alt="example"
+                  src="https://images.unsplash.com/photo-1513521773210-0cc22dfee8db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+                />
+              }
+            >
+              <Meta
+                title="Product Name"
+                description="lorem upsum description"
               />
-            }
-          >
-            <Meta title="Product Name" description="lorem upsum description" />
-          </Card>
-        </Col>
-      </Row>
+            </Card>
+          </Col>
+        </Row>
+      </Fade>
     </ProductListStyling>
   );
 };
@@ -301,7 +328,7 @@ const ProductStyling = styled.section`
   & .title {
     text-transform: uppercase;
     text-align: center;
-    color: var(--orange-color);
+    color: var(--white-color);
     font-size: 1.8rem;
     margin-bottom: 2rem;
   }

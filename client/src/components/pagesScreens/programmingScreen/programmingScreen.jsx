@@ -4,6 +4,8 @@ import { Card, Col, Image, Row, Space, Typography } from "antd";
 import Button from "../../ButtonComponeent";
 import styled from "styled-components";
 import { BsCodeSlash } from "react-icons/bs";
+import { Fade } from "react-reveal";
+import VideoPlayer from "react-background-video-player";
 
 const { Title, Paragraph } = Typography;
 const { Meta } = Card;
@@ -11,7 +13,7 @@ const { Meta } = Card;
 function ProgrammingScreen() {
   return (
     <MainContainer>
-      <Banner>
+      {/* <Banner>
         <div className="content">
           <Title level={2} className="title">
             The right consultation partner for your business
@@ -24,177 +26,252 @@ function ProgrammingScreen() {
             contact us
           </Button>
         </div>
-      </Banner>
+      </Banner> */}
+      <BannerSeconde>
+        <VideoPlayer
+          className="video"
+          src={"/videos/matrixe_video.mp4"}
+          autoPlay={true}
+          muted={true}
+        />
+        <div className="content">
+          <Title level={2} className="title">
+            The right consultation partner for your business
+          </Title>
+          <Paragraph className="para">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
+            cupiditate
+          </Paragraph>
+          <Button type="button" className="link">
+            contact us
+          </Button>
+        </div>
+      </BannerSeconde>
       <FirstServiceStyling>
-        <p className="small_title">lorem ip lorem</p>
-        <h1 className="title">provides feature</h1>
-        <Row gutter={[40, 10]}>
-          <Col
-            xs={{ span: 24 }}
-            sm={{ span: 12 }}
-            md={{ span: 12 }}
-            lg={{ span: 8 }}
-          >
-            <div className="service_card first_card">
-              {/* <BsCodeSlash className="service_card_icon" /> */}
-              <h5 className="service_card_title">
-                Providing solutions of every kind
-              </h5>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Molestiae, minus corrupti. Porro adipisicing elit. Molestiae,
-                minus corrupti. Porro
-              </p>
-            </div>
-          </Col>
-          <Col
-            xs={{ span: 24 }}
-            sm={{ span: 12 }}
-            md={{ span: 12 }}
-            lg={{ span: 8 }}
-          >
-            <div className="service_card">
-              <BsCodeSlash className="service_card_icon" />
-              <h5 className="service_card_title">service 2</h5>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Molestiae, minus corrupti. Porro
-              </p>
-            </div>
-          </Col>
-          <Col
-            xs={{ span: 24 }}
-            sm={{ span: 12 }}
-            md={{ span: 12 }}
-            lg={{ span: 8 }}
-          >
-            <div className="service_card">
-              <BsCodeSlash className="service_card_icon" />
-              <h5 className="service_card_title">service 3</h5>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Molestiae, minus corrupti. Porro
-              </p>
-            </div>
-          </Col>
-          <Col
-            xs={{ span: 24 }}
-            sm={{ span: 12 }}
-            md={{ span: 12 }}
-            lg={{ span: 8 }}
-          >
-            <div className="service_card">
-              <BsCodeSlash className="service_card_icon" />
-              <h5 className="service_card_title">service 4</h5>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Molestiae, minus corrupti. Porro
-              </p>
-            </div>
-          </Col>
-          <Col
-            xs={{ span: 24 }}
-            sm={{ span: 12 }}
-            md={{ span: 12 }}
-            lg={{ span: 8 }}
-          >
-            <div className="service_card">
-              <BsCodeSlash className="service_card_icon" />
-              <h5 className="service_card_title">service 5</h5>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Molestiae, minus corrupti. Porro
-              </p>
-            </div>
-          </Col>
-          <Col
-            xs={{ span: 24 }}
-            sm={{ span: 12 }}
-            md={{ span: 12 }}
-            lg={{ span: 8 }}
-          >
-            <div className="service_card">
-              <BsCodeSlash className="service_card_icon" />
-              <h5 className="service_card_title">service 6</h5>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Molestiae, minus corrupti. Porro
-              </p>
-            </div>
-          </Col>
-        </Row>
+        <Fade bottom>
+          <p className="small_title">lorem ip lorem</p>
+          <h1 className="title">provides feature</h1>
+          <Row gutter={[40, 10]}>
+            <Col
+              xs={{ span: 24 }}
+              sm={{ span: 12 }}
+              md={{ span: 12 }}
+              lg={{ span: 8 }}
+            >
+              <div className="service_card first_card">
+                {/* <BsCodeSlash className="service_card_icon" /> */}
+                <h5 className="service_card_title">
+                  Providing solutions of every kind
+                </h5>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Molestiae, minus corrupti. Porro adipisicing elit. Molestiae,
+                  minus corrupti. Porro
+                </p>
+              </div>
+            </Col>
+            <Col
+              xs={{ span: 24 }}
+              sm={{ span: 12 }}
+              md={{ span: 12 }}
+              lg={{ span: 8 }}
+            >
+              <div className="service_card">
+                <BsCodeSlash className="service_card_icon" />
+                <h5 className="service_card_title">service 2</h5>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Molestiae, minus corrupti. Porro
+                </p>
+              </div>
+            </Col>
+            <Col
+              xs={{ span: 24 }}
+              sm={{ span: 12 }}
+              md={{ span: 12 }}
+              lg={{ span: 8 }}
+            >
+              <div className="service_card">
+                <BsCodeSlash className="service_card_icon" />
+                <h5 className="service_card_title">service 3</h5>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Molestiae, minus corrupti. Porro
+                </p>
+              </div>
+            </Col>
+            <Col
+              xs={{ span: 24 }}
+              sm={{ span: 12 }}
+              md={{ span: 12 }}
+              lg={{ span: 8 }}
+            >
+              <div className="service_card">
+                <BsCodeSlash className="service_card_icon" />
+                <h5 className="service_card_title">service 4</h5>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Molestiae, minus corrupti. Porro
+                </p>
+              </div>
+            </Col>
+            <Col
+              xs={{ span: 24 }}
+              sm={{ span: 12 }}
+              md={{ span: 12 }}
+              lg={{ span: 8 }}
+            >
+              <div className="service_card">
+                <BsCodeSlash className="service_card_icon" />
+                <h5 className="service_card_title">service 5</h5>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Molestiae, minus corrupti. Porro
+                </p>
+              </div>
+            </Col>
+            <Col
+              xs={{ span: 24 }}
+              sm={{ span: 12 }}
+              md={{ span: 12 }}
+              lg={{ span: 8 }}
+            >
+              <div className="service_card">
+                <BsCodeSlash className="service_card_icon" />
+                <h5 className="service_card_title">service 6</h5>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Molestiae, minus corrupti. Porro
+                </p>
+              </div>
+            </Col>
+          </Row>
+        </Fade>
       </FirstServiceStyling>
       <SecondServiceStyling>
-        <Row gutter={[10, 60]}>
-          <Col xs={{ span: 24 }} sm={{ span: 12 }} lg={{ span: 12 }}>
-            <Title level={2} className="title">
-              Providing Solutions Of Every Kind
-            </Title>
-            <Paragraph className="para">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
-              dolor omnis perferendis aliquam? Expedita id, asperiores aliquam
-              accusantium, excepturi ratione assumenda facere dolor, recusandae
-              provident exercitationem doloribus nam inventore necessitatibus!
-            </Paragraph>
-          </Col>
-          <Col xs={{ span: 24 }} sm={{ span: 12 }} lg={{ span: 12 }}>
-            <div className="rectangle"></div>
-            <img
-              src="/img/programming/colaboration.png"
-              alt=""
-              className="picture"
-            />
-          </Col>
-          <Col xs={{ span: 24 }}>
-            <div className="contact_container">
-              <Row gutter={[10, 10]}>
-                <Col xs={{ span: 24 }} lg={{ span: 12 }}>
-                  <Title level={5}>Lorem Ipsum</Title>
-                  <Title level={2}>Lorem Ipsum</Title>
-                  <div className="contact_card">
-                    <img src="/img/programming/colaboration.png" alt="" />
-                    <div className="contact_card_body">
-                      <Row gutter={[30, 10]}>
-                        <Col xs={{ spaN: 12 }} lg={{ span: 12 }}>
-                          <h3>Providing Solutions Of Every Kind</h3>
-                          <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing
-                            elit. Alias voluptas
-                          </p>
-                        </Col>
-                        <Col xs={{ spaN: 12 }} lg={{ span: 12 }}>
-                          <button type="button" className="button">
-                            contact us
-                          </button>
-                        </Col>
-                      </Row>
-                    </div>
-                  </div>
-                </Col>
-                <Col xs={{ span: 24 }} lg={{ span: 12 }}>
-                  <div className="content_right">
-                    <div>
-                      <img src="/img/programming/colaboration.png" alt="" />
-                      <h5>Lorem upsum</h5>
-                    </div>
-                    <div>
-                      <img src="/img/programming/colaboration.png" alt="" />
-                      <h5>Lorem upsum</h5>
-                    </div>
-                    <div>
-                      <img src="/img/programming/colaboration.png" alt="" />
-                      <h5>Lorem upsum</h5>
-                    </div>
-                  </div>
-                </Col>
-              </Row>
-            </div>
-          </Col>
-        </Row>
+        <Fade bottom>
+          <Row gutter={[30, 60]}>
+            <Col xs={{ span: 24 }} sm={{ span: 12 }} lg={{ span: 12 }}>
+              <Title level={2} className="title">
+                Providing Solutions Of Every Kind
+              </Title>
+              <Paragraph className="para">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Delectus dolor omnis perferendis aliquam? Expedita id,
+                asperiores aliquam accusantium, excepturi ratione assumenda
+                facere dolor, recusandae provident exercitationem doloribus nam
+                inventore necessitatibus!
+              </Paragraph>
+            </Col>
+            <Col xs={{ span: 24 }} sm={{ span: 12 }} lg={{ span: 12 }}>
+              <div className="rectangle"></div>
+              <img
+                src="/img/programming/colaboration.png"
+                alt=""
+                className="picture"
+              />
+            </Col>
+            <Col xs={{ span: 24 }}>
+              <div className="contact_container">
+                <Fade bottom>
+                  <Row gutter={[10, 10]}>
+                    <Col xs={{ span: 24 }} lg={{ span: 12 }}>
+                      <Title level={5}>Lorem Ipsum</Title>
+                      <Title level={2}>Lorem Ipsum</Title>
+                      <div className="contact_card">
+                        <img src="/img/programming/colaboration.png" alt="" />
+                        <div className="contact_card_body">
+                          <Row gutter={[30, 10]}>
+                            <Col xs={{ spaN: 12 }} lg={{ span: 12 }}>
+                              <h3>Providing Solutions Of Every Kind</h3>
+                              <p>
+                                Lorem, ipsum dolor sit amet consectetur
+                                adipisicing elit. Alias voluptas
+                              </p>
+                            </Col>
+                            <Col xs={{ spaN: 12 }} lg={{ span: 12 }}>
+                              <button type="button" className="button">
+                                contact us
+                              </button>
+                            </Col>
+                          </Row>
+                        </div>
+                      </div>
+                    </Col>
+                    <Col xs={{ span: 24 }} lg={{ span: 12 }}>
+                      <div className="content_right">
+                        <div>
+                          <img src="/img/programming/colaboration.png" alt="" />
+                          <h5>Lorem upsum</h5>
+                        </div>
+                        <div>
+                          <img src="/img/programming/colaboration.png" alt="" />
+                          <h5>Lorem upsum</h5>
+                        </div>
+                        <div>
+                          <img src="/img/programming/colaboration.png" alt="" />
+                          <h5>Lorem upsum</h5>
+                        </div>
+                      </div>
+                    </Col>
+                  </Row>
+                </Fade>
+              </div>
+            </Col>
+          </Row>
+        </Fade>
       </SecondServiceStyling>
     </MainContainer>
   );
 }
+
+const BannerSeconde = styled.div`
+  height: 400px !important;
+  overflow: hidden;
+  width: 100%;
+  & .video {
+    position: static !important;
+    & video {
+      position: static !important;
+      object-fit: cover;
+      height: 100% !important;
+    }
+  }
+  & .content {
+    position: absolute ;
+    bottom: 300px;
+    left: 5%;
+    height: 100%;
+    /* max-width: 500px; */
+    padding: 10px;
+    padding-left: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+
+    margin: 0 auto;
+    & > * {
+      color: #fff;
+    }
+    & .title {
+      letter-spacing: 1px;
+    }
+    & .para {
+      max-width: 400px;
+      /* text-align: center; */
+    }
+    & .link {
+      padding: 10px;
+      background: #fff;
+      color: #333;
+      font-weight: 400;
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+`;
 
 const Banner = styled.section`
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
@@ -253,6 +330,7 @@ const Banner = styled.section`
 
 const FirstServiceStyling = styled.section`
   padding: 4rem 2rem;
+  background: var(--black-color);
   & .small_title {
     font-size: 0.7rem;
     text-transform: uppercase;
@@ -279,7 +357,7 @@ const FirstServiceStyling = styled.section`
     cursor: pointer;
     height: 200px;
     transition: all 0.3s ease;
-    border: 1px solid var(--silver-color);
+    /* border: 1px solid var(--silver-color); */
     & .service_card_icon {
       font-size: 40px;
       color: var(--silver-color);
@@ -316,12 +394,13 @@ const FirstServiceStyling = styled.section`
 `;
 
 const SecondServiceStyling = styled.section`
-  padding: 20px 0;
+  padding: 4rem 2rem;
+  margin-top: 3rem;
   & .title {
     font-size: 1.8rem;
     text-transform: capitalize;
     font-weight: 700;
-    margin-bottom: 0;
+    margin-bottom: 1rem;
     color: var(--white-color);
   }
   & .para {
@@ -351,6 +430,7 @@ const SecondServiceStyling = styled.section`
     margin-left: auto;
     background: var(--black-color);
     padding: 30px;
+    margin-top: 3rem;
     & .contact_card {
       & img {
         width: 100%;
@@ -389,7 +469,7 @@ const SecondServiceStyling = styled.section`
         }
         & h5 {
           padding: 20px 10px;
-          color: var(--silver-color)
+          color: var(--silver-color);
         }
         @media screen and (max-width: 500px) {
           flex-direction: column;

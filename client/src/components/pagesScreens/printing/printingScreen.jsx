@@ -5,6 +5,7 @@ import { Card, Col, Image, Row, Space, Typography } from "antd";
 import Button from "../../ButtonComponeent";
 import Slider from "react-slick";
 import "./printing.css";
+import { Fade } from "react-reveal";
 
 const { Title, Paragraph } = Typography;
 const { Meta } = Card;
@@ -27,41 +28,47 @@ function PrintingScreen() {
           </div>
         </Banner>
         <section className="service_provider">
-          <Title level={2} className="title">
-            services we provide
-          </Title>
-          <Row gutter={[10, 10]} justify="space-between">
-            <Col xs={{ span: 12 }} md={{ span: 6 }}>
-              <div className="s1">
-                <p>offset printing</p>
-              </div>
-            </Col>
-            <Col xs={{ span: 12 }} md={{ span: 6 }}>
-              <div className="s2">
-                <p>Printing for cups</p>
-              </div>
-            </Col>
-            <Col xs={{ span: 12 }} md={{ span: 6 }}>
-              <div className="s1">
-                <p>digital printing</p>
-              </div>
-            </Col>
-            <Col xs={{ span: 12 }} md={{ span: 6 }}>
-              <div className="s1">
-                <p>silk screen printing</p>
-              </div>
-            </Col>
-          </Row>
+          <Fade bottom>
+            <Title level={2} className="title">
+              services we provide
+            </Title>
+            <Row gutter={[10, 10]} justify="space-between">
+              <Col xs={{ span: 12 }} md={{ span: 6 }}>
+                <div className="s1">
+                  <p>offset printing</p>
+                </div>
+              </Col>
+              <Col xs={{ span: 12 }} md={{ span: 6 }}>
+                <div className="s2">
+                  <p>Printing for cups</p>
+                </div>
+              </Col>
+              <Col xs={{ span: 12 }} md={{ span: 6 }}>
+                <div className="s1">
+                  <p>digital printing</p>
+                </div>
+              </Col>
+              <Col xs={{ span: 12 }} md={{ span: 6 }}>
+                <div className="s1">
+                  <p>silk screen printing</p>
+                </div>
+              </Col>
+            </Row>
+          </Fade>
         </section>
         <ProductSelling />
         <section className="portfolio">
-          <Button className="button">Portfolio</Button>
-          <h4>Your one-step printing solution</h4>
+          <Fade bottom>
+            <Button className="button">Portfolio</Button>
+            <h4>Your one-step printing solution</h4>
+          </Fade>
         </section>
         <CardProductList />
         <section className="contact_section">
-          <Button className="button">contact us</Button>
-          <h4>Lorem ipsum dolor sit amet consectetur</h4>
+          <Fade bottom>
+            <Button className="button">contact us</Button>
+            <h4>Lorem ipsum dolor sit amet consectetur</h4>
+          </Fade>
         </section>
       </Container>
     </MainContainer>
@@ -107,29 +114,31 @@ const ProductSelling = () => {
   };
   return (
     <ProductStyling>
-      <Title level={2} className="title">
-        best selling products
-      </Title>
-      <Slider {...settings} className="slider">
-        <div>
-          <img src="https://via.placeholder.com/500" alt="" />
-        </div>
-        <div>
-          <img src="https://via.placeholder.com/300" alt="" />
-        </div>
-        <div>
-          <img src="https://via.placeholder.com/300" alt="" />
-        </div>
-        <div>
-          <img src="https://via.placeholder.com/500" alt="" />
-        </div>
-        <div>
-          <img src="https://via.placeholder.com/300" alt="" />
-        </div>
-        <div>
-          <img src="https://via.placeholder.com/300" alt="" />
-        </div>
-      </Slider>
+      <Fade bottom>
+        <Title level={2} className="title">
+          best selling products
+        </Title>
+        <Slider {...settings} className="slider">
+          <div>
+            <img src="https://via.placeholder.com/500" alt="" />
+          </div>
+          <div>
+            <img src="https://via.placeholder.com/300" alt="" />
+          </div>
+          <div>
+            <img src="https://via.placeholder.com/300" alt="" />
+          </div>
+          <div>
+            <img src="https://via.placeholder.com/500" alt="" />
+          </div>
+          <div>
+            <img src="https://via.placeholder.com/300" alt="" />
+          </div>
+          <div>
+            <img src="https://via.placeholder.com/300" alt="" />
+          </div>
+        </Slider>
+      </Fade>
     </ProductStyling>
   );
 };
@@ -137,96 +146,116 @@ const ProductSelling = () => {
 const CardProductList = () => {
   return (
     <ProductListStyling>
-      <Title level={2} className="title">
-        Featured products
-      </Title>
-      <Row gutter={[10, 40]} justify="center">
-        <Col xs={{ span: 12 }} md={{ span: 8 }}>
-          <Card
-            hoverable
-            className="product_card"
-            cover={
-              <img
-                alt="example"
-                src="https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
-                height="200px"
+      <Fade bottom>
+        <Title level={2} className="title">
+          Featured products
+        </Title>
+        <Row gutter={[10, 40]} justify="center">
+          <Col xs={{ span: 12 }} md={{ span: 8 }}>
+            <Card
+              hoverable
+              className="product_card"
+              cover={
+                <img
+                  alt="example"
+                  src="https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+                  height="200px"
+                />
+              }
+            >
+              <Meta
+                title="Product Name"
+                description="lorem upsum description"
               />
-            }
-          >
-            <Meta title="Product Name" description="lorem upsum description" />
-          </Card>
-        </Col>
-        <Col xs={{ span: 12 }} md={{ span: 8 }}>
-          <Card
-            hoverable
-            className="product_card"
-            cover={
-              <img
-                alt="example"
-                src="https://images.unsplash.com/photo-1513521773210-0cc22dfee8db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+            </Card>
+          </Col>
+          <Col xs={{ span: 12 }} md={{ span: 8 }}>
+            <Card
+              hoverable
+              className="product_card"
+              cover={
+                <img
+                  alt="example"
+                  src="https://images.unsplash.com/photo-1513521773210-0cc22dfee8db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+                />
+              }
+            >
+              <Meta
+                title="Product Name"
+                description="lorem upsum description"
               />
-            }
-          >
-            <Meta title="Product Name" description="lorem upsum description" />
-          </Card>
-        </Col>
-        <Col xs={{ span: 12 }} md={{ span: 8 }}>
-          <Card
-            hoverable
-            className="product_card"
-            cover={
-              <img
-                alt="example"
-                src="https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+            </Card>
+          </Col>
+          <Col xs={{ span: 12 }} md={{ span: 8 }}>
+            <Card
+              hoverable
+              className="product_card"
+              cover={
+                <img
+                  alt="example"
+                  src="https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+                />
+              }
+            >
+              <Meta
+                title="Product Name"
+                description="lorem upsum description"
               />
-            }
-          >
-            <Meta title="Product Name" description="lorem upsum description" />
-          </Card>
-        </Col>
-        <Col xs={{ span: 12 }} md={{ span: 8 }}>
-          <Card
-            hoverable
-            className="product_card"
-            cover={
-              <img
-                alt="example"
-                src="https://images.unsplash.com/photo-1513521773210-0cc22dfee8db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+            </Card>
+          </Col>
+          <Col xs={{ span: 12 }} md={{ span: 8 }}>
+            <Card
+              hoverable
+              className="product_card"
+              cover={
+                <img
+                  alt="example"
+                  src="https://images.unsplash.com/photo-1513521773210-0cc22dfee8db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+                />
+              }
+            >
+              <Meta
+                title="Product Name"
+                description="lorem upsum description"
               />
-            }
-          >
-            <Meta title="Product Name" description="lorem upsum description" />
-          </Card>
-        </Col>
-        <Col xs={{ span: 12 }} md={{ span: 8 }}>
-          <Card
-            hoverable
-            className="product_card"
-            cover={
-              <img
-                alt="example"
-                src="https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+            </Card>
+          </Col>
+          <Col xs={{ span: 12 }} md={{ span: 8 }}>
+            <Card
+              hoverable
+              className="product_card"
+              cover={
+                <img
+                  alt="example"
+                  src="https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+                />
+              }
+            >
+              <Meta
+                title="Product Name"
+                description="lorem upsum description"
               />
-            }
-          >
-            <Meta title="Product Name" description="lorem upsum description" />
-          </Card>
-        </Col>
-        <Col xs={{ span: 12 }} md={{ span: 8 }}>
-          <Card
-            hoverable
-            className="product_card"
-            cover={
-              <img
-                alt="example"
-                src="https://images.unsplash.com/photo-1513521773210-0cc22dfee8db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+            </Card>
+          </Col>
+          <Col xs={{ span: 12 }} md={{ span: 8 }}>
+            <Card
+              hoverable
+              className="product_card"
+              cover={
+                <img
+                  alt="example"
+                  src="https://images.unsplash.com/photo-1513521773210-0cc22dfee8db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+                />
+              }
+            >
+              <Meta
+                title="Product Name"
+                description="lorem upsum description"
               />
-            }
-          >
-            <Meta title="Product Name" description="lorem upsum description" />
-          </Card>
-        </Col>
-      </Row>
+            </Card>
+          </Col>
+        </Row>
+      </Fade>
     </ProductListStyling>
   );
 };
@@ -234,6 +263,7 @@ const CardProductList = () => {
 const Container = styled.div`
   & section {
     padding: 4rem 2rem;
+    overflow-y: hidden;
   }
 
   & .service_provider {

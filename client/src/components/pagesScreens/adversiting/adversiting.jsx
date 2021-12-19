@@ -15,6 +15,7 @@ import MainContainer from "../../MainContainer";
 import { Col, Row } from "antd";
 import Meta from "../../helmet";
 import { Video, Transformation } from "cloudinary-react";
+import { Fade } from "react-reveal";
 import "./advertising.css";
 
 function AdversitingScreen() {
@@ -99,25 +100,27 @@ const TypeBusinessSection = ({ lang }) => {
 
   return (
     <section>
-      <Slider {...settings}>
-        {categoryAdversiting.map((data) => (
-          <CardItemStyling
-            key={data.profileId}
-            onClick={() =>
-              history.push(`/advertising/profile/${data.profileId}`)
-            }
-          >
-            <div
-              className="box"
-              style={{ backgroundImage: `url(${data.image})` }}
+      <Fade bottom>
+        <Slider {...settings}>
+          {categoryAdversiting.map((data) => (
+            <CardItemStyling
+              key={data.profileId}
+              onClick={() =>
+                history.push(`/advertising/profile/${data.profileId}`)
+              }
             >
-              <div className="box-container">
-                <h4>{data.title}</h4>
+              <div
+                className="box"
+                style={{ backgroundImage: `url(${data.image})` }}
+              >
+                <div className="box-container">
+                  <h4>{data.title}</h4>
+                </div>
               </div>
-            </div>
-          </CardItemStyling>
-        ))}
-      </Slider>
+            </CardItemStyling>
+          ))}
+        </Slider>
+      </Fade>
     </section>
   );
 };
@@ -178,46 +181,48 @@ const IntroVideoSection = ({ lang }) => {
 
   return (
     <IntroVideoStyling>
-      <h1 className="title">Ad Video</h1>
-      <hr />
-      <Slider {...settings} className="slider-container">
-        {VideoData.map((data) => (
-          <div className="box-wrapper" key={data.profileId}>
-            <Row gutter={[20, 20]}>
-              <Col
-                xs={{ span: 24 }}
-                sm={{ span: 24 }}
-                md={{ span: 12 }}
-                lg={{ span: 12 }}
-              >
-                <Video
-                  cloudName="tarositeweb"
-                  controls="true"
-                  fallback="Cannot display video"
-                  publicId={data.publicId}
-                  width="100%"
-                />
-              </Col>
-              <Col
-                xs={{ span: 24 }}
-                sm={{ span: 24 }}
-                md={{ span: 12 }}
-                lg={{ span: 12 }}
-              >
-                <div className="description">
-                  <p>{data.description}</p>
-                  <Link
-                    to={`/advertising/profile/${data.profileId}`}
-                    className="link"
-                  >
-                    {t("contact_us")}
-                  </Link>
-                </div>
-              </Col>
-            </Row>
-          </div>
-        ))}
-      </Slider>
+      <Fade bottom>
+        <h1 className="title">Ad Video</h1>
+        <hr />
+        <Slider {...settings} className="slider-container">
+          {VideoData.map((data) => (
+            <div className="box-wrapper" key={data.profileId}>
+              <Row gutter={[20, 20]}>
+                <Col
+                  xs={{ span: 24 }}
+                  sm={{ span: 24 }}
+                  md={{ span: 12 }}
+                  lg={{ span: 12 }}
+                >
+                  <Video
+                    cloudName="tarositeweb"
+                    controls="true"
+                    fallback="Cannot display video"
+                    publicId={data.publicId}
+                    width="100%"
+                  />
+                </Col>
+                <Col
+                  xs={{ span: 24 }}
+                  sm={{ span: 24 }}
+                  md={{ span: 12 }}
+                  lg={{ span: 12 }}
+                >
+                  <div className="description">
+                    <p>{data.description}</p>
+                    <Link
+                      to={`/advertising/profile/${data.profileId}`}
+                      className="link"
+                    >
+                      {t("contact_us")}
+                    </Link>
+                  </div>
+                </Col>
+              </Row>
+            </div>
+          ))}
+        </Slider>
+      </Fade>
     </IntroVideoStyling>
   );
 };
@@ -257,25 +262,27 @@ const AdvertisingNavgation = ({ lang }) => {
 
   return (
     <NavStyling>
-      <Slider {...settings}>
-        {BusinessList.map((data, index) => (
-          <div key={index}>
-            <div
-              onClick={() =>
-                history.push(`/advertising/type/${data.value}`, {
-                  type: data.value,
-                })
-              }
-              className="card_container"
-            >
-              <div className="card_body">
-                <i className="icon">{data.icon}</i>
-                <span>{data.title}</span>
+      <Fade bottom>
+        <Slider {...settings}>
+          {BusinessList.map((data, index) => (
+            <div key={index}>
+              <div
+                onClick={() =>
+                  history.push(`/advertising/type/${data.value}`, {
+                    type: data.value,
+                  })
+                }
+                className="card_container"
+              >
+                <div className="card_body">
+                  <i className="icon">{data.icon}</i>
+                  <span>{data.title}</span>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </Slider>
+          ))}
+        </Slider>
+      </Fade>
     </NavStyling>
   );
 };
@@ -283,38 +290,40 @@ const AdvertisingNavgation = ({ lang }) => {
 const JoiningUsSection = () => {
   return (
     <JoiningUsStyling>
-      <h1 className="title">
-        Join us <br /> Be a part of the our story{" "}
-      </h1>
-      <hr />
-      <Row gutter={[10, 10]}>
-        <Col
-          xs={{ span: 24 }}
-          sm={{ span: 24 }}
-          md={{ span: 12 }}
-          lg={{ span: 12 }}
-        >
-          <img src="/img/advertising/union.jpg" loading="lazy" alt="" />
-        </Col>
-        <Col
-          xs={{ span: 24 }}
-          sm={{ span: 24 }}
-          md={{ span: 12 }}
-          lg={{ span: 12 }}
-        >
-          <div className="content">
-            <h1>
-              Become a partner <br /> Reach more customers and <br /> achieve
-              growth with us
-            </h1>
-            <div className="link">
-              <Link to="/advertising/register" alt="">
-                Let's go
-              </Link>
+      <Fade bottom>
+        <h1 className="title">
+          Join us <br /> Be a part of the our story{" "}
+        </h1>
+        <hr />
+        <Row gutter={[10, 10]}>
+          <Col
+            xs={{ span: 24 }}
+            sm={{ span: 24 }}
+            md={{ span: 12 }}
+            lg={{ span: 12 }}
+          >
+            <img src="/img/advertising/union.jpg" loading="lazy" alt="" />
+          </Col>
+          <Col
+            xs={{ span: 24 }}
+            sm={{ span: 24 }}
+            md={{ span: 12 }}
+            lg={{ span: 12 }}
+          >
+            <div className="content">
+              <h1>
+                Become a partner <br /> Reach more customers and <br /> achieve
+                growth with us
+              </h1>
+              <div className="link">
+                <Link to="/advertising/register" alt="">
+                  Let's go
+                </Link>
+              </div>
             </div>
-          </div>
-        </Col>
-      </Row>
+          </Col>
+        </Row>
+      </Fade>
     </JoiningUsStyling>
   );
 };
@@ -358,17 +367,19 @@ const PartnerSectionLogo = ({ lang }) => {
 
   return (
     <PartnerLogoStyling>
-      <h1 className="title">our partner</h1>
-      <hr />
-      <Slider {...settings}>
-        {listPartnerLogo.map((item) => (
-          <div key={item.profileId} className="logo-box">
-            <Link to={`/advertising/profile/${item.profileId}`}>
-              <img src={item.logoUrl} alt={item.companyName} loading="lazy" />
-            </Link>
-          </div>
-        ))}
-      </Slider>
+      <Fade bottom>
+        <h1 className="title">our partner</h1>
+        <hr />
+        <Slider {...settings}>
+          {listPartnerLogo.map((item) => (
+            <div key={item.profileId} className="logo-box">
+              <Link to={`/advertising/profile/${item.profileId}`}>
+                <img src={item.logoUrl} alt={item.companyName} loading="lazy" />
+              </Link>
+            </div>
+          ))}
+        </Slider>
+      </Fade>
     </PartnerLogoStyling>
   );
 };
@@ -412,21 +423,23 @@ const ServicesSlider = ({ lang }) => {
   };
   return (
     <ServiceStyling>
-      <h1 className="title">services</h1>
-      <hr />
-      <Slider {...settings} className="slider">
-        {servicePicture.map((data) => (
-          <div className="box" key={data.profileId}>
-            <Link
-              to={`/advertising/profile/${data.profileId}`}
-              className="link"
-              alt=""
-            >
-              <img src={data.imgUrl} alt="" loading="lazy" />
-            </Link>
-          </div>
-        ))}
-      </Slider>
+      <Fade bottom>
+        <h1 className="title">services</h1>
+        <hr />
+        <Slider {...settings} className="slider">
+          {servicePicture.map((data) => (
+            <div className="box" key={data.profileId}>
+              <Link
+                to={`/advertising/profile/${data.profileId}`}
+                className="link"
+                alt=""
+              >
+                <img src={data.imgUrl} alt="" loading="lazy" />
+              </Link>
+            </div>
+          ))}
+        </Slider>
+      </Fade>
     </ServiceStyling>
   );
 };
@@ -684,6 +697,7 @@ const Container = styled.div`
 
   & section {
     padding: 4rem 2rem;
+    overflow-y: hidden;
   }
 `;
 
