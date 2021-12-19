@@ -251,31 +251,47 @@ function NavBar() {
           <SubMenu
             key="services"
             title={`Our Services `}
-            className="submenu_content"
+            popupClassName="submenu_content"
           >
             <Menu.Item key="setting:1">
-              <Link to="/design">Design</Link>
+              <Link to="/design" className="sub_link">
+                Design
+              </Link>
             </Menu.Item>
             <Menu.Item key="setting:2">
-              <Link to="/photography">Photography</Link>
+              <Link to="/photography" className="sub_link">
+                Photography
+              </Link>
             </Menu.Item>
             <Menu.Item key="setting:3">
-              <Link to="/print">Printing Press</Link>
+              <Link to="/printing" className="sub_link">
+                Printing Press
+              </Link>
             </Menu.Item>
             <Menu.Item key="setting:4">
-              <Link to="/exhibition">Exhibition Management</Link>
+              <Link to="/exhibition" className="sub_link">
+                Exhibition Management
+              </Link>
             </Menu.Item>
             <Menu.Item key="setting:5">
-              <Link to="/programming">Programming</Link>
+              <Link to="/programming" className="sub_link">
+                Programming
+              </Link>
             </Menu.Item>
             <Menu.Item key="setting:6">
-              <Link to="/marketing">Marketing</Link>
+              <Link to="/marketing" className="sub_link">
+                Marketing
+              </Link>
             </Menu.Item>
             <Menu.Item key="setting:6">
-              <Link to="/production">Production</Link>
+              <Link to="/production" className="sub_link">
+                Production
+              </Link>
             </Menu.Item>
             <Menu.Item key="setting:6">
-              <Link to="/pos">POS</Link>
+              <Link to="/pos" className="sub_link">
+                POS
+              </Link>
             </Menu.Item>
           </SubMenu>
         </Menu>
@@ -352,11 +368,7 @@ const BottomHeader = styled.div`
     }
   }
 
-  & .submenu_content {
-    & .link {
-      text-decoration: none !important;
-    }
-  }
+ 
 `;
 
 const HeaderTop = styled.div`

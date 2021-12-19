@@ -18,3 +18,11 @@
 }
 .SubMenu .ant-menu-submenu-title {
 } */
+
+.submenu_content .sub_link {
+  text-decoration: none !important;
+  color: var(--dark-color);
+}
+.submenu_content .sub_link:hover {
+  color: var(--orange-color);
+}

@@ -240,7 +240,6 @@ const BannerSeconde = styled.div`
   & .content {
     position: absolute ;
     bottom: 300px;
-    left: 5%;
     height: 100%;
     /* max-width: 500px; */
     padding: 10px;
