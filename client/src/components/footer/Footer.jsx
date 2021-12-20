@@ -163,42 +163,42 @@ function FooterScrren() {
           <h3 className="footer-heading">Our Services</h3>
           <ul className="footer-group">
             <li className="footer-item">
-              <Link to="/" className="link">
+              <Link to="/design" className="link">
                 Design
               </Link>
             </li>
             <li className="footer-item">
-              <Link to="/" className="link">
+              <Link to="/photography" className="link">
                 Photography
               </Link>
             </li>
             <li className="footer-item">
-              <Link to="/" className="link">
+              <Link to="/printing" className="link">
                 Printing Press
               </Link>
             </li>
             <li className="footer-item">
-              <Link to="/" className="link">
+              <Link to="/exhibition" className="link">
                 Exhibition Management
               </Link>
             </li>
             <li className="footer-item">
-              <Link to="/" className="link">
+              <Link to="/programming" className="link">
                 Programming
               </Link>
             </li>
             <li className="footer-item">
-              <Link to="/" className="link">
+              <Link to="/marketing" className="link">
                 Marketing
               </Link>
             </li>
             <li className="footer-item">
-              <Link to="/" className="link">
+              <Link to="/production" className="link">
                 Production
               </Link>
             </li>
             <li className="footer-item">
-              <Link to="/" className="link">
+              <Link to="/pos" className="link">
                 POS
               </Link>
             </li>

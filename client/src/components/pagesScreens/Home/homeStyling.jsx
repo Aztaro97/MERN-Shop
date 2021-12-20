@@ -80,6 +80,16 @@ export const SectionStyling = styled.section`
     letter-spacing: 1px;
     color: var(--silver-color);
   }
+  & ._link {
+    color: var(--silver-color);
+    border: 1px solid var(--silver-color);
+    padding: 5px 20px;
+    text-decoration: none;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    margin-top: 10px;
+    display: inline-block;
+  }
   & .circle_container {
     display: flex;
     justify-content: end;
@@ -251,6 +261,12 @@ export const BannerStyling = styled.section`
         text-transform: uppercase;
         font-size: 1.3rem;
         word-wrap: break-word;
+        letter-spacing: 1px;
+        & span {
+          font-size: 2rem;
+          display: block;
+          color: var(--orange-color);
+        }
       }
 
       & p {

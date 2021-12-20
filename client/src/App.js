@@ -187,6 +187,16 @@ const ProfileComponent = lazy(() =>
   import("./components/pagesScreens/user/profile/tabs")
 );
 
+//  POS PAGE  /////////////////////////////////
+const PosComponent = lazy(() =>
+  import("./components/pagesScreens/pos/posScreen")
+);
+
+//  POS PAGE  /////////////////////////////////
+const ExhibitionComponent = lazy(() =>
+  import("./components/pagesScreens/exhibition/exhibitionScreen")
+);
+
 function App() {
   useEffect(() => {
     ReactGA.initialize("UA-207742018-1");
@@ -209,10 +219,7 @@ function App() {
           <Route path="/products/page/:pageNumber" component={ProductsShop} />
           <Route path="/products" component={ProductsShop} />
           <Route path="/product/:id" component={EditProductScreen} />
-          <Route
-            path="/myproducts"
-            component={MyProductAndCompanyComponent}
-          />
+          <Route path="/myproducts" component={MyProductAndCompanyComponent} />
           <Route path="/e-commerce" component={EcommerceHomeComponent} />
           <Route path="/companies" component={CompanyListComponent} />
           <Route path="/cart" component={CartComponent} />
@@ -309,6 +316,15 @@ function App() {
 
           {/* ////////////////////    ABOUT ROUTER   ////////////////// */}
           <Route path="/about" component={AboutComponent} />
+
+          {/* ////////////////////    ABOUT ROUTER   ////////////////// */}
+          <Route path="/pos" component={PosComponent} />
+
+          {/* ////////////////////    ABOUT ROUTER   ////////////////// */}
+          <Route
+            path="/exhibition"
+            component={ExhibitionComponent}
+          />
 
           {/*////////////////  ADMIN ROUTER  ///////////// */}
           <Route path="/admin/orderlist" component={OrderListComponent} exact />

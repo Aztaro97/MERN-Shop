@@ -116,20 +116,18 @@ function HomeComponents() {
         <Fade bottom>
           <h1 className="title">design</h1>
           <h3 className="sub_title">
-            Want to know what your audiences thinks of your brand ?
+            What we do to help a client to develop <br /> the products they have
+            with high quality ?
           </h3>
           <Row gutter={[10, 10]}>
             <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 8 }}>
               <p className="para">
-                Are you wondering why other companies do less and benefit more
-                from their brand presence in the market? Well here at AU 79
-                CODE, we've made a recipe for exactly that! We welcome your
-                challenges and offer you an open feast of beautifully crafted
-                solutions to complex problems. Whatever your business, we have
-                our heart and passion in it, using the right channels and
-                methods to reach the right customers at the right time by
-                designing and building your brand identity.
+                We listen. We advise. We design. Together. Our success is
+                measured by results, the most important being how our clients
+                feel about their experience with us. Happy customers and ongoing
+                relationships are what we strive for.
               </p>
+              <Link className="_link">learn more</Link>
             </Col>
             <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 16 }}>
               <div className="circle_container">
@@ -228,7 +226,8 @@ function HomeComponents() {
         <Fade bottom>
           <h1 className="title">PHOTOGRAPHY</h1>
           <h3 className="sub_title">
-            It's simple keep calm, AU79CODE you got it covered !
+            Need professional photography of your products, <br /> services or
+            even your events ?
           </h3>
           <Row gutter={[10, 10]}>
             <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 8 }}>
@@ -922,7 +921,7 @@ const Banner = () => {
     infinite: true,
     speed: 1000,
     autoplay: true,
-    autoplaySpeed: 6000,
+    autoplaySpeed: 8000,
     slidesToShow: 1,
     slidesToScroll: 1,
     rtl: currentLang === "ar" ? true : false,
@@ -934,7 +933,10 @@ const Banner = () => {
         <div>
           <div className="landing_overlay bg_img1">
             <div className="content_overlay">
-              <h1>your partner in growth</h1>
+              <h1>
+                do you want to Start Growing your business with our platform
+                Today ?
+              </h1>
 
               <p>
                 Our marketing strategies for getting your website publicized
@@ -950,13 +952,17 @@ const Banner = () => {
         <div>
           <div className="landing_overlay bg_img2">
             <div className="content_overlay">
-              <Link className="btn_banner" to="/digital-marketing">
-                marketing
+              <h1>
+                online shop
+                <span>simple and easy</span>
+              </h1>
+              <Link className="btn_banner" to="/e-commerce">
+                shop
               </Link>
             </div>
           </div>
         </div>
-        <div>
+        {/* <div>
           <div className="landing_overlay bg_img3">
             <div className="content_overlay">
               <Link className="btn_banner" to="/printing">
@@ -973,7 +979,7 @@ const Banner = () => {
               </Link>
             </div>
           </div>
-        </div>
+        </div> */}
       </Slider>
     </BannerStyling>
   );
