@@ -48,6 +48,9 @@ export const SectionStyling = styled.section`
   /* margin: 80px 0; */
   overflow-y: hidden;
   padding: 100px 40px;
+  & .first_row {
+    padding-bottom: 2rem;
+  }
   & .title {
     font-weight: 700;
     font-size: 2rem;
@@ -86,13 +89,16 @@ export const SectionStyling = styled.section`
     padding: 5px 20px;
     text-decoration: none;
     letter-spacing: 1px;
-    border-radius: 5px;
+    border-radius: 10px;
     margin-top: 10px;
     display: inline-block;
+    text-transform: capitalize;
   }
   & .circle_container {
     display: flex;
     justify-content: end;
+    align-items: center;
+    height: 100%;
 
     & .circle {
       width: 350px;
@@ -213,14 +219,14 @@ export const BannerStyling = styled.section`
     &.bg_img1 {
       background: ${({ data }) =>
         data
-          ? `radial-gradient(circle, rgba(2,0,36,0.4962359943977591) 0%, rgba(0,0,0,0.896796218487395) 81%),
+          ? `linear-gradient(90deg, #020024a2 100%, #00000052 100%),
         url(${data[0].url})`
           : null};
     }
     &.bg_img2 {
       background: ${({ data }) =>
         data
-          ? `radial-gradient(circle, rgba(2,0,36,0.4962359943977591) 0%, rgba(0,0,0,0.896796218487395) 81%),
+          ? `linear-gradient(90deg, #02002483 100%, #00000052 100%),
         url(${data[1].url})`
           : null};
     }
@@ -258,7 +264,7 @@ export const BannerStyling = styled.section`
         color: #fff;
         margin: 0;
         font-weight: 700;
-        text-transform: uppercase;
+        text-transform: capitalize;
         font-size: 1.3rem;
         word-wrap: break-word;
         letter-spacing: 1px;
@@ -280,11 +286,9 @@ export const BannerStyling = styled.section`
         text-decoration: none;
         outline: none;
         border: none;
-        border-radius: 5px;
+        border-radius: 50px;
         padding: 5px 20px;
-        background: #fff;
-        text-transform: uppercase !important;
-        color: #333;
+        text-transform: capitalize !important;
         text-align: center;
         letter-spacing: 1px;
         margin: 10px 0;
@@ -292,6 +296,15 @@ export const BannerStyling = styled.section`
         cursor: pointer;
         &:hover {
           opacity: 0.9;
+        }
+        &.btn_1 {
+          background: var(--silver-color);
+          color: var(--black-color);
+        }
+        &.btn_2 {
+          background: var(--orange-color);
+          color: var(--white-color);
+          margin-left: 10px;
         }
       }
     }
@@ -357,7 +370,7 @@ export const ProgrammingCardStyling = styled.section`
     margin-bottom: 20px;
     text-align: center;
     cursor: pointer;
-    height: 200px;
+    height: 220px;
     transition: all 0.3s ease;
     & .service_card_icon {
       font-size: 40px;
@@ -365,11 +378,12 @@ export const ProgrammingCardStyling = styled.section`
       margin-bottom: 10px;
     }
     & .service_card_title {
-      font-size: 20px;
+      font-size: 1.1rem;
       font-weight: bold;
       margin-bottom: 10px;
       text-transform: capitalize;
       color: var(--silver-color);
+      /* height: 40px; */
     }
     & p {
       font-size: 14px;

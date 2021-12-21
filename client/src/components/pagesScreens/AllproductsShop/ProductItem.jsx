@@ -62,7 +62,7 @@ function Product({ product }) {
 }
 
 const Card = styled.div`
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--silver-color);
   border-radius: 10px;
   width: 100%;
   /* width: 300px; */
@@ -85,7 +85,7 @@ const Card = styled.div`
       text-transform: uppercase;
       margin-bottom: 0;
       font-size: 1rem;
-      color: #000;
+      color: var(--silver-color);
       display: block;
       width: 100%;
     }
@@ -105,6 +105,7 @@ const Card = styled.div`
       display: flex;
       align-items: center;
       justify-content: space-between;
+      padding: 1rem 0;
       & .price {
         color: #49c4d3;
         margin-bottom: 0.6rem;
@@ -118,6 +119,7 @@ const Card = styled.div`
         font-size: 1rem;
         text-transform: uppercase;
         font-weight: 700;
+        color: var(--silver-color);
       }
     }
   }

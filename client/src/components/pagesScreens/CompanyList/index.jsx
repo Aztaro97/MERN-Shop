@@ -79,6 +79,10 @@ const TabsE = styled(Tabs)`
   color: var(--silver-color);
   font-weight: 700;
 
+  & .ant-tabs-nav::before {
+    border-bottom: none;
+  }
+
   & .ant-tabs-tab .ant-tabs-tab-btn {
     border: 1px solid var(--silver-color) !important;
     padding: 0.5rem 1rem;

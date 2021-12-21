@@ -60,13 +60,13 @@ function ProgrammingScreen() {
             >
               <div className="service_card first_card">
                 {/* <BsCodeSlash className="service_card_icon" /> */}
-                <h5 className="service_card_title">
-                  Providing solutions of every kind
-                </h5>
+                <h5 className="service_card_title">Website Development</h5>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Molestiae, minus corrupti. Porro adipisicing elit. Molestiae,
-                  minus corrupti. Porro
+                  We're the best web development company in UEA that turns your
+                  idea into reality. With experience in web development and
+                  digital marketing, we offer robust services. Our team of
+                  developers has years of experience in offering quality web
+                  development.
                 </p>
               </div>
             </Col>
@@ -78,22 +78,7 @@ function ProgrammingScreen() {
             >
               <div className="service_card">
                 <BsCodeSlash className="service_card_icon" />
-                <h5 className="service_card_title">service 2</h5>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Molestiae, minus corrupti. Porro
-                </p>
-              </div>
-            </Col>
-            <Col
-              xs={{ span: 24 }}
-              sm={{ span: 12 }}
-              md={{ span: 12 }}
-              lg={{ span: 8 }}
-            >
-              <div className="service_card">
-                <BsCodeSlash className="service_card_icon" />
-                <h5 className="service_card_title">service 3</h5>
+                <h5 className="service_card_title">Mobile App Development</h5>
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Molestiae, minus corrupti. Porro
@@ -108,7 +93,7 @@ function ProgrammingScreen() {
             >
               <div className="service_card">
                 <BsCodeSlash className="service_card_icon" />
-                <h5 className="service_card_title">service 4</h5>
+                <h5 className="service_card_title">E-Commerce Development</h5>
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Molestiae, minus corrupti. Porro
@@ -123,7 +108,7 @@ function ProgrammingScreen() {
             >
               <div className="service_card">
                 <BsCodeSlash className="service_card_icon" />
-                <h5 className="service_card_title">service 5</h5>
+                <h5 className="service_card_title">WordPress Development</h5>
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Molestiae, minus corrupti. Porro
@@ -138,7 +123,22 @@ function ProgrammingScreen() {
             >
               <div className="service_card">
                 <BsCodeSlash className="service_card_icon" />
-                <h5 className="service_card_title">service 6</h5>
+                <h5 className="service_card_title">Website Redesigning</h5>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Molestiae, minus corrupti. Porro
+                </p>
+              </div>
+            </Col>
+            <Col
+              xs={{ span: 24 }}
+              sm={{ span: 12 }}
+              md={{ span: 12 }}
+              lg={{ span: 8 }}
+            >
+              <div className="service_card">
+                <BsCodeSlash className="service_card_icon" />
+                <h5 className="service_card_title">CMS Development</h5>
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Molestiae, minus corrupti. Porro
@@ -156,11 +156,17 @@ function ProgrammingScreen() {
                 Providing Solutions Of Every Kind
               </Title>
               <Paragraph className="para">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Delectus dolor omnis perferendis aliquam? Expedita id,
-                asperiores aliquam accusantium, excepturi ratione assumenda
-                facere dolor, recusandae provident exercitationem doloribus nam
-                inventore necessitatibus!
+                We are in the era of modern technology, where digital solutions
+                and software replace an old style, and those who are interested
+                in the development of their business and gain more success and
+                progress to reap a lot of profits have to resort to searching
+                for modern technological ways to improve the results of your
+                business in the commercial market, from the furniture you are
+                wondering now, to take over Responsibility for developing my
+                business? If you are looking for programming companies in Dubai
+                and you are tired of the many options and do not know what to
+                do? We are one of the programming companies where we provide you
+                with all the programming services you need
               </Paragraph>
             </Col>
             <Col xs={{ span: 24 }} sm={{ span: 12 }} lg={{ span: 12 }}>
@@ -238,7 +244,7 @@ const BannerSeconde = styled.div`
     }
   }
   & .content {
-    position: absolute ;
+    position: absolute;
     bottom: 300px;
     height: 100%;
     /* max-width: 500px; */

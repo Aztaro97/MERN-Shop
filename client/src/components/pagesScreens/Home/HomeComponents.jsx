@@ -114,20 +114,21 @@ function HomeComponents() {
 
       <SectionStyling id="design">
         <Fade bottom>
-          <h1 className="title">design</h1>
-          <h3 className="sub_title">
-            What we do to help a client to develop <br /> the products they have
-            with high quality ?
-          </h3>
-          <Row gutter={[10, 10]}>
+          <Row gutter={[10, 10]} className="first_row">
             <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 8 }}>
+              <h1 className="title">design</h1>
+              <h3 className="sub_title">
+                No Design? No Problem Let Our Designers Help You
+              </h3>
               <p className="para">
                 We listen. We advise. We design. Together. Our success is
                 measured by results, the most important being how our clients
                 feel about their experience with us. Happy customers and ongoing
                 relationships are what we strive for.
               </p>
-              <Link className="_link">learn more</Link>
+              <Link to="/design" className="_link">
+                see more
+              </Link>
             </Col>
             <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 16 }}>
               <div className="circle_container">
@@ -224,13 +225,13 @@ function HomeComponents() {
         style={{ backgroundColor: "var(--dark-color)" }}
       >
         <Fade bottom>
-          <h1 className="title">PHOTOGRAPHY</h1>
-          <h3 className="sub_title">
-            Need professional photography of your products, <br /> services or
-            even your events ?
-          </h3>
-          <Row gutter={[10, 10]}>
+          <Row gutter={[10, 10]} className="first_row">
             <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 8 }}>
+              <h1 className="title">PHOTOGRAPHY</h1>
+              <h3 className="sub_title">
+                Need professional photography of your products, <br /> services
+                or even your events ?
+              </h3>
               <p className="para">
                 Photography done right can make your story unforgettable. We do
                 photoshoots properly by understanding your personality, goals
@@ -239,6 +240,9 @@ function HomeComponents() {
                 could be a humorous or emotional documentary style. It's all
                 about finding the right way to make the most of your investment.
               </p>
+              <Link to="/photography" className="_link">
+                see more
+              </Link>
             </Col>
             <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 16 }}>
               <div className="circle_container">
@@ -332,12 +336,12 @@ function HomeComponents() {
       </SectionStyling>
       <SectionStyling id="printing">
         <Fade bottom>
-          <h1 className="title">printing press</h1>
-          <h3 className="sub_title">
-            It's simple keep calm, AU79CODE you got it covered !
-          </h3>
-          <Row gutter={[10, 10]}>
+          <Row gutter={[10, 10]} className="first_row">
             <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 8 }}>
+              <h1 className="title">printing press</h1>
+              <h3 className="sub_title">
+                do you want to impress your cients ?
+              </h3>
               <p className="para">
                 We started from a new base. All you must do is tell us what you
                 want, and we design for you according to your requests and
@@ -350,6 +354,9 @@ function HomeComponents() {
                 marketing communications campaign and provides tangible
                 branding.
               </p>
+              <Link to="/printing" className="_link">
+                see more
+              </Link>
             </Col>
             <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 16 }}>
               <div className="circle_container">
@@ -448,10 +455,10 @@ function HomeComponents() {
         style={{ backgroundColor: "var(--dark-color)" }}
       >
         <Fade bottom>
-          <h1 className="title">exhibition management</h1>
-          <h3 className="sub_title">You dream about it we run it!</h3>
-          <Row gutter={[10, 10]}>
+          <Row gutter={[10, 10]} className="first_row">
             <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 8 }}>
+              <h1 className="title">exhibition management</h1>
+              <h3 className="sub_title">You dream about it ? we run it!</h3>
               <p className="para">
                 We take care of everything! Have you ever gotten that spark from
                 the idea of planning your special day, but then got sidetracked
@@ -460,6 +467,9 @@ function HomeComponents() {
                 planning every creative shred of detail needed for your special
                 exhibition, simply getting enough of the process,
               </p>
+              <Link to="/exhibition" className="_link">
+                see more
+              </Link>
             </Col>
             <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 16 }}>
               <div className="circle_container">
@@ -555,10 +565,10 @@ function HomeComponents() {
       </SectionStyling>
       <SectionStyling id="programming">
         <Fade bottom>
-          <h1 className="title">PROGRAMMING</h1>
-          <h3 className="sub_title">You dream about it we run it!</h3>
-          <Row gutter={[10, 10]}>
+          <Row gutter={[10, 10]} className="first_row">
             <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 8 }}>
+              <h1 className="title">PROGRAMMING</h1>
+              <h3 className="sub_title">You dream about it we run it!</h3>
               <p className="para">
                 Develop and build your own website and app You need it, we build
                 it for you! Beat your competitors and outdo them! There is no
@@ -570,6 +580,9 @@ function HomeComponents() {
                 needs such as internal management system, online / online stores
                 and online web platforms.
               </p>
+              <Link to="/programming" className="_link">
+                see more
+              </Link>
             </Col>
             <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 16 }}>
               <div className="circle_container">
@@ -594,13 +607,12 @@ function HomeComponents() {
               >
                 <div className="service_card first_card">
                   {/* <BsCodeSlash className="service_card_icon" /> */}
-                  <h5 className="service_card_title">
-                    Providing solutions of every kind
-                  </h5>
+                  <h5 className="service_card_title">Website development</h5>
                   <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Molestiae, minus corrupti. Porro adipisicing elit.
-                    Molestiae, minus corrupti. Porro
+                    We're the best web development company in UEA that turns
+                    your idea into reality. With experience in web development.
+                    Our team of developers has years of experience in offering
+                    quality web development.
                   </p>
                 </div>
               </Col>
@@ -611,11 +623,13 @@ function HomeComponents() {
                 lg={{ span: 8 }}
               >
                 <div className="service_card">
-                  <BsCodeSlash className="service_card_icon" />
-                  <h5 className="service_card_title">service 2</h5>
+                  {/* <BsCodeSlash className="service_card_icon" /> */}
+                  <h5 className="service_card_title">Mobile App Development</h5>
                   <p className="card_content">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Molestiae, minus corrupti. Porro
+                    Mobile is here, the future is going on right now, and mobile
+                    devices are a part of the everyday lives of billions of
+                    people. Our staff is thorough, creative, and ready to
+                    develop an app for your specific needs.
                   </p>
                 </div>
               </Col>
@@ -626,11 +640,13 @@ function HomeComponents() {
                 lg={{ span: 8 }}
               >
                 <div className="service_card">
-                  <BsCodeSlash className="service_card_icon" />
-                  <h5 className="service_card_title">service 3</h5>
+                  {/* <BsCodeSlash className="service_card_icon" /> */}
+                  <h5 className="service_card_title">E-commerce Development</h5>
                   <p className="card_content">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Molestiae, minus corrupti. Porro
+                    We’re not just an eCommerce website development company, we
+                    are a team of experts ready to help you turn your dream of
+                    owning a result-driven eCommerce store to reality! Our 90%
+                    stores are generating very good revenue.
                   </p>
                 </div>
               </Col>
@@ -641,11 +657,13 @@ function HomeComponents() {
                 lg={{ span: 8 }}
               >
                 <div className="service_card">
-                  <BsCodeSlash className="service_card_icon" />
-                  <h5 className="service_card_title">service 4</h5>
+                  {/* <BsCodeSlash className="service_card_icon" /> */}
+                  <h5 className="service_card_title">WordPress Development</h5>
                   <p className="card_content">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Molestiae, minus corrupti. Porro
+                    As best Wordpress Development Company UAE , We offer
+                    development services with the focus on originality,
+                    flexibility and a unique,Our custom WordPress development
+                    services match any budget and will fit your needs too.
                   </p>
                 </div>
               </Col>
@@ -656,11 +674,13 @@ function HomeComponents() {
                 lg={{ span: 8 }}
               >
                 <div className="service_card">
-                  <BsCodeSlash className="service_card_icon" />
-                  <h5 className="service_card_title">service 5</h5>
+                  {/* <BsCodeSlash className="service_card_icon" /> */}
+                  <h5 className="service_card_title">Website Redesigning</h5>
                   <p className="card_content">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Molestiae, minus corrupti. Porro
+                    redesign a website with customers in mind. you’re probably
+                    going through a website redesign or are at least considering
+                    one. Maybe your site is looking outdated and you feel it’s
+                    time for a change.
                   </p>
                 </div>
               </Col>
@@ -671,11 +691,14 @@ function HomeComponents() {
                 lg={{ span: 8 }}
               >
                 <div className="service_card">
-                  <BsCodeSlash className="service_card_icon" />
-                  <h5 className="service_card_title">service 6</h5>
+                  {/* <BsCodeSlash className="service_card_icon" /> */}
+                  <h5 className="service_card_title">
+                    network systems for companies and institutions
+                  </h5>
                   <p className="card_content">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Molestiae, minus corrupti. Porro
+                    We build intranets and web-based systems to help companies
+                    increase productivity and facilitate successful management
+                    methods
                   </p>
                 </div>
               </Col>
@@ -688,23 +711,31 @@ function HomeComponents() {
         style={{ backgroundColor: "var(--dark-color)" }}
       >
         <Fade bottom>
-          <h1 className="title">marketing</h1>
-          <h3 className="sub_title">
-            Our services will make all thes gaps covered !
-          </h3>
-          <Row gutter={[10, 10]}>
+          <Row gutter={[10, 10]} className="first_row">
             <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 8 }}>
-              <ul className="list_item">
+              <h1 className="title">marketing</h1>
+              <h3 className="sub_title">
+                Is your marketing working ? <br /> Our services will make sure
+                your marketing strategies will work 100% in the market{" "}
+              </h3>
+              {/* <ul className="list_item">
                 <li>Is your marketing working ?</li>
                 <li>Are you tired of getting rid of all your ?</li>
-              </ul>
+              </ul> */}
               <p className="para">
-                marketing tactics and not getting the results you really deserve
-                in return? We are not happy to see you falter! You my friend
-                need a digital marketing consultant Whether you need someone
-                with a lot of digital experience or someone with a strong
-                business mind you can use to help grow your business or business
+                We are proud to be the leading
+                <br /> e-marketing company in the UAE. As a company that
+                provides integrated <br /> e-marketing services, we provide our
+                customers with a variety of <br /> e-marketing services to
+                improve the position of their website and develop their
+                businesses. There is one thing in common among all AU78CODE
+                employees, which is that they have great experience in their
+                field. The reason behind our success is due to To the high
+                capabilities of the specialists who make up the company's team
               </p>
+              <Link to="/marketing" className="_link">
+                see more
+              </Link>
             </Col>
             <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 16 }}>
               <div className="circle_container">
@@ -780,10 +811,10 @@ function HomeComponents() {
       </SectionStyling>
       <SectionStyling id="products">
         <Fade bottom>
-          <h1 className="title">productions</h1>
-          <h3 className="sub_title">You dream about it we run it!</h3>
-          <Row gutter={[10, 10]}>
+          <Row gutter={[10, 10]} className="first_row">
             <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 8 }}>
+              <h1 className="title">productions</h1>
+              <h3 className="sub_title">You dream about it we run it!</h3>
               <p className="para">
                 We are market leaders in each of its sectors and offer a wide
                 range of products from a wide range and the best quality. We
@@ -794,6 +825,9 @@ function HomeComponents() {
                 products, detergents and customized products suitable for every
                 market segment.
               </p>
+              <Link to="/production" className="_link">
+                see more
+              </Link>
             </Col>
             <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 16 }}>
               <div className="circle_container">
@@ -920,8 +954,9 @@ const Banner = () => {
     dots: true,
     infinite: true,
     speed: 1000,
+    fade: true,
     autoplay: true,
-    autoplaySpeed: 8000,
+    autoplaySpeed: 4000,
     slidesToShow: 1,
     slidesToScroll: 1,
     rtl: currentLang === "ar" ? true : false,
@@ -934,17 +969,19 @@ const Banner = () => {
           <div className="landing_overlay bg_img1">
             <div className="content_overlay">
               <h1>
-                do you want to Start Growing your business with our platform
-                Today ?
+                Thinking of advertising for your business ? The time is now!
               </h1>
 
               <p>
-                Our marketing strategies for getting your website publicized
+                Our marketing strategies for getting your business publicized
                 give effective results
               </p>
 
-              <Link className="btn_banner" to="/advertising">
-                advertising
+              <Link className="btn_banner btn_1" to="/advertising">
+                read more
+              </Link>
+              <Link className="btn_banner btn_2" to="/register">
+                add your ads
               </Link>
             </div>
           </div>
@@ -953,11 +990,14 @@ const Banner = () => {
           <div className="landing_overlay bg_img2">
             <div className="content_overlay">
               <h1>
-                online shop
-                <span>simple and easy</span>
+                Do you want to enhance or upgrade your business?
+                {/* <span>simple and easy</span> */}
               </h1>
-              <Link className="btn_banner" to="/e-commerce">
-                shop
+              <Link className="btn_banner btn_1" to="/e-commerce">
+                read more
+              </Link>
+              <Link className="btn_banner btn_2" to="/register">
+                create your shop
               </Link>
             </div>
           </div>

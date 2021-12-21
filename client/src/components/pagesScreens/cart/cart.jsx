@@ -203,10 +203,11 @@ const Row = styled.div`
 const Header = styled.div`
   height: 5rem;
   width: 100%;
+  padding: 4rem 2rem;
 
   & a {
     text-decoration: none;
-    color: #000;
+    color: var(--silver-color);
     font-weight: 700;
     position: relative;
     top: 2rem;
@@ -214,7 +215,7 @@ const Header = styled.div`
 
   & h2 {
     text-align: center;
-    color: #aaaaac;
+    color: var(--silver-color);
     font-weight: 700;
     margin-bottom: 0;
   }
@@ -354,6 +355,11 @@ const EmptyCart = styled.div`
   text-align: center;
   position: relative;
   top: 2rem;
+
+  & h5 {
+    color: var(--silver-color);
+    margin-bottom:2rem;
+  }
 
   & .link {
     color: #fff;

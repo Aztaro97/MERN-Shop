@@ -162,6 +162,9 @@ const Container = styled.div`
   & .cart_empty {
     margin: 50px 0;
     text-align: center;
+    & h1 {
+      color: var(--silver-color);
+    }
     & button {
       background: var(--orange-color);
       color: #fff;
@@ -188,6 +191,7 @@ const FilterForm = styled.form`
   & .title {
     font-weight: 700;
     letter-spacing: 1px;
+    color: var(--silver-color);
     /* text-decoration: underline; */
   }
 

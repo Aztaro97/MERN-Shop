@@ -38,11 +38,11 @@ const Input = styled.input`
   padding: 5px 11px;
   font-size: 0.7rem;
   height: 2.5rem;
-  border: 1px solid var(--silver-color);
+  border: 1px solid #ffffff34;
   outline: none;
   border-radius: 5px;
   transition: all 0.3s;
-  background: var(--dark-light-color);
+  background: var(--dark-color);
   letter-spacing: 2px;
 
   &:focus {

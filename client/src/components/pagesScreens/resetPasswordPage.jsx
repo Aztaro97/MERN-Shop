@@ -32,6 +32,7 @@ const ResetPasswordPage = () => {
                 required
                 type="email"
                 placeholder="EMAIL"
+                className="input"
                 // value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -60,7 +61,6 @@ const Container = styled.div`
   align-items: center;
   position: relative;
   top: 40px;
-  
 `;
 
 const FormStyling = styled.form`
@@ -73,9 +73,14 @@ const FormStyling = styled.form`
     font-size: 2rem;
     text-align: center;
     font-weight: 700;
+    color: var(--silver-color);
   }
   & .input {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    background: var(--black-color);
+    border: none;
+    padding: 1rem 0.5rem;
+    color: var(--silver-color);
   }
   & .submit_btn {
     width: 100%;

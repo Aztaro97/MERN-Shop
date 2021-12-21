@@ -210,6 +210,7 @@ const CompanyInfo = () => {
             </a>
             <div className="radio_container">
               <Radio.Group
+                className="radio_group"
                 onChange={handleClickRadio}
                 defaultValue={formik.values.company.type}
               >
@@ -720,7 +721,7 @@ const Header = styled.div`
 
   & a {
     text-decoration: none;
-    color: #000;
+    color: var(--silver-color);
     font-weight: 700;
     position: relative;
     top: 2rem;
@@ -734,6 +735,9 @@ const Header = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    & .radio_group {
+      color: var(--silver-color);
+    }
     @media only screen and (max-width: 500px) {
       display: block;
       text-align: center;
@@ -757,11 +761,13 @@ const Form = styled.form`
     text-transform: uppercase;
     font-size: 1rem;
     font-weight: 700;
+    color: var(--silver-color);
   }
   & .card {
-    border: 0.4px solid var(--border-color);
-    padding: 1rem 1.5rem;
+    border: 0.4px solid var(--siilver-color);
+    padding: 1rem 2rem;
     border-radius: 15px;
+    background: var(--dark-color);
 
     & .grid {
       display: grid;
@@ -844,6 +850,7 @@ const Form = styled.form`
           padding: 0 10px;
           outline: none;
           border: 2px solid var(--orange-color);
+          background: var(--dark-color);
           /* border-radius: 0 5px 5px 0; */
           font-size: 0.7rem;
           height: 2.5rem;
@@ -859,7 +866,8 @@ const Form = styled.form`
 
 const TextArea = styled.textarea`
   border-radius: 5px;
-  border: 1px solid #c58787;
+  border: 1px solid #ffffff45;
+  background: var(--dark-color);
   outline: none;
   height: 5rem;
   width: 100%;

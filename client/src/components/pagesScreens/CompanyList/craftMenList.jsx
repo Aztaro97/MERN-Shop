@@ -112,7 +112,7 @@ function CraftManList() {
                             truncateText="…"
                             text={user.company.about}
                           />
-                          <hr />
+                          {/* <hr /> */}
                           <Link className="link" to={`profile/${user._id}`}>
                             see more
                           </Link>
@@ -170,11 +170,13 @@ const SliderCarousel = styled(Slider)`
 
 const Card = styled.div`
   box-shadow: var(--box-shadow-value);
+  background: var(--black-color);
 
   & .card_img {
     width: 100%;
     height: 150px;
     object-fit: cover;
+    padding: 10px;
     @media only screen and (max-width: 768px) {
       height: 150px;
     }
@@ -188,10 +190,12 @@ const Card = styled.div`
       text-transform: uppercase;
       font-size: 1.2rem;
       font-weight: 700;
+      color: var(--silver-color);
+      margin-bottom: 10px;
     }
     & p {
       color: var(--silver-color);
-      margin-bottom: 0;
+      margin-bottom: 10px;
     }
     & hr {
       border: none;
