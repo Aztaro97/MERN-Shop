@@ -119,10 +119,18 @@ export const SectionStyling = styled.section`
         }
       }
       & img {
-        width: 100%;
+        width: 350px;
         /* height: 400px; */
-        /* position: relative; */
+        position: relative;
         /* left: 10px; */
+        &.printing_img {
+          max-width: 500px;
+          right: 20px;
+          top: 20px;
+        }
+        &.exhibition_img {
+          top: 4rem;
+        }
       }
     }
   }

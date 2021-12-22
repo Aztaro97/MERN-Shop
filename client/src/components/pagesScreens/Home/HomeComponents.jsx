@@ -133,10 +133,13 @@ function HomeComponents() {
             <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 16 }}>
               <div className="circle_container">
                 {" "}
-                <div className="circle">
+                <div
+                  className="circle"
+                  style={{ backgroundColor: "var(--silver-color)" }}
+                >
                   <img
                     loading="lazy"
-                    src="https://via.placeholder.com/300"
+                    src="/img/design/Designing_picutre.png"
                     alt=""
                   />
                 </div>{" "}
@@ -364,8 +367,9 @@ function HomeComponents() {
                 <div className="circle">
                   <img
                     loading="lazy"
-                    src="https://via.placeholder.com/300"
+                    src="/img/printing/printint_picture.png"
                     alt=""
+                    className="printing_img"
                   />
                 </div>{" "}
               </div>
@@ -477,8 +481,9 @@ function HomeComponents() {
                 <div className="circle">
                   <img
                     loading="lazy"
-                    src="https://via.placeholder.com/300"
+                    src="/img/exhibition/exhibition_picture.png"
                     alt=""
+                    className="exhibition_img"
                   />
                 </div>{" "}
               </div>
