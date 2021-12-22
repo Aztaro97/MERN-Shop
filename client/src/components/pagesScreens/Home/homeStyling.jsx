@@ -119,9 +119,10 @@ export const SectionStyling = styled.section`
         }
       }
       & img {
-        /* width: 100%; */
-        height: 300px;
-        position: relative;
+        width: 100%;
+        /* height: 400px; */
+        /* position: relative; */
+        /* left: 10px; */
       }
     }
   }

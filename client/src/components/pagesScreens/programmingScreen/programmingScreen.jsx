@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { BsCodeSlash } from "react-icons/bs";
 import { Fade } from "react-reveal";
 import VideoPlayer from "react-background-video-player";
+import { Link } from "react-router-dom";
 
 const { Title, Paragraph } = Typography;
 const { Meta } = Card;
@@ -36,15 +37,15 @@ function ProgrammingScreen() {
         />
         <div className="content">
           <Title level={2} className="title">
-            The right consultation partner for your business
+            top-rated web design company in uae
           </Title>
           {/* <Paragraph className="para">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
             cupiditate
           </Paragraph> */}
-          <Button type="button" className="link">
+          <Link to="/contact-us" className="link">
             contact us
-          </Button>
+          </Link>
         </div>
       </BannerSeconde>
       <FirstServiceStyling>
@@ -182,23 +183,26 @@ function ProgrammingScreen() {
                 <Fade bottom>
                   <Row gutter={[10, 10]}>
                     <Col xs={{ span: 24 }} lg={{ span: 12 }}>
-                      <Title level={5}>Lorem Ipsum</Title>
-                      <Title level={2}>Lorem Ipsum</Title>
+                      <Title level={5} className="title_level_5">
+                        Lorem Ipsum
+                      </Title>
+                      <Title level={2} className="title_level_2">
+                        Lorem Ipsum
+                      </Title>
                       <div className="contact_card">
                         <img src="/img/programming/colaboration.png" alt="" />
                         <div className="contact_card_body">
                           <Row gutter={[30, 10]}>
                             <Col xs={{ spaN: 12 }} lg={{ span: 12 }}>
-                              <h3>Providing Solutions Of Every Kind</h3>
-                              <p>
-                                Lorem, ipsum dolor sit amet consectetur
-                                adipisicing elit. Alias voluptas
-                              </p>
+                              {/* <h3>Providing Solutions Of Every Kind</h3> */}
+                              <p></p>More than a website design company, we
+                              create websites that address your business needs &
+                              delight your audience.
                             </Col>
                             <Col xs={{ spaN: 12 }} lg={{ span: 12 }}>
-                              <button type="button" className="button">
+                              <Link to="/contact-us" className="_link">
                                 contact us
-                              </button>
+                              </Link>
                             </Col>
                           </Row>
                         </div>
@@ -264,16 +268,20 @@ const BannerSeconde = styled.div`
     }
     & .title {
       letter-spacing: 1px;
+      text-transform: uppercase;
     }
     & .para {
       max-width: 400px;
       /* text-align: center; */
     }
     & .link {
-      padding: 10px;
+      padding: 10px 2rem;
       background: #fff;
       color: #333;
       font-weight: 400;
+      text-decoration: none;
+      text-transform: uppercase;
+      border-radius: 50px;
       &:hover {
         opacity: 0.9;
       }
@@ -440,6 +448,10 @@ const SecondServiceStyling = styled.section`
     background: var(--black-color);
     padding: 30px;
     margin-top: 3rem;
+    & .title_level_2,
+    & .title_level_5 {
+      color: var(--silver-color);
+    }
     & .contact_card {
       & img {
         width: 100%;
@@ -453,7 +465,7 @@ const SecondServiceStyling = styled.section`
           font-weight: 700;
           letter-spacing: 1px;
         }
-        & .button {
+        & ._link {
           /* max-width: 190px; */
           padding: auto 5px !important;
           background: var(--orange-color);
@@ -462,6 +474,8 @@ const SecondServiceStyling = styled.section`
           padding: 5px 10px;
           position: relative;
           top: 50px;
+          text-decoration: none;
+          text-transform: uppercase;
         }
       }
     }

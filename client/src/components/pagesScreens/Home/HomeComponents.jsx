@@ -250,7 +250,7 @@ function HomeComponents() {
                 <div className="circle">
                   <img
                     loading="lazy"
-                    src="https://via.placeholder.com/300"
+                    src="/img/photography/photography_picture.png"
                     alt=""
                   />
                 </div>{" "}
