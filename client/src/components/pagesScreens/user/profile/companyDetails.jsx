@@ -204,6 +204,8 @@ const Container = styled.div`
     font-size: 1rem;
     text-transform: uppercase;
     margin-bottom: 0.3rem;
+    color: var(--white-color);
+    letter-spacing: 1px;
   }
 
   & p {

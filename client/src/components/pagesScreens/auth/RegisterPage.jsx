@@ -668,7 +668,10 @@ const GalleryPhotos = () => {
             </Upload>
           </ImgCrop>
 
-          <p style={{ fontSize: ".8rem" }}> {t("cover_photo")}</p>
+          <p style={{ fontSize: ".8rem", color: "var(--silver-color)" }}>
+            {" "}
+            {t("cover_photo")}
+          </p>
         </div>
       </div>
       <ButtonC
@@ -712,7 +715,7 @@ const UploadIcon = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--orange-color);
+  background: var(--silver-color);
 `;
 
 const Header = styled.div`
@@ -737,6 +740,10 @@ const Header = styled.div`
     align-items: center;
     & .radio_group {
       color: var(--silver-color);
+      & .ant-radio-wrapper {
+        color: var(--silver-color);
+        text-transform: uppercase;
+      }
     }
     @media only screen and (max-width: 500px) {
       display: block;
@@ -936,12 +943,19 @@ const DatePickerStyling = styled(DatePicker)`
 
 const RangePickerStyling = styled(RangePicker)`
   min-width: 200px;
+  background: transparent;
+  color: var(--silver-color);
   &.ant-picker:hover {
     border-color: var(--orange-color) !important ;
+    color: var(--silver-color);
   }
   &.ant-picker-focused {
-    border-color: var(--orange-color) !important ;
+    border-color: var(--silver-color) !important ;
     box-shadow: none;
+    color: var(--silver-color);
+  }
+  & .ant-picker-input > input {
+    color: var(--silver-color);
   }
 `;
 

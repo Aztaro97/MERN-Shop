@@ -4,8 +4,7 @@ import TextTruncate from "react-text-truncate";
 import { Image, Modal } from "antd";
 import ModalContent from "./modalContent";
 
-const EmptyImg = "/img/ecommerce/empty.jpg"
-
+const EmptyImg = "/img/ecommerce/empty.jpg";
 
 function Product({ product }) {
   const [showModal, setShowModal] = useState(false);
@@ -13,7 +12,11 @@ function Product({ product }) {
   return (
     <Card>
       <div className="img_card">
-        <Image src={product.imageUrl.length > 0 ? product.imageUrl[0].url : EmptyImg} alt="" preview={true} />
+        <Image
+          src={product.imageUrl.length > 0 ? product.imageUrl[0].url : EmptyImg}
+          alt=""
+          preview={true}
+        />
       </div>
       <div className="card-body">
         <TextTruncate
@@ -58,15 +61,16 @@ function Product({ product }) {
 }
 
 const Card = styled.div`
-  border: 1px solid var(--border-color);
+  box-shadow: var(--box-shadow-value);
   border-radius: 10px;
   max-width: 220px;
+  padding: 10px;
   /* width: 300px; */
   & .img_card {
     & .ant-image {
       width: 100%;
       & .ant-image-img {
-        height: 200px;
+        height: 150px;
         object-fit: cover;
       }
     }
@@ -81,7 +85,7 @@ const Card = styled.div`
       text-transform: uppercase;
       margin-bottom: 0;
       font-size: 1rem;
-      color: #000;
+      color: var(--silver-color);
       display: block;
       width: 100%;
     }
@@ -101,6 +105,7 @@ const Card = styled.div`
       display: flex;
       align-items: center;
       justify-content: space-between;
+      padding: 0.5rem 0;
       & .price {
         color: #49c4d3;
         margin-bottom: 0.6rem;
@@ -114,6 +119,7 @@ const Card = styled.div`
         font-size: 1rem;
         text-transform: uppercase;
         font-weight: 700;
+        color: var(--silver-color);
       }
     }
   }

@@ -85,14 +85,19 @@ export const SectionStyling = styled.section`
   }
   & ._link {
     color: var(--silver-color);
-    border: 1px solid var(--silver-color);
-    padding: 5px 20px;
+    box-shadow: var(--silver-color) 0px 0px 3px;
+    padding: 8px 20px;
     text-decoration: none;
     letter-spacing: 1px;
     border-radius: 10px;
     margin-top: 10px;
     display: inline-block;
     text-transform: capitalize;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      color: var(--dark-color);
+      background: var(--orange-color);
+    }
   }
   & .circle_container {
     display: flex;
@@ -365,8 +370,8 @@ export const ProgrammingCardStyling = styled.section`
   & .service_card {
     padding: 20px;
     border-radius: 10px;
-    background-color: var(--dark-color);
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    background-color: transparent;
+    box-shadow: var(--silver-color) 0px 0px 3px;
     margin-bottom: 20px;
     text-align: center;
     cursor: pointer;

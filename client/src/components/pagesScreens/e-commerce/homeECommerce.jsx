@@ -145,9 +145,9 @@ function HomeECommerce() {
             </Fade>
           </Section1>
 
-          <CardSectionStyling style={{ backgroundColor: "var(--black-color)" }}>
+          <CardSectionStyling style={{ backgroundColor: "var(--dark-color)" }}>
             <Fade bottom>
-              <h4>companies for you</h4>
+              <h4 className="title">companies for you</h4>
               <hr />
               {loading ? (
                 <h2>Loading ...</h2>
@@ -201,7 +201,7 @@ function HomeECommerce() {
 
           <CardSectionStyling>
             <Fade bottom>
-              <h4>craftman for you</h4>
+              <h4 className="title">craftman for you</h4>
               <hr />
               {loadingCraft ? (
                 <h2>Loading ...</h2>
@@ -362,18 +362,20 @@ const CardSectionStyling = styled.div`
   padding: 4rem 2rem;
   max-width: var(--max-width);
 
-  & h4 {
+  & .title {
     font-size: 1.4rem;
     text-align: center;
     font-weight: 700;
     text-transform: uppercase;
     color: var(--white-color);
+    margin-bottom: 1rem;
   }
   & hr {
     width: 100px;
     margin: 0 auto;
     height: 2px;
     background-color: var(--white-color);
+    margin-bottom: 1rem;
   }
   & .link {
     text-decoration: none;
@@ -395,6 +397,7 @@ const CardSectionStyling = styled.div`
 const Card = styled.div`
   margin: 20px 0;
   box-shadow: var(--box-shadow-value);
+  padding: 10px;
   & .card_img {
     width: 100%;
     height: 150px;

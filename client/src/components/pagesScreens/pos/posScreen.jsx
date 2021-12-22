@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MainContainer from "../../MainContainer";
 import VideoPlayer from "react-background-video-player";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import TextTransition, { presets } from "react-text-transition";
 
 function PosScreen() {
+  const [index, setIndex] = useState(0);
+  const TEXTS = ["Comming soon", "exhibition management"];
+  useEffect(() => {
+    const intervalId = setInterval(() => setIndex((index) => index + 1), 3000);
+    return () => clearTimeout(intervalId);
+  }, []);
   return (
     <MainContainer>
       <Container>
@@ -16,7 +23,13 @@ function PosScreen() {
         />
         <div className="contente">
           <div className="contente_container">
-            <h1>comming soon</h1>
+            <h1>
+              <TextTransition
+                text={TEXTS[index % TEXTS.length]}
+                springConfig={presets.default}
+                className="text"
+              />
+            </h1>
             <button className="_btn">Go Back</button>
           </div>
         </div>
@@ -46,9 +59,8 @@ const Container = styled.div`
   }
   .contente {
     position: absolute;
-    /* margin-top: 50%; */
     top: 30%;
-    left: 12%;
+    /* left: 12%; */
     width: 100%;
     height: 100%;
 
@@ -69,9 +81,14 @@ const Container = styled.div`
       }
     }
 
+    & .text {
+      font-size: 2.8rem;
+      font-weight: 700;
+    }
+
     & ._btn {
       color: var(--silver-color);
-      padding: .5rem 2rem;
+      padding: 0.5rem 2rem;
       text-decoration: none;
       outline: none;
       border: none;

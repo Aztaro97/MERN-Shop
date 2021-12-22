@@ -154,7 +154,7 @@ const Container = styled.div`
 `;
 
 const Card = styled.div`
-  border: 1px solid var(--border-color);
+  box-shadow: var(--box-shadow-value);
   border-radius: 10px;
   width: 100%;
   & img {

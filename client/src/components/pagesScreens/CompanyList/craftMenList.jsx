@@ -11,6 +11,7 @@ import {
   CRAFTMAN_LIST_REQUEST,
 } from "../../../flux/constants/userConstants";
 import { Col, Row } from "antd";
+import CardComponent from "./cardComponent";
 
 const empty_pic = "/img/advertising/empty.jpg";
 
@@ -82,7 +83,7 @@ function CraftManList() {
         <Container>
           {/* <hr /> */}
           {/* <CarouselButton /> */}
-          <Row gutter={[10, 10]}>
+          <Row gutter={[10, 10]} style={{ margin: 0 }}>
             <>
               {craftman.users !== null && (
                 <>
@@ -94,30 +95,7 @@ function CraftManList() {
                       lg={{ span: 6 }}
                       key={index}
                     >
-                      <Card>
-                        <img
-                          className="card_img"
-                          src={
-                            user.company.urlImg.length !== 0
-                              ? user.company.urlImg[0].url
-                              : empty_pic
-                          }
-                          alt=""
-                        />
-                        <div className="card_body">
-                          <h3>{user.company.name}</h3>
-                          <TextTruncate
-                            line={2}
-                            element="p"
-                            truncateText="…"
-                            text={user.company.about}
-                          />
-                          {/* <hr /> */}
-                          <Link className="link" to={`profile/${user._id}`}>
-                            see more
-                          </Link>
-                        </div>
-                      </Card>
+                      <CardComponent user={user} />
                     </Col>
                   ))}
                 </>
@@ -171,7 +149,7 @@ const SliderCarousel = styled(Slider)`
 const Card = styled.div`
   box-shadow: var(--box-shadow-value);
   background: var(--black-color);
-
+  padding: 10px;
   & .card_img {
     width: 100%;
     height: 150px;

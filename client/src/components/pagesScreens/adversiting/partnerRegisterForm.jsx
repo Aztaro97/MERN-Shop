@@ -405,8 +405,9 @@ const InputStyling = styled.input`
   width: 100%;
   outline: none;
   border: none;
-  background: #fff;
+  /* background: ; */
   padding: 5px 10px;
+  color:var(--dark-color);
 `;
 const TextAreaStyling = styled.textarea`
   width: 100%;

@@ -317,7 +317,7 @@ const JoiningUsSection = () => {
               </h1>
               <div className="link">
                 <Link to="/advertising/register" alt="">
-                  Let's go
+                  Add your ad Now 
                 </Link>
               </div>
             </div>
@@ -494,7 +494,7 @@ const ServiceStyling = styled.section`
 
 const PartnerLogoStyling = styled.section`
   padding: 0 1rem;
-  background: var(--black-color);
+  background: var(--dark-color);
   & .title {
     text-align: center;
     text-transform: uppercase;
@@ -612,7 +612,7 @@ const NavStyling = styled.section`
   padding: 1rem;
   margin: 0 auto;
   width: 100%;
-  background: var(--black-color);
+  background: var(--dark-color);
   & .card_container {
     height: 120px;
     display: flex;
@@ -647,7 +647,7 @@ const NavStyling = styled.section`
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      background: var(--dark-color);
+      background: var(--dark-light-color);
       transition: background 0.2s ease-in;
       padding: 10px;
       & .icon {
@@ -702,7 +702,7 @@ const Container = styled.div`
 `;
 
 const IntroVideoStyling = styled.section`
-  background: var(--black-color);
+  background: var(--dark-color);
   & .title {
     text-align: center;
     text-transform: uppercase;

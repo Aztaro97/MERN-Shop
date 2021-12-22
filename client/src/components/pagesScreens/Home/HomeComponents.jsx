@@ -814,7 +814,7 @@ function HomeComponents() {
           <Row gutter={[10, 10]} className="first_row">
             <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 8 }}>
               <h1 className="title">productions</h1>
-              <h3 className="sub_title">You dream about it we run it!</h3>
+              <h3 className="sub_title">Get the best wholesale rates</h3>
               <p className="para">
                 We are market leaders in each of its sectors and offer a wide
                 range of products from a wide range and the best quality. We

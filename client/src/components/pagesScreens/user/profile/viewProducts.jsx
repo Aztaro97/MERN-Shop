@@ -122,7 +122,7 @@ const ViewProducts = () => {
           ) : (
             <>
               {products.length ? (
-                <Row gutter={[10, 10]}>
+                <Row gutter={[10, 10]} style={{ margin: 0 }}>
                   {products.map((product, index) => (
                     <Col
                       xs={{ span: 12 }}
@@ -140,7 +140,7 @@ const ViewProducts = () => {
                 <div className="cart_empty">
                   <h1>No matches found for your search</h1>
                   <button onClick={() => dispatch(getProductUserById(userId))}>
-                    click to show all products
+                    show all products
                   </button>
                 </div>
               )}
@@ -175,11 +175,15 @@ const RowCustom = styled.div`
   }
 
   & .cart_empty {
+    & h1 {
+      color: var(--silver-color);
+    }
     & button {
       background: var(--orange-color);
       color: #fff;
       border: none;
       padding: 4px 1rem;
+      text-transform: capitalize;
       cursor: pointer;
       &:hover {
         opacity: 0.9;

@@ -41,25 +41,25 @@ const SelectE = styled.select`
   outline: none;
   border-radius: 5px;
   transition: all 0.3s;
-  background: #fff;
+  background: transparent;
   width: 100%;
   min-width: 0;
-  color: #2c3e50;
+  color: var(--silver-color);
   cursor: pointer;
   padding: 5px 11px;
   font-size: 0.7rem;
   height: 2.5rem;
-  border: 2px solid var(--background-color);
+  border: 2px solid var(--silver-color);
   letter-spacing: 2px;
 
   &:hover {
-    box-shadow: 0 0 0 1px var(--orange-color);
+    box-shadow: var(--box-shadow-value);
   }
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 1px var(--orange-color);
-    background: #fff;
+    box-shadow: var(--box-shadow-value);
+    background: var(--dark-color);
   }
 `;
 

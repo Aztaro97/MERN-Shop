@@ -13,11 +13,11 @@ function ButtonComponent({children, type, onClick, style, className, disabled}) 
 const Button = styled.button`
     outline: none;
     background: var(--orange-color);
-    color: #fff;
+    color: var(--white-color);
     text-transform: uppercase;
     padding: .3rem 3.5rem;
     border: none;
-    font-weight: 700;
+    font-weight: 400;
     border-radius: 5px;
     min-width: 0;
     display: flex;

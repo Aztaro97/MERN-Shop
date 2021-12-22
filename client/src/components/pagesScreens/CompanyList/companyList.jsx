@@ -8,51 +8,7 @@ import Loader from "../../loader";
 import TextTruncate from "react-text-truncate";
 import ErrorServerPage from "../ErrorServerPage";
 import { Col, Row } from "antd";
-
-const empty_pic = "/img/advertising/empty.jpg";
-
-const CarouselButton = () => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-  };
-  return (
-    <>
-      <SliderCarousel {...settings}>
-        <div>
-          <button>cleaning</button>
-        </div>
-        <div>
-          <button>food</button>
-        </div>
-        <div>
-          <button>real estate</button>
-        </div>
-        <div>
-          <button>cleaning</button>
-        </div>
-        <div>
-          <button>food</button>
-        </div>
-        <div>
-          <button>real estate</button>
-        </div>
-        <div>
-          <button>cleaning</button>
-        </div>
-        <div>
-          <button>food</button>
-        </div>
-        <div>
-          <button>real estate</button>
-        </div>
-      </SliderCarousel>
-    </>
-  );
-};
+import CardComponent from "./cardComponent";
 
 const CompanyList = () => {
   const params = useParams();
@@ -73,7 +29,7 @@ const CompanyList = () => {
         <Container>
           {/* <hr /> */}
           {/* <CarouselButton /> */}
-          <Row gutter={[10, 10]}>
+          <Row gutter={[10, 10]} style={{ margin: 0 }}>
             {company.users && (
               <>
                 {company.users.map((user) => (
@@ -84,32 +40,7 @@ const CompanyList = () => {
                     lg={{ span: 6 }}
                     key={user._id}
                   >
-                    <Card key={user._id}>
-                      <img
-                        className="card_img"
-                        src={
-                          user.company.urlImg.length !== 0
-                            ? user.company.urlImg[0].url
-                            : empty_pic
-                        }
-                        alt=""
-                      />
-                      <div className="card_body">
-                        <h3>{user.company.name}</h3>
-                        <TextTruncate
-                          line={2}
-                          element="p"
-                          truncateText="…"
-                          text={user.company.about}
-                          // textTruncateChild={<a href="#">Read on</a>}
-                        />
-                        {/* <p>{user.company.about}</p> */}
-                        {/* <hr /> */}
-                        <Link className="link" to={`profile/${user._id}`}>
-                          see more
-                        </Link>
-                      </div>
-                    </Card>
+                    <CardComponent user={user} />
                   </Col>
                 ))}
               </>
@@ -161,58 +92,4 @@ const SliderCarousel = styled(Slider)`
   }
 `;
 
-const Card = styled.div`
-  box-shadow: var(--box-shadow-value);
-  background: var(--black-color);
-
-  & .card_img {
-    width: 100%;
-    height: 12.5rem;
-    object-fit: cover;
-    /* border-radius: 1rem 1rem 0 0; */
-    padding: 10px;
-    @media only screen and (max-width: 768px) {
-      height: 17rem;
-    }
-  }
-
-  & .card_body {
-    padding: 1rem;
-    text-align: center;
-
-    & h3 {
-      margin-bottom: 0;
-      text-transform: uppercase;
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--silver-color);
-      margin-bottom: 10px;
-    }
-    & p {
-      color: var(--silver-color);
-      margin-bottom: 10px;
-    }
-    & hr {
-      border: none;
-      background: #ececec;
-      height: 1px;
-      outline: none;
-    }
-    & .link {
-      text-decoration: none;
-      width: 100%;
-      padding: 0.6rem 0;
-      text-align: center;
-      text-transform: uppercase;
-      border-radius: 10px;
-      background: var(--orange-color);
-      display: block;
-      color: #fff;
-
-      &:hover {
-        opacity: 0.9;
-      }
-    }
-  }
-`;
 export default CompanyList;

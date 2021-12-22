@@ -38,10 +38,10 @@ function ProgrammingScreen() {
           <Title level={2} className="title">
             The right consultation partner for your business
           </Title>
-          <Paragraph className="para">
+          {/* <Paragraph className="para">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
             cupiditate
-          </Paragraph>
+          </Paragraph> */}
           <Button type="button" className="link">
             contact us
           </Button>
@@ -245,17 +245,20 @@ const BannerSeconde = styled.div`
   }
   & .content {
     position: absolute;
-    bottom: 300px;
-    height: 100%;
+    /* bottom: 0; */
+    top: 20%;
+    left: 0;
+    right: 0;
+    /* height: 100%; */
     /* max-width: 500px; */
     padding: 10px;
     padding-left: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: start;
-
+    align-items: center;
     margin: 0 auto;
+    text-align: center;
     & > * {
       color: #fff;
     }
@@ -356,7 +359,7 @@ const FirstServiceStyling = styled.section`
     padding: 20px;
     border-radius: 10px;
     background-color: var(--dark-light-color);
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--silver-color) 0px 0px 3px;
     margin-bottom: 20px;
     text-align: center;
     cursor: pointer;
@@ -384,6 +387,7 @@ const FirstServiceStyling = styled.section`
     &.first_card {
       text-align: start;
       box-shadow: none !important;
+      box-shadow: var(--silver-color) 0px 0px 3px;
       & .service_card_title {
         color: var(--silver-color);
         letter-spacing: 1px;
