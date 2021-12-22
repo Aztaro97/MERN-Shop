@@ -250,7 +250,7 @@ function HomeComponents() {
                 <div className="circle">
                   <img
                     loading="lazy"
-                    src="/img/photography/photography_picture.png"
+                    src="/img/photography/picture_photography.png"
                     alt=""
                   />
                 </div>{" "}
