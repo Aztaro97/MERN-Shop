@@ -74,7 +74,7 @@ function DesignScreen() {
                   Molestiae, minus corrupti. Porro
                 </p> */}
                 <ul className="service_group">
-                  <li>Logo and Business Card Design</li>
+                  <li>Logo & Business Card Design</li>
                   {/* <li>Logo Design</li> */}
                   <li>Business ID design</li>
                   <li>Billboard Design</li>
@@ -93,11 +93,11 @@ function DesignScreen() {
                 <BiPaint className="service_card_icon" />
                 <h5 className="service_card_title">Print design</h5>
                 <ul className="service_group">
-                  <li>sous servie 1</li>
-                  <li>sous servie 1</li>
-                  <li>sous servie 1</li>
-                  <li>sous servie 1</li>
-                  <li>sous servie 1</li>
+                  <li>Poster & Postcard Design</li>
+                  <li>Flyer & Brochure Design</li>
+                  <li>Catalogue & Menu Design</li>
+                  <li>Sticker Design</li>
+                  <li>Advertisement Design</li>
                 </ul>
               </div>
             </Col>
@@ -526,7 +526,7 @@ const FirstServiceStyling = styled.section`
       color: var(--silver-color);
     }
     & .service_group {
-      list-style-type: &#10003;
+      list-style-type: "✓ ";
       text-align: start;
       /* padding: 0; */
       & li {
