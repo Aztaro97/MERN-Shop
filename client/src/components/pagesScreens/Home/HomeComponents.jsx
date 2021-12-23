@@ -595,7 +595,7 @@ function HomeComponents() {
                 <div className="circle">
                   <img
                     loading="lazy"
-                    src="https://via.placeholder.com/300"
+                    src="/img/programming/computerimage.png"
                     alt=""
                   />
                 </div>{" "}
@@ -748,7 +748,7 @@ function HomeComponents() {
                 <div className="circle">
                   <img
                     loading="lazy"
-                    src="https://via.placeholder.com/300"
+                    src="/img/marketing/marketingimage.png"
                     alt=""
                   />
                 </div>{" "}
@@ -840,8 +840,9 @@ function HomeComponents() {
                 <div className="circle">
                   <img
                     loading="lazy"
-                    src="https://via.placeholder.com/300"
+                    src="/img/production/productimage.png"
                     alt=""
+                    className="production_image"
                   />
                 </div>{" "}
               </div>

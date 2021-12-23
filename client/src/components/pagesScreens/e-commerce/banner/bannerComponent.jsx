@@ -53,8 +53,8 @@ const FirstLandingSlider = () => {
               </h1>
 
               <p>
-                Our marketing strategies for getting your website publicized
-                give effective results
+               
+Create an online store with the leading eCommerce platform
               </p>
 
               <Link className="btn_register" to="/register">

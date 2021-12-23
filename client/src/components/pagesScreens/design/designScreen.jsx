@@ -41,7 +41,11 @@ function DesignScreen() {
     <MainComponent>
       <Banner>
         <div className="content">
-          <Title level={2}>The Prefect Templat for Freshers or Senpais</Title>
+          <Title level={2}>
+            Developing a design concept is the most "fun" part of design
+            engineering. This is where our imaginations run free and we come up
+            with new and creative ideas.
+          </Title>
           <Paragraph className="para">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
             cupiditate dolore
@@ -64,11 +68,19 @@ function DesignScreen() {
             >
               <div className="service_card">
                 <BiPaint className="service_card_icon" />
-                <h5 className="service_card_title">service 1</h5>
-                <p>
+                <h5 className="service_card_title">Logo & Branding</h5>
+                {/* <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Molestiae, minus corrupti. Porro
-                </p>
+                </p> */}
+                <ul className="service_group">
+                  <li>Logo and Business Card Design</li>
+                  {/* <li>Logo Design</li> */}
+                  <li>Business ID design</li>
+                  <li>Billboard Design</li>
+                  <li>Car Wrap Design</li>
+                  <li>Signage Design</li>
+                </ul>
               </div>
             </Col>
             <Col
@@ -79,11 +91,14 @@ function DesignScreen() {
             >
               <div className="service_card">
                 <BiPaint className="service_card_icon" />
-                <h5 className="service_card_title">service 2</h5>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Molestiae, minus corrupti. Porro
-                </p>
+                <h5 className="service_card_title">Print design</h5>
+                <ul className="service_group">
+                  <li>sous servie 1</li>
+                  <li>sous servie 1</li>
+                  <li>sous servie 1</li>
+                  <li>sous servie 1</li>
+                  <li>sous servie 1</li>
+                </ul>
               </div>
             </Col>
             <Col
@@ -94,11 +109,14 @@ function DesignScreen() {
             >
               <div className="service_card">
                 <BiPaint className="service_card_icon" />
-                <h5 className="service_card_title">service 3</h5>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Molestiae, minus corrupti. Porro
-                </p>
+                <h5 className="service_card_title">Graphic Design</h5>
+                <ul className="service_group">
+                  <li>sous servie 1</li>
+                  <li>sous servie 1</li>
+                  <li>sous servie 1</li>
+                  <li>sous servie 1</li>
+                  <li>sous servie 1</li>
+                </ul>
               </div>
             </Col>
             <Col
@@ -109,11 +127,16 @@ function DesignScreen() {
             >
               <div className="service_card">
                 <BiPaint className="service_card_icon" />
-                <h5 className="service_card_title">service 4</h5>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Molestiae, minus corrupti. Porro
-                </p>
+                <h5 className="service_card_title">
+                  Product & Merchandise Design{" "}
+                </h5>
+                <ul className="service_group">
+                  <li>sous servie 1</li>
+                  <li>sous servie 1</li>
+                  <li>sous servie 1</li>
+                  <li>sous servie 1</li>
+                  <li>sous servie 1</li>
+                </ul>
               </div>
             </Col>
             <Col
@@ -124,11 +147,14 @@ function DesignScreen() {
             >
               <div className="service_card">
                 <BiPaint className="service_card_icon" />
-                <h5 className="service_card_title">service 5</h5>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Molestiae, minus corrupti. Porro
-                </p>
+                <h5 className="service_card_title">Web Design</h5>
+                <ul className="service_group">
+                  <li>sous servie 1</li>
+                  <li>sous servie 1</li>
+                  <li>sous servie 1</li>
+                  <li>sous servie 1</li>
+                  <li>sous servie 1</li>
+                </ul>
               </div>
             </Col>
             <Col
@@ -139,11 +165,14 @@ function DesignScreen() {
             >
               <div className="service_card">
                 <BiPaint className="service_card_icon" />
-                <h5 className="service_card_title">service 6</h5>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Molestiae, minus corrupti. Porro
-                </p>
+                <h5 className="service_card_title">Video Design</h5>
+                <ul className="service_group">
+                  <li>sous servie 1</li>
+                  <li>sous servie 1</li>
+                  <li>sous servie 1</li>
+                  <li>sous servie 1</li>
+                  <li>sous servie 1</li>
+                </ul>
               </div>
             </Col>
           </Row>
@@ -169,10 +198,9 @@ function DesignScreen() {
                 <p> lorem Ipsum</p>
                 <h1>we are the leader in web design</h1>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Veniam iure dolore, vitae porro eum ullam esse, cumque sit
-                  sapiente vero ut sint maiores est error enim et mollitia
-                  soluta illum!
+                  Developing a design concept is the most "fun" . This is where
+                  our imaginations run free and we come up with new and creative
+                  ideas.
                 </p>
               </div>
               <div className="numberContainer">
@@ -216,10 +244,8 @@ function DesignScreen() {
                 <p> lorem Ipsum</p>
                 <h1>we are the leader in web design</h1>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Veniam iure dolore, vitae porro eum ullam esse, cumque sit
-                  sapiente vero ut sint maiores est error enim et mollitia
-                  soluta illum!
+                  Developing a design concept is the most "fun" part of design
+                  engineering. This is where our imaginations run free and we
                 </p>
               </div>
             </Col>
@@ -481,7 +507,7 @@ const FirstServiceStyling = styled.section`
   & .service_card {
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow-value);
     margin-bottom: 20px;
     text-align: center;
     background: var(--dark-light-color);
@@ -498,6 +524,14 @@ const FirstServiceStyling = styled.section`
       margin-bottom: 10px;
       text-transform: capitalize;
       color: var(--silver-color);
+    }
+    & .service_group {
+      list-style-type: &#10003;
+      text-align: start;
+      /* padding: 0; */
+      & li {
+        color: var(--silver-color);
+      }
     }
     & p {
       font-size: 14px;

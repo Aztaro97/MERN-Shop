@@ -119,17 +119,26 @@ export const SectionStyling = styled.section`
         }
       }
       & img {
-        width: 350px;
+        width: 400px;
         /* height: 400px; */
-        position: relative;
+        position: absolute;
+        right: 20px;
         /* left: 10px; */
         &.printing_img {
-          max-width: 500px;
-          right: 20px;
-          top: 20px;
+          /* max-width: 500px; */
+          /* right: 20px; */
+          /* top: 20px; */
         }
         &.exhibition_img {
-          top: 4rem;
+          top: 9rem;
+          right: 0;
+        }
+        &.production_image {
+          width: 400px;
+        }
+        @media only screen and (max-width: 768px) {
+          position: relative;
+          width: 300px;
         }
       }
     }
