@@ -98,7 +98,7 @@ function UploadServiceFile() {
 }
 
 const Container = styled.div`
-  background-color: #ecececec;
+  background-color: transparent;
   padding: 3rem;
   /* position: relative; */
   margin-bottom: 40px;

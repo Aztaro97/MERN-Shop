@@ -53,6 +53,7 @@ function Product({ product }) {
           onCancel={() => setShowModal(false)}
           width={1000}
           footer={null}
+          // wrapClassName="modal"
         >
           <ModalContent product={product} setShowModal={setShowModal} />
         </Modal>
@@ -62,7 +63,9 @@ function Product({ product }) {
 }
 
 const Card = styled.div`
-  border: 1px solid var(--silver-color);
+  box-shadow: var(--box-shadow-value);
+  background: var(--black-color);
+  padding: 10px;
   border-radius: 10px;
   width: 100%;
   /* width: 300px; */
@@ -123,14 +126,18 @@ const Card = styled.div`
       }
     }
   }
+
+  & .modal {
+    /* padding: 0;
+    z-index:9999; */
+  }
 `;
 
 const Button = styled.button`
   outline: none;
   border: none;
-  font-weight: 700;
-  background: #e7eaea;
-  color: #000;
+  background: var(--orange-color);
+  color: var(--white-color);
   text-transform: capitalize;
   text-align: center;
   border-radius: 1rem;
@@ -142,7 +149,7 @@ const Button = styled.button`
   font-size: 1rem;
   letter-spacing: 1px;
   & .icon {
-    color: #fff !important;
+    fill: #fff !important;
   }
   &:hover {
     background: var(--orange-color);

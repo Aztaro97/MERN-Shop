@@ -36,7 +36,7 @@ function CartComponent({ location }) {
         <a href="#/" onClick={() => history.goBack()}>
           Back
         </a>
-        <h2>Shoping Cart</h2>
+        <h2 className="title">Shoping Cart</h2>
       </Header>
       {error && <h1>Error : {error}</h1>}
       <CartContent>
@@ -65,7 +65,7 @@ function CartComponent({ location }) {
                     <div className="cart">
                       <img src={item.image ? item.image : picture} alt="" />
                       <div className="cart-name">
-                        <h3>{item.name}</h3>
+                        <h3 className="product_name">{item.name}</h3>
                         {item.sizeSelected && (
                           <h3 className="cart_size">
                             Size : <span>{item.sizeSelected}</span>{" "}
@@ -89,7 +89,7 @@ function CartComponent({ location }) {
                       <span className="mobile_view">Price: </span> {item.price}{" "}
                       AED
                     </p>
-                    <Btn className="qty_btn">
+                    <Button className="qty_btn">
                       <button
                         onClick={() =>
                           dispatch(addToCart(item.product, item.qty - 1))
@@ -105,7 +105,7 @@ function CartComponent({ location }) {
                       >
                         +
                       </button>
-                    </Btn>
+                    </Button>
                     <p>
                       {" "}
                       <span className="mobile_view">Total: </span>
@@ -213,9 +213,9 @@ const Header = styled.div`
     top: 2rem;
   }
 
-  & h2 {
+  & .title {
     text-align: center;
-    color: var(--silver-color);
+    color: var(--white-color);
     font-weight: 700;
     margin-bottom: 0;
   }
@@ -229,9 +229,10 @@ const GridTop = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 10rem 14rem 10rem;
+  margin-top: 2rem;
 
   & p {
-    color: var(--orange-color);
+    color: var(--silver-color);
     text-transform: uppercase;
     font-weight: 700;
     margin: 0;
@@ -264,19 +265,22 @@ const Grid = styled.div`
       flex-direction: column;
       margin-left: 1rem;
 
-      & h3 {
+      & .product_name {
         text-transform: uppercase;
         font-weight: 700;
-        font-size: 0.9rem;
+        font-size: 1rem;
         letter-spacing: 1px;
+        color: var(--silver-color);
       }
       & .cart_size {
         font-weight: 700;
         margin-bottom: 0.3rem;
-        &.cart_size span {
+        font-size: 1rem;
+        color: var(--orange-color);
+        & span {
           /* color: #000 !important; */
           font-weight: 700;
-          color: var(--orange-color);
+          color: var(--silver-color);
         }
       }
 
@@ -332,7 +336,7 @@ const Grid = styled.div`
   }
 `;
 
-const Btn = styled.div`
+const Button = styled.div`
   /* display: flex; */
 
   & p {
@@ -344,8 +348,8 @@ const Btn = styled.div`
     padding: 0 1rem;
     background: transparent;
     outline: none;
-    border-radius: 10px;
-    border: 1px solid var(--silver-color);
+    border-radius: 5px;
+    border: 1px solid #ffffff6c;
     cursor: pointer;
     font-size: 1.2rem;
   }
@@ -358,7 +362,7 @@ const EmptyCart = styled.div`
 
   & h5 {
     color: var(--silver-color);
-    margin-bottom:2rem;
+    margin-bottom: 2rem;
   }
 
   & .link {

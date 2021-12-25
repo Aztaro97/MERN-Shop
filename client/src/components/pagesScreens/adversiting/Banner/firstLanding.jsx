@@ -1,6 +1,6 @@
 import Slider from "react-slick";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link as RoutLink } from "react-router-dom";
 import styled from "styled-components";
 import cookies from "js-cookie";
 import { useTranslation } from "react-i18next";
@@ -42,8 +42,10 @@ const FirstLandingSlider = () => {
       <Slider {...settings}>
         {firstBannerData.map((data) => (
           <Link
+            active={data.active}
+            disabled={true}
             key={data.profileId}
-            to={`/advertising/profile/${data.profileId}`}
+            to={data.active ? `/advertising/profile/${data.profileId}` : "#/"}
           >
             <div className="landing_overlay">
               <img src={data.imgUrl} alt="" />
@@ -54,5 +56,9 @@ const FirstLandingSlider = () => {
     </LandingStyling>
   );
 };
+
+const Link = styled(RoutLink)`
+  cursor: wait;
+`;
 
 export default FirstLandingSlider;

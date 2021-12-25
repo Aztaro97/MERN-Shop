@@ -19,7 +19,7 @@ import {
 } from "react-share";
 import { addToCart } from "../../../flux/actions/cartAction";
 import { warningMessage } from "../../message";
-import {Event} from "../../Tracking/tracking"
+import { Event } from "../../Tracking/tracking";
 
 const empty_pc = "/img/ecommerce/empty.jpg";
 
@@ -92,7 +92,7 @@ const ProductDetails = ({ product, setShowModal }) => {
     companyInfo
   ) => {
     addToCartHandler(productId, qty, sizeSelected, colorSelected, companyInfo);
-    Event("product", "Product added to cart", productId )
+    Event("product", "Product added to cart", productId);
   };
 
   return (
@@ -286,6 +286,9 @@ const GallerieStyling = styled.div`
 `;
 
 const Container = styled.div`
+  background: var(--dark-color);
+  padding: 0;
+
   /* padding:1.5rem; */
   @media only screen and (max-width: 500px) {
     padding: 1rem 0;
@@ -310,8 +313,6 @@ const Row = styled.div`
     margin: 0;
     font-size: 0.9rem;
   }
-
- 
 
   & .price {
     color: var(--jungle-color);
@@ -365,7 +366,9 @@ const Row = styled.div`
               }
             }
           }
-          &.ant-radio-button-wrapper .ant-radio-group-solid .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):active {
+          &.ant-radio-button-wrapper
+            .ant-radio-group-solid
+            .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):active {
             background-color: var(--orange-color);
           }
           &.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled)::before {

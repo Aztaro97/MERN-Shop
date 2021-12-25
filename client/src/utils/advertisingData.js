@@ -14,50 +14,42 @@ export const categoryAdversiting = [
   {
     profileId: "61683883bb90435d90a1bd24",
     title: TranslateContent("real estate"),
-    image:
-      "/img/advertising/real_state.jpg",
+    image: "/img/advertising/real_state.jpg",
   },
   {
     profileId: "61683883bb90435d90a1bd24",
     title: TranslateContent("restaurant"),
-    image:
-      "/img/advertising/exemple.jpg",
+    image: "/img/advertising/exemple.jpg",
   },
   {
     profileId: "61683883bb90435d90a1bd24",
     title: TranslateContent("vehicule"),
-    image:
-      "/img/advertising/exemple.jpg",
+    image: "/img/advertising/exemple.jpg",
   },
   {
     profileId: "61683883bb90435d90a1bd24",
     title: TranslateContent("pharmacy"),
-    image:
-      "/img/advertising/exemple.jpg",
+    image: "/img/advertising/exemple.jpg",
   },
   {
     profileId: "61683883bb90435d90a1bd24",
     title: TranslateContent("marketing"),
-    image:
-      "/img/advertising/exemple.jpg",
+    image: "/img/advertising/exemple.jpg",
   },
   {
     profileId: "61683883bb90435d90a1bd24",
     title: TranslateContent("construction"),
-    image:
-      "/img/advertising/exemple.jpg",
+    image: "/img/advertising/exemple.jpg",
   },
   {
     profileId: "61683883bb90435d90a1bd24",
     title: TranslateContent("construction"),
-    image:
-      "/img/advertising/exemple.jpg",
+    image: "/img/advertising/exemple.jpg",
   },
   {
     profileId: "61683883bb90435d90a1bd24",
     title: TranslateContent("construction"),
-    image:
-      "/img/advertising/exemple.jpg",
+    image: "/img/advertising/exemple.jpg",
   },
 ];
 
@@ -187,30 +179,36 @@ export const firstBannerData = [
     profileId: "61683883bb90435d90a1bd24",
     imgUrl:
       "https://assets.waseet.net/prod/Dubai/banners/8874465/%D8%AA%D8%B1%D8%A7%D9%8A%D9%86%D8%AC%D9%84-%D9%84%D9%84%D8%A7%D8%B3%D8%AA%D8%B4%D8%A7%D8%B1%D8%A7%D8%AA-%D8%A7%D9%84%D9%87%D9%86%D8%AF%D8%B3%D9%8A%D8%A9-8874465-english_featured_image_mobile-1621170914.jpg?width=720&height=408",
+    active: true,
   },
   {
     profileId: "61683883bb90435d90a1bd24",
     imgUrl:
       "https://assets.waseet.net/prod/Dubai/banners/9063300/%D9%81%D8%A7%D9%86%D8%AA%D8%A7%D8%B2%D9%8A-%D8%A8%D8%B1%D9%8A%D9%85%D9%8A%D9%8A%D8%B1-%D9%84%D9%8A%D8%AC-9063300-english_featured_image_mobile-1630224811.jpg?width=720&height=408",
+    active: false,
   },
   {
     profileId: "61683883bb90435d90a1bd24",
     imgUrl:
       "https://assets.waseet.net/prod/Dubai/banners/8736764/%D8%AC%D8%A7%D9%83%D9%84%D9%8A%D9%86-%D9%84%D9%84%D8%AA%D9%86%D8%B8%D9%8A%D9%81-8736764-english_featured_image_mobile-1614506174.jpg?width=720&height=408",
+    active: true,
   },
   {
     profileId: "61683883bb90435d90a1bd24",
     imgUrl:
       "https://assets.waseet.net/prod/Dubai/banners/8961842/%D8%B4%D9%87%D8%AF-%D8%A7%D9%84%D8%A7%D8%B5%D9%8A%D9%84-%D9%84%D9%86%D9%82%D9%84-%D8%A7%D9%84%D8%A7%D8%AB%D8%A7%D8%AB-8961842-english_featured_image_mobile-1624714329.jpg?width=720&height=408",
+    active: false,
   },
   {
     profileId: "61683883bb90435d90a1bd24",
     imgUrl:
       "https://assets.waseet.net/prod/Abu-Dhabi/banners/7903041/%D9%84%D8%AD%D8%AC%D8%B2-%D8%A7%D9%84%D9%85%D8%B3%D8%A7%D8%AD%D9%87-%D8%A7%D9%84%D8%A7%D8%B9%D9%84%D8%A7%D9%86%D9%8A%D8%A9-7903041-english_featured_image_mobile-1608209412.jpg?width=720&height=408",
+    active: true,
   },
   {
     profileId: "61683883bb90435d90a1bd24",
     imgUrl: "/img/advertising/bg-images.jpg",
+    active: true,
   },
 ];
 

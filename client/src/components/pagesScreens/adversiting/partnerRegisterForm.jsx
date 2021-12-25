@@ -358,7 +358,7 @@ const CardText = styled.div`
 `;
 
 const Container = styled.div`
-  background-color: #ecececec;
+  background-color: var(--dark-light-color);
   padding: 3rem;
   margin-bottom: 40px;
   /* position: relative; */
@@ -369,6 +369,7 @@ const Container = styled.div`
     margin-bottom: 14px;
     margin-top: 1rem;
     font-weight: 700;
+    color: var(--white-color);
   }
   & h3,
   h4 {
@@ -391,7 +392,7 @@ const IconStyling = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--orange-color);
+  color: var(--silver-color);
   & .icon {
     font-size: 1.5rem;
   }
@@ -405,29 +406,43 @@ const InputStyling = styled.input`
   width: 100%;
   outline: none;
   border: none;
-  /* background: ; */
+  background: var(--dark-color);
+  border: 1px solid var(--silver-color);
   padding: 5px 10px;
-  color:var(--dark-color);
+  color: var(--white-color);
+  &:focus {
+    color: var(--silver-color);
+  }
 `;
 const TextAreaStyling = styled.textarea`
   width: 100%;
   outline: none;
-  border: none;
-  background: #fff;
+  background: var(--dark-color);
+  border: 1px solid var(--silver-color);
   padding: 4px 10px;
+  color: var(--white-color);
+  resize: none;
+  &:focus {
+    color: var(--silver-color);
+  }
 `;
 
 const SelectStyling = styled(Select)`
+  background-color: red !important;
   & > * {
     text-transform: capitalize !important;
   }
-  &.ant-select-selection {
-    background-color: red;
+
+  & .ant-select-selector {
+    background: var(--dark-color) !important;
+    border: 1px solid var(--silver-color) !important;
+    color: var(--white-color) !important;
   }
 `;
 
 const CountryDropdownStyling = styled(CountryDropdown)`
-  border: none;
+  background: var(--dark-color);
+  border: 1px solid var(--silver-color);
   width: 100%;
   padding: 5px 10px;
   display: block;
@@ -435,16 +450,19 @@ const CountryDropdownStyling = styled(CountryDropdown)`
   &:focus {
     outline: none;
     border: none;
+    color: var(--silver-color);
   }
 `;
 const RegionDropdownStyling = styled(RegionDropdown)`
-  border: none;
+  background: var(--dark-color);
+  border: 1px solid var(--silver-color);
   padding: 5px 10px;
   display: block;
   width: 100%;
   &:focus {
     outline: none;
     border: none;
+    color: var(--silver-color);
   }
 `;
 

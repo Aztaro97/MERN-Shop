@@ -50,12 +50,13 @@ const Tab = styled.div`
   /* height: ; */
   display: flex;
   justify-content: center;
+  margin-top: 2rem;
 `;
 
 const TabsE = styled(Tabs)`
   color: var(--silver-color);
   font-weight: 700;
-  
+  width: 100%;
 
   & .ant-tabs-tab {
     margin: 0 10px;

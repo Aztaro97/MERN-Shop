@@ -14,7 +14,7 @@ function ConfirmTypePayment() {
   return (
     <MainContainer>
       <Container>
-        <h1 className="title">Choose your ad type, premium or free</h1>
+        <h1 className="title">Choose your ad type </h1>
         <Row gutter={{ lg: 20, md: 10, sm: 10 }}>
           <Col
             lg={{ span: 12 }}
@@ -22,7 +22,7 @@ function ConfirmTypePayment() {
             sm={{ span: 12 }}
             xs={{ span: 24 }}
           >
-            <div className="card">
+            <div className="_card">
               <h5 className="card_title premium">Premium</h5>
               <div className="card_body">
                 <p className="price">
@@ -58,7 +58,7 @@ function ConfirmTypePayment() {
             sm={{ span: 12 }}
             xs={{ span: 24 }}
           >
-            <div className="card">
+            <div className="_card">
               <h5 className="card_title free">free</h5>
               <div className="card_body">
                 <p className="price">
@@ -94,7 +94,7 @@ function ConfirmTypePayment() {
             sm={{ span: 12 }}
             xs={{ span: 24 }}
           >
-            <div className="card">
+            <div className="_card">
               <h5 className="card_title free">free</h5>
               <div className="card_body">
                 <p className="price">
@@ -138,9 +138,17 @@ const Container = styled.div`
     text-align: center;
     font-size: 1.8rem;
     margin-bottom: 2rem !important;
+    color: var(--white-color);
   }
-  & .card {
+  & ._card {
     margin-bottom: 13px;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: transparent;
+    background-clip: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.125);
   }
   & .card_title {
     color: #fff;
@@ -159,10 +167,9 @@ const Container = styled.div`
     }
   }
   & .card_body {
-    background: #fff;
     text-align: center;
     padding: 0 10px;
-
+    background: transparent;
     & .price {
       color: var(--orange-color);
       margin: 1.3rem 0;
@@ -170,7 +177,7 @@ const Container = styled.div`
       font-size: 2rem;
       & span {
         font-size: 3rem;
-        color: #000;
+        color: var(--silver-color);
         text-transform: uppercase;
         margin-left: 10px;
         font-weight: 700;
@@ -181,6 +188,7 @@ const Container = styled.div`
       font-size: 0.9rem;
       text-align: center;
       margin-bottom: 1rem;
+      color: var(--silver-color);
     }
   }
   & .card_footer {

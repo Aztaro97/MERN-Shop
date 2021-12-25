@@ -262,7 +262,7 @@ const CartUploading = () => {
             </FirstFraction>
           </Col>
 
-          <Col lg={{ span: 12 }} xs={{ span: 24 }} md={{span:24}}>
+          <Col lg={{ span: 12 }} xs={{ span: 24 }} md={{ span: 24 }}>
             <FirstFraction>
               <div className="card-element">
                 <div className="content">
@@ -309,17 +309,22 @@ const CartUploading = () => {
 };
 
 const Container = styled.div`
-  background-color: #ecececec;
+  background-color: transparent;
   padding: 3rem;
   margin-bottom: 20px;
+
+  & .title {
+    color: var(--white-color);
+  }
 
   & .subtotal {
     margin-top: 4px;
     text-transform: uppercase;
     font-weight: 700;
     font-size: 1.4rem;
+    color: var(--orange-color);
     & span {
-      color: var(--orange-color);
+      color: var(--silver-color);
       text-transform: uppercase;
       font-weight: 700;
     }
@@ -329,7 +334,8 @@ const Container = styled.div`
 const FirstFraction = styled.div`
   margin-bottom: 1rem;
   & .card-element {
-    background: #ffff;
+    background: #3333337d;
+    border: 1px solid var(--silver-color);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -364,14 +370,15 @@ const FirstFraction = styled.div`
       /* display: flex; */
       & button {
         outline: none;
-        border: 1px solid var(--orange-color);
+        border: 1px solid var(--silver-color);
+        background: transparent; 
         padding: 0px;
         display: inline;
         border-radius: 50%;
         width: 30px;
         line-height: 30px;
         height: 30px;
-        color: var(--orange-color);
+        color: var(--silver-color);
       }
       & p {
         display: inline;

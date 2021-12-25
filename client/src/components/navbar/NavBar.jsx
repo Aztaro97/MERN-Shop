@@ -240,12 +240,12 @@ function NavBar() {
         >
           <Menu.Item key="advertising">
             <Link to="/advertising" className="link">
-              advertising
+              Store
             </Link>
           </Menu.Item>
           <Menu.Item key="ecommerce">
             <Link to="/e-commerce" className="link">
-              E-commerce
+              + Add Ads
             </Link>
           </Menu.Item>
           <SubMenu

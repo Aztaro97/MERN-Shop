@@ -12,11 +12,13 @@ import {
 } from "../../../utils/advertisingData";
 import FirstLandingSlider from "./Banner/firstLanding";
 import MainContainer from "../../MainContainer";
-import { Col, Row } from "antd";
+import { Col, Input, Row } from "antd";
 import Meta from "../../helmet";
 import { Video, Transformation } from "cloudinary-react";
 import { Fade } from "react-reveal";
 import "./advertising.css";
+
+const { Search } = Input;
 
 function AdversitingScreen() {
   const { t, i18n } = useTranslation();
@@ -260,8 +262,19 @@ const AdvertisingNavgation = ({ lang }) => {
   const { t } = useTranslation();
   const history = useHistory();
 
+  const onSearch = (value) => console.log(value);
+
   return (
     <NavStyling>
+      <Row justify="end" className="_row">
+        <Col>
+          <Search
+            placeholder="Search"
+            onSearch={onSearch}
+            className="search-input"
+          />
+        </Col>
+      </Row>
       <Fade bottom>
         <Slider {...settings}>
           {BusinessList.map((data, index) => (
@@ -317,7 +330,7 @@ const JoiningUsSection = () => {
               </h1>
               <div className="link">
                 <Link to="/advertising/register" alt="">
-                  Add your ad Now 
+                  Add your ad Now
                 </Link>
               </div>
             </div>
@@ -611,8 +624,19 @@ const JoiningUsStyling = styled.section`
 const NavStyling = styled.section`
   padding: 1rem;
   margin: 0 auto;
+  margin-top: 1rem;
   width: 100%;
   background: var(--dark-color);
+  & ._row {
+    margin-bottom: 2rem;
+    & .search-input {
+      width: 100%;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
   & .card_container {
     height: 120px;
     display: flex;

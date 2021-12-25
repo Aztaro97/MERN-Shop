@@ -603,7 +603,7 @@ export const VideoTodoList = ({ userInfo, id }) => {
             placeholder="Exemple: http://www.youtube.com/sxwdwhuw "
             value={value}
             onChange={(e) => setValue(e.target.value)}
-            style={{ width: "100%" }}
+            className="input_form"
           />
         </Col>
         <Col xs={{ span: 6 }} md={{ span: 4 }}>
@@ -684,12 +684,15 @@ export const VideoTodoList = ({ userInfo, id }) => {
 
 const FormVideoStyling = styled.form`
   & .add_button {
-    color: #fff;
-    background: var(--orange-color);
-    border: none;
+    color: var(--silver-color);
+    background: transparent;
+    border: 1px solid var(--silver-color);
     font-size: 1rem;
     width: 100%;
     height: 100%;
+    &:hover {
+      opacity: 0.9;
+    }
   }
 
   & .delete_Buttoon {
@@ -706,6 +709,19 @@ const FormVideoStyling = styled.form`
     & .icon {
     }
   }
+
+  & .input_form {
+    background: transparent;
+    width: 100%;
+    color: var(--silver-color);
+    &:hover {
+      border-color: var(--orange-color);
+    }
+    &:focus {
+      color: var(--white-color);
+      border: 1px solid var(--orange-color);
+    }
+  }
 `;
 
 const PlayerWrapper = styled.div`
@@ -719,23 +735,17 @@ const PlayerWrapper = styled.div`
   }
 `;
 
-const Container = styled.div`
-  background-color: #ecececec;
-  padding: 3rem;
-  /* position: relative; */
-  margin-bottom: 40px;
-`;
-
 const TitleStyling = styled.h1`
   font-size: 1.5rem;
   font-weight: 700;
   /* text-align: center; */
-  color: #727171;
-  text-transform: capitalize;
+  color: var(--silver-color);
+  text-transform: uppercase;
 `;
 
 const ButtonWrapper = styled.button`
-  background: ${({ submited }) => (!submited ? "#333" : "#2ed573")};
+  background: ${({ submited }) =>
+    !submited ? "var(--orange-color)" : "#2ed573"};
   border: none;
   outline: none;
   font-size: 1rem;
@@ -779,7 +789,7 @@ const Content = styled.div`
   & ul {
     list-style: none;
     & li {
-      color: #111;
+      color: var(--silver-color);
     }
   }
 `;
@@ -793,14 +803,20 @@ const UploadIcon = styled.div`
   align-items: center;
   flex-direction: column;
   text-transform: capitalize;
+  background: var(--dark-light-color) !important;
+  box-shadow: var(--box-shadow-color);
+  color: var(--silver-color);
 
   & .icon {
-    color: var(--orange-color);
+    color: var(--silver-color);
   }
 
   &:hover {
-    /* background: #ffffff; */
+    color: var(--orange-color);
     border: none;
     opacity: 0.9;
+    & .icon {
+      color: var(--orange-color);
+    }
   }
 `;
