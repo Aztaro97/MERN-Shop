@@ -242,9 +242,9 @@ function NavBar() {
             <Link to="/advertising" className="link">
               Store
             </Link>
-          </Menu.Item>
+          </Menu.Item>  
           <Menu.Item key="ecommerce">
-            <Link to="/e-commerce" className="link">
+            <Link to="/register" className="link">
               + Add Ads
             </Link>
           </Menu.Item>
@@ -367,8 +367,6 @@ const BottomHeader = styled.div`
       color: #111 !important;
     }
   }
-
- 
 `;
 
 const HeaderTop = styled.div`

@@ -9,6 +9,7 @@ import {
   BusinessList,
   VideoData,
   servicePicture,
+  companyProducts,
 } from "../../../utils/advertisingData";
 import FirstLandingSlider from "./Banner/firstLanding";
 import MainContainer from "../../MainContainer";
@@ -30,8 +31,9 @@ function AdversitingScreen() {
       <FirstLandingSlider />
       <Container>
         <AdvertisingNavgation lang={lang} />
-        <TypeBusinessSection lang={lang} />
+        <CompanyShop lang={lang} />
         <IntroVideoSection lang={lang} />
+        <TypeBusinessSection lang={lang} />
         <JoiningUsSection />
         <PartnerSectionLogo lang={lang} />
         <ServicesSlider lang={lang} />
@@ -57,6 +59,75 @@ function AdversitingScreen() {
 //     </LandingStyling>
 //   );
 // };
+
+const CompanyShop = ({ lang }) => {
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 1000,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    rows: 1,
+    rtl: lang === "ar" ? true : false,
+    dotsClass: "dots__bar",
+    centerPadding: "0px",
+    centerMode: true,
+    responsive: [
+      {
+        breakpoint: 700,
+        settings: {
+          arrows: false,
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          rows: 0,
+        },
+      },
+      {
+        breakpoint: 500,
+        settings: {
+          arrows: false,
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 400,
+        settings: {
+          arrows: false,
+          slidesToShow: 1,
+        },
+      },
+    ],
+  };
+  const history = useHistory();
+
+  return (
+    <section>
+      <Fade bottom>
+        <Slider {...settings} className="company_shop_slider">
+          {companyProducts.map((data) => (
+            <CardShopStyling
+              key={data.profileId}
+              onClick={() =>
+                history.push(`/profile/${data.profileId}`)
+              }
+            >
+              <div
+                className="box"
+                style={{ backgroundImage: `url(${data.image})` }}
+              >
+                <div className="box-container">
+                  <h4>{data.title}</h4>
+                </div>
+              </div>
+            </CardShopStyling>
+          ))}
+        </Slider>
+      </Fade>
+    </section>
+  );
+};
 
 const TypeBusinessSection = ({ lang }) => {
   const settings = {
@@ -130,6 +201,43 @@ const TypeBusinessSection = ({ lang }) => {
 const CardItemStyling = styled.div`
   & .box {
     height: 200px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 1.5rem;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      padding: 0;
+    }
+    &:hover .box-container h4 {
+      color: var(--orange-color);
+    }
+
+    & .box-container {
+      width: 100%;
+      height: 100%;
+      background: #00000068;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      & h4 {
+        color: #ffff;
+        text-transform: uppercase;
+        font-size: 1rem;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+  }
+`;
+
+const CardShopStyling = styled.div`
+  & .box {
+    height: 300px;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -631,6 +739,7 @@ const NavStyling = styled.section`
     margin-bottom: 2rem;
     & .search-input {
       width: 100%;
+      background: red !important;
       &:focus {
         outline: none;
       }

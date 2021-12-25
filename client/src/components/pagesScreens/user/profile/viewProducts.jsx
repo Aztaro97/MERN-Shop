@@ -58,7 +58,7 @@ const ViewProducts = () => {
     <Container>
       <RowCustom>
         <FilterForm onSubmit={formik.handleSubmit}>
-          <Row gutter={[15, 10]} justify="end">
+          <Row gutter={[15, 10]} justify="end" >
             <Col xs={{ span: 12 }} md={{ span: 8 }} lg={{ span: 5 }}>
               <SelectC
                 className="form_select"
@@ -122,7 +122,7 @@ const ViewProducts = () => {
           ) : (
             <>
               {products.length ? (
-                <Row gutter={[10, 10]} style={{ margin: 0 }}>
+                <Row gutter={[10, 10]} style={{ margin: 0, paddingBottom: 10 }}>
                   {products.map((product, index) => (
                     <Col
                       xs={{ span: 12 }}

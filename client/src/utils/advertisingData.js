@@ -53,6 +53,69 @@ export const categoryAdversiting = [
   },
 ];
 
+export const companyProducts = [
+  {
+    profileId: "616c2f5251ee99575c4a524e",
+    title: TranslateContent("real estate"),
+    image:
+      "https://s.alicdn.com/@img/imgextra/i3/O1CN01gd8WK326Zeu7edoWh_!!6000000007676-2-tps-1920-320.png",
+  },
+  {
+    profileId: "616c2f5251ee99575c4a524e",
+    title: TranslateContent("restaurant"),
+    image:
+      "https://s.alicdn.com/@img/imgextra/i1/O1CN01ItTPok1jI2WteG95T_!!6000000004524-0-tps-1920-220.jpg",
+  },
+  {
+    profileId: "616c2f5251ee99575c4a524e",
+    title: TranslateContent("vehicule"),
+    image:
+      "https://s.alicdn.com/@img/imgextra/i2/O1CN01qtUVSy25n6wiofZFH_!!6000000007570-2-tps-1920-220.png",
+  },
+  {
+    profileId: "616c2f5251ee99575c4a524e",
+    title: TranslateContent("pharmacy"),
+    image:
+      "https://s.alicdn.com/@img/imgextra/i4/O1CN01B6xQ7K1FUvBMS2Pe6_!!6000000000491-0-tps-5760-1455.jpg",
+  },
+  {
+    profileId: "616c2f5251ee99575c4a524e",
+    title: TranslateContent("marketing"),
+    image:
+      "https://s.alicdn.com/@img/imgextra/i4/O1CN01yknlDM1g9qacghqpt_!!6000000004100-0-tps-1920-220.jpg",
+  },
+  {
+    profileId: "616c2f5251ee99575c4a524e",
+    title: TranslateContent("real estate"),
+    image:
+      "https://s.alicdn.com/@img/imgextra/i3/O1CN01gd8WK326Zeu7edoWh_!!6000000007676-2-tps-1920-320.png",
+  },
+  {
+    profileId: "616c2f5251ee99575c4a524e",
+    title: TranslateContent("restaurant"),
+    image:
+      "https://s.alicdn.com/@img/imgextra/i1/O1CN01ItTPok1jI2WteG95T_!!6000000004524-0-tps-1920-220.jpg",
+  },
+  {
+    profileId: "616c2f5251ee99575c4a524e",
+    title: TranslateContent("vehicule"),
+    image:
+      "https://s.alicdn.com/@img/imgextra/i2/O1CN01qtUVSy25n6wiofZFH_!!6000000007570-2-tps-1920-220.png",
+  },
+  {
+    profileId: "616c2f5251ee99575c4a524e",
+    title: TranslateContent("pharmacy"),
+    image:
+      "https://s.alicdn.com/@img/imgextra/i4/O1CN01B6xQ7K1FUvBMS2Pe6_!!6000000000491-0-tps-5760-1455.jpg",
+  },
+  {
+    profileId: "616c2f5251ee99575c4a524e",
+    title: TranslateContent("marketing"),
+    image:
+      "https://s.alicdn.com/@img/imgextra/i4/O1CN01yknlDM1g9qacghqpt_!!6000000004100-0-tps-1920-220.jpg",
+  },
+];
+
 export const BusinessList = [
   {
     title: TranslateContent("restaurant"),
