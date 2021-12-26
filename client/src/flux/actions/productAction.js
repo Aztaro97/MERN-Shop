@@ -35,11 +35,15 @@ import { logout } from "./userAction";
 import { toast } from "react-toastify";
 import { errorMessage, successMessage } from "../../components/message";
 
-export const listProducts = (pageNumber = "") => async (dispatch) => {
+export const listProducts = (keyword = "", pageNumber = "") => async (
+  dispatch
+) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
 
-    const { data } = await axios.get(`/api/products?pageNumber=${pageNumber}`);
+    const { data } = await axios.get(
+      `/api/products?keyword=${keyword}&pageNumber=${pageNumber}`
+    );
 
     dispatch({
       type: PRODUCT_LIST_SUCCESS,
@@ -220,7 +224,6 @@ export const updateProduct = (product) => async (dispatch, getState) => {
     });
     successMessage("Products successfully updated");
     dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data });
-
   } catch (error) {
     const message =
       error.response && error.response.data.message

@@ -69,15 +69,6 @@ const DataSection = ({ listAdService, type }) => {
     <DataStyling>
       <h3 className="title">all {type}</h3>
       <hr />
-      {/* <>
-        {error ? (
-          <h1>{error}</h1>
-        ) : (
-          <>
-           
-          </>
-        )}
-      </> */}
       {listAdService.length ? (
         <Row gutter={[10, 10]}>
           {listAdService.map((data) => (
@@ -128,7 +119,7 @@ const DataSection = ({ listAdService, type }) => {
 const DataStyling = styled.section`
   text-align: center;
   height: 100%;
-  margin-bottom: 20px;
+  margin: 4rem 0;
   & .title {
     font-size: 1.5rem;
     text-transform: capitalize;
@@ -145,8 +136,9 @@ const DataStyling = styled.section`
   & .data_item {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    border: 1px solid #999;
-    border-radius: 0 30px 30px 0;
+    border: 1px solid var(--silver-color);
+    padding: 10px 5px;
+    border-radius: 5px;
     & img {
       width: 100%;
       height: 100%;
@@ -157,6 +149,7 @@ const DataStyling = styled.section`
       & h5 {
         text-transform: capitalize;
         letter-spacing: 0px;
+        color: var(--white-color);
         font-weight: 700;
         font-size: 0.9rem;
       }
@@ -167,13 +160,16 @@ const DataStyling = styled.section`
       }
       & p {
         font-size: 0.9rem;
+        color: var(--silver-color);
       }
       & a {
         color: #fff;
         background: var(--orange-color);
-        padding: 7px 1.5rem;
-        border-radius: 30px;
+        padding: 5px 1.5rem;
+        border-radius: 50px;
         text-decoration: none;
+        text-transform: capitalize;
+        font-weight: 400;
         &:hover {
           opacity: 0.9;
         }

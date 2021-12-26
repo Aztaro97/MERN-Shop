@@ -18,8 +18,8 @@ const getProducts = asyncHandler(async (req, res) => {
       }
     : {};
 
-  const count = await Product.countDocuments({ allow: true });
-  const products = await Product.find({ allow: true })
+  const count = await Product.countDocuments({ ...keyword, allow: true });
+  const products = await Product.find({ ...keyword, allow: true })
     .populate("user", ["email", "company"])
     .limit(pageSize)
     .skip(pageSize * (page - 1));

@@ -361,7 +361,7 @@ const ContactForm = ({ profile }) => {
 
 const FormStyling = styled.form`
   padding: 2rem;
-  border: 1px solid #ececec;
+  border: 1px solid #ececec81;
 
   & .row {
     margin-bottom: 0.6rem;
@@ -392,6 +392,9 @@ const ContainerStyling = styled.div`
     text-transform: capitalize;
     font-size: 1.5rem;
     margin-bottom: 1.2rem;
+    color: var(--silver-color);
+    letter-spacing: 1px;
+    font-weight: 700;
   }
   & .introduction {
     text-align: center;
@@ -639,14 +642,15 @@ const LandingStyling = styled.div`
 `;
 
 const CountryDropdownCustom = styled(CountryDropdown)`
-  border: 3px solid var(--background-color);
+  /* border: 1px solid var(--silver-color); */
   color: var(--slider-color);
   padding-left: 0.4rem;
   width: 100%;
   height: 2.5rem;
-  border: 3px solid var(--background-color);
+  background:  var(--dark-color);
   &:focus-visible {
-    border: 3px solid var(--background-color);
+    /* border: 3px solid var(--background-color); */
+    background: var(--dark-color);
     outline: none;
   }
   @media only screen and (max-width: 768px) {
@@ -658,13 +662,14 @@ const CountryDropdownCustom = styled(CountryDropdown)`
 `;
 
 const RegionDropdownCustom = styled(RegionDropdown)`
-  border: 3px solid var(--background-color);
+  border: 1px solid var(--silver-color);
   color: var(--slider-color);
   padding-left: 0.4rem;
   width: 100%;
   height: 2.5rem;
+  background:  var(--dark-color);
   &:focus {
-    border: 3px solid var(--background-color);
+    border: 1px solid var(--silver-color);
   }
   &:focus-visible {
     border: 3px solid var(--background-color);

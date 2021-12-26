@@ -46,10 +46,7 @@ const Input = styled.input`
   letter-spacing: 2px;
 
   &:focus {
-    /* border-color: var(--orange-color); */
-    /* border-right-width: 0.3px !important; */
     outline: none;
-    /* box-shadow: 0 0 0 0.5px var(--background-color); */
     background: var(--dark-color);
     color: var(--white-color);
   }

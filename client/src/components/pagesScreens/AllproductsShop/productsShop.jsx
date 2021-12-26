@@ -14,11 +14,15 @@ import Paginate from "../../pagination";
 import MainContainer from "../../MainContainer";
 import { brandList, colorList, sizeList } from "../../../utils/listItems";
 import ErrorServerPage from "../ErrorServerPage";
+import { useParams } from "react-router-dom";
 
 const ViewProducts = ({ match }) => {
-  // const keyword = match.params.keyword
+  // const params = useParams();
+  const keyword = match.params.keyword;
 
   const pageNumber = match.params.pageNumber || 1;
+
+  console.log(keyword);
 
   const formik = useFormik({
     initialValues: {
@@ -30,7 +34,7 @@ const ViewProducts = ({ match }) => {
     onSubmit: (values) => {
       const body = JSON.stringify(values, null, 2);
       dispatch(filterAllProducts(body));
-      console.log(body);
+      console.log(match);
     },
   });
 
@@ -40,8 +44,8 @@ const ViewProducts = ({ match }) => {
   );
 
   useEffect(() => {
-    dispatch(listProducts(pageNumber));
-  }, [dispatch, pageNumber]);
+    dispatch(listProducts(keyword, pageNumber));
+  }, [dispatch, pageNumber, keyword]);
 
   const handleChangeSlider = (value) => {
     formik.setFieldValue("price", value);

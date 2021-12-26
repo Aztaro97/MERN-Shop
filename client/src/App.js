@@ -216,7 +216,11 @@ function App() {
           <Route exact path="/" component={HomeComponents} />
 
           <Route path="/add-product/:id" component={CreateProductComponent} />
-          <Route path="/products/page/:pageNumber" component={ProductsShop} />
+          <Route
+            path="/search/:keyword"
+            component={ProductsShop}
+            // exact
+          />
           <Route path="/products" component={ProductsShop} />
           <Route path="/product/:id" component={EditProductScreen} />
           <Route path="/myproducts" component={MyProductAndCompanyComponent} />
@@ -321,10 +325,7 @@ function App() {
           <Route path="/pos" component={PosComponent} />
 
           {/* ////////////////////    ABOUT ROUTER   ////////////////// */}
-          <Route
-            path="/exhibition"
-            component={ExhibitionComponent}
-          />
+          <Route path="/exhibition" component={ExhibitionComponent} />
 
           {/*////////////////  ADMIN ROUTER  ///////////// */}
           <Route path="/admin/orderlist" component={OrderListComponent} exact />

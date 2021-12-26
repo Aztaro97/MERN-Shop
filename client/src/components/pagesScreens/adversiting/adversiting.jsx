@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, Route } from "react-router-dom";
 import Slider from "react-slick";
 import {
   categoryAdversiting,
@@ -18,8 +18,7 @@ import Meta from "../../helmet";
 import { Video, Transformation } from "cloudinary-react";
 import { Fade } from "react-reveal";
 import "./advertising.css";
-
-const { Search } = Input;
+import SearchBox from "../../searchBox";
 
 function AdversitingScreen() {
   const { t, i18n } = useTranslation();
@@ -61,10 +60,17 @@ function AdversitingScreen() {
 // };
 
 const CompanyShop = ({ lang }) => {
+
+  const { t, i18n } = useTranslation();
+
+  const currentLang = i18n.language;
+
+
+
   const settings = {
     dots: false,
     infinite: true,
-    speed: 1000,
+    speed: 700,
     autoplay: true,
     autoplaySpeed: 4000,
     slidesToShow: 1,
@@ -99,6 +105,20 @@ const CompanyShop = ({ lang }) => {
         },
       },
     ],
+    nextArrow: (
+      <div>
+        <div className="shop_next_arrow">
+          {currentLang === "en" ? ">" : "<"}{" "}
+        </div>
+      </div>
+    ),
+    prevArrow: (
+      <div>
+        <div className="shop_prev_arrow">
+          {currentLang === "en" ? "<" : ">"}{" "}
+        </div>
+      </div>
+    ),
   };
   const history = useHistory();
 
@@ -109,17 +129,15 @@ const CompanyShop = ({ lang }) => {
           {companyProducts.map((data) => (
             <CardShopStyling
               key={data.profileId}
-              onClick={() =>
-                history.push(`/profile/${data.profileId}`)
-              }
+              onClick={() => history.push(`/profile/${data.profileId}`)}
             >
               <div
                 className="box"
                 style={{ backgroundImage: `url(${data.image})` }}
               >
-                <div className="box-container">
+                {/* <div className="box-container">
                   <h4>{data.title}</h4>
-                </div>
+                </div> */}
               </div>
             </CardShopStyling>
           ))}
@@ -370,17 +388,11 @@ const AdvertisingNavgation = ({ lang }) => {
   const { t } = useTranslation();
   const history = useHistory();
 
-  const onSearch = (value) => console.log(value);
-
   return (
     <NavStyling>
       <Row justify="end" className="_row">
         <Col>
-          <Search
-            placeholder="Search"
-            onSearch={onSearch}
-            className="search-input"
-          />
+          <Route render={({ history }) => <SearchBox history={history} />} />
         </Col>
       </Row>
       <Fade bottom>

@@ -18,7 +18,7 @@ const userSchema = mongoose.Schema(
     company: {
       type: { type: String, required: true, default: "company" },
       name: { type: String },
-      scopeBusiness: { type: String },
+      scopeBusiness: { type: Array },
       licenceNumber: { type: String },
       expireDate: { type: String },
       phoneNumber: { type: Array },

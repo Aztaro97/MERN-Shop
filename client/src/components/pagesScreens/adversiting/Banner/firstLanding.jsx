@@ -15,7 +15,7 @@ const FirstLandingSlider = () => {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 1500,
+    speed: 500,
     autoplay: true,
     autoplaySpeed: 5000,
     slidesToShow: 1,

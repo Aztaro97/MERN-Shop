@@ -16,7 +16,7 @@ import {
 import { FiUploadCloud } from "react-icons/fi";
 import { Link, useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { Upload, Radio, DatePicker } from "antd";
+import { Upload, Radio, DatePicker, Select } from "antd";
 import ImgCrop from "antd-img-crop";
 import {
   register,
@@ -36,8 +36,10 @@ import moment from "moment";
 import { IoIosCloudDone } from "react-icons/io";
 import { successMessage } from "../../message";
 import LoaderComponent from "../../loader";
+import { scopeData } from "../../../utils/ecommerceData";
 
 const { RangePicker } = DatePicker;
+const { Option } = Select;
 
 function RegisterPage() {
   const { t } = useTranslation();
@@ -93,7 +95,7 @@ const CompanyInfo = () => {
       company: {
         name: "",
         type: "company",
-        scopeBusiness: "",
+        scopeBusiness: [],
         licenceNumber: "",
         expireDate: "",
         phoneNumber: "",
@@ -116,6 +118,7 @@ const CompanyInfo = () => {
       const body = JSON.stringify(values, null, 2);
       setTimeout(() => {
         dispatch(registerCompanyInfo(body));
+        console.log(body);
       }, 500);
     },
   });
@@ -127,37 +130,8 @@ const CompanyInfo = () => {
     console.log(e.target.value);
   };
 
-  //  Cellular function
-  const addCellular = (e) => {
-    e.preventDefault();
-    ListCellular.push(cellular);
-    formik.setFieldValue("company.phoneNumber", cellular);
-    setCellular("");
-  };
-  const deleteCellular = (itemIndex) => {
-    const newListCellular = ListCellular.filter(
-      (_, index) => index !== itemIndex
-    );
-    setListCellular(newListCellular);
-    console.log(newListCellular);
-    console.log(ListCellular);
-  };
-
-  //  WorkHour function
-  const addHour = (e) => {
-    e.preventDefault();
-    // ListHour.push(hour);
-    console.log(formik.values.company);
-    // console.log({workHourFrom})
-    // console.log({workHourTo})
-    // setHour({ from: "", to: "" });
-  };
-  const deleteHour = (itemIndex) => {
-    const newListCellular = ListHour.filter((_, index) => index !== itemIndex);
-    setListHour(newListCellular);
-    console.log(newListCellular);
-    console.log(ListHour);
-  };
+  const children = [];
+  scopeData.map((data) => children.push(<Option key={data}>{data}</Option>));
 
   const {
     loading,
@@ -226,17 +200,21 @@ const CompanyInfo = () => {
               <div className="col">
                 <div className="row">
                   <InputC
-                    style={{ textTransform: "uppercase" }}
                     required
                     type="text"
-                    placeholder={`${typeUser} NAME`}
+                    // placeholder={`${typeUser} NAME`}
+                    placeholder={
+                      typeUser === "company"
+                        ? "COMPANY NAME"
+                        : "PERSONNEL COMPANY NAME"
+                    }
                     name="company.name"
                     value={formik.values.company.name}
                     onChange={formik.handleChange}
                   />
                 </div>
                 <div className="row">
-                  <InputC
+                  {/* <InputC
                     required
                     type="text"
                     style={{ textTransform: "uppercase" }}
@@ -244,7 +222,21 @@ const CompanyInfo = () => {
                     name="company.scopeBusiness"
                     value={formik.values.company.scopeBusiness}
                     onChange={formik.handleChange}
-                  />
+                  /> */}
+                  <Select
+                    mode="multiple"
+                    allowClear
+                    style={{ width: "100%", padding: 0 }}
+                    placeholder="SELECT SCOPE OF BUSINESS"
+                    // defaultValue={formik.values.company.scopeBusiness}
+                    className="select_input"
+                    onChange={(value) => {
+                      formik.setFieldValue(company.scopeBusiness, value);
+                      console.log(formik.values.company.scopeBusiness);
+                    }}
+                  >
+                    {children}
+                  </Select>
                 </div>
 
                 {typeUser === "company" && (
@@ -869,6 +861,27 @@ const Form = styled.form`
       }
     }
   }
+
+  & .select_input {
+    & .ant-select-selector {
+      background: transparent !important;
+      border: 1px solid #ffffff34 !important;
+      color: var(--silver-color) !important;
+      &:focus {
+        border: 1px solid var(--orange-color);
+      }
+    }
+
+    & .ant-select-selection-item {
+      background: var(--orange-color) !important;
+      color: var(--white-color);
+      border: 1px solid #ffffff34 !important;
+      border-radius: 5px;
+      & svg {
+        color: var(--white-color);
+      }
+    }
+  }
 `;
 
 const TextArea = styled.textarea`
@@ -880,12 +893,12 @@ const TextArea = styled.textarea`
   width: 100%;
   padding-left: 0.4rem;
   padding-top: 0.5rem;
-  color: #aaaaac;
+  color: var(--silver-color);
 
   &:focus {
-    color: #000;
-    box-shadow: 0 0 0 2px #c58787;
-    border-color: #c58787;
+    color: var(--white-color);
+    /* box-shadow: 0 0 0 2px #c58787; */
+    /* border-color: var(--white-color); */
   }
 `;
 

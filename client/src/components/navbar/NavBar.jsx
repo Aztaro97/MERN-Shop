@@ -244,7 +244,7 @@ function NavBar() {
             </Link>
           </Menu.Item>  
           <Menu.Item key="ecommerce">
-            <Link to="/register" className="link">
+            <Link to="/advertising/register" className="link">
               + Add Ads
             </Link>
           </Menu.Item>
