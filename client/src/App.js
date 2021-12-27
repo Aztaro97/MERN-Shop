@@ -16,6 +16,9 @@ const CreateProductComponent = lazy(() =>
 const ProductsShop = lazy(() =>
   import("./components/pagesScreens/AllproductsShop/productsShop")
 );
+const CategoryProduct = lazy(() =>
+  import("./components/pagesScreens/AllproductsShop/categoriesProducts")
+);
 const EditProductScreen = lazy(() =>
   import("./components/pagesScreens/ProductsAndCompany/editProductScreen")
 );
@@ -221,6 +224,7 @@ function App() {
             component={ProductsShop}
             // exact
           />
+          <Route path="/categories/:category" component={CategoryProduct} />
           <Route path="/products" component={ProductsShop} />
           <Route path="/product/:id" component={EditProductScreen} />
           <Route path="/myproducts" component={MyProductAndCompanyComponent} />

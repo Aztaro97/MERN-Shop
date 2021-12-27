@@ -12,7 +12,7 @@ import {
 } from "../../../flux/actions/productAction";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import SelectC from "../../SelectComponents";
-import { brandList } from "../../../utils/listItems";
+import { InputbrandList } from "../../../utils/listItems";
 
 import {
   Card,
@@ -370,7 +370,7 @@ const FormRight = ({
           required
           placeholder="Brand"
           name="formik.brand"
-          options={brandList}
+          options={InputbrandList}
           // value={}
           onChange={(e) => setBrand(e.target.value)}
         />

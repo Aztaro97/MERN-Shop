@@ -13,20 +13,20 @@ const {
   filterProductsUser,
   getUserProducts,
   allowProductSell,
-  getProductsAdmin
+  getProductsAdmin,
+  filterByCategory,
 } = require("../controllers/productController");
 const { protect, admin } = require("../middleware/authMiddleware");
 const upload = require("../utils/multer");
 
-
-
 router.route("/").get(getProducts).post(protect, createProduct);
-router.route("/admin").get(protect, admin, getProductsAdmin)
+router.route("/admin").get(protect, admin, getProductsAdmin);
 router.route("/:id/reviews").post(protect, createProductReview);
 router.route("/my").get(protect, getMyProducts);
-router.route("/search").post(filterAllProducts)
-router.route("/:id/search").post(filterProductsUser)
-router.route("/user/:id").get(getUserProducts)
+router.route("/search").post(filterAllProducts);
+router.route("/:id/search").post(filterProductsUser);
+router.route("/user/:id").get(getUserProducts);
+router.route("/category/:categoryName").get(filterByCategory);
 router.get("/top", getTopProducts);
 router
   .route("/:id")

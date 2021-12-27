@@ -1,26 +1,28 @@
-import React, { useEffect } from "react";
-import styled from "styled-components";
-import { Slider, Image, Modal, Row, Col } from "antd";
-import { useSelector, useDispatch } from "react-redux";
+import { Col, Row, Slider } from "antd";
 import { useFormik } from "formik";
-import SelectC from "../../SelectComponents";
-import {
-  listProducts,
-  filterAllProducts,
-} from "../../../flux/actions/productAction";
-import ProductItems from "../products/ProductItem";
-import Loader from "../../loader";
-import Paginate from "../../pagination";
-import MainContainer from "../../MainContainer";
-import { InputbrandList, colorList, sizeList } from "../../../utils/listItems";
-import ErrorServerPage from "../ErrorServerPage";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import styled from "styled-components";
+import {
+  filterAllProducts,
+  filterByCategory,
+  listProducts,
+} from "../../../flux/actions/productAction";
+import { colorList, InputbrandList, sizeList } from "../../../utils/listItems";
+import MainContainer from "../../MainContainer";
+import ErrorServerPage from "../ErrorServerPage";
+import Loader from "../../loader";
+import SelectC from "../../SelectComponents";
+import Paginate from "../../pagination";
+import ProductItems from "../products/ProductItem";
 
-const ViewProducts = ({ match }) => {
-  // const params = useParams();
-  const keyword = match.params.keyword;
+function CategoriesScreen() {
+  const params = useParams();
+  const dispatch = useDispatch();
+  const categoryName = params.category;
 
-  const pageNumber = match.params.pageNumber || 1;
+  const pageNumber = params.pageNumber || 1;
 
   const formik = useFormik({
     initialValues: {
@@ -32,23 +34,21 @@ const ViewProducts = ({ match }) => {
     onSubmit: (values) => {
       const body = JSON.stringify(values, null, 2);
       dispatch(filterAllProducts(body));
-      console.log(match);
     },
   });
 
-  const dispatch = useDispatch();
   const { loading, error, products, page, pages } = useSelector(
     (state) => state.productList
   );
-
-  useEffect(() => {
-    dispatch(listProducts(keyword, pageNumber));
-  }, [dispatch, pageNumber, keyword]);
 
   const handleChangeSlider = (value) => {
     formik.setFieldValue("price", value);
   };
 
+  useEffect(() => {
+    categoryName && dispatch(filterByCategory(categoryName));
+    console.log(categoryName);
+  }, [categoryName, dispatch]);
   return (
     <MainContainer>
       <Container>
@@ -59,7 +59,6 @@ const ViewProducts = ({ match }) => {
         ) : (
           <>
             <FilterForm onSubmit={formik.handleSubmit}>
-              <h3 className="title">Products Shop :</h3>
               <Row gutter={[15, 10]} justify="end">
                 <Col xs={{ span: 12 }} md={{ span: 8 }} lg={{ span: 5 }}>
                   <SelectC
@@ -116,6 +115,7 @@ const ViewProducts = ({ match }) => {
                 </Col>
               </Row>
             </FilterForm>
+            <h3 className="title"> {categoryName}</h3>
             {products.length ? (
               <Row
                 gutter={[10, 10]}
@@ -156,7 +156,7 @@ const ViewProducts = ({ match }) => {
       </Container>
     </MainContainer>
   );
-};
+}
 
 const Container = styled.div`
   margin-top: 2rem;
@@ -179,6 +179,31 @@ const Container = styled.div`
     }
   }
 
+  & .title {
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--silver-color);
+    text-align: center;
+    text-transform: capitalize;
+    margin: 1rem 0;
+    &:after,
+    &:before {
+      content: "";
+      display: inline-block;
+      position: relative;
+      bottom: 5px;
+      height: 2px;
+      width: 40px;
+      background: var(--silver-color);
+    }
+    &:before {
+      right: 8px;
+    }
+    &:after {
+      left: 8px;
+    }
+  }
+
   &.products_items {
     margin-top: 4rem;
   }
@@ -190,12 +215,7 @@ const Container = styled.div`
 
 const FilterForm = styled.form`
   margin: 20px 0;
-  & .title {
-    font-weight: 700;
-    letter-spacing: 1px;
-    color: var(--silver-color);
-    /* text-decoration: underline; */
-  }
+  display: block;
 
   & .form_select {
     width: 100%;
@@ -275,4 +295,4 @@ const Grid = styled.div`
   }
 `;
 
-export default ViewProducts;
+export default CategoriesScreen;

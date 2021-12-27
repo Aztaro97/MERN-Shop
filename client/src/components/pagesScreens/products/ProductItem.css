@@ -1,0 +1,25 @@
+/* ***********   MODAL  STYLING    *************88 */
+.ant-modal-body {
+  padding: 20px !important;
+  background: var(--dark-light-color);
+}
+.ant-modal-body div {
+  /* padding: 20px !important; */
+}
+.ant-modal-close {
+  color: #fff !important;
+  margin: 10px;
+}
+
+.ant-radio-button-wrapper {
+  background: transparent !important;
+  color: var(--silver-color);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.ant-radio-button-wrapper:hover {
+  background: var(--orange-color) !important;
+}
+.ant-radio-button-wrapper:hover > * {
+  color: var(--white-color);
+}

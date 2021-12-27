@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import TextTruncate from "react-text-truncate";
 import { Image, Modal } from "antd";
-import ModalContent from "./modalContent";
+import ModalContent from "../products/modalProduct";
 import { GrView } from "react-icons/gr";
+
+import "./ProductItem.css"
 
 const empty_pc = "/img/ecommerce/empty.jpg";
 
@@ -53,6 +55,7 @@ function Product({ product }) {
           onCancel={() => setShowModal(false)}
           width={1000}
           footer={null}
+          style={{ padding: "0px !important" }}
           // wrapClassName="modal"
         >
           <ModalContent product={product} setShowModal={setShowModal} />
@@ -95,6 +98,7 @@ const Card = styled.div`
     & .card_desc {
       color: var(--silver-color);
       font-size: 0.9rem;
+      overflow-wrap: break-word !important;
       /* height:300px; */
     }
     & hr {
@@ -127,10 +131,7 @@ const Card = styled.div`
     }
   }
 
-  & .modal {
-    /* padding: 0;
-    z-index:9999; */
-  }
+ 
 `;
 
 const Button = styled.button`

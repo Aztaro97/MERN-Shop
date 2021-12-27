@@ -9,7 +9,7 @@ import {
   getProductUserById,
   filterProductsById,
 } from "../../../../flux/actions/productAction";
-import CardProduct from "./cardProducts";
+import ProductItem from "../../products/ProductItem";
 import Loader from "../../../loader";
 import Paginate from "../../../pagination";
 import { brandList, colorList, sizeList } from "../../../../utils/listItems";
@@ -131,7 +131,7 @@ const ViewProducts = () => {
                       lg={{ span: 6 }}
                     >
                       <div key={index} style={{ width: "100%" }}>
-                        <CardProduct product={product} />
+                        <ProductItem product={product} />
                       </div>
                     </Col>
                   ))}

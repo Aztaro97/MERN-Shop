@@ -131,7 +131,9 @@ const CompanyInfo = () => {
   };
 
   const children = [];
-  scopeData.map((data) => children.push(<Option key={data}>{data}</Option>));
+  scopeData.map((data) =>
+    children.push(<Option key={data.title}>{data.title}</Option>)
+  );
 
   const {
     loading,
@@ -214,26 +216,16 @@ const CompanyInfo = () => {
                   />
                 </div>
                 <div className="row">
-                  {/* <InputC
-                    required
-                    type="text"
-                    style={{ textTransform: "uppercase" }}
-                    placeholder={`${typeUser} SCOPE OF BUSINESS`}
-                    name="company.scopeBusiness"
-                    value={formik.values.company.scopeBusiness}
-                    onChange={formik.handleChange}
-                  /> */}
                   <Select
                     mode="multiple"
                     allowClear
                     style={{ width: "100%", padding: 0 }}
                     placeholder="SELECT SCOPE OF BUSINESS"
-                    // defaultValue={formik.values.company.scopeBusiness}
+                    defaultValue={formik.values.company.scopeBusiness}
                     className="select_input"
-                    onChange={(value) => {
-                      formik.setFieldValue(company.scopeBusiness, value);
-                      console.log(formik.values.company.scopeBusiness);
-                    }}
+                    onChange={(value) =>
+                      formik.setFieldValue("company.scopeBusiness", value)
+                    }
                   >
                     {children}
                   </Select>

@@ -30,6 +30,9 @@ import {
   PRODUCT_ALLOW_REQUEST,
   PRODUCT_ALLOW_SUCCESS,
   PRODUCT_ALLOW_FAIL,
+  PRODUCT_CATEGORY_LIST_REQUEST,
+  PRODUCT_CATEGORY_LIST_SUCCESS,
+  PRODUCT_CATEGORY_LIST_FAIL,
 } from "../constants/productConstants";
 import { logout } from "./userAction";
 import { toast } from "react-toastify";
@@ -52,6 +55,27 @@ export const listProducts = (keyword = "", pageNumber = "") => async (
   } catch (error) {
     dispatch({
       type: PRODUCT_LIST_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const filterByCategory = (categoryName = "") => async (dispatch) => {
+  try {
+    dispatch({ type: PRODUCT_CATEGORY_LIST_REQUEST });
+
+    const { data } = await axios.get(`/api/products/category/${categoryName}`);
+
+    dispatch({
+      type: PRODUCT_CATEGORY_LIST_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_CATEGORY_LIST_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

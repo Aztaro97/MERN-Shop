@@ -19,6 +19,8 @@ import { Video, Transformation } from "cloudinary-react";
 import { Fade } from "react-reveal";
 import "./advertising.css";
 import SearchBox from "../../searchBox";
+import { scopeData } from "../../../utils/ecommerceData";
+import { brandList } from "../../../utils/listItems";
 
 function AdversitingScreen() {
   const { t, i18n } = useTranslation();
@@ -60,12 +62,9 @@ function AdversitingScreen() {
 // };
 
 const CompanyShop = ({ lang }) => {
-
   const { t, i18n } = useTranslation();
 
   const currentLang = i18n.language;
-
-
 
   const settings = {
     dots: false,
@@ -360,14 +359,14 @@ const AdvertisingNavgation = ({ lang }) => {
     infinite: true,
     speed: 500,
     autoplay: true,
-    slidesToShow: 6,
+    slidesToShow: 5,
     slidesToScroll: 1,
     rtl: lang === "ar" ? true : false,
     responsive: [
       {
         breakpoint: 1000,
         settings: {
-          slidesToShow: 5,
+          slidesToShow: 4,
         },
       },
       {
@@ -397,19 +396,19 @@ const AdvertisingNavgation = ({ lang }) => {
       </Row>
       <Fade bottom>
         <Slider {...settings}>
-          {BusinessList.map((data, index) => (
+          {brandList.map((data, index) => (
             <div key={index}>
               <div
                 onClick={() =>
-                  history.push(`/advertising/type/${data.value}`, {
-                    type: data.value,
+                  history.push(`/categories/${data.value}`, {
+                    type: data.title,
                   })
                 }
                 className="card_container"
               >
                 <div className="card_body">
                   <i className="icon">{data.icon}</i>
-                  <span>{data.title}</span>
+                  <p className="title">{data.title}</p>
                 </div>
               </div>
             </div>
@@ -744,7 +743,7 @@ const JoiningUsStyling = styled.section`
 const NavStyling = styled.section`
   padding: 1rem;
   margin: 0 auto;
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
   width: 100%;
   background: var(--dark-color);
   & ._row {
@@ -778,7 +777,7 @@ const NavStyling = styled.section`
       & .icon > * {
         color: #fff;
       }
-      & span {
+      & .title {
         color: #fff !important;
       }
     }
@@ -794,18 +793,20 @@ const NavStyling = styled.section`
       flex-direction: column;
       background: var(--dark-light-color);
       transition: background 0.2s ease-in;
-      padding: 10px;
+      padding: 20px 10px;
       & .icon {
         font-size: 2.3rem;
         color: var(--silver-color);
         margin-bottom: 0.7rem;
         transition: color 0.3s ease-in-out;
       }
-      & span {
+      & .title {
         color: var(--silver-color);
         text-transform: capitalize;
         font-size: 1rem;
         transition: color 0.1s ease-in-out;
+        text-align: center;
+        margin: 0;
       }
     }
     & .card_footer {

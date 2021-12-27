@@ -389,6 +389,28 @@ const allowProductSell = asyncHandler(async (req, res) => {
   res.status(200).json({ message: "Product allow" });
 });
 
+// @desc    Fetch all products
+// @route   GET /api/products
+// @access  Public
+const filterByCategory = asyncHandler(async (req, res) => {
+  const pageSize = 8;
+  const page = Number(req.query.pageNumber) || 1;
+  const categoryName = req.params.categoryName;
+
+  const count = await Product.countDocuments({ ...categoryName, allow: true });
+  const products = await Product.find({ brand: categoryName, allow: true })
+    .populate("user", ["email", "company"])
+    .limit(pageSize)
+    .skip(pageSize * (page - 1));
+
+  if (products) {
+    res.json({  products, page, pages: Math.ceil(count / pageSize)  });
+  } else {
+    res.status(404);
+    throw new Error("Category Product not found");
+  }
+});
+
 module.exports = {
   getProducts,
   getProductById,
@@ -403,4 +425,5 @@ module.exports = {
   filterProductsUser,
   allowProductSell,
   getProductsAdmin,
+  filterByCategory,
 };

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Radio } from "antd";
+import { Col, Radio, Row } from "antd";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import {
@@ -26,10 +26,25 @@ import picture1 from "../../../../img/productimg.png";
 const ModalContent = ({ product, setShowModal }) => {
   return (
     <Container>
-      <Grid>
-        <GalleryImg product={product} />
-        <Contente product={product} setShowModal={setShowModal} />
-      </Grid>
+      <Row>
+        <Col
+          xs={{ span: 12 }}
+          sm={{ span: 24 }}
+          md={{ span: 12 }}
+          lg={{ span: 12 }}
+        >
+          <GalleryImg product={product} />
+        </Col>
+        <Col
+          xs={{ span: 12 }}
+          sm={{ span: 24 }}
+          md={{ span: 12 }}
+          lg={{ span: 12 }}
+        >
+          <Contente product={product} setShowModal={setShowModal} />
+        </Col>
+      </Row>
+      <Grid></Grid>
     </Container>
   );
 };
@@ -77,14 +92,12 @@ const Contente = ({ product, setShowModal }) => {
 
   return (
     <ContenteStyling>
-      <Row>
-        <h1>{product.name}</h1>
-        <p style={{ marginBottom: "10px" }}>{product.description}</p>
-        <h5 className="merchant_name">
-          Product Selling by : <span>{product.user.company.name}</span>{" "}
-        </h5>
-      </Row>
-      <Row>
+      <h1>{product.name}</h1>
+      <p style={{ marginBottom: "10px" }}>{product.description}</p>
+      <h5 className="merchant_name">
+        Product Selling by : <span>{product.user.company.name}</span>{" "}
+      </h5>
+      <Wrapper>
         <div className="productDetail">
           {product.variantSize.length > 0 && (
             <div className="size">
@@ -203,7 +216,7 @@ const Contente = ({ product, setShowModal }) => {
             </div>
           </div>
         </div>
-      </Row>
+      </Wrapper>
     </ContenteStyling>
   );
 };
@@ -261,7 +274,7 @@ const Grid = styled.div`
   }
 `;
 
-const Row = styled.div`
+const Wrapper = styled.div`
   & h1 {
     font-weight: 700;
     text-transform: uppercase;
@@ -427,6 +440,24 @@ const Btn = styled.div`
 const ContenteStyling = styled.div`
   padding: 1rem;
 
+  & h1 {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 2rem;
+    color: var(--silver-color);
+  }
+  & p {
+    color: var(--silver-color);
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  & .price {
+    color: var(--jungle-color);
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+
   & .merchant_name {
     font-size: 1rem;
     font-weight: 700;
@@ -435,8 +466,6 @@ const ContenteStyling = styled.div`
       text-transform: uppercase;
     }
   }
-
-
 `;
 
 const RadioButton = styled(Radio.Button)`
@@ -454,8 +483,6 @@ const RadioButton = styled(Radio.Button)`
     border-color: var(--orange-color);
     color: #fff;
   }
-
-
 `;
 
 export default ModalContent;

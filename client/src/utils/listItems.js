@@ -1,4 +1,7 @@
-export const brandList = [
+import { DiBlackberry } from "react-icons/di";
+import { GiClothes } from "react-icons/gi";
+
+export const InputbrandList = [
   { title: "-- Select Brand --", value: null },
   { title: "Beauty", value: "Beauty" },
   { title: "Cloth", value: "cloth" },
@@ -14,6 +17,23 @@ export const brandList = [
   { title: "Vehicle", value: "Vehicle" },
   { title: "Other", value: "Other" },
 ];
+
+export const brandList = [
+  { title: "Beauty", value: "Beauty", icon: <GiClothes /> },
+  { title: "Cloth", value: "cloth", icon: <GiClothes /> },
+  { title: "Cosmetic", value: "Cosmetic", icon: <GiClothes /> },
+  { title: "Electronic", value: "electronic", icon: <GiClothes /> },
+  { title: "Fourniture", value: "Fourniture", icon: <GiClothes /> },
+  { title: "Fruits", value: "Fruits", icon: <GiClothes /> },
+  { title: "Handcraft", value: "Handcraft", icon: <GiClothes /> },
+  { title: "Jewelry", value: "Jewelry", icon: <GiClothes /> },
+  { title: "Painting", value: "Painting", icon: <GiClothes /> },
+  { title: "Photography", value: "Photography", icon: <GiClothes /> },
+  { title: "Grocerie", value: "Grocerie", icon: <GiClothes /> },
+  { title: "Vehicle", value: "Vehicle", icon: <GiClothes /> },
+  { title: "Other", value: "Other", icon: <GiClothes /> },
+];
+
 export const colorList = [
   { title: "-- Select color --", value: null },
   { title: "Red", value: "red" },
