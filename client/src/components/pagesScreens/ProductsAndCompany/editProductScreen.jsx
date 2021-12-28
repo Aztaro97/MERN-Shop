@@ -20,7 +20,6 @@ import {
   Col,
   Row,
   Label,
-  TextArea,
   RowCheck,
   GridRow,
   Column,
@@ -34,6 +33,7 @@ import {
 import InputRadio from "../../InputRadioComponent";
 import InputC from "../../InputComponents";
 import ButtonC from "../../ButtonComponeent";
+import TextArea from "../../TextAreaComponent";
 import InputCheck from "../../CheckBoxComponent";
 import LoaderComponent from "../../loader";
 import { successMessage } from "../../message";
@@ -455,6 +455,7 @@ const FormRight = ({
       </Row>
       <Row>
         <TextArea
+          style={{ width: "100%" }}
           required
           type="text"
           name="descript"

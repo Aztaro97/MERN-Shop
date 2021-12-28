@@ -216,7 +216,7 @@ function App() {
         <NavBar />
         <Switch>
           {/* <Route exact path="/loading" component={Loading} /> */}
-          <Route exact path="/" component={HomeComponents} />
+          <Route exact path="/" component={AdversitingComponent} />
 
           <Route path="/add-product/:id" component={CreateProductComponent} />
           <Route
@@ -257,7 +257,7 @@ function App() {
           <Route exact path="/contact-us" component={ContactUsComponents} />
 
           {/* ///////////////////   ADVERSITING ROUTER  /////////////////// */}
-          <Route path="/advertising" component={AdversitingComponent} exact />
+          <Route path="/services" component={HomeComponents} exact />
           <Route
             path="/advertising/profile/:id"
             component={AdversitingProfileComponent}

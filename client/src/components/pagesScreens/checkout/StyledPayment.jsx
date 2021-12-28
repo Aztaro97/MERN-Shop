@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Modal, Radio, Space } from "antd";
 
 export const Border = styled.div`
-  border: 3px solid var(--background-color);
+  border: 1px solid #ffffff34;
   padding: 1rem 2rem;
   border-radius: 10px;
   margin-bottom: 2rem;
@@ -14,10 +14,14 @@ export const Border = styled.div`
     height: 1px;
   }
 
-  & .row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  & ._row {
+    & h2 {
+      color: var(--orange-color);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: block !important;
+      font-size: 1rem;
+    }
 
     & .price {
       display: flex;
@@ -54,7 +58,7 @@ export const Border = styled.div`
       outline: none;
       border: none;
       background: transparent;
-      color: var(--orange-color);
+      color: var(--silver-color) !important;
       &:hover {
         opacity: 0.9;
       }
@@ -76,9 +80,9 @@ export const Border = styled.div`
   }
 `;
 
-export const SectionLeft = styled.form`
+export const Form = styled.form`
   padding: 2rem;
-  border: 1px solid #ececec;
+  border: 1px solid #ffffff34;
   /* border-radius: 10px; */
 
   & .section_shippindAdress {
@@ -138,13 +142,14 @@ export const SectionLeft = styled.form`
     /* position: relative;
   top: 3rem; */
   }
-  & .row {
-    display: flex;
+  & ._row {
+    /* display: flex; */
     /* justify-content: center; */
     align-items: center;
 
     & .link {
-      color: var(--orange-color);
+      color: var(--silver-color);
+      display: inline-block;
       /* margin-left: 2rem; */
     }
   }
@@ -189,14 +194,15 @@ export const SectionLeft = styled.form`
 `;
 
 export const ContainerCart = styled.div`
-  background: var(--orange-color);
+  background: var(--dark-color);
   padding: 2rem;
+  height: 100%;
 
   & hr {
     border: none;
     outline: none;
     height: 0.7px;
-    background: #fff;
+    background: var(--silver-color);
   }
   & form {
     display: grid;
@@ -205,7 +211,7 @@ export const ContainerCart = styled.div`
     margin: 1.4rem 0;
 
     & input {
-      border: 1px solid #fff;
+      border: 1px solid var(--silver-color);
       outline: none;
       background: transparent;
       color: #fff;
@@ -225,9 +231,10 @@ export const ContainerCart = styled.div`
       font-size: 1rem;
       font-weight: 700;
       text-transform: uppercase;
+      color: var(--silver-color);
     }
     & h1:nth-child(2) {
-      color: #fff;
+      color: var(--silver-color);
     }
   }
   @media only screen and (max-width: 768px) {
@@ -243,7 +250,7 @@ export const Card = styled.div`
       width: 130px;
       height: 140px;
       border-radius: 10px;
-      border: 1px solid var(--orange-color);
+      border: 1px solid var(--silver-color);
     }
     & .quantity {
       display: flex;
@@ -295,9 +302,7 @@ export const Card = styled.div`
 `;
 
 export const Container = styled.main`
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 5rem 0 3rem 0;
+  margin: 2rem 0;
 
   @media only screen and (max-width: 1030px) {
     padding: 2rem 2rem;
@@ -311,10 +316,15 @@ export const Header = styled.div`
 
   & a {
     text-decoration: none;
-    color: #000;
+    color: var(--silver-color);
+    padding: 5px 10px;
+    border: 1px solid var(--silver-color);
     font-weight: 700;
     position: relative;
     top: 1.4rem;
+    &:hover {
+      opacity: 0.8;
+    }
   }
 
   & h2 {
@@ -322,7 +332,7 @@ export const Header = styled.div`
     color: #aaaaac;
     margin-bottom: 0;
     font-weight: 700;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
   }
 `;
 

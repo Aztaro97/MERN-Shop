@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Link, useHistory } from "react-router-dom";
+import { Link, Route, useHistory } from "react-router-dom";
 import { FaUser, FaShoppingCart } from "react-icons/fa";
 import { AiTwotoneSetting } from "react-icons/ai";
 import { MdArrowDropDown, MdKeyboardArrowDown } from "react-icons/md";
@@ -17,6 +17,7 @@ import "./navbar.css";
 
 //   Logo Import State
 import Logo_SVG from "../../img/logo.svg";
+import SearchBox from "../searchBox";
 
 const { SubMenu } = Menu;
 
@@ -230,7 +231,7 @@ function NavBar() {
         </Nav>
       </HeaderTop>
       <BottomHeader scrollNav={scrollNav}>
-        {/* <p>fffff</p> */}
+        {/* <p>fffff</p>
         <Menu
           onClick={handleClick}
           selectedKeys={[current]}
@@ -294,7 +295,74 @@ function NavBar() {
               </Link>
             </Menu.Item>
           </SubMenu>
-        </Menu>
+        </Menu> */}
+
+        <ul className="navigation">
+          <li className="nav_item">
+            <Link to="/" className="link">
+              Home
+            </Link>
+          </li>
+          <li className="nav_item dropdown">
+            <Link to="/services" className="link">
+              Services
+            </Link>
+            <ul className="sub_menu">
+              <li>
+                <Link to="/design" className="sub_link">
+                  Design
+                </Link>
+              </li>
+              <li>
+                <Link to="/photography" className="sub_link">
+                  Photography
+                </Link>
+              </li>
+              <li>
+                <Link to="/printing" className="sub_link">
+                  Printing Press
+                </Link>
+              </li>
+              <li>
+                <Link to="/exhibition" className="sub_link">
+                  Exhibition Management
+                </Link>
+              </li>
+              <li>
+                <Link to="/programming" className="sub_link">
+                  Programming
+                </Link>
+              </li>
+              <li>
+                <Link to="/marketing" className="sub_link">
+                  Marketing
+                </Link>
+              </li>
+              <li>
+                <Link to="/production" className="sub_link">
+                  Production
+                </Link>
+              </li>
+              <li>
+                <Link to="/pos" className="sub_link">
+                  POS
+                </Link>
+              </li>
+            </ul>
+          </li>
+          <li className="nav_item">
+            <Link to="/advertising/register" className="link">
+              Add Ads
+            </Link>
+          </li>
+          <li className="nav_item">
+            <Link to="/register" className="link">
+              Create Shop
+            </Link>
+          </li>
+        </ul>
+
+        <Route render={({ history }) => <SearchBox history={history} />} />
       </BottomHeader>
     </HeaderContainer>
   );
@@ -310,61 +378,76 @@ const HeaderContainer = styled.header`
 `;
 
 const BottomHeader = styled.div`
+  /* height: 60px !important;
+  line-height: 60px; */
+  padding: 0 2rem;
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-transform: uppercase;
+  justify-content: space-between;
+  /* line-height: 70px !important; */
 
   background: ${({ scrollNav }) =>
-    scrollNav ? "var(--orange-color)" : "var(--orange-color)"};
+    scrollNav ? "var(--silver-color)" : "var(--silver-color)"};
 
-  /* position: fixed;
-  right: 0;
-  left: 0; */
-  /* top: 0; */
-  & .ant-menu {
-    & .ant-menu-item {
-      position: static !important;
-    }
-  }
-
-  & .ant-menu-item,
-  & .ant-menu-submenu,
-  & .ant-menu-submenu-title,
-  & .link {
-    color: #fff !important;
-    text-decoration: none !important;
-    /* //  Import Do not remove   ///// */
-    position: relative !important;
-    &:hover {
-      color: #111 !important;
-    }
-    &:after {
-      border-bottom: none !important;
-    }
-  }
-
-  & .ant-menu-submenu {
-    & .ant-menu-submenu-title {
-      &:after {
-        border-bottom: none !important;
-      }
-    }
-    &:hover {
-      color: #111 !important;
-      & .ant-menu-submenu-arrow {
-        color: #111 !important;
-      }
-    }
-  }
-  & .ant-menu-submenu-arrow {
-    color: #fff !important;
+  & .navigation {
     display: flex;
-    position: absolute !important;
-    right: -16px !important;
-    top: 46%;
-    &:hover {
-      color: #111 !important;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    & .nav_item {
+      height: 100%;
+      padding: 20px 10px;
+      cursor: pointer;
+      & .link {
+        color: #000;
+        text-decoration: none !important;
+      }
+      &:hover {
+        background: var(--orange-color) !important;
+        color: var(--white-color);
+        & .link {
+          color: var(--white-color);
+        }
+      }
+
+      &.dropdown {
+        display: block;
+        &:hover {
+          & .sub_menu {
+            display: block;
+            visibility: visible;
+            opacity: 1;
+          }
+        }
+      }
+
+      & .sub_menu {
+        position: absolute;
+        top: 63px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        background: #fff;
+        visibility: hidden;
+        opacity: 0;
+        display: none;
+        & li {
+          padding: 0;
+          & .sub_link {
+            color: #000;
+            text-decoration: none;
+            padding: 10px 2rem;
+            display: block;
+            &:hover {
+              background: var(--orange-color);
+              color: white;
+            }
+          }
+        }
+      }
     }
   }
 `;

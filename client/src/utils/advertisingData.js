@@ -12,42 +12,42 @@ const TranslateContent = (contents) => {
 
 export const categoryAdversiting = [
   {
-    profileId: "61683883bb90435d90a1bd24",
+    profileId: "61c6f6b674179c7344210960",
     title: TranslateContent("real estate"),
     image: "/img/advertising/real_state.jpg",
   },
   {
-    profileId: "61683883bb90435d90a1bd24",
+    profileId: "61c6f6b674179c7344210960",
     title: TranslateContent("restaurant"),
     image: "/img/advertising/exemple.jpg",
   },
   {
-    profileId: "61683883bb90435d90a1bd24",
+    profileId: "61c6f6b674179c7344210960",
     title: TranslateContent("vehicule"),
     image: "/img/advertising/exemple.jpg",
   },
   {
-    profileId: "61683883bb90435d90a1bd24",
+    profileId: "61c6f6b674179c7344210960",
     title: TranslateContent("pharmacy"),
     image: "/img/advertising/exemple.jpg",
   },
   {
-    profileId: "61683883bb90435d90a1bd24",
+    profileId: "61c6f6b674179c7344210960",
     title: TranslateContent("marketing"),
     image: "/img/advertising/exemple.jpg",
   },
   {
-    profileId: "61683883bb90435d90a1bd24",
+    profileId: "61c6f6b674179c7344210960",
     title: TranslateContent("construction"),
     image: "/img/advertising/exemple.jpg",
   },
   {
-    profileId: "61683883bb90435d90a1bd24",
+    profileId: "61c6f6b674179c7344210960",
     title: TranslateContent("construction"),
     image: "/img/advertising/exemple.jpg",
   },
   {
-    profileId: "61683883bb90435d90a1bd24",
+    profileId: "61c6f6b674179c7344210960",
     title: TranslateContent("construction"),
     image: "/img/advertising/exemple.jpg",
   },

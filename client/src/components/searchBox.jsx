@@ -13,7 +13,6 @@ function SearchBox({ history }) {
     setKeyword(e);
     if (keyword.trim()) {
       history.push(`/search/${keyword}`);
-      // console.log(history)
     } else {
       history.push("/products");
     }
@@ -24,7 +23,7 @@ function SearchBox({ history }) {
       <input
         type="text"
         value={keyword}
-        placeholder="Search"
+        placeholder="Search Product"
         onChange={(e) => setKeyword(e.target.value)}
       />
       <button type="submit">
@@ -39,23 +38,23 @@ const Form = styled.form`
   justify-content: space-between;
   gap: 10px;
   & input {
-    color: var(--silver-color);
+    color: var(--dark-color);
     background: transparent;
     outline: none;
-    border: 1px solid var(--silver-color);
+    border: 1px solid var(--dark-color);
     padding: 4px 10px;
     &:focus {
-      border: 1px solid var(--white-color);
+      border: 1px solid var(--dark-color);
     }
     &:hover {
-      border: 1px solid var(--white-color);
+      border: 2px solid var(--dark-color);
       cursor: pointer;
     }
   }
 
   & button {
-    border: 1px solid var(--orange-color);
-    color: var(--orange-color);
+    border: 1px solid var(--dark-color);
+    color: var(--dark-color);
     background: transparent;
     padding: 4px 10px;
     text-transform: capitalize;

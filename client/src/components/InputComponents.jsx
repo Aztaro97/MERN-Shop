@@ -50,6 +50,10 @@ const Input = styled.input`
     background: var(--dark-color);
     color: var(--white-color);
   }
+  &:focus-visible {
+    color: var(--silver-color);
+    background: var(--dark-color);
+  }
 
   @media only screen and (max-width: 900px) {
     /* height: 2rem; */

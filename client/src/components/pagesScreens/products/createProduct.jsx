@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import MainContainer from "../../MainContainer";
-import { Upload, Modal } from "antd";
+import { Upload, Modal, Row, Col } from "antd";
 import { FaPlus, AiFillDelete, GoPlus } from "react-icons/all";
 import axios from "axios";
 import {
@@ -18,10 +18,8 @@ import {
   Card,
   Header,
   MainProductForm,
-  Col,
-  Row,
+  Container,
   Label,
-  TextArea,
   RowCheck,
   GridRow,
   Column,
@@ -36,6 +34,7 @@ import InputC from "../../InputComponents";
 import ButtonC from "../../ButtonComponeent";
 import InputCheck from "../../CheckBoxComponent";
 import InputRadio from "../../InputRadioComponent";
+import TextArea from "../../TextAreaComponent";
 
 function AddProductScreen() {
   const params = useParams();
@@ -128,55 +127,59 @@ function AddProductScreen() {
 
   return (
     <MainContainer>
-      <Header>
-        <a href="#/" onClick={() => history.goBack()}>
-          Back
-        </a>
-        <h2>Add your products</h2>
-      </Header>
-      <MainProductForm onSubmit={handleProductCreate}>
-        <Col>
-          <ProductSection1
-            selling={selling}
-            delivery={delivery}
-            setCode={setCode}
-            setSelling={setSelling}
-            setDelivery={setDelivery}
-          />
-          <ShippingSection
-            shippingFrom={shippingFrom}
-            setShippingFrom={setShippingFrom}
-            setShippingTo={setShippingTo}
-            shippingTo={shippingTo}
-            zone={zone}
-            setZone={setZone}
-            setArrayZone={setArrayZone}
-            arrayZone={arrayZone}
-          />
-          <RateSection arrayZone={arrayZone} setArrayZone={setArrayZone} />
-        </Col>
+      <Container>
+        <Header>
+          <a href="#/" onClick={() => history.goBack()}>
+            Back
+          </a>
+          <h2>Add your products</h2>
+        </Header>
+        <MainProductForm onSubmit={handleProductCreate}>
+          <Row gutter={[40, 10]}>
+            <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 12 }}>
+              <ProductSection1
+                selling={selling}
+                delivery={delivery}
+                setCode={setCode}
+                setSelling={setSelling}
+                setDelivery={setDelivery}
+              />
+              <ShippingSection
+                shippingFrom={shippingFrom}
+                setShippingFrom={setShippingFrom}
+                setShippingTo={setShippingTo}
+                shippingTo={shippingTo}
+                zone={zone}
+                setZone={setZone}
+                setArrayZone={setArrayZone}
+                arrayZone={arrayZone}
+              />
+              <RateSection arrayZone={arrayZone} setArrayZone={setArrayZone} />
+            </Col>
 
-        {/* ////////////////////////   COLLUMN RIGHT   /////////// */}
-        <Col>
-          <FormRight
-            handleProductCreate={handleProductCreate}
-            setName={setName}
-            setDescription={setDescription}
-            setBrand={setBrand}
-            setPrice={setPrice}
-            setSize={setSize}
-            setCompareAtPrice={setCompareAtPrice}
-            setVariantColor={setVariantColor}
-            setVariantSize={setVariantSize}
-            setVariantFinish={setVariantFinish}
-            setVariantMaterial={setVariantMaterial}
-            setVariantStyle={setVariantStyle}
-            setUnited={setUnited}
-            fileList={fileList}
-            setFileList={setFileList}
-          />
-        </Col>
-      </MainProductForm>
+            {/* ////////////////////////   COLLUMN RIGHT   /////////// */}
+            <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 12 }}>
+              <FormRight
+                handleProductCreate={handleProductCreate}
+                setName={setName}
+                setDescription={setDescription}
+                setBrand={setBrand}
+                setPrice={setPrice}
+                setSize={setSize}
+                setCompareAtPrice={setCompareAtPrice}
+                setVariantColor={setVariantColor}
+                setVariantSize={setVariantSize}
+                setVariantFinish={setVariantFinish}
+                setVariantMaterial={setVariantMaterial}
+                setVariantStyle={setVariantStyle}
+                setUnited={setUnited}
+                fileList={fileList}
+                setFileList={setFileList}
+              />
+            </Col>
+          </Row>
+        </MainProductForm>
+      </Container>
     </MainContainer>
   );
 }
@@ -355,331 +358,281 @@ const FormRight = ({
 
   return (
     <div>
-      <Row>
-        <InputC
-          required
-          type="text"
-          name="productName"
-          id="productName"
-          placeholder="PRODUCT NAME"
-          onChange={(e) => setName(e.target.value)}
-        />
-      </Row>
-      <Row>
-        <SelectC
-          required
-          placeholder="Brand"
-          name="formik.brand"
-          options={InputbrandList}
-          // value={}
-          onChange={(e) => setBrand(e.target.value)}
-        />
-      </Row>
-      <Row>
-        <TextArea
-          required
-          type="text"
-          name="descript"
-          id="descript"
-          placeholder="Describe your Product"
-          rows="5"
-          onChange={(e) => setDescription(e.target.value)}
-        />
-      </Row>
-      <Row>
-        <Label>Add Photo for your Product</Label>
-
-        <Upload
-          listType="picture-card"
-          beforeUpload={() => false}
-          onChange={handleChange}
-          onPreview={handlePreview}
-          fileList={fileList}
-          name="imgfiles"
-          accept="image/png, image/jpeg, image/jpg"
-          multiple
-        >
-          {fileList.length < 5 && (
-            <UploadIcon>
-              <GoPlus size={30} />
-            </UploadIcon>
-          )}
-        </Upload>
-      </Row>
-
-      <Row>
-        <Label>variants</Label>
-        <p
-          style={{
-            color: "#aaaaac",
-            marginBottom: "1rem",
-            textTransform: "uppercase",
-            fontSize: ".7rem",
-          }}
-        >
-          Add variant if this product comes in multiple versions like different
-          sizes or colors
-        </p>
-        <Card style={{ border: ".8px solid #c58787" }}>
-          {/* <Todo>
+      <Row gutter={[10, 10]}>
+        <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
+          <InputC
+            required
+            type="text"
+            name="productName"
+            id="productName"
+            placeholder="PRODUCT NAME"
+            onChange={(e) => setName(e.target.value)}
+          />
+        </Col>
+        <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
+          <SelectC
+            required
+            placeholder="Brand"
+            name="formik.brand"
+            options={InputbrandList}
+            // value={}
+            onChange={(e) => setBrand(e.target.value)}
+          />
+        </Col>
+        <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
+          <TextArea
+            style={{ width: "100%" }}
+            required
+            type="text"
+            name="descript"
+            id="descript"
+            placeholder="Describe your Product"
+            rows="5"
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </Col>
+        <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
+          <Upload
+            listType="picture-card"
+            beforeUpload={() => false}
+            onChange={handleChange}
+            onPreview={handlePreview}
+            fileList={fileList}
+            name="imgfiles"
+            accept="image/png, image/jpeg, image/jpg"
+            multiple
+          >
+            {fileList.length < 5 && (
+              <UploadIcon>
+                <GoPlus size={30} />
+              </UploadIcon>
+            )}
+          </Upload>
+        </Col>
+        <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
+          <Label>variants</Label>
+          <p
+            style={{
+              color: "#aaaaac",
+              marginBottom: "1rem",
+              textTransform: "uppercase",
+              fontSize: ".7rem",
+            }}
+          >
+            Add variant if this product comes in multiple versions like
+            different sizes or colors
+          </p>
+          <Card style={{ border: ".8px solid #c58787" }}>
+            {/* <Todo>
               <p>color</p>
               <FaPlus className="icons" />
             </Todo> */}
-          <div>
-            <Drop>
-              <p>color</p>
-              <FaPlus
-                className="icons"
-                onClick={() => setShowInput(!showInput)}
-              />
-            </Drop>
-            {showInput ? (
-              <>
-                <div className="variant_add">
-                  <input
-                    type="text"
-                    className="input"
-                    placeholder="Enter color name"
-                    value={color}
-                    onChange={(e) => setColor(e.target.value)}
-                  />
-                  <button
-                    className="add_btn"
-                    onClick={addColor}
-                    disabled={!color && true}
-                  >
-                    add
-                  </button>
-                </div>
-                <Ul>
-                  {Listcolor.length > 0
-                    ? Listcolor.map((item, index) => (
-                        <li key={index}>
-                          <p>{item}</p>
-                          <AiFillDelete
-                            className="delete_icon"
-                            onClick={() => deleteColor(index)}
-                          />
-                        </li>
-                      ))
-                    : null}
-                </Ul>
-              </>
-            ) : null}
-          </div>
-
-          <div>
-            <Drop>
-              <p>size</p>
-              <FaPlus
-                className="icons"
-                onClick={() => setShowInput0(!showInput0)}
-              />
-            </Drop>
-            {showInput0 ? (
-              <>
-                <div className="variant_add">
-                  <input
-                    type="text"
-                    className="input"
-                    placeholder="Enter size"
-                    value={variantSizeValue}
-                    onChange={(e) => setVariantSizeValue(e.target.value)}
-                  />
-                  <button
-                    className="add_btn"
-                    disabled={!variantSizeValue && true}
-                    onClick={addVariantSize}
-                  >
-                    add
-                  </button>
-                </div>
-                <Ul>
-                  {ListVariantSize.length > 0
-                    ? ListVariantSize.map((item, index) => (
-                        <li key={index}>
-                          <p>{item}</p>
-                          <AiFillDelete
-                            className="delete_icon"
-                            onClick={() => deleteVariantSize(index)}
-                          />
-                        </li>
-                      ))
-                    : null}
-                </Ul>
-              </>
-            ) : null}
-          </div>
-
-          <div>
-            <Drop>
-              <p>finish</p>
-              <FaPlus
-                className="icons"
-                onClick={() => setShowInput1(!showInput1)}
-              />
-            </Drop>
-            {showInput1 ? (
-              <>
-                <div className="variant_add">
-                  <input
-                    type="currency"
-                    className="input"
-                    placeholder="Enter finish"
-                    value={finish}
-                    onChange={(e) => setFinish(e.target.value)}
-                  />
-                  <button
-                    className="add_btn"
-                    disabled={!finish && true}
-                    onClick={addFinish}
-                  >
-                    add
-                  </button>
-                </div>
-                <Ul>
-                  {ListFinish.length > 0
-                    ? ListFinish.map((item, index) => (
-                        <li key={index}>
-                          <p>{item}</p>
-                          <AiFillDelete
-                            className="delete_icon"
-                            onClick={() => deleteFinish(index)}
-                          />
-                        </li>
-                      ))
-                    : null}
-                </Ul>
-              </>
-            ) : null}
-          </div>
-
-          <div>
-            <Drop>
-              <p>Material</p>
-              <FaPlus
-                className="icons"
-                onClick={() => setShowInput2(!showInput2)}
-              />
-            </Drop>
-            {showInput2 ? (
-              <>
-                <div className="variant_add">
-                  <input
-                    type="text"
-                    className="input"
-                    placeholder="Enter Material"
-                    value={material}
-                    onChange={(e) => setMaterial(e.target.value)}
-                  />
-                  <button
-                    className="add_btn"
-                    onClick={addMaterial}
-                    disabled={!material && true}
-                  >
-                    add
-                  </button>
-                </div>
-                <Ul>
-                  {ListMaterial.length > 0
-                    ? ListMaterial.map((item, index) => (
-                        <li key={index}>
-                          <p>{item}</p>
-                          <AiFillDelete
-                            className="delete_icon"
-                            onClick={() => deleteMaterial(index)}
-                          />
-                        </li>
-                      ))
-                    : null}
-                </Ul>
-              </>
-            ) : null}
-          </div>
-
-          <div>
-            <Drop>
-              <p>Style</p>
-              <FaPlus
-                className="icons"
-                onClick={() => setShowInput3(!showInput3)}
-              />
-            </Drop>
-            {showInput3 ? (
-              <>
-                <div className="variant_add">
-                  <input
-                    type="text"
-                    className="input"
-                    placeholder="Enter style"
-                    value={styling}
-                    onChange={(e) => setStyling(e.target.value)}
-                  />
-                  <button
-                    className="add_btn"
-                    onClick={addStyling}
-                    disabled={!styling && true}
-                  >
-                    add
-                  </button>
-                </div>
-                <Ul>
-                  {ListStyling.length > 0
-                    ? ListStyling.map((item, index) => (
-                        <li key={index}>
-                          <p>{item}</p>
-                          <AiFillDelete
-                            className="delete_icon"
-                            onClick={() => deleteStyling(index)}
-                          />
-                        </li>
-                      ))
-                    : null}
-                </Ul>
-              </>
-            ) : null}
-          </div>
-        </Card>
-      </Row>
-
-      <Card>
-        <Row>
-          <Label>Add value for size</Label>
-          <Card style={{ border: ".8px solid #c58787" }}>
             <div>
               <Drop>
-                <p>add another value</p>
+                <p>color</p>
                 <FaPlus
                   className="icons"
-                  onClick={() => setShowInput4(!showInput4)}
+                  onClick={() => setShowInput(!showInput)}
                 />
               </Drop>
-              {showInput4 ? (
+              {showInput ? (
                 <>
                   <div className="variant_add">
                     <input
                       type="text"
                       className="input"
-                      placeholder="Enter avlue for size"
-                      value={sizeValue}
-                      onChange={(e) => setSizeValue(e.target.value)}
+                      placeholder="Enter color name"
+                      value={color}
+                      onChange={(e) => setColor(e.target.value)}
                     />
                     <button
                       className="add_btn"
-                      disabled={!sizeValue && true}
-                      onClick={addSizeValue}
+                      onClick={addColor}
+                      disabled={!color && true}
                     >
                       add
                     </button>
                   </div>
                   <Ul>
-                    {ListSizeValue.length > 0
-                      ? ListSizeValue.map((item, index) => (
+                    {Listcolor.length > 0
+                      ? Listcolor.map((item, index) => (
                           <li key={index}>
                             <p>{item}</p>
                             <AiFillDelete
                               className="delete_icon"
-                              onClick={() => deleteSizeValue(index)}
+                              onClick={() => deleteColor(index)}
+                            />
+                          </li>
+                        ))
+                      : null}
+                  </Ul>
+                </>
+              ) : null}
+            </div>
+
+            <div>
+              <Drop>
+                <p>size</p>
+                <FaPlus
+                  className="icons"
+                  onClick={() => setShowInput0(!showInput0)}
+                />
+              </Drop>
+              {showInput0 ? (
+                <>
+                  <div className="variant_add">
+                    <input
+                      type="text"
+                      className="input"
+                      placeholder="Enter size"
+                      value={variantSizeValue}
+                      onChange={(e) => setVariantSizeValue(e.target.value)}
+                    />
+                    <button
+                      className="add_btn"
+                      disabled={!variantSizeValue && true}
+                      onClick={addVariantSize}
+                    >
+                      add
+                    </button>
+                  </div>
+                  <Ul>
+                    {ListVariantSize.length > 0
+                      ? ListVariantSize.map((item, index) => (
+                          <li key={index}>
+                            <p>{item}</p>
+                            <AiFillDelete
+                              className="delete_icon"
+                              onClick={() => deleteVariantSize(index)}
+                            />
+                          </li>
+                        ))
+                      : null}
+                  </Ul>
+                </>
+              ) : null}
+            </div>
+
+            <div>
+              <Drop>
+                <p>finish</p>
+                <FaPlus
+                  className="icons"
+                  onClick={() => setShowInput1(!showInput1)}
+                />
+              </Drop>
+              {showInput1 ? (
+                <>
+                  <div className="variant_add">
+                    <input
+                      type="currency"
+                      className="input"
+                      placeholder="Enter finish"
+                      value={finish}
+                      onChange={(e) => setFinish(e.target.value)}
+                    />
+                    <button
+                      className="add_btn"
+                      disabled={!finish && true}
+                      onClick={addFinish}
+                    >
+                      add
+                    </button>
+                  </div>
+                  <Ul>
+                    {ListFinish.length > 0
+                      ? ListFinish.map((item, index) => (
+                          <li key={index}>
+                            <p>{item}</p>
+                            <AiFillDelete
+                              className="delete_icon"
+                              onClick={() => deleteFinish(index)}
+                            />
+                          </li>
+                        ))
+                      : null}
+                  </Ul>
+                </>
+              ) : null}
+            </div>
+
+            <div>
+              <Drop>
+                <p>Material</p>
+                <FaPlus
+                  className="icons"
+                  onClick={() => setShowInput2(!showInput2)}
+                />
+              </Drop>
+              {showInput2 ? (
+                <>
+                  <div className="variant_add">
+                    <input
+                      type="text"
+                      className="input"
+                      placeholder="Enter Material"
+                      value={material}
+                      onChange={(e) => setMaterial(e.target.value)}
+                    />
+                    <button
+                      className="add_btn"
+                      onClick={addMaterial}
+                      disabled={!material && true}
+                    >
+                      add
+                    </button>
+                  </div>
+                  <Ul>
+                    {ListMaterial.length > 0
+                      ? ListMaterial.map((item, index) => (
+                          <li key={index}>
+                            <p>{item}</p>
+                            <AiFillDelete
+                              className="delete_icon"
+                              onClick={() => deleteMaterial(index)}
+                            />
+                          </li>
+                        ))
+                      : null}
+                  </Ul>
+                </>
+              ) : null}
+            </div>
+
+            <div>
+              <Drop>
+                <p>Style</p>
+                <FaPlus
+                  className="icons"
+                  onClick={() => setShowInput3(!showInput3)}
+                />
+              </Drop>
+              {showInput3 ? (
+                <>
+                  <div className="variant_add">
+                    <input
+                      type="text"
+                      className="input"
+                      placeholder="Enter style"
+                      value={styling}
+                      onChange={(e) => setStyling(e.target.value)}
+                    />
+                    <button
+                      className="add_btn"
+                      onClick={addStyling}
+                      disabled={!styling && true}
+                    >
+                      add
+                    </button>
+                  </div>
+                  <Ul>
+                    {ListStyling.length > 0
+                      ? ListStyling.map((item, index) => (
+                          <li key={index}>
+                            <p>{item}</p>
+                            <AiFillDelete
+                              className="delete_icon"
+                              onClick={() => deleteStyling(index)}
                             />
                           </li>
                         ))
@@ -689,35 +642,88 @@ const FormRight = ({
               ) : null}
             </div>
           </Card>
-        </Row>
-        <Row>
-          <Label style={{ color: "#000" }}>size</Label>
-          <InputC
-            type="currency"
-            placeholder="0.00 GRAM"
-            onChange={(e) => setSize(e.target.value)}
-          />
-          <Column>
-            <div>
-              <Label style={{ color: "#000" }}>price</Label>
+        </Col>
+        <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
+          {" "}
+          <Card>
+            <Row>
+              <Label>Add value for size</Label>
+              <Card style={{ border: ".8px solid #c58787" }}>
+                <div>
+                  <Drop>
+                    <p>add another value</p>
+                    <FaPlus
+                      className="icons"
+                      onClick={() => setShowInput4(!showInput4)}
+                    />
+                  </Drop>
+                  {showInput4 ? (
+                    <>
+                      <div className="variant_add">
+                        <input
+                          type="text"
+                          className="input"
+                          placeholder="Enter avlue for size"
+                          value={sizeValue}
+                          onChange={(e) => setSizeValue(e.target.value)}
+                        />
+                        <button
+                          className="add_btn"
+                          disabled={!sizeValue && true}
+                          onClick={addSizeValue}
+                        >
+                          add
+                        </button>
+                      </div>
+                      <Ul>
+                        {ListSizeValue.length > 0
+                          ? ListSizeValue.map((item, index) => (
+                              <li key={index}>
+                                <p>{item}</p>
+                                <AiFillDelete
+                                  className="delete_icon"
+                                  onClick={() => deleteSizeValue(index)}
+                                />
+                              </li>
+                            ))
+                          : null}
+                      </Ul>
+                    </>
+                  ) : null}
+                </div>
+              </Card>
+            </Row>
+            <Row>
+              <Label style={{ color: "#000" }}>size</Label>
               <InputC
-                required
                 type="currency"
-                placeholder="AED 0.00"
-                onChange={(e) => setPrice(e.target.value)}
+                placeholder="0.00 GRAM"
+                onChange={(e) => setSize(e.target.value)}
               />
-            </div>
-            <div>
-              <Label style={{ color: "#000" }}>compare at price</Label>
-              <InputC
-                type="currency"
-                placeholder="AED 0.00"
-                onChange={(e) => setCompareAtPrice(e.target.value)}
-              />
-            </div>
-          </Column>
-        </Row>
-      </Card>
+              <Column>
+                <div>
+                  <Label style={{ color: "#000" }}>price</Label>
+                  <InputC
+                    required
+                    type="currency"
+                    placeholder="AED 0.00"
+                    onChange={(e) => setPrice(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <Label style={{ color: "#000" }}>compare at price</Label>
+                  <InputC
+                    type="currency"
+                    placeholder="AED 0.00"
+                    onChange={(e) => setCompareAtPrice(e.target.value)}
+                  />
+                </div>
+              </Column>
+            </Row>
+          </Card>
+        </Col>
+      </Row>
+
       <ButtonC
         type="submit"
         style={{ margin: "1.3rem auto 0" }}
@@ -739,47 +745,43 @@ const ProductSection1 = ({
 }) => {
   return (
     <>
-      <Row>
-        <Label>Creat code ( optional ) </Label>
-        <InputC
-          type="text"
-          name=""
-          id=""
-          onChange={(e) => setCode(e.target.value)}
-        />
-      </Row>
-      <Row>
-        <Label type="text" name="" id="">
-          Selectservice
-        </Label>
-        <Card>
-          <RowCheck>
-            <InputCheck
-              type="checkbox"
-              id="sellbyAU79CODE"
-              name="sellbyAU79CODE"
-              value={selling}
-              onChange={(e) => setSelling(e.target.checked)}
-            >
-              sell by <span className="span">AU79CODE</span>
-            </InputCheck>
-            {/* <LabelCheck for="sellbyAU79CODE">
+      <Label>Creat code ( optional ) </Label>
+      <InputC
+        type="text"
+        name=""
+        id=""
+        onChange={(e) => setCode(e.target.value)}
+      />
+      <Label type="text" name="" id="">
+        Selectservice
+      </Label>
+      <Card>
+        <RowCheck>
+          <InputCheck
+            type="checkbox"
+            id="sellbyAU79CODE"
+            name="sellbyAU79CODE"
+            value={selling}
+            onChange={(e) => setSelling(e.target.checked)}
+          >
+            sell by <span className="span">AU79CODE</span>
+          </InputCheck>
+          {/* <LabelCheck for="sellbyAU79CODE">
                     
                   </LabelCheck> */}
-          </RowCheck>
-          <RowCheck>
-            <InputCheck
-              type="checkbox"
-              id="DeliverywithAU79CODE"
-              name="DeliverywithAU79CODE"
-              value={delivery}
-              onChange={(e) => setDelivery(e.target.checked)}
-            >
-              Delivery with <span className="span">AU79CODE</span>
-            </InputCheck>
-          </RowCheck>
-        </Card>
-      </Row>
+        </RowCheck>
+        <RowCheck>
+          <InputCheck
+            type="checkbox"
+            id="DeliverywithAU79CODE"
+            name="DeliverywithAU79CODE"
+            value={delivery}
+            onChange={(e) => setDelivery(e.target.checked)}
+          >
+            Delivery with <span className="span">AU79CODE</span>
+          </InputCheck>
+        </RowCheck>
+      </Card>
     </>
   );
 };
@@ -828,23 +830,27 @@ const RateSection = ({ arrayZone, setArrayZone }) => {
       </Row>
       <Card>
         <Row>
-          <Label for="RateName">Rate Name</Label>
-          <InputC
-            type="text"
-            name="RateName"
-            id="RateName"
-            value={rateName}
-            // onChange={(e) => setAddress({ name: e.target.value })}
-            onChange={(e) => setRateName(e.target.value)}
-          />
-        </Row>
-        <Row>
-          <Label for="">Shipping To</Label>
-          <GridRow>
-            <p className="title">name of city</p>
-            <p className="title">price</p>
-            <p className="title">condition</p>
-          </GridRow>
+          <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
+            <Label for="RateName">Rate Name</Label>
+            <InputC
+              type="text"
+              name="RateName"
+              id="RateName"
+              value={rateName}
+              // onChange={(e) => setAddress({ name: e.target.value })}
+              onChange={(e) => setRateName(e.target.value)}
+            />
+          </Col>
+          <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
+            <Label for="">Shipping To</Label>
+          </Col>
+          <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
+            <GridRow>
+              <p className="title">name of city</p>
+              <p className="title">price</p>
+              <p className="title">condition</p>
+            </GridRow>
+          </Col>
           <hr style={{ background: "#aaaaac", marginBottom: ".7rem" }} />
           {arrayZone.length > 0 &&
             arrayZone.map((item, index) => (
@@ -1029,51 +1035,57 @@ const ShippingSection = ({
       </Row>
       <Card>
         <Row>
-          <Label for="RateName">Shipping From</Label>
-          <InputC
-            required
-            type="text"
-            name="RateName"
-            id="RateName"
-            onChange={(e) => setShippingFrom(e.target.value)}
-          />
+          <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
+            <Label for="RateName">Shipping From</Label>
+          </Col>
+          <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
+            <InputC
+              required
+              type="text"
+              name="RateName"
+              id="RateName"
+              onChange={(e) => setShippingFrom(e.target.value)}
+            />
+          </Col>
         </Row>
-        <Row>
-          <Label for="ShippingTo">Shipping To</Label>
-          <div>
+        <Row style={{ marginTop: 20 }} gutter={[10, 10]}>
+          <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
+            <Label for="ShippingTo">Shipping To</Label>
+          </Col>
+          <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 12 }}>
             <CountryDropdownCustomer
               value={country}
               onChange={(val) => onChangeCountry(val)}
             />
+          </Col>
+          <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 12 }}>
             <RegionDropdownCustomer
               country={country}
               value={region}
               onChange={handleSelectRegion}
               defaultOptionLabel="Choose"
             />
-          </div>
-          {/* <InputC
-            type="text"
-            name="ShippingTo"
-            id="ShippingTo"
-            name="ShippingTo"
-            value={inputValu}
-            onChange={(e) => setInputValu(e.target.value)}
-          /> */}
+          </Col>
+
+          <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
+            {" "}
+            {arraryRegionSelected &&
+              arraryRegionSelected.map((item, index) => (
+                <RowCheck key={index}>
+                  <InputCheck type="checkbox" id={item} name={item}>
+                    {item}
+                  </InputCheck>
+                </RowCheck>
+              ))}{" "}
+          </Col>
         </Row>
-        <Row>
-          {arraryRegionSelected &&
-            arraryRegionSelected.map((item, index) => (
-              <RowCheck key={index}>
-                <InputCheck type="checkbox" id={item} name={item}>
-                  {item}
-                </InputCheck>
-              </RowCheck>
-            ))}
+        <Row style={{ marginTop: 10 }}>
+          <Col>
+            <ButtonC style={{ margin: "0 auto" }} onClick={handleCreateZone}>
+              save
+            </ButtonC>
+          </Col>
         </Row>
-        <ButtonC style={{ margin: "0 auto" }} onClick={handleCreateZone}>
-          save
-        </ButtonC>
       </Card>
     </>
   );
@@ -1149,22 +1161,41 @@ const ShippingModal = styled.div`
 `;
 
 const CountryDropdownCustomer = styled(CountryDropdown)`
-  border: 1px solid var(--orange-color);
+  border: 1px solid var(--dark-color);
   padding: 10px;
   display: block;
   margin-bottom: 1rem;
+  background: var(--dark-color);
+  color: var(--silver-color);
+  width: 100%;
   &:focus {
     outline: none;
-    border: 1px solid var(--orange-color);
+    border: 1px solid var(--dark-color);
+    color: var(--white-color);
+    background: var(--dark-color);
+  }
+  &:focus-visible {
+    color: var(--silver-color);
+    background: var(--dark-color);
   }
 `;
 const RegionDropdownCustomer = styled(RegionDropdown)`
-  border: 1px solid var(--orange-color);
+  border: 1px solid var(--dark-color);
   padding: 10px;
   display: block;
+  margin-bottom: 1rem;
+  background: var(--dark-color);
+  color: var(--silver-color);
+  width: 100%;
   &:focus {
     outline: none;
-    border: 1px solid var(--orange-color);
+    border: 1px solid var(--dark-color);
+    color: var(--white-color);
+    background: var(--dark-color);
+  }
+  &:focus-visible {
+    color: var(--silver-color);
+    background: var(--dark-color);
   }
 `;
 

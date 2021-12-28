@@ -27,7 +27,7 @@ import MapComponent from "../checkout/map/getCurrentPosition";
 import {
   Container,
   Header,
-  SectionLeft,
+  Form,
   Border,
   Grid,
   ContainerCart,
@@ -163,11 +163,11 @@ function Payment() {
   };
 
   return (
-    <>
+    <MainContainer>
       {loading ? (
         <Loader />
       ) : (
-        <MainContainer>
+        <Container>
           <Header>
             <a href="#/" onClick={() => history.goBack()}>
               Back
@@ -176,34 +176,30 @@ function Payment() {
           </Header>
           <Row>
             <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 12 }}>
-              <SectionLeft onSubmit={handlePlaceOrder}>
+              <Form onSubmit={handlePlaceOrder}>
                 <Border>
-                  <div className="row">
-                    <div>
-                      <h2>contact</h2>
-                      <p>
-                        {shippingAddress.email} , {shippingAddress.phoneNumber}
-                      </p>
-                    </div>
+                  <div className="_row">
+                    <h2>contact</h2>
+                    <p>
+                      {shippingAddress.email} , {shippingAddress.phoneNumber}
+                    </p>
                     <Link className="link" to="/shipping">
                       Change
                     </Link>
                   </div>
                   <hr />
-                  <div className="row">
-                    <div>
-                      <h2>address</h2>
-                      <p>
-                        {shippingAddress.address}, {shippingAddress.city} ,
-                        {shippingAddress.region} /{shippingAddress.country}
-                      </p>
-                    </div>
+                  <div className="_row">
+                    <h2>address</h2>
+                    <p>
+                      {shippingAddress.address}, {shippingAddress.city} ,
+                      {shippingAddress.region} /{shippingAddress.country}
+                    </p>
                     <Link className="link" to="/shipping">
                       Change
                     </Link>
                   </div>
                   <hr />
-                  <div className="row">
+                  <div className="_row">
                     <div className="price">
                       <h2>shipping cost</h2>
                       <p>aed 50.00</p>
@@ -292,7 +288,7 @@ function Payment() {
                     back to information
                   </Link>
                 </div>
-              </SectionLeft>
+              </Form>
             </Col>
             <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 12 }}>
               <SectionRight
@@ -302,9 +298,9 @@ function Payment() {
               />
             </Col>
           </Row>
-        </MainContainer>
+        </Container>
       )}
-    </>
+    </MainContainer>
   );
 }
 

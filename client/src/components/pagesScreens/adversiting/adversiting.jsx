@@ -389,11 +389,11 @@ const AdvertisingNavgation = ({ lang }) => {
 
   return (
     <NavStyling>
-      <Row justify="end" className="_row">
+      {/* <Row justify="end" className="_row">
         <Col>
           <Route render={({ history }) => <SearchBox history={history} />} />
         </Col>
-      </Row>
+      </Row> */}
       <Fade bottom>
         <Slider {...settings}>
           {brandList.map((data, index) => (
@@ -578,6 +578,7 @@ const ServicesSlider = ({ lang }) => {
 
 const ServiceStyling = styled.section`
   padding: 0 1rem;
+  background: var(--dark-light-color);
   & .title {
     text-align: center;
     text-transform: uppercase;
@@ -677,6 +678,7 @@ const PartnerLogoStyling = styled.section`
 `;
 
 const JoiningUsStyling = styled.section`
+  background: var(--dark-light-color);
   & .title {
     text-align: center;
     /* letter-spacing: 3px; */
@@ -745,7 +747,7 @@ const NavStyling = styled.section`
   margin: 0 auto;
   /* margin-top: 1rem; */
   width: 100%;
-  background: var(--dark-color);
+  background: var(--dark-light-color);
   & ._row {
     margin-bottom: 2rem;
     & .search-input {
@@ -765,12 +767,14 @@ const NavStyling = styled.section`
     text-decoration: none;
     margin: 0 10px;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
 
     @media only screen and (max-width: 768px) {
       height: 110px;
     }
 
     &:hover {
+      transform: scale(1.1);
       & .card_body {
         background: var(--orange-color);
       }
@@ -791,17 +795,17 @@ const NavStyling = styled.section`
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      background: var(--dark-light-color);
+      background: var(--dark-color);
       transition: background 0.2s ease-in;
       padding: 20px 10px;
       & .icon {
         font-size: 2.3rem;
-        color: var(--silver-color);
+        color: var(--orange-color);
         margin-bottom: 0.7rem;
         transition: color 0.3s ease-in-out;
       }
       & .title {
-        color: var(--silver-color);
+        color: var(--orange-color);
         text-transform: capitalize;
         font-size: 1rem;
         transition: color 0.1s ease-in-out;
@@ -848,7 +852,7 @@ const Container = styled.div`
 `;
 
 const IntroVideoStyling = styled.section`
-  background: var(--dark-color);
+  background: var(--dark-light-color);
   & .title {
     text-align: center;
     text-transform: uppercase;

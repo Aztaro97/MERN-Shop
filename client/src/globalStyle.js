@@ -1,6 +1,8 @@
 import { createGlobalStyle } from "styled-components";
 
-export const GlobalStyle = createGlobalStyle `
+// const Logo = import("/img/logo_png.png");
+
+export const GlobalStyle = createGlobalStyle`
     *, *::after, *::before {
         box-sizing: border-box;
         margin: 0;
@@ -13,7 +15,15 @@ export const GlobalStyle = createGlobalStyle `
         margin: 0;
         padding: 0;
         width: 100%;
-        background: var(--dark-light-color);
+        background: var(--dark-color);
+        
+        /* background:  linear-gradient(90deg, rgba(33,33,33,0.8) 100%, rgba(33,33,33,1) 100%), url("/img/logo_img.jpg"); */
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+
+        
         color:#fff;
 
 
@@ -26,4 +36,4 @@ export const GlobalStyle = createGlobalStyle `
     } 
 
     
-`
+`;

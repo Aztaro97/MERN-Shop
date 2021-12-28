@@ -225,7 +225,7 @@ function HomeComponents() {
       </SectionStyling>
       <SectionStyling
         id="photography"
-        style={{ backgroundColor: "var(--dark-color)" }}
+        style={{ backgroundColor: "var(--dark-light-color)" }}
       >
         <Fade bottom>
           <Row gutter={[10, 10]} className="first_row">
@@ -456,7 +456,7 @@ function HomeComponents() {
       </SectionStyling>
       <SectionStyling
         id="exhibition"
-        style={{ backgroundColor: "var(--dark-color)" }}
+        style={{ backgroundColor: "var(--dark-light-color)" }}
       >
         <Fade bottom>
           <Row gutter={[10, 10]} className="first_row">
@@ -713,7 +713,7 @@ function HomeComponents() {
       </SectionStyling>
       <SectionStyling
         id="marketing"
-        style={{ backgroundColor: "var(--dark-color)" }}
+        style={{ backgroundColor: "var(--dark-light-color)" }}
       >
         <Fade bottom>
           <Row gutter={[10, 10]} className="first_row">

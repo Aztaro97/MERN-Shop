@@ -8,12 +8,14 @@ export const MarketingCardStyling = styled.div`
     text-align: center;
     text-transform: uppercase;
     font-size: 1.4rem !important;
-    color: #fff !important;
+    color: var(--silver-color) !important;
   }
   & .card_container {
     text-align: center;
+    position: relative;
+    top: 2rem;
     & .card_item {
-      background: var(--dark-light-color);
+      background: var(--dark-color);
       /* border: 1px solid #00000032; */
       border-radius: 10px;
       max-width: 200px;
@@ -25,9 +27,11 @@ export const MarketingCardStyling = styled.div`
       margin: auto;
       padding: 10px;
       cursor: pointer;
+
       transition: all 0.3s ease-in-out;
       &:hover {
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        transform: translateY(-10px);
       }
       & .icon {
         color: var(--silver-color);
@@ -56,7 +60,8 @@ export const SectionStyling = styled.section`
     font-size: 2rem;
     text-transform: uppercase;
     margin-bottom: 20px;
-    color: #fff;
+    color: var(--silver-color);
+    letter-spacing: 1px;
   }
   & .sub_title {
     font-weight: 700;
@@ -242,28 +247,28 @@ export const BannerStyling = styled.section`
     &.bg_img1 {
       background: ${({ data }) =>
         data
-          ? `linear-gradient(90deg, #020024a2 100%, #00000052 100%),
+          ? `linear-gradient(180deg, rgba(33,33,33,0.6446953781512605) 56%, rgba(0,0,0,0.8435749299719888) 85%),
         url(${data[0].url})`
           : null};
     }
     &.bg_img2 {
       background: ${({ data }) =>
         data
-          ? `linear-gradient(90deg, #02002483 100%, #00000052 100%),
+          ? `linear-gradient(180deg, rgba(33,33,33,0.6446953781512605) 56%, rgba(0,0,0,0.8435749299719888) 85%),
         url(${data[1].url})`
           : null};
     }
     &.bg_img3 {
       background: ${({ data }) =>
         data
-          ? `radial-gradient(circle, rgba(2,0,36,0.4962359943977591) 0%, rgba(0,0,0,0.896796218487395) 81%),
+          ? `linear-gradient(180deg, rgba(33,33,33,0.6446953781512605) 56%, rgba(0,0,0,0.8435749299719888) 85%),
         url(${data[2].url})`
           : null};
     }
     &.bg_img4 {
       background: ${({ data }) =>
         data
-          ? `radial-gradient(circle, rgba(2,0,36,0.4962359943977591) 0%, rgba(0,0,0,0.896796218487395) 81%),
+          ? `linear-gradient(180deg, rgba(33,33,33,0.6446953781512605) 56%, rgba(0,0,0,0.8435749299719888) 85%),
         url(${data[3].url})`
           : null};
     }
@@ -437,20 +442,20 @@ export const ProgrammingCardStyling = styled.section`
 export const NavStyling = styled.section`
   /* margin: 20px 0; */
   padding: 40px 40px;
-  background: var(--dark-color);
+  background: var(--dark-light-color);
   & .title {
     font-weight: 700;
     text-align: center;
     text-transform: uppercase;
     font-size: 1.8rem;
     margin-bottom: 20px;
-    color: #fff;
+    color: var(--silver-color);
   }
   & .nav_item {
     max-width: 150px;
     height: 130px;
     padding: 5px;
-    background: var(--dark-light-color);
+    background: var(--dark-color);
     margin: auto;
     display: flex;
     align-items: center;
@@ -463,6 +468,11 @@ export const NavStyling = styled.section`
     &:hover {
       box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
       text-decoration: none;
+      transform: scale(1.1);
+      & .nav_icon,
+      & .nav_title {
+        color: var(--orange-color);
+      }
     }
     & .nav_icon {
       font-size: 2.5rem;
@@ -500,6 +510,7 @@ export const OurClientStyling = styled.section`
     font-size: 1.8rem;
     margin-bottom: 20px;
     color: var(--white-color);
+    letter-spacing: 1px;
   }
   & .slider {
     & .box {
