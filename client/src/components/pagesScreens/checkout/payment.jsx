@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Modal, Space } from "antd";
+import { Col, Modal, Row, Space } from "antd";
 import ButtonC from "../../ButtonComponeent";
 import { Link, useHistory } from "react-router-dom";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
@@ -174,130 +174,134 @@ function Payment() {
             </a>
             <h2>PAYEMENT</h2>
           </Header>
-          <Grid>
-            <SectionLeft onSubmit={handlePlaceOrder}>
-              <Border>
-                <div className="row">
-                  <div>
-                    <h2>contact</h2>
-                    <p>
-                      {shippingAddress.email} , {shippingAddress.phoneNumber}
-                    </p>
+          <Row>
+            <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 12 }}>
+              <SectionLeft onSubmit={handlePlaceOrder}>
+                <Border>
+                  <div className="row">
+                    <div>
+                      <h2>contact</h2>
+                      <p>
+                        {shippingAddress.email} , {shippingAddress.phoneNumber}
+                      </p>
+                    </div>
+                    <Link className="link" to="/shipping">
+                      Change
+                    </Link>
                   </div>
-                  <Link className="link" to="/shipping">
-                    Change
-                  </Link>
-                </div>
-                <hr />
-                <div className="row">
-                  <div>
-                    <h2>address</h2>
-                    <p>
-                      {shippingAddress.address}, {shippingAddress.city} ,
-                      {shippingAddress.region} /{shippingAddress.country}
-                    </p>
+                  <hr />
+                  <div className="row">
+                    <div>
+                      <h2>address</h2>
+                      <p>
+                        {shippingAddress.address}, {shippingAddress.city} ,
+                        {shippingAddress.region} /{shippingAddress.country}
+                      </p>
+                    </div>
+                    <Link className="link" to="/shipping">
+                      Change
+                    </Link>
                   </div>
-                  <Link className="link" to="/shipping">
-                    Change
-                  </Link>
-                </div>
-                <hr />
-                <div className="row">
-                  <div className="price">
-                    <h2>shipping cost</h2>
-                    <p>aed 50.00</p>
-                  </div>
-                </div>
-              </Border>
-
-              <div className="section_Type_Payment">
-                <h2>payment</h2>
-                <p>All transactions are secure and encrypted.</p>
-                <Border style={{ padding: "1rem 0px" }}>
-                  <div className="radio-button">
-                    <RadioB.Group
-                      className="radio-custom"
-                      value={paymentMethod}
-                      onChange={onChangeRadiGroup}
-                    >
-                      <Space
-                        className="radio-space"
-                        direction="vertical"
-                        style={{ gap: "0px", width: "100% " }}
-                      >
-                        <RadioB className="radio-item" value="credit">
-                          Credit Card
-                        </RadioB>
-                        <hr />
-                        <RadioB className="radio-item" value="cash">
-                          Cash on delivery
-                        </RadioB>
-                      </Space>
-                    </RadioB.Group>
+                  <hr />
+                  <div className="row">
+                    <div className="price">
+                      <h2>shipping cost</h2>
+                      <p>aed 50.00</p>
+                    </div>
                   </div>
                 </Border>
-              </div>
 
-              <div className="section_billing">
-                <h2>Billing Address</h2>
-                <p>
-                  Select the address that matches your card or payment method.
-                </p>
-                <Border style={{ padding: "1rem 0px" }}>
-                  <div className="radio-button">
-                    <RadioB.Group
-                      className="radio-custom"
-                      value={sameShipping}
-                      onChange={handleShipingAddress}
-                    >
-                      <Space
-                        className="radio-space"
-                        direction="vertical"
-                        style={{ gap: "0px", width: "100% " }}
+                <div className="section_Type_Payment">
+                  <h2>payment</h2>
+                  <p>All transactions are secure and encrypted.</p>
+                  <Border style={{ padding: "1rem 0px" }}>
+                    <div className="radio-button">
+                      <RadioB.Group
+                        className="radio-custom"
+                        value={paymentMethod}
+                        onChange={onChangeRadiGroup}
                       >
-                        <RadioB className="radio-item" value="sameAdress">
-                          Same as shipping address
-                        </RadioB>
-                        <hr />
-                        <RadioB className="radio-item" value="diffAdress">
-                          Use a different billing address
-                        </RadioB>
-                      </Space>
-                    </RadioB.Group>
-                  </div>
-                </Border>
-              </div>
+                        <Space
+                          className="radio-space"
+                          direction="vertical"
+                          style={{ gap: "0px", width: "100% " }}
+                        >
+                          <RadioB className="radio-item" value="credit">
+                            Credit Card
+                          </RadioB>
+                          <hr />
+                          <RadioB className="radio-item" value="cash">
+                            Cash on delivery
+                          </RadioB>
+                        </Space>
+                      </RadioB.Group>
+                    </div>
+                  </Border>
+                </div>
 
-              {sameShipping !== "sameAdress" ? (
-                <SectionShippingAddress
-                  shipping={shipping}
-                  setFirstName={setFirstName}
-                  setLastName={setLastName}
-                  setAddress={setAddress}
-                  setAppartment={setAppartment}
-                  setCity={setCity}
-                  setCountry={setCountry}
-                  setRegion={setRegion}
-                  setPhoneNumber={setPhoneNumber}
-                  setSaveShippingCheck={setSaveShippingCheck}
-                />
-              ) : null}
+                <div className="section_billing">
+                  <h2>Billing Address</h2>
+                  <p>
+                    Select the address that matches your card or payment method.
+                  </p>
+                  <Border style={{ padding: "1rem 0px" }}>
+                    <div className="radio-button">
+                      <RadioB.Group
+                        className="radio-custom"
+                        value={sameShipping}
+                        onChange={handleShipingAddress}
+                      >
+                        <Space
+                          className="radio-space"
+                          direction="vertical"
+                          style={{ gap: "0px", width: "100% " }}
+                        >
+                          <RadioB className="radio-item" value="sameAdress">
+                            Same as shipping address
+                          </RadioB>
+                          <hr />
+                          <RadioB className="radio-item" value="diffAdress">
+                            Use a different billing address
+                          </RadioB>
+                        </Space>
+                      </RadioB.Group>
+                    </div>
+                  </Border>
+                </div>
 
-              <div className="submition_btn">
-                <ButtonC type="submit" className="btn">
-                  place order
-                </ButtonC>
-                <Link to="/shipping" className="link_back">
-                  back to information
-                </Link>
-              </div>
-            </SectionLeft>
-            <SectionRight
-              cartItems={cartItems}
-              ShippingCost={ShippingCost}
-              totalPrice={totalPrice}
-            />
-          </Grid>
+                {sameShipping !== "sameAdress" ? (
+                  <SectionShippingAddress
+                    shipping={shipping}
+                    setFirstName={setFirstName}
+                    setLastName={setLastName}
+                    setAddress={setAddress}
+                    setAppartment={setAppartment}
+                    setCity={setCity}
+                    setCountry={setCountry}
+                    setRegion={setRegion}
+                    setPhoneNumber={setPhoneNumber}
+                    setSaveShippingCheck={setSaveShippingCheck}
+                  />
+                ) : null}
+
+                <div className="submition_btn">
+                  <ButtonC type="submit" className="btn">
+                    place order
+                  </ButtonC>
+                  <Link to="/shipping" className="link_back">
+                    back to information
+                  </Link>
+                </div>
+              </SectionLeft>
+            </Col>
+            <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 12 }}>
+              <SectionRight
+                cartItems={cartItems}
+                ShippingCost={ShippingCost}
+                totalPrice={totalPrice}
+              />
+            </Col>
+          </Row>
         </MainContainer>
       )}
     </>

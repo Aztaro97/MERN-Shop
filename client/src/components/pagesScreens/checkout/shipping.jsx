@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Modal } from "antd";
+import { Col, Modal, Row } from "antd";
 import { useFormik } from "formik";
 import { Link, useHistory, Redirect } from "react-router-dom";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
@@ -108,106 +108,112 @@ function Checkout() {
       ) : error ? (
         <h3>{error}</h3>
       ) : (
-        <>
+        <Container>
           <Header>
             <a href="#/" onClick={() => history.goBack()}>
               Back
             </a>
             <h2>CHECK OUT</h2>
           </Header>
-          <Grid>
-            <Form onSubmit={handleSubmit}>
-              <Row>
-                <Label htmlFor="email">Contact information</Label>
-              </Row>
-              <Row>
-                <InputC
-                  required
-                  style={{ marginBottom: ".5rem" }}
-                  name="email"
-                  id="email"
-                  placeholder="EMAIL OR PHONE NUMBER"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </Row>
-              <Row>
-                <CheckBox>keep up to date on news and offers</CheckBox>
-              </Row>
-              <Row>
-                <Label name="address" id="address" placeholder="">
-                  Shipping address{" "}
-                </Label>
-              </Row>
-              <Row>
-                <div className="inputRow">
-                  <InputC
-                    required
-                    style={{ marginRight: ".3rem" }}
-                    name="firstName"
-                    id="firstName"
-                    placeholder="FIRST NAME"
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                  />
-                  <InputC
-                    required
-                    style={{ marginLeft: ".3rem" }}
-                    name="lastName"
-                    id="lastName"
-                    placeholder="LAST NAME"
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                  />
-                </div>
-              </Row>
-              <Row>
-                <InputC
-                  required
-                  name="address"
-                  id="address"
-                  placeholder="ADRESS"
-                  value={address}
-                  onChange={(e) => setAddress(e.target.value)}
-                />
-              </Row>
-              <Row>
-                <InputC
-                  required
-                  name="appartment"
-                  id="appartment"
-                  placeholder="APPARTMENT NO"
-                  value={appartment}
-                  onChange={(e) => setAppartment(e.target.value)}
-                />
-              </Row>
-              <Row>
-                <div className="grid_input">
-                  <InputC
-                    required
-                    type="text"
-                    name="city"
-                    id="city"
-                    placeholder="CITY"
-                    value={city}
-                    onChange={(e) => setCity(e.target.value)}
-                  />
-                  <CountryDropdownCustom
-                    required
-                    name="country"
-                    value={country}
-                    onChange={(val) => setCountry(val)}
-                  />
-                  <RegionDropdownCustom
-                    required
-                    name="region"
-                    country={country}
-                    value={region}
-                    onChange={(val) => setRegion(val)}
-                  />
-                </div>
-              </Row>
-              {/* <Row>
+          <Row>
+            <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 12 }}>
+              <Form onSubmit={handleSubmit}>
+                <Row gutter={[10, 10]}>
+                  <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
+                    <Label htmlFor="email">Contact information</Label>
+                  </Col>
+                  <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
+                    <InputC
+                      required
+                      style={{ marginBottom: ".5rem" }}
+                      name="email"
+                      id="email"
+                      placeholder="EMAIL OR PHONE NUMBER"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </Col>
+                  <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
+                    <CheckBox>keep up to date on news and offers</CheckBox>
+                  </Col>
+                  <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
+                    <Label name="address" id="address" placeholder="">
+                      Shipping address{" "}
+                    </Label>
+                  </Col>
+                  <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 12 }}>
+                    <InputC
+                      required
+                      style={{ marginRight: ".3rem" }}
+                      name="firstName"
+                      id="firstName"
+                      placeholder="FIRST NAME"
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
+                    />
+                  </Col>
+                  <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 12 }}>
+                    <InputC
+                      required
+                      style={{ marginLeft: ".3rem" }}
+                      name="lastName"
+                      id="lastName"
+                      placeholder="LAST NAME"
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
+                    />
+                  </Col>
+                  <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
+                    <InputC
+                      required
+                      name="address"
+                      id="address"
+                      placeholder="ADRESS"
+                      value={address}
+                      onChange={(e) => setAddress(e.target.value)}
+                    />
+                  </Col>
+                  <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
+                    <InputC
+                      required
+                      name="appartment"
+                      id="appartment"
+                      placeholder="APPARTMENT NO"
+                      value={appartment}
+                      onChange={(e) => setAppartment(e.target.value)}
+                    />
+                  </Col>
+                  <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 8 }}>
+                    <InputC
+                      required
+                      type="text"
+                      name="city"
+                      id="city"
+                      placeholder="CITY"
+                      value={city}
+                      onChange={(e) => setCity(e.target.value)}
+                    />
+                  </Col>
+                  <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 8 }}>
+                    {" "}
+                    <CountryDropdownCustom
+                      required
+                      name="country"
+                      value={country}
+                      onChange={(val) => setCountry(val)}
+                    />
+                  </Col>
+                  <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 8 }}>
+                    {" "}
+                    <RegionDropdownCustom
+                      required
+                      name="region"
+                      country={country}
+                      value={region}
+                      onChange={(val) => setRegion(val)}
+                    />
+                  </Col>
+                  {/* <Col>
                 <ButtonC
                   type="button"
                   style={{ width: "100%" }}
@@ -228,42 +234,52 @@ function Checkout() {
                     setVisible={setVisible}
                   />
                 </Modal>
-              </Row> */}
+              </Col> */}
 
-              <Row>
-                <InputC
-                  required
-                  type="tel"
-                  name="phoneNumber"
-                  id="phoneNumber"
-                  placeholder="PHONE NUMBER"
-                  value={phoneNumber}
-                  onChange={(e) => setPhoneNumber(e.target.value)}
-                />
-              </Row>
-              <Row>
-                <CheckBox
-                  style={{ marginBottom: "1rem" }}
-                  onChange={(e) => setSaveShippingCheck(e.target.checked)}
-                >
-                  Save this information for next time
-                </CheckBox>
-              </Row>
-              <Row>
-                <ButtonC type="submit">continue to payment</ButtonC>
-                <Link
-                  className="link"
-                  to="/cart"
-                  style={{ textDecoration: "none" }}
-                >
-                  Back To Cart
-                </Link>
-              </Row>
-            </Form>
-            <SectionRight className="section_right" />
+                  <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
+                    <InputC
+                      required
+                      type="tel"
+                      name="phoneNumber"
+                      id="phoneNumber"
+                      placeholder="PHONE NUMBER"
+                      value={phoneNumber}
+                      onChange={(e) => setPhoneNumber(e.target.value)}
+                    />
+                  </Col>
+                  <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
+                    <CheckBox
+                      style={{ marginBottom: "1rem" }}
+                      onChange={(e) => setSaveShippingCheck(e.target.checked)}
+                    >
+                      Save this information for next time
+                    </CheckBox>
+                  </Col>
+                  <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
+                    <Row justify="space-between">
+                      <Col>
+                        <ButtonC type="submit">continue to payment</ButtonC>
+                      </Col>
+                      <Col>
+                        <Link
+                          className="link"
+                          to="/cart"
+                          style={{ textDecoration: "none" }}
+                        >
+                          Back To Cart
+                        </Link>
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+              </Form>
+            </Col>
+            <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 12 }}>
+              <SectionRight className="section_right" />
+            </Col>
             {/* <MapComponent /> */}
-          </Grid>
-        </>
+          </Row>
+        </Container>
       )}
     </MainContainer>
   );
@@ -286,21 +302,11 @@ const SectionRight = () => {
             </div>
           </Card>
         ))}
-
-      {/* <hr />
-      <form action="">
-        <input type="text" placeholder="DISCOUNT CODE" />
-        <ButtonC>apply</ButtonC>
-      </form> */}
       <hr />
       <div className="solde">
         <h1>subtotal</h1>
         <h1>aed 200.00</h1>
       </div>
-      {/* <div className="solde">
-        <h1>shipping</h1>
-        <h1>aed 0.00</h1>
-      </div> */}
       <hr />
       <div className="solde">
         <h1>subtotal</h1>
@@ -310,54 +316,6 @@ const SectionRight = () => {
   );
 };
 
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: 60% 40%;
-  margin-bottom: 2rem;
-  @media only screen and (max-width: 768px) {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-`;
-
-const Row = styled.div`
-  margin: 1rem 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  & .grid_input {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 10px;
-    @media only screen and (max-width: 768px) {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  & .inputRow {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  & .link {
-    color: var(--orange-color);
-    text-transform: uppercase;
-    font-weight: 700;
-    &:hover {
-      opacity: 0.8;
-    }
-    @media only screen and (max-width: 900px) {
-      position: relative;
-      top: 0.7rem;
-    }
-  }
-
-  @media only screen and (max-width: 900px) {
-    display: block;
-  }
-`;
-
 const Header = styled.div`
   height: 5rem;
   width: 100%;
@@ -365,10 +323,15 @@ const Header = styled.div`
 
   & a {
     text-decoration: none;
-    color: #000;
+    color: var(--silver-color);
+    padding: 5px 10px;
+    border: 1px solid var(--silver-color);
     font-weight: 700;
     position: relative;
     top: 1.4rem;
+    &:hover {
+      opacity: 0.8;
+    }
   }
 
   & h2 {
@@ -376,13 +339,13 @@ const Header = styled.div`
     color: #aaaaac;
     margin-bottom: 0;
     font-weight: 700;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
   }
 `;
 
 const Form = styled.form`
   padding: 2rem;
-  border: 1px solid #ececec;
+  border: 1px solid #ececec58;
 
   /* border-radius: 10px; */
   @media only screen and (max-width: 768px) {
@@ -392,6 +355,9 @@ const Form = styled.form`
 `;
 const Label = styled.label`
   font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--silver-color);
+  margin-top: 1rem;
 `;
 const CheckBox = styled(CheckBoxC)`
   /* font-weight: 700; */
@@ -400,13 +366,14 @@ const CheckBox = styled(CheckBoxC)`
 `;
 
 const ContainerCart = styled.div`
-  background: var(--orange-color);
+  background: var(--dark-color);
   padding: 2rem;
+  height: 100%;
   & hr {
     border: none;
     outline: none;
     height: 0.7px;
-    background: #fff;
+    background: var(--silver-color);
   }
   & form {
     display: grid;
@@ -415,7 +382,7 @@ const ContainerCart = styled.div`
     margin: 1.4rem 0;
 
     & input {
-      border: 1px solid #fff;
+      border: 1px solid var(--silver-color);
       outline: none;
       background: transparent;
       color: #fff;
@@ -435,9 +402,10 @@ const ContainerCart = styled.div`
       font-size: 1rem;
       font-weight: 700;
       text-transform: uppercase;
+      color: var(--silver-color);
     }
     & h1:nth-child(2) {
-      color: #fff;
+      color: var(--silver-color);
     }
   }
 `;
@@ -449,14 +417,14 @@ const Card = styled.div`
       width: 130px;
       height: 140px;
       border-radius: 10px;
-      border: 1px solid var(--orange-color);
+      border: 1px solid var(--silver-color);
     }
     & .quantity {
       display: flex;
       justify-content: center;
       align-items: center;
       font-size: 1.4rem;
-      color: #fff;
+      color: var(--dark-color);
       border-radius: 50%;
       background: #9fa1a1;
       margin: 0;
@@ -484,6 +452,18 @@ const Card = styled.div`
     margin-top: 1rem;
     padding-left: 1.7rem;
 
+    & .card__title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--silver-color);
+    }
+
+    & .card__price {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--silver-color) !important;
+    }
+
     & h1 {
       font-size: 0.8rem;
       font-weight: 700;
@@ -501,19 +481,28 @@ const Card = styled.div`
 `;
 
 const CountryDropdownCustom = styled(CountryDropdown)`
-  border: 3px solid var(--background-color);
   color: var(--slider-color);
-  padding-left: 0.4rem;
-  max-width: 230px;
+  padding: 5px 11px;
+  border: 1px solid #ffffff34;
+  outline: none;
+  border-radius: 5px;
+  transition: all 0.3s;
+  background: var(--dark-color);
+  letter-spacing: 2px;
+  width: 100%;
+  height: 2.5rem;
   &:focus {
-    border: 3px solid var(--background-color);
+    outline: none;
+    background: var(--dark-color);
+    color: var(--white-color);
   }
   &:focus-visible {
-    border: 3px solid var(--background-color);
     outline: none;
+    background: var(--dark-color);
+    color: var(--silver-color);
   }
   @media only screen and (max-width: 768px) {
-    height: 2.5rem;
+    /* height: 2.5rem; */
   }
   @media only screen and (max-width: 330px) {
     width: 100%;
@@ -521,12 +510,20 @@ const CountryDropdownCustom = styled(CountryDropdown)`
 `;
 
 const RegionDropdownCustom = styled(RegionDropdown)`
-  border: 3px solid var(--background-color);
   color: var(--slider-color);
-  padding-left: 0.4rem;
-  max-width: 230px;
+  padding: 5px 11px;
+  border: 1px solid #ffffff34;
+  outline: none;
+  border-radius: 5px;
+  transition: all 0.3s;
+  background: var(--dark-color);
+  letter-spacing: 2px;
+  width: 100%;
+  height: 2.5rem;
   &:focus {
-    border: 3px solid var(--background-color);
+    outline: none;
+    background: var(--dark-color);
+    color: var(--silver-color);
   }
   &:focus-visible {
     border: 3px solid var(--background-color);
@@ -534,6 +531,32 @@ const RegionDropdownCustom = styled(RegionDropdown)`
   }
   @media only screen and (max-width: 768px) {
     height: 2.5rem;
+  }
+`;
+
+const Container = styled.div`
+  margin: 2rem 0;
+
+  & .inputRow {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  & .link {
+    color: var(--orange-color);
+    text-transform: uppercase;
+    font-weight: 700;
+    &:hover {
+      opacity: 0.8;
+    }
+    @media only screen and (max-width: 900px) {
+      position: relative;
+      top: 0.7rem;
+    }
+  }
+
+  @media only screen and (max-width: 900px) {
+    display: block;
   }
 `;
 
