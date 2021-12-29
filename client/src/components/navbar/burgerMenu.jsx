@@ -15,7 +15,11 @@ function BurgerMenu() {
     setMenuOpen(!menuOpen);
   };
   return (
-    <MenuContainer isOpen={menuOpen} showDropDown={showDropDown}>
+    <MenuContainer
+      isOpen={menuOpen}
+      showDropDown={showDropDown}
+      onStateChange={(e) => setMenuOpen(e.isOpen)}
+    >
       <ul className="navigation">
         <li className="nav__item">
           <Link to="/" className="link" onClick={handleClose}>
@@ -28,42 +32,50 @@ function BurgerMenu() {
           </Link>
           <ul className="subMenu">
             <li>
-              <Link to="/design" className="sub_link">
+              <Link to="/design" className="sub_link" onClick={handleClose}>
                 Design
               </Link>
             </li>
             <li>
-              <Link to="/photography" className="sub_link">
+              <Link
+                to="/photography"
+                className="sub_link"
+                onClick={handleClose}
+              >
                 Photography
               </Link>
             </li>
             <li>
-              <Link to="/printing" className="sub_link">
+              <Link to="/printing" className="sub_link" onClick={handleClose}>
                 Printing Press
               </Link>
             </li>
             <li>
-              <Link to="/exhibition" className="sub_link">
+              <Link to="/exhibition" className="sub_link" onClick={handleClose}>
                 Exhibition Management
               </Link>
             </li>
             <li>
-              <Link to="/programming" className="sub_link">
+              <Link
+                to="/programming"
+                className="sub_link"
+                onClick={handleClose}
+              >
                 Programming
               </Link>
             </li>
             <li>
-              <Link to="/marketing" className="sub_link">
+              <Link to="/marketing" className="sub_link" onClick={handleClose}>
                 Marketing
               </Link>
             </li>
             <li>
-              <Link to="/production" className="sub_link">
+              <Link to="/production" className="sub_link" onClick={handleClose}>
                 Production
               </Link>
             </li>
             <li>
-              <Link to="/pos" className="sub_link">
+              <Link to="/pos" className="sub_link" onClick={handleClose}>
                 POS
               </Link>
             </li>
@@ -138,7 +150,7 @@ const MenuContainer = styled(Menu)`
     transition: all 0.3s ease-in-out;
     & li {
       padding: 0;
-      line-height:40px;
+      line-height: 40px;
       & .sub_link {
         color: var(--white--color);
         text-decoration: none;
