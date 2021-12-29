@@ -18,6 +18,7 @@ import "./navbar.css";
 //   Logo Import State
 import Logo_SVG from "../../img/logo.svg";
 import SearchBox from "../searchBox";
+import BurgerMenu from "./burgerMenu";
 
 const { SubMenu } = Menu;
 
@@ -211,91 +212,29 @@ function NavBar() {
             </NavLink>
           </NavItem>
           {/* <NavItem>
-            <ToggleBtn
-              showToggleMenu={showToggleMenu}
-              className="menuButton"
-              onClick={() => setShowToggleMenu(!showToggleMenu)}
-            >
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-            </ToggleBtn>
-          </NavItem>
-          <ToggleMenu open={showToggleMenu} setOpen={setShowToggleMenu} /> */}
+           
+          </NavItem> */}
+          <ToggleMenu open={showToggleMenu} setOpen={setShowToggleMenu} />
         </Nav>
       </HeaderTop>
       <BottomHeader scrollNav={scrollNav}>
-        {/* <p>fffff</p>
-        <Menu
-          onClick={handleClick}
-          selectedKeys={[current]}
-          className="menu"
-          mode="horizontal"
-          style={{ background: "transparent", border: "none", color: "#000" }}
+        {/* <ToggleBtn
+          showToggleMenu={showToggleMenu}
+          className="menuButton"
+          onClick={() => setShowToggleMenu(!showToggleMenu)}
         >
-          <Menu.Item key="advertising">
-            <Link to="/advertising" className="link">
-              Store
-            </Link>
-          </Menu.Item>  
-          <Menu.Item key="ecommerce">
-            <Link to="/advertising/register" className="link">
-              + Add Ads
-            </Link>
-          </Menu.Item>
-          <SubMenu
-            key="services"
-            title={`Our Services `}
-            popupClassName="submenu_content"
-          >
-            <Menu.Item key="setting:1">
-              <Link to="/design" className="sub_link">
-                Design
-              </Link>
-            </Menu.Item>
-            <Menu.Item key="setting:2">
-              <Link to="/photography" className="sub_link">
-                Photography
-              </Link>
-            </Menu.Item>
-            <Menu.Item key="setting:3">
-              <Link to="/printing" className="sub_link">
-                Printing Press
-              </Link>
-            </Menu.Item>
-            <Menu.Item key="setting:4">
-              <Link to="/exhibition" className="sub_link">
-                Exhibition Management
-              </Link>
-            </Menu.Item>
-            <Menu.Item key="setting:5">
-              <Link to="/programming" className="sub_link">
-                Programming
-              </Link>
-            </Menu.Item>
-            <Menu.Item key="setting:6">
-              <Link to="/marketing" className="sub_link">
-                Marketing
-              </Link>
-            </Menu.Item>
-            <Menu.Item key="setting:6">
-              <Link to="/production" className="sub_link">
-                Production
-              </Link>
-            </Menu.Item>
-            <Menu.Item key="setting:6">
-              <Link to="/pos" className="sub_link">
-                POS
-              </Link>
-            </Menu.Item>
-          </SubMenu>
-        </Menu> */}
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </ToggleBtn> */}
+
+        <BurgerMenu />
 
         <ul className="navigation">
           <li className="nav_item">
@@ -378,8 +317,8 @@ const HeaderContainer = styled.header`
 `;
 
 const BottomHeader = styled.div`
-  /* height: 60px !important;
-  line-height: 60px; */
+  height: 60px !important;
+  line-height: 60px;
   padding: 0 2rem;
   display: flex;
   align-items: center;
@@ -399,7 +338,8 @@ const BottomHeader = styled.div`
     margin: 0;
     & .nav_item {
       height: 100%;
-      padding: 20px 10px;
+      padding-left: 10px;
+      padding-right: 10px;
       cursor: pointer;
       & .link {
         color: #000;
@@ -448,6 +388,9 @@ const BottomHeader = styled.div`
           }
         }
       }
+    }
+    @media only screen and (max-width: 768px) {
+      display: none;
     }
   }
 `;
@@ -657,6 +600,10 @@ const ToggleBtn = styled.div`
     height: 4px;
     background: #c68787;
     transition: 0.8s;
+  }
+
+  @media only screen and (min-width: 768px) {
+    /* display: none; */
   }
 `;
 

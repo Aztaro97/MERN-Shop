@@ -37,6 +37,7 @@ const Form = styled.form`
   display: flex;
   justify-content: space-between;
   gap: 10px;
+  height: 35px;
   & input {
     color: var(--dark-color);
     background: transparent;
@@ -47,7 +48,7 @@ const Form = styled.form`
       border: 1px solid var(--dark-color);
     }
     &:hover {
-      border: 2px solid var(--dark-color);
+      border: 1px solid var(--dark-light-color);
       cursor: pointer;
     }
   }

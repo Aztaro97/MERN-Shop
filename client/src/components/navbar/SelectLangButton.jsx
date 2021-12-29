@@ -84,9 +84,9 @@ function SelectLangButton() {
 
 const SelectStyling = styled(Select)`
   & .ant-select-selector {
-    border: 1px solid var(--orange-color) !important;
+    /* border: 1px solid var(--orange-color) !important; */
     /* border-radius: 30px !important; */
-    /* border: none; */
+    border: none !important;
     &:focus {
     }
   }
