@@ -30,7 +30,7 @@ const ModalContent = ({ product, setShowModal }) => {
     <Container>
       <Row>
         <Col
-          xs={{ span: 12 }}
+          xs={{ span: 24 }}
           sm={{ span: 24 }}
           md={{ span: 12 }}
           lg={{ span: 12 }}
@@ -38,7 +38,7 @@ const ModalContent = ({ product, setShowModal }) => {
           <GalleryImg product={product} />
         </Col>
         <Col
-          xs={{ span: 12 }}
+          xs={{ span: 24 }}
           sm={{ span: 24 }}
           md={{ span: 12 }}
           lg={{ span: 12 }}
@@ -272,7 +272,7 @@ const GallerieStyling = styled.div`
     height: 460px;
     object-fit: contain;
     @media only screen and (max-width: 500px) {
-      height: 300px;
+      height: 200px;
     }
   }
 

@@ -349,6 +349,7 @@ const BottomHeader = styled.div`
       & .link {
         color: #000;
         text-decoration: none !important;
+        text-transform: uppercase;
       }
       &:hover {
         background: var(--orange-color) !important;

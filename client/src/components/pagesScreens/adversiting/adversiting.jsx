@@ -93,7 +93,7 @@ const CompanyShop = ({ lang }) => {
         breakpoint: 500,
         settings: {
           arrows: false,
-          slidesToShow: 2,
+          slidesToShow: 1,
         },
       },
       {

@@ -76,7 +76,7 @@ const Card = styled.div`
     & .ant-image {
       width: 100%;
       & .ant-image-img {
-        height: 200px;
+        height: 150px;
         object-fit: cover;
       }
     }
