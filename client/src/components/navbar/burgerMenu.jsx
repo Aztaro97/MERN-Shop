@@ -1,16 +1,21 @@
 import React, { useState } from "react";
 import { push as Menu } from "react-burger-menu";
-import { MdOutlineKeyboardArrowRight } from "react-icons/md";
+import { RiArrowDownSFill, RiArrowDownSLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 function BurgerMenu() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showDropDown, setshowDropDown] = useState(false);
+
+  const handleShowSubMEnu = () => {
+    setshowDropDown(!showDropDown);
+  };
   const handleClose = () => {
     setMenuOpen(!menuOpen);
   };
   return (
-    <MenuContainer isOpen={menuOpen}>
+    <MenuContainer isOpen={menuOpen} showDropDown={showDropDown}>
       <ul className="navigation">
         <li className="nav__item">
           <Link to="/" className="link" onClick={handleClose}>
@@ -18,9 +23,8 @@ function BurgerMenu() {
           </Link>
         </li>
         <li className="nav__item dropdown">
-          <Link to="/services" className="link">
-            Services
-            <MdOutlineKeyboardArrowRight />
+          <Link to="/#services" className="link" onClick={handleShowSubMEnu}>
+            Services <RiArrowDownSLine />
           </Link>
           <ul className="subMenu">
             <li>
@@ -95,8 +99,8 @@ const MenuContainer = styled(Menu)`
     margin: 0;
     list-style: none;
     position: relative;
-    top: 20px;
-    text-align: center;
+    top: 40px;
+    /* text-align: center; */
   }
 
   & .nav__item {
@@ -114,20 +118,31 @@ const MenuContainer = styled(Menu)`
     }
   }
 
+  /* & .dropdown {
+    display: block;
+    & .subMenu {
+        display: block;
+        visibility: visible;
+        opacity: 1;
+      }
+  } */
+
   & .subMenu {
-    /* position: absolute !important; */
-    /* right: 45px; */
+    position: relative !important;
+    left: 40px;
     list-style: none;
-    padding: 0;
     margin: 0;
-    visibility: visible !important;
-    opacity: 1 !important;
-    display: block !important;
+    visibility: ${({ showDropDown }) => (showDropDown ? "visible" : "hidden")};
+    opacity: ${({ showDropDown }) => (showDropDown ? 1 : 0)};
+    display: ${({ showDropDown }) => (showDropDown ? "block" : "none")};
+    transition: all 0.3s ease-in-out;
     & li {
       padding: 0;
+      line-height:40px;
       & .sub_link {
         color: var(--white--color);
         text-decoration: none;
+        padding: 10px 10px;
         &:hover {
           background: var(--orange-color);
           color: white;
