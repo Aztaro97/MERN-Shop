@@ -21,7 +21,7 @@ function Product({ product }) {
           preview={true}
         />
       </div>
-      <div className="card-body">
+      <div className="card_body">
         <TextTruncate
           line={1}
           element="span"
@@ -29,21 +29,21 @@ function Product({ product }) {
           truncateText="…"
           className="card_name"
         />
-        <TextTruncate
+        {/* <TextTruncate
           line={1}
           element="p"
           text={product.description}
           truncateText="…"
           className="card_desc"
         />
-        <hr />
+        <hr /> */}
         <div className="card_price">
-          <h2 className="price">
+          <div className="price">
             <span>{product.price}</span> dr
-          </h2>
-          <h2 className="compare_price">
+          </div>
+          <div className="compare_price">
             <span>{product.compareAtPrice}</span> dr
-          </h2>
+          </div>
         </div>
         <Button type="button" onClick={() => setShowModal(true)}>
           <GrView className="icon" /> view
@@ -82,9 +82,10 @@ const Card = styled.div`
     }
   }
 
-  & .card-body {
+  & .card_body {
     text-align: center;
-    padding: 0.9rem 0.7rem;
+    padding: 0.9rem 0;
+    /* @media only screen and (max-width: 500px) {} */
 
     & .card_name {
       font-weight: 700;
@@ -113,8 +114,11 @@ const Card = styled.div`
       align-items: center;
       justify-content: space-between;
       padding: 1rem 0;
+      gap: 5px;
       & .price {
         color: #49c4d3;
+        margin:0;
+        padding: 0;
         margin-bottom: 0.6rem;
         font-size: 1rem;
         text-transform: uppercase;
@@ -122,6 +126,8 @@ const Card = styled.div`
       }
       & .compare_price {
         text-decoration: line-through;
+        margin:0;
+        padding: 0;
         margin-bottom: 0.6rem;
         font-size: 1rem;
         text-transform: uppercase;
