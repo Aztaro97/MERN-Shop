@@ -4,6 +4,11 @@ import { Link, Route, useHistory } from "react-router-dom";
 import { FaUser, FaShoppingCart } from "react-icons/fa";
 import { AiTwotoneSetting } from "react-icons/ai";
 import { MdArrowDropDown, MdKeyboardArrowDown } from "react-icons/md";
+import {
+  RiArrowDownSFill,
+  RiArrowDownSLine,
+  RiArrowRightSLine,
+} from "react-icons/ri";
 import { Popover, Menu } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../flux/actions/userAction";
@@ -244,7 +249,7 @@ function NavBar() {
           </li>
           <li className="nav_item dropdown">
             <Link to="/services" className="link">
-              Services
+              Services <RiArrowDownSLine />
             </Link>
             <ul className="sub_menu">
               <li>
@@ -365,8 +370,10 @@ const BottomHeader = styled.div`
       }
 
       & .sub_menu {
+        width: 250px;
         position: absolute;
-        top: 63px;
+        top: 55px;
+        left: 0px;
         list-style: none;
         padding: 0;
         margin: 0;
@@ -376,6 +383,8 @@ const BottomHeader = styled.div`
         display: none;
         & li {
           padding: 0;
+          line-height: 30px;
+          width: 100%;
           & .sub_link {
             color: #000;
             text-decoration: none;

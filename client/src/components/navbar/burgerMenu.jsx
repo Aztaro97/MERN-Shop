@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { push as Menu } from "react-burger-menu";
-import { RiArrowDownSFill, RiArrowDownSLine } from "react-icons/ri";
+import {
+  RiArrowDownSFill,
+  RiArrowDownSLine,
+  RiArrowRightSLine,
+} from "react-icons/ri";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -28,7 +32,8 @@ function BurgerMenu() {
         </li>
         <li className="nav__item dropdown">
           <Link to="/#services" className="link" onClick={handleShowSubMEnu}>
-            Services <RiArrowDownSLine />
+            Services{" "}
+            {showDropDown ? <RiArrowDownSLine /> : <RiArrowRightSLine />}
           </Link>
           <ul className="subMenu">
             <li>
@@ -117,9 +122,12 @@ const MenuContainer = styled(Menu)`
 
   & .nav__item {
     & .link {
-      color: var(--white-color) !important;
+      color: var(--silver-color) !important;
       text-decoration: none;
       text-transform: uppercase;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 1px;
       &:hover {
         background: transparent !important;
         color: var(--orange-color) !important;
@@ -141,7 +149,7 @@ const MenuContainer = styled(Menu)`
 
   & .subMenu {
     position: relative !important;
-    left: 40px;
+    left: -10px;
     list-style: none;
     margin: 0;
     visibility: ${({ showDropDown }) => (showDropDown ? "visible" : "hidden")};
