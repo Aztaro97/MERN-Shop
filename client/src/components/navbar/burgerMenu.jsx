@@ -1,22 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { push as Menu } from "react-burger-menu";
+import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 function BurgerMenu() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const handleClose = () => {
+    setMenuOpen(!menuOpen);
+  };
   return (
-    <MenuContainer>
+    <MenuContainer isOpen={menuOpen}>
       <ul className="navigation">
-        <li className="nav_item">
-          <Link to="/" className="link">
+        <li className="nav__item">
+          <Link to="/" className="link" onClick={handleClose}>
             Home
           </Link>
         </li>
-        <li className="nav_item dropdown">
+        <li className="nav__item dropdown">
           <Link to="/services" className="link">
             Services
+            <MdOutlineKeyboardArrowRight />
           </Link>
-          <ul className="sub_menu">
+          <ul className="subMenu">
             <li>
               <Link to="/design" className="sub_link">
                 Design
@@ -59,13 +65,17 @@ function BurgerMenu() {
             </li>
           </ul>
         </li>
-        <li className="nav_item">
-          <Link to="/advertising/register" className="link">
+        <li className="nav__item">
+          <Link
+            to="/advertising/register"
+            className="link"
+            onClick={handleClose}
+          >
             Add Ads
           </Link>
         </li>
-        <li className="nav_item">
-          <Link to="/register" className="link">
+        <li className="nav__item">
+          <Link to="/register" className="link" onClick={handleClose}>
             Create Shop
           </Link>
         </li>
@@ -75,6 +85,7 @@ function BurgerMenu() {
 }
 
 const MenuContainer = styled(Menu)`
+  height: 100vh;
   & .navigation {
     display: flex;
     flex-direction: column;
@@ -84,55 +95,42 @@ const MenuContainer = styled(Menu)`
     margin: 0;
     list-style: none;
     position: relative;
-    top: 40px;
+    top: 20px;
     text-align: center;
-    & .nav_item {
-      /* text-align: center; */
-      display: block;
-      & .link {
-        color: white !important;
+  }
+
+  & .nav__item {
+    & .link {
+      color: var(--white-color) !important;
+      text-decoration: none;
+      text-transform: uppercase;
+      &:hover {
+        background: transparent !important;
+        color: var(--orange-color) !important;
+        & .link {
+          color: var(--white-color);
+        }
+      }
+    }
+  }
+
+  & .subMenu {
+    /* position: absolute !important; */
+    /* right: 45px; */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    visibility: visible !important;
+    opacity: 1 !important;
+    display: block !important;
+    & li {
+      padding: 0;
+      & .sub_link {
+        color: var(--white--color);
         text-decoration: none;
         &:hover {
-          background: var(--orange-color) !important;
-          color: var(--white-color);
-          & .link {
-            color: var(--white-color);
-          }
-        }
-        &.dropdown {
-          display: block;
-          &:hover {
-            & .sub_menu {
-              display: block;
-              visibility: visible;
-              opacity: 1;
-            }
-          }
-        }
-
-        & .sub_menu {
-          /* position: absolute; */
-          top: 63px;
-          list-style: none;
-          padding: 0;
-          margin: 0;
-          background: #fff;
-          visibility: visible  !important;
-          opacity: 1  !important;
-          display: block !important;
-          & li {
-            padding: 0;
-            & .sub_link {
-              color: #000;
-              text-decoration: none;
-              padding: 10px 2rem;
-              display: block;
-              &:hover {
-                background: var(--orange-color);
-                color: white;
-              }
-            }
-          }
+          background: var(--orange-color);
+          color: white;
         }
       }
     }
