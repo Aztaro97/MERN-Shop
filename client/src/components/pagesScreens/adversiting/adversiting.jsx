@@ -771,7 +771,7 @@ const NavStyling = styled.section`
     transition: all 0.3s ease-in-out;
 
     @media only screen and (max-width: 768px) {
-      height: 140px;
+      height: 120px;
     }
 
     &:hover {
@@ -813,7 +813,7 @@ const NavStyling = styled.section`
           saturate(5063%) hue-rotate(20deg) brightness(88%) contrast(85%);
         @media only screen and (max-width: 768px) {
           width: 50px;
-        height: 50px;
+          height: 50px;
         }
       }
       & .title {
