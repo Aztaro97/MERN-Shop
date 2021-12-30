@@ -786,9 +786,7 @@ const NavStyling = styled.section`
       }
 
       & .title {
-        color: var(--silver-color)
-        
-        !important;
+        color: var(--silver-color) !important;
       }
     }
 
@@ -813,6 +811,10 @@ const NavStyling = styled.section`
         height: 70px;
         filter: brightness(0) saturate(100%) invert(71%) sepia(84%)
           saturate(5063%) hue-rotate(20deg) brightness(88%) contrast(85%);
+        @media only screen and (max-width: 768px) {
+          width: 50px;
+        height: 50px;
+        }
       }
       & .title {
         color: var(--orange-color);
