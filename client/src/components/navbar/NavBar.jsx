@@ -58,8 +58,9 @@ function NavBar() {
   };
 
   const ChangeNav = () => {
-    if (window.scrollY >= 1) {
+    if (window.scrollY >= 80) {
       setScrollNav(true);
+      console.log(window.scrollY);
     } else {
       setScrollNav(false);
     }
@@ -126,7 +127,7 @@ function NavBar() {
   const screenWidth = window.screen.width;
 
   return (
-    <HeaderContainer>
+    <HeaderContainer scrollNav={scrollNav}>
       <HeaderTop scrollNav={scrollNav}>
         <Logo to="/">
           <img src={Logo_SVG} alt="" width="auto" height="auto" />{" "}
@@ -325,10 +326,26 @@ function NavBar() {
 const HeaderContainer = styled.header`
   max-width: var(--max-width);
   margin: 0 auto !important;
-  height: 100% !important;
-  position: sticky;
+
+  /* position: ${({ scrollNav }) =>
+    scrollNav ? "-webkit-sticky !important" : "relative"}; */
+  position: ${({ scrollNav }) => (scrollNav ? "sticky !important" : "sticky")};
   top: 0;
-  z-index: 99;
+  z-index: 100;
+`;
+
+const HeaderTop = styled.div`
+  height: 80px;
+  display: flex ;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 2rem;
+  background: #fff;
+  @media only screen and (max-width: 768px) {
+    height: 80px;
+    padding: 0 0.7rem;
+  }
 `;
 
 const BottomHeader = styled.div`
@@ -338,7 +355,7 @@ const BottomHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* line-height: 70px !important; */
+  z-index: 99;
 
   background: ${({ scrollNav }) =>
     scrollNav ? "var(--silver-color)" : "var(--silver-color)"};
@@ -418,7 +435,7 @@ const BottomHeader = styled.div`
       font-weight: 400 !important;
       &:hover {
         background: var(--dark-light-color) !important;
-        color: var(--silver-color) !important
+        color: var(--silver-color) !important;
       }
     }
     & .link.create_shop {
@@ -429,26 +446,6 @@ const BottomHeader = styled.div`
     @media only screen and (max-width: 768px) {
       display: none;
     }
-  }
-`;
-
-const HeaderTop = styled.div`
-  /* height: 80px; */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  z-index: 99;
-  padding:1rem 2rem;
-  background: ${({ scrollNav }) => (scrollNav ? "#fff" : "#fff")};
-  /* box-shadow: ${({ scrollNav }) =>
-    scrollNav ? "0px 2px 0px 0px rgba(0,0,0,0.11)" : "none"}; */
-  @media only screen and (max-width: 768px) {
-    height: 80px;
-    padding: 0 0.7rem;
-  }
-  & > div {
-    position: fixed;
   }
 `;
 
