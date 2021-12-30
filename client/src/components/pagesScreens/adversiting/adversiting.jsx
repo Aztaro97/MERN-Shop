@@ -771,7 +771,7 @@ const NavStyling = styled.section`
     transition: all 0.3s ease-in-out;
 
     @media only screen and (max-width: 768px) {
-      height: 110px;
+      height: 140px;
     }
 
     &:hover {
