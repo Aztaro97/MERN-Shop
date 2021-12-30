@@ -737,6 +737,7 @@ const Header = styled.div`
 `;
 
 const FormContainer = styled.div`
+  background: var(--dark-light-color);
   padding: 2rem;
 
   & .submittion_btn {

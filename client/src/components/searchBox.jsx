@@ -10,7 +10,6 @@ function SearchBox({ history }) {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    setKeyword(e);
     if (keyword.trim()) {
       history.push(`/search/${keyword}`);
     } else {
@@ -71,9 +70,14 @@ const Form = styled.form`
     }
   }
 
-  @media only screen and (max-width:768px) {
+  @media only screen and (max-width: 900px) {
     & input {
       width: 100px;
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    & input {
+      width: 90px;
     }
   }
 `;

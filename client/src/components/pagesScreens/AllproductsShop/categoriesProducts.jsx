@@ -47,7 +47,6 @@ function CategoriesScreen() {
 
   useEffect(() => {
     categoryName && dispatch(filterByCategory(categoryName));
-    console.log(categoryName);
   }, [categoryName, dispatch]);
   return (
     <MainContainer>

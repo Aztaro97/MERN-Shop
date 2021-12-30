@@ -158,6 +158,12 @@ const Container = styled.div`
 `;
 
 const CardStyling = styled(Card)`
+  background-color: var(--dark-light-color);
+  border: none;
+  &:hover {
+    box-shadow: 0px 0px 10px rgba(100, 100, 100, 0.5);
+  }
+
   & .btn_delete {
     border: none;
     outline: none;
@@ -165,12 +171,15 @@ const CardStyling = styled(Card)`
     background: none;
     right: 10px;
     top: 8px;
-    background-color: #e2e2e2;
+    background-color: var(--orange-color);
     border-radius: 50%;
     padding: 4px;
     & .icon {
       font-size: 1.8rem;
-      color: var(--orange-color);
+      color: var(--white-color);
+      &:hover {
+        opacity: 0.8;
+      }
     }
   }
   & .card_footer {
@@ -183,15 +192,17 @@ const CardStyling = styled(Card)`
       margin: 0;
       text-transform: capitalize;
       font-weight: 700;
+      color: var(--orange-color);
       & span {
-        color: #d35400;
+        color: var(--silver-color);
       }
     }
     & .edit_icon {
       color: var(--orange-color);
       font-size: 25px;
       &:hover {
-        color: #d35400;
+        color: var(--orange-color);
+        opacity: 0.9;
       }
     }
   }

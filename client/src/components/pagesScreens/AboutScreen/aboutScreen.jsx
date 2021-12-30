@@ -293,7 +293,8 @@ const FormContact = () => {
 };
 
 const FormStyling = styled.div`
-  margin: 20px 20px 40px 20px;
+  padding: 20px 20px 40px 20px;
+  background: var(--dark-light-color);
   & .title {
     text-align: center;
     font-size: 1.8rem;
@@ -301,6 +302,7 @@ const FormStyling = styled.div`
     font-weight: 700;
     margin-top: 20px;
     margin-bottom: 30px;
+    color: var(--silver-color);
   }
   & input,
   & textarea {
@@ -308,23 +310,24 @@ const FormStyling = styled.div`
     width: 100%;
     border: none;
     outline: none;
-    border-left: 5px solid #ececec;
+    /* border-left: 5px solid #ececec;
     border-right: 5px solid #ececec;
     border-top: 1px solid #ececec;
-    border-bottom: 1px solid #ececec;
+    border-bottom: 1px solid #ececec; */
+    background: var(--dark-color);
     margin: 10px 0;
     padding: 5px 20px;
     resize: none;
   }
   & .btn_submit {
-    border: none;
+    border: 1px solid var(--silver-color);
     outline: none;
     margin-left: auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: ${({ isSend }) => (isSend ? "green" : "#ececec")};
-    color: ${({ isSend }) => (isSend ? "#fff" : "#333")};
+    background: ${({ isSend }) => (isSend ? "var(--orange-color)" : "transparent")};
+    color: ${({ isSend }) => (isSend ? "var(--white-color)" : "var(--silver-color)")};
     padding: 5px 20px;
     letter-spacing: 1px;
     transition: all 0.3s ease-in-out;
@@ -336,7 +339,7 @@ const FormStyling = styled.div`
 `;
 
 const TestimonialStyling = styled.section`
-  background: #f5f6fa;
+  background: var(--dark-light-color);
   max-width: calc(var(--max-width) - 300px);
   padding: 20px 30px;
   margin-left: auto;
@@ -349,6 +352,7 @@ const TestimonialStyling = styled.section`
     font-weight: 700;
     margin-top: 20px;
     margin-bottom: 30px;
+    color: var(--silver-color);
   }
   & .gutter_row {
     margin-bottom: 30px;
@@ -363,7 +367,6 @@ const TestimonialStyling = styled.section`
     height: 100%;
     display: flex;
     align-items: center;
-    background: #fff;
     & p {
       margin-bottom: 0;
     }
@@ -371,15 +374,15 @@ const TestimonialStyling = styled.section`
 `;
 
 const VisionStyling = styled.section`
-  padding-top: 20px;
+  padding-top: 4rem;
   padding-bottom: 150px;
-  background: var(--orange-color);
+  background: var(--dark-color);
   & .title {
     font-size: 1.8rem;
     font-weight: 400;
     text-align: center;
     text-transform: uppercase;
-    color: #fff;
+    color: var(--silver-color);
     letter-spacing: 1px;
   }
   & .card_container {
@@ -388,7 +391,7 @@ const VisionStyling = styled.section`
     & .card_item {
       max-width: 250px;
       padding: 10px;
-      background: #fff;
+      background: var(--dark-light-color);
       margin: auto;
       & .card_img {
         width: 100%;
@@ -400,20 +403,22 @@ const VisionStyling = styled.section`
         margin-top: 10px;
         text-transform: capitalize;
         font-size: 1.2rem;
+        color: var(--silver-color);
       }
     }
   }
 `;
 
 const FirstSectionStyling = styled.section`
-  padding: 20px 0;
-  margin: 30px 0;
+  background: var(--dark-light-color);
+  padding: 4rem 0;
   & .title {
     text-align: center;
     font-size: 1.8rem;
     text-transform: uppercase;
     font-weight: 700;
     margin-bottom: 40px;
+    color: var(--silver-color);
   }
   & .slider {
     & div {
@@ -433,11 +438,16 @@ const FirstSectionStyling = styled.section`
     position: relative;
     padding: 20px;
     bottom: 10px;
+    & h2,
+    p {
+      color: var(--silver-color);
+    }
   }
 `;
 
 const Banner = styled.section`
-  background: linear-gradient(to bottom, #1111119d 0%, #00000099 100%), url("https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80");
+  background: linear-gradient(to bottom, #1111119d 0%, #00000099 100%),
+    url("https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80");
   position: relative;
   height: 400px;
   object-fit: cover;

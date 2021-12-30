@@ -133,9 +133,6 @@ function Contact() {
                     You Have a question
                     <br /> a request for information, a project{" "}
                   </p>
-                  {/* <a href="#/" className="btn sec-outline-btn">
-                  WRITE US
-                </a> */}
                   <form
                     ref={form}
                     className="form_contact"
@@ -177,18 +174,23 @@ function Contact() {
                           required
                         ></TextArea>
                       </Col>
+                      <Col xs={{ span: 24 }}>
+                        {" "}
+                        <ButtonStyling type="submit">
+                          {loading ? (
+                            <>
+                              <SyncOutlined spin />{" "}
+                              <span style={{ paddingLeft: 4 }}>
+                                {" "}
+                                Sending...
+                              </span>
+                            </>
+                          ) : (
+                            <span>send</span>
+                          )}
+                        </ButtonStyling>
+                      </Col>
                     </Row>
-
-                    <ButtonStyling type="submit">
-                      {loading ? (
-                        <>
-                          <SyncOutlined spin />{" "}
-                          <span style={{ paddingLeft: 4 }}> Sending...</span>
-                        </>
-                      ) : (
-                        <span>send</span>
-                      )}
-                    </ButtonStyling>
                   </form>
                 </div>
               </Col>
@@ -232,7 +234,7 @@ const ButtonStyling = styled(Button)`
 `;
 
 const ContactContainer = styled.section`
-  background: var(--black-color);
+  background: var(--dark-light-color);
   height: 100% !important;
   padding: 4rem 2rem 6rem;
   /* margin-top: 4rem; */

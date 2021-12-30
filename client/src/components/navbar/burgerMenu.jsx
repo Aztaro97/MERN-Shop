@@ -23,6 +23,7 @@ function BurgerMenu() {
       isOpen={menuOpen}
       showDropDown={showDropDown}
       onStateChange={(e) => setMenuOpen(e.isOpen)}
+      burgerButtonClassName="burger_button"
     >
       <ul className="navigation">
         <li className="nav__item">
@@ -85,6 +86,16 @@ function BurgerMenu() {
               </Link>
             </li>
           </ul>
+        </li>
+        <li className="nav__item">
+          <Link to="/about" className="link" onClick={handleClose}>
+            About
+          </Link>
+        </li>
+        <li className="nav__item">
+          <Link to="/contact-us" className="link" onClick={handleClose}>
+            Contact
+          </Link>
         </li>
         <li className="nav__item">
           <Link

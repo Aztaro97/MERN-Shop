@@ -407,7 +407,8 @@ const AdvertisingNavgation = ({ lang }) => {
                 className="card_container"
               >
                 <div className="card_body">
-                  <i className="icon">{data.icon}</i>
+                  {/* <i className="icon">{data.icon}</i> */}
+                  <img src={data.icon} alt="" className="icon" />
                   <p className="title">{data.title}</p>
                 </div>
               </div>
@@ -760,7 +761,7 @@ const NavStyling = styled.section`
   }
 
   & .card_container {
-    height: 120px;
+    height: 140px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -776,13 +777,18 @@ const NavStyling = styled.section`
     &:hover {
       transform: scale(1.1);
       & .card_body {
-        background: var(--orange-color);
+        background: var(--dark-color);
+        & .icon {
+          color: var(--white-color);
+          filter: brightness(0) saturate(100%) invert(74%) sepia(7%)
+            saturate(77%) hue-rotate(182deg) brightness(87%) contrast(81%);
+        }
       }
-      & .icon > * {
-        color: #fff;
-      }
+
       & .title {
-        color: #fff !important;
+        color: var(--silver-color)
+        
+        !important;
       }
     }
 
@@ -797,12 +803,16 @@ const NavStyling = styled.section`
       flex-direction: column;
       background: var(--dark-color);
       transition: background 0.2s ease-in;
-      padding: 20px 10px;
+      padding: 40px 10px;
       & .icon {
         font-size: 2.3rem;
         color: var(--orange-color);
         margin-bottom: 0.7rem;
         transition: color 0.3s ease-in-out;
+        width: 70px;
+        height: 70px;
+        filter: brightness(0) saturate(100%) invert(71%) sepia(84%)
+          saturate(5063%) hue-rotate(20deg) brightness(88%) contrast(85%);
       }
       & .title {
         color: var(--orange-color);

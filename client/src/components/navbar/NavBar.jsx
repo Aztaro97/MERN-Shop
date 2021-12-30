@@ -239,8 +239,6 @@ function NavBar() {
           <span></span>
         </ToggleBtn> */}
 
-        <BurgerMenu />
-
         <ul className="navigation">
           <li className="nav_item">
             <Link to="/" className="link">
@@ -295,16 +293,28 @@ function NavBar() {
             </ul>
           </li>
           <li className="nav_item">
-            <Link to="/advertising/register" className="link">
+            <Link to="/about" className="link">
+              About
+            </Link>
+          </li>
+          <li className="nav_item">
+            <Link to="/contact-us" className="link">
+              Contact
+            </Link>
+          </li>
+          <li className="nav_item ">
+            <Link to="/advertising/register" className="link add_ads">
               Add Ads
             </Link>
           </li>
           <li className="nav_item">
-            <Link to="/register" className="link">
+            <Link to="/register" className="link create_shop">
               Create Shop
             </Link>
           </li>
         </ul>
+
+        <BurgerMenu />
 
         <Route render={({ history }) => <SearchBox history={history} />} />
       </BottomHeader>
@@ -337,30 +347,30 @@ const BottomHeader = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    /* gap: 10px; */
     list-style: none;
     padding: 0;
     margin: 0;
     & .nav_item {
-      height: 100%;
-      padding-left: 10px;
-      padding-right: 10px;
-      cursor: pointer;
+      /* cursor: pointer; */
       & .link {
-        color: #000;
+        height: 100%;
+        padding: 20px 10px !important;
+        color: var(--dark-light-color);
         text-decoration: none !important;
         text-transform: uppercase;
-      }
-      &:hover {
-        background: var(--orange-color) !important;
-        color: var(--white-color);
-        & .link {
+        font-weight: 700 !important;
+        &:hover {
+          background: var(--orange-color) !important;
           color: var(--white-color);
+          /* & .link {
+            color: var(--white-color);
+          } */
         }
       }
 
       &.dropdown {
-        display: block;
+        /* display: block; */
         &:hover {
           & .sub_menu {
             display: block;
@@ -378,7 +388,7 @@ const BottomHeader = styled.div`
         list-style: none;
         padding: 0;
         margin: 0;
-        background: #fff;
+        background: var(--dark-light-color) !important;
         visibility: hidden;
         opacity: 0;
         display: none;
@@ -387,7 +397,7 @@ const BottomHeader = styled.div`
           line-height: 30px;
           width: 100%;
           & .sub_link {
-            color: #000;
+            color: var(--silver-color);
             text-decoration: none;
             padding: 10px 2rem;
             display: block;
@@ -399,6 +409,23 @@ const BottomHeader = styled.div`
         }
       }
     }
+
+    & .link.add_ads,
+    & .link.create_shop {
+      border: 1px solid var(--dark-light-color);
+      padding: 7px 10px !important;
+      text-transform: capitalize;
+      font-weight: 400 !important;
+      &:hover {
+        background: var(--dark-light-color) !important;
+        color: var(--silver-color) !important
+      }
+    }
+    & .link.create_shop {
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+
     @media only screen and (max-width: 768px) {
       display: none;
     }
