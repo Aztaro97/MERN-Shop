@@ -6,54 +6,81 @@ function privatePolicy() {
   return (
     <MainContainer>
       <Container>
-        <h1 className="title">privacy policy</h1>
+        <h1 className="big_title">privacy policy</h1>
         <hr />
-
+        <div className="first_content">
+          <h4 className="title">Terms of Use</h4>
+          <p>
+            Please read the following terms of use carefully before entering
+            the website www.au79code.com
+          </p>
+          <p>
+            Your use of this website and the products and services available on
+            or through it is subject to the terms and conditions in addition to
+            the laws of the United Arab Emirates. Your access to this website is
+            considered an unconditional acceptance by you and your compliance
+            with the terms and conditions stipulated for use.
+          </p>
+          <p>
+            The following terms of use are leaked as of the date of publication
+            and the company reserves the right to amend them from time to time
+            and will publish any modification to the terms of use on this page
+            and the company will not notify website visitors or its customers of
+            any modifications through e-mail or any other personal contact
+            addresses, the user of The website is responsible for reviewing the
+            terms of use from time to time to ensure its compliance with them.
+          </p>
+          <p>
+            If you are a company advertising or participating in an e-commerce
+            page or through a point of sale program on our website, you will be
+            obligated to enter into additional terms and conditions specified in
+            an agreement with AU 79 CODE, however please note that these terms
+            will still apply and should be read with any Other agreement you
+            enter into with the company.
+          </p>
+        </div>
         <ul className="list">
           <li className="list_title">
             <span className="title">DEFINITIONS:</span> The following
             capitalised terms shall have the following meaning, except where the
             context otherwise requires:
-            <ul className="list-content">
+            <ul className="list_content">
               <li>
                 <p className="para">
-                  1. “Advertising Agreement” – an agreement for the provision of
+                  “Advertising Agreement” – an agreement for the provision of
                   advertising services or products entered into between the
                   Company and the Client.
                 </p>
               </li>
               <li>
                 <p className="para">
-                  2. “Ad Services Package” – the bundle of advertising product
-                  or service which the Company agrees to provide to the
-                  Customer, as set out in the relevant order form provided by
-                  the Company and signed by the Client to order the Ad Services
-                  Package pursuant to these Terms and the terms of the
-                  Advertising Agreement.
+                  “Ad Services Package” – the bundle of advertising product or
+                  service which the Company agrees to provide to the Customer,
+                  as set out in the relevant order form provided by the Company
+                  and signed by the Client to order the Ad Services Package
+                  pursuant to these Terms and the terms of the Advertising
+                  Agreement.
                 </p>
               </li>
               <li>
                 <p className="para">
-                  3. “Client” - the client entity that is party to the
-                  Advertising Agreement.
+                  “Client” - the client entity that is party to the Advertising
+                  Agreement.
                 </p>
               </li>
               <li>
-                <p className="para">
-                  4. “Customer” - any customer of the Client.
-                </p>
+                <p className="para">“Customer” - any customer of the Client.</p>
               </li>
               <li>
                 <p className="para">
-                  5. “Effective Date” - the date set out at the top of these
-                  Terms.
+                  “Effective Date” - the date set out at the top of these Terms.
                 </p>
               </li>
 
               {/*  */}
               <li>
                 <p className="para">
-                  6. “ntellectual Property Rights” - all intellectual property,
+                  “Intellectual Property Rights” - all intellectual property,
                   including patents, trade marks, rights in goodwill, database
                   rights and rights in data, rights in designs, copyrights and
                   topography rights (whether or not any of these rights are
@@ -71,51 +98,50 @@ function privatePolicy() {
               </li>
               <li>
                 <p className="para">
-                  7. “Products” are products and content posted on the Website
-                  or otherwise offered by the Company in connection with the
+                  “Products” are products and content posted on the Website or
+                  otherwise offered by the Company in connection with the
                   Services.
                 </p>
               </li>
               <li>
                 <p className="para">
-                  8. Privacy Policy” - the privacy policy of the Company from
-                  time to time.
+                  Privacy Policy” - the privacy policy of the Company from time
+                  to time.
                 </p>
               </li>
 
               {/*  */}
               <li>
                 <p className="para">
-                  9. Ads : an online classifieds advertising platform provided
-                  on the Website and the Ad Services Package.
+                  Ads : an online classifieds advertising platform provided on
+                  the Website and the Ad Services Package.
                 </p>
               </li>
               <li>
                 <p className="para">
-                  10. “Posting Agents” - a third-party agent, service or
+                  “Posting Agents” - a third-party agent, service or
                   intermediary that offers to post Material to the Service on
                   behalf of others.
                 </p>
               </li>
               <li>
                 <p className="para">
-                  11. “Registration Details” - the details a User must provide
-                  upon registering for the Website from time to time (for
-                  example: name, phone numbers, email address, age and/or
-                  address).
+                  “Registration Details” - the details a User must provide upon
+                  registering for the Website from time to time (for example:
+                  name, phone numbers, email address, age and/or address).
                 </p>
               </li>
 
               {/*  */}
               <li>
                 <p className="para">
-                  12. “Service” is one of the services that the customer
-                  provides to the customer through the website
+                  1 “Service” is one of the services that the customer provides
+                  to the customer through the website
                 </p>
               </li>
               <li>
                 <p className="para">
-                  13. “Unacceptable” Any products or information uploaded to or
+                  1 “Unacceptable” Any products or information uploaded to or
                   made available on the Website which may be deemed under the
                   UAE judicial laws and Terms of Use not to be displayed through
                   the Website:
@@ -146,20 +172,22 @@ function privatePolicy() {
             </ul>
           </li>
           <li className="list_title">
-            GENERAL TERMS AND CONDITIONS WHICH APPLY TO USERS
-            <ul className="list-content">
+            <span className="title">
+              GENERAL TERMS AND CONDITIONS WHICH APPLY TO USERS
+            </span>
+            <ul className="list_content">
               <li>
                 <p className="para">
-                  1. In registering for this Website, the User must provide
-                  true, accurate, current and complete Registration Details
-                  which the User must update after any changes (except age)
-                  before using the Website for further services in the future.
+                  In registering for this Website, the User must provide true,
+                  accurate, current and complete Registration Details which the
+                  User must update after any changes (except age) before using
+                  the Website for further services in the future.
                 </p>
               </li>
               <li>
                 <p className="para">
-                  2. The User hereby agrees and acknowledges that the Website
-                  may contain adverts placed by advertisers or companies in the
+                  The User hereby agrees and acknowledges that the Website may
+                  contain adverts placed by advertisers or companies in the
                   course of business for goods or services (and which the
                   Company takes no responsibility for). Advertisers or companies
                   using the Website or the Service to place adverts offering
@@ -174,26 +202,26 @@ function privatePolicy() {
               </li>
               <li>
                 <p className="para">
-                  3. The User hereby warrants and represents to the Company that
-                  it is at least eighteen years of age and legally able to enter
+                  The User hereby warrants and represents to the Company that it
+                  is at least eighteen years of age and legally able to enter
                   into contracts.
                 </p>
               </li>
               <li>
                 <p className="para">
-                  4. The Company reserves the discretion to withdraw any
-                  Material or User Material from the Website without prior
-                  notice and to refuse any User Material posted or provided to
-                  the Company by a User.
+                  The Company reserves the discretion to withdraw any Material
+                  or User Material from the Website without prior notice and to
+                  refuse any User Material posted or provided to the Company by
+                  a User.
                 </p>
               </li>
               <li>
                 <p className="para">
-                  5. The User’s Registration Details and data relating to its
-                  use of the Website will be recorded by the Company but this
+                  The User’s Registration Details and data relating to its use
+                  of the Website will be recorded by the Company but this
                   information shall not be disclosed to third parties (otherwise
                   than on an aggregated, anonymous basis, or in accordance with
-                  the Privacy Policy or in accordance with Clause 2.6 below) nor
+                  the Privacy Policy or in accordance with Clause 6 below) nor
                   used for any purpose unrelated to the Website. By agreeing to
                   the terms, you expressly give us permission to verify the
                   authenticity of your details by calling you on the phone
@@ -203,36 +231,35 @@ function privatePolicy() {
               </li>
               <li>
                 <p className="para">
-                  6. The User hereby authorizes the Company to use any
-                  information which it submits to the Website to inform the User
-                  of special offers, occasional third party offers and for other
-                  marketing and related purposes. Without prejudice to Clause
-                  2.5 above, the Company will not use User data for any other
-                  purposes than as set out in these Terms except that the
-                  Company may disclose this data if compelled to do so by law,
-                  or at the request of a law enforcement agency or governmental
-                  authority.
+                  The User hereby authorizes the Company to use any information
+                  which it submits to the Website to inform the User of special
+                  offers, occasional third party offers and for other marketing
+                  and related purposes. Without prejudice to Clause 5 above, the
+                  Company will not use User data for any other purposes than as
+                  set out in these Terms except that the Company may disclose
+                  this data if compelled to do so by law, or at the request of a
+                  law enforcement agency or governmental authority.
                 </p>
               </li>
               <li>
                 <p className="para">
-                  7. If the User does not wish the Company to use its
-                  information as set out in Clause 2.6 above, it should leave
-                  the Website before submitting its personal details.
+                  If the User does not wish the Company to use its information
+                  as set out in Clause 6 above, it should leave the Website
+                  before submitting its personal details.
                 </p>
               </li>
               <li>
                 <p className="para">
-                  8. If the User does not want the Company to use its email
-                  address or SMS/mobile number to send information concerning
-                  the Website and related matters, the User should send an email
+                  If the User does not want the Company to use its email address
+                  or SMS/mobile number to send information concerning the
+                  Website and related matters, the User should send an email
                   message to INFO@AU79CODE.CO and insert unsubscribe as the
                   subject heading of such message.
                 </p>
               </li>
               <li>
                 <p className="para">
-                  9. You must keep confidential any user identification and
+                  You must keep confidential any user identification and
                   password details set-up or given to you as part of our
                   security procedures and must not disclose them to any third
                   party.
@@ -240,22 +267,22 @@ function privatePolicy() {
               </li>
               <li>
                 <p className="para">
-                  10. The Company reserves the right to suspend or terminate a
+                  The Company reserves the right to suspend or terminate a
                   User’s account where, in its absolute discretion, it deems the
                   User has breached these terms or deems such suspension or
                   termination is otherwise appropriate. In the event of such
                   suspension or termination, the Company will notify the User by
                   email and the User must not seek to re-register on any Website
                   either directly or indirectly through a related entity. The
-                  Company’s rights under this Clause 2.10 shall not prejudice
-                  any other right or remedy the Company may have in respect of
-                  any breach, or any rights, obligations or liabilities accrued
+                  Company’s rights under this Clause 10 shall not prejudice any
+                  other right or remedy the Company may have in respect of any
+                  breach, or any rights, obligations or liabilities accrued
                   prior to such suspension or termination.
                 </p>
               </li>
               <li>
                 <p className="para">
-                  11. The Company takes reported and actual infringement of
+                  The Company takes reported and actual infringement of
                   Intellectual Property Rights and fraud extremely seriously and
                   whilst Users cannot hold the Company liable in relation to
                   such issues, the Company requests all Users to report such
@@ -265,7 +292,7 @@ function privatePolicy() {
               </li>
               <li>
                 <p className="para">
-                  12. If you are an owner of Intellectual Property Rights or an
+                  1 If you are an owner of Intellectual Property Rights or an
                   agent who is fully authorised to act on behalf of the owner of
                   Intellectual Property Rights and believe that any Material or
                   other content infringes upon your Intellectual Property Right
@@ -277,18 +304,18 @@ function privatePolicy() {
                   information:
                   <ul className="sub_list">
                     <li>
-                      • physical or electronic signature of a person authorised
-                      to act on behalf of the owner of an exclusive right that
-                      is allegedly infringed;
+                      physical or electronic signature of a person authorised to
+                      act on behalf of the owner of an exclusive right that is
+                      allegedly infringed;
                     </li>
                     <li>
-                      • identification of the Intellectual Property Rights
-                      claimed to have been infringed, or, if multiple
-                      Intellectual Property Rights can be covered by a single
-                      notification, a representative list of such works;
+                      identification of the Intellectual Property Rights claimed
+                      to have been infringed, or, if multiple Intellectual
+                      Property Rights can be covered by a single notification, a
+                      representative list of such works;
                     </li>
                     <li>
-                      • identification of the Material (by means of data or
+                      identification of the Material (by means of data or
                       communication link, etc.) that is claimed to be infringing
                       or to be the subject of infringing activity and that is to
                       be removed or access to which is to be disabled and
@@ -296,43 +323,43 @@ function privatePolicy() {
                       locate the Material;
                     </li>
                     <li>
-                      • information reasonably sufficient to permit the Company
-                      to contact you, such as an address, telephone number, and
-                      an electronic mail address;
+                      information reasonably sufficient to permit the Company to
+                      contact you, such as an address, telephone number, and an
+                      electronic mail address;
                     </li>
                     <li>
-                      • a signed statement that you have a good faith belief
-                      that use of the Material in the manner complained of is
-                      not authorised by the Intellectual Property Rights owner,
-                      its agent, or the law;
+                      a signed statement that you have a good faith belief that
+                      use of the Material in the manner complained of is not
+                      authorised by the Intellectual Property Rights owner, its
+                      agent, or the law;
                     </li>
                     <li>
-                      • a signed statement that the Intellectual Property Rights
+                      a signed statement that the Intellectual Property Rights
                       owner holds the Company harmless from any claim of any
                       third party in connection with the Company removing the
                       relevant content; and
                     </li>
                     <li>
-                      • a signed statement that the information in the
+                      a signed statement that the information in the
                       notification is accurate and under penalty of perjury that
                       you are authorised to act on behalf of the owner of an
                       exclusive right that is allegedly infringed.
                     </li>
                     <li>
-                      • All notifications under Clauses 2.13 and 2.14 must be
-                      sent to INFO@AU79CODE.CO
+                      All notifications under Clauses 13 and 14 must be sent to
+                      INFO@AU79CODE.CO
                     </li>
                     <li>
-                      • Users will be invited to send comments to the Company
+                      Users will be invited to send comments to the Company
                       email relating to the integrity and performance of other
                       Users.
                     </li>
                     <li>
-                      • The following restrictions shall apply to all Users. You
+                      The following restrictions shall apply to all Users. You
                       must:
                       <ul className="inf_list">
                         <li>
-                          o not use the Website or the Service in any unlawful
+                          not use the Website or the Service in any unlawful
                           manner, for any unlawful purpose, or in any manner
                           inconsistent with these Terms, or act fraudulently or
                           maliciously, for example, by hacking into or inserting
@@ -340,12 +367,12 @@ function privatePolicy() {
                           the Website or any Service or any operating system;
                         </li>
                         <li>
-                          o not transmit any material designed to interrupt,
+                          not transmit any material designed to interrupt,
                           damage, destroy or limit the functionality of the
                           Website or the Service;
                         </li>
                         <li>
-                          o use any form of automated device or computer program
+                          use any form of automated device or computer program
                           (sometimes referred to as “flagging tools”) that
                           enables the use of the Company’s “flagging system” or
                           other community control systems without each flag
@@ -357,7 +384,7 @@ function privatePolicy() {
                           these terms or any applicable law or regulation;
                         </li>
                         <li>
-                          o not use any automated software to view the Service
+                          not use any automated software to view the Service
                           without our consent (including use of spiders, robots,
                           crawlers, data mining tools, or the like to download
                           or scrape data from the Service, except for internet
@@ -366,86 +393,86 @@ function privatePolicy() {
                           robots.txt file) and only access the Service manually;
                         </li>
                         <li>
-                          o not use the Service other than for your own personal
+                          not use the Service other than for your own personal
                           use or as an agent listing property for sale and to
                           rent;
                         </li>
                         <li>
-                          o not attempt to copy any Material or reverse engineer
+                          not attempt to copy any Material or reverse engineer
                           any processes without the Company’s consent;
                         </li>
                         <li>
-                          o not use any Service in breach of any policy or other
+                          not use any Service in breach of any policy or other
                           notice on the Website;
                         </li>
                         <li>
-                          o not remove or alter any copyright notices that
-                          appear on the Website;
+                          not remove or alter any copyright notices that appear
+                          on the Website;
                         </li>
                         <li>
-                          o not publish any User Material which is or may be
+                          not publish any User Material which is or may be
                           Unacceptable or that may encourage a breach of any
                           relevant laws or regulations;
                         </li>
                         <li>
-                          o not interfere with any other User’s enjoyment of the
+                          not interfere with any other User’s enjoyment of the
                           Website or the Service;
                         </li>
                         <li>
-                          o not conduct yourself in an offensive or abusive
-                          manner whilst using the Website or the Service;
+                          not conduct yourself in an offensive or abusive manner
+                          whilst using the Website or the Service;
                         </li>
                         <li>
-                          o not contact anyone who has asked not to be
-                          contacted, or make unsolicited contact with anyone for
-                          any commercial purpose, specifically, contact any User
-                          to post advertisement on a third-party website or post
+                          not contact anyone who has asked not to be contacted,
+                          or make unsolicited contact with anyone for any
+                          commercial purpose, specifically, contact any User to
+                          post advertisement on a third-party website or post
                           any advertisement on behalf of such User;
                         </li>
                         <li>o “stalk” or otherwise harass anyone;</li>
                         <li>
-                          o not collect personal data about other Users or
+                          not collect personal data about other Users or
                           entities for commercial or unlawful purposes;
                         </li>
                         <li>
-                          o not transmit any User Material that:
+                          not transmit any User Material that:
                           <ul className="mino_list">
                             <li>
-                               harasses, degrades, intimidates or is hateful
+                              harasses, degrades, intimidates or is hateful
                               towards any individual or group of individuals on
                               the basis of religion, gender, sexual orientation,
                               race, ethnicity, age or disability;
                             </li>
                             <li>
-                               includes personal or identifying information
-                              about another person without that person's
-                              explicit consent;
+                              includes personal or identifying information about
+                              another person without that person's explicit
+                              consent;
                             </li>
                             <li>
-                               impersonates any person or entity, including,
-                              but not limited to, a Company employee, or falsely
+                              impersonates any person or entity, including, but
+                              not limited to, a Company employee, or falsely
                               states or otherwise misrepresents an affiliation
                               with a person or entity;
                             </li>
                             <li>
-                               is protected by copyright or patent, protected
-                              by trade secret or trademark, or otherwise subject
-                              to third party proprietary rights, including
-                              privacy and publicity rights, unless you are the
-                              owner of such rights or have permission or a
-                              license from their rightful owner to post the
-                              material and to grant the Company all of the
-                              license rights granted herein;
+                              is protected by copyright or patent, protected by
+                              trade secret or trademark, or otherwise subject to
+                              third party proprietary rights, including privacy
+                              and publicity rights, unless you are the owner of
+                              such rights or have permission or a license from
+                              their rightful owner to post the material and to
+                              grant the Company all of the license rights
+                              granted herein;
                             </li>
                             <li>
-                               infringes any of the foregoing Intellectual
+                              infringes any of the foregoing Intellectual
                               Property Rights of any party, or is User Material
                               that you do not have a right to make available
                               under any law, regulation, contractual or
                               fiduciary relationship(s);
                             </li>
                             <li>
-                               constitutes or contains “pyramid schemes”,
+                              constitutes or contains “pyramid schemes”,
                               “jokes”, “affiliate marketing,” “link referral
                               code,” “junk mail,” “spam,” “chain letters,” “bait
                               marketing”, “negative option marketing”, “referral
@@ -453,25 +480,24 @@ function privatePolicy() {
                               commercial nature;
                             </li>
                             <li>
-                               constitutes or contains any form of advertising
-                              or solicitation if: (i) posted in areas or
-                              categories of the Website which are not designated
-                              for such purposes; or (ii) e-mailed to the Company
-                              Users who have requested not to be contacted about
-                              other services, products or commercial interests;
-                              and
+                              constitutes or contains any form of advertising or
+                              solicitation if: (i) posted in areas or categories
+                              of the Website which are not designated for such
+                              purposes; or (ii) e-mailed to the Company Users
+                              who have requested not to be contacted about other
+                              services, products or commercial interests; and
                             </li>
 
                             <li>
-                               includes links to commercial services or
+                              includes links to commercial services or
                               third-party websites, except as specifically
                               allowed by the Company.
                             </li>
                           </ul>
                         </li>
                         <li>
-                          o The Company permits the User to post User Material
-                          on the Website in accordance with the Company’s
+                          The Company permits the User to post User Material on
+                          the Website in accordance with the Company’s
                           procedures provided that User Material is not illegal,
                           misleading, obscene, abusive, threatening, defamatory
                           or otherwise objectionable to the Company. You must
@@ -480,7 +506,7 @@ function privatePolicy() {
                           Unacceptable.
                         </li>
                         <li>
-                          o The Company grants you a limited, revocable,
+                          The Company grants you a limited, revocable,
                           non-exclusive license to access and use the Service
                           for personal use. This license granted herein does not
                           include any of the following: (a) access to or use of
@@ -504,7 +530,7 @@ function privatePolicy() {
                           including any subset of classifieds listings such as
                           housing, for sale, jobs, services, or personals, or
                           which otherwise provides classified ad listing
-                          services. The license set forth in this Clause 2.20
+                          services. The license set forth in this Clause 20
                           permits you to display on your website, or create a
                           hyperlink thereto, individual postings on the Service
                           so long as such use is for non-commercial and/or news
@@ -522,7 +548,7 @@ function privatePolicy() {
                           the Company.
                         </li>
                         <li>
-                          o The Company offers a service known as “Featured Ads”
+                          The Company offers a service known as “Featured Ads”
                           where users may pay a non-refundable fee to have their
                           ads posted in selected locations on the Website, thus
                           potentially increasing an ads' visibility. In order to
@@ -538,7 +564,7 @@ function privatePolicy() {
                           all liability related thereto.
                         </li>
                         <li>
-                          o The Company may employ a third-party provider for
+                          The Company may employ a third-party provider for
                           processing credit card payments for users that use the
                           Product(s) or services provided. Such third-party
                           provider may have access to personal information
@@ -556,17 +582,17 @@ function privatePolicy() {
           </li>
 
           <li className="list_title">
-            PAID POSTINGS
-            <ul className="list-content">
+            <span className="title">PAID POSTINGS</span>
+            <ul className="list_content">
               <li>
                 <p className="para">
-                  o The Company may charge a fee to post Material in some
-                  specific areas of the Service (“Paid Material”). The fee
-                  permits Paid Material to be posted in a designated area of the
-                  Website. Each party posting Paid Material to the Service is
-                  responsible for the Material and compliance with these terms.
-                  Any such fees paid hereunder are non-refundable in the event
-                  any Material is removed from the Service for violating these
+                  The Company may charge a fee to post Material in some specific
+                  areas of the Service (“Paid Material”). The fee permits Paid
+                  Material to be posted in a designated area of the Website.
+                  Each party posting Paid Material to the Service is responsible
+                  for the Material and compliance with these terms. Any such
+                  fees paid hereunder are non-refundable in the event any
+                  Material is removed from the Service for violating these
                   terms. Additional terms regarding Paid Material will be fully
                   stated in the applicable section(s).
                 </p>
@@ -575,11 +601,11 @@ function privatePolicy() {
           </li>
 
           <li className="list_title">
-            POSTING AGENTS{" "}
-            <ul className="list-content">
+            <span className="title">POSTING AGENTS </span>
+            <ul className="list_content">
               <li>
                 <p className="para">
-                  o The Company prohibits the use of Posting Agents, directly or
+                  The Company prohibits the use of Posting Agents, directly or
                   indirectly, without the express written permission of the
                   Company. In addition, Posting Agents are not permitted to post
                   Material on behalf of others, directly or indirectly, or
@@ -592,11 +618,11 @@ function privatePolicy() {
           </li>
 
           <li className="list_title">
-            NO SPAM POLICY
-            <ul className="list-content">
+            <span className="title">NO SPAM POLICY</span>
+            <ul className="list_content">
               <li>
                 <p className="para">
-                  o You understand and agree that sending unsolicited email
+                  You understand and agree that sending unsolicited email
                   advertisements or other unsolicited communications to the
                   Company addresses or through the Company computer systems are
                   expressly prohibited by these Terms. You acknowledge and agree
@@ -612,7 +638,7 @@ function privatePolicy() {
               </li>
               <li>
                 <p className="para">
-                  o Any unauthorized use of the Company computer systems is a
+                  Any unauthorized use of the Company computer systems is a
                   violation of these Terms and certain applicable laws, in
                   particular the UAE Cybercrimes legislation. Such violations
                   may subject the sender and his or her agents to civil and
@@ -629,16 +655,37 @@ function privatePolicy() {
           </li>
 
           <li className="list_title">
-            LIMITATION OF LIABILITY
-            <ul className="list-content">
+            <span className="title">LIMITATION OF LIABILITY</span>
+            <ul className="list_content">
               <li>
                 <p className="para">
-                  1. The Company shall not be liable for any:
+                  The Company shall not be liable for any:
+                  <ul className="sub_list">
+                    <li>
+                      consequential, indirect, special losses or exemplary
+                      damages (even if the Company has been advised of the
+                      possibility of such losses or damages);
+                    </li>
+                    <li>loss of profit;</li>
+                    <li>loss of business;</li>
+                    <li>loss of revenue;</li>
+                    <li>loss of or corruption to data;</li>
+                    <li>loss of use;</li>
+                    <li>loss of production;</li>
+                    <li>loss of contract;</li>
+                    <li> loss of opportunity;</li>
+                    <li>
+                      loss of savings, discount or rebate (whether actual or
+                      anticipated);{" "}
+                    </li>
+                    <li>harm to reputation or loss of goodwill;</li>
+                    <li>loss of anticipated savings,</li>
+                  </ul>
                 </p>
               </li>
               <li>
                 <p className="para">
-                  The limitations at Clause 6.1 shall also apply with respect to
+                  The limitations at Clause 1 shall also apply with respect to
                   damages incurred by reason of other services or products
                   received through or advertised in connection with the Website
                   or the Service or any links on the Website, as well as by
@@ -649,7 +696,7 @@ function privatePolicy() {
               </li>
               <li>
                 <p className="para">
-                  2. The limitations in this Clause 6 shall apply to the fullest
+                  The limitations in this Clause 6 shall apply to the fullest
                   extent permitted by law. You specifically acknowledge and
                   agree that the Company shall not be liable for user
                   submissions or the defamatory, offensive or illegal conduct of
@@ -659,7 +706,7 @@ function privatePolicy() {
               </li>
               <li>
                 <p className="para">
-                  3. Whilst the Company will take all reasonable attempts to
+                  Whilst the Company will take all reasonable attempts to
                   exclude viruses from the Website, it cannot ensure such
                   exclusion and no liability is accepted for viruses. The User
                   is recommended to take all appropriate safeguards before
@@ -669,24 +716,24 @@ function privatePolicy() {
               </li>
               <li>
                 <p className="para">
-                  4. The Website include information and materials uploaded by
+                  The Website include information and materials uploaded by
                   other users of the Website. This information and these
                   materials have not been verified or approved by the Company
                   and the Company shall not be liable for any material which may
                   be deemed Unacceptable. You further may be exposed to Material
                   that is inaccurate, offensive, indecent, objectionable,
                   defamatory or libellous and, as far as the law allows, and
-                  subject to Clause 6.11, you agree to waive, and hereby do
-                  waive, any legal or equitable rights or remedies you have or
-                  may have against the Company with respect thereto.{" "}
+                  subject to Clause 11, you agree to waive, and hereby do waive,
+                  any legal or equitable rights or remedies you have or may have
+                  against the Company with respect thereto.{" "}
                 </p>
               </li>
               <li>
                 <p className="para">
-                  5. The Company does not guarantee that the Website will always
-                  be accessible, uninterrupted, timely, secure, error free or
-                  free from computer virus or other invasive or damaging code or
-                  that the Website will not be affected by force majeure events,
+                  The Company does not guarantee that the Website will always be
+                  accessible, uninterrupted, timely, secure, error free or free
+                  from computer virus or other invasive or damaging code or that
+                  the Website will not be affected by force majeure events,
                   including inability to obtain or shortage of necessary
                   materials, equipment facilities, power or telecommunications,
                   lack of telecommunications equipment or facilities and failure
@@ -703,7 +750,7 @@ function privatePolicy() {
               </li>
               <li>
                 <p className="para">
-                  9. The Website and the Service have not been developed (and
+                  The Website and the Service have not been developed (and
                   Material has not been written) to meet the individual
                   requirements of the User and it is the User’s sole
                   responsibility to satisfy itself prior to entering into any
@@ -717,14 +764,14 @@ function privatePolicy() {
               </li>
               <li>
                 <p className="para">
-                  10. None of the Clauses herein shall apply so as to restrict
+                  None of the Clauses herein shall apply so as to restrict
                   liability for death or personal injury resulting from the
                   negligence of the Company or its appointed agents.
                 </p>
               </li>
               <li>
                 <p className="para">
-                  11. The Website is controlled and offered by the Company from
+                  The Website is controlled and offered by the Company from
                   facilities in Dubai in the United Arab Emirates. The Company
                   makes no representations or warranties that the Website is
                   appropriate for use in other locations. Those who access or
@@ -735,6 +782,205 @@ function privatePolicy() {
               </li>
             </ul>
           </li>
+          <li className="list_title">
+            <span className="title">Privacy policy</span>Use of Information The
+            Company respects user privacy and is committed to protecting it by
+            complying with this policy This policy applies to information
+            collected from this website, e-mail, messages or other electronic
+            messages between the user and the website or through Mobile and
+            computer applications or through user interaction with our
+            advertisements and applications on third party websites and services
+            in the event that those applications or advertisements contain links
+            to this Policy The Company does not share, sell or rent any of this
+            collected information to third parties and does not intend to do so
+            in The future Your personal information is only available to
+            officials who need to know it and your personal information will not
+            be available to the public without your consent. In addition,
+            personal information of website users will not be exchanged, sold or
+            transferred to any entity without the user's prior consent. This
+            information is available for viewing only by professionals who
+            provide services in accordance with the nature of the user's
+            interaction with our website, when visiting a website or creating a
+            login and a password to access the Services You may be asked to
+            provide information about yourself, which may include:
+            <ul className="list_content">
+              <li>
+                <p className="para">
+                  Your name and contact details, including email address and
+                  phone number
+                </p>
+              </li>
+              <li>
+                <p className="para">
+                  Information that enables us to verify and verify your
+                  identity.
+                </p>
+              </li>
+              <li>
+                <p className="para"> Location data.</p>
+              </li>
+              <li>
+                <p className="para">
+                  Your billing information, transaction information, payments
+                  and history.
+                </p>
+              </li>
+              <li>
+                <p className="para">
+                  Other information we may require from time to time to provide
+                  the Services and to comply with applicable law.
+                </p>
+              </li>
+
+              <li>
+                <p className="para">
+                  You agree where appropriate to consent to the collection of
+                  information about your use of the Platform and Services and
+                  information from messages and communications you send to us.{" "}
+                </p>
+              </li>
+              <li>
+                <p className="para">
+                  This information is required to provide the Services to you.
+                  If you do not provide this information, it may delay or
+                  prevent us from providing the Services.{" "}
+                </p>
+              </li>
+            </ul>
+          </li>
+          <li className="list_title">
+            <span className="title">Collected information</span>
+            <ul className="list_content">
+              <li>
+                <p className="para">
+                  If the user requests information or if he provides it to us by
+                  sending an e-mail message or by filling out a form, we may
+                  save the user's e-mail address in addition to other
+                  information that he may provide
+                </p>
+              </li>
+
+              <li>
+                <p className="para">
+                  This information may be used to contact the user in the future
+                  either by regular mail, e-mail or phone to provide information
+                  about our products and services that we think will be useful
+                  to him. Information about e-mail and other information
+                  provided by the user to us will not be sold to third parties.
+                  The information collected by the company will be used for
+                  Marketing and Development Users who have provided information
+                  will receive newsletters and offers from the company and the
+                  information we collect from the user may only be used for the
+                  following:{" "}
+                  <ul className="sub_list">
+                    <li>
+                      Improving our website: We always strive to improve our
+                      website based on the information and feedback we receive
+                      from the user.{" "}
+                    </li>
+                    <li>
+                      {" "}
+                      Improving Customer Service: The information you provide
+                      helps us respond to your customer service requests
+                      effectively and provide the necessary support.
+                    </li>
+                    <li>
+                      Follow up on registration procedures: User information,
+                      whether public or private, will not be sold, exchanged,
+                      transferred or given to any other company for any reason
+                      without the user’s consent, except for the purposes of
+                      providing the required services.{" "}
+                    </li>
+                    <li>
+                      Sending e-mails periodically: The e-mail address provided
+                      by the user may be used for the purpose of following up on
+                      the application procedures to send information and updates
+                      about the service provided to the user in addition to
+                      receiving news about the company from time to time and its
+                      developments and news related to information about a
+                      product or service, etc...{" "}
+                    </li>
+                    <li>
+                      Third parties we use to help deliver our Products to you
+                      (eg payment service providers).{" "}
+                    </li>
+                    <li>
+                      Other third parties we use to help us run our business (eg
+                      marketing agencies or web hosts){" "}
+                    </li>
+                    <li>
+                      Third parties you have agreed to (for example, social
+                      media sites you choose to link your account to, or
+                      third-party payment providers)
+                    </li>
+                  </ul>
+                </p>
+              </li>
+              <li>
+                <p className="para">
+                  We may use or share the information you provide to us if we
+                  are under a duty to disclose or share your information in
+                  order to comply with any legal obligation or in order to
+                  enforce any obligation against you or to protect the rights of
+                  us and our affiliates. This may include the exchange of
+                  information with other companies and organizations for the
+                  purposes of fraud protection and prevention.
+                </p>
+              </li>
+            </ul>
+          </li>
+          <li className="list_title">
+            <span className="title">Purpose of processing</span>Your information
+            will allow us to provide you with access to the particular parts of
+            the Platform relevant to you and allow us to supply the Services you
+            require. We will use your information for the purpose of fulfilling
+            service orders placed by you, processing any other transactions
+            authorised or made by you with us, informing you of special offers
+            and providing other marketing information to you which we think you
+            may find of interest, undertaking services or customer
+            research/development. Your information may be used by us to contact
+            you for your opinions on the Platform, the Services and our
+            business, and to notify you of changes or developments to the
+            Platform, the Services and our business.
+          </li>
+          <li className="list_title">
+            <span className="title">Security measures</span>
+            We have implemented security policies, rules and technical measures
+            to protect the personal data that we have under our control from
+            unauthorized access, improper use and disclosure, unauthorized
+            destruction or accidental loss. We also have procedures in place to
+            deal with any suspected data breach. We will notify you and any
+            applicable regulator or authority of a suspected data security
+            breach where we are legally required to do so. You are solely
+            responsible for keeping your password and other account details
+            confidential. If you have concerns about your password, account
+            details, or are suspicious about any unauthorized use of your
+            account, you should contact us immediately. We can deactivate or
+            suspend your account at any time.
+          </li>
+          <li className="list_title">
+            <span className="title">Inquiries</span>
+            If you have any enquiry or concern about our privacy policy or the
+            way in which we are handling personal data please contact our admin
+            department via the Contact page. If at any time you wish us to cease
+            processing your information please send a message to our admin
+            department and insert “unsubscribe” as the subject heading.
+          </li>
+          <li className="list_title">
+            <span className="title">Payment Data</span>
+            We employ a third-party provider for processing credit card
+            payments. They have access to personal information needed to perform
+            their functions, but may not use it for other purposes. We do not
+            have access to or retain any of your payment information.
+          </li>
+          <li className="list_title">
+            <span className="title">Updates to policy</span>We reserve the right
+            to vary this from time to time. Our updated policy will be displayed
+            on the Website, and by continuing to use and access the Platform,
+            following such changes, you agree to be bound by any variation made
+            by us. It is your responsibility to check this policy from time to
+            time to verify such variations.
+          </li>
         </ul>
       </Container>
     </MainContainer>
@@ -742,8 +988,8 @@ function privatePolicy() {
 }
 
 const Container = styled.div`
-  padding: 4rem 2rem;
-  & .title {
+  padding: 4rem 0rem;
+  & .big_title {
     text-align: center;
     color: var(--silver-color);
     text-transform: uppercase;
@@ -753,12 +999,34 @@ const Container = styled.div`
     width: 200px;
     background: var(--white-color);
     margin: auto;
+    margin-bottom: 3rem;
+  }
+
+  & .first_content {
+    margin-bottom: 3rem;
+    & .title {
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--silver-color);
+      text-decoration: underline;
+      display: block;
+      text-align: center;
+      font-size: 1.4rem;
+      text-transform: uppercase;
+    }
+    & p {
+      color: var(--silver-color);
+      letter-spacing: 1px;
+      font-weight: 400;
+      margin-bottom:7px;
+      text-align: center;
+    }
   }
 
   & .list {
     list-style-type: upper-roman;
     & .list_title {
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
       font-weight: 400;
       color: var(--silver-color);
       & .title {
@@ -766,11 +1034,14 @@ const Container = styled.div`
         letter-spacing: 1px;
         color: var(--silver-color);
         text-decoration: underline;
+        display: block;
+        text-align: start;
+        font-size: 1.4rem;
       }
     }
   }
 
-  & .list-content {
+  & .list_content {
     list-style-type: decimal;
     padding-top: 1rem;
     padding-left: 20px;
@@ -784,6 +1055,10 @@ const Container = styled.div`
         }
       }
     }
+  }
+
+  & .sub_list {
+    list-style-type: disc;
   }
 `;
 

@@ -121,6 +121,11 @@ function NavBar() {
           Message
         </Link>
       </li>
+      <li>
+        <Link className="link" to="/admin/message">
+          Create Item Product
+        </Link>
+      </li>
     </ListNavigation>
   );
 
@@ -336,7 +341,7 @@ const HeaderContainer = styled.header`
 
 const HeaderTop = styled.div`
   height: 80px;
-  display: flex ;
+  display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;

@@ -21,7 +21,7 @@ import { addToCart } from "../../../flux/actions/cartAction";
 import { warningMessage } from "../../message";
 import { Event } from "../../Tracking/tracking";
 
-import "./ProductItem.css"
+import "./ProductItem.css";
 
 const empty_pc = "/img/ecommerce/empty.jpg";
 
@@ -450,8 +450,6 @@ const Btn = styled.div`
   }
 
   & button {
-    /* width: 2.5rem; */
-    /* height: 1.8rem; */
     background: transparent;
     outline: none;
     border: none;

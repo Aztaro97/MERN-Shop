@@ -66,7 +66,7 @@ const ViewProducts = () => {
         <ErrorServerPage />
       ) : (
         <Container>
-          <Row gutter={[10, 20]}>
+          <Row gutter={[20, 20]}>
             {products.length > 0 ? (
               products.map((product, index) => (
                 <Col
@@ -154,9 +154,12 @@ const Container = styled.div`
 `;
 
 const Card = styled.div`
-  box-shadow: var(--box-shadow-value);
+  /* box-shadow: var(--box-shadow-value); */
+  /* border: 1px solid #ffffff49; */
   border-radius: 10px;
   width: 100%;
+  padding: 20px;
+  background: var(--dark-light-color);
   & img {
     display: block;
     width: 100%;
@@ -193,14 +196,20 @@ const Card = styled.div`
   }
 
   & .delete_icon {
-    font-size: 1.5rem;
-    color: var(--orange-color);
+    font-size: 10px;
+    color: var(--white-color);
     position: absolute;
     top: 10px;
     right: 10px;
     z-index: 5;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    background: var(--orange-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    display: flex;
     &:hover {
       transform: scale(1.2);
     }

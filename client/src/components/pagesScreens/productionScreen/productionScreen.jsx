@@ -6,6 +6,7 @@ import Button from "../../ButtonComponeent";
 import Slider from "react-slick";
 import { Fade } from "react-reveal";
 import "./production.css";
+import { useHistory } from "react-router-dom";
 
 const { Title, Paragraph } = Typography;
 const { Meta } = Card;
@@ -115,116 +116,77 @@ const ProductSelling = () => {
 };
 
 const CardProductList = () => {
+  const data = [
+    {
+      name: "category name 1",
+      description: "lorem upsum description ",
+      imgUrl:
+        "https://images.unsplash.com/photo-1513521773210-0cc22dfee8db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+    },
+    {
+      name: "category name 2",
+      description: "lorem upsum description ",
+      imgUrl:
+        "https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+    },
+    {
+      name: "category name 3",
+      description: "lorem upsum description ",
+      imgUrl:
+        "https://images.unsplash.com/photo-1513521773210-0cc22dfee8db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+    },
+    {
+      name: "category name 4",
+      description: "lorem upsum description ",
+      imgUrl:
+        "https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+    },
+    {
+      name: "category name 5",
+      description: "lorem upsum description ",
+      imgUrl:
+        "https://images.unsplash.com/photo-1513521773210-0cc22dfee8db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+    },
+    {
+      name: "category name 6",
+      description: "lorem upsum description ",
+      imgUrl:
+        "https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+    },
+    {
+      name: "category name 7",
+      description: "lorem upsum description ",
+      imgUrl:
+        "https://images.unsplash.com/photo-1513521773210-0cc22dfee8db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+    },
+    {
+      name: "category name 8",
+      description: "lorem upsum description ",
+      imgUrl:
+        "https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+    },
+  ];
+
+  const history = useHistory();
   return (
     <ProductListStyling>
       <Fade bottom>
         <Title level={2} className="title">
-          Featured products
+          Categories of products
         </Title>
         <Row gutter={[10, 40]} justify="center">
-          <Col xs={{ span: 12 }} md={{ span: 8 }}>
-            <Card
-              hoverable
-              className="product_card"
-              cover={
-                <img
-                  alt="example"
-                  src="https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
-                  height="200px"
-                />
-              }
-            >
-              <Meta
-                title="Product Name"
-                description="lorem upsum description"
-              />
-            </Card>
-          </Col>
-          <Col xs={{ span: 12 }} md={{ span: 8 }}>
-            <Card
-              hoverable
-              className="product_card"
-              cover={
-                <img
-                  alt="example"
-                  src="https://images.unsplash.com/photo-1513521773210-0cc22dfee8db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-                />
-              }
-            >
-              <Meta
-                title="Product Name"
-                description="lorem upsum description"
-              />
-            </Card>
-          </Col>
-          <Col xs={{ span: 12 }} md={{ span: 8 }}>
-            <Card
-              hoverable
-              className="product_card"
-              cover={
-                <img
-                  alt="example"
-                  src="https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
-                />
-              }
-            >
-              <Meta
-                title="Product Name"
-                description="lorem upsum description"
-              />
-            </Card>
-          </Col>
-          <Col xs={{ span: 12 }} md={{ span: 8 }}>
-            <Card
-              hoverable
-              className="product_card"
-              cover={
-                <img
-                  alt="example"
-                  src="https://images.unsplash.com/photo-1513521773210-0cc22dfee8db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-                />
-              }
-            >
-              <Meta
-                title="Product Name"
-                description="lorem upsum description"
-              />
-            </Card>
-          </Col>
-          <Col xs={{ span: 12 }} md={{ span: 8 }}>
-            <Card
-              hoverable
-              className="product_card"
-              cover={
-                <img
-                  alt="example"
-                  src="https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
-                />
-              }
-            >
-              <Meta
-                title="Product Name"
-                description="lorem upsum description"
-              />
-            </Card>
-          </Col>
-          <Col xs={{ span: 12 }} md={{ span: 8 }}>
-            <Card
-              hoverable
-              className="product_card"
-              cover={
-                <img
-                  alt="example"
-                  src="https://images.unsplash.com/photo-1513521773210-0cc22dfee8db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-                />
-              }
-            >
-              <Meta
-                title="Product Name"
-                description="lorem upsum description"
-              />
-            </Card>
-          </Col>
+          {data.map((item, index) => (
+            <Col xs={{ span: 12 }} md={{ span: 8 }} key={item + index}>
+              <Card
+                onClick={() => history.push(`/production/${item.name}`)}
+                hoverable
+                className="product_card"
+                cover={<img alt="example" src={item.imgUrl} height="200px" />}
+              >
+                <Meta title={item.name} description={item.description} />
+              </Card>
+            </Col>
+          ))}
         </Row>
       </Fade>
     </ProductListStyling>

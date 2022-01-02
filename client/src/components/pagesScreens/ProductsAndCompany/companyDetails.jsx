@@ -59,22 +59,22 @@ function CompanyDetails() {
                   />
                   <div>
                     <div>
-                      <h1>{company.name}</h1>
+                      <h1 className="title">{company.name}</h1>
                       <p>{company.scopeBusiness}</p>
                       <hr />
                     </div>
                     <div>
-                      <h1>about us</h1>
+                      <h1 className="title">about us</h1>
                       <p>{company.about}</p>
                       <hr />
                     </div>
                     <div>
-                      <h1>Our Services</h1>
+                      <h1 className="title">Our Services</h1>
                       <p>{company.services}</p>
                       <hr />
                     </div>
                     <div>
-                      <h1>Contact us</h1>
+                      <h1 className="title">Contact us</h1>
                       <div className="info">
                         <FaPhoneAlt className="info-icon" />
                         <p>{company.phoneNumber.join(" / ")}</p>
@@ -91,7 +91,7 @@ function CompanyDetails() {
                     </div>
                     {company.mediaLink && (
                       <div>
-                        <h1>Find us on</h1>
+                        <h1 className="title">Find us on</h1>
                         <div className="social-media">
                           {company.mediaLink.facebook && (
                             <a
@@ -135,7 +135,7 @@ function CompanyDetails() {
                       </div>
                     )}
                     <div>
-                      <h1>Work hours</h1>
+                      <h1 className="title">Work hours</h1>
                       <p>
                         From {company.workHours[0]} to {company.workHours[1]}
                       </p>
@@ -225,11 +225,12 @@ const Container = styled.div`
 
   margin-bottom: 0.7rem;
 
-  & h1 {
+  & .title {
     font-weight: 700;
     font-size: 1.3rem;
     text-transform: uppercase;
     margin-bottom: 0.3rem;
+    color: var(--silver-color);
   }
 
   & p {

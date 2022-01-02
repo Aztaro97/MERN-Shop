@@ -83,9 +83,16 @@ const PhotographyComponent = lazy(() =>
   import("./components/pagesScreens/photographyScreen/photographyScreen")
 );
 
-// ////////////////  PRODUCTION Component    /////////////////////
+//        PRODUCTION Component    /////////////////////
 const ProductionComponent = lazy(() =>
   import("./components/pagesScreens/productionScreen/productionScreen")
+);
+
+const ItemProduction = lazy(() =>
+  import("./components/pagesScreens/productionScreen/itemProduct")
+);
+const CAtegoriesItemsProduction = lazy(() =>
+  import("./components/pagesScreens/productionScreen/categoryItems")
 );
 
 // ////////////////  Printing Component    /////////////////////
@@ -245,7 +252,7 @@ function App() {
           <Route path="/myorder" component={ListOrderScreen} />
           <Route path="/map" component={MapScreen} />
 
-          {/* /////////////////////   Markeing Router   ///////////////////// */}
+          {/* /  Markeing Router   /*/}
           <Route path="/marketing" component={EMarketingComponent} />
           <Route path="/out-marketing" component={OutMarketingComponent} />
           <Route
@@ -253,7 +260,7 @@ function App() {
             component={DigitalMarketingComponent}
           />
 
-          {/* /////////////////  CONTACT US   ////////////////////////// */}
+          {/* /////////////////  CONTACT US   //////*/}
           <Route exact path="/contact-us" component={ContactUsComponents} />
 
           {/* ///////////////////   ADVERSITING ROUTER  /////////////////// */}
@@ -307,28 +314,33 @@ function App() {
             exact
           />
 
-          {/* ////////////////////    DESIGNPAGE ROUTER   ////////////////// */}
+          {/*    DESIGNPAGE ROUTER   ////////////////// */}
           <Route path="/design" component={DesignComponent} />
 
-          {/* ////////////////////    PROGRAMMING ROUTER   ////////////////// */}
+          {/*    PROGRAMMING ROUTER   ////////////////// */}
           <Route path="/programming" component={ProgrammingComponent} />
 
-          {/* ////////////////////    PHOTOGRAPHY ROUTER   ////////////////// */}
+          {/*    PHOTOGRAPHY ROUTER   ////////////////// */}
           <Route path="/photography" component={PhotographyComponent} />
 
-          {/* ////////////////////    PRODUCTION ROUTER   ////////////////// */}
+          {/*    PRODUCTION ROUTER   ////////////////// */}
+          <Route path="/production/item/:id" component={ItemProduction} exact />
+          <Route
+            path="/production/:category"
+            component={CAtegoriesItemsProduction}
+          />
           <Route path="/production" component={ProductionComponent} />
 
-          {/* ////////////////////    PRINTING ROUTER   ////////////////// */}
+          {/*    PRINTING ROUTER   ////////////////// */}
           <Route path="/printing" component={PrintingComponent} />
 
-          {/* ////////////////////    ABOUT ROUTER   ////////////////// */}
+          {/*    ABOUT ROUTER   ////////////////// */}
           <Route path="/about" component={AboutComponent} />
 
-          {/* ////////////////////    ABOUT ROUTER   ////////////////// */}
+          {/*    ABOUT ROUTER   ////////////////// */}
           <Route path="/pos" component={PosComponent} />
 
-          {/* ////////////////////    ABOUT ROUTER   ////////////////// */}
+          {/*    ABOUT ROUTER   ////////////////// */}
           <Route path="/exhibition" component={ExhibitionComponent} />
 
           {/*////////////////  ADMIN ROUTER  ///////////// */}
