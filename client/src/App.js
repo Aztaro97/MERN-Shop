@@ -84,15 +84,18 @@ const PhotographyComponent = lazy(() =>
 );
 
 //        PRODUCTION Component    /////////////////////
-const ProductionComponent = lazy(() =>
-  import("./components/pagesScreens/productionScreen/productionScreen")
+const ProductionHomeComponent = lazy(() =>
+  import("./components/pagesScreens/productionScreen/productionHomeScreen")
 );
 
-const ItemProduction = lazy(() =>
-  import("./components/pagesScreens/productionScreen/itemProduct")
+const ItemDetailsProduction = lazy(() =>
+  import("./components/pagesScreens/productionScreen/itemDetailsProduct")
 );
 const CAtegoriesItemsProduction = lazy(() =>
   import("./components/pagesScreens/productionScreen/categoryItems")
+);
+const AddNewProduction = lazy(() =>
+  import("./components/pagesScreens/productionScreen/formRegisterProduct")
 );
 
 // ////////////////  Printing Component    /////////////////////
@@ -324,12 +327,12 @@ function App() {
           <Route path="/photography" component={PhotographyComponent} />
 
           {/*    PRODUCTION ROUTER   ////////////////// */}
-          <Route path="/production/item/:id" component={ItemProduction} exact />
+          <Route path="/production/item/:id" component={ItemDetailsProduction} exact />
           <Route
             path="/production/:category"
             component={CAtegoriesItemsProduction}
           />
-          <Route path="/production" component={ProductionComponent} />
+          <Route path="/production" component={ProductionHomeComponent} />
 
           {/*    PRINTING ROUTER   ////////////////// */}
           <Route path="/printing" component={PrintingComponent} />
@@ -374,6 +377,11 @@ function App() {
           <Route
             path="/admin/message"
             component={ListAdMessageComponent}
+            exact
+          />
+          <Route
+            path="/admin/new-production"
+            component={AddNewProduction}
             exact
           />
 

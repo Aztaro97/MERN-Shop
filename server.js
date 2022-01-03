@@ -19,7 +19,8 @@ const StripeRouter = require("./routes/stripe");
 const advertisingRoutes = require("./routes/advertisingRoute/advertisingRoute");
 
 const contactRouter = require("./routes/contact/contactRouter");
-const { filter } = require("compression");
+
+const articleRouter = require("./routes/productions/articleRoutes");
 
 dotenv.config();
 
@@ -52,6 +53,7 @@ app.use("/upload-images", AdverUploadingRoutes);
 app.use("/checkout", StripeRouter);
 app.use("/api/advertising", advertisingRoutes);
 app.use("/api/contact-us", contactRouter);
+app.use("/api/articles", articleRouter);
 
 // app.use('/api/upload', uploadRoutes)
 

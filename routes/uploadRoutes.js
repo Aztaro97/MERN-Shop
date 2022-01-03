@@ -9,7 +9,7 @@ const { protect, admin } = require('../middleware/authMiddleware');
 const Product = require("../models/productModel")
 
 
-// //////////////////   CONFIGURATION DE CLOUDINARY
+//   CONFIGURATION DE CLOUDINARY
 cloudinary.config({
   cloud_name: "tarositeweb",
   api_key: "474848126984384",

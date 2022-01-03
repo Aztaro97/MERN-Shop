@@ -31,7 +31,7 @@ const Input = styled.input`
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  color: var(--silver-color);
+  color: #ffffffcf;
   list-style: none;
   width: 100%;
   min-width: 0;
@@ -53,6 +53,9 @@ const Input = styled.input`
   &:focus-visible {
     color: var(--silver-color);
     background: var(--dark-color);
+  }
+  &::placeholder {
+    color: var(--silver-color);
   }
 
   @media only screen and (max-width: 900px) {
