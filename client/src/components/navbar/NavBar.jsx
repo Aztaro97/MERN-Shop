@@ -122,7 +122,7 @@ function NavBar() {
         </Link>
       </li>
       <li>
-        <Link className="link" to="/admin/message">
+        <Link className="link" to="/admin/new-production">
           Create Item Product
         </Link>
       </li>

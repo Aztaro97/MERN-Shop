@@ -1,141 +1,188 @@
 import { Col, InputNumbInputNumber, er, Row, InputNumber } from "antd";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import MainContainer from "../../MainContainer";
 import { Select } from "antd";
 import { BsWhatsapp } from "react-icons/bs";
+import { getArticleById } from "../../../flux/actions/articleAction";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import Slider from "react-slick";
+import LoaderComponent from "../../loader";
 
 const { Option } = Select;
 
 function ItemProduction() {
   const [qtyNumber, setQtyNumber] = useState(1);
+
+  const params = useParams();
+  const articleId = params.id;
+
+  const { loading, article, error } = useSelector(
+    (state) => state.articleDetails
+  );
+
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    // rtl: currentLang === "ar" ? true : false,
+  };
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (article && article._id !== articleId) {
+      dispatch(getArticleById(articleId));
+    }
+  }, [dispatch, articleId, article]);
+
   return (
     <MainContainer>
-      <Container>
-        <Row gutter={[20, 20]}>
-          <Col
-            xs={{ span: 24 }}
-            sm={{ span: 24 }}
-            md={{ span: 12 }}
-            lg={{ span: 12 }}
-          >
-            <img
-              src="https://via.placeholder.com/150"
-              alt=""
-              className="firs_image"
-            />
-          </Col>
-          <Col
-            xs={{ span: 24 }}
-            sm={{ span: 24 }}
-            md={{ span: 12 }}
-            lg={{ span: 12 }}
-          >
-            <h3 className="product_name">Product name</h3>
-            <h4 className="product_price">7555 Dir</h4>
-            <p className="product_description">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Deleniti, totam commodi corrupti eligendi eaque tempore voluptatem
-              dicta placeat porro est, esse cumque! Corrupti eos dicta quo
-              eveniet ea exercitationem commodi! Lorem, ipsum dolor sit amet
-              consectetur adipisicing elit. Deleniti, totam commodi corrupti
-              eligendi eaque tempore voluptatem dicta placeat porro est, esse
-              cumque! Corrupti eos dicta quo eveniet ea exercitationem commodi!
-            </p>
-
-            <Row gutter={[20, 20]}>
-              <Col xs={{ span: 12 }} md={{ span: 6 }} lg={{ span: 6 }}>
-                <div className="product_type">
-                  <h4>Type</h4>
-                  <Select
-                    defaultValue="lucy"
-                    style={{ width: 120 }}
-                    onChange={() => {}}
-                    className="select_type"
-                  >
-                    <Option value="jack">type 1</Option>
-                    <Option value="lucy">type 2</Option>
-                    <Option value="disabled">type 3</Option>
-                    <Option value="Yiminghe">type 4</Option>
-                  </Select>
-                </div>
-              </Col>
-              <Col xs={{ span: 12 }} md={{ span: 6 }} lg={{ span: 6 }}>
-                <div className="product_capacity">
-                  <h4>Capacity</h4>
-                  <Select
-                    defaultValue="lucy"
-                    style={{ width: 120 }}
-                    onChange={() => {}}
-                    className="select_type"
-                  >
-                    <Option value="jack">type 1</Option>
-                    <Option value="lucy">type 2</Option>
-                    <Option value="disabled">type 3</Option>
-                    <Option value="Yiminghe">type 4</Option>
-                  </Select>
-                </div>
-              </Col>
-              <Col xs={{ span: 12 }} md={{ span: 6 }} lg={{ span: 6 }}>
-                {" "}
-                <div className="product_size">
-                  <h4>Size</h4>
-                  <Select
-                    defaultValue="lucy"
-                    style={{ width: 120 }}
-                    onChange={() => {}}
-                    className="select_type"
-                  >
-                    <Option value="jack">type 1</Option>
-                    <Option value="lucy">type 2</Option>
-                    <Option value="disabled">type 3</Option>
-                    <Option value="Yiminghe">type 4</Option>
-                  </Select>
-                </div>
-              </Col>
-              <Col xs={{ span: 12 }} md={{ span: 6 }} lg={{ span: 6 }}>
-                {" "}
-                <div className="product_color">
-                  <h4>Color</h4>
-                  <Select
-                    defaultValue="lucy"
-                    style={{ width: 120 }}
-                    onChange={() => {}}
-                    className="select_type"
-                  >
-                    <Option value="jack">type 1</Option>
-                    <Option value="lucy">type 2</Option>
-                    <Option value="disabled">type 3</Option>
-                    <Option value="Yiminghe">type 4</Option>
-                  </Select>
-                </div>
-              </Col>
-              <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
-                <div className="product_qty">
-                  <h4>Quantity</h4>
-                  <div className="btn_container">
-                    <InputNumber
-                      //   type="number"
-                      defaultValue={qtyNumber}
-                      onChange={(e) => setQtyNumber(e)}
-                      className="qty_input"
-                      min={1}
-                    />
+      {loading ? (
+        <LoaderComponent />
+      ) : error ? (
+        <div>{error}</div>
+      ) : (
+        <Container>
+          <Row gutter={[20, 20]}>
+            <Col
+              xs={{ span: 24 }}
+              sm={{ span: 24 }}
+              md={{ span: 12 }}
+              lg={{ span: 12 }}
+            >
+              <Slider {...settings}>
+                {article.imgUrl?.map((img, index) => (
+                  <div key={index}>
+                    <img src={img.url} alt="" className="slide_image" />
                   </div>
-                </div>
-              </Col>
-              <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
-                <div className="product_share">
-                  <h4>Order :</h4>
-                  <button>
-                    <BsWhatsapp className="icon" /> order now via whatsapp{" "}
-                  </button>
-                </div>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-      </Container>
+                ))}
+              </Slider>
+            </Col>
+            <Col
+              xs={{ span: 24 }}
+              sm={{ span: 24 }}
+              md={{ span: 12 }}
+              lg={{ span: 12 }}
+            >
+              <h3 className="product_name">{article.name}</h3>
+              <h4 className="product_price">{article.price} Dir</h4>
+              <p className="product_description">{article.description}</p>
+
+              <Row gutter={[20, 20]}>
+                {article.type?.length > 0 && (
+                  <Col xs={{ span: 12 }} md={{ span: 6 }} lg={{ span: 6 }}>
+                    <div className="product_type">
+                      <h4>Type</h4>
+                      <Select
+                        defaultValue="lucy"
+                        style={{ width: 120 }}
+                        onChange={() => {}}
+                        className="select_type"
+                      >
+                        {article.type?.map((item, index) => (
+                          <Option key={index} value={index}>
+                            {item}
+                          </Option>
+                        ))}
+                      </Select>
+                    </div>
+                  </Col>
+                )}
+
+                {article.capacity?.length > 0 && (
+                  <Col xs={{ span: 12 }} md={{ span: 6 }} lg={{ span: 6 }}>
+                    <div className="product_capacity">
+                      <h4>Capacity</h4>
+                      <Select
+                        defaultValue="lucy"
+                        style={{ width: 120 }}
+                        onChange={() => {}}
+                        className="select_type"
+                      >
+                        {article.capacity?.map((item, index) => (
+                          <Option key={index} value={index}>
+                            {item}
+                          </Option>
+                        ))}
+                      </Select>
+                    </div>
+                  </Col>
+                )}
+
+                {article.size?.length > 0 && (
+                  <Col xs={{ span: 12 }} md={{ span: 6 }} lg={{ span: 6 }}>
+                    {" "}
+                    <div className="product_size">
+                      <h4>Size</h4>
+                      <Select
+                        defaultValue="lucy"
+                        style={{ width: 120 }}
+                        onChange={() => {}}
+                        className="select_type"
+                      >
+                        {article.size?.map((item, index) => (
+                          <Option key={index} value={index}>
+                            {item}
+                          </Option>
+                        ))}
+                      </Select>
+                    </div>
+                  </Col>
+                )}
+
+                {article.color?.length > 0 && (
+                  <Col xs={{ span: 12 }} md={{ span: 6 }} lg={{ span: 6 }}>
+                    {" "}
+                    <div className="product_color">
+                      <h4>Color</h4>
+                      <Select
+                        defaultValue="lucy"
+                        style={{ width: 120 }}
+                        onChange={() => {}}
+                        className="select_type"
+                      >
+                        {article.color?.map((item, index) => (
+                          <Option key={index} value={index}>
+                            {item}
+                          </Option>
+                        ))}
+                      </Select>
+                    </div>
+                  </Col>
+                )}
+
+                <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
+                  <div className="product_qty">
+                    <h4>Quantity</h4>
+                    <div className="btn_container">
+                      <InputNumber
+                        //   type="number"
+                        defaultValue={qtyNumber}
+                        onChange={(e) => setQtyNumber(e)}
+                        className="qty_input"
+                        min={1}
+                      />
+                    </div>
+                  </div>
+                </Col>
+                <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
+                  <div className="product_share">
+                    <h4>Order :</h4>
+                    <button>
+                      <BsWhatsapp className="icon" /> order now via whatsapp{" "}
+                    </button>
+                  </div>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+        </Container>
+      )}
     </MainContainer>
   );
 }
@@ -143,9 +190,12 @@ function ItemProduction() {
 const Container = styled.div`
   background-color: var(--dark-light-color);
   padding: 3rem 2rem;
+  min-height:50vh;
 
-  & .firs_image {
+  & .slide_image {
     width: 100%;
+    height: 400px;
+    object-fit: cover;
   }
 
   & .product_name {

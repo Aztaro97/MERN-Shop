@@ -118,49 +118,49 @@ const ProductSelling = () => {
 const CardProductList = () => {
   const data = [
     {
-      name: "category name 1",
+      name: "category 1",
       description: "lorem upsum description ",
       imgUrl:
         "https://images.unsplash.com/photo-1513521773210-0cc22dfee8db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
     },
     {
-      name: "category name 2",
+      name: "category 2",
       description: "lorem upsum description ",
       imgUrl:
         "https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
     },
     {
-      name: "category name 3",
+      name: "category 3",
       description: "lorem upsum description ",
       imgUrl:
         "https://images.unsplash.com/photo-1513521773210-0cc22dfee8db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
     },
     {
-      name: "category name 4",
+      name: "category 4",
       description: "lorem upsum description ",
       imgUrl:
         "https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
     },
     {
-      name: "category name 5",
+      name: "category 5",
       description: "lorem upsum description ",
       imgUrl:
         "https://images.unsplash.com/photo-1513521773210-0cc22dfee8db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
     },
     {
-      name: "category name 6",
+      name: "category 6",
       description: "lorem upsum description ",
       imgUrl:
         "https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
     },
     {
-      name: "category name 7",
+      name: "category 7",
       description: "lorem upsum description ",
       imgUrl:
         "https://images.unsplash.com/photo-1513521773210-0cc22dfee8db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
     },
     {
-      name: "category name 8",
+      name: "category 8",
       description: "lorem upsum description ",
       imgUrl:
         "https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",

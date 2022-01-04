@@ -4,26 +4,22 @@ import styled from "styled-components";
 import InputComponents from "../../InputComponents";
 import MainContainer from "../../MainContainer";
 import TextAreaComponent from "../../TextAreaComponent";
-import { UploadOutlined } from "@ant-design/icons";
+import { SyncOutlined, UploadOutlined } from "@ant-design/icons";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
 const { Option } = Select;
 
-const SelectComponent = ({ placeholder, data }) => {
+const SelectComponent = ({ placeholder, data, onChange }) => {
   const children = [];
 
-  data.map((item, index) => children.push(<Option key={index}>{item}</Option>));
-  //   for (let i = 0; i < data.length; i++) {
-  //     children.push(<Option key={i}>{data}</Option>);
-  //   }
+  data.map((item, index) => children.push(<Option key={item}>{item}</Option>));
 
-  function handleChange(value) {
-    console.log(`selected ${value}`);
-  }
   return (
     <SelectStyling
       mode="tags"
       style={{ width: "100%" }}
-      onChange={handleChange}
+      onChange={onChange}
       tokenSeparators={[","]}
       placeholder={placeholder}
     >
@@ -33,51 +29,76 @@ const SelectComponent = ({ placeholder, data }) => {
 };
 
 function FormRegisterProduct() {
-  const [name, setname] = useState("");
-  const [category, setcategory] = useState([]);
-  const [type, settype] = useState([]);
-  const [capacity, setcapacity] = useState([]);
-  const [size, setsize] = useState([]);
-  const [color, setcolor] = useState([]);
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState(null);
+  const [description, setDescripton] = useState("");
+  const [category, setCategory] = useState([]);
+  const [type, setType] = useState([]);
+  const [capacity, setCapacity] = useState([]);
+  const [size, setSize] = useState([]);
+  const [color, setColor] = useState([]);
 
-  const categoryData = ["Категория 1", "Категория 2", "Категория 3"];
+  const [loading, setLoading] = useState(false);
+  const [sended, setSended] = useState(false);
+  const [error, setError] = useState(false);
+
+  const [fileList, setFileList] = useState([]);
+
+  const categoryData = ["category 1", "category 2", "category 3", "category 4", "category 5", "category 6", "category 7", "category 8"];
   const typeData = ["Категория 1", "Категория 2", "Категория 3"];
   const capacityData = ["Категория 1", "Категория 2", "Категория 3"];
   const sizeData = ["Категория 1", "Категория 2", "Категория 3"];
   const colorData = ["Категория 1", "Категория 2", "Категория 3"];
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const { userInfo } = useSelector((state) => state.userLogin);
 
-    console.log(e)
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    // category.length &&
+
+    const config = {
+      headers: {
+        "content-type": "multipart/form-data",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
 
     const formData = new FormData();
     formData.append("name", name);
+    formData.append("price", price);
+    formData.append("description", description);
     formData.append("category", category);
     formData.append("type", type);
     formData.append("capacity", capacity);
     formData.append("size", size);
     formData.append("color", color);
-    // formData.append("file", e.target.files[0]);
+
+    for (var i = 0; i < fileList.length; i++) {
+      formData.append("imgfiles", fileList[i].originFileObj);
+    }
+
+    const res = await axios.post("/api/articles", formData, config);
+    if (res.data) {
+      setLoading(false);
+      setSended(true);
+    }
   };
 
   const props = {
     accept: "image/*",
-    name: "file",
+    name: "imgfiles",
+    headers: {
+      authorization: "authorization-text",
+    },
     onChange(info) {
-      if (info.file.status !== "uploading") {
-        console.log(info.file, info.fileList);
-      }
-      if (info.file.status === "done") {
-        alert(`${info.file.name} file uploaded successfully`);
-      } else if (info.file.status === "error") {
-        alert(`${info.file} file upload failed.`);
-      }
+      setFileList(info.fileList);
     },
   };
   return (
     <MainContainer>
-      <FormContainer onSubmit={handleSubmit}>
+      <FormContainer onSubmit={handleSubmit} sended={sended}>
         <h2 className="title">Create a new production Item</h2>
         <Row gutter={[10, 10]}>
           <Col
@@ -86,7 +107,14 @@ function FormRegisterProduct() {
             md={{ span: 12 }}
             lg={{ span: 12 }}
           >
-            <InputComponents placeholder="Product Name" type="text" />
+            <InputComponents
+              required
+              placeholder="Product Name"
+              type="text"
+              name="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
           </Col>
           <Col
             xs={{ span: 24 }}
@@ -94,7 +122,14 @@ function FormRegisterProduct() {
             md={{ span: 12 }}
             lg={{ span: 12 }}
           >
-            <InputComponents placeholder="Price" type="number" />
+            <InputComponents
+              required
+              placeholder="Price"
+              type="number"
+              name="price"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+            />
           </Col>
           <Col
             xs={{ span: 24 }}
@@ -103,9 +138,13 @@ function FormRegisterProduct() {
             lg={{ span: 12 }}
           >
             <TextAreaComponent
+              required
               placeholder="Product Descripton"
               style={{ width: "100%", height: "100%" }}
               rows="10"
+              name="description"
+              value={description}
+              onChange={(e) => setDescripton(e.target.value)}
             />
           </Col>
           <Col
@@ -119,22 +158,36 @@ function FormRegisterProduct() {
                 <SelectComponent
                   placeholder="Select Category"
                   data={categoryData}
+                  onChange={(value) => setCategory(value)}
                 />
               </Col>
               <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
-                <SelectComponent placeholder="Select Type" data={typeData} />
+                <SelectComponent
+                  placeholder="Select Type"
+                  data={typeData}
+                  onChange={(value) => setType(value)}
+                />
               </Col>
               <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
                 <SelectComponent
                   placeholder="Select Capacity"
                   data={capacityData}
+                  onChange={(value) => setCapacity(value)}
                 />
               </Col>
               <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
-                <SelectComponent placeholder="Select Size" data={sizeData} />
+                <SelectComponent
+                  placeholder="Select Size"
+                  data={sizeData}
+                  onChange={(value) => setSize(value)}
+                />
               </Col>
               <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
-                <SelectComponent placeholder="Select Color" data={colorData} />
+                <SelectComponent
+                  placeholder="Select Color"
+                  data={colorData}
+                  onChange={(value) => setColor(value)}
+                />
               </Col>
             </Row>
           </Col>
@@ -156,7 +209,16 @@ function FormRegisterProduct() {
             lg={{ span: 24 }}
           >
             <button type="submit" className="_btn">
-              save
+              {loading ? (
+                <>
+                  <SyncOutlined spin className="icon" />
+                  <span>Loading...</span>
+                </>
+              ) : sended ? (
+                "done"
+              ) : (
+                "save"
+              )}
             </button>
           </Col>
         </Row>
@@ -177,9 +239,15 @@ const FormContainer = styled.form`
   & ._btn {
     border: 1px solid var(--silver-color);
     outline: none;
-    background: transparent;
+    background: ${(props) => (props.sended ? "green" : "transparent")};
     padding: 5px 2rem;
     transition: all 0.3 ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    & .icon {
+    }
     &:hover {
       background: var(--silver-color);
       color: var(--dark-light-color);

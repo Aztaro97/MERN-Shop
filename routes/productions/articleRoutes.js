@@ -5,8 +5,9 @@ const {
   getArticleById,
   getArticleByCategory,
 } = require("../../controllers/productionController/articleController");
+const { protect, admin } = require("../../middleware/authMiddleware");
 
-router.route("/").post(CreateNewArticle);
+router.route("/").post(protect, CreateNewArticle);
 router.route("/:id").get(getArticleById);
 router.route("/filter/:category").get(getArticleByCategory);
 

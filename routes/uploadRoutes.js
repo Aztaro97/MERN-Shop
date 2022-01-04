@@ -10,17 +10,17 @@ const Product = require("../models/productModel")
 
 
 //   CONFIGURATION DE CLOUDINARY
-cloudinary.config({
-  cloud_name: "tarositeweb",
-  api_key: "474848126984384",
-  api_secret: "BWFY6C_AE8a2zI0YHfcVC8wsrjM",
+cloudinary.config({ 
+  cloud_name: 'au79code', 
+  api_key: '321974213445477', 
+  api_secret: 'iTj-DqanW5gHnssNfSmMdYLRMwI' 
 });
 
 async function uploadToCloudinary(locaFilePath) {
   var mainFolderName = "uploads";
   var filePathOnCloudinary = mainFolderName + "/" + locaFilePath;
 
-  return cloudinary.uploader.upload(locaFilePath);
+  return cloudinary.uploader.upload(filePathOnCloudinary);
 }
 
 var storage = multer.diskStorage({

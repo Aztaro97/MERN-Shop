@@ -43,6 +43,10 @@ import {
   advertisingReducer,
   messageReducer,
 } from "./reducers/advertisingReducer";
+import {
+  ArticlesReducer,
+  ArticlesDetailsReducer,
+} from "./reducers/articleReducer";
 
 const reducer = combineReducers({
   productList: productListReducer,
@@ -74,6 +78,8 @@ const reducer = combineReducers({
   advertising: advertisingReducer,
   adsDelete: adsDeleteReducer,
   userMessage: messageReducer,
+  ListCategorieArticles: ArticlesReducer,
+  articleDetails: ArticlesDetailsReducer,
 });
 
 const cartItemsFromStorage = localStorage.getItem("cartItems")

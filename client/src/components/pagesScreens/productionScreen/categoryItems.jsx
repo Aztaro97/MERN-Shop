@@ -1,14 +1,20 @@
 import { Col, Row } from "antd";
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import { getCategoriesArticle } from "../../../flux/actions/articleAction";
+import LoaderComponent from "../../loader";
 import MainContainer from "../../MainContainer";
 import CardItem from "./cardItem";
 
 function CategoryItems() {
   const params = useParams();
   const categoryName = params.category;
-  console.log(categoryName);
+
+  const { loading, error, articles } = useSelector(
+    (state) => state.ListCategorieArticles
+  );
 
   const dataProducts = [
     {
@@ -82,31 +88,43 @@ function CategoryItems() {
         "https://images.unsplash.com/photo-1524498250077-390f9e378fc0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80",
     },
   ];
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCategoriesArticle(categoryName));
+  }, [dispatch, categoryName]);
+
   return (
     <MainContainer>
-      <Container>
-        <h4 className="title">
-          Category: <span>{categoryName}</span>{" "}
-        </h4>
-        <Row gutter={[20, 40]} justify="space-between">
-          {dataProducts.map((item, index) => (
-            <Col
-              key={index}
-              xs={{ span: 12 }}
-              sm={{ span: 12 }}
-              md={{ span: 8 }}
-              lg={{ span: 6 }}
-            >
-              <CardItem
-                id={item.id}
-                name={item.name}
-                price={item.price}
-                img={item.img}
-              />
-            </Col>
-          ))}
-        </Row>
-      </Container>
+      {loading ? (
+        <LoaderComponent />
+      ) : error ? (
+        <div>{error}</div>
+      ) : (
+        <Container>
+          <h4 className="title">
+            Category: <span>{categoryName}</span>{" "}
+          </h4>
+          <Row gutter={[20, 40]} >
+            {articles?.map((item, index) => (
+              <Col
+                key={index}
+                xs={{ span: 12 }}
+                sm={{ span: 12 }}
+                md={{ span: 8 }}
+                lg={{ span: 6 }}
+              >
+                <CardItem
+                  id={item._id}
+                  name={item.name}
+                  price={item.price}
+                  img={item.imgUrl[0].url}
+                />
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      )}
     </MainContainer>
   );
 }
