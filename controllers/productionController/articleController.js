@@ -31,8 +31,9 @@ const parser = multer({ storage: storage });
 // @access  Private
 const CreateNewArticle = asyncHandler(async (req, res) => {
   try {
+    const data = JSON.parse(req.body.formData);
     const { name, description, price, category, type, capacity, size, color } =
-      req.body;
+      data;
     const imgUrlList = [];
 
     const files = req.files.imgfiles;

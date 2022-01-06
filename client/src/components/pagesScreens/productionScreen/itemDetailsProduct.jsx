@@ -16,6 +16,10 @@ const { Option } = Select;
 
 function ItemProduction() {
   const [qtyNumber, setQtyNumber] = useState(1);
+  const [type, setType] = useState([]);
+  const [capacity, setCapacity] = useState([]);
+  const [size, setSize] = useState([]);
+  const [color, setColor] = useState([]);
 
   const params = useParams();
   const articleId = params.id;
@@ -37,6 +41,15 @@ function ItemProduction() {
   };
 
   const sharingUrl = window.location.href;
+
+  const whatsappMessage = `Product Name: ${article?.name}, Price: ${
+    article?.price
+  } AED,  ${article?.type && `Type: ${article?.type}`}, ${article?.capacity &&
+    `Capacity: ${article?.capacity}`}, 
+    Quantity : ${qtyNumber}
+  `;
+
+  const whatsappLink = `https://wa.me/${`00971524655728`}?text=${whatsappMessage}`;
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -75,7 +88,7 @@ function ItemProduction() {
               lg={{ span: 12 }}
             >
               <h3 className="product_name">{article.name}</h3>
-              <h4 className="product_price">{article.price} Dir</h4>
+              <h4 className="product_price">{article.price} AED</h4>
               <p className="product_description">{article.description}</p>
 
               <Row gutter={[20, 20]}>
@@ -84,13 +97,13 @@ function ItemProduction() {
                     <div className="product_type">
                       <h4>Type</h4>
                       <Select
-                        defaultValue="lucy"
+                        defaultValue={article.type?.[0]}
                         style={{ width: 120 }}
-                        onChange={() => {}}
+                        onChange={(value) => setType(value)}
                         className="select_type"
                       >
                         {article.type?.map((item, index) => (
-                          <Option key={index} value={index}>
+                          <Option key={index} value={item}>
                             {item}
                           </Option>
                         ))}
@@ -104,9 +117,9 @@ function ItemProduction() {
                     <div className="product_capacity">
                       <h4>Capacity</h4>
                       <Select
-                        defaultValue="lucy"
+                        defaultValue={article.capacity?.[0]}
                         style={{ width: 120 }}
-                        onChange={() => {}}
+                        onChange={(value) => setCapacity(value)}
                         className="select_type"
                       >
                         {article.capacity?.map((item, index) => (
@@ -125,9 +138,9 @@ function ItemProduction() {
                     <div className="product_size">
                       <h4>Size</h4>
                       <Select
-                        defaultValue="lucy"
+                        defaultValue={article.size?.[0]}
                         style={{ width: 120 }}
-                        onChange={() => {}}
+                        onChange={(value) => setSize(value)}
                         className="select_type"
                       >
                         {article.size?.map((item, index) => (
@@ -146,9 +159,9 @@ function ItemProduction() {
                     <div className="product_color">
                       <h4>Color</h4>
                       <Select
-                        defaultValue="lucy"
+                        defaultValue={article.color?.[0]}
                         style={{ width: 120 }}
-                        onChange={() => {}}
+                        onChange={(value) => setColor(value)}
                         className="select_type"
                       >
                         {article.color?.map((item, index) => (
@@ -178,10 +191,10 @@ function ItemProduction() {
                 <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
                   <div className="product_share">
                     <h4>Order :</h4>
-                    {/* <button>
+                    <a href={whatsappLink} className="btn_share">
                       <BsWhatsapp className="icon" /> order now via whatsapp{" "}
-                    </button> */}
-                    <WhatsappShareButton
+                    </a>
+                    {/* <WhatsappShareButton
                       className="btn_share"
                       url={sharingUrl}
                       quote={"CampersTribe - World is yours to explore"}
@@ -189,7 +202,7 @@ function ItemProduction() {
                     >
                       <BsWhatsapp className="icon" />{" "}
                       <span>order now via whatsapp</span>
-                    </WhatsappShareButton>
+                    </WhatsappShareButton> */}
                   </div>
                 </Col>
               </Row>
@@ -271,10 +284,11 @@ const Container = styled.div`
       outline: none;
       border: none;
       padding: 8px 10px !important;
+      text-decoration: none;
+      color: #fff;
       & .icon {
         font-size: 1.5rem;
         margin-right: 10px;
-        color: #fff;
       }
       &:hover {
         opacity: 0.9;

@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 
 const { Option } = Select;
 
-const SelectComponent = ({ placeholder, data, onChange }) => {
+const SelectComponent = ({ placeholder, data, onChange, value }) => {
   const children = [];
 
   data.map((item, index) => children.push(<Option key={item}>{item}</Option>));
@@ -19,8 +19,10 @@ const SelectComponent = ({ placeholder, data, onChange }) => {
     <SelectStyling
       mode="tags"
       style={{ width: "100%" }}
+      value={value}
+      defaultValue={[]}
       onChange={onChange}
-      tokenSeparators={[","]}
+      // tokenSeparators={[","]}
       placeholder={placeholder}
     >
       {children}
@@ -44,19 +46,48 @@ function FormRegisterProduct() {
 
   const [fileList, setFileList] = useState([]);
 
-  const categoryData = ["category 1", "category 2", "category 3", "category 4", "category 5", "category 6", "category 7", "category 8"];
-  const typeData = ["Категория 1", "Категория 2", "Категория 3"];
-  const capacityData = ["Категория 1", "Категория 2", "Категория 3"];
-  const sizeData = ["Категория 1", "Категория 2", "Категория 3"];
-  const colorData = ["Категория 1", "Категория 2", "Категория 3"];
+  const categoryData = [
+    "category 1",
+    "category 2",
+    "category 3",
+    "category 4",
+    "category 5",
+    "category 6",
+    "category 7",
+    "category 8",
+  ];
+  const typeData = ["type 1", "type 2", "type 3"];
+  const capacityData = ["capacity 1", "capacity 2", "capacity 3"];
+  const sizeData = ["small", "Medium", "Large"];
+  const colorData = [
+    "black",
+    "white",
+    "red",
+    "blue",
+    "green",
+    "purple",
+    "brown",
+    "orange",
+    "yellow",
+    "",
+  ];
+
+  const body = {
+    name,
+    price,
+    description,
+    category,
+    type,
+    capacity,
+    size,
+    color,
+  };
 
   const { userInfo } = useSelector((state) => state.userLogin);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-
-    // category.length &&
 
     const config = {
       headers: {
@@ -65,15 +96,10 @@ function FormRegisterProduct() {
       },
     };
 
+    console.log(typeof category);
+
     const formData = new FormData();
-    formData.append("name", name);
-    formData.append("price", price);
-    formData.append("description", description);
-    formData.append("category", category);
-    formData.append("type", type);
-    formData.append("capacity", capacity);
-    formData.append("size", size);
-    formData.append("color", color);
+    formData.append("formData", JSON.stringify(body));
 
     for (var i = 0; i < fileList.length; i++) {
       formData.append("imgfiles", fileList[i].originFileObj);
@@ -86,6 +112,22 @@ function FormRegisterProduct() {
     }
   };
 
+  const handleCreate = () => {
+    setName("");
+    setPrice("");
+    setDescripton("");
+    setCategory([]);
+    setType([]);
+    setCapacity([]);
+    setSize([]);
+    setColor([]);
+    setFileList([]);
+
+    setSended(false);
+    setLoading(false);
+    setError(true);
+  };
+
   const props = {
     accept: "image/*",
     name: "imgfiles",
@@ -95,6 +137,7 @@ function FormRegisterProduct() {
     onChange(info) {
       setFileList(info.fileList);
     },
+    fileList: fileList,
   };
   return (
     <MainContainer>
@@ -158,6 +201,7 @@ function FormRegisterProduct() {
                 <SelectComponent
                   placeholder="Select Category"
                   data={categoryData}
+                  value={category}
                   onChange={(value) => setCategory(value)}
                 />
               </Col>
@@ -165,6 +209,7 @@ function FormRegisterProduct() {
                 <SelectComponent
                   placeholder="Select Type"
                   data={typeData}
+                  value={type}
                   onChange={(value) => setType(value)}
                 />
               </Col>
@@ -172,6 +217,7 @@ function FormRegisterProduct() {
                 <SelectComponent
                   placeholder="Select Capacity"
                   data={capacityData}
+                  value={capacity}
                   onChange={(value) => setCapacity(value)}
                 />
               </Col>
@@ -179,6 +225,7 @@ function FormRegisterProduct() {
                 <SelectComponent
                   placeholder="Select Size"
                   data={sizeData}
+                  value={size}
                   onChange={(value) => setSize(value)}
                 />
               </Col>
@@ -186,6 +233,7 @@ function FormRegisterProduct() {
                 <SelectComponent
                   placeholder="Select Color"
                   data={colorData}
+                  value={color}
                   onChange={(value) => setColor(value)}
                 />
               </Col>
@@ -208,18 +256,36 @@ function FormRegisterProduct() {
             md={{ span: 24 }}
             lg={{ span: 24 }}
           >
-            <button type="submit" className="_btn">
-              {loading ? (
-                <>
-                  <SyncOutlined spin className="icon" />
-                  <span>Loading...</span>
-                </>
-              ) : sended ? (
-                "done"
-              ) : (
-                "save"
-              )}
-            </button>
+            <Row justify="space-between">
+              <Col>
+                <button
+                  type="submit"
+                  className="_btn"
+                  disabled={sended && true}
+                >
+                  {loading ? (
+                    <>
+                      <SyncOutlined spin className="icon" />
+                      <span>Loading...</span>
+                    </>
+                  ) : sended ? (
+                    "done"
+                  ) : (
+                    "save"
+                  )}
+                </button>
+              </Col>
+              <Col>
+                {" "}
+                <button
+                  className="_btn_create"
+                  type="button"
+                  onClick={handleCreate}
+                >
+                  Add new product
+                </button>
+              </Col>
+            </Row>
           </Col>
         </Row>
       </FormContainer>
@@ -252,6 +318,13 @@ const FormContainer = styled.form`
       background: var(--silver-color);
       color: var(--dark-light-color);
     }
+  }
+
+  & ._btn_create {
+    border: 1px solid var(--silver-color);
+    background: var(--dark-color);
+    padding: 5px 2rem;
+    margin-top: 20px;
   }
 `;
 
