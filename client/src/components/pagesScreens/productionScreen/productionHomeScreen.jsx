@@ -174,16 +174,21 @@ const CardProductList = () => {
         <Title level={2} className="title">
           Categories of products
         </Title>
-        <Row gutter={[10, 40]} justify="center">
+        <Row gutter={[40, 40]} justify="center">
           {data.map((item, index) => (
-            <Col xs={{ span: 12 }} md={{ span: 8 }} key={item + index}>
+            <Col
+              xs={{ span: 24 }}
+              sm={{ span: 12 }}
+              md={{ span: 8 }}
+              key={item + index}
+            >
               <Card
                 onClick={() => history.push(`/production/${item.name}`)}
                 hoverable
                 className="product_card"
                 cover={<img alt="example" src={item.imgUrl} height="200px" />}
               >
-                <Meta title={item.name} description={item.description} />
+                <Meta title={item.name} />
               </Card>
             </Col>
           ))}
@@ -196,6 +201,9 @@ const CardProductList = () => {
 const Container = styled.div`
   & section {
     padding: 4rem 2rem;
+    @media only screen and (max-width: 548px) {
+      padding: 2rem 1rem;
+    }
   }
   & .portfolio {
     margin: 20px 0;
@@ -273,9 +281,10 @@ const ProductListStyling = styled.section`
     text-align: center;
     text-transform: uppercase;
     margin-bottom: 2rem;
+    font-size: 2rem;
   }
   & .product_card {
-    max-width: 240px;
+    width: 100%;
     margin: 0 auto;
   }
   & img {

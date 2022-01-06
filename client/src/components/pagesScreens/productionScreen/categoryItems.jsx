@@ -105,11 +105,11 @@ function CategoryItems() {
           <h4 className="title">
             Category: <span>{categoryName}</span>{" "}
           </h4>
-          <Row gutter={[20, 40]} >
+          <Row gutter={[40, 40]} >
             {articles?.map((item, index) => (
               <Col
                 key={index}
-                xs={{ span: 12 }}
+                xs={{ span: 24 }}
                 sm={{ span: 12 }}
                 md={{ span: 8 }}
                 lg={{ span: 6 }}
@@ -130,7 +130,7 @@ function CategoryItems() {
 }
 
 const Container = styled.div`
-  padding: 4rem 0;
+  padding: 4rem 1rem;
   & .title {
     color: var(--silver-color);
     text-transform: capitalize;

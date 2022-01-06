@@ -8,7 +8,9 @@ import { getArticleById } from "../../../flux/actions/articleAction";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Slider from "react-slick";
+import { WhatsappShareButton } from "react-share";
 import LoaderComponent from "../../loader";
+import "./production.css";
 
 const { Option } = Select;
 
@@ -23,15 +25,18 @@ function ItemProduction() {
   );
 
   const settings = {
-    dots: false,
+    dots: true,
     infinite: true,
     speed: 500,
     autoplay: true,
     autoplaySpeed: 5000,
     slidesToShow: 1,
     slidesToScroll: 1,
+    dotsClass: "dots__bar",
     // rtl: currentLang === "ar" ? true : false,
   };
+
+  const sharingUrl = window.location.href;
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -48,7 +53,7 @@ function ItemProduction() {
         <div>{error}</div>
       ) : (
         <Container>
-          <Row gutter={[20, 20]}>
+          <Row gutter={[40, 20]}>
             <Col
               xs={{ span: 24 }}
               sm={{ span: 24 }}
@@ -173,9 +178,18 @@ function ItemProduction() {
                 <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
                   <div className="product_share">
                     <h4>Order :</h4>
-                    <button>
+                    {/* <button>
                       <BsWhatsapp className="icon" /> order now via whatsapp{" "}
-                    </button>
+                    </button> */}
+                    <WhatsappShareButton
+                      className="btn_share"
+                      url={sharingUrl}
+                      quote={"CampersTribe - World is yours to explore"}
+                      hashtag="#au79code"
+                    >
+                      <BsWhatsapp className="icon" />{" "}
+                      <span>order now via whatsapp</span>
+                    </WhatsappShareButton>
                   </div>
                 </Col>
               </Row>
@@ -190,11 +204,11 @@ function ItemProduction() {
 const Container = styled.div`
   background-color: var(--dark-light-color);
   padding: 3rem 2rem;
-  min-height:50vh;
+  min-height: 50vh;
 
   & .slide_image {
     width: 100%;
-    height: 400px;
+    height: 300px;
     object-fit: cover;
   }
 
@@ -252,14 +266,15 @@ const Container = styled.div`
     & h4 {
       color: var(--orange-color);
     }
-    & button {
-      background: green;
+    & .btn_share {
+      background: green !important;
       outline: none;
       border: none;
-      padding: 8px 10px;
+      padding: 8px 10px !important;
       & .icon {
         font-size: 1.5rem;
         margin-right: 10px;
+        color: #fff;
       }
       &:hover {
         opacity: 0.9;

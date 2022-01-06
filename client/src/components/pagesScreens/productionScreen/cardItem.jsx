@@ -11,7 +11,6 @@ function CardItem({ id, name, price, img }) {
     <CardStyling
       onClick={() => history.push(`/production/item/${id}`)}
       hoverable
-      style={{ width: 220 }}
       cover={<img className="card_img" alt="example" src={img} />}
     >
       <Meta title={name} description={`${price} AED`} />
@@ -20,6 +19,8 @@ function CardItem({ id, name, price, img }) {
 }
 
 const CardStyling = styled(Card)`
+  width: 100%;
+  margin: 0 auto;
   &:hover {
     box-shadow: 0px 0px 6px 6px rgba(158, 159, 161, 0.31);
   }
