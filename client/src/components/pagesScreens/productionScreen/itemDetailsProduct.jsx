@@ -44,8 +44,8 @@ function ItemProduction() {
 
   const whatsappMessage = `Product Name: ${article?.name}, Price: ${
     article?.price
-  } AED,  ${article?.type && `Type: ${article?.type}`}, ${article?.capacity &&
-    `Capacity: ${article?.capacity}`}, 
+  } AED,  ${article?.type && `Type: ${type}`}, ${article?.capacity &&
+    `Capacity: ${article?.capacity && capacity}`}, 
     Quantity : ${qtyNumber}
   `;
 

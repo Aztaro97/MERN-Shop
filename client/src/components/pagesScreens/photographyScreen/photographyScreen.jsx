@@ -3,6 +3,7 @@ import styled from "styled-components";
 import MainContainer from "../../MainContainer";
 import { Col, Image, Row, Space, Typography } from "antd";
 import Button from "../../ButtonComponeent";
+import { Link } from "react-router-dom";
 const { Title, Paragraph } = Typography;
 
 function PhotographyScreen() {
@@ -12,14 +13,14 @@ function PhotographyScreen() {
     <MainContainer>
       <Banner>
         <div className="content">
-          <Title level={2}>Blind</Title>
+          <Title level={2}>The future of work !</Title>
           <Paragraph>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
-            cupiditate dolore
+            Our team are creative, fresh-thinking graduates, fully vetted with
+            solid writing experience. For great photos and videos
           </Paragraph>
-          <Button type="button" className="link">
-            contact today
-          </Button>
+          <Link to="/contact-us" className="link">
+            get in touch now
+          </Link>
         </div>
       </Banner>
       <GalleryContainer>
@@ -173,36 +174,40 @@ function PhotographyScreen() {
         </Row>
       </GalleryContainer>
       <ContactSection className="contact_section">
-        <Button className="button">contact us</Button>
-        <h4>Lorem ipsum dolor sit amet consectetur</h4>
+        <h4>Need creative support ?</h4>
+        <Link to="/contact-us" className="_link">
+          contact us
+        </Link>
       </ContactSection>
     </MainContainer>
   );
 }
 
 const ContactSection = styled.section`
-  margin-bottom: 20px;
   background: linear-gradient(to bottom, #11111176 0%, #00000099 100%),
     url("https://images.unsplash.com/photo-1633114128814-11fac33f707b?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80");
   padding: 20px;
   display: flex;
-  align-items: center;
+  align-items: start;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
   height: 200px;
   & > * {
     color: #fff;
   }
-  & .button {
-    border-radius: 50px;
+  & ._link {
+    display: inline-block;
+    border-radius: 10px;
     color: var(--orange-color);
-    padding: 20px auto !important;
     background: #fff;
-    min-width: 120px;
+    text-decoration: none;
+    padding: 5px 20px;
   }
   & h4 {
     font-weight: 700;
     font-size: 1.6rem;
     margin-bottom: 0;
-    padding: 10px;
   }
   @media only screen and (max-width: 600px) {
     & .button {
@@ -232,12 +237,25 @@ const Banner = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    letter-spacing: 1px;
     max-width: 400px;
     & > * {
       color: #fff;
     }
     & .link {
-      padding: 10px 0;
+      padding: 8px 2rem;
+      text-decoration: none;
+      text-transform: capitalize;
+      background: transparent;
+      letter-spacing: 1px;
+      border: 1px solid var(--silver-color);
+      transition: all 0.3s ease;
+      text-align: center;
+      border-radius: 5px;
+      &:hover {
+        background: var(--orange-color);
+        color: #fff;
+      }
     }
   }
   @media screen and (max-width: 678px) {

@@ -37,6 +37,7 @@ const CreateNewArticle = asyncHandler(async (req, res) => {
     const imgUrlList = [];
 
     const files = req.files.imgfiles;
+    console.log(req.files);
     if (files.length == 0) {
       return res.status(400).json({ msg: "No files were uploaded." });
     } else {
@@ -49,6 +50,15 @@ const CreateNewArticle = asyncHandler(async (req, res) => {
           public_id: result.public_id,
         });
       }
+    }
+
+    //  CONDITION IF IMGES NOT ARRAR
+    if (files.name) {
+      const result = await cloudinary.v2.uploader.upload(files.tempFilePath);
+      imgUrlList.push({
+        url: result.url,
+        public_id: result.public_id,
+      });
     }
 
     const article = new Articles({

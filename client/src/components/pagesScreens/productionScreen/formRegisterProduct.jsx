@@ -69,7 +69,6 @@ function FormRegisterProduct() {
     "brown",
     "orange",
     "yellow",
-    "",
   ];
 
   const body = {
@@ -87,7 +86,11 @@ function FormRegisterProduct() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
+    if (fileList.length === 0) {
+      return setError(true);
+    } else {
+      setLoading(true);
+    }
 
     const config = {
       headers: {
@@ -125,7 +128,7 @@ function FormRegisterProduct() {
 
     setSended(false);
     setLoading(false);
-    setError(true);
+    setError(false);
   };
 
   const props = {
@@ -249,6 +252,9 @@ function FormRegisterProduct() {
             <Upload {...props}>
               <Button icon={<UploadOutlined />}>Click to Images</Button>
             </Upload>
+            {error && (
+              <p style={{ color: "red", marginTop: 5 }}>Please select images</p>
+            )}
           </Col>
           <Col
             xs={{ span: 24 }}

@@ -1,15 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import MainContainer from "../../MainContainer";
 import { Card, Col, Image, Row, Space, Typography } from "antd";
 import Button from "../../ButtonComponeent";
 import styled from "styled-components";
 import { BsCodeSlash } from "react-icons/bs";
 import { Fade } from "react-reveal";
+import CountUp from "react-countup";
+import VisibilitySensor from "react-visibility-sensor";
 import VideoPlayer from "react-background-video-player";
 import { Link } from "react-router-dom";
 
 const { Title, Paragraph } = Typography;
 const { Meta } = Card;
+
+const NumberConter = ({ className, ...rest }) => {
+  const [viewPortEntered, setViewPortEntered] = useState(false);
+  return (
+    <CountUp {...rest} start={viewPortEntered ? null : 0}>
+      {({ countUpRef }) => {
+        return (
+          <VisibilitySensor
+            active={!viewPortEntered}
+            onChange={(isVisible) => {
+              if (isVisible) {
+                setViewPortEntered(true);
+              }
+            }}
+            delayedCall
+          >
+            <h4 className={className} ref={countUpRef} />
+          </VisibilitySensor>
+        );
+      }}
+    </CountUp>
+  );
+};
 
 function ProgrammingScreen() {
   return (
@@ -39,10 +64,6 @@ function ProgrammingScreen() {
           <Title level={2} className="title">
             top-rated web design company in uae
           </Title>
-          {/* <Paragraph className="para">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
-            cupiditate
-          </Paragraph> */}
           <Link to="/contact-us" className="link">
             contact us
           </Link>
@@ -50,8 +71,7 @@ function ProgrammingScreen() {
       </BannerSeconde>
       <FirstServiceStyling>
         <Fade bottom>
-          <p className="small_title">lorem ip lorem</p>
-          <h1 className="title">provides feature</h1>
+          <h1 className="title">our services</h1>
           <Row gutter={[40, 10]}>
             <Col
               xs={{ span: 24 }}
@@ -60,7 +80,6 @@ function ProgrammingScreen() {
               lg={{ span: 8 }}
             >
               <div className="service_card first_card">
-                {/* <BsCodeSlash className="service_card_icon" /> */}
                 <h5 className="service_card_title">Website Development</h5>
                 <p>
                   We're the best web development company in UEA that turns your
@@ -149,6 +168,63 @@ function ProgrammingScreen() {
           </Row>
         </Fade>
       </FirstServiceStyling>
+      <ThirsdSection>
+        <Fade bottom>
+          <Row gutter={[40, 10]}>
+            <Col xs={{ span: 24 }} lg={{ span: 12 }}>
+              <img
+                src="https://images.unsplash.com/photo-1475669698648-2f144fcaaeb1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
+                alt=""
+                className="image_down"
+              />
+              {/* <img
+            src="https://images.unsplash.com/photo-1475669698648-2f144fcaaeb1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
+            alt=""
+            className="image_up"
+            /> */}
+            </Col>
+            <Col xs={{ span: 24 }} lg={{ span: 12 }} style={{ margin: "auto" }}>
+              <div className="contenteContainer">
+                {/* <p> lorem Ipsum</p> */}
+                <h1>Discover the Best Ways to Design Your Website</h1>
+                <p>
+                  More than a website design company, we create websites that
+                  address your business needs & delight your audience.
+                </p>
+              </div>
+              <div className="numberContainer">
+                <div>
+                  <NumberConter
+                    className="number"
+                    duration={2}
+                    end={36}
+                    delay={1}
+                  />
+                  <h4>clients</h4>
+                </div>
+                <div>
+                  <NumberConter
+                    className="number"
+                    duration={3}
+                    end={120}
+                    delay={1}
+                  />
+                  <h4>designs per project</h4>
+                </div>
+                <div>
+                  <NumberConter
+                    className="number"
+                    duration={3}
+                    end={85}
+                    delay={1}
+                  />
+                  <h4>completed projects</h4>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </Fade>
+      </ThirsdSection>
       <SecondServiceStyling>
         <Fade bottom>
           <Row gutter={[30, 60]}>
@@ -178,57 +254,33 @@ function ProgrammingScreen() {
                 className="picture"
               />
             </Col>
-            <Col xs={{ span: 24 }}>
-              <div className="contact_container">
-                <Fade bottom>
-                  <Row gutter={[10, 10]}>
-                    <Col xs={{ span: 24 }} lg={{ span: 12 }}>
-                      <Title level={5} className="title_level_5">
-                        Lorem Ipsum
-                      </Title>
-                      <Title level={2} className="title_level_2">
-                        Lorem Ipsum
-                      </Title>
-                      <div className="contact_card">
-                        <img src="/img/programming/colaboration.png" alt="" />
-                        <div className="contact_card_body">
-                          <Row gutter={[30, 10]}>
-                            <Col xs={{ spaN: 12 }} lg={{ span: 12 }}>
-                              {/* <h3>Providing Solutions Of Every Kind</h3> */}
-                              <p></p>More than a website design company, we
-                              create websites that address your business needs &
-                              delight your audience.
-                            </Col>
-                            <Col xs={{ spaN: 12 }} lg={{ span: 12 }}>
-                              <Link to="/contact-us" className="_link">
-                                contact us
-                              </Link>
-                            </Col>
-                          </Row>
-                        </div>
-                      </div>
-                    </Col>
-                    <Col xs={{ span: 24 }} lg={{ span: 12 }}>
-                      <div className="content_right">
-                        <div>
-                          <img src="/img/programming/colaboration.png" alt="" />
-                          <h5>Lorem upsum</h5>
-                        </div>
-                        <div>
-                          <img src="/img/programming/colaboration.png" alt="" />
-                          <h5>Lorem upsum</h5>
-                        </div>
-                        <div>
-                          <img src="/img/programming/colaboration.png" alt="" />
-                          <h5>Lorem upsum</h5>
-                        </div>
-                      </div>
-                    </Col>
-                  </Row>
-                </Fade>
-              </div>
-            </Col>
           </Row>
+          <Fade bottom>
+            <Row gutter={[40, 10]} className="_row_container">
+              <Col xs={{ span: 24 }} lg={{ span: 12 }}>
+                <Title level={2} className="title_level_2">
+                  Discover the Best Ways to Design Your Website
+                </Title>
+                <div className="contact_card">
+                  <img src="/img/programming/colaboration.png" alt="" />
+                  <div className="contact_card_body">
+                    <Row gutter={[30, 10]}></Row>
+                  </div>
+                </div>
+              </Col>
+              <Col xs={{ span: 24 }} lg={{ span: 12 }}>
+                <div className="content">
+                  <p>
+                    More than a website design company, we create websites that
+                    address your business needs & delight your audience.
+                  </p>
+                  <Link to="/contact-us" className="_link">
+                    contact us
+                  </Link>
+                </div>
+              </Col>
+            </Row>
+          </Fade>
         </Fade>
       </SecondServiceStyling>
     </MainContainer>
@@ -442,69 +494,100 @@ const SecondServiceStyling = styled.section`
     z-index: 99;
   }
 
-  & .contact_container {
-    max-width: calc((var(--max-width) - 150px));
-    margin-left: auto;
-    background: var(--black-color);
-    padding: 30px;
-    margin-top: 3rem;
-    & .title_level_2,
-    & .title_level_5 {
+  & ._row_container {
+    margin-top: 5rem;
+    & img {
+      width: 100%;
+    }
+    display: flex;
+    & .title_level_2 {
       color: var(--silver-color);
     }
-    & .contact_card {
-      & img {
-        width: 100%;
+    & .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      & p {
+        color: var(--silver-color);
       }
-      & .contact_card_body {
-        padding: 20px;
-        background: var(--dark-light-color);
-        & h3 {
-          color: var(--white-color);
-          font-size: 1.1rem;
-          font-weight: 700;
-          letter-spacing: 1px;
-        }
-        & ._link {
-          /* max-width: 190px; */
-          padding: auto 5px !important;
+      & ._link {
+        padding: 5px 2rem;
+        background: transparent;
+        color: var(--silver-color);
+        text-decoration: none;
+        border: 1px solid var(--silver-color);
+        transition: all 0.3s ease;
+        &:hover {
+          color: #ffff;
           background: var(--orange-color);
-          border: none;
-          color: #fff;
-          padding: 5px 10px;
-          position: relative;
-          top: 50px;
-          text-decoration: none;
-          text-transform: uppercase;
-        }
-      }
-    }
-
-    & .content_right {
-      background: var(--dark-light-color);
-      padding: 20px;
-      & div {
-        display: flex;
-        align-items: center;
-        margin: 15px 0;
-        & img {
-          max-width: 200px;
-        }
-        & h5 {
-          padding: 20px 10px;
-          color: var(--silver-color);
-        }
-        @media screen and (max-width: 500px) {
-          flex-direction: column;
-          & img {
-            max-width: 100%;
-          }
         }
       }
     }
   }
+
   @media screen and (max-width: 768px) {
     padding: 20px 10px;
+  }
+`;
+
+const ThirsdSection = styled.section`
+  padding: 4rem 2rem;
+  & .image_down,
+  .image_up {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+  }
+  & .image_up {
+    position: absolute;
+    /* bottom: 200px; */
+    left: 0;
+  }
+
+  & .contenteContainer {
+    & p:first-child {
+      color: var(--orange-color);
+      margin-bottom: 0;
+    }
+    & h1 {
+      font-weight: 700;
+      text-transform: capitalize;
+      color: var(--white-color);
+    }
+    & p {
+      color: var(--silver-color);
+    }
+  }
+
+  & .numberContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    & div {
+      width: 100%;
+      text-align: center;
+      margin-top: 20px;
+      &:nth-child(2) {
+        border-right: 1px solid #333;
+        border-left: 1px solid #333;
+      }
+    }
+    & {
+      & .number {
+        font-size: 2rem;
+        font-weight: bold;
+        color: var(--orange-color);
+        letter-spacing: 2px;
+      }
+      & h4 {
+        font-size: 20px;
+        font-weight: 700;
+        text-transform: capitalize;
+        color: var(--orange-color);
+      }
+    }
   }
 `;
 

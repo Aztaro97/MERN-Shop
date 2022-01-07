@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import MainContainer from "../../MainContainer";
+import { Link } from "react-router-dom";
 import { Card, Col, Image, Row, Space, Typography } from "antd";
 import Button from "../../ButtonComponeent";
 import Slider from "react-slick";
@@ -16,14 +17,16 @@ function PrintingScreen() {
       <Container>
         <Banner>
           <div className="content">
-            <Title level={2}>Blind</Title>
+            <Title level={2}>
+              Shaping the future with Heat-Free Technology printers
+            </Title>
             <Paragraph className="para">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
-              cupiditate dolore earum perferendis asperiores culpa id esse
-              laborum quaerat
+              To emerge as a leader in overall print solutions through
+              consistently satisfying our customer requirements and offer our
+              exemplary services to a larger customer base.
             </Paragraph>
             <Button type="button" className="link">
-              contact today
+              contact us
             </Button>
           </div>
         </Banner>
@@ -35,17 +38,17 @@ function PrintingScreen() {
             <Row gutter={[10, 10]} justify="space-between">
               <Col xs={{ span: 12 }} md={{ span: 6 }}>
                 <div className="s1">
-                  <p>offset printing</p>
+                  <p>digital print</p>
                 </div>
               </Col>
               <Col xs={{ span: 12 }} md={{ span: 6 }}>
                 <div className="s2">
-                  <p>Printing for cups</p>
+                  <p>offset printing</p>
                 </div>
               </Col>
               <Col xs={{ span: 12 }} md={{ span: 6 }}>
                 <div className="s1">
-                  <p>digital printing</p>
+                  <p>Packaging</p>
                 </div>
               </Col>
               <Col xs={{ span: 12 }} md={{ span: 6 }}>
@@ -57,17 +60,13 @@ function PrintingScreen() {
           </Fade>
         </section>
         <ProductSelling />
-        <section className="portfolio">
-          <Fade bottom>
-            <Button className="button">Portfolio</Button>
-            <h4>Your one-step printing solution</h4>
-          </Fade>
-        </section>
         <CardProductList />
         <section className="contact_section">
           <Fade bottom>
-            <Button className="button">contact us</Button>
-            <h4>Lorem ipsum dolor sit amet consectetur</h4>
+            <h4 className="title">Get in touch with us</h4>
+            <Link to="/contact-us" className="link">
+              <Button className="button">contact us</Button>
+            </Link>
           </Fade>
         </section>
       </Container>
@@ -148,7 +147,7 @@ const CardProductList = () => {
     <ProductListStyling>
       <Fade bottom>
         <Title level={2} className="title">
-          Featured products
+          Related products
         </Title>
         <Row gutter={[10, 40]} justify="center">
           <Col xs={{ span: 12 }} md={{ span: 8 }}>
@@ -270,7 +269,7 @@ const Container = styled.div`
     & .title {
       text-transform: uppercase;
       text-align: center;
-      color: var(--white-color);
+      color: var(--silver-color);
       font-size: 1.8rem;
       margin-bottom: 2rem;
     }
@@ -316,41 +315,40 @@ const Container = styled.div`
     }
   }
 
-  & .portfolio {
-    margin: 20px 0;
-    background: linear-gradient(to bottom, #11111176 0%, #00000099 100%),
-      url("https://images.unsplash.com/photo-1633114128814-11fac33f707b?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80");
-    padding: 20px;
-    display: flex;
-    /* justify-content: space-between; */
-    align-items: center;
-    height: 200px;
-    & > * {
-      color: #fff;
-    }
-    & .button {
-      border-radius: 50px;
-      color: var(--orange-color);
-      padding: 20px auto !important;
-      background: #fff;
-    }
-    & h4 {
-      font-weight: 700;
-      font-size: 1.6rem;
-      margin-bottom: 0;
-      padding: 10px;
-      text-transform: capitalize;
-      letter-spacing: 1px;
-    }
-    @media only screen and (max-width: 600px) {
+  /* & .portfolio {
+      margin: 20px 0;
+      background: linear-gradient(to bottom, #11111176 0%, #00000099 100%),
+        url("https://images.unsplash.com/photo-1633114128814-11fac33f707b?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80");
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      height: 200px;
+      & > * {
+        color: #fff;
+      }
       & .button {
-        font-size: 0.8rem;
+        border-radius: 50px;
+        color: var(--orange-color);
+        padding: 20px auto !important;
+        background: #fff;
       }
       & h4 {
-        font-size: 1.2rem;
+        font-weight: 700;
+        font-size: 1.6rem;
+        margin-bottom: 0;
+        padding: 10px;
+        text-transform: capitalize;
+        letter-spacing: 1px;
       }
-    }
-  }
+      @media only screen and (max-width: 600px) {
+        & .button {
+          font-size: 0.8rem;
+        }
+        & h4 {
+          font-size: 1.2rem;
+        }
+      }
+    } */
   & .contact_section {
     margin: 20px 0;
     background: linear-gradient(to bottom, #11111176 0%, #00000099 100%),
@@ -359,11 +357,14 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     height: 200px;
-    & > * {
-      color: #fff;
+    & .title {
+      color:#fff;
+    }
+    & .link {
+      text-decoration: none;
     }
     & .button {
-      border-radius: 50px;
+      border-radius: 10px;
       color: var(--orange-color);
       padding: 20px auto !important;
       background: #fff;
@@ -388,7 +389,7 @@ const Container = styled.div`
 const ProductListStyling = styled.section`
   padding: 4rem 2rem;
   & .title {
-    color: var(--white-color);
+    color: var(--silver-color);
     text-align: center;
     text-transform: uppercase;
     font-size: 1.8rem;
@@ -410,7 +411,7 @@ const ProductStyling = styled.section`
   & .title {
     text-transform: uppercase;
     text-align: center;
-    color: var(--white-color);
+    color: var(--silver-color);
     font-size: 1.8rem;
     margin-bottom: 2rem;
   }
@@ -453,7 +454,7 @@ const Banner = styled.section`
 
     margin: 0 auto;
     & > * {
-      color: #fff;
+      color: var(--silver-color);
     }
     & .para {
       max-width: 400px;
@@ -461,8 +462,9 @@ const Banner = styled.section`
     }
     & .link {
       padding: 10px;
-      background: #fff;
-      color: #333;
+      background: transparent;
+      border: 1px solid var(--silver-color);
+      color: var(--silver-color);
       &:hover {
         opacity: 0.9;
       }

@@ -6,7 +6,7 @@ import Button from "../../ButtonComponeent";
 import Slider from "react-slick";
 import { Fade } from "react-reveal";
 import "./production.css";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const { Title, Paragraph } = Typography;
 const { Meta } = Card;
@@ -17,29 +17,33 @@ function ProductionScreen() {
       <Container>
         <Banner>
           <div className="content">
-            <Title level={2}>Blind</Title>
-            <Paragraph className="para">
+            <Title level={2}>
+              Delivering Top Quality Disposable Food Packaging in Dubai
+            </Title>
+            {/* <Paragraph className="para">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
               cupiditate dolore earum perferendis asperiores culpa id esse
               laborum quaerat
-            </Paragraph>
+            </Paragraph> */}
             <Button type="button" className="link">
-              contact today
+              contact us
             </Button>
           </div>
         </Banner>
         <ProductSelling />
-        <section className="portfolio">
+        {/* <section className="portfolio">
           <Fade bottom>
             <Button className="button">Portfolio</Button>
             <h4>Your one-step printing solution</h4>
           </Fade>
-        </section>
+        </section> */}
         <CardProductList />
         <section className="contact_section">
           <Fade bottom>
-            <Button className="button">contact Us</Button>
-            <h4>Lorem ipsum dolor sit amet consectetur</h4>
+            <h4>Get in touch with us</h4>
+            <Link to="/contact-us" className="link">
+              <Button className="button">contact us</Button>
+            </Link>
           </Fade>
         </section>
       </Container>
@@ -251,12 +255,14 @@ const Container = styled.div`
     & > * {
       color: #fff;
     }
+    & .link {
+      text-decoration: none;
+    }
     & .button {
-      border-radius: 50px;
+      border-radius: 10px;
       color: var(--orange-color);
       padding: 20px auto !important;
       background: #fff;
-      min-width: 120px;
     }
     & h4 {
       font-weight: 700;

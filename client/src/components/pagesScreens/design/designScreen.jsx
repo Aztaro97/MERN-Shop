@@ -41,14 +41,10 @@ function DesignScreen() {
     <MainComponent>
       <Banner>
         <div className="content">
-          <Title level={2}>
-            Developing a design concept is the most "fun" part of design
-            engineering. This is where our imaginations run free and we come up
-            with new and creative ideas.
-          </Title>
+          <Title level={2}>Get inspired by beautiful design !</Title>
           <Paragraph className="para">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
-            cupiditate dolore
+            {/* Our Professional Designers Ready To Create You The Perfect Logo, */}
+            {/* Website, Business Card & More! */}
           </Paragraph>
           <Button type="button" className="link">
             contact us
@@ -57,9 +53,9 @@ function DesignScreen() {
       </Banner>
       <FirstServiceStyling>
         <Fade bottom>
-          <p className="small_title">lorem ip lorem</p>
-          <h1 className="title">provides feature</h1>
-          <Row gutter={[40, 10]}>
+          {/* <p className="small_title">lorem ip lorem</p> */}
+          <h1 className="title">Our design services</h1>
+          <Row gutter={[40, 10]} justify="center">
             <Col
               xs={{ span: 24 }}
               sm={{ span: 12 }}
@@ -111,11 +107,11 @@ function DesignScreen() {
                 <BiPaint className="service_card_icon" />
                 <h5 className="service_card_title">Graphic Design</h5>
                 <ul className="service_group">
-                  <li>sous servie 1</li>
-                  <li>sous servie 1</li>
-                  <li>sous servie 1</li>
-                  <li>sous servie 1</li>
-                  <li>sous servie 1</li>
+                  <li>3D design </li>
+                  <li>Photoshop design</li>
+                  <li>Icon & vector design</li>
+                  <li>Book cover design</li>
+                  <li>Calendar & CD design</li>
                 </ul>
               </div>
             </Col>
@@ -131,11 +127,11 @@ function DesignScreen() {
                   Product & Merchandise Design{" "}
                 </h5>
                 <ul className="service_group">
-                  <li>sous servie 1</li>
-                  <li>sous servie 1</li>
-                  <li>sous servie 1</li>
-                  <li>sous servie 1</li>
-                  <li>sous servie 1</li>
+                  <li>Label Design</li>
+                  <li>Car Wrap Design</li>
+                  <li>T-shirt design </li>
+                  <li>packaging designs</li>
+                  <li>apparel designs</li>
                 </ul>
               </div>
             </Col>
@@ -149,15 +145,16 @@ function DesignScreen() {
                 <BiPaint className="service_card_icon" />
                 <h5 className="service_card_title">Web Design</h5>
                 <ul className="service_group">
-                  <li>sous servie 1</li>
-                  <li>sous servie 1</li>
-                  <li>sous servie 1</li>
-                  <li>sous servie 1</li>
-                  <li>sous servie 1</li>
+                  <li>App design </li>
+                  <li>landing page design</li>
+                  <li>wordpress design </li>
+                  <li>icon design</li>
+                  <li>email marketing design</li>
+                  <li>e-commerce design</li>
                 </ul>
               </div>
             </Col>
-            <Col
+            {/* <Col
               xs={{ span: 24 }}
               sm={{ span: 12 }}
               md={{ span: 12 }}
@@ -167,14 +164,14 @@ function DesignScreen() {
                 <BiPaint className="service_card_icon" />
                 <h5 className="service_card_title">Video Design</h5>
                 <ul className="service_group">
-                  <li>sous servie 1</li>
+                  <li>Shooting & editing</li>
                   <li>sous servie 1</li>
                   <li>sous servie 1</li>
                   <li>sous servie 1</li>
                   <li>sous servie 1</li>
                 </ul>
               </div>
-            </Col>
+            </Col> */}
           </Row>
         </Fade>
       </FirstServiceStyling>
@@ -195,13 +192,9 @@ function DesignScreen() {
             </Col>
             <Col xs={{ span: 24 }} lg={{ span: 12 }} style={{ margin: "auto" }}>
               <div className="contenteContainer">
-                <p> lorem Ipsum</p>
-                <h1>we are the leader in web design</h1>
-                <p>
-                  Developing a design concept is the most "fun" . This is where
-                  our imaginations run free and we come up with new and creative
-                  ideas.
-                </p>
+                {/* <p> lorem Ipsum</p> */}
+                <h1>Need creative support?</h1>
+                <p>Get the perfect custom design, every time</p>
               </div>
               <div className="numberContainer">
                 <div>
@@ -211,7 +204,7 @@ function DesignScreen() {
                     end={36}
                     delay={1}
                   />
-                  <h4>project</h4>
+                  <h4>clients</h4>
                 </div>
                 <div>
                   <NumberConter
@@ -220,7 +213,7 @@ function DesignScreen() {
                     end={120}
                     delay={1}
                   />
-                  <h4>project</h4>
+                  <h4>designs per project</h4>
                 </div>
                 <div>
                   <NumberConter
@@ -229,7 +222,7 @@ function DesignScreen() {
                     end={85}
                     delay={1}
                   />
-                  <h4>project</h4>
+                  <h4>completed projects</h4>
                 </div>
               </div>
             </Col>
@@ -241,11 +234,12 @@ function DesignScreen() {
           <Row gutter={[40, 10]}>
             <Col xs={{ span: 24 }} lg={{ span: 12 }}>
               <div className="contenteContainer">
-                <p> lorem Ipsum</p>
-                <h1>we are the leader in web design</h1>
+                {/* <p> lorem Ipsum</p> */}
+                <h1>
+                you just need to choose the best !
+                </h1>
                 <p>
-                  Developing a design concept is the most "fun" part of design
-                  engineering. This is where our imaginations run free and we
+                Our custom design starts at a low price with options to meet any budget.
                 </p>
               </div>
             </Col>
@@ -272,16 +266,18 @@ function DesignScreen() {
             <Col xs={{ span: 24 }} lg={{ span: 12 }}>
               <div className="contenteContainer">
                 <div className="contente">
-                  <h1>lorem Ipsum</h1>
-                  <p>Lorem ipsum dolor sit amet consectetur </p>
+                  <h1>
+                  More creativity 
+                  </h1>
+                  <p>With our designers across the globe competing on your project, you'll receive heaps of design ideas. </p>
                 </div>
                 <div className="contente">
-                  <h1>lorem Ipsum</h1>
-                  <p>Lorem ipsum dolor sit amet consectetur </p>
+                  <h1>A world of design</h1>
+                  <p>Our Professional Designers Ready To Create You The Perfect Logo, Website, Business Card & More! </p>
                 </div>
                 <div className="contente">
-                  <h1>lorem Ipsum</h1>
-                  <p>Lorem ipsum dolor sit amet consectetur </p>
+                  <h1>Money back guarantee</h1>
+                  <p>If you're not satisfied with the designs and don't get the perfect design for your business, get your money back </p>
                 </div>
               </div>
             </Col>
@@ -293,20 +289,16 @@ function DesignScreen() {
         <Fade bottom>
           <Row gutter={[40, 10]}>
             <Col xs={{ span: 24 }} lg={{ span: 12 }}>
-              <h1>lorem ipsum</h1>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Mollitia non beatae sint possimus ipsa ducimus vero, neque, qui
-                nulla
-              </p>
-            </Col>
-            <Col xs={{ span: 24 }} lg={{ span: 12 }}>
+              <h1>Let's get started</h1>
               <div className="contact_container">
                 <Link to="/contact-us">
                   <button className="button">Contact us</button>
                 </Link>
               </div>
             </Col>
+            {/* <Col xs={{ span: 24 }} lg={{ span: 12 }}>
+              
+            </Col> */}
           </Row>
         </Fade>
       </ContactService>
@@ -325,10 +317,10 @@ const ContactService = styled.section`
   }
 
   & .contact_container {
-    height: 100%;
+    /* height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
     & .button {
       margin: auto;
       background: #fff;
@@ -418,7 +410,7 @@ const ThirstServiceStyling = styled.section`
         letter-spacing: 2px;
       }
       & h4 {
-        font-size: 20px;
+        font-size: 1rem;
         font-weight: 700;
         text-transform: capitalize;
       }
