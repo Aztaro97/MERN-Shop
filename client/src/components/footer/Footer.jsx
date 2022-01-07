@@ -117,18 +117,18 @@ function FooterScrren() {
               </Link>
             </li>
             <li className="footer-item">
-              <Link to="/" className="link">
+              <Link to="/about" className="link">
                 About us
               </Link>
             </li>
             <li className="footer-item">
               <Link to="/private-policy" className="link">
-                privacy policy
+                Privacy Policy
               </Link>
             </li>
             <li className="footer-item">
-              <Link to="/" className="link">
-                term & conditions
+              <Link to="/term" className="link">
+                Term & Conditions
               </Link>
             </li>
           </ul>
@@ -209,7 +209,7 @@ const FooterContainer = styled.footer`
       & .link {
         color: #c8d6e5;
         text-decoration: none;
-        text-transform: capitalize;
+        /* text-transform: capitalize; */
         margin-bottom: 0;
         &:hover {
           color: var(--orange-color);
