@@ -127,7 +127,7 @@ function FooterScrren() {
               </Link>
             </li>
             <li className="footer-item">
-              <Link to="/term" className="link">
+              <Link to="/terms" className="link">
                 Term & Conditions
               </Link>
             </li>
