@@ -473,6 +473,8 @@ const Banner = styled.section`
   @media screen and (max-width: 678px) {
     height: 300px;
     & .content {
+      justify-content: end;
+      padding-bottom: 20px;
       & > * {
         margin: 0;
       }

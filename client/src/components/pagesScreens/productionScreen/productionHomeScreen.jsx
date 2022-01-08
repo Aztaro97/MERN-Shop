@@ -178,12 +178,13 @@ const CardProductList = () => {
         <Title level={2} className="title">
           Categories of products
         </Title>
-        <Row gutter={[40, 40]} justify="center">
+        <Row gutter={[20, 40]} justify="center">
           {data.map((item, index) => (
             <Col
               xs={{ span: 24 }}
               sm={{ span: 12 }}
               md={{ span: 8 }}
+              lg={{ span: 6 }}
               key={item + index}
             >
               <Card
@@ -364,6 +365,8 @@ const Banner = styled.section`
   }
   @media screen and (max-width: 678px) {
     height: 300px;
+    justify-content: end;
+    padding-bottom: 20px;
     & .content {
       & > * {
         margin: 0;

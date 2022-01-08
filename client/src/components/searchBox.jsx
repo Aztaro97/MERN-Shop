@@ -50,6 +50,9 @@ const Form = styled.form`
       border: 1px solid var(--dark-light-color);
       cursor: pointer;
     }
+    &::placeholder {
+      color: var(--dark-light-color);
+    }
   }
 
   & button {
@@ -71,13 +74,14 @@ const Form = styled.form`
   }
 
   @media only screen and (max-width: 900px) {
+    gap: 2px;
     & input {
-      width: 100px;
+      width: 120px;
     }
   }
   @media only screen and (max-width: 768px) {
     & input {
-      width: 90px;
+      width: 130px;
     }
   }
 `;

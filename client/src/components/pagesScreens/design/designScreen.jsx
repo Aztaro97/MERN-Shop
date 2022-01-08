@@ -235,11 +235,10 @@ function DesignScreen() {
             <Col xs={{ span: 24 }} lg={{ span: 12 }}>
               <div className="contenteContainer">
                 {/* <p> lorem Ipsum</p> */}
-                <h1>
-                you just need to choose the best !
-                </h1>
+                <h1>you just need to choose the best !</h1>
                 <p>
-                Our custom design starts at a low price with options to meet any budget.
+                  Our custom design starts at a low price with options to meet
+                  any budget.
                 </p>
               </div>
             </Col>
@@ -266,18 +265,25 @@ function DesignScreen() {
             <Col xs={{ span: 24 }} lg={{ span: 12 }}>
               <div className="contenteContainer">
                 <div className="contente">
-                  <h1>
-                  More creativity 
-                  </h1>
-                  <p>With our designers across the globe competing on your project, you'll receive heaps of design ideas. </p>
+                  <h1>More creativity</h1>
+                  <p>
+                    With our designers across the globe competing on your
+                    project, you'll receive heaps of design ideas.{" "}
+                  </p>
                 </div>
                 <div className="contente">
                   <h1>A world of design</h1>
-                  <p>Our Professional Designers Ready To Create You The Perfect Logo, Website, Business Card & More! </p>
+                  <p>
+                    Our Professional Designers Ready To Create You The Perfect
+                    Logo, Website, Business Card & More!{" "}
+                  </p>
                 </div>
                 <div className="contente">
                   <h1>Money back guarantee</h1>
-                  <p>If you're not satisfied with the designs and don't get the perfect design for your business, get your money back </p>
+                  <p>
+                    If you're not satisfied with the designs and don't get the
+                    perfect design for your business, get your money back{" "}
+                  </p>
                 </div>
               </div>
             </Col>
@@ -583,6 +589,8 @@ const Banner = styled.section`
   @media screen and (max-width: 678px) {
     height: 300px;
     & .content {
+      justify-content: end;
+      padding-bottom: 20px;
       & > * {
         margin: 0;
       }

@@ -259,6 +259,10 @@ const Banner = styled.div`
     }
   }
   @media screen and (max-width: 678px) {
+    & .content {
+      justify-content: end;
+      padding-bottom: 20px;
+    }
     height: 300px;
   }
 `;
@@ -283,6 +287,12 @@ const GalleryContainer = styled.section`
     width: 100% !important;
     height: 410px;
     object-fit: cover;
+    @media only screen and (max-width: 768px) {
+      height: 300px;
+    }
+    @media only screen and (max-width: 528px) {
+      height: 200px;
+    }
   }
 `;
 
