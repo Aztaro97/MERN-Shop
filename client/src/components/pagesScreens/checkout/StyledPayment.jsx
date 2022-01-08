@@ -198,6 +198,10 @@ export const ContainerCart = styled.div`
   padding: 2rem;
   height: 100%;
 
+  & .card__title, & .card__price {
+    color: var(--silver-color);
+  }
+
   & hr {
     border: none;
     outline: none;

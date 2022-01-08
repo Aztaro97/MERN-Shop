@@ -113,7 +113,10 @@ function Payment() {
     console.log(ShippingCost);
   }
 
-  const handlePlaceOrder = () => {
+  //   Function handle Save Shipping Address
+  const handlePlaceOrder = (e) => {
+    e.preventDefault();
+    
     dispatch(savePaymentMethod(paymentMethod));
     dispatch(saveShippingAddress(shipping));
     if (saveShippingCheck) {
@@ -125,6 +128,7 @@ function Payment() {
         shippingAddress:
           sameShipping === "sameAdress" ? shippingAddress : shipping,
         paymentMethod: paymentMethod,
+        // paymentInfo: "Credit card info",
         itemsPrice: itemsPrice,
         shippingPrice: ShippingCost,
         // taxPrice: taxPrice,
@@ -137,8 +141,8 @@ function Payment() {
     if (paymentMethod === "credit") {
       history.push(`/checkout/${newOrder._id}`);
       dispatch({ type: USER_DETAILS_RESET });
-      dispatch({ type: ORDER_CREATE_RESET });
     } else {
+      dispatch({ type: ORDER_CREATE_RESET });
       dispatch({
         type: CART_CLEAR_ITEMS,
       });

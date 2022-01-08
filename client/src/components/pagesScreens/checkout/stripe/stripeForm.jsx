@@ -14,6 +14,7 @@ import styled from "styled-components";
 import { payOrder, createOrder } from "../../../../flux/actions/orderAction";
 import { CART_CLEAR_ITEMS } from "../../../../flux/constants/cartConstants";
 import LoaderComponent from "../../../loader";
+import { Col, Row } from "antd";
 
 const CARD_OPTIONS = {
   iconStyle: "solid",
@@ -36,7 +37,7 @@ const CARD_OPTIONS = {
   },
 };
 
-export default function PaymentForm({totalPrice}) {
+export default function PaymentForm({ totalPrice }) {
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [numbercard, setnumbercar] = useState("");
   const stripe = useStripe();
@@ -46,9 +47,11 @@ export default function PaymentForm({totalPrice}) {
   const history = useHistory();
 
   const { shippingAddress, cartItems } = useSelector((state) => state.cart);
-  const { order, loading, error } = useSelector((state) => state.orderCreate);
+  // const { order, loading, error } = useSelector((state) => state.orderCreate);
 
- 
+  const { order: orderDetails, loading, error } = useSelector(
+    (state) => state.orderDetails
+  );
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -57,7 +60,7 @@ export default function PaymentForm({totalPrice}) {
       return;
     }
 
-    // ///  Check the payment valid
+    //  Check the payment valid
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card: elements.getElement(CardNumberElement),
@@ -91,10 +94,9 @@ export default function PaymentForm({totalPrice}) {
         );
 
         if (response.data.paymentSuccess) {
-          console.log("Successful payment");
           setPaymentSuccess(true);
           payOrder(response.data);
-          payOrder(order._id, {
+          payOrder(orderDetails._id, {
             id: response.data.payment.id,
             status: response.data.payment.status,
             email_address: response.data.payment.receipt_email,
@@ -120,29 +122,33 @@ export default function PaymentForm({totalPrice}) {
         <>
           {!paymentSuccess ? (
             <Form onSubmit={(e) => handleSubmit(e)}>
-              <Row>
-                <CardNumberElement
-                  className="input_card"
-                  options={CARD_OPTIONS}
-                />
-              </Row>
+              <h4>Card Information</h4>
+              <Row gutter={[10, 10]}>
+                <Col xs={{ span: 24 }}>
+                  <CardNumberElement
+                    className="input_card"
+                    options={CARD_OPTIONS}
+                  />
+                </Col>
+                <Col xs={{ span: 24 }}>
+                  <CardExpiryElement
+                    className="input_card"
+                    options={CARD_OPTIONS}
+                  />
+                </Col>
+                <Col xs={{ span: 24 }}>
+                  <CardCvcElement
+                    className="input_card"
+                    options={CARD_OPTIONS}
+                  />
+                </Col>
 
-              <Row>
-                <CardExpiryElement
-                  className="input_card"
-                  options={CARD_OPTIONS}
-                />
+                <Col xs={{ span: 24 }}>
+                  <button type="submit" disabled={!stripe}>
+                    Pay {orderDetails.totalPrice} AED
+                  </button>
+                </Col>
               </Row>
-
-              <Row>
-                <CardCvcElement className="input_card" options={CARD_OPTIONS} />
-              </Row>
-              {/* <Row>
-                <CardElement options={CARD_OPTIONS} />
-              </Row> */}
-              <button type="submit"  disabled={!stripe}>
-                Pay {totalPrice} AED
-              </button>
             </Form>
           ) : (
             <div>
@@ -158,18 +164,21 @@ export default function PaymentForm({totalPrice}) {
   );
 }
 
-const Row = styled.div`
-  margin: 5px 0;
+const Form = styled.form`
+  & h4 {
+    color: var(--silver-color);
+    margin-bottom: 20px;
+  }
   & .input_card {
     margin: 0;
     color: var(--silver-color);
     width: 100%;
     min-width: 0;
     padding: 0.7rem 11px;
-    border: 3px solid var(--background-color);
-    border-radius: 10px;
+    border: 1px solid var(--silver-color);
+    border-radius: 5px;
     transition: all 0.3s;
-    background: #fff;
+    background: transparent;
     letter-spacing: 2px;
     /* height: 2.9725rem; */
     /* line-height: 2.9725rem; */
@@ -177,20 +186,18 @@ const Row = styled.div`
       height: 3.5rem;
     }
   }
-`;
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 
   & button {
     outline: none;
-    border: 1px solid var(--background-color);
-    border-radius: 10px;
+    /* border: 1px solid var(--silver-color); */
+    border-radius: 5px;
     background: var(--orange-color);
-    color: #fff;
-    padding: 6px;
-    font-weight: 700;
+    color: var(--white-color);
+    padding: 6px 0;
+    width: 100%;
+    letter-spacing: 2px;
+    &:hover {
+      opacity: 0.9;
+    }
   }
 `;

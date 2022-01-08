@@ -25,7 +25,7 @@ function CompletePayement() {
     (state) => state.orderDetails
   );
 
-  const cartItems = order?.cartItems
+  const cartItems = order?.cartItems;
 
   // const { loading: loadingShipping, shippingAddress, cartItems } = useSelector(
   //   (state) => state.cart
@@ -62,101 +62,64 @@ function CompletePayement() {
         <LoaderComponent />
       ) : (
         <MainContainer>
-          <Header>
-            <Link className="link" onClick={() => history.goBack()}>
-              Back
-            </Link>
-            <h2>COMPLETE PAYEMENT</h2>
-          </Header>
-          <Row>
-            <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 12 }}>
-              <SectionLeft>
-                <div>
-                  <h4>Card Information</h4>
-                  <StripePayment totalPrice={totalPrice} />
-                </div>
-              </SectionLeft>
-            </Col>
-            <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 12 }}>
-              <ContainerCart>
-                {cartItems?.length > 0 &&
-                  cartItems.map((item) => (
-                    <Card key={item._id}>
-                      <div class="card__image">
-                        <img src={item.image} alt="" />
-                        <p className="quantity">{item.qty}</p>
-                      </div>
-                      <div class="card__details">
-                        <h1 class="card__title">{item.name}</h1>
-                        <h1 class="card__price">{item.price} AED</h1>
-                      </div>
-                    </Card>
-                  ))}
+          <Container>
+            <Header>
+              <a href="#/" onClick={() => history.goBack()}>
+                Back
+              </a>
+              <h2>COMPLETE PAYEMENT</h2>
+            </Header>
+            <Row style={{padding: "0 10px"}}>
+              <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 12 }}>
+                <StripePayment totalPrice={totalPrice} />
+              </Col>
+              <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 12 }}>
+                <ContainerCart>
+                  {cartItems?.length > 0 &&
+                    cartItems.map((item) => (
+                      <Card key={item._id}>
+                        <div class="card__image">
+                          <img src={item.image} alt="" />
+                          <p className="quantity">{item.qty}</p>
+                        </div>
+                        <div class="card__details">
+                          <h1 class="card__title">{item.name}</h1>
+                          <h1 class="card__price">{item.price} AED</h1>
+                        </div>
+                      </Card>
+                    ))}
 
-                <hr />
-                <div className="solde">
-                  <h1>subtotal</h1>
-                  <h1>
-                    aed{" "}
-                    {cartItems?.reduce((acc, item) => acc + item.qty * item.price, 0)
-                      .toFixed(2)}{" "}
-                  </h1>
-                </div>
-                <div className="solde">
-                  <h1>shipping</h1>
-                  <h1>aed {shippingPrice}</h1>
-                </div>
-                <hr />
-                <div className="solde">
-                  <h1>subtotal</h1>
-                  <h1>aed {totalPrice}</h1>
-                </div>
-              </ContainerCart>
-            </Col>
-          </Row>
+                  <hr />
+                  <div className="solde">
+                    <h1>subtotal</h1>
+                    <h1>
+                      aed{" "}
+                      {cartItems
+                        ?.reduce((acc, item) => acc + item.qty * item.price, 0)
+                        .toFixed(2)}{" "}
+                    </h1>
+                  </div>
+                  <div className="solde">
+                    <h1>shipping</h1>
+                    <h1>aed {shippingPrice}</h1>
+                  </div>
+                  <hr />
+                  <div className="solde">
+                    <h1>subtotal</h1>
+                    <h1>aed {totalPrice}</h1>
+                  </div>
+                </ContainerCart>
+              </Col>
+            </Row>
+          </Container>
         </MainContainer>
       )}
     </>
   );
 }
 
-const SectionLeft = styled.div`
-  padding: 2rem;
-  border: 1px solid #ececec;
-
-  & h1 {
-    color: var(--orange-color);
-    text-transform: uppercase;
-  }
-  & p {
-    color: var(--silver-color);
-    margin-bottom: 0;
-  }
-  & .btn {
-    position: relative;
-    top: 3rem;
-  }
-  & .row {
-    display: flex;
-    /* justify-content: center; */
-    align-items: center;
-
-    & .link {
-      color: var(--orange-color);
-      /* margin-left: 2rem; */
-    }
-
-    & .link_back {
-      color: var(--orange-color);
-      margin-left: 2rem;
-      text-transform: uppercase;
-      font-weight: 700;
-    }
-  }
-  @media only screen and (max-width: 768px) {
-    margin-bottom: 2rem;
-    grid-row-start: 2;
-  }
+const Container = styled.div`
+  margin-top: 2rem;
 `;
 
 const Header = styled.div`
@@ -164,12 +127,17 @@ const Header = styled.div`
   width: 100%;
   padding: 0 1rem;
 
-  & .link {
+  & a {
     text-decoration: none;
-    color: #000;
+    color: var(--silver-color);
+    padding: 5px 10px;
+    border: 1px solid var(--silver-color);
     font-weight: 700;
     position: relative;
     top: 1.4rem;
+    &:hover {
+      opacity: 0.8;
+    }
   }
 
   & h2 {
@@ -182,7 +150,7 @@ const Header = styled.div`
 `;
 
 const ContainerCart = styled.div`
-  background: var(--orange-color);
+  background: transparent;
   padding: 2rem;
   & hr {
     border: none;
@@ -217,9 +185,10 @@ const ContainerCart = styled.div`
       font-size: 1rem;
       font-weight: 700;
       text-transform: uppercase;
+      color: var(--silver-color);
     }
     & h1:nth-child(2) {
-      color: #fff;
+      color: var(--silver-color);
     }
   }
   @media only screen and (max-width: 768px) {
