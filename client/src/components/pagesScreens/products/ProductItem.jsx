@@ -78,6 +78,9 @@ const Card = styled.div`
       & .ant-image-img {
         height: 150px;
         object-fit: cover;
+        @media only screen and (max-width: 500px) {
+          height: 100px;
+        }
       }
     }
   }
@@ -152,9 +155,8 @@ const Button = styled.button`
   color: var(--white-color);
   text-transform: capitalize;
   text-align: center;
-  border-radius: 1rem;
+  border-radius: 10px;
   padding: 0.4rem 0;
-  /* display: block; */
   width: 100%;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -162,6 +164,7 @@ const Button = styled.button`
   letter-spacing: 1px;
   & .icon {
     fill: #fff !important;
+    color: #fff !important;
   }
   &:hover {
     background: var(--orange-color);

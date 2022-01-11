@@ -22,6 +22,9 @@ const CategoryProduct = lazy(() =>
 const EditProductScreen = lazy(() =>
   import("./components/pagesScreens/ProductsAndCompany/editProductScreen")
 );
+const ProductDetailsScreen = lazy(() =>
+  import("./components/pagesScreens/products/ProductDetailsScreen")
+);
 const MyProductAndCompanyComponent = lazy(() =>
   import("./components/pagesScreens/ProductsAndCompany/tabs")
 );
@@ -236,7 +239,8 @@ function App() {
           />
           <Route path="/categories/:category" component={CategoryProduct} />
           <Route path="/products" component={ProductsShop} />
-          <Route path="/product/:id" component={EditProductScreen} />
+          <Route path="/product/edit/:id" component={EditProductScreen} />
+          <Route path="/product/:id" component={ProductDetailsScreen} />
           <Route path="/myproducts" component={MyProductAndCompanyComponent} />
           <Route path="/e-commerce" component={EcommerceHomeComponent} />
           <Route path="/companies" component={CompanyListComponent} />

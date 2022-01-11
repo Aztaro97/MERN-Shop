@@ -105,7 +105,7 @@ const ViewProducts = () => {
                       </h2>
                       <Button
                         type="button"
-                        onClick={() => history.push(`/product/${product._id}`)}
+                        onClick={() => history.push(`/product/edit/${product._id}`)}
                       >
                         edit
                       </Button>

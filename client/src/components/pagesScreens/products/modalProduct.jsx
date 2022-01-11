@@ -62,7 +62,7 @@ const GalleryImg = ({ product }) => {
     if (product.imageUrl.length > 0) {
       setCurrentImg(product.imageUrl[0].url);
     }
-  }, []);
+  }, [product]);
 
   return (
     <GallerieStyling>
@@ -108,7 +108,7 @@ const ProductDetails = ({ product, setShowModal }) => {
     companyInfo
   ) => {
     addToCartHandler(productId, qty, sizeSelected, colorSelected, companyInfo);
-    Event("product", "Product added to cart", productId);
+    // Event("product", "Product added to cart", productId);
   };
 
   return (
