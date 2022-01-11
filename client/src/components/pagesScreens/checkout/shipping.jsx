@@ -115,7 +115,7 @@ function Checkout() {
             </a>
             <h2>CHECK OUT</h2>
           </Header>
-          <Row>
+          <Row gutter={[10, 40]}>
             <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 12 }}>
               <Form onSubmit={handleSubmit}>
                 <Row gutter={[10, 10]}>
@@ -287,6 +287,9 @@ function Checkout() {
 
 const SectionRight = () => {
   const { cartItems } = useSelector((state) => state.cart);
+  const addDecimal = (num) => {
+    return (Math.round(num * 100) / 100).toFixed(2);
+  };
   return (
     <ContainerCart>
       {cartItems.length > 0 &&
@@ -302,15 +305,21 @@ const SectionRight = () => {
             </div>
           </Card>
         ))}
-      <hr />
+      {/* <hr />
       <div className="solde">
         <h1>subtotal</h1>
         <h1>aed 200.00</h1>
-      </div>
+      </div> */}
       <hr />
       <div className="solde">
-        <h1>subtotal</h1>
-        <h1>aed 400.00</h1>
+        <h1>Total</h1>
+        <h1>
+          {" "}
+          aed{" "}
+          {cartItems
+            .reduce((acc, item) => acc + item.qty * item.price, 0)
+            .toFixed(2)}{" "}
+        </h1>
       </div>
     </ContainerCart>
   );
@@ -409,6 +418,7 @@ const ContainerCart = styled.div`
     }
   }
 `;
+
 const Card = styled.div`
   display: flex;
 
@@ -437,10 +447,6 @@ const Card = styled.div`
       @media only screen and (max-width: 768px) {
         bottom: 11rem;
         left: 7.5rem;
-      }
-      @media only screen and (max-width: 430px) {
-        bottom: 13rem;
-        left: 9rem;
       }
     }
   }

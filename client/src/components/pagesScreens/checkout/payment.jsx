@@ -30,10 +30,10 @@ import {
   Form,
   Border,
   Grid,
-  ContainerCart,
   Card,
   RadioB,
 } from "./StyledPayment";
+import CardItemDetails from "./cardDetails";
 
 function Payment() {
   const [saveShippingCheck, setSaveShippingCheck] = useState(false);
@@ -51,7 +51,9 @@ function Payment() {
   const [paymentMethod, setPaymentMethod] = useState("credit");
   const [sameShipping, setSameShipping] = useState("sameAdress");
   const [subTotal, setSubTotal] = useState(Number);
-  let ShippingCost = 0;
+
+  //   Shipping Fees
+  let ShippingCost = 45;
 
   const shipping = {
     firstName,
@@ -110,13 +112,12 @@ function Payment() {
 
   if (!loading) {
     ShippingCostCalculate();
-    console.log(ShippingCost);
   }
 
   //   Function handle Save Shipping Address
   const handlePlaceOrder = (e) => {
     e.preventDefault();
-    
+
     dispatch(savePaymentMethod(paymentMethod));
     dispatch(saveShippingAddress(shipping));
     if (saveShippingCheck) {
@@ -196,7 +197,7 @@ function Payment() {
                     <h2>address</h2>
                     <p>
                       {shippingAddress.address}, {shippingAddress.city} ,
-                      {shippingAddress.region} /{shippingAddress.country}
+                      {shippingAddress.region} / {shippingAddress.country}
                     </p>
                     <Link className="link" to="/shipping">
                       Change
@@ -206,7 +207,7 @@ function Payment() {
                   <div className="_row">
                     <div className="price">
                       <h2>shipping cost</h2>
-                      <p>aed 50.00</p>
+                      <p>aed {ShippingCost.toFixed(2)}</p>
                     </div>
                   </div>
                 </Border>
@@ -295,7 +296,7 @@ function Payment() {
               </Form>
             </Col>
             <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 12 }}>
-              <SectionRight
+              <CardItemDetails
                 cartItems={cartItems}
                 ShippingCost={ShippingCost}
                 totalPrice={totalPrice}
@@ -307,60 +308,6 @@ function Payment() {
     </MainContainer>
   );
 }
-
-const SectionRight = ({ cartItems, ShippingCost, totalPrice }) => {
-  //  Calculate function
-  const addDecimal = (num) => {
-    return (Math.round(num * 100) / 100).toFixed(2);
-  };
-  return (
-    <ContainerCart>
-      {cartItems.map((item, index) => (
-        <Card key={index}>
-          <div class="card__image">
-            <img src={item.image} alt="" />
-            <p className="quantity">{item.qty}</p>
-          </div>
-          <div class="card__details">
-            <h1 class="card__title">{item.name}</h1>
-            <h1 class="card__price">{addDecimal(item.price)} AED</h1>
-          </div>
-        </Card>
-      ))}
-
-      {/* <hr />
-      <form action="">
-        <input type="text" placeholder="DISCOUNT CODE" />
-        <ButtonC>apply</ButtonC>
-      </form> */}
-      <hr />
-      <div className="solde">
-        <h1>subtotal</h1>
-        <h1>
-          aed{" "}
-          {cartItems
-            .reduce((acc, item) => acc + item.qty * item.price, 0)
-            .toFixed(2)}{" "}
-        </h1>
-      </div>
-      <div className="solde">
-        <h1>shipping</h1>
-        <h1>aed {ShippingCost}</h1>
-      </div>
-      <hr />
-      <div className="solde">
-        <h1>total</h1>
-        <h1>
-          aed{" "}
-          {(
-            cartItems.reduce((acc, item) => acc + item.qty * item.price, 0) +
-            ShippingCost
-          ).toFixed(2)}{" "}
-        </h1>
-      </div>
-    </ContainerCart>
-  );
-};
 
 const SectionShippingAddress = ({
   shipping,
@@ -486,30 +433,56 @@ const SectionShippingAddress = ({
 };
 
 const CountryDropdownCustom = styled(CountryDropdown)`
-  border: 3px solid var(--background-color);
   color: var(--slider-color);
-  padding-left: 0.4rem;
-  max-width: 230px;
+  padding: 5px 11px;
+  border: 1px solid #ffffff34;
+  outline: none;
+  border-radius: 5px;
+  transition: all 0.3s;
+  background: var(--dark-color);
+  letter-spacing: 2px;
+  width: 100%;
+  height: 2.5rem;
   &:focus {
-    border: 3px solid var(--background-color);
+    outline: none;
+    background: var(--dark-color);
+    color: var(--white-color);
   }
   &:focus-visible {
-    border: 3px solid var(--background-color);
     outline: none;
+    background: var(--dark-color);
+    color: var(--silver-color);
+  }
+  @media only screen and (max-width: 768px) {
+    /* height: 2.5rem; */
+  }
+  @media only screen and (max-width: 330px) {
+    width: 100%;
   }
 `;
 
 const RegionDropdownCustom = styled(RegionDropdown)`
-  border: 3px solid var(--background-color);
   color: var(--slider-color);
-  padding-left: 0.4rem;
-  max-width: 230px;
+  padding: 5px 11px;
+  border: 1px solid #ffffff34;
+  outline: none;
+  border-radius: 5px;
+  transition: all 0.3s;
+  background: var(--dark-color);
+  letter-spacing: 2px;
+  width: 100%;
+  height: 2.5rem;
   &:focus {
-    border: 3px solid var(--background-color);
+    outline: none;
+    background: var(--dark-color);
+    color: var(--silver-color);
   }
   &:focus-visible {
     border: 3px solid var(--background-color);
     outline: none;
+  }
+  @media only screen and (max-width: 768px) {
+    height: 2.5rem;
   }
 `;
 

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { FaTimesCircle, FcPaid } from "react-icons/all";
+import { FaTimesCircle, FcPaid, GiPlainCircle } from "react-icons/all";
 import MainContainer from "../../MainContainer";
 import { useDispatch, useSelector } from "react-redux";
 import { listMyOrders } from "../../../flux/actions/orderAction";
@@ -9,6 +9,9 @@ import { useHistory } from "react-router";
 import moment from "moment";
 import ErrorServerPage from "../ErrorServerPage";
 import { Link } from "react-router-dom";
+import { Col, Row } from "antd";
+
+const emptyImg = "/img/ecommerce/empty.jpg";
 
 function OrdersScreen() {
   const dispatch = useDispatch();
@@ -20,6 +23,8 @@ function OrdersScreen() {
   if (!userInfo) {
     history.push("/auth");
   }
+
+  // const orderItems = orders && orders.orderItems;
 
   useEffect(() => {
     dispatch(listMyOrders());
@@ -34,7 +39,55 @@ function OrdersScreen() {
         <ErrorServerPage />
       ) : (
         <MainContainer>
-          <OrderContainer>
+          <Container>
+            <h3 className="title">My Order History</h3>
+
+            {orders.map((order) => (
+              <div className="_card" key={order._id}>
+                {order.isDelivered ? (
+                  <div className="_status">
+                    <GiPlainCircle className="icon delivery" />{" "}
+                    <span>
+                      Delivery on{" "}
+                      {moment(order.deliveredAt).format("DD.MM.YYYY, h:mm a")}{" "}
+                    </span>
+                  </div>
+                ) : (
+                  <div className="_status">
+                    <GiPlainCircle className="icon" /> <span>dispatched</span>
+                  </div>
+                )}
+                <Row className="_card_item" gutter={[40, 20]}>
+                  <Col xs={{ span: 24 }} md={{ span: 12 }}>
+                    {order.orderItems.map((item, index) => (
+                      <div className="_product_row" key={index}>
+                        <div>
+                          <img
+                            src={
+                              item.image[0] !== "false"
+                                ? item.image[0]
+                                : emptyImg
+                            }
+                            alt=""
+                            className="product_img"
+                          />
+                        </div>
+                        <div>
+                          <p className="product_name">{item.name}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </Col>
+                  <Col xs={{ span: 24 }} md={{ span: 12 }}>
+                    <Link to={`/order/${order._id}`} className="_link">
+                      view order details
+                    </Link>
+                  </Col>
+                </Row>
+              </div>
+            ))}
+          </Container>
+          {/* <OrderContainer>
             <h3>My Order</h3>
             <Table>
               <thead>
@@ -55,7 +108,6 @@ function OrdersScreen() {
                       {moment(order.createdAt).format("MMM DD, YYYY")}
                     </td>
                     <td>{order.totalPrice} dh</td>
-                    {/* <td>{order.user && order.user.name}</td> */}
 
                     <td>
                       {order.isPaid ? (
@@ -70,7 +122,6 @@ function OrdersScreen() {
                     </td>
                     <td>
                       {order.isDelivered ? (
-                        // order.deliveredAt.substring(0, 10)
                         moment(order.deliveredAt).format("DD.MM.YYYY, h:mm a")
                       ) : (
                         <FaTimesCircle style={{ color: "#ff7979" }} />
@@ -88,12 +139,73 @@ function OrdersScreen() {
                 <h4>You have not placed any orders !!!</h4>
               </div>
             )}
-          </OrderContainer>
+          </OrderContainer> */}
         </MainContainer>
       )}
     </>
   );
 }
+
+const Container = styled.div`
+  padding: 2rem;
+
+  & .title {
+    color: var(--orange-color);
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  & ._card {
+    padding: 10px;
+    background: var(--dark-light-color);
+    margin-bottom: 2rem;
+    & ._status {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      padding: 10px 0;
+      color: var(--silver-color);
+      & .icon {
+        color: var(--orange-color);
+      }
+      & .icon.delivery {
+        color: var(--silver-color);
+      }
+    }
+    & ._card_item {
+      & ._product_row {
+        border-bottom: 1px solid #ffffff22;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 10px;
+        padding: 10px !important;
+        background: var(--dark-color);
+      }
+
+      & .product_name {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--silver-color);
+      }
+      & ._link {
+        border: 1px solid var(--silver-color);
+        padding: 8px 2rem 0.5rem;
+        color: var(--silver-color);
+        text-decoration: none;
+        letter-spacing: 1px;
+        display: inline-block;
+        &:hover {
+          opacity: 0.9;
+        }
+      }
+    }
+    & .product_img {
+      width: 100px;
+      height: 100%;
+    }
+  }
+`;
 
 const OrderContainer = styled.div`
   padding: 0 1rem;

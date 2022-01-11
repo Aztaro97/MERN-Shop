@@ -39,7 +39,7 @@ function CartComponent({ location }) {
         <h2 className="title">Shoping Cart</h2>
       </Header>
       {error && <h1>Error : {error}</h1>}
-      <CartContent>
+      <Container>
         {cartItems.length === 0 ? (
           <EmptyCart>
             <h5>Your Cart item is currently Empty</h5>
@@ -144,18 +144,12 @@ function CartComponent({ location }) {
             </Row>
           </>
         )}
-      </CartContent>
+      </Container>
     </MainContainer>
   );
 }
 
-const Container = styled.div`
-  max-width: var(--max-width);
-  margin: 7rem auto 0;
-  @media only screen and (max-width: 1100px) {
-    padding: 0 2rem;
-  }
-`;
+
 
 const Row = styled.div`
   & hr {
@@ -221,8 +215,8 @@ const Header = styled.div`
   }
 `;
 
-const CartContent = styled.div`
-  padding: 1rem 0 3rem 0;
+const Container = styled.div`
+  padding: 1rem 2rem;
 `;
 
 const GridTop = styled.div`

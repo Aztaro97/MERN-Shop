@@ -83,7 +83,9 @@ function SelectLangButton() {
 }
 
 const SelectStyling = styled(Select)`
+  max-width: 130px !important;
   & .ant-select-selector {
+    padding: 0 !important;
     /* border: 1px solid var(--orange-color) !important; */
     /* border-radius: 30px !important; */
     border: none !important;
@@ -106,7 +108,6 @@ const SelectStyling = styled(Select)`
     }
     & .ant-select-selector {
       border-radius: 0px !important;
-      /* border: none !important; */
       padding: 0 !important;
     }
   }

@@ -2,12 +2,21 @@
   --background-color: #e2c3c3;
   /* --orange-color: #c68787; */
   --orange-color: #aa7a13;
+  --orange-900-color: #be8915;
+  --orange-800-color: #d39817;
+  --orange-700-color: #e6a61c;
+  --orange-600-color: #e8ae30;
+  --orange-500-color: #eab645;
+  --orange-400-color: #edbe5a;
+  --orange-300-color: #efc66e;
+  --orange-200-color: #f1ce83;
+  --orange-100-color: #f6dfac;
   --silver-color: #9e9fa1;
   --white-color: #fff;
   --border-color: #e9e6e6;
   --jungle-color: #49c4d3;
   --dark-color: #212121;
-  --dark-light-color: #3D3D3D;
+  --dark-light-color: #3d3d3d;
   --gray-color: #93a3b3;
   --max-width: 1000px;
   --box-shadow-value: var(--silver-color) 0px 0px 3px;

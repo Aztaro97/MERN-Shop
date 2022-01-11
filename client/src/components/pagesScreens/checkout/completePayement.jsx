@@ -14,8 +14,11 @@ import StripePayment from "../checkout/stripe/stripeContainer";
 import piture from "../../../img/card_pic.png";
 import LoaderComponent from "../../loader";
 import { Col, Row } from "antd";
+import CardItemDetails from "./cardDetails";
 
 function CompletePayement() {
+  let ShippingCost = 45;
+
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -25,7 +28,7 @@ function CompletePayement() {
     (state) => state.orderDetails
   );
 
-  const cartItems = order?.cartItems;
+  const cartItems = order?.orderItems;
 
   // const { loading: loadingShipping, shippingAddress, cartItems } = useSelector(
   //   (state) => state.cart
@@ -69,46 +72,16 @@ function CompletePayement() {
               </a>
               <h2>COMPLETE PAYEMENT</h2>
             </Header>
-            <Row style={{padding: "0 10px"}}>
+            <Row style={{ padding: "0 10px" }}>
               <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 12 }}>
                 <StripePayment totalPrice={totalPrice} />
               </Col>
               <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 12 }}>
-                <ContainerCart>
-                  {cartItems?.length > 0 &&
-                    cartItems.map((item) => (
-                      <Card key={item._id}>
-                        <div class="card__image">
-                          <img src={item.image} alt="" />
-                          <p className="quantity">{item.qty}</p>
-                        </div>
-                        <div class="card__details">
-                          <h1 class="card__title">{item.name}</h1>
-                          <h1 class="card__price">{item.price} AED</h1>
-                        </div>
-                      </Card>
-                    ))}
-
-                  <hr />
-                  <div className="solde">
-                    <h1>subtotal</h1>
-                    <h1>
-                      aed{" "}
-                      {cartItems
-                        ?.reduce((acc, item) => acc + item.qty * item.price, 0)
-                        .toFixed(2)}{" "}
-                    </h1>
-                  </div>
-                  <div className="solde">
-                    <h1>shipping</h1>
-                    <h1>aed {shippingPrice}</h1>
-                  </div>
-                  <hr />
-                  <div className="solde">
-                    <h1>subtotal</h1>
-                    <h1>aed {totalPrice}</h1>
-                  </div>
-                </ContainerCart>
+                <CardItemDetails
+                  cartItems={cartItems}
+                  ShippingCost={ShippingCost}
+                  totalPrice={totalPrice}
+                />
               </Col>
             </Row>
           </Container>

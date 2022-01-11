@@ -334,9 +334,12 @@ const HeaderContainer = styled.header`
 
   /* position: ${({ scrollNav }) =>
     scrollNav ? "-webkit-sticky !important" : "relative"}; */
-  position: ${({ scrollNav }) => (scrollNav ? "sticky !important" : "sticky")};
+  position: ${({ scrollNav }) => (scrollNav ? "sticky" : "sticky")};
   top: 0;
   z-index: 100;
+  @media only screen and (max-width:768px) {
+    position: inherit !important;
+  }
 `;
 
 const HeaderTop = styled.div`

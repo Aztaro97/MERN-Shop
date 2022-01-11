@@ -5,7 +5,7 @@ import { Image, Modal } from "antd";
 import ModalContent from "../products/modalProduct";
 import { GrView } from "react-icons/gr";
 
-import "./ProductItem.css"
+import "./ProductItem.css";
 
 const empty_pc = "/img/ecommerce/empty.jpg";
 
@@ -85,7 +85,6 @@ const Card = styled.div`
   & .card_body {
     text-align: center;
     padding: 0.9rem 0;
-    /* @media only screen and (max-width: 500px) {} */
 
     & .card_name {
       font-weight: 700;
@@ -117,7 +116,7 @@ const Card = styled.div`
       gap: 5px;
       & .price {
         color: #49c4d3;
-        margin:0;
+        margin: 0;
         padding: 0;
         margin-bottom: 0.6rem;
         font-size: 1rem;
@@ -126,7 +125,7 @@ const Card = styled.div`
       }
       & .compare_price {
         text-decoration: line-through;
-        margin:0;
+        margin: 0;
         padding: 0;
         margin-bottom: 0.6rem;
         font-size: 1rem;
@@ -136,8 +135,14 @@ const Card = styled.div`
       }
     }
   }
-
- 
+  @media only screen and (max-width: 500px) {
+    & .card_body {
+      padding: 0.1rem 0;
+    }
+    & .card_price {
+      padding: 0.1rem 0 !important;
+    }
+  }
 `;
 
 const Button = styled.button`

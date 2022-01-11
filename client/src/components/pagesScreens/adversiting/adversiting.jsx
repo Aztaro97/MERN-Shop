@@ -262,6 +262,7 @@ const CardShopStyling = styled.div`
     margin-bottom: 10px;
     margin-left: 5px;
     margin-right: 5px;
+    object-fit: cover;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     &:hover {
@@ -285,6 +286,11 @@ const CardShopStyling = styled.div`
         font-size: 1rem;
         transition: all 0.3s ease-in-out;
       }
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    & .box {
+      height: 200px;
     }
   }
 `;

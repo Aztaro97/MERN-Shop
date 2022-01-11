@@ -61,8 +61,17 @@ function PlaceOrder() {
         <div>{error}</div>
       ) : (
         <Container>
-          <h2 className="id_title">Order Id : {order._id}</h2>
-          <Row className="row_container" gutter={[20, 10]}>
+          <HeaderOrder>
+            <Link className="link" onClick={() => history.goBack()}>
+              Back
+            </Link>
+          </HeaderOrder>
+          <Row className="row_container" gutter={[40, 10]}>
+            <Col xs={{ span: 24 }}>
+              <h2 className="id_title">
+                Order Id : <span>{order._id}</span>{" "}
+              </h2>
+            </Col>
             <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 14 }}>
               <div>
                 <h1 className="title">shipping address</h1>
@@ -148,33 +157,28 @@ function PlaceOrder() {
                 {!order.isPaid && (
                   <div className="checkout">
                     <Link className="link" to={`/checkout/${order._id}`}>
-                      <TiShoppingCart className="icon" /> checkout
+                      <span>checkout</span> <TiShoppingCart className="icon" />
                     </Link>
                   </div>
                 )}
               </div>
             </Col>
           </Row>
-          <FooterOrder>
-            <Link className="link" onClick={() => history.goBack()}>
-              Back
-            </Link>
-          </FooterOrder>
         </Container>
       )}
     </MainContainer>
   );
 }
 
-const FooterOrder = styled.div`
+const HeaderOrder = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 2px 20px;
   & .link {
-    color: #333;
-    background: #ececec;
-    padding: 10px 20px;
+    border: 1px solid var(--silver-color);
+    color: var(--silver-color);
+    padding: 8px 20px;
     text-decoration: none;
     transition: all 0.3s ease-in-out;
     &:hover {
@@ -186,47 +190,60 @@ const FooterOrder = styled.div`
 
 const Container = styled.div`
   padding: 30px 0;
+
   & .id_title {
     font-size: 1.4rem;
     font-weight: 400;
     text-transform: uppercase;
+    font-weight: 700;
+    color: var(--orange-color);
+    margin: 10px 0;
+    letter-spacing: 1px;
+    & span {
+      color: var(--silver-color);
+    }
   }
 
   & .title {
     font-size: 1.5rem;
     font-weight: 700;
     text-transform: uppercase;
-    color: #333333da;
+    color: var(--orange-color);
+    letter-spacing: 1px;
   }
   & p {
-    color: #333;
+    color: var(--silver-color);
+    letter-spacing: 1px;
   }
   & .row_container {
     padding: 20px;
 
     & .status_paid {
-      background: #22a6b3;
+      background: var(--orange-700-color);
       padding: 2px 20px;
-      color: #fff;
+      color: var(--dark-color);
       margin: 0 5px;
+      letter-spacing: 1px;
     }
     & .status_not_paid {
-      background: #ff7f50;
+      background: var(--orange-600-color);
+      color: var(--dark-color);
       padding: 2px 20px;
       margin: 0 5px;
+      letter-spacing: 1px;
     }
   }
 
   & .card_summary {
-    background: #ececec;
+    background: var(--dark-light-color);
     color: #fff;
     padding: 20px;
     & .title {
-      color: #333;
+      color: var(--orange-color);
       text-transform: uppercase;
     }
     & p {
-      color: #333;
+      color: var(--silver-color);
     }
   }
 
@@ -234,16 +251,21 @@ const Container = styled.div`
     text-align: center;
 
     & .link {
-      background: #22a6b3;
+      background: var(--orange-600-color);
       text-align: center;
       padding: 10px 20px;
-      color: #fff !important;
+      color: var(--dark-color);
       font-size: 1.4rem;
       text-decoration: none;
+      text-transform: capitalize;
+      letter-spacing: 1px;
       margin: 10px 0;
       display: inline-block;
       & .icon {
-        font-size: 4rem;
+        font-size: 2rem;
+      }
+      &:hover {
+        opacity: 0.9;
       }
     }
   }
