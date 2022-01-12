@@ -455,6 +455,10 @@ const BottomHeader = styled.div`
       display: none;
     }
   }
+
+  @media only screen and (max-width: 768px) {
+    padding: 0 1rem;
+  }
 `;
 
 const Nav = styled.ul`

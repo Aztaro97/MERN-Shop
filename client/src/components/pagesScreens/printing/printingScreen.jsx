@@ -20,11 +20,11 @@ function PrintingScreen() {
             <Title level={2}>
               Shaping the future with Heat-Free Technology printers
             </Title>
-            <Paragraph className="para">
+            {/* <Paragraph className="para">
               To emerge as a leader in overall print solutions through
               consistently satisfying our customer requirements and offer our
               exemplary services to a larger customer base.
-            </Paragraph>
+            </Paragraph> */}
             <Button type="button" className="link">
               contact us
             </Button>
@@ -263,6 +263,9 @@ const Container = styled.div`
   & section {
     padding: 4rem 2rem;
     overflow-y: hidden;
+    @media only screen and (max-width: 768px) {
+      padding: 2rem 1rem;
+    }
   }
 
   & .service_provider {
@@ -387,7 +390,6 @@ const Container = styled.div`
 `;
 
 const ProductListStyling = styled.section`
-  padding: 4rem 2rem;
   & .title {
     color: var(--silver-color);
     text-align: center;
@@ -475,6 +477,7 @@ const Banner = styled.section`
     & .content {
       justify-content: end;
       padding-bottom: 20px;
+      padding-left: 1rem;
       & > * {
         margin: 0;
       }

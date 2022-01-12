@@ -149,8 +149,6 @@ function CartComponent({ location }) {
   );
 }
 
-
-
 const Row = styled.div`
   & hr {
     outline: none;
@@ -195,21 +193,22 @@ const Row = styled.div`
 `;
 
 const Header = styled.div`
-  height: 5rem;
   width: 100%;
-  padding: 4rem 2rem;
+  padding: 1rem 1rem;
 
   & a {
     text-decoration: none;
     color: var(--silver-color);
     font-weight: 700;
     position: relative;
-    top: 2rem;
+    top: 24px;
+    border: 1px solid var(--silver-color);
+    padding:5px 1rem;
   }
 
   & .title {
     text-align: center;
-    color: var(--white-color);
+    color: var(--silver-color);
     font-weight: 700;
     margin-bottom: 0;
   }

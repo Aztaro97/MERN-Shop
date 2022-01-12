@@ -186,7 +186,7 @@ function PhotographyScreen() {
 const ContactSection = styled.section`
   background: linear-gradient(to bottom, #11111176 0%, #00000099 100%),
     url("https://images.unsplash.com/photo-1633114128814-11fac33f707b?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80");
-  padding: 20px;
+  padding: 2rem;
   display: flex;
   align-items: start;
   justify-content: center;
@@ -216,6 +216,9 @@ const ContactSection = styled.section`
     & h4 {
       font-size: 1.2rem;
     }
+  }
+  @media only screen and (max-width: 768px) {
+    padding: 2rem 1rem;
   }
 `;
 
@@ -262,6 +265,7 @@ const Banner = styled.div`
     & .content {
       justify-content: end;
       padding-bottom: 20px;
+      padding-left: 1rem;
     }
     height: 300px;
   }
@@ -293,6 +297,10 @@ const GalleryContainer = styled.section`
     @media only screen and (max-width: 528px) {
       height: 200px;
     }
+  }
+
+  @media only screen and (max-width: 768px) {
+    padding: 2rem 1rem;
   }
 `;
 

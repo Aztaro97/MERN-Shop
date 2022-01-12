@@ -401,7 +401,7 @@ const AdvertisingNavgation = ({ lang }) => {
         </Col>
       </Row> */}
       <Fade bottom>
-        <Slider {...settings}>
+        <Slider {...settings} arrows={false}>
           {brandList.map((data, index) => (
             <div key={index}>
               <div
@@ -866,6 +866,9 @@ const Container = styled.div`
   & section {
     padding: 4rem 2rem;
     overflow-y: hidden;
+    @media only screen and (max-width: 768px) {
+      padding: 2rem 1rem;
+    }
   }
 `;
 

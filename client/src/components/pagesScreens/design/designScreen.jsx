@@ -341,6 +341,9 @@ const ContactService = styled.section`
       }
     }
   }
+  @media only screen and (max-width: 768px) {
+    padding: 2rem 1rem;
+  }
 `;
 
 const FifthServiceStyling = styled.div`
@@ -367,6 +370,9 @@ const FifthServiceStyling = styled.div`
     height: 100%;
     object-fit: cover;
     object-position: center;
+  }
+  @media only screen and (max-width: 768px) {
+    padding: 2rem 1rem;
   }
 `;
 
@@ -421,6 +427,9 @@ const ThirstServiceStyling = styled.section`
         text-transform: capitalize;
       }
     }
+  }
+  @media only screen and (max-width: 768px) {
+    padding: 2rem 1rem;
   }
 `;
 
@@ -481,6 +490,9 @@ const SecondServiceStyling = styled.section`
       }
     }
   }
+  @media only screen and (max-width: 768px) {
+    padding: 2rem 1rem;
+  }
 `;
 
 const FirstServiceStyling = styled.section`
@@ -540,6 +552,9 @@ const FirstServiceStyling = styled.section`
       transform: translateY(-7px);
     }
   }
+  @media only screen and (max-width: 768px) {
+    padding: 2rem 1rem;
+  }
 `;
 
 const Banner = styled.section`
@@ -566,7 +581,7 @@ const Banner = styled.section`
     justify-content: center;
     /* align-items: center; */
     max-width: 500px;
-    padding-left: 20px;
+    padding-left: 2rem;
 
     margin: 0 auto;
     & > * {
@@ -591,6 +606,7 @@ const Banner = styled.section`
     & .content {
       justify-content: end;
       padding-bottom: 20px;
+      padding-left: 1rem;
       & > * {
         margin: 0;
       }
