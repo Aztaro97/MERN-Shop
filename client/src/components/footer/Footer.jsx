@@ -170,7 +170,9 @@ function FooterScrren() {
       <hr />
       <Row>
         <Col xs={{ span: 24 }} lg={{ span: 24 }}>
-          <p>Copyright @ au79code.com 2021, All Rights Reserved.</p>
+          <p className="text_coypright">
+            Copyright @ au79code.com 2021, All Rights Reserved.
+          </p>
         </Col>
       </Row>
     </FooterContainer>
@@ -188,7 +190,7 @@ const FooterContainer = styled.footer`
     url("/img/footer/footer.jpg");
   background-size: cover;
   background-position: center;
-  padding: 20px;
+  padding: 2rem;
   color: #fff;
 
   & .footer-row {
@@ -261,6 +263,14 @@ const FooterContainer = styled.footer`
         }
       }
     }
+  }
+
+  & .text_coypright {
+    color: var(--silver-color);
+  }
+
+  @media only screen and (max-width: 768px) {
+    padding: 2rem 1rem;
   }
 `;
 
