@@ -73,7 +73,7 @@ function ItemProduction() {
               md={{ span: 12 }}
               lg={{ span: 12 }}
             >
-              <Slider {...settings}>
+              <Slider {...settings} arrows={false} >
                 {article.imgUrl?.map((img, index) => (
                   <div key={index}>
                     <img src={img.url} alt="" className="slide_image" />

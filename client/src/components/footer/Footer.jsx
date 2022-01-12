@@ -87,24 +87,29 @@ function FooterScrren() {
           <h3 className="footer-heading">Contact us</h3>
           <ul className="footer-group">
             <li className="footer-item">
-              <Link to="/" className="link">
+              <a
+                href="https://goo.gl/maps/QaBPZq6wBvabyXYA9"
+                className="link"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <FaMapMarkerAlt /> Google Maps
-              </Link>
+              </a>
             </li>
             <li className="footer-item">
-              <Link to="/" className="link">
+              <a href="tel:+97155555478" className="link">
                 <FaPhoneAlt /> +971 55 555478
-              </Link>
+              </a>
             </li>
             <li className="footer-item">
-              <Link to="/" className="link">
+              <a href="tel:+97155555478" className="link">
                 <FaPhoneAlt /> +971 55 555478
-              </Link>
+              </a>
             </li>
             <li className="footer-item">
-              <Link to="/" className="link">
+              <a href="mailTo:au79code.info@gmail.com" className="link">
                 <BiEnvelope /> au79code.info@gmail.com
-              </Link>
+              </a>
             </li>
           </ul>
         </div>
