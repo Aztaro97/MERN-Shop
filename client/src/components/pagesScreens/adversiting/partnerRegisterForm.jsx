@@ -425,6 +425,9 @@ const TextAreaStyling = styled.textarea`
   &:focus {
     color: var(--silver-color);
   }
+  &::placeholder {
+    color: var(--silver-color);
+  }
 `;
 
 const SelectStyling = styled(Select)`
