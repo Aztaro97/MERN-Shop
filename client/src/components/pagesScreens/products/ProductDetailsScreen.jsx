@@ -95,7 +95,7 @@ function ProductDetailsScreen() {
         <h1>{error}</h1>
       ) : (
         <Container>
-          <Row gutter={[40, 20]}>
+          <Row gutter={[40, 70]}>
             <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 12 }}>
               <Slider {...settings} arrows={false}>
                 {product.imageUrl &&
@@ -104,19 +104,6 @@ function ProductDetailsScreen() {
                       <img src={img.url} alt="" />
                     </div>
                   ))}
-
-                {/* <div>
-                  <img src={baseUrl + "/abstract01.jpg"} alt="" />
-                </div>
-                <div>
-                  <img src={baseUrl + "/abstract02.jpg"} alt="" />
-                </div>
-                <div>
-                  <img src={baseUrl + "/abstract03.jpg"} alt="" />
-                </div>
-                <div>
-                  <img src={baseUrl + "/abstract04.jpg"} alt="" />
-                </div> */}
               </Slider>
             </Col>
             <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 12 }}>
@@ -378,6 +365,9 @@ const Container = styled.div`
   }
   & .slick-dots li {
     width: 50px !important;
+    @media only screen and (max-width: 500px) {
+      width: 40px !important;
+    }
   }
   & .slick-slider .slick-dots.slick-thumb img {
     width: 100% !important;

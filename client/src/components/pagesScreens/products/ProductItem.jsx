@@ -7,6 +7,7 @@ import { GrView } from "react-icons/gr";
 
 import "./ProductItem.css";
 
+const viewIcon = "/img/icons/view_icon.svg";
 const empty_pc = "/img/ecommerce/empty.jpg";
 
 function Product({ product }) {
@@ -40,7 +41,8 @@ function Product({ product }) {
           </div>
         </div>
         <Button type="button" onClick={() => setShowModal(true)}>
-          <GrView className="icon" /> view
+          {/* <img src={viewIcon} className="icon" alt="" /> */}
+          view
         </Button>
         <Modal
           centered
@@ -160,8 +162,9 @@ const Button = styled.button`
   font-size: 1rem;
   letter-spacing: 1px;
   & .icon {
-    fill: #fff !important;
-    color: #fff !important;
+    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%)
+      hue-rotate(247deg) brightness(101%) contrast(102%);
+    width: 20px;
   }
   &:hover {
     background: var(--orange-color);

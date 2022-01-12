@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Col, Radio, Row } from "antd";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import Slider from "react-slick";
 import {
   FaWhatsapp,
   FaInstagram,
@@ -26,16 +27,39 @@ import "./ProductItem.css";
 const empty_pc = "/img/ecommerce/empty.jpg";
 
 const ModalContent = ({ product, setShowModal }) => {
+  const settings = {
+    customPaging: function(i) {
+      return (
+        <a>
+          <img src={product && product.imageUrl[i].url} alt="" />
+        </a>
+      );
+    },
+    dots: true,
+    dotsClass: "slick-dots slick-thumb",
+    infinite: true,
+    autoplay: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
   return (
     <Container>
-      <Row>
+      <Row gutter={[40, 70]}>
         <Col
           xs={{ span: 24 }}
           sm={{ span: 24 }}
           md={{ span: 12 }}
           lg={{ span: 12 }}
         >
-          <GalleryImg product={product} />
+          <Slider {...settings} arrows={false}>
+            {product.imageUrl &&
+              product.imageUrl.map((img, index) => (
+                <div key={index}>
+                  <img src={img.url} alt="" />
+                </div>
+              ))}
+          </Slider>
         </Col>
         <Col
           xs={{ span: 24 }}
@@ -47,36 +71,6 @@ const ModalContent = ({ product, setShowModal }) => {
         </Col>
       </Row>
     </Container>
-  );
-};
-
-const GalleryImg = ({ product }) => {
-  const [currentImg, setCurrentImg] = useState("");
-
-  const hanleClick = (e) => {
-    console.log(e.target.src);
-    setCurrentImg(e.target.src);
-  };
-
-  useEffect(() => {
-    if (product.imageUrl.length > 0) {
-      setCurrentImg(product.imageUrl[0].url);
-    }
-  }, [product]);
-
-  return (
-    <GallerieStyling>
-      <img
-        className="current-img"
-        src={product.imageUrl.length > 0 ? currentImg : empty_pc}
-        alt=""
-      />
-      <div className="aside-img">
-        {product.imageUrl.slice(0, 5).map((image, index) => (
-          <img key={index} src={image.url} alt="" onClick={hanleClick} />
-        ))}
-      </div>
-    </GallerieStyling>
   );
 };
 
@@ -263,48 +257,21 @@ const ProductDetails = ({ product, setShowModal }) => {
   );
 };
 
-const GallerieStyling = styled.div`
-  display: flex;
-  padding: 1rem;
-
-  & .current-img {
-    border: 1px solid var(--silver-color);
-    border-radius: 10px;
-    max-height: 100%;
-    width: 70%;
-    height: 460px;
-    object-fit: contain;
-    @media only screen and (max-width: 500px) {
-      height: 200px;
-    }
-  }
-
-  & .aside-img {
-    display: flex;
-    flex-direction: column;
-    /* justify-content: space-between; */
-    width: 30%;
-
-    & img {
-      width: 100%;
-      height: 100px;
-      object-fit: cover;
-      margin-left: 10px;
-      border-radius: 10px;
-      border: 1px solid #c68787;
-      cursor: pointer;
-      margin-bottom: 4px;
-      @media only screen and (max-width: 500px) {
-        height: 70px;
-        margin-left: 5px;
-      }
-    }
-  }
-`;
-
 const Container = styled.div`
   background: var(--dark-light-color);
-  padding: 0;
+  padding: 1rem;
+
+  /* ***********    */
+  & .slick-slider img {
+    width: 100%;
+  }
+  & .slick-dots li {
+    width: 50px !important;
+  }
+  & .slick-slider .slick-dots.slick-thumb img {
+    width: 100% !important;
+    object-fit: cover;
+  }
 
   /* padding:1.5rem; */
   @media only screen and (max-width: 500px) {
@@ -470,13 +437,13 @@ const Btn = styled.div`
 `;
 
 const ContenteStyling = styled.div`
-  padding: 1rem;
-
   & h1 {
     font-weight: 700;
     text-transform: uppercase;
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: var(--silver-color);
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
   }
   & p {
     color: var(--silver-color);
