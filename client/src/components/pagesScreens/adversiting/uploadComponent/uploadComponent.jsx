@@ -721,6 +721,9 @@ const FormVideoStyling = styled.form`
       color: var(--white-color);
       border: 1px solid var(--orange-color);
     }
+    &::placeholder {
+      color: var(--silver-color);
+    }
   }
 `;
 

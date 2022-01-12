@@ -378,7 +378,7 @@ const InputStyling = styled.input`
   background: var(--dark-color);
   border: 1px solid var(--silver-color);
   padding: 5px 10px;
-  color: var(--white-color);
+  color: var(--silver-color);
   &:focus {
     color: var(--silver-color);
   }
@@ -392,6 +392,7 @@ const Label = styled.label`
 `;
 
 const SelectStyling = styled(Select)`
+  color: var(--silver-color) !important;
   & > * {
     text-transform: capitalize !important;
   }
@@ -399,7 +400,7 @@ const SelectStyling = styled(Select)`
   & .ant-select-selector {
     background: var(--dark-color) !important;
     border: 1px solid var(--silver-color) !important;
-    color: var(--white-color) !important;
+    color: var(--silver-color) !important;
   }
 `;
 
@@ -435,7 +436,7 @@ const TextAreaStyling = styled.textarea`
   background: var(--dark-color);
   border: 1px solid var(--silver-color);
   padding: 4px 10px;
-  color: var(--white-color);
+  color: var(--silver-color);
   resize: none;
   &:focus {
     color: var(--silver-color);
