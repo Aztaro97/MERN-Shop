@@ -33,10 +33,10 @@ function Product({ product }) {
         <hr /> */}
         <div className="card_price">
           <div className="price">
-            <span>{product.price}</span> dr
+            <span>{product.price}</span> AED
           </div>
           <div className="compare_price">
-            <span>{product.compareAtPrice}</span> dr
+            <span>{product.compareAtPrice}</span> AED
           </div>
         </div>
         <Button type="button" onClick={() => setShowModal(true)}>
@@ -115,7 +115,7 @@ const Card = styled.div`
       padding: 1rem 0;
       gap: 5px;
       & .price {
-        color: #49c4d3;
+        color: var(--orange-color);
         margin: 0;
         padding: 0;
         margin-bottom: 0.6rem;
