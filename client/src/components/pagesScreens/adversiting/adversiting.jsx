@@ -364,7 +364,7 @@ const AdvertisingNavgation = ({ lang }) => {
     dots: false,
     infinite: true,
     speed: 500,
-    autoplaySpeed: 1500,
+    autoplaySpeed: 1800,
     autoplay: true,
     slidesToShow: 5,
     slidesToScroll: 1,
