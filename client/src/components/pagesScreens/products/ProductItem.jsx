@@ -22,13 +22,7 @@ function Product({ product }) {
         />
       </div>
       <div className="card_body">
-        <TextTruncate
-          line={1}
-          element="span"
-          text={product.name}
-          truncateText="…"
-          className="card_name"
-        />
+        <h2 className="card_name">{product.name}</h2>
         {/* <TextTruncate
           line={1}
           element="p"
@@ -92,11 +86,14 @@ const Card = styled.div`
     & .card_name {
       font-weight: 700;
       text-transform: uppercase;
-      margin-bottom: 0;
+      margin: 5px 0;
       font-size: 1rem;
       color: var(--silver-color);
       display: block;
       width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     & .card_desc {
       color: var(--silver-color);
