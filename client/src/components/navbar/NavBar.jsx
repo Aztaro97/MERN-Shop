@@ -564,7 +564,6 @@ const LinkP = styled(Link)`
 `;
 
 const Logo = styled(Link)`
-  z-index: 999999999999;
   text-decoration: none;
 
   span {
