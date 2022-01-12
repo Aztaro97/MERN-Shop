@@ -136,7 +136,7 @@ function PlaceOrder() {
                         <Row gutter={[10, 10]}>
                           {item.image.map((url, index) => (
                             <Col xs={{ span: 8 }} md={{ span: 6 }} key={index}>
-                              <img src={url} alt="" />
+                              <img src={url} alt="" className="img" />
                             </Col>
                           ))}
                         </Row>
@@ -271,6 +271,7 @@ const Container = styled.div`
   }
 
   & .order_list {
+    padding: 0;
     & li {
       display: flex;
       justify-content: space-between;
@@ -283,9 +284,14 @@ const Container = styled.div`
       }
     }
   }
+
+  & .img {
+    width: 100% !important;
+  }
 `;
 
 const ModalStyling = styled(Modal)`
+  width: 100%;
   & .ant-modal-footer {
     /* STYLING BTN CLOSE  */
     & > button.ant-btn {

@@ -187,6 +187,7 @@ const Container = styled.div`
         font-size: 1.2rem;
         font-weight: 700;
         color: var(--silver-color);
+        text-align: center;
       }
       & ._link {
         border: 1px solid var(--silver-color);

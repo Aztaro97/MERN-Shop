@@ -98,7 +98,7 @@ const ProductDetails = ({ product, setShowModal }) => {
     }
   };
 
-  const sharingUrl = window.location.href;
+  const sharingUrl = `http://au79code.herokuapp.com/product/${product?._id}`;
 
   const handleAddCard = (
     productId,
@@ -108,7 +108,6 @@ const ProductDetails = ({ product, setShowModal }) => {
     companyInfo
   ) => {
     addToCartHandler(productId, qty, sizeSelected, colorSelected, companyInfo);
-    // Event("product", "Product added to cart", productId);
   };
 
   return (
@@ -166,10 +165,14 @@ const ProductDetails = ({ product, setShowModal }) => {
               </div>
             </div>
           )}
-          <h1 className="price">
-            {" "}
-            <span>{product.price}</span> AED{" "}
-          </h1>
+          <div className="price_container">
+            <p className="price">
+              <span>{product.price}</span> AED
+            </p>
+            <p className="old_price">
+              <span>{product.compareAtPrice}</span> AED
+            </p>
+          </div>
           <Btn>
             <button
               onClick={() =>
@@ -481,10 +484,21 @@ const ContenteStyling = styled.div`
     font-size: 0.9rem;
   }
 
-  & .price {
-    color: var(--jungle-color);
-    font-size: 1.3rem;
-    font-weight: 700;
+  & .price_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    & .price {
+      color: var(--orange-color);
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+    & .old_price {
+      color: var(--silver-color);
+      font-size: 1.3rem;
+      text-decoration: line-through;
+    }
   }
 
   & .merchant_name {
@@ -493,7 +507,7 @@ const ContenteStyling = styled.div`
     color: var(--silver-color);
     letter-spacing: 1px;
     & span {
-      color: var(--jungle-color);
+      color: var(--orange-color);
       text-transform: uppercase;
     }
   }

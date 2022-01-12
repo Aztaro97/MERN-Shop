@@ -86,8 +86,8 @@ function EditAdsService() {
 
   useEffect(() => {
     if (updateSuccess) {
-      dispatch({type: AD_PROFILE_RESET})
-      history.push("/profile/my-ads")
+      dispatch({ type: AD_PROFILE_RESET });
+      history.push("/profile/my-ads");
     } else {
       if (!profile || profile._id !== serviceId) {
         dispatch(getAdvertisingProfileByID(serviceId));
@@ -356,7 +356,7 @@ function EditAdsService() {
 
 const Container = styled.div`
   padding: 20px;
-  background: #ececec;
+  background: var(--dark-light-color);
   margin-bottom: 20px;
   & .header {
     padding: 20px 0;
@@ -372,14 +372,20 @@ const Container = styled.div`
 `;
 
 const InputStyling = styled.input`
-  width: 100% !important;
+  width: 100%;
   outline: none;
   border: none;
+  background: var(--dark-color);
+  border: 1px solid var(--silver-color);
   padding: 5px 10px;
+  color: var(--white-color);
+  &:focus {
+    color: var(--silver-color);
+  }
 `;
 
 const Label = styled.label`
-  color: #333;
+  color: var(--silver-color);
   font-weight: 700;
   text-transform: uppercase;
   width: 100%;
@@ -389,13 +395,17 @@ const SelectStyling = styled(Select)`
   & > * {
     text-transform: capitalize !important;
   }
-  &.ant-select-selection {
-    background-color: red;
+
+  & .ant-select-selector {
+    background: var(--dark-color) !important;
+    border: 1px solid var(--silver-color) !important;
+    color: var(--white-color) !important;
   }
 `;
 
 const CountryDropdownStyling = styled(CountryDropdown)`
-  border: none;
+  background: var(--dark-color);
+  border: 1px solid var(--silver-color);
   width: 100%;
   padding: 5px 10px;
   display: block;
@@ -403,25 +413,36 @@ const CountryDropdownStyling = styled(CountryDropdown)`
   &:focus {
     outline: none;
     border: none;
+    color: var(--silver-color);
   }
 `;
 const RegionDropdownStyling = styled(RegionDropdown)`
-  border: none;
+  background: var(--dark-color);
+  border: 1px solid var(--silver-color);
   padding: 5px 10px;
   display: block;
-  width: 100% !important;
+  width: 100%;
   &:focus {
     outline: none;
     border: none;
+    color: var(--silver-color);
   }
 `;
 const TextAreaStyling = styled.textarea`
   width: 100%;
-  outline: none;
-  border: none;
-  background: #fff;
-  padding: 4px 10px;
   height: 140px;
+  outline: none;
+  background: var(--dark-color);
+  border: 1px solid var(--silver-color);
+  padding: 4px 10px;
+  color: var(--white-color);
+  resize: none;
+  &:focus {
+    color: var(--silver-color);
+  }
+  &::placeholder {
+    color: var(--silver-color);
+  }
 `;
 
 export default EditAdsService;

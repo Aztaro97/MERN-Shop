@@ -41,7 +41,7 @@ const SelectE = styled.select`
   outline: none;
   border-radius: 5px;
   transition: all 0.3s;
-  background: transparent;
+  background: transparent ;
   width: 100%;
   min-width: 0;
   color: var(--silver-color);
@@ -66,6 +66,7 @@ const SelectE = styled.select`
 const OptionE = styled.option`
   font-size: 1rem;
   cursor: pointer;
+  background: var(--dark-color);
 
   &:hover {
     border: none;

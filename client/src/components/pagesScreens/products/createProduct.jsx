@@ -375,6 +375,7 @@ const FormRight = ({
             placeholder="Brand"
             name="formik.brand"
             options={InputbrandList}
+            style={{ backgroundColor: "var(--dark-color)" }}
             // value={}
             onChange={(e) => setBrand(e.target.value)}
           />
@@ -644,57 +645,60 @@ const FormRight = ({
           </Card>
         </Col>
         <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
-          {" "}
           <Card>
             <Row>
-              <Label>Add value for size</Label>
-              <Card style={{ border: ".8px solid #c58787" }}>
-                <div>
-                  <Drop>
-                    <p>add another value</p>
-                    <FaPlus
-                      className="icons"
-                      onClick={() => setShowInput4(!showInput4)}
-                    />
-                  </Drop>
-                  {showInput4 ? (
-                    <>
-                      <div className="variant_add">
-                        <input
-                          type="text"
-                          className="input"
-                          placeholder="Enter avlue for size"
-                          value={sizeValue}
-                          onChange={(e) => setSizeValue(e.target.value)}
-                        />
-                        <button
-                          className="add_btn"
-                          disabled={!sizeValue && true}
-                          onClick={addSizeValue}
-                        >
-                          add
-                        </button>
-                      </div>
-                      <Ul>
-                        {ListSizeValue.length > 0
-                          ? ListSizeValue.map((item, index) => (
-                              <li key={index}>
-                                <p>{item}</p>
-                                <AiFillDelete
-                                  className="delete_icon"
-                                  onClick={() => deleteSizeValue(index)}
-                                />
-                              </li>
-                            ))
-                          : null}
-                      </Ul>
-                    </>
-                  ) : null}
-                </div>
-              </Card>
+              <Col xs={{ span: 24 }}>
+                <Label>Add value for size</Label>
+              </Col>
+              <Col  xs={{ span: 24 }}>
+                <Card style={{ border: ".8px solid #c58787" }}>
+                  <div>
+                    <Drop>
+                      <p>add another value</p>
+                      <FaPlus
+                        className="icons"
+                        onClick={() => setShowInput4(!showInput4)}
+                      />
+                    </Drop>
+                    {showInput4 ? (
+                      <>
+                        <div className="variant_add">
+                          <input
+                            type="text"
+                            className="input"
+                            placeholder="Enter avlue for size"
+                            value={sizeValue}
+                            onChange={(e) => setSizeValue(e.target.value)}
+                          />
+                          <button
+                            className="add_btn"
+                            disabled={!sizeValue && true}
+                            onClick={addSizeValue}
+                          >
+                            add
+                          </button>
+                        </div>
+                        <Ul>
+                          {ListSizeValue.length > 0
+                            ? ListSizeValue.map((item, index) => (
+                                <li key={index}>
+                                  <p>{item}</p>
+                                  <AiFillDelete
+                                    className="delete_icon"
+                                    onClick={() => deleteSizeValue(index)}
+                                  />
+                                </li>
+                              ))
+                            : null}
+                        </Ul>
+                      </>
+                    ) : null}
+                  </div>
+                </Card>
+              </Col>
             </Row>
             <Row>
-              <Label style={{ color: "#000" }}>size</Label>
+              <Label>size</Label>
               <InputC
                 type="currency"
                 placeholder="0.00 GRAM"
@@ -702,7 +706,7 @@ const FormRight = ({
               />
               <Column>
                 <div>
-                  <Label style={{ color: "#000" }}>price</Label>
+                  <Label>price</Label>
                   <InputC
                     required
                     type="currency"
@@ -711,7 +715,7 @@ const FormRight = ({
                   />
                 </div>
                 <div>
-                  <Label style={{ color: "#000" }}>compare at price</Label>
+                  <Label>compare at price</Label>
                   <InputC
                     type="currency"
                     placeholder="AED 0.00"
@@ -745,13 +749,13 @@ const ProductSection1 = ({
 }) => {
   return (
     <>
-      <Label>Creat code ( optional ) </Label>
+      {/* <Label>Creat code ( optional ) </Label>
       <InputC
         type="text"
         name=""
         id=""
         onChange={(e) => setCode(e.target.value)}
-      />
+      /> */}
       <Label type="text" name="" id="">
         Selectservice
       </Label>

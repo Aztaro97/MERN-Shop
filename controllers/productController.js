@@ -56,7 +56,10 @@ const getProductsAdmin = asyncHandler(async (req, res) => {
 // @route   GET /api/products/:id
 // @access  Public
 const getProductById = asyncHandler(async (req, res) => {
-  const product = await Product.findById(req.params.id);
+  const product = await Product.findById(req.params.id).populate("user", [
+    "email",
+    "company.name",
+  ]);
 
   if (product) {
     res.json(product);
@@ -404,7 +407,7 @@ const filterByCategory = asyncHandler(async (req, res) => {
     .skip(pageSize * (page - 1));
 
   if (products) {
-    res.json({  products, page, pages: Math.ceil(count / pageSize)  });
+    res.json({ products, page, pages: Math.ceil(count / pageSize) });
   } else {
     res.status(404);
     throw new Error("Category Product not found");

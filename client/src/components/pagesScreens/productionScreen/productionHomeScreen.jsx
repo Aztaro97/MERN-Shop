@@ -122,49 +122,37 @@ const ProductSelling = () => {
 const CardProductList = () => {
   const data = [
     {
-      name: "category 1",
+      name: "PAPER PRODUCTS",
       description: "lorem upsum description ",
       imgUrl:
         "https://images.unsplash.com/photo-1513521773210-0cc22dfee8db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
     },
     {
-      name: "category 2",
+      name: "TISSUE PRODUCTS",
       description: "lorem upsum description ",
       imgUrl:
         "https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
     },
     {
-      name: "category 3",
+      name: "PLASTIC PRODUCTS",
       description: "lorem upsum description ",
       imgUrl:
         "https://images.unsplash.com/photo-1513521773210-0cc22dfee8db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
     },
     {
-      name: "category 4",
+      name: "ALUMINIUM PRODUCTS",
       description: "lorem upsum description ",
       imgUrl:
         "https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
     },
     {
-      name: "category 5",
+      name: "FOAM PRODUCTS",
       description: "lorem upsum description ",
       imgUrl:
         "https://images.unsplash.com/photo-1513521773210-0cc22dfee8db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
     },
     {
-      name: "category 6",
-      description: "lorem upsum description ",
-      imgUrl:
-        "https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
-    },
-    {
-      name: "category 7",
-      description: "lorem upsum description ",
-      imgUrl:
-        "https://images.unsplash.com/photo-1513521773210-0cc22dfee8db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
-    },
-    {
-      name: "category 8",
+      name: "HYGIENE & PROTECTION",
       description: "lorem upsum description ",
       imgUrl:
         "https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",

@@ -160,6 +160,8 @@ export const Drop = styled.div`
 
 export const Form = styled.form``;
 
+
+
 export const UploadIcon = styled.div`
   width: 100%;
   height: 100%;

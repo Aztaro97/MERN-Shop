@@ -57,7 +57,7 @@ function ProductDetailsScreen() {
     customPaging: function(i) {
       return (
         <a>
-          <img src={`${baseUrl}/abstract0${i + 1}.jpg`} />
+          <img src={product && product.imageUrl[i].url} alt="" />
         </a>
       );
     },
@@ -97,8 +97,15 @@ function ProductDetailsScreen() {
         <Container>
           <Row gutter={[40, 20]}>
             <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 12 }}>
-              <Slider {...settings}>
-                <div>
+              <Slider {...settings} arrows={false}>
+                {product.imageUrl &&
+                  product.imageUrl.map((img, index) => (
+                    <div key={index}>
+                      <img src={img.url} alt="" />
+                    </div>
+                  ))}
+
+                {/* <div>
                   <img src={baseUrl + "/abstract01.jpg"} alt="" />
                 </div>
                 <div>
@@ -109,7 +116,7 @@ function ProductDetailsScreen() {
                 </div>
                 <div>
                   <img src={baseUrl + "/abstract04.jpg"} alt="" />
-                </div>
+                </div> */}
               </Slider>
             </Col>
             <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 12 }}>
@@ -185,7 +192,7 @@ function ProductDetailsScreen() {
               </SelectNumber>
 
               <p className="merchant_name">
-                Product Selling by <span>{"amazon"}</span>{" "}
+                Product Selling by <span>{product.user?.company.name}</span>{" "}
               </p>
 
               <button
@@ -274,13 +281,17 @@ const Container = styled.div`
     color: var(--silver-color);
     text-transform: capitalize;
     letter-spacing: 1px;
+    margin-bottom: 1rem;
   }
   & .price_container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     & .price {
       color: var(--orange-color);
+      font-size: 1.4rem;
+      font-weight: 700;
     }
     & .old_price {
       color: var(--silver-color);
@@ -311,7 +322,7 @@ const Container = styled.div`
   }
 
   /* ***************  SOCIAL MEDIA STYLING   ********** */
- 
+
   & .social-media {
     display: flex;
     /* justify-content: space-between; */

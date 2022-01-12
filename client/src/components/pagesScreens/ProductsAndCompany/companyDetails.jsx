@@ -49,7 +49,7 @@ function CompanyDetails() {
         <>
           {company && (
             <>
-              <Row gutter={[10, 50]}>
+              <Row gutter={[30, 50]}>
                 <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 12 }}>
                   <img
                     src={
@@ -165,7 +165,7 @@ function CompanyDetails() {
                           : emptyImg
                       }
                       alt=""
-                      className="bg-right"
+                      className="bg_right"
                     />
                     <ImageGallerie>
                       {company.urlImg.map((item, index) => (
@@ -211,8 +211,8 @@ const Container = styled.div`
     object-fit: cover;
   }
 
-  & .bg-right {
-    height: 800px;
+  & .bg_right {
+    height: 400px;
     border-radius: 10px;
     object-fit: cover;
     @media only screen and (max-width: 1080px) {

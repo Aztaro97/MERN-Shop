@@ -23,6 +23,7 @@ import {
   RowCheck,
   GridRow,
   Column,
+  Container,
   Link,
   Drop,
   UploadIcon,
@@ -162,7 +163,7 @@ function EditProductScreen() {
       ) : error ? (
         <h5>Error: {error}</h5>
       ) : (
-        <>
+        <Container>
           <Header>
             <a href="#/" onClick={() => history.goBack()}>
               Back
@@ -218,7 +219,7 @@ function EditProductScreen() {
               />
             </Col>
           </MainProductForm>
-        </>
+        </Container>
       )}
     </MainContainer>
   );
@@ -785,7 +786,7 @@ const FormRight = ({
           </Card>
         </Row>
         <Row>
-          <Label style={{ color: "#000" }}>size</Label>
+          <Label>size</Label>
           <InputC
             type="currency"
             placeholder="0.00 GRAM"
@@ -794,7 +795,7 @@ const FormRight = ({
           />
           <Column>
             <div>
-              <Label style={{ color: "#000" }}>price</Label>
+              <Label>price</Label>
               <InputC
                 required
                 type="currency"
@@ -804,7 +805,7 @@ const FormRight = ({
               />
             </div>
             <div>
-              <Label style={{ color: "#000" }}>compare at price</Label>
+              <Label>compare at price</Label>
               <InputC
                 type="currency"
                 placeholder="AED 0.00"
@@ -921,9 +922,9 @@ const RateSection = ({ arrayZone, setArrayZone }) => {
   };
   return (
     <>
-      <Row>
+      {/* <Row>
         <Label style={{ marginTop: "1.4rem" }}>Add Rate</Label>
-      </Row>
+      </Row> */}
       <Card>
         <Row>
           <Label for="RateName">Rate Name</Label>
@@ -1254,22 +1255,41 @@ const ShippingModal = styled.div`
 `;
 
 const CountryDropdownCustomer = styled(CountryDropdown)`
-  border: 1px solid var(--orange-color);
+  border: 1px solid var(--dark-color);
   padding: 10px;
   display: block;
   margin-bottom: 1rem;
+  background: var(--dark-color);
+  color: var(--silver-color);
+  width: 100%;
   &:focus {
     outline: none;
-    border: 1px solid var(--orange-color);
+    border: 1px solid var(--dark-color);
+    color: var(--white-color);
+    background: var(--dark-color);
+  }
+  &:focus-visible {
+    color: var(--silver-color);
+    background: var(--dark-color);
   }
 `;
 const RegionDropdownCustomer = styled(RegionDropdown)`
-  border: 1px solid var(--orange-color);
+  border: 1px solid var(--dark-color);
   padding: 10px;
   display: block;
+  margin-bottom: 1rem;
+  background: var(--dark-color);
+  color: var(--silver-color);
+  width: 100%;
   &:focus {
     outline: none;
-    border: 1px solid var(--orange-color);
+    border: 1px solid var(--dark-color);
+    color: var(--white-color);
+    background: var(--dark-color);
+  }
+  &:focus-visible {
+    color: var(--silver-color);
+    background: var(--dark-color);
   }
 `;
 

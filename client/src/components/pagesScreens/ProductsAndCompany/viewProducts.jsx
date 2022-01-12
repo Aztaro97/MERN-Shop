@@ -89,23 +89,36 @@ const ViewProducts = () => {
                       className="delete_icon"
                       onClick={() => showConfirm(product._id, product.imageUrl)}
                     />
-                    <div className="card-body">
-                      <h2>{product.name}</h2>
+                    <div className="card_body">
+                      <TextTruncate
+                        line={1}
+                        element="h2"
+                        text={product.name}
+                        truncateText="…"
+                        className="card_title"
+                      />
                       {/* <p className="desc">{product.description}</p> */}
                       <TextTruncate
-                        line={2}
+                        line={1}
                         element="p"
                         text={product.description}
                         truncateText="…"
                         className="card_desc"
                       />
                       <hr />
-                      <h2 className="price">
-                        <span>{product.price}</span> dr
-                      </h2>
+                      <div className="price_container">
+                        <p className="price">
+                          aed <span>{product.price}</span>
+                        </p>
+                        <p className="old_price">
+                          aed <span>{product.compareAtPrice}</span>
+                        </p>
+                      </div>
                       <Button
                         type="button"
-                        onClick={() => history.push(`/product/edit/${product._id}`)}
+                        onClick={() =>
+                          history.push(`/product/edit/${product._id}`)
+                        }
                       >
                         edit
                       </Button>
@@ -154,8 +167,6 @@ const Container = styled.div`
 `;
 
 const Card = styled.div`
-  /* box-shadow: var(--box-shadow-value); */
-  /* border: 1px solid #ffffff49; */
   border-radius: 10px;
   width: 100%;
   padding: 20px;
@@ -168,15 +179,16 @@ const Card = styled.div`
     z-index: 1;
   }
 
-  & .card-body {
+  & .card_body {
     text-align: center;
-    padding: 1rem;
+    padding: 1rem 0;
 
-    & h2 {
+    & .card_title {
       font-weight: 700;
       text-transform: uppercase;
       margin: 0.3rem 0;
       font-size: 1rem;
+      color: var(--silver-color);
     }
     & p {
       color: var(--silver-color);
@@ -192,6 +204,16 @@ const Card = styled.div`
     & .price {
       color: #49c4d3;
       margin-bottom: 0.6rem;
+    }
+    & .price_container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-transform: uppercase;
+      & .old_price {
+        text-decoration-line: line-through;
+        color: var(--silver-color);
+      }
     }
   }
 
@@ -212,6 +234,11 @@ const Card = styled.div`
     display: flex;
     &:hover {
       transform: scale(1.2);
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    & .card_body {
+      padding: 10px;
     }
   }
 `;

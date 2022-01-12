@@ -47,14 +47,12 @@ function FormRegisterProduct() {
   const [fileList, setFileList] = useState([]);
 
   const categoryData = [
-    "category 1",
-    "category 2",
-    "category 3",
-    "category 4",
-    "category 5",
-    "category 6",
-    "category 7",
-    "category 8",
+    "PAPER PRODUCTS",
+    "TISSUE PRODUCTS",
+    "PLASTIC PRODUCTS",
+    "ALUMINIUM PRODUCTS",
+    "FOAM PRODUCTS",
+    "HYGIENE & PROTECTION",
   ];
   const typeData = ["type 1", "type 2", "type 3"];
   const capacityData = ["capacity 1", "capacity 2", "capacity 3"];
