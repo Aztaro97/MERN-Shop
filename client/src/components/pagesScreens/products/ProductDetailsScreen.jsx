@@ -101,7 +101,7 @@ function ProductDetailsScreen() {
                 {product.imageUrl &&
                   product.imageUrl.map((img, index) => (
                     <div key={index}>
-                      <img src={img.url} alt="" />
+                      <img src={img.url} alt="" className="img_slider" />
                     </div>
                   ))}
               </Slider>
@@ -360,6 +360,10 @@ const Container = styled.div`
     }
   }
   /* ***********    */
+  & .img_slider {
+    height: 400px;
+    object-fit: cover;
+  }
   & .slick-slider img {
     width: 100%;
   }
@@ -372,6 +376,10 @@ const Container = styled.div`
   & .slick-slider .slick-dots.slick-thumb img {
     width: 100% !important;
     object-fit: cover;
+  }
+
+  @media only screen and (max-width: 768px) {
+    padding: 2rem 1rem;
   }
 `;
 
