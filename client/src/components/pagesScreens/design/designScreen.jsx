@@ -515,6 +515,7 @@ const FirstServiceStyling = styled.section`
     color: var(--white-color);
   }
   & .service_card {
+    min-height: 280px;
     padding: 20px;
     border-radius: 10px;
     box-shadow: var(--box-shadow-value);
@@ -534,13 +535,16 @@ const FirstServiceStyling = styled.section`
       margin-bottom: 10px;
       text-transform: capitalize;
       color: var(--silver-color);
+      letter-spacing: 1px;
     }
     & .service_group {
       list-style-type: "✓ ";
       text-align: start;
       /* padding: 0; */
+      text-transform: capitalize;
       & li {
         color: var(--silver-color);
+        letter-spacing: 1px;
       }
     }
     & p {
@@ -554,6 +558,12 @@ const FirstServiceStyling = styled.section`
   }
   @media only screen and (max-width: 768px) {
     padding: 2rem 1rem;
+    & .service_card {
+      min-height: 240px;
+      &:hover {
+        transform: none;
+      }
+    }
   }
 `;
 

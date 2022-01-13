@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import MainContainer from "../../MainContainer";
+import {useHistory} from "react-router-dom";
 import VideoPlayer from "react-background-video-player";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
@@ -8,6 +9,9 @@ import TextTransition, { presets } from "react-text-transition";
 function PosScreen() {
   const [index, setIndex] = useState(0);
   const TEXTS = ["Comming soon", "exhibition management"];
+
+  const history = useHistory()
+  
   useEffect(() => {
     const intervalId = setInterval(() => setIndex((index) => index + 1), 3000);
     return () => clearTimeout(intervalId);
@@ -30,7 +34,7 @@ function PosScreen() {
                 className="text"
               />
             </h1>
-            <button className="_btn">Go Back</button>
+            <button onClick={() => history.push("/")} className="_btn">Go Back</button>
           </div>
         </div>
       </Container>

@@ -117,9 +117,11 @@ function ProductsListScreen({ match }) {
                     <td>{product.price} dirham</td>
                     <td>
                       <div className="images_lists">
-                        {product.imageUrl.map((img) => (
-                          <Image className="img" src={img.url} />
-                        ))}
+                        <Image.PreviewGroup>
+                          {product.imageUrl.map((img, index) => (
+                            <Image key={index} className="img" src={img.url} />
+                          ))}
+                        </Image.PreviewGroup>
                       </div>
                     </td>
                     <td>{product.brand}</td>
@@ -160,7 +162,6 @@ function ProductsListScreen({ match }) {
                           <DownOutlined style={{ paddingLeft: 2 }} />
                         </a>
                       </Dropdown>
-                      ,
                     </td>
                     <td>
                       <button
@@ -194,6 +195,10 @@ const ProductContainer = styled.div`
   & .title {
     text-align: center;
     text-transform: uppercase;
+    color: var(--silver-color);
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 20px 0;
   }
 `;
 
@@ -201,13 +206,13 @@ const Table = styled.table`
   width: 100%;
   & thead {
     & tr {
-      background: var(--orange-color);
+      border: 1px solid #ececec92;
       & th {
         border: 1px solid rgba(0, 0, 0, 0.05);
         padding: 10px;
         text-transform: uppercase;
         font-weight: 700;
-        color: #fff;
+        color: var(--silver-color);
         font-size: 0.8rem;
       }
     }
@@ -215,11 +220,12 @@ const Table = styled.table`
   & tbody {
     margin-top: 1rem;
     & tr {
+      border-bottom: 1px solid #ececec92;
       & td {
-        border: 1px solid rgba(0, 0, 0, 0.05);
         padding: 10px;
         text-transform: uppercase;
         font-size: 0.8rem;
+        /* background: #ececec; */
         & .delete_btn {
           outline: none;
           background: #eb4d4b;
@@ -230,18 +236,26 @@ const Table = styled.table`
         }
         & .images_lists {
           display: flex;
-          justify-content: center;
+          justify-content: start;
           align-items: center;
+
+          max-width: 200px;
+
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          /* flex-wrap: wrap; */
+
           & .img {
-            height: 70px;
-            width: 70px;
+            height: 40px;
+            width: 50px;
             margin: 0 5px;
           }
         }
         & .action_btn {
           display: flex;
           align-items: center;
-          color: #111;
+          color: var(--silver-color);
           position: relative;
           top: 11px;
           &:hover {

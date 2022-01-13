@@ -16,6 +16,7 @@ import MainContainer from "../../MainContainer";
 import ErrorServerPage from "../ErrorServerPage";
 
 const { Meta } = Card;
+const folderIcon = "/img/icons/folder_icon.svg";
 
 function MyAdsScreen() {
   const { userInfo } = useSelector((state) => state.userLogin);
@@ -69,7 +70,7 @@ function MyAdsScreen() {
               <hr />
             </div>
             <Link to="/advertising/register" className="add_link">
-              Add new ads
+              create new ads
             </Link>
           </div>
           <Row gutter={[10, 10]}>
@@ -114,7 +115,7 @@ function MyAdsScreen() {
             ) : (
               <Col xs={{ span: 24 }}>
                 <EmptyAdsContainer>
-                  <img src="/img/advertising/folder.svg" alt="" />
+                  <img src={folderIcon} className="icon" alt="" />
                   <h1>You don't have any Ads</h1>
                 </EmptyAdsContainer>
               </Col>
@@ -150,6 +151,7 @@ const Container = styled.div`
       background: var(--orange-color);
       padding: 4px 10px;
       text-decoration: none;
+      letter-spacing: 1px;
       &:hover {
         opacity: 0.9;
       }
@@ -214,13 +216,15 @@ const EmptyAdsContainer = styled.div`
   align-items: center;
   flex-direction: column;
   padding: 40px;
-  & img {
+  & .icon {
     max-width: 150px;
     max-height: 400px;
+    filter: brightness(0) saturate(100%) invert(74%) sepia(0%) saturate(790%)
+      hue-rotate(265deg) brightness(88%) contrast(85%);
   }
   & h1 {
     font-size: 1.7rem;
-    color: #111;
+    color: var(--silver-color);
   }
   @media screen and (max-width: 768px) {
     padding: 20px;
