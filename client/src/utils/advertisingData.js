@@ -212,28 +212,28 @@ export const VideoData = [
     profileId: "61683883bb90435d90a1bd24",
     companyName: "au 79 code",
     videoUrl:
-      "https://res.cloudinary.com/tarositeweb/video/upload/v1634022188/au79code/AZ_1_gro3g4.mp4",
+      "https://res.cloudinary.com/au79code/video/upload/v1642069265/videos%20ads/WhatsApp_Video_2021-12-16_at_13.05.05_eyeody.mp4",
     description:
       "Quisque velit nisi, pretium ut lacinia inQuisque velit nisi, pretium ut lacinia in Quisque velit nisi, pretium ut lacinia in ",
-    publicId: "au79code/AZ_1_gro3g4",
+    publicId: "adv_jsjdaasadds",
   },
   {
     profileId: "61683883bb90435d90a1bd24",
     companyName: "au 79 code",
     videoUrl:
-      "https://res.cloudinary.com/tarositeweb/video/upload/v1634022182/au79code/AZ_3_ignyyi.mp4",
+      "https://res.cloudinary.com/au79code/video/upload/v1642069265/videos%20ads/WhatsApp_Video_2021-12-16_at_13.05.05_eyeody.mp4",
     description:
       "Quisque velit nisi, pretium ut lacinia inQuisque velit nisi, pretium ut lacinia in Quisque velit nisi, pretium ut lacinia in ",
-    publicId: "au79code/AZ_3_ignyyi",
+    publicId: "adv_jsjdaasadds",
   },
   {
     profileId: "61683883bb90435d90a1bd24",
     companyName: "au 79 code",
     videoUrl:
-      "https://res.cloudinary.com/tarositeweb/video/upload/v1634022150/au79code/AZ_2_l0qaqv.mp4",
+      "https://res.cloudinary.com/au79code/video/upload/v1642069265/videos%20ads/WhatsApp_Video_2021-12-16_at_13.05.05_eyeody.mp4",
     description:
       "Quisque velit nisi, pretium ut lacinia inQuisque velit nisi, pretium ut lacinia in Quisque velit nisi, pretium ut lacinia in ",
-    publicId: "au79code/AZ_2_l0qaqv",
+    publicId: "adv_jsjdaasadds",
   },
 ];
 

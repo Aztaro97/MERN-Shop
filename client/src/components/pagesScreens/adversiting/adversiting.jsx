@@ -328,7 +328,7 @@ const IntroVideoSection = ({ lang }) => {
                   lg={{ span: 12 }}
                 >
                   <Video
-                    cloudName="tarositeweb"
+                    cloudName="au79code"
                     controls="true"
                     fallback="Cannot display video"
                     publicId={data.publicId}
