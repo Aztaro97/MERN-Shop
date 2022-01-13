@@ -43,52 +43,8 @@ const { Option } = Select;
 
 function RegisterPage() {
   const { t } = useTranslation();
-
   const history = useHistory();
-
-  const { userInfo } = useSelector((state) => state.userLogin);
-
-  useEffect(() => {
-    if (!userInfo) {
-      history.push("/auth");
-    }
-  }, [userInfo, history]);
-
-  return (
-    <MainContainer>
-      <FormContainer>
-        <CompanyInfo />
-        {/* <BankInfo /> */}
-        <GalleryPhotos />
-        {/* <div className="row">
-          <Link to="/add-product" className="submittion_btn">
-            <ButtonC style={{ margin: "0 auto" }}>
-              {t("save_and_continue")}
-            </ButtonC>
-          </Link>
-        </div> */}
-      </FormContainer>
-    </MainContainer>
-  );
-}
-
-const CompanyInfo = () => {
-  const { t } = useTranslation();
-  // Finish State
-  const [cellular, setCellular] = useState("");
-  const [ListCellular, setListCellular] = useState([]);
-
-  const [workHourFrom, setWorkHourFrom] = useState("");
-  const [workHourTo, setWorkHourTo] = useState("");
-
-  const [hour, setHour] = useState({
-    from: "",
-    to: "",
-  });
-  const [ListHour, setListHour] = useState([]);
-
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const formik = useFormik({
     initialValues: {
@@ -123,25 +79,15 @@ const CompanyInfo = () => {
     },
   });
 
-  let typeUser = formik.values.company.type;
+  const { userInfo } = useSelector((state) => state.userLogin);
+  const { loading, user, error } = useSelector((state) => state.userDetails);
 
-  const handleClickRadio = (e) => {
-    formik.setFieldValue("company.type", e.target.value);
-    console.log(e.target.value);
-  };
-
-  const children = [];
-  scopeData.map((data) =>
-    children.push(<Option key={data.title}>{data.title}</Option>)
-  );
-
-  const {
-    loading,
-    user: { company },
-  } = useSelector((state) => state.userDetails);
-  const { saveSuccess } = useSelector((state) => state.userCompany);
+  const company = user?.company;
 
   useEffect(() => {
+    if (!userInfo) {
+      history.push("/auth");
+    }
     if (company === undefined) {
       dispatch(getCompanyDetails());
     } else {
@@ -172,121 +118,172 @@ const CompanyInfo = () => {
         company.mediaLink.whatsapp
       );
     }
-  }, [company, dispatch]);
+  }, [userInfo, company, history, dispatch]);
 
   return (
-    <>
+    <MainContainer>
       {loading ? (
         <LoaderComponent />
+      ) : error ? (
+        <h1>{error}</h1>
       ) : (
-        <Form onSubmit={formik.handleSubmit}>
-          <Header>
-            <a href="#/" onClick={() => history.goBack()}>
-              {t("back")}
-            </a>
-            <div className="radio_container">
-              <Radio.Group
-                className="radio_group"
-                onChange={handleClickRadio}
-                defaultValue={formik.values.company.type}
-              >
-                <RadioCustom value="company"> {t("company")} </RadioCustom>
-                <RadioCustom value="personnel">{t("personnel")}</RadioCustom>
-              </Radio.Group>
-            </div>
-          </Header>
-          <h1>{typeUser} information</h1>
+        <Container>
+          <CompanyInfo {...formik} />
+          {/* <BankInfo /> */}
+          <GalleryPhotos />
+          {/* <div className="row">
+          <Link to="/add-product" className="submittion_btn">
+            <ButtonC style={{ margin: "0 auto" }}>
+              {t("save_and_continue")}
+            </ButtonC>
+          </Link>
+        </div> */}
+        </Container>
+      )}
+    </MainContainer>
+  );
+}
 
-          <div className="card">
-            <div className="grid">
-              <div className="col">
+const CompanyInfo = ({ ...formik }) => {
+  const { t } = useTranslation();
+  // Finish State
+  const [cellular, setCellular] = useState("");
+  const [ListCellular, setListCellular] = useState([]);
+
+  const [workHourFrom, setWorkHourFrom] = useState("");
+  const [workHourTo, setWorkHourTo] = useState("");
+
+  const [hour, setHour] = useState({
+    from: "",
+    to: "",
+  });
+  const [ListHour, setListHour] = useState([]);
+
+  const history = useHistory();
+
+  let typeUser = formik.values.company.type;
+
+  const handleClickRadio = (e) => {
+    formik.setFieldValue("company.type", e.target.value);
+    console.log(e.target.value);
+  };
+
+  const children = [];
+  scopeData.map((data) =>
+    children.push(<Option key={data.title}>{data.title}</Option>)
+  );
+
+  const { saveSuccess } = useSelector((state) => state.userCompany);
+
+  return (
+    <Form onSubmit={formik.handleSubmit}>
+      <Header>
+        <a href="#/" onClick={() => history.goBack()}>
+          {t("back")}
+        </a>
+        <div className="radio_container">
+          <Radio.Group
+            className="radio_group"
+            onChange={handleClickRadio}
+            defaultValue={formik.values.company.type}
+          >
+            <RadioCustom value="company"> {t("company")} </RadioCustom>
+            <RadioCustom value="personnel">{t("personnel")}</RadioCustom>
+          </Radio.Group>
+        </div>
+      </Header>
+      <h1>{typeUser} information</h1>
+
+      <div className="card">
+        <div className="grid">
+          <div className="col">
+            <div className="row">
+              <InputC
+                required
+                type="text"
+                // placeholder={`${typeUser} NAME`}
+                placeholder={
+                  typeUser === "company"
+                    ? "COMPANY NAME"
+                    : "PERSONNEL COMPANY NAME"
+                }
+                name="company.name"
+                value={formik.values.company.name}
+                onChange={formik.handleChange}
+              />
+            </div>
+            <div className="row">
+              <Select
+                mode="multiple"
+                allowClear
+                style={{ width: "100%", padding: 0 }}
+                placeholder="SELECT SCOPE OF BUSINESS"
+                defaultValue={formik.values.company.scopeBusiness}
+                className="select_input"
+                onChange={(value) =>
+                  formik.setFieldValue("company.scopeBusiness", value)
+                }
+              >
+                {children}
+              </Select>
+            </div>
+
+            {typeUser === "company" && (
+              <>
                 <div className="row">
                   <InputC
                     required
-                    type="text"
-                    // placeholder={`${typeUser} NAME`}
-                    placeholder={
-                      typeUser === "company"
-                        ? "COMPANY NAME"
-                        : "PERSONNEL COMPANY NAME"
-                    }
-                    name="company.name"
-                    value={formik.values.company.name}
+                    type="currency"
+                    placeholder={`LICENCE NUMBER`}
+                    name="company.licenceNumber"
+                    value={formik.values.company.licenceNumber}
                     onChange={formik.handleChange}
                   />
                 </div>
+                {/* <h2>ddd: {formik.values.company.expireDate}</h2> */}
                 <div className="row">
-                  <Select
-                    mode="multiple"
-                    allowClear
-                    style={{ width: "100%", padding: 0 }}
-                    placeholder="SELECT SCOPE OF BUSINESS"
-                    defaultValue={formik.values.company.scopeBusiness}
-                    className="select_input"
-                    onChange={(value) =>
-                      formik.setFieldValue("company.scopeBusiness", value)
+                  <DatePickerStyling
+                    style={{
+                      width: "100%",
+                      borderColor: "var(--orange-color",
+                    }}
+                    defaultValue={moment(
+                      formik.values.company.expireDate,
+                      "MM-DD-YYYY"
+                    )}
+                    onChange={(date, dateString) =>
+                      formik.setFieldValue("company.expireDate", dateString)
                     }
-                  >
-                    {children}
-                  </Select>
+                    picker="date"
+                    format="MM-DD-YYYY"
+                    placeholder={t("expiry_placeholder")}
+                    showNow={false}
+                  />
                 </div>
+              </>
+            )}
 
-                {typeUser === "company" && (
-                  <>
-                    <div className="row">
-                      <InputC
-                        required
-                        type="currency"
-                        placeholder={`LICENCE NUMBER`}
-                        name="company.licenceNumber"
-                        value={formik.values.company.licenceNumber}
-                        onChange={formik.handleChange}
-                      />
-                    </div>
-                    {/* <h2>ddd: {formik.values.company.expireDate}</h2> */}
-                    <div className="row">
-                      <DatePickerStyling
-                        style={{
-                          width: "100%",
-                          borderColor: "var(--orange-color",
-                        }}
-                        defaultValue={moment(
-                          formik.values.company.expireDate,
-                          "MM-DD-YYYY"
-                        )}
-                        onChange={(date, dateString) =>
-                          formik.setFieldValue("company.expireDate", dateString)
-                        }
-                        picker="date"
-                        format="MM-DD-YYYY"
-                        placeholder={t("expiry_placeholder")}
-                        showNow={false}
-                      />
-                    </div>
-                  </>
-                )}
-
-                <div className="row">
-                  <h1>{t("nav_contact")}</h1>
-                  <div className="input-container">
-                    <ImPhone className="icon" />
-                    <input
-                      className="input-field"
-                      type="tel"
-                      placeholder={t("phone_number_placeholder")}
-                      name="company.phoneNumber"
-                      value={formik.values.company.phoneNumber}
-                      onChange={formik.handleChange}
-                    />
-                    {/* <ButtonC
+            <div className="row">
+              <h1>{t("nav_contact")}</h1>
+              <div className="input-container">
+                <ImPhone className="icon" />
+                <input
+                  className="input-field"
+                  type="tel"
+                  placeholder={t("phone_number_placeholder")}
+                  name="company.phoneNumber"
+                  value={formik.values.company.phoneNumber}
+                  onChange={formik.handleChange}
+                />
+                {/* <ButtonC
                       style={{ padding: "1rem", margin: "0 5px" }}
                       type="button"
                       onClick={addCellular}
                     >
                       <GoPlus />
                     </ButtonC> */}
-                  </div>
-                  {/* <Ul>
+              </div>
+              {/* <Ul>
                     {ListCellular.length > 0
                       ? ListCellular.map((item, index) => (
                           <li key={index}>
@@ -299,57 +296,57 @@ const CompanyInfo = () => {
                         ))
                       : null}
                   </Ul> */}
-                </div>
-                <div className="row">
-                  <div className="input-container">
-                    <FaMapMarkerAlt className="icon" />
-                    <input
-                      className="input-field"
-                      type="url"
-                      placeholder={t("location_placeholder")}
-                      value={formik.values.company.location}
-                      onChange={formik.handleChange}
-                      name="company.location"
-                    />
-                    <ButtonC
-                      style={{ padding: "1rem", margin: "0 5px" }}
-                      type="button"
-                    >
-                      <FaMapMarkerAlt />
-                    </ButtonC>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="input-container">
-                    <MdMail className="icon" />
-                    <input
-                      required
-                      type="mail"
-                      className="input-field"
-                      placeholder={t("email_placeholder")}
-                      name="company.email"
-                      value={formik.values.company.email}
-                      onChange={formik.handleChange}
-                    />
-                  </div>
-                </div>
-                <div className="row">
-                  <h1>{t("work_hours")}</h1>
+            </div>
+            <div className="row">
+              <div className="input-container">
+                <FaMapMarkerAlt className="icon" />
+                <input
+                  className="input-field"
+                  type="url"
+                  placeholder={t("location_placeholder")}
+                  value={formik.values.company.location}
+                  onChange={formik.handleChange}
+                  name="company.location"
+                />
+                <ButtonC
+                  style={{ padding: "1rem", margin: "0 5px" }}
+                  type="button"
+                >
+                  <FaMapMarkerAlt />
+                </ButtonC>
+              </div>
+            </div>
+            <div className="row">
+              <div className="input-container">
+                <MdMail className="icon" />
+                <input
+                  required
+                  type="mail"
+                  className="input-field"
+                  placeholder={t("email_placeholder")}
+                  name="company.email"
+                  value={formik.values.company.email}
+                  onChange={formik.handleChange}
+                />
+              </div>
+            </div>
+            <div className="row">
+              <h1>{t("work_hours")}</h1>
 
-                  <div className="time_container">
-                    <RangePickerStyling
-                      defaultPickerValue={moment(formik.values.workHours)}
-                      onChange={(date, dateString) => {
-                        formik.setFieldValue("company.workHours", dateString);
-                      }}
-                      picker="time"
-                      // mode="time"
-                      format="HH:mm"
-                      placeholder={[t("from_placeholder"), t("to_placeholder")]}
-                      showNow={false}
-                    />
-                  </div>
-                  {/* <Ul>
+              <div className="time_container">
+                <RangePickerStyling
+                  defaultPickerValue={moment(formik.values.workHours)}
+                  onChange={(date, dateString) => {
+                    formik.setFieldValue("company.workHours", dateString);
+                  }}
+                  picker="time"
+                  // mode="time"
+                  format="HH:mm"
+                  placeholder={[t("from_placeholder"), t("to_placeholder")]}
+                  showNow={false}
+                />
+              </div>
+              {/* <Ul>
                 {ListHour.length > 0
                   ? ListHour.map((item, index) => (
                       <li key={index}>
@@ -364,95 +361,93 @@ const CompanyInfo = () => {
                     ))
                   : null}
               </Ul> */}
-                </div>
-                <div className="row">
-                  <h1>{t("add_holidays")}</h1>
-                  <InputC
-                    required
-                    type="text"
-                    name="company.holidays"
-                    placeholder={t("type_day_placeholder")}
-                    value={formik.values.company.holidays}
-                    onChange={formik.handleChange}
-                  />
-                </div>
-              </div>
-
-              <div className="col">
-                <div className="row">
-                  <h1>{t("about_company")}</h1>
-                  <TextArea
-                    required
-                    type="text"
-                    style={{ height: 100 }}
-                    name="company.about"
-                    value={formik.values.company.about}
-                    onChange={formik.handleChange}
-                  />
-                </div>
-                <div className="row">
-                  <h1>{t("our_services")}</h1>
-                  <TextArea
-                    required
-                    type="text"
-                    style={{ height: 100 }}
-                    name="company.services"
-                    value={formik.values.company.services}
-                    onChange={formik.handleChange}
-                  />
-                </div>
-                <div className="row">
-                  <h1>{t("add_video_link")}</h1>
-                  <InputC
-                    type="url"
-                    name="company.videoLink"
-                    placeholder={t("type_video_link_placeholder")}
-                    value={formik.values.company.videoLink}
-                    onChange={formik.handleChange}
-                  />
-                </div>
-                <div className="row" style={{ display: "block" }}>
-                  <h1>{t("add_your_page")}</h1>
-                  <div className="social-media">
-                    <FaFacebookF className="facebook" />
-                    <FaInstagram className="insta" />
-                    <FaTwitter className="twitter" />
-                    <ImPhone className="whatsapp" />
-                  </div>
-                  <InputC
-                    type="url"
-                    style={{ marginTop: 15 }}
-                    value={formik.values.company.mediaLink.facebook}
-                    name="company.mediaLink.facebook"
-                    placeholder={t("type_facebook_placeholder")}
-                    onChange={formik.handleChange}
-                  />
-                  <InputC
-                    type="url"
-                    style={{ marginTop: 15 }}
-                    name="company.mediaLink.insta"
-                    value={formik.values.company.mediaLink.insta}
-                    placeholder={t("type_insta_placeholder")}
-                    onChange={formik.handleChange}
-                  />
-                  <InputC
-                    type="url"
-                    style={{ marginTop: 15 }}
-                    value={formik.values.company.mediaLink.twitter}
-                    name="company.mediaLink.twitter"
-                    placeholder={t("type_twitter_placeholder")}
-                    onChange={formik.handleChange}
-                  />
-                </div>
-              </div>
             </div>
-            <ButtonC style={{ margin: "10px auto 10px 0" }} type="submit">
-              {t("save")}
-            </ButtonC>
+            <div className="row">
+              <h1>{t("add_holidays")}</h1>
+              <InputC
+                required
+                type="text"
+                name="company.holidays"
+                placeholder={t("type_day_placeholder")}
+                value={formik.values.company.holidays}
+                onChange={formik.handleChange}
+              />
+            </div>
           </div>
-        </Form>
-      )}
-    </>
+
+          <div className="col">
+            <div className="row">
+              <h1>{t("about_company")}</h1>
+              <TextArea
+                required
+                type="text"
+                style={{ height: 100 }}
+                name="company.about"
+                value={formik.values.company.about}
+                onChange={formik.handleChange}
+              />
+            </div>
+            <div className="row">
+              <h1>{t("our_services")}</h1>
+              <TextArea
+                required
+                type="text"
+                style={{ height: 100 }}
+                name="company.services"
+                value={formik.values.company.services}
+                onChange={formik.handleChange}
+              />
+            </div>
+            <div className="row">
+              <h1>{t("add_video_link")}</h1>
+              <InputC
+                type="url"
+                name="company.videoLink"
+                placeholder={t("type_video_link_placeholder")}
+                value={formik.values.company.videoLink}
+                onChange={formik.handleChange}
+              />
+            </div>
+            <div className="row" style={{ display: "block" }}>
+              <h1>{t("add_your_page")}</h1>
+              <div className="social-media">
+                <FaFacebookF className="facebook" />
+                <FaInstagram className="insta" />
+                <FaTwitter className="twitter" />
+                <ImPhone className="whatsapp" />
+              </div>
+              <InputC
+                type="url"
+                style={{ marginTop: 15 }}
+                value={formik.values.company.mediaLink.facebook}
+                name="company.mediaLink.facebook"
+                placeholder={t("type_facebook_placeholder")}
+                onChange={formik.handleChange}
+              />
+              <InputC
+                type="url"
+                style={{ marginTop: 15 }}
+                name="company.mediaLink.insta"
+                value={formik.values.company.mediaLink.insta}
+                placeholder={t("type_insta_placeholder")}
+                onChange={formik.handleChange}
+              />
+              <InputC
+                type="url"
+                style={{ marginTop: 15 }}
+                value={formik.values.company.mediaLink.twitter}
+                name="company.mediaLink.twitter"
+                placeholder={t("type_twitter_placeholder")}
+                onChange={formik.handleChange}
+              />
+            </div>
+          </div>
+        </div>
+        <ButtonC style={{ margin: "10px auto 10px 0" }} type="submit">
+          {t("save")}
+        </ButtonC>
+      </div>
+    </Form>
   );
 };
 
@@ -736,7 +731,7 @@ const Header = styled.div`
   }
 `;
 
-const FormContainer = styled.div`
+const Container = styled.div`
   background: var(--dark-light-color);
   padding: 2rem;
 
@@ -744,6 +739,9 @@ const FormContainer = styled.div`
     margin: 2rem 0;
     text-align: center;
     width: 100%;
+  }
+  @media only screen and (max-width: 768px) {
+    padding: 1rem;
   }
 `;
 

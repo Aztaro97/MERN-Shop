@@ -35,7 +35,7 @@ function SearchBox({ history }) {
 const Form = styled.form`
   display: flex;
   justify-content: space-between;
-  gap: 10px;
+  gap: 5px;
   height: 35px;
   & input {
     color: var(--dark-color);

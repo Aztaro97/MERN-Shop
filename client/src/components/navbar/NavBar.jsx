@@ -313,11 +313,13 @@ function NavBar() {
               Add Ads
             </Link>
           </li>
-          <li className="nav_item">
-            <Link to="/register" className="link create_shop">
-              Create Shop
-            </Link>
-          </li>
+          {!userInfo?.company && (
+            <li className="nav_item">
+              <Link to="/register" className="link create_shop">
+                Become a seller
+              </Link>
+            </li>
+          )}
         </ul>
 
         <BurgerMenu />
@@ -437,18 +439,23 @@ const BottomHeader = styled.div`
 
     & .link.add_ads,
     & .link.create_shop {
-      border: 1px solid var(--dark-light-color);
+      /* border: 1px solid var(--dark-light-color); */
+      background: var(--orange-color);
+      color: var(--white-color);
       padding: 7px 10px !important;
-      text-transform: capitalize;
+      text-transform: none;
       font-weight: 400 !important;
       &:hover {
         background: var(--dark-light-color) !important;
-        color: var(--silver-color) !important;
+        color: var(--white-color) !important;
       }
     }
     & .link.create_shop {
       margin-left: 5px;
       margin-right: 5px;
+    }
+    & .link.add_ads {
+      padding: 7px 1.5rem !important;
     }
 
     @media only screen and (max-width: 768px) {

@@ -100,15 +100,19 @@ function BurgerMenu() {
         <li className="nav__item">
           <Link
             to="/advertising/register"
-            className="link"
+            className="link border_link"
             onClick={handleClose}
           >
             Add Ads
           </Link>
         </li>
         <li className="nav__item">
-          <Link to="/register" className="link" onClick={handleClose}>
-            Create Shop
+          <Link
+            to="/register"
+            className="link border_link"
+            onClick={handleClose}
+          >
+            Become a seller
           </Link>
         </li>
       </ul>
@@ -132,6 +136,10 @@ const MenuContainer = styled(Menu)`
   }
 
   & .nav__item {
+    & .link.border_link {
+      padding: 5px 1rem;
+      border: 1px solid var(--silver-color);
+    }
     & .link {
       color: var(--silver-color) !important;
       text-decoration: none;
