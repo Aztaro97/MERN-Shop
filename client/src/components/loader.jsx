@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import ClipLoader from "react-spinners/ClipLoader";
+import ClipLoader from "react-spinners/SyncLoader";
 import styled from "styled-components";
 
 function LoaderComponent() {
@@ -22,12 +22,19 @@ function LoaderComponent() {
       <ClipLoader
         color={`var(--orange-color)`}
         loading={loading}
-        size={90}
-        // margin={58}
+        size={30}
+        margin={8}
       />
     </Container>
   );
 }
+
+// function LoaderComponent() {
+//   return (
+//     <>
+//     </>
+//   );
+// }
 
 const Container = styled.div`
   height: 100vh;

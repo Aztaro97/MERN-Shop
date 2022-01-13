@@ -291,7 +291,6 @@ const Container = styled.div`
 `;
 
 const ModalStyling = styled(Modal)`
-  width: 100%;
   & .ant-modal-footer {
     /* STYLING BTN CLOSE  */
     & > button.ant-btn {
@@ -311,6 +310,10 @@ const ModalStyling = styled(Modal)`
     & > button.ant-btn.ant-btn-primary {
       display: none;
     }
+  }
+
+  & .img {
+    width: 100% !important;
   }
 `;
 

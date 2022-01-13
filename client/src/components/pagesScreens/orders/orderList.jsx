@@ -160,13 +160,16 @@ function OrdersListScreen() {
 }
 
 const OrderContainer = styled.div`
-  margin: 7rem auto 0;
   max-width: 2000px;
-  padding: 0 1rem;
+  padding: 2rem 1rem;
   min-height: 50vh;
   & h3 {
     text-align: center;
     text-transform: uppercase;
+    color: var(--silver-color);
+    letter-spacing: 1px;
+    font-weight: 700;
+    margin-bottom: 2rem;
   }
 `;
 

@@ -103,7 +103,7 @@ function ProductsListScreen({ match }) {
                   <th>price</th>
                   <th>images</th>
                   <th>brand</th>
-                  <th>Company Name / Personnel</th>
+                  <th>Company Name</th>
                   <th>Email</th>
                   <th>status</th>
                   <th>Action</th>
@@ -114,7 +114,7 @@ function ProductsListScreen({ match }) {
                 {products.map((product) => (
                   <tr key={product._id}>
                     <td>{product.name}</td>
-                    <td>{product.price} dirham</td>
+                    <td>{product.price} AED</td>
                     <td>
                       <div className="images_lists">
                         <Image.PreviewGroup>
@@ -133,6 +133,7 @@ function ProductsListScreen({ match }) {
                           textTransform: "lowercase",
                         }}
                         href={`mailto:${product.user.email}`}
+                        className="user_email"
                       >
                         {product.user.email}
                       </a>
@@ -206,29 +207,30 @@ const Table = styled.table`
   width: 100%;
   & thead {
     & tr {
-      border: 1px solid #ececec92;
+      border-bottom: 1px solid #ececec61;
       & th {
-        border: 1px solid rgba(0, 0, 0, 0.05);
-        padding: 10px;
+        padding: 1rem 0;
         text-transform: uppercase;
         font-weight: 700;
         color: var(--silver-color);
         font-size: 0.8rem;
+        /* text-align: center; */
       }
     }
   }
   & tbody {
     margin-top: 1rem;
     & tr {
-      border-bottom: 1px solid #ececec92;
+      border-bottom: 1px solid #ececec61;
       & td {
-        padding: 10px;
+        padding: 1rem 0;
         text-transform: uppercase;
         font-size: 0.8rem;
+        color: var(--silver-color);
         /* background: #ececec; */
         & .delete_btn {
           outline: none;
-          background: #eb4d4b;
+          background: var(--orange-color);
           color: #fff;
           border: none;
           padding: 1px 12px;
@@ -256,13 +258,17 @@ const Table = styled.table`
           display: flex;
           align-items: center;
           color: var(--silver-color);
-          position: relative;
-          top: 11px;
+          padding: 0 10px;
+          /* position: relative;
+          top: 11px; */
           &:hover {
             text-decoration: none;
             opacity: 0.9;
           }
         }
+      }
+      & .user_email {
+        color: var(--silver-color);
       }
       & .status {
         & .para_accept,
