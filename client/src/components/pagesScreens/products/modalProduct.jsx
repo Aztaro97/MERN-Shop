@@ -56,7 +56,7 @@ const ModalContent = ({ product, setShowModal }) => {
             {product.imageUrl &&
               product.imageUrl.map((img, index) => (
                 <div key={index}>
-                  <img src={img.url} alt="" />
+                  <img src={img.url} alt="" className="img_slider" />
                 </div>
               ))}
           </Slider>
@@ -262,6 +262,10 @@ const Container = styled.div`
   padding: 1rem;
 
   /* ***********    */
+  & .img_slider {
+    height: 300px;
+    object-fit: cover;
+  }
   & .slick-slider img {
     width: 100%;
   }
@@ -276,6 +280,10 @@ const Container = styled.div`
   /* padding:1.5rem; */
   @media only screen and (max-width: 500px) {
     padding: 1rem 0;
+    & .img_slider {
+      height: 200px;
+      object-fit: cover;
+    }
   }
 `;
 

@@ -32,6 +32,8 @@ function ProductDetailsScreen() {
   const [sizeSelected, setSizeSelected] = useState("");
   const [colorSelected, setColorSelected] = useState("");
 
+  const [added, setAdded] = useState(false);
+
   const params = useParams();
   const productId = params.id;
 
@@ -50,6 +52,7 @@ function ProductDetailsScreen() {
       warningMessage("Select the color to add to cart", 10);
     } else {
       dispatch(addToCart(id, qty, size, color, merchant));
+      setAdded(true);
     }
   };
 
@@ -78,7 +81,6 @@ function ProductDetailsScreen() {
     companyInfo
   ) => {
     addToCartHandler(productId, qty, sizeSelected, colorSelected, companyInfo);
-    // Event("product", "Product added to cart", productId);
   };
 
   useEffect(() => {
@@ -94,7 +96,7 @@ function ProductDetailsScreen() {
       ) : error ? (
         <h1>{error}</h1>
       ) : (
-        <Container>
+        <Container added={added}>
           <Row gutter={[40, 70]}>
             <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 12 }}>
               <Slider {...settings} arrows={false}>
@@ -196,7 +198,7 @@ function ProductDetailsScreen() {
                   )
                 }
               >
-                add to cart
+                {added ? "added to cart" : "add to cart"}
               </button>
 
               {/* ******    SOCIAL MEDIA  SHARE   ******8 */}
@@ -267,6 +269,7 @@ const Container = styled.div`
   & .product_name {
     color: var(--silver-color);
     text-transform: capitalize;
+    font-weight: 700;
     letter-spacing: 1px;
     margin-bottom: 1rem;
   }
@@ -305,6 +308,49 @@ const Container = styled.div`
     & h5 {
       color: var(--orange-color);
       text-transform: capitalize;
+    }
+
+    & .radio-group-container {
+      & .ant-radio-button-wrapper {
+        margin-right: 1rem;
+        margin-bottom: 0.5rem;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        padding: 0 0.7rem;
+        background: transparent !important;
+
+        & > * {
+          display: flex;
+          align-items: center;
+          width: 100%;
+        }
+        &:hover {
+          color: var(--orange-color);
+        }
+        &:not(:first-child):before {
+          display: none;
+        }
+        &.ant-radio-button-wrapper-checked {
+          background-color: var(--silver-color) !important;
+          border-color: var(--orange-color);
+          &:hover {
+            color: #fff;
+          }
+        }
+      }
+      &.ant-radio-button-wrapper
+        .ant-radio-group-solid
+        .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):active {
+        background-color: var(--orange-color);
+      }
+      &.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled)::before {
+        background-color: none !important;
+      }
+      &.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):hover::before {
+        background-color: none !important;
+      }
     }
   }
 
@@ -347,7 +393,8 @@ const Container = styled.div`
 
   /* ****  BUTTON STYLING   ******************************** */
   & ._btn_add_cart {
-    background-color: var(--orange-600-color);
+    background: ${({ added }) =>
+      added ? "var(--silver-color)" : "var(--orange-600-color)"};
     color: var(--dark-color);
     margin: 1rem 0;
     padding: 0.9rem 0;
@@ -384,17 +431,12 @@ const Container = styled.div`
 `;
 
 const RadioButton = styled(Radio.Button)`
-  border-color: var(--silver-color) !important ;
-  border-left: 1px solid var(--silver-color) !important ;
-  background-color: transparent !important;
-  color: var(--silver-color) !important;
+  border-color: var(--orange-color) !important ;
   &:hover {
-    background: var(--orange-600-color) !important;
-    color: var(--dark-color) !important;
+    color: #111 !important;
   }
   & .ant-radio-button-checked {
     background: var(--orange-color);
-    color: var(--dark-color) !important;
   }
   & .ant-radio-button-checked .ant-radio-button-inner:after {
     background-color: var(--orange-color);
