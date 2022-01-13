@@ -436,7 +436,7 @@ const ProductStyling = styled.section`
 
 const Banner = styled.section`
   padding: 4rem 2rem;
-  background: url("https://images.unsplash.com/photo-1563126153-74b8e04c1070?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80");
+  background: linear-gradient(180deg, rgba(0,0,0,0.6699054621848739) 100%, rgba(33,33,33,0.6446953781512605) 100%), url("/img/printing/banner-images.jpg");
   position: relative;
   height: 400px;
   object-fit: cover;
