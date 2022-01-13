@@ -315,7 +315,7 @@ const IntroVideoSection = ({ lang }) => {
   return (
     <IntroVideoStyling>
       <Fade bottom>
-        <h1 className="title">Ad Video</h1>
+        <h1 className="title">Ads Video</h1>
         <hr />
         <Slider {...settings} className="slider-container">
           {VideoData.map((data) => (

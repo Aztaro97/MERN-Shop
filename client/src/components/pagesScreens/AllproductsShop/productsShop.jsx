@@ -61,7 +61,12 @@ const ViewProducts = ({ match }) => {
             <FilterForm onSubmit={formik.handleSubmit}>
               <h3 className="title">Products Shop :</h3>
               <Row gutter={[15, 10]} justify="end">
-                <Col xs={{ span: 12 }} md={{ span: 8 }} lg={{ span: 5 }}>
+                <Col
+                  xs={{ span: 12 }}
+                  sm={{ span: 8 }}
+                  md={{ span: 5 }}
+                  lg={{ span: 5 }}
+                >
                   <SelectC
                     className="form_select"
                     placeholder="Brand"
@@ -73,7 +78,12 @@ const ViewProducts = ({ match }) => {
                     }
                   />
                 </Col>
-                <Col xs={{ span: 12 }} md={{ span: 8 }} lg={{ span: 5 }}>
+                <Col
+                  xs={{ span: 12 }}
+                  sm={{ span: 8 }}
+                  md={{ span: 5 }}
+                  lg={{ span: 5 }}
+                >
                   <SelectC
                     className="form_select"
                     name="formik.color"
@@ -85,7 +95,12 @@ const ViewProducts = ({ match }) => {
                     }
                   />
                 </Col>
-                <Col xs={{ span: 12 }} md={{ span: 8 }} lg={{ span: 5 }}>
+                <Col
+                  xs={{ span: 12 }}
+                  sm={{ span: 8 }}
+                  md={{ span: 5 }}
+                  lg={{ span: 5 }}
+                >
                   <SelectC
                     className="form_select"
                     name="formik.size"
@@ -97,7 +112,12 @@ const ViewProducts = ({ match }) => {
                     }
                   />
                 </Col>
-                <Col xs={{ span: 12 }} md={{ span: 8 }} lg={{ span: 5 }}>
+                <Col
+                  xs={{ span: 12 }}
+                  sm={{ span: 8 }}
+                  md={{ span: 5 }}
+                  lg={{ span: 5 }}
+                >
                   {" "}
                   <div className="form_select slider">
                     <p>Price Less than Aed 2000</p>
@@ -109,7 +129,12 @@ const ViewProducts = ({ match }) => {
                     />
                   </div>
                 </Col>
-                <Col xs={{ span: 12 }} md={{ span: 8 }} lg={{ span: 4 }}>
+                <Col
+                  xs={{ span: 12 }}
+                  sm={{ span: 8 }}
+                  md={{ span: 4 }}
+                  lg={{ span: 4 }}
+                >
                   <button type="submit" className="btn">
                     Clear
                   </button>
