@@ -39,21 +39,7 @@ const NumberConter = ({ className, ...rest }) => {
 function ProgrammingScreen() {
   return (
     <MainContainer>
-      {/* <Banner>
-        <div className="content">
-          <Title level={2} className="title">
-            The right consultation partner for your business
-          </Title>
-          <Paragraph className="para">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
-            cupiditate
-          </Paragraph>
-          <Button type="button" className="link">
-            contact us
-          </Button>
-        </div>
-      </Banner> */}
-      <BannerSeconde>
+      <Banner>
         <VideoPlayer
           className="video"
           src={"/videos/matrixe_video.mp4"}
@@ -68,7 +54,7 @@ function ProgrammingScreen() {
             contact us
           </Link>
         </div>
-      </BannerSeconde>
+      </Banner>
       <FirstServiceStyling>
         <Fade bottom>
           <h1 className="title">our services</h1>
@@ -287,7 +273,7 @@ function ProgrammingScreen() {
   );
 }
 
-const BannerSeconde = styled.div`
+const Banner = styled.div`
   height: 400px !important;
   overflow: hidden;
   width: 100%;
@@ -320,10 +306,7 @@ const BannerSeconde = styled.div`
       letter-spacing: 1px;
       text-transform: uppercase;
     }
-    & .para {
-      max-width: 400px;
-      /* text-align: center; */
-    }
+
     & .link {
       padding: 10px 2rem;
       background: var(--orange-color);
@@ -337,59 +320,10 @@ const BannerSeconde = styled.div`
       }
     }
   }
-`;
-
-const Banner = styled.section`
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("https://images.unsplash.com/photo-1627398242454-45a1465c2479?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1548&q=80");
-  position: relative;
-  height: 400px;
-  object-fit: cover;
-  background-position: center center;
-  background-size: cover;
-  & .content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    max-width: 500px;
-    padding: 10px;
-    padding-left: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
-
-    margin: 0 auto;
-    & > * {
-      color: #fff;
-    }
-    & .title {
-      letter-spacing: 1px;
-    }
-    & .para {
-      max-width: 400px;
-      /* text-align: center; */
-    }
-    & .link {
-      padding: 10px;
-      background: #fff;
-      color: #333;
-      font-weight: 400;
-      &:hover {
-        opacity: 0.9;
-      }
-    }
-  }
-  @media screen and (max-width: 678px) {
-    height: 300px;
+  @media only screen and (max-width: 768px) {
     & .content {
-      & > * {
-        margin: 0;
-      }
-      & .para {
-        margin-bottom: 5px;
-      }
+      position: absolute;
+      top: 30%;
     }
   }
 `;

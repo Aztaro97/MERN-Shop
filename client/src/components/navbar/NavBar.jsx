@@ -458,7 +458,12 @@ const BottomHeader = styled.div`
       padding: 7px 1.5rem !important;
     }
 
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 810px) {
+      & .link.create_shop {
+        padding: 7px 7px !important;
+      }
+    }
+    @media only screen and (max-width: 767px) {
       display: none;
     }
   }

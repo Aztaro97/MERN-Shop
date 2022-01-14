@@ -73,15 +73,20 @@ const Form = styled.form`
     }
   }
 
-  @media only screen and (max-width: 900px) {
+  @media only screen and (max-width: 920px) {
     gap: 2px;
     & input {
       width: 120px;
     }
   }
+  @media only screen and (max-width: 840px) {
+    & input {
+      width: 100px;
+    }
+  }
   @media only screen and (max-width: 768px) {
     & input {
-      width: 130px;
+      width: 140px;
     }
   }
 `;
