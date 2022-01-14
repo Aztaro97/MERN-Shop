@@ -7,6 +7,7 @@ import Slider from "react-slick";
 import emailjs from "emailjs-com";
 import "./aboutStyling.css";
 import { SyncOutlined } from "@ant-design/icons";
+import { Link } from "react-router-dom";
 
 const { Title, Paragraph } = Typography;
 
@@ -20,9 +21,9 @@ function AboutScreen() {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
             cupiditate dolore
           </Paragraph>
-          <Button type="button" className="link">
+          <Link to="contact-us" className="link">
             contact us
-          </Button>
+          </Link>
         </div>
       </Banner>
       <FirstSectionComponent />
@@ -446,7 +447,11 @@ const FirstSectionStyling = styled.section`
 `;
 
 const Banner = styled.section`
-  background: linear-gradient(to bottom, #1111119d 0%, #00000099 100%),
+  background:  linear-gradient(
+      180deg,
+      rgba(33, 33, 33, 0.8113620448179272) 100%,
+      rgba(0, 0, 0, 0.6699054621848739) 100%
+    ),
     url("https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80");
   position: relative;
   height: 400px;
@@ -469,24 +474,30 @@ const Banner = styled.section`
 
     margin: 0 auto;
     & > * {
-      color: #fff;
+      color: var(--silver-color);
     }
     & .para {
       max-width: 400px;
       /* text-align: center; */
     }
     & .link {
-      padding: 10px;
-      background: #fff;
-      color: #333;
+      margin-top: 10px;
+      text-decoration: none;
+      padding:7px 10px;
+      text-decoration: none;
+      background: transparent;
+      border: 1px solid var(--silver-color);
+      color: var(--silver-color);
+      text-align: center;
       max-width: 200px;
+      text-transform: uppercase;
       &:hover {
         opacity: 0.9;
       }
     }
   }
   @media screen and (max-width: 678px) {
-    height: 300px;
+    height: 400px;
     & .content {
       justify-content: end;
       padding-bottom: 20px;

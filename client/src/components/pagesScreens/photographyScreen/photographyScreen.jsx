@@ -243,7 +243,7 @@ const Banner = styled.div`
     letter-spacing: 1px;
     max-width: 400px;
     & > * {
-      color: #fff;
+      color: var(--silver-color);
     }
     & .link {
       padding: 8px 2rem;
@@ -263,11 +263,14 @@ const Banner = styled.div`
   }
   @media screen and (max-width: 678px) {
     & .content {
+      -moz-justify-content: end;
+      -webkit-justify-content: end;
+      -ms-justify-content: end;
       justify-content: end;
       padding-bottom: 20px;
       padding-left: 1rem;
     }
-    height: 300px;
+    height: 400px;
   }
 `;
 

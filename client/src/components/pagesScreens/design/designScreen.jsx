@@ -41,11 +41,9 @@ function DesignScreen() {
     <MainComponent>
       <Banner>
         <div className="content">
-          <Title level={2}>Get inspired by beautiful design !</Title>
-          <Paragraph className="para">
-            {/* Our Professional Designers Ready To Create You The Perfect Logo, */}
-            {/* Website, Business Card & More! */}
-          </Paragraph>
+          <Title level={2} className="title">
+            Get inspired by beautiful design !
+          </Title>
           <Button type="button" className="link">
             contact us
           </Button>
@@ -599,20 +597,29 @@ const Banner = styled.section`
     }
     & .para {
       max-width: 400px;
-      /* text-align: center; */
+    }
+    & .title {
+      color: var(--silver-color);
     }
     & .link {
-      padding: 10px;
-      background: #fff;
-      color: #333;
-      max-width: 200px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      display: block;
+      padding: 6px 10px;
+      text-transform: uppercase;
+      background: transparent;
+      border: 1px solid var(--silver-color);
+      color: var(--silver-color);
+      text-align: center;
+      max-width: 140px;
+      margin-top: 10px;
       &:hover {
         opacity: 0.9;
       }
     }
   }
   @media screen and (max-width: 678px) {
-    height: 300px;
+    height: 400px;
     & .content {
       justify-content: end;
       padding-bottom: 20px;

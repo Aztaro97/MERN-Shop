@@ -301,12 +301,10 @@ const BannerSeconde = styled.div`
   }
   & .content {
     position: absolute;
-    /* bottom: 0; */
     top: 20%;
     left: 0;
     right: 0;
-    /* height: 100%; */
-    /* max-width: 500px; */
+    /* bottom: 0; */
     padding: 10px;
     padding-left: 30px;
     display: flex;
@@ -316,7 +314,7 @@ const BannerSeconde = styled.div`
     margin: 0 auto;
     text-align: center;
     & > * {
-      color: #fff;
+      color: var(--silver-color);
     }
     & .title {
       letter-spacing: 1px;
@@ -328,8 +326,8 @@ const BannerSeconde = styled.div`
     }
     & .link {
       padding: 10px 2rem;
-      background: #fff;
-      color: #333;
+      background: var(--orange-color);
+      color: #fff;
       font-weight: 400;
       text-decoration: none;
       text-transform: uppercase;

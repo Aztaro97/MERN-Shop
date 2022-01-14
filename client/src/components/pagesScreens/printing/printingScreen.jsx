@@ -20,11 +20,6 @@ function PrintingScreen() {
             <Title level={2}>
               Shaping the future with <br /> Heat-Free Technology printers
             </Title>
-            {/* <Paragraph className="para">
-              To emerge as a leader in overall print solutions through
-              consistently satisfying our customer requirements and offer our
-              exemplary services to a larger customer base.
-            </Paragraph> */}
             <Link to="/contact-us" className="link">
               contact us
             </Link>
@@ -466,20 +461,19 @@ const Banner = styled.section`
     & .para {
       max-width: 400px;
       text-align: center;
-      
     }
     & .link {
       text-decoration: none;
       font-size: 1.2rem;
       display: block;
-      padding:6px 10px;
+      padding: 6px 10px;
       text-transform: uppercase;
       background: transparent;
       border: 1px solid var(--silver-color);
       color: var(--silver-color);
       text-align: center;
-      max-width:140px;
-      margin-top:10px;
+      max-width: 140px;
+      margin-top: 10px;
       &:hover {
         opacity: 0.9;
       }

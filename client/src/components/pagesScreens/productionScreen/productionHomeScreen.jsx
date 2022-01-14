@@ -17,17 +17,12 @@ function ProductionScreen() {
       <Container>
         <Banner>
           <div className="content">
-            <Title level={2}>
-              Delivering Top Quality Disposable Food Packaging in Dubai
+            <Title level={2} className="title">
+              Delivering Top Quality <br /> Disposable Food Packaging in Dubai
             </Title>
-            {/* <Paragraph className="para">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
-              cupiditate dolore earum perferendis asperiores culpa id esse
-              laborum quaerat
-            </Paragraph> */}
-            <Button type="button" className="link">
+            <Link type="button" className="link">
               contact us
-            </Button>
+            </Link>
           </div>
         </Banner>
         <ProductSelling />
@@ -316,7 +311,12 @@ const ProductStyling = styled.section`
 `;
 
 const Banner = styled.section`
-  background: url("https://images.unsplash.com/photo-1563126153-74b8e04c1070?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80");
+  background: linear-gradient(
+      180deg,
+      rgba(33, 33, 33, 0.8113620448179272) 100%,
+      rgba(0, 0, 0, 0.6699054621848739) 100%
+    ),
+    url("/img/production/banner_image.jpg");
   position: relative;
   height: 400px;
   object-fit: cover;
@@ -332,30 +332,37 @@ const Banner = styled.section`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: start;
+    padding: 2rem;
 
     margin: 0 auto;
-    & > * {
-      color: #fff;
+    & .title {
+      color: var(--silver-color);
+      letter-spacing: 1px;
     }
     & .para {
       max-width: 400px;
       text-align: center;
+
     }
     & .link {
-      padding: 10px;
-      background: #fff;
-      color: #333;
+      text-decoration: none;
+      border: 1px solid var(--silver-color);
+      color: var(--silver-color);
+      padding: 5px 2rem;
+      background: transparent;
+      margin-top: 10px;
       &:hover {
         opacity: 0.9;
       }
     }
   }
   @media screen and (max-width: 678px) {
-    height: 300px;
-    justify-content: end;
-    padding-bottom: 20px;
+    height: 400px;
     & .content {
+      justify-content: end;
+      align-items: start;
+      padding-bottom: 20px;
       & > * {
         margin: 0;
       }
