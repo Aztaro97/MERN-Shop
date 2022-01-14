@@ -18,16 +18,16 @@ function PrintingScreen() {
         <Banner>
           <div className="content">
             <Title level={2}>
-              Shaping the future with Heat-Free Technology printers
+              Shaping the future with <br /> Heat-Free Technology printers
             </Title>
             {/* <Paragraph className="para">
               To emerge as a leader in overall print solutions through
               consistently satisfying our customer requirements and offer our
               exemplary services to a larger customer base.
             </Paragraph> */}
-            <Button type="button" className="link">
+            <Link to="/contact-us" className="link">
               contact us
-            </Button>
+            </Link>
           </div>
         </Banner>
         <section className="service_provider">
@@ -361,7 +361,7 @@ const Container = styled.div`
     align-items: center;
     height: 200px;
     & .title {
-      color:#fff;
+      color: #fff;
     }
     & .link {
       text-decoration: none;
@@ -436,7 +436,12 @@ const ProductStyling = styled.section`
 
 const Banner = styled.section`
   padding: 4rem 2rem;
-  background: linear-gradient(180deg, rgba(0,0,0,0.6699054621848739) 100%, rgba(33,33,33,0.6446953781512605) 100%), url("/img/printing/banner-images.jpg");
+  background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.6699054621848739) 100%,
+      rgba(33, 33, 33, 0.6446953781512605) 100%
+    ),
+    url("/img/printing/banner-images.jpg");
   position: relative;
   height: 400px;
   object-fit: cover;
@@ -452,7 +457,7 @@ const Banner = styled.section`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    padding: 2rem;
 
     margin: 0 auto;
     & > * {
@@ -461,19 +466,27 @@ const Banner = styled.section`
     & .para {
       max-width: 400px;
       text-align: center;
+      
     }
     & .link {
-      padding: 10px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      display: block;
+      padding:6px 10px;
+      text-transform: uppercase;
       background: transparent;
       border: 1px solid var(--silver-color);
       color: var(--silver-color);
+      text-align: center;
+      max-width:140px;
+      margin-top:10px;
       &:hover {
         opacity: 0.9;
       }
     }
   }
   @media screen and (max-width: 678px) {
-    height: 300px;
+    height: 400px;
     & .content {
       justify-content: end;
       padding-bottom: 20px;
