@@ -590,12 +590,14 @@ const ServiceStyling = styled.section`
   & .title {
     text-align: center;
     text-transform: uppercase;
-    color: var(--white-color);
+    color: var(--silver-color);
+    letter-spacing: 1px;
+    font-weight: 700;
     font-size: 1.6rem;
   }
   & hr {
     width: 100px;
-    background: var(--white-color);
+    background: var(--silver-color);
     height: 3px;
     margin: 0 auto 1.8rem;
     @media only screen and (max-width: 768px) {
@@ -639,12 +641,13 @@ const PartnerLogoStyling = styled.section`
   & .title {
     text-align: center;
     text-transform: uppercase;
-    color: var(--white-color);
+    color: var(--silver-color);
+    font-weight: 700;
     font-size: 1.6rem;
   }
   & hr {
-    width: 150px;
-    background: var(--white-color);
+    width: 100px;
+    background: var(--silver-color);
     height: 3px;
     margin: 0 auto 1.8rem;
     @media only screen and (max-width: 768px) {
@@ -689,14 +692,15 @@ const JoiningUsStyling = styled.section`
   background: var(--dark-light-color);
   & .title {
     text-align: center;
-    /* letter-spacing: 3px; */
-    color: var(--white-color);
+    letter-spacing: 1px;
+    color: var(--silver-color);
     margin-bottom: 1rem;
+    font-weight: 700;
     font-size: 1.6rem;
   }
   & hr {
-    width: 150px;
-    background: var(--white-color);
+    width: 100px;
+    background: var(--silver-color);
     height: 3px;
     margin: 0 auto 1.8rem;
     @media only screen and (max-width: 768px) {
@@ -878,13 +882,14 @@ const IntroVideoStyling = styled.section`
   & .title {
     text-align: center;
     text-transform: uppercase;
-    color: var(--white-color);
+    color: var(--silver-color);
+    font-weight: 700;
     font-size: 1.6rem;
     /* margin-bottom: 0; */
   }
   & hr {
-    width: 150px;
-    background: var(--white-color);
+    width: 100px;
+    background: var(--silver-color);
     height: 3px;
     margin: 0 auto 1.8rem;
   }
