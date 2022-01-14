@@ -29,7 +29,7 @@ function AboutScreen() {
       <FirstSectionComponent />
       <VisionStyling>
         <h1 className="title">our vision</h1>
-        <Row gutter={[20, 10]} justify="center" className="card_container">
+        <Row gutter={[20, 20]} justify="center" className="card_container">
           <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }}>
             <div className="card_item">
               <img
