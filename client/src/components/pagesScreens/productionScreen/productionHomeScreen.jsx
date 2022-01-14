@@ -20,7 +20,7 @@ function ProductionScreen() {
             <Title level={2} className="title">
               Delivering Top Quality <br /> Disposable Food Packaging in Dubai
             </Title>
-            <Link type="button" className="link">
+            <Link to="/contact-us" className="link">
               contact us
             </Link>
           </div>
@@ -343,7 +343,6 @@ const Banner = styled.section`
     & .para {
       max-width: 400px;
       text-align: center;
-
     }
     & .link {
       text-decoration: none;

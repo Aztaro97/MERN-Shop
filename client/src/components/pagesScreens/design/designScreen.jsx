@@ -44,9 +44,9 @@ function DesignScreen() {
           <Title level={2} className="title">
             Get inspired by beautiful design !
           </Title>
-          <Button type="button" className="link">
+          <Link to="contact-us" className="link">
             contact us
-          </Button>
+          </Link>
         </div>
       </Banner>
       <FirstServiceStyling>
