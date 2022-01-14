@@ -16,7 +16,7 @@ export const addToCart =
       payload: {
         product: data._id,
         name: data.name,
-        image: data.imageUrl.length > 0 && data.imageUrl[0].url,
+        image: data.imageUrl.length > 0 && data.imageUrl,
         price: data.price,
         countInStock: data.countInStock,
         shippingOptions: data.shippingTo,

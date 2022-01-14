@@ -54,8 +54,8 @@ function FormRegisterProduct() {
     "FOAM PRODUCTS",
     "HYGIENE & PROTECTION",
   ];
-  const typeData = ["type 1", "type 2", "type 3"];
-  const capacityData = ["capacity 1", "capacity 2", "capacity 3"];
+  const typeData = [];
+  const capacityData = [];
   const sizeData = ["small", "Medium", "Large"];
   const colorData = [
     "black",

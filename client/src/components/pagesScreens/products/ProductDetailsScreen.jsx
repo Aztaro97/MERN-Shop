@@ -26,6 +26,8 @@ import MainContainer from "../../MainContainer";
 import { baseUrl } from "./config.js";
 import { warningMessage } from "../../message";
 import { addToCart } from "../../../flux/actions/cartAction";
+import ErrorServerPage from "../ErrorServerPage";
+import PageNotFund from "../pageNotFund";
 
 function ProductDetailsScreen() {
   const [qtyNumber, setQtyNumber] = useState(1);
@@ -84,7 +86,7 @@ function ProductDetailsScreen() {
   };
 
   useEffect(() => {
-    if (!product._id || product._id !== productId) {
+    if (!product || product._id !== productId) {
       dispatch(listProductDetails(productId));
     }
   }, [dispatch, product, productId]);
@@ -93,151 +95,157 @@ function ProductDetailsScreen() {
     <MainContainer>
       {loading ? (
         <LoaderComponent />
-      ) : error ? (
-        <h1>{error}</h1>
+      ) : error === "Request failed with status code 500" ? (
+        <ErrorServerPage />
       ) : (
-        <Container added={added}>
-          <Row gutter={[40, 70]}>
-            <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 12 }}>
-              <Slider {...settings} arrows={false}>
-                {product.imageUrl &&
-                  product.imageUrl.map((img, index) => (
-                    <div key={index}>
-                      <img src={img.url} alt="" className="img_slider" />
+        <>
+          {product ? (
+            <Container added={added}>
+              <Row gutter={[40, 70]}>
+                <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 12 }}>
+                  <Slider {...settings} arrows={false}>
+                    {product.imageUrl &&
+                      product.imageUrl.map((img, index) => (
+                        <div key={index}>
+                          <img src={img.url} alt="" className="img_slider" />
+                        </div>
+                      ))}
+                  </Slider>
+                </Col>
+                <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 12 }}>
+                  <h2 className="product_name">{product.name}</h2>
+                  <div className="price_container">
+                    <p className="price">
+                      AED <span>{product.price}</span>{" "}
+                    </p>
+                    <p className="old_price">
+                      AED <span>{product.compareAtPrice}</span>{" "}
+                    </p>
+                  </div>
+                  <p className="product_description">{product.description}</p>
+                  {product.variantSize?.length > 0 && (
+                    <div className="variant_container">
+                      <h5>size</h5>
+                      <div className="select-variant">
+                        <Radio.Group
+                          defaultValue={sizeSelected}
+                          buttonStyle="solid"
+                          onChange={(e) => setSizeSelected(e.target.value)}
+                        >
+                          {product.variantSize.map((size, index) => (
+                            <RadioButton
+                              value={size}
+                              key={index}
+                              className="radio-group-container"
+                            >
+                              {size}
+                            </RadioButton>
+                          ))}
+                        </Radio.Group>
+                      </div>
                     </div>
-                  ))}
-              </Slider>
-            </Col>
-            <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 12 }}>
-              <h2 className="product_name">{product.name}</h2>
-              <div className="price_container">
-                <p className="price">
-                  AED <span>{product.price}</span>{" "}
-                </p>
-                <p className="old_price">
-                  AED <span>{product.compareAtPrice}</span>{" "}
-                </p>
-              </div>
-              <p className="product_description">{product.description}</p>
-              {product.variantSize?.length > 0 && (
-                <div className="variant_container">
-                  <h5>size</h5>
-                  <div className="select-variant">
-                    <Radio.Group
-                      defaultValue={sizeSelected}
-                      buttonStyle="solid"
-                      onChange={(e) => setSizeSelected(e.target.value)}
-                    >
-                      {product.variantSize.map((size, index) => (
-                        <RadioButton
-                          value={size}
-                          key={index}
-                          className="radio-group-container"
+                  )}
+                  {product.variantColor?.length > 0 && (
+                    <div className="variant_container">
+                      <h5>color</h5>
+                      <div className="select-variant">
+                        <Radio.Group
+                          defaultValue={colorSelected}
+                          buttonStyle="solid"
+                          onChange={(e) => setColorSelected(e.target.value)}
                         >
-                          {size}
-                        </RadioButton>
-                      ))}
-                    </Radio.Group>
-                  </div>
-                </div>
-              )}
-              {product.variantColor?.length > 0 && (
-                <div className="variant_container">
-                  <h5>color</h5>
-                  <div className="select-variant">
-                    <Radio.Group
-                      defaultValue={colorSelected}
-                      buttonStyle="solid"
-                      onChange={(e) => setColorSelected(e.target.value)}
-                    >
-                      {product.variantColor.map((color, index) => (
-                        <RadioButton
-                          value={color}
-                          key={index}
-                          className="radio-group-container"
-                        >
-                          {color}
-                        </RadioButton>
-                      ))}
-                    </Radio.Group>
-                  </div>
-                </div>
-              )}
+                          {product.variantColor.map((color, index) => (
+                            <RadioButton
+                              value={color}
+                              key={index}
+                              className="radio-group-container"
+                            >
+                              {color}
+                            </RadioButton>
+                          ))}
+                        </Radio.Group>
+                      </div>
+                    </div>
+                  )}
 
-              {/* **********   SELECT QUANTITY ******** */}
-              <SelectNumber>
-                <h5>Quality</h5>
-                <div className="input_wrapper">
+                  {/* **********   SELECT QUANTITY ******** */}
+                  <SelectNumber>
+                    <h5>Quality</h5>
+                    <div className="input_wrapper">
+                      <button
+                        onClick={() =>
+                          qtyNumber > 1
+                            ? setQtyNumber(qtyNumber - 1)
+                            : qtyNumber
+                        }
+                      >
+                        -
+                      </button>
+                      <p>{qtyNumber}</p>
+                      <button onClick={() => setQtyNumber(qtyNumber + 1)}>
+                        +
+                      </button>
+                    </div>
+                  </SelectNumber>
+
+                  <p className="merchant_name">
+                    Product Selling by <span>{product.user?.company.name}</span>{" "}
+                  </p>
+
                   <button
+                    type="button"
+                    className="_btn_add_cart"
+                    // disabled={!sizeSelected && true}
                     onClick={() =>
-                      qtyNumber > 1 ? setQtyNumber(qtyNumber - 1) : qtyNumber
+                      handleAddCard(
+                        product._id,
+                        qtyNumber,
+                        sizeSelected,
+                        colorSelected,
+                        product.user.company
+                      )
                     }
                   >
-                    -
+                    {added ? "added to cart" : "add to cart"}
                   </button>
-                  <p>{qtyNumber}</p>
-                  <button onClick={() => setQtyNumber(qtyNumber + 1)}>+</button>
-                </div>
-              </SelectNumber>
 
-              <p className="merchant_name">
-                Product Selling by <span>{product.user?.company.name}</span>{" "}
-              </p>
-
-              <button
-                type="button"
-                className="_btn_add_cart"
-                // disabled={!sizeSelected && true}
-                onClick={() =>
-                  handleAddCard(
-                    product._id,
-                    qtyNumber,
-                    sizeSelected,
-                    colorSelected,
-                    product.user.company
-                  )
-                }
-              >
-                {added ? "added to cart" : "add to cart"}
-              </button>
-
-              {/* ******    SOCIAL MEDIA  SHARE   ******8 */}
-              <div className="social-media">
-                <p>Share:</p>
-                <div className="link-list">
-                  <TumblrShareButton
-                    className="media-link"
-                    url={sharingUrl}
-                    quote={"CampersTribe - World is yours to explore"}
-                    hashtag="#au79code"
-                  >
-                    <FaTumblr className="icon" />
-                  </TumblrShareButton>
-                  <WhatsappShareButton
-                    className="media-link"
-                    url={sharingUrl}
-                    quote={"CampersTribe - World is yours to explore"}
-                    hashtag="#au79code"
-                  >
-                    <FaWhatsapp className="icon" />
-                  </WhatsappShareButton>
-                  <InstapaperShareButton
-                    className="media-link"
-                    url={sharingUrl}
-                    quote={"CampersTribe - World is yours to explore"}
-                    hashtag="#au79code"
-                  >
-                    <FaInstagram className="icon" />
-                  </InstapaperShareButton>
-                  <TwitterShareButton
-                    className="media-link"
-                    url={sharingUrl}
-                    quote={"CampersTribe - World is yours to explore"}
-                    hashtag="#au79code"
-                  >
-                    <FaTwitter className="icon" />
-                  </TwitterShareButton>
-                  {/* <a
+                  {/* ******    SOCIAL MEDIA  SHARE   ******8 */}
+                  <div className="social-media">
+                    <p>Share:</p>
+                    <div className="link-list">
+                      <TumblrShareButton
+                        className="media-link"
+                        url={sharingUrl}
+                        quote={"CampersTribe - World is yours to explore"}
+                        hashtag="#au79code"
+                      >
+                        <FaTumblr className="icon" />
+                      </TumblrShareButton>
+                      <WhatsappShareButton
+                        className="media-link"
+                        url={sharingUrl}
+                        quote={"CampersTribe - World is yours to explore"}
+                        hashtag="#au79code"
+                      >
+                        <FaWhatsapp className="icon" />
+                      </WhatsappShareButton>
+                      <InstapaperShareButton
+                        className="media-link"
+                        url={sharingUrl}
+                        quote={"CampersTribe - World is yours to explore"}
+                        hashtag="#au79code"
+                      >
+                        <FaInstagram className="icon" />
+                      </InstapaperShareButton>
+                      <TwitterShareButton
+                        className="media-link"
+                        url={sharingUrl}
+                        quote={"CampersTribe - World is yours to explore"}
+                        hashtag="#au79code"
+                      >
+                        <FaTwitter className="icon" />
+                      </TwitterShareButton>
+                      {/* <a
                 className="media-link"
                 url={sharingUrl}
                 quote={"CampersTribe - World is yours to explore"}
@@ -245,19 +253,23 @@ function ProductDetailsScreen() {
               >
                 <FaSnapchatGhost className="icon" />
               </a> */}
-                  <FacebookShareButton
-                    className="media-link"
-                    url={sharingUrl}
-                    quote={"CampersTribe - World is yours to explore"}
-                    hashtag="#au79code"
-                  >
-                    <FaFacebookF className="icon" />
-                  </FacebookShareButton>
-                </div>
-              </div>
-            </Col>
-          </Row>
-        </Container>
+                      <FacebookShareButton
+                        className="media-link"
+                        url={sharingUrl}
+                        quote={"CampersTribe - World is yours to explore"}
+                        hashtag="#au79code"
+                      >
+                        <FaFacebookF className="icon" />
+                      </FacebookShareButton>
+                    </div>
+                  </div>
+                </Col>
+              </Row>
+            </Container>
+          ) : (
+            <PageNotFund />
+          )}
+        </>
       )}
     </MainContainer>
   );

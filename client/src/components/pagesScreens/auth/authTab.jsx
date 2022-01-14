@@ -22,7 +22,7 @@ function AuthTabPage({ location }) {
     if (userInfo) {
       history.push(redirect);
     }
-  }, [redirect]);
+  }, [redirect, history, userInfo]);
 
   if (userInfo) {
     window.history.back();
@@ -49,6 +49,8 @@ const AuthTab = styled.div`
   /* display: flex;
   justify-content: center;
   padding: 4rem 0; */
+  position: relative;
+  top: 2rem;
 `;
 
 const TabsE = styled(Tabs)`

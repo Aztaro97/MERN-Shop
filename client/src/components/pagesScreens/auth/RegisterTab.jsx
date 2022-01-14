@@ -104,14 +104,14 @@ function Register() {
 
 const Containber = styled.div`
   width: 500px;
-  padding: 2rem;
+  padding: 1rem;
 
   @media only screen and (max-width: 768px) {
     padding: 1rem;
   }
 `;
 const Form = styled.form`
-  border: 1px solid #ddd;
+  border: 1px solid var(--silver-color);
   border-radius: 10px;
   padding: 2rem;
 `;

@@ -64,8 +64,8 @@ function OrdersScreen() {
                         <div>
                           <img
                             src={
-                              item.image[0] !== "false"
-                                ? item.image[0]
+                              item.image.length > 0
+                                ? item.image[0].url
                                 : emptyImg
                             }
                             alt=""

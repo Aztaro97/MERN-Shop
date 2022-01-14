@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import InputComponents from "../../InputComponents";
 import ButtonComponeent from "../../ButtonComponeent";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Col, Input, Row } from "antd";
 import { useFormik } from "formik";
 import { useTranslation } from "react-i18next";
@@ -20,14 +19,14 @@ function LoginForm() {
     onSubmit: async (values) => {
       const body = JSON.stringify(values, null, 2);
       dispatch(login(body));
-      formik.setFieldValue("email", "");
       formik.setFieldValue("password", "");
     },
   });
+
   return (
     <Containber>
       <Form onSubmit={formik.handleSubmit}>
-        <Row gutter={[10, 15]} justify="space-between">
+        <Row gutter={[10, 20]} justify="space-between">
           <Col xs={{ span: 24 }}>
             <Input
               type="email"
@@ -67,7 +66,7 @@ function LoginForm() {
 
 const Containber = styled.div`
   width: 500px;
-  padding: 2rem;
+  padding: 1rem;
 
   & .login_btn {
     @media only screen and (max-width: 768px) {
@@ -81,7 +80,7 @@ const Containber = styled.div`
   }
 `;
 const Form = styled.form`
-  border: 1px solid #ddd;
+  border: 1px solid var(--silver-color);
   border-radius: 10px;
   padding: 2rem;
 `;

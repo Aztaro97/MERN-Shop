@@ -296,7 +296,7 @@ const SectionRight = () => {
         cartItems.map((item) => (
           <Card key={item._id}>
             <div class="card__image">
-              <img src={item.image} alt="" />
+              <img src={item.image.length > 0 && item.image[0].url} alt="" />
               <p className="quantity">{item.qty}</p>
             </div>
             <div class="card__details">

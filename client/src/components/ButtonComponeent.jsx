@@ -27,7 +27,7 @@ const Button = styled.button`
     cursor: pointer;
 
     &:hover {
-        background: #c78788e0;
+        background: var(--orange-900-color);
     }
 
     @media only screen and (max-width: 768px) {

@@ -134,9 +134,9 @@ function PlaceOrder() {
                         className="modal_container"
                       >
                         <Row gutter={[10, 10]}>
-                          {item.image.map((url, index) => (
+                          {item.image.map((img, index) => (
                             <Col xs={{ span: 8 }} md={{ span: 6 }} key={index}>
-                              <img src={url} alt="" className="img" />
+                              <img src={img.url} alt="" className="img" />
                             </Col>
                           ))}
                         </Row>
@@ -291,13 +291,20 @@ const Container = styled.div`
 `;
 
 const ModalStyling = styled(Modal)`
+  & .ant-modal-body {
+    background: var(--dark-light-color) !important;
+  }
   & .ant-modal-footer {
     /* STYLING BTN CLOSE  */
+    background: var(--dark-light-color) !important;
+    border-top: none !important;
     & > button.ant-btn {
       display: block;
       margin-left: auto;
-      border: 1px solid #ececec;
-      color: #333;
+      border: 1px solid var(--silver-color);
+      color: var(--silver-color);
+      background: transparent;
+      letter-spacing: 1px;
       &:hover {
         background: #333;
         border: none;
@@ -314,6 +321,8 @@ const ModalStyling = styled(Modal)`
 
   & .img {
     width: 100% !important;
+    height: 100px;
+    object-fit: cover;
   }
 `;
 

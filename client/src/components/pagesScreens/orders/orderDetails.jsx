@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
-import { Modal, Image } from "antd";
+import { Modal, Image, Row, Col } from "antd";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 import { useHistory } from "react-router-dom";
-import { MdDelete, AiOutlineCheck, FaTimes } from "react-icons/all";
+import { AiOutlinePicture } from "react-icons/ai";
 import Loader from "../../loader";
 import {
   listProductsAdmin,
@@ -22,37 +22,28 @@ import Pagination from "../../pagination";
 const { confirm } = Modal;
 
 function OrderDetailsScreen({ match }) {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
   const { t } = useTranslation();
   const orderId = match.params.orderId || 1;
 
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const { loading, order } = useSelector((state) => state.orderDetails);
+  const { loading, order, error } = useSelector((state) => state.orderDetails);
 
   const { userInfo } = useSelector((state) => state.userLogin);
 
-  const showConfirm = (id) => {
-    confirm({
-      title: "Are you sure to delete this order ?",
-      icon: <ExclamationCircleOutlined />,
-      okText: "Yes, I'm",
-      className: "modal_container",
-      onOk() {
-        dispatch(deleteOrderDetails(id));
-      },
-      onCancel() {
-        console.log("Cancel");
-      },
-    });
+  const showModal = () => {
+    setIsModalVisible(true);
   };
 
-  const handleSetAllow = async (id) => {
-    dispatch(setProductAllow(id, true));
+  const handleOk = () => {
+    setIsModalVisible(false);
   };
 
-  const handleSetNotAllow = async (id) => {
-    dispatch(setProductAllow(id, false));
+  const handleCancel = () => {
+    setIsModalVisible(false);
   };
 
   useEffect(() => {
@@ -71,101 +62,89 @@ function OrderDetailsScreen({ match }) {
         {loading ? (
           <Loader />
         ) : (
-          <>
-            <Row>
-              <h3>Order ID {order._id}</h3>
-              <button onClick={() => showConfirm(order._id)}>
-                {" "}
-                delete
-                <MdDelete  />
-              </button>
-            </Row>
-            <Row>
-              <Card>
-                <h4>Customer</h4>
-                <ul>
-                  <li>
-                    {" "}
-                    <span>first name:</span> {order.shippingAddress.firstName}
-                  </li>
-                  <li>
-                    {" "}
-                    <span>last name:</span> {order.shippingAddress.lastName}
-                  </li>
-                  <li>
-                    {" "}
-                    <span>address:</span> {order.shippingAddress.address}{" "}
-                  </li>
-                  <li>
-                    {" "}
-                    <span>appartment Number:</span>{" "}
-                    {order.shippingAddress.appartNumber}{" "}
-                  </li>
-                  <li>
-                    {" "}
-                    <span>city:</span> {order.shippingAddress.city}{" "}
-                  </li>
-                  <li>
-                    {" "}
-                    <span>phone:</span> {order.shippingAddress.phoneNumber}{" "}
-                  </li>
-                  <li>
-                    {" "}
-                    <span>region:</span> {order.shippingAddress.city}{" "}
-                  </li>
-                  <li>
-                    {" "}
-                    <span>country:</span> {order.shippingAddress.country}{" "}
-                  </li>
-                </ul>
-              </Card>
+          <Row className="row_container" gutter={[40, 10]}>
+            <Col xs={{ span: 24 }}>
+              <h2 className="id_title">
+                Order Id : <span>{order._id}</span>{" "}
+              </h2>
+            </Col>
+            <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 14 }}>
+              <div>
+                <h1 className="title">Customer Details</h1>
+                <p>
+                  Name: {order.shippingAddress.firstName}{" "}
+                  {order.shippingAddress.lastName}
+                </p>
 
-              <Table>
-                <thead>
-                  <tr>
-                    <th>items</th>
-                    <th>quantity</th>
-                    <th>price</th>
-                    <th>total price</th>
-                    <th>Merchant</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {order.orderItems.map((item) => (
-                    <tr key={item._id}>
-                      <td>
-                        <div className="order_item">
-                          <img src={item.image[0]} alt="" />
-                          <p>{item.name}</p>
-                        </div>
-                      </td>
-                      <td>{item.qty}x</td>
-                      <td>{item.price} dh</td>
-                      <td>{item.price * item.qty} dh</td>
-                      <td>
-                        <ul className="order_merchant">
-                          <li>
-                            {" "}
-                            <span>name:</span> {item.merchant.name}{" "}
-                          </li>
-                          <li>
-                            {" "}
-                            <span>email:</span> {item.merchant.email}{" "}
-                          </li>
-                          <li>
-                            {" "}
-                            <span>phone:</span> {item.merchant.phoneNumber}{" "}
-                          </li>
-                        </ul>
-                      </td>
-                    
-                    </tr>
+                <p>Phone Number: {order.shippingAddress.phoneNumber}</p>
+                <p>Address: {order.shippingAddress.address}</p>
+                <p>City: {order.shippingAddress.city}</p>
+                <p>
+                  Country: {order.shippingAddress.country} / Region:{" "}
+                  {order.shippingAddress.region}{" "}
+                </p>
+                <p>
+                  Status:
+                  {order.isPaid ? (
+                    <span className="status_paid">Paid</span>
+                  ) : (
+                    <span className="status_not_paid">Not Paid</span>
+                  )}{" "}
+                </p>
+              </div>
+              <hr />
+              <div>
+                <h1 className="title">shipping address</h1>
+                <p>
+                  Payment Method:{" "}
+                  {order.paymentMethod === "credit"
+                    ? "Credit Card"
+                    : "Cash on delivered"}
+                </p>
+                <p>
+                  Status:{" "}
+                  {order.isDelivered ? (
+                    <span className="status_paid">Delivered</span>
+                  ) : (
+                    <span className="status_not_paid">Not Delivered</span>
+                  )}{" "}
+                </p>
+              </div>
+              <hr />
+            </Col>
+            <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 10 }}>
+              <div>
+                <h1 className="title">ORDER ITEMS</h1>
+                <div className="order_list">
+                  {order.orderItems.map((item, index) => (
+                    <div key={index} className="order_item">
+                      <p className="view_item" onClick={showModal}>
+                        <AiOutlinePicture /> {item.name}
+                      </p>
+                      <p>
+                        Price: {item.qty} x {item.price} AED
+                      </p>
+                      <ModalStyling
+                        cancelText="close"
+                        visible={isModalVisible}
+                        onOk={handleOk}
+                        onCancel={handleCancel}
+                        className="modal_container"
+                      >
+                        <Row gutter={[10, 10]}>
+                          {item.image.map((img, index) => (
+                            <Col xs={{ span: 8 }} md={{ span: 6 }} key={index}>
+                              <img src={img.url} alt="" className="img" />
+                            </Col>
+                          ))}
+                        </Row>
+                      </ModalStyling>
+                    </div>
                   ))}
-                </tbody>
-              </Table>
-            </Row>
-          </>
+                </div>
+              </div>
+            </Col>
+          </Row>
         )}
       </ProductContainer>
     </MainContainer>
@@ -173,117 +152,142 @@ function OrderDetailsScreen({ match }) {
 }
 
 const ProductContainer = styled.div`
-  padding: 0 10px;
+  padding: 30px 0;
 
-  & h3 {
-    text-align: center;
+  & .id_title {
+    font-size: 1.4rem;
+    font-weight: 400;
     text-transform: uppercase;
-  }
-`;
-
-const Row = styled.div`
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: space-between;
-
-  & button {
-    border: none;
-    background: var(--orange-color);
-    color: #fff;
-    padding:4px 10px;
-    text-transform: uppercase;
-  }
-
-`;
-
-const Table = styled.table`
-  width: 100%;
-  & thead {
-    & tr {
-      background: var(--orange-color);
-      & th {
-        border: 1px solid rgba(0, 0, 0, 0.05);
-        padding: 10px;
-        text-transform: uppercase;
-        font-weight: 700;
-        color: #fff;
-        font-size: 0.8rem;
-      }
-    }
-  }
-  & tbody {
-    margin-top: 1rem;
-    & tr {
-      & td {
-        border: 1px solid rgba(0, 0, 0, 0.05);
-        padding: 10px;
-        text-transform: uppercase;
-        font-size: 0.8rem;
-        & .delete_btn {
-          outline: none;
-          background: #eb4d4b;
-          color: #fff;
-          border: none;
-          padding: 1px 12px;
-          font-size: 1.2rem;
-        }
-        & .order_item {
-          display: flex;
-          & img {
-            width: 100px;
-            height: 100px;
-          }
-          & p {
-            margin-left: 5px;
-            font-weight: 700;
-          }
-        }
-        & .order_merchant {
-          text-transform: capitalize;
-          list-style-type: none;
-          & span {
-            font-weight: 500;
-          }
-        }
-      }
-      & .allow_btn {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        & button {
-          outline: none;
-          border: none;
-          background: transparent;
-          & .allow_btn_accept {
-            color: green;
-          }
-          & .allow_btn_refuse {
-            color: red;
-          }
-        }
-      }
-    }
-  }
-`;
-
-const Card = styled.div`
-  /* border: 1px solid #ececec; */
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-
-  padding: 0.5em;
-  & h4 {
-    font-size: 1rem;
+    font-weight: 700;
     color: var(--orange-color);
+    margin: 10px 0;
+    letter-spacing: 1px;
+    & span {
+      color: var(--silver-color);
+    }
   }
-  & ul {
-    list-style: none;
-    text-transform: capitalize;
-    & li {
-      font-size: 0.9rem;
-      & span {
-        font-weight: 700;
+
+  & .title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--orange-color);
+    letter-spacing: 1px;
+  }
+  & p {
+    color: var(--silver-color);
+    letter-spacing: 1px;
+  }
+  & .row_container {
+    padding: 20px;
+
+    & .status_paid {
+      background: var(--orange-700-color);
+      padding: 2px 20px;
+      color: var(--dark-color);
+      margin: 0 5px;
+      letter-spacing: 1px;
+    }
+    & .status_not_paid {
+      background: var(--orange-600-color);
+      color: var(--dark-color);
+      padding: 2px 20px;
+      margin: 0 5px;
+      letter-spacing: 1px;
+    }
+  }
+
+  & .card_summary {
+    background: var(--dark-light-color);
+    color: #fff;
+    padding: 20px;
+    & .title {
+      color: var(--orange-color);
+      text-transform: uppercase;
+    }
+    & p {
+      color: var(--silver-color);
+    }
+  }
+
+  & .checkout {
+    text-align: center;
+
+    & .link {
+      background: var(--orange-600-color);
+      text-align: center;
+      padding: 10px 20px;
+      color: var(--dark-color);
+      font-size: 1.4rem;
+      text-decoration: none;
+      text-transform: capitalize;
+      letter-spacing: 1px;
+      margin: 10px 0;
+      display: inline-block;
+      & .icon {
+        font-size: 2rem;
+      }
+      &:hover {
+        opacity: 0.9;
       }
     }
+  }
+
+  & .order_list {
+    padding: 0;
+    & .order_item {
+      border-top: 1px solid var(--silver-color);
+      border-bottom: 1px solid var(--silver-color);
+    }
+    & p {
+      margin: 10px 0;
+    }
+    & .view_item {
+      cursor: pointer;
+      &:hover {
+        color: var(--orange-color);
+      }
+    }
+  }
+
+  & .img {
+    width: 100% !important;
+  }
+`;
+
+const ModalStyling = styled(Modal)`
+  & .ant-modal-body {
+    background: var(--dark-light-color) !important;
+  }
+  & .ant-modal-footer {
+    /* STYLING BTN CLOSE  */
+    background: var(--dark-light-color) !important;
+    border-top: none !important;
+    & > button.ant-btn {
+      display: block;
+      margin-left: auto;
+      border: 1px solid var(--silver-color);
+      color: var(--silver-color);
+      background: transparent;
+      letter-spacing: 1px;
+      &:hover {
+        background: #333;
+        border: none;
+        color: #fff;
+        border: 1px solid #ececec;
+      }
+    }
+
+    /*   HIDE CLOSE BTN   */
+    & > button.ant-btn.ant-btn-primary {
+      display: none;
+    }
+  }
+
+  & .img {
+    width: 100% !important;
+    height: 100px;
+    object-fit: cover;
   }
 `;
 
