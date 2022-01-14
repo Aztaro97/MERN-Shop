@@ -86,7 +86,7 @@ const Form = styled.form`
   }
   @media only screen and (max-width: 768px) {
     & input {
-      width: 140px;
+      width: 120px;
     }
   }
 `;
