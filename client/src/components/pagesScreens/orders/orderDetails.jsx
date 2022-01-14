@@ -76,7 +76,12 @@ function OrderDetailsScreen({ match }) {
                   {order.shippingAddress.lastName}
                 </p>
 
-                <p>Phone Number: {order.shippingAddress.phoneNumber}</p>
+                <p>
+                  Phone Number:{" "}
+                  <a href={`tel:${order.shippingAddress.phoneNumber}`}>
+                    {order.shippingAddress.phoneNumber}
+                  </a>{" "}
+                </p>
                 <p>Address: {order.shippingAddress.address}</p>
                 <p>City: {order.shippingAddress.city}</p>
                 <p>
@@ -94,7 +99,7 @@ function OrderDetailsScreen({ match }) {
               </div>
               <hr />
               <div>
-                <h1 className="title">shipping address</h1>
+                <h1 className="title">Payment</h1>
                 <p>
                   Payment Method:{" "}
                   {order.paymentMethod === "credit"
@@ -124,6 +129,19 @@ function OrderDetailsScreen({ match }) {
                       <p>
                         Price: {item.qty} x {item.price} AED
                       </p>
+                      <p>Merchant Name : {item.merchant.name}</p>
+                      <p>
+                        Merchant Tel :
+                        <a href={`tel:${item.merchant.phoneNumber}`}>
+                          {item.merchant.phoneNumber}
+                        </a>{" "}
+                      </p>
+                      <p>
+                        Merchant Email :
+                        <a href={`mailTo:${item.merchant.email}`}>
+                          {item.merchant.email}
+                        </a>{" "}
+                      </p>
                       <ModalStyling
                         cancelText="close"
                         visible={isModalVisible}
@@ -142,6 +160,12 @@ function OrderDetailsScreen({ match }) {
                     </div>
                   ))}
                 </div>
+              </div>
+
+              <div style={{ marginTop: 20 }}>
+                <h1 className="title">TOTAL ITEMS PRICE</h1>
+                <p>Total: {order.totalPrice}</p>
+                {/* <p>Total: {order.totalPrice}</p> */}
               </div>
             </Col>
           </Row>
@@ -178,6 +202,11 @@ const ProductContainer = styled.div`
     color: var(--silver-color);
     letter-spacing: 1px;
   }
+  & a {
+      color: var(--silver-color);
+      text-decoration: none;
+      margin: 0 5px;
+    }
   & .row_container {
     padding: 20px;
 
@@ -197,18 +226,7 @@ const ProductContainer = styled.div`
     }
   }
 
-  & .card_summary {
-    background: var(--dark-light-color);
-    color: #fff;
-    padding: 20px;
-    & .title {
-      color: var(--orange-color);
-      text-transform: uppercase;
-    }
-    & p {
-      color: var(--silver-color);
-    }
-  }
+
 
   & .checkout {
     text-align: center;
@@ -242,6 +260,7 @@ const ProductContainer = styled.div`
     & p {
       margin: 10px 0;
     }
+    
     & .view_item {
       cursor: pointer;
       &:hover {

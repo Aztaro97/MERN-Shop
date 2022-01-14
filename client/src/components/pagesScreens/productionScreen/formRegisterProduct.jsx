@@ -97,7 +97,6 @@ function FormRegisterProduct() {
       },
     };
 
-    console.log(typeof category);
 
     const formData = new FormData();
     formData.append("formData", JSON.stringify(body));
