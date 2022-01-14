@@ -260,8 +260,8 @@ function FormRegisterProduct() {
             md={{ span: 24 }}
             lg={{ span: 24 }}
           >
-            <Row justify="space-between">
-              <Col>
+            <Row gutter={[10, 20]} justify="space-between" style={{marginTop:20}}>
+              <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 12 }}>
                 <button
                   type="submit"
                   className="_btn"
@@ -275,18 +275,18 @@ function FormRegisterProduct() {
                   ) : sended ? (
                     "done"
                   ) : (
-                    "save"
+                    "submit"
                   )}
                 </button>
               </Col>
-              <Col>
+              <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 12 }}>
                 {" "}
                 <button
                   className="_btn_create"
                   type="button"
                   onClick={handleCreate}
                 >
-                  Add new product
+                  create new product
                 </button>
               </Col>
             </Row>
@@ -298,24 +298,25 @@ function FormRegisterProduct() {
 }
 
 const FormContainer = styled.form`
-  height: calc(100vh - 160px);
+  height: calc(65vh - 160px);
   background: var(--dark-light-color);
   padding: 3rem 2rem;
   & .title {
     color: var(--silver-color);
     text-align: center;
+    letter-spacing: 1px;
   }
 
   & ._btn {
-    border: 1px solid var(--silver-color);
+    border: none;
     outline: none;
-    background: ${(props) => (props.sended ? "green" : "transparent")};
+    background: ${(props) => (props.sended ? "green" : "var(--orange-color)")};
     padding: 5px 2rem;
     transition: all 0.3 ease-in-out;
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-top: 20px;
+    letter-spacing: 1px;
     & .icon {
     }
     &:hover {
@@ -325,10 +326,14 @@ const FormContainer = styled.form`
   }
 
   & ._btn_create {
-    border: 1px solid var(--silver-color);
+    border: none;
     background: var(--dark-color);
     padding: 5px 2rem;
-    margin-top: 20px;
+    letter-spacing: 1px;
+  }
+
+  @media only screen and (max-width: 768px) {
+    height: 100%;
   }
 `;
 
