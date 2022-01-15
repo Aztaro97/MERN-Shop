@@ -56,7 +56,7 @@ function CompletePayement() {
     if (!userInfo) {
       history.push("/auth");
     }
-    if (order?._id !== paramId) dispatch(getOrderDetails(paramId));
+    if (order && order._id !== paramId) dispatch(getOrderDetails(paramId));
   }, [dispatch, history, paramId, order, userInfo]);
 
   return (

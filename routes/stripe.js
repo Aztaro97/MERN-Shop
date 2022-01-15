@@ -8,7 +8,10 @@ const stripe = require("stripe")(
 );
 
 router.post("/", cors(), async (req, res) => {
+  const { amount, clientId, lineItem } = req.body;
+
   const session = await stripe.checkout.sessions.create({
+    client_reference_id: clientId,
     payment_method_types: ["card"],
     line_items: [
       {
@@ -17,7 +20,7 @@ router.post("/", cors(), async (req, res) => {
           product_data: {
             name: "T-shirt",
           },
-          unit_amount: 2000,
+          unit_amount: amount,
         },
         quantity: 1,
       },
@@ -28,7 +31,7 @@ router.post("/", cors(), async (req, res) => {
   });
 
   //   res.redirect(303, session.url);
-  res.status(200).json({ session });
+  res.status(200).json(session);
 });
 
 router.post("/advertising", (req, res) => {

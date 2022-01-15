@@ -143,12 +143,11 @@ function Payment() {
       history.push(`/checkout/${newOrder._id}`);
       dispatch({ type: USER_DETAILS_RESET });
     } else {
+      history.push("/thank");
       dispatch({ type: ORDER_CREATE_RESET });
       dispatch({
         type: CART_CLEAR_ITEMS,
       });
-      // localStorage.removeItem("cartItems");
-      history.push("/thank");
     }
   }
 
@@ -156,7 +155,7 @@ function Payment() {
     if (!userInfo) {
       history.push("/auth");
     }
-  }, [dispatch, userInfo, paymentMethod, newOrder, history, successCreate]);
+  }, [userInfo, history]);
 
   const onChangeRadiGroup = (e) => {
     console.log("radio checked", e.target.value);

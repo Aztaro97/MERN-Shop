@@ -50,7 +50,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/upload", uploadRoutes);
 app.use("/upload-images", AdverUploadingRoutes);
-app.use("/checkout", StripeRouter);
+app.use("/api/checkout", StripeRouter);
 app.use("/api/advertising", advertisingRoutes);
 app.use("/api/contact-us", contactRouter);
 app.use("/api/articles", articleRouter);

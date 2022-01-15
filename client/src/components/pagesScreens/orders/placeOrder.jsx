@@ -50,8 +50,8 @@ function PlaceOrder() {
   };
 
   useEffect(() => {
-    if (order?._id !== paramId) dispatch(getOrderDetails(paramId));
-  }, [paramId, order, dispatch]);
+    dispatch(getOrderDetails(paramId));
+  }, [paramId,  dispatch]);
 
   return (
     <MainContainer>
@@ -98,7 +98,7 @@ function PlaceOrder() {
               </div>
               <hr />
               <div>
-                <h1 className="title">shipping address</h1>
+                <h1 className="title">shipping Details</h1>
                 <p>
                   Payment Method:{" "}
                   {order.paymentMethod === "credit"
@@ -219,7 +219,7 @@ const Container = styled.div`
     padding: 20px;
 
     & .status_paid {
-      background: var(--orange-700-color);
+      background: var(--orange-900-color);
       padding: 2px 20px;
       color: var(--dark-color);
       margin: 0 5px;

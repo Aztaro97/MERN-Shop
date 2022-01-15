@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   CardElement,
   useElements,
@@ -37,11 +37,19 @@ const CARD_OPTIONS = {
   },
 };
 
-export default function PaymentForm({ totalPrice }) {
+export default function PaymentForm() {
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [numbercard, setnumbercar] = useState("");
+  const [paymentResult, setPaymentResult] = useState({
+    id: "",
+    status: "",
+    email_address: "",
+    paymentMethod: "",
+  });
   const stripe = useStripe();
   const elements = useElements();
+
+  const toCent = (amount) => amount * 100;
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -55,7 +63,6 @@ export default function PaymentForm({ totalPrice }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log(process.env.REACT_APP_STRIPE_SECRET_KEY)
     if (!stripe || !elements) {
       return;
     }
@@ -78,32 +85,26 @@ export default function PaymentForm({ totalPrice }) {
           },
         };
 
-        const response = await axios.post(
-          "/create-checkout-session",
+        const { data } = await axios.post(
+          "/api/checkout",
           {
-            amount: totalPrice,
-            id,
-            payment: {
-              gateway: "stripe",
-              stripe: {
-                payment_method_id: id,
-              },
-            },
+            amount: toCent(orderDetails.totalPrice),
+            clientId: id,
+            lineItem: orderDetails.cartItems,
           },
           config
         );
 
-        if (response.data.paymentSuccess) {
+        console.log(data);
+        if (data) {
+          setPaymentResult((preState) => ({
+            ...preState,
+            id: data.client_reference_id,
+            status: data.payment_status,
+            email_address: data.receipt_email,
+            paymentMethod: data.payment_method_types,
+          }));
           setPaymentSuccess(true);
-          payOrder(response.data);
-          payOrder(orderDetails._id, {
-            id: response.data.payment.id,
-            status: response.data.payment.status,
-            email_address: response.data.payment.receipt_email,
-          });
-          dispatch({ type: CART_CLEAR_ITEMS });
-
-          history.push("/thank");
         }
       } catch (error) {
         console.log("Error", error);
@@ -114,13 +115,21 @@ export default function PaymentForm({ totalPrice }) {
     }
   };
 
+  useEffect(() => {
+    if (paymentSuccess) {
+      dispatch(payOrder(orderDetails._id, paymentResult));
+      dispatch({ type: CART_CLEAR_ITEMS });
+      history.push("/thank")
+    }
+  }, [paymentSuccess, dispatch, orderDetails, paymentResult, history]);
+
   return (
     <>
       {loading ? (
         <LoaderComponent />
       ) : (
         <>
-          {!paymentSuccess ? (
+          {!paymentSuccess && (
             <Form onSubmit={(e) => handleSubmit(e)}>
               <h4>Card Information</h4>
               <Row gutter={[10, 10]}>
@@ -145,18 +154,11 @@ export default function PaymentForm({ totalPrice }) {
 
                 <Col xs={{ span: 24 }}>
                   <button type="submit" disabled={!stripe}>
-                    Pay {orderDetails.totalPrice} AED
+                    Pay {orderDetails?.totalPrice} AED
                   </button>
                 </Col>
               </Row>
             </Form>
-          ) : (
-            <div>
-              <h2>
-                You just bought a sweet spatula congrats this is the best
-                decision of you're life
-              </h2>
-            </div>
           )}
         </>
       )}
