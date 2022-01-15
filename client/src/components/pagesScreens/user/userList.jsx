@@ -102,10 +102,13 @@ function UserListScreen() {
 }
 
 const UserContainer = styled.div`
-  padding: 0 10px;
+  padding: 2rem 10px;
   & h3 {
     text-align: center;
     text-transform: uppercase;
+    color: var(--silver-color);
+    margin-bottom: 10px;
+    letter-spacing:1px;
   }
 `;
 

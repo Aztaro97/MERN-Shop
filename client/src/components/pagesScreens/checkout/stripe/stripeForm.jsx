@@ -15,6 +15,7 @@ import { payOrder, createOrder } from "../../../../flux/actions/orderAction";
 import { CART_CLEAR_ITEMS } from "../../../../flux/constants/cartConstants";
 import LoaderComponent from "../../../loader";
 import { Col, Row } from "antd";
+import { LoadingOutlined } from "@ant-design/icons";
 
 const CARD_OPTIONS = {
   iconStyle: "solid",
@@ -39,7 +40,7 @@ const CARD_OPTIONS = {
 
 export default function PaymentForm() {
   const [paymentSuccess, setPaymentSuccess] = useState(false);
-  const [numbercard, setnumbercar] = useState("");
+  const [submited, setSubmited] = useState(false);
   const [paymentResult, setPaymentResult] = useState({
     id: "",
     status: "",
@@ -63,6 +64,7 @@ export default function PaymentForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmited(true);
     if (!stripe || !elements) {
       return;
     }
@@ -111,7 +113,7 @@ export default function PaymentForm() {
       }
     } else {
       console.log(error.message);
-      console.log("error");
+      setSubmited(false);
     }
   };
 
@@ -119,7 +121,7 @@ export default function PaymentForm() {
     if (paymentSuccess) {
       dispatch(payOrder(orderDetails._id, paymentResult));
       dispatch({ type: CART_CLEAR_ITEMS });
-      history.push("/thank")
+      history.push("/thank");
     }
   }, [paymentSuccess, dispatch, orderDetails, paymentResult, history]);
 
@@ -154,7 +156,11 @@ export default function PaymentForm() {
 
                 <Col xs={{ span: 24 }}>
                   <button type="submit" disabled={!stripe}>
-                    Pay {orderDetails?.totalPrice} AED
+                    {!submited ? (
+                      `Pay ${orderDetails?.totalPrice} AED`
+                    ) : (
+                      <LoadingOutlined className="icon" />
+                    )}
                   </button>
                 </Col>
               </Row>
@@ -191,15 +197,23 @@ const Form = styled.form`
 
   & button {
     outline: none;
-    /* border: 1px solid var(--silver-color); */
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
     border-radius: 5px;
     background: var(--orange-color);
     color: var(--white-color);
-    padding: 6px 0;
     width: 100%;
     letter-spacing: 2px;
     &:hover {
       opacity: 0.9;
+    }
+
+    & .icon {
+      color: var(--white-color);
+      padding: 8px 0;
     }
   }
 `;

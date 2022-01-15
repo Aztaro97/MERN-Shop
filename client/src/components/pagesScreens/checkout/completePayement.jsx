@@ -52,12 +52,17 @@ function CompletePayement() {
 
   const totalPrice = (Number(itemsPrice) + Number(shippingPrice)).toFixed(2);
 
+  //  Check if item is paid
+  if (order && order.isPaid) {
+    history.push(`/order/${order?._id}`);
+  }
+
   useEffect(() => {
+    dispatch(getOrderDetails(paramId));
     if (!userInfo) {
       history.push("/auth");
     }
-    if (order && order._id !== paramId) dispatch(getOrderDetails(paramId));
-  }, [dispatch, history, paramId, order, userInfo]);
+  }, [dispatch, history, paramId, userInfo]);
 
   return (
     <>
