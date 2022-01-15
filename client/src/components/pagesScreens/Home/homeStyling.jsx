@@ -281,10 +281,6 @@ export const BannerStyling = styled.section`
       min-height: 100%;
     }
 
-    @media only screen and (max-width: 768px) {
-      height: 300px;
-    }
-
     & .content_overlay {
       max-width: 500px;
       padding: 20px;

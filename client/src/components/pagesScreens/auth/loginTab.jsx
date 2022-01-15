@@ -35,6 +35,7 @@ function LoginForm() {
               placeholder={t("email_placeholder")}
               onChange={formik.handleChange}
               value={formik.values.email}
+              className="input_form"
             />
           </Col>
           <Col xs={{ span: 24 }}>
@@ -46,6 +47,7 @@ function LoginForm() {
               placeholder={t("password_placeholder")}
               onChange={formik.handleChange}
               value={formik.values.password}
+              className="input_form"
             />
           </Col>
           <Col>
@@ -83,6 +85,14 @@ const Form = styled.form`
   border: 1px solid var(--silver-color);
   border-radius: 10px;
   padding: 2rem;
+
+  & .input_form, & .ant-input {
+    /* background: transparent !important;
+    color: var(--silver-color);
+    &:hover {
+      border-color: var(--orange-color);
+    } */
+  }
 `;
 
 const LinkStyling = styled(Link)`
