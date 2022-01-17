@@ -64,7 +64,7 @@ function AboutScreen() {
       </VisionStyling>
       <TestimonialStyling>
         <h1 className="title">lorem ipsum</h1>
-        <Row gutter={[20, 0]} className="gutter_row">
+        <Row gutter={[20, 10]} className="gutter_row">
           <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 8 }}>
             <img
               className="picture"
@@ -75,22 +75,27 @@ function AboutScreen() {
           <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 16 }}>
             <div className="content">
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero
-                iusto perspiciatis sunt, qui natus nesciunt recusandae
-                voluptatum, quis quaerat, est exercitationem eaque consequuntur
-                rerum officiis molestias necessitatibus earum facilis sint.
+                We meet the requests of any institution or company whether
+                large, small, government or private, and our strength is
+                reliable, distinctive and good service as we are designed as
+                fast, dynamic and friendly search engines, if you are looking
+                for a reliable agency to offer you all services You need
+                permission to have reached the right place.
               </p>
             </div>
           </Col>
         </Row>
-        <Row gutter={[20, 0]} className="gutter_row">
+        <Row gutter={[20, 10]} className="gutter_row">
           <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 16 }}>
             <div className="content">
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero
-                iusto perspiciatis sunt, qui natus nesciunt recusandae
-                voluptatum, quis quaerat, est exercitationem eaque consequuntur
-                rerum officiis molestias necessitatibus earum facilis sint.
+                We maintain a close relationship with all our customers we offer
+                them help and advice if necessary, and our team with our wide
+                experience, which has been carefully chosen by great attention
+                to our dear customer's best service at appropriate prices, we
+                are here to help you quickly and efficiently you can trust us We
+                will make sure you have a unique way to push your business
+                forward.
               </p>
             </div>
           </Col>
@@ -191,10 +196,12 @@ const FirstSectionComponent = () => {
           <div className="content">
             <h2>Lorem Ipsum</h2>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
-              cupiditate dolore Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Suscipit cupiditate dolore Lorem ipsum dolor sit
-              amet consectetur adipisicing elit. Suscipit cupiditate dolore
+              AU 79 CODE offers high quality services in web design, social
+              networking management and electronic marketing services for
+              government institutions, government and private companies that
+              provide good quality services along with marketing, photography,
+              printing and programming services as well as exhibitions and
+              products.
             </p>
           </div>
         </Col>
@@ -327,8 +334,10 @@ const FormStyling = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background: ${({ isSend }) => (isSend ? "var(--orange-color)" : "transparent")};
-    color: ${({ isSend }) => (isSend ? "var(--white-color)" : "var(--silver-color)")};
+    background: ${({ isSend }) =>
+      isSend ? "var(--orange-color)" : "transparent"};
+    color: ${({ isSend }) =>
+      isSend ? "var(--white-color)" : "var(--silver-color)"};
     padding: 5px 20px;
     letter-spacing: 1px;
     transition: all 0.3s ease-in-out;
@@ -363,13 +372,14 @@ const TestimonialStyling = styled.section`
     height: 150px;
   }
   & .content {
-    padding: 20px;
+    /* padding: 0; */
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     & p {
       margin-bottom: 0;
+      color: var(--silver-color);
     }
   }
 `;
@@ -447,7 +457,7 @@ const FirstSectionStyling = styled.section`
 `;
 
 const Banner = styled.section`
-  background:  linear-gradient(
+  background: linear-gradient(
       180deg,
       rgba(33, 33, 33, 0.8113620448179272) 100%,
       rgba(0, 0, 0, 0.6699054621848739) 100%
@@ -483,7 +493,7 @@ const Banner = styled.section`
     & .link {
       margin-top: 10px;
       text-decoration: none;
-      padding:7px 10px;
+      padding: 7px 10px;
       text-decoration: none;
       background: transparent;
       border: 1px solid var(--silver-color);
