@@ -7,7 +7,6 @@ import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart, addToCart } from "../../../flux/actions/cartAction";
 import ButtonC from "../../ButtonComponeent";
-// import {} from ""
 
 const picture = "/img/ecommerce/empty.jpg";
 
@@ -63,7 +62,12 @@ function CartComponent({ location }) {
                 <Row key={index}>
                   <Grid>
                     <div className="cart">
-                      <img src={item.image.length > 0 ? item.image[0].url : picture} alt="" />
+                      <img
+                        src={
+                          item.image.length > 0 ? item.image[0].url : picture
+                        }
+                        alt=""
+                      />
                       <div className="cart-name">
                         <h3 className="product_name">{item.name}</h3>
                         {item.sizeSelected && (
@@ -133,8 +137,12 @@ function CartComponent({ location }) {
               </div>
             </Row>
             <Row>
-              <div className="btn-checkout">
-                <ButtonC type="button" onClick={handleCheckOut}>
+              <div className="btn_wrapper">
+                <ButtonC
+                  type="button"
+                  onClick={handleCheckOut}
+                  className="_btn_checkout"
+                >
                   check out
                 </ButtonC>
                 <Link className="link" to="/products">
@@ -166,16 +174,22 @@ const Row = styled.div`
 
     & p {
       font-weight: 700;
+      color: var(--silver-color);
       &:nth-child(1) {
         color: var(--orange-color);
       }
     }
   }
 
-  & .btn-checkout {
+  & .btn_wrapper {
     text-align: center;
     margin-top: 1rem;
     margin-bottom: 4rem;
+    letter-spacing: 1px;
+    & ._btn_checkout {
+      letter-spacing: 1px;
+      padding: 10px 20px;
+    }
   }
 
   & .link {
@@ -203,7 +217,7 @@ const Header = styled.div`
     position: relative;
     top: 24px;
     border: 1px solid var(--silver-color);
-    padding:5px 1rem;
+    padding: 5px 1rem;
   }
 
   & .title {
@@ -216,6 +230,9 @@ const Header = styled.div`
 
 const Container = styled.div`
   padding: 1rem 2rem;
+  @media only screen and (max-width: 768px) {
+    padding: 1rem 1rem;
+  }
 `;
 
 const GridTop = styled.div`
@@ -243,6 +260,7 @@ const Grid = styled.div`
 
   & .cart {
     display: flex;
+    gap: 10px;
 
     & img {
       width: 12.5rem;
@@ -256,7 +274,6 @@ const Grid = styled.div`
     & .cart-name {
       display: flex;
       flex-direction: column;
-      margin-left: 1rem;
 
       & .product_name {
         text-transform: uppercase;
@@ -285,13 +302,13 @@ const Grid = styled.div`
         justify-content: center;
         background: transparent;
         cursor: pointer;
-        color: var(--orange-color);
+        color: var(--silver-color);
         text-transform: lowercase;
         font-size: 0.9rem;
         transition: all 0.3s ease-in-out;
-        border: 1px solid var(--orange-color);
+        border: 1px solid var(--silver-color);
         margin-top: 1rem;
-        padding: 10px auto;
+        padding: 6px 2rem;
         transition: all 0.4s ease-in-out;
 
         &:hover {

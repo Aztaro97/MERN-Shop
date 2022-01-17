@@ -8,7 +8,7 @@ import {
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-function BurgerMenu() {
+function BurgerMenu({ userInfo }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showDropDown, setshowDropDown] = useState(false);
 
@@ -106,15 +106,18 @@ function BurgerMenu() {
             Add Ads
           </Link>
         </li>
-        <li className="nav__item">
-          <Link
-            to="/register"
-            className="link border_link"
-            onClick={handleClose}
-          >
-            Become a seller
-          </Link>
-        </li>
+
+        {!userInfo?.company && (
+          <li className="nav__item">
+            <Link
+              to="/register"
+              className="link border_link"
+              onClick={handleClose}
+            >
+              Become a seller
+            </Link>
+          </li>
+        )}
       </ul>
     </MenuContainer>
   );
@@ -137,13 +140,13 @@ const MenuContainer = styled(Menu)`
 
   & .nav__item {
     & .link.border_link {
-      padding: 5px 1rem;
+      padding: 8px 1rem;
       border: 1px solid var(--silver-color);
     }
     & .link {
       color: var(--silver-color) !important;
       text-decoration: none;
-      text-transform: uppercase;
+      /* text-transform: uppercase; */
       font-size: 1.2rem;
       font-weight: 700;
       letter-spacing: 1px;

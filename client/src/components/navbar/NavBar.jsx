@@ -322,7 +322,7 @@ function NavBar() {
           )}
         </ul>
 
-        <BurgerMenu />
+        <BurgerMenu userInfo={userInfo} />
 
         <Route render={({ history }) => <SearchBox history={history} />} />
       </BottomHeader>

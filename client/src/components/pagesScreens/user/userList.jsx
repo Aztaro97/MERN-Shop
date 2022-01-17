@@ -108,13 +108,13 @@ const UserContainer = styled.div`
     text-transform: uppercase;
     color: var(--silver-color);
     margin-bottom: 10px;
-    letter-spacing:1px;
+    letter-spacing: 1px;
+  }
+  & a {
+    color: var(--silver-color);
   }
 `;
 
-const Row = styled.div`
-  margin-bottom: 10px;
-`;
 
 const Table = styled.table`
   width: 100%;
@@ -125,7 +125,8 @@ const Table = styled.table`
         border: 1px solid rgba(0, 0, 0, 0.05);
         padding: 10px;
         text-transform: uppercase;
-        font-weight: 700;
+        font-weight: 400;
+        letter-spacing: 1px;
         color: #fff;
       }
     }

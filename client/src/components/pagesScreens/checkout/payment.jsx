@@ -29,7 +29,6 @@ import {
   Header,
   Form,
   Border,
-  Grid,
   Card,
   RadioB,
 } from "./StyledPayment";
@@ -178,7 +177,7 @@ function Payment() {
             </a>
             <h2>PAYEMENT</h2>
           </Header>
-          <Row>
+          <Row gutter={[10, 20]}>
             <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 12 }}>
               <Form onSubmit={handlePlaceOrder}>
                 <Border>

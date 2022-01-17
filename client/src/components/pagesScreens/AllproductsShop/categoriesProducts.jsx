@@ -140,7 +140,7 @@ function CategoriesScreen() {
               <div className="cart_empty">
                 <h1>No matches found for your search</h1>
                 <button onClick={() => dispatch(listProducts())}>
-                  click to show all products
+                  show all products
                 </button>
               </div>
             )}
@@ -171,6 +171,8 @@ const Container = styled.div`
       color: #fff;
       border: none;
       padding: 4px 1rem;
+      letter-spacing: 1px;
+      text-transform: capitalize;
       cursor: pointer;
       &:hover {
         opacity: 0.9;

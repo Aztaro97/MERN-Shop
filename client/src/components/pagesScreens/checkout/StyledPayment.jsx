@@ -3,7 +3,7 @@ import { Modal, Radio, Space } from "antd";
 
 export const Border = styled.div`
   border: 1px solid #ffffff34;
-  padding: 1rem 2rem;
+  padding: 1rem;
   border-radius: 10px;
   margin-bottom: 2rem;
 
@@ -155,28 +155,37 @@ export const Form = styled.form`
   }
 
   & .submition_btn {
-    padding: 2rem 0.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     & .btn {
-      padding: 0.5rem 0.6rem;
       font-size: 0.8rem;
       font-weight: 400;
       letter-spacing: 2px;
+      padding: 10px 20px;
       &:hover {
         color: #fff;
       }
     }
     & .link_back {
-      display: inline;
       text-decoration: none;
+      color: var(--silver-color);
+      border: 1px solid var(--silver-color);
+      font-weight: 400;
+      text-transform: capitalize;
+      letter-spacing: 1px;
+      padding: 4px 7px;
+      margin: 0;
       &:hover {
         opacity: 0.9;
       }
     }
     @media only screen and (max-width: 768px) {
-      padding: 2rem 0.5rem;
+      flex-direction: column;
+      justify-content: start;
+      align-items: start;
+      gap: 10px;
+      /* padding: 2rem 0.5rem; */
     }
   }
   & .link_back {
@@ -189,6 +198,7 @@ export const Form = styled.form`
     }
   }
   @media only screen and (max-width: 768px) {
+    padding: 2rem 1rem;
     grid-row-start: 2;
   }
 `;
@@ -198,7 +208,8 @@ export const ContainerCart = styled.div`
   padding: 2rem;
   height: 100%;
 
-  & .card__title, & .card__price {
+  & .card__title,
+  & .card__price {
     color: var(--silver-color);
   }
 
@@ -242,6 +253,7 @@ export const ContainerCart = styled.div`
     }
   }
   @media only screen and (max-width: 768px) {
+    padding: 2rem 1rem;
     margin-bottom: 2rem;
   }
 `;
@@ -255,6 +267,7 @@ export const Card = styled.div`
       height: 140px;
       border-radius: 10px;
       border: 1px solid var(--silver-color);
+      /* object-fit: cover; */
     }
     & .quantity {
       display: flex;
@@ -275,29 +288,26 @@ export const Card = styled.div`
         bottom: 11rem;
         left: 7.5rem;
       }
-      @media only screen and (max-width: 430px) {
-        bottom: 13rem;
-        left: 9rem;
-      }
     }
   }
 
   & .card__details {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    flex-direction: column;
     width: 100%;
     margin-top: 1rem;
     padding-left: 1.7rem;
 
     & h1 {
-      font-size: 0.8rem;
+      font-size: 1rem;
       font-weight: 700;
     }
     & h1:nth-child(1) {
       /* margin-left: 1.7rem; */
     }
     & h1:nth-child(2) {
-      color: #fff;
+      color: var(--silver-color);
     }
     @media only screen and (max-width: 1000px) {
       display: block;
@@ -309,7 +319,7 @@ export const Container = styled.main`
   margin: 2rem 0;
 
   @media only screen and (max-width: 1030px) {
-    padding: 2rem 2rem;
+    padding: 2rem 1rem;
   }
 `;
 
@@ -340,25 +350,14 @@ export const Header = styled.div`
   }
 `;
 
-export const Grid = styled.div`
-  display: grid;
-  grid-template-columns: 60% 40%;
-  margin-bottom: 2rem;
-  @media only screen and (max-width: 768px) {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-`;
-
 // /////////   RADIO BUTTON CUSTOM   ?////////////////////////////////
 export const RadioB = styled(Radio)`
-  /* background: #000; */
-  padding-left: 1rem;
+  padding: 0 1rem;
   color: var(--silver-color);
+  letter-spacing: 1px;
 
   & span:nth-child(2) {
     /* color: var(--orange-color); */
-    font-weight: 700;
   }
 
   & .ant-radio {

@@ -9,9 +9,9 @@ import { Col, Row } from "antd";
 function ThankPage() {
   return (
     <MainContainer>
-      <Row style={{ marginTop: 20 }}>
-        <Col xs={{ span: 24 }} lg={{ span: 12 }}>
-          <Container>
+      <Container>
+        <Row>
+          <Col xs={{ span: 24 }} lg={{ span: 12 }}>
             <h1>thank you </h1>
             <p>Your order is confirmed</p>
             <p>
@@ -21,9 +21,9 @@ function ThankPage() {
             <Link to="/products" className="_btn">
               Continue Shopping
             </Link>
-          </Container>
-        </Col>
-      </Row>
+          </Col>
+        </Row>
+      </Container>
     </MainContainer>
   );
 }
@@ -44,12 +44,16 @@ const Container = styled.div`
     background-color: var(--orange-color);
     color: #fff;
     text-decoration: none;
-    padding: 5px 20px;
+    padding: 10px 20px;
     margin-top: 10px;
+    letter-spacing: 1px;
     display: inline-block;
     &:hover {
       opacity: 0.9;
     }
+  }
+  @media only screen and (max-width: 768px) {
+    padding: 2rem 1rem;
   }
 `;
 
