@@ -13,7 +13,7 @@ function TermsScreen() {
           {/* <h4 className="title">Terms of Use</h4> */}
           <p>
             Terms and conditions for registering as a service provider on the
-            WEBSITE <a href="www.au79code.com">WWW.AU79CODE.COM</a>
+            WEBSITE <a href="/">WWW.AU79CODE.COM</a>
           </p>
           <p>
             PLEASE READ THIS POLICY CAREFULLY BEFORE USING THE AVAILABLE
@@ -905,7 +905,7 @@ function TermsScreen() {
             <span className="title">Advertising Terms:</span> Advertising Terms
             are governed by AU 79 CODE ADVERTISING or its affiliates "AU 79
             CODE" We offer a wide range of services through{" "}
-            <a href="www.au79code.com">www.au79code.com</a> and sometimes
+            <a href="/">www.au79code.com</a> and sometimes
             additional terms may apply. When you use one of our services (for
             example: your account details, gift cards or mobile applications),
             you are also subject to the terms, guidelines and conditions
@@ -1211,7 +1211,7 @@ function TermsScreen() {
 
           <li className="list_title">
             <span className="title">Contact Details:</span>
-            This website <a href="www.au79code.com">www.au79code.com</a> is
+            This website <a href="/">www.au79code.com</a> is
             fully owned For AU 79 Code Advertising The Emirates Commercial
             Register in Dubai, No. 884959 and was managed by. Here are our
             contact information:

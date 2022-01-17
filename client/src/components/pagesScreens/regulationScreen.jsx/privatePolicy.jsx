@@ -1019,12 +1019,13 @@ const Container = styled.div`
       letter-spacing: 1px;
       font-weight: 400;
       margin-bottom: 7px;
-      text-align: center;
+      /* text-align: center; */
     }
   }
 
   & .list {
     list-style-type: upper-roman;
+    padding-left: 10px;
     & .list_title {
       margin-bottom: 3rem;
       font-weight: 400;
@@ -1058,11 +1059,28 @@ const Container = styled.div`
     }
   }
 
-  & .sub_list {
+  & .inf_list {
     list-style-type: disc;
     padding-left: 10px;
     & li {
       text-transform: none;
+      padding-left: 10px;
+    }
+  }
+  & .sub_list {
+    list-style-type: disc;
+    padding-left: 0px;
+    & li {
+      text-transform: none;
+      /* padding-left: 10px; */
+    }
+  }
+  & .mino_list {
+    list-style-type: disc;
+    padding-left: 0px;
+    & li {
+      text-transform: none;
+      /* padding-left: 10px; */
     }
   }
   @media only screen and (max-width: 1000px) {
