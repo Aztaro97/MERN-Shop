@@ -11,8 +11,8 @@ function privatePolicy() {
         <div className="first_content">
           <h4 className="title">Terms of Use</h4>
           <p>
-            Please read the following terms of use carefully before entering
-            the website www.au79code.com
+            Please read the following terms of use carefully before entering the
+            website www.au79code.com
           </p>
           <p>
             Your use of this website and the products and services available on
@@ -1018,7 +1018,7 @@ const Container = styled.div`
       color: var(--silver-color);
       letter-spacing: 1px;
       font-weight: 400;
-      margin-bottom:7px;
+      margin-bottom: 7px;
       text-align: center;
     }
   }
@@ -1028,6 +1028,7 @@ const Container = styled.div`
     & .list_title {
       margin-bottom: 3rem;
       font-weight: 400;
+      padding-left: 10px;
       color: var(--silver-color);
       & .title {
         font-weight: 700;
@@ -1044,11 +1045,11 @@ const Container = styled.div`
   & .list_content {
     list-style-type: decimal;
     padding-top: 1rem;
-    padding-left: 20px;
+    padding-left: 10px;
+    letter-spacing: 1px;
     & li {
       & .para {
         color: var(--silver-color);
-        letter-spacing: 1px;
         font-weight: 400;
         & span {
           font-weight: 700;
@@ -1059,6 +1060,13 @@ const Container = styled.div`
 
   & .sub_list {
     list-style-type: disc;
+    padding-left: 10px;
+    & li {
+      text-transform: none;
+    }
+  }
+  @media only screen and (max-width: 1000px) {
+    padding: 2rem 1rem;
   }
 `;
 

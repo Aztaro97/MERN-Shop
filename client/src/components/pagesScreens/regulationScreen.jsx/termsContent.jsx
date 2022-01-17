@@ -10,7 +10,7 @@ function TermsScreen() {
           Terms and conditions for registration as a service provider
         </h1>
         <div className="first_content">
-          <h4 className="title">Terms of Use</h4>
+          {/* <h4 className="title">Terms of Use</h4> */}
           <p>
             Terms and conditions for registering as a service provider on the
             WEBSITE <a href="www.au79code.com">WWW.AU79CODE.COM</a>
@@ -1227,12 +1227,13 @@ function TermsScreen() {
 }
 
 const Container = styled.div`
-  padding: 4rem 0rem;
+  padding: 4rem 2rem;
   & .big_title {
     text-align: center;
     color: var(--silver-color);
     text-transform: uppercase;
     font-size: 1.3rem;
+    text-decoration: underline;
   }
   & hr {
     height: 2px;
@@ -1264,10 +1265,13 @@ const Container = styled.div`
 
   & .list {
     list-style-type: upper-roman;
+    /* padding-left: 10px; */
+    padding-left: 10px;
     & .list_title {
       margin-bottom: 3rem;
       font-weight: 400;
       color: var(--silver-color);
+      padding-left: 5px;
       & .title {
         font-weight: 700;
         letter-spacing: 2px;
@@ -1283,12 +1287,12 @@ const Container = styled.div`
   & .list_content {
     list-style-type: decimal;
     padding-top: 1rem;
-    padding-left: 20px;
+    padding-left: 5px;
     & li {
+        letter-spacing: 1px;
       text-transform: capitalize;
       & .para {
         color: var(--silver-color);
-        letter-spacing: 1px;
         font-weight: 400;
         text-transform: none;
         & span {
@@ -1300,6 +1304,7 @@ const Container = styled.div`
 
   & .sub_list {
     list-style-type: disc;
+    padding-left: 7px;
     & li {
       text-transform: none;
     }
@@ -1307,6 +1312,9 @@ const Container = styled.div`
 
   & a {
     color: var(--silver-color);
+  }
+  @media only screen and (max-width: 1000px) {
+    padding: 2rem 1rem;
   }
 `;
 
