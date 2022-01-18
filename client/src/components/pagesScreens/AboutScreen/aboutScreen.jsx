@@ -18,8 +18,7 @@ function AboutScreen() {
         <div className="content">
           <Title level={2}>About Us</Title>
           <Paragraph className="para">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
-            cupiditate dolore
+          We are not the only ones, but we are distinguished, so we invite you, our dear customer, to get to know our services and products closely
           </Paragraph>
           <Link to="contact-us" className="link">
             contact us
@@ -33,19 +32,27 @@ function AboutScreen() {
           <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }}>
             <div className="card_item">
               <img className="card_img" src="/img/marketing_img3.jpg" alt="" />
-              <h3 className="card_title">lorerm upsum</h3>
+              <h3 className="card_title">
+                Flexible spending, easy settings and effective access to your
+                ad.
+              </h3>
             </div>
           </Col>
           <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }}>
             <div className="card_item">
               <img className="card_img" src="/img/ecommerce_img.jpg" alt="" />
-              <h3 className="card_title">lorerm upsum</h3>
+              <h3 className="card_title">
+                raise brand awareness and build your own audience
+              </h3>
             </div>
           </Col>
           <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }}>
             <div className="card_item">
               <img className="card_img" src="/img/marketing_img.jpg" alt="" />
-              <h3 className="card_title">lorerm upsum</h3>
+              <h3 className="card_title">
+                we covers <br />
+                all your needs whatever your goal
+              </h3>
             </div>
           </Col>
         </Row>
@@ -141,7 +148,7 @@ const FirstSectionComponent = () => {
   return (
     <FirstSectionStyling>
       <h1 className="title">why choose us ?</h1>
-      <Row gutter={[10, 20]}>
+      <Row gutter={[10, 50]}>
         <Col xs={{ span: 24 }} md={{ span: 12 }}>
           <Slider {...settings} className="slider">
             <div>
@@ -389,7 +396,7 @@ const VisionStyling = styled.section`
       margin: auto;
       & .card_img {
         width: 100%;
-        height: 300px;
+        height: 200px;
         object-fit: cover;
       }
       & .card_title {
@@ -398,6 +405,7 @@ const VisionStyling = styled.section`
         text-transform: capitalize;
         font-size: 1.2rem;
         color: var(--silver-color);
+        font-weight: 700;
       }
     }
   }
@@ -416,9 +424,9 @@ const FirstSectionStyling = styled.section`
   }
   & .slider {
     & div {
-      /* max-width: 300px; */
+      width: 100%;
       & img {
-        width:100%;
+        width: 100%;
         /* margin: auto; */
       }
     }
