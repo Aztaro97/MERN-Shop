@@ -292,7 +292,7 @@ function privatePolicy() {
               </li>
               <li>
                 <p className="para">
-                  1 If you are an owner of Intellectual Property Rights or an
+                  If you are an owner of Intellectual Property Rights or an
                   agent who is fully authorised to act on behalf of the owner of
                   Intellectual Property Rights and believe that any Material or
                   other content infringes upon your Intellectual Property Right
@@ -1025,17 +1025,21 @@ const Container = styled.div`
 
   & .list {
     list-style-type: upper-roman;
-    padding-left: 10px;
     & .list_title {
       margin-bottom: 3rem;
       font-weight: 400;
       padding-left: 10px;
       color: var(--silver-color);
+      &::marker {
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
       & .title {
         font-weight: 700;
         letter-spacing: 1px;
         color: var(--silver-color);
         text-decoration: underline;
+        text-transform: capitalize;
         display: block;
         text-align: start;
         font-size: 1.4rem;
@@ -1068,8 +1072,8 @@ const Container = styled.div`
     }
   }
   & .sub_list {
-    list-style-type: disc;
-    padding-left: 0px;
+    list-style-type: lower-latin;
+    padding-left: 5px;
     & li {
       text-transform: none;
       /* padding-left: 10px; */

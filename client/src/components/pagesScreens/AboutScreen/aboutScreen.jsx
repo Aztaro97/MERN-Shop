@@ -32,47 +32,31 @@ function AboutScreen() {
         <Row gutter={[20, 20]} justify="center" className="card_container">
           <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }}>
             <div className="card_item">
-              <img
-                className="card_img"
-                src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
-                alt=""
-              />
+              <img className="card_img" src="/img/marketing_img3.jpg" alt="" />
               <h3 className="card_title">lorerm upsum</h3>
             </div>
           </Col>
           <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }}>
             <div className="card_item">
-              <img
-                className="card_img"
-                src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
-                alt=""
-              />
+              <img className="card_img" src="/img/ecommerce_img.jpg" alt="" />
               <h3 className="card_title">lorerm upsum</h3>
             </div>
           </Col>
           <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }}>
             <div className="card_item">
-              <img
-                className="card_img"
-                src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
-                alt=""
-              />
+              <img className="card_img" src="/img/marketing_img.jpg" alt="" />
               <h3 className="card_title">lorerm upsum</h3>
             </div>
           </Col>
         </Row>
       </VisionStyling>
       <TestimonialStyling>
-        <h1 className="title">lorem ipsum</h1>
+        {/* <h1 className="title">lorem ipsum</h1> */}
         <Row gutter={[20, 10]} className="gutter_row">
-          <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 8 }}>
-            <img
-              className="picture"
-              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
-              alt=""
-            />
+          <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 10 }}>
+            <img className="picture" src="/img/au79code-img0.jpg" alt="" />
           </Col>
-          <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 16 }}>
+          <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 14 }}>
             <div className="content">
               <p>
                 We meet the requests of any institution or company whether
@@ -85,8 +69,8 @@ function AboutScreen() {
             </div>
           </Col>
         </Row>
-        <Row gutter={[20, 10]} className="gutter_row">
-          <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 16 }}>
+        <Row gutter={[20, 10]} className="gutter_row" style={{ marginTop: 10 }}>
+          <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 14 }}>
             <div className="content">
               <p>
                 We maintain a close relationship with all our customers we offer
@@ -99,7 +83,7 @@ function AboutScreen() {
               </p>
             </div>
           </Col>
-          <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 8 }}>
+          <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 10 }}>
             <img
               className="picture"
               src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
@@ -157,7 +141,7 @@ const FirstSectionComponent = () => {
   return (
     <FirstSectionStyling>
       <h1 className="title">why choose us ?</h1>
-      <Row gutter={[10]}>
+      <Row gutter={[10, 20]}>
         <Col xs={{ span: 24 }} md={{ span: 12 }}>
           <Slider {...settings} className="slider">
             <div>
@@ -194,14 +178,13 @@ const FirstSectionComponent = () => {
         </Col>
         <Col xs={{ span: 24 }} md={{ span: 12 }}>
           <div className="content">
-            <h2>Lorem Ipsum</h2>
+            <h2>AU 79 CODE</h2>
             <p>
-              AU 79 CODE offers high quality services in web design, social
-              networking management and electronic marketing services for
-              government institutions, government and private companies that
-              provide good quality services along with marketing, photography,
-              printing and programming services as well as exhibitions and
-              products.
+              offers high quality services in web design, social networking
+              management and electronic marketing services for government
+              institutions, government and private companies that provide good
+              quality services along with marketing, photography, printing and
+              programming services as well as exhibitions and products.
             </p>
           </div>
         </Col>
@@ -433,9 +416,10 @@ const FirstSectionStyling = styled.section`
   }
   & .slider {
     & div {
+      /* max-width: 300px; */
       & img {
-        max-width: 300px;
-        margin: auto;
+        width:100%;
+        /* margin: auto; */
       }
     }
   }

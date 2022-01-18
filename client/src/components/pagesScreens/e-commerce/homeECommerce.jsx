@@ -175,12 +175,12 @@ function HomeECommerce() {
                             />
                             <div className="card_body">
                               <h3>{user.company.name}</h3>
-                              <TextTruncate
+                              {/* <TextTruncate
                                 line={3}
                                 element="span"
                                 text={user.company.about}
                                 truncateText="…"
-                              />
+                              /> */}
                               <hr />
                               <Link className="link" to={`profile/${user._id}`}>
                                 see more
@@ -231,12 +231,12 @@ function HomeECommerce() {
                               />
                               <div className="card_body">
                                 <h3>{user.company.name}</h3>
-                                <TextTruncate
+                                {/* <TextTruncate
                                   line={3}
                                   element="span"
                                   text={user.company.about}
                                   truncateText="…"
-                                />
+                                /> */}
                                 <hr />
                                 <Link
                                   className="link"
@@ -367,14 +367,14 @@ const CardSectionStyling = styled.div`
     text-align: center;
     font-weight: 700;
     text-transform: uppercase;
-    color: var(--white-color);
+    color: var(--silver-color);
     margin-bottom: 1rem;
   }
   & hr {
     width: 100px;
     margin: 0 auto;
     height: 2px;
-    background-color: var(--white-color);
+    background-color: var(--silver-color);
     margin-bottom: 1rem;
   }
   & .link {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import MainContainer from "../../MainContainer";
-import {useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import VideoPlayer from "react-background-video-player";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
@@ -10,8 +10,8 @@ function PosScreen() {
   const [index, setIndex] = useState(0);
   const TEXTS = ["Comming soon", "exhibition management"];
 
-  const history = useHistory()
-  
+  const history = useHistory();
+
   useEffect(() => {
     const intervalId = setInterval(() => setIndex((index) => index + 1), 3000);
     return () => clearTimeout(intervalId);
@@ -34,7 +34,9 @@ function PosScreen() {
                 className="text"
               />
             </h1>
-            <button onClick={() => history.push("/")} className="_btn">Go Back</button>
+            <button onClick={() => history.push("/")} className="_btn">
+              Go Back
+            </button>
           </div>
         </div>
       </Container>
@@ -64,9 +66,7 @@ const Container = styled.div`
   .contente {
     position: absolute;
     top: 30%;
-    /* left: 12%; */
     width: 100%;
-    height: 100%;
 
     & h1 {
       font-size: 3rem;

@@ -93,7 +93,7 @@ function FooterScrren() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <FaMapMarkerAlt /> Google Maps
+                <FaMapMarkerAlt /> Al Rashidya, 20b street, 21 villa
               </a>
             </li>
             <li className="footer-item">

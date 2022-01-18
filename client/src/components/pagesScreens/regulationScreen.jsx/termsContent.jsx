@@ -1265,18 +1265,21 @@ const Container = styled.div`
 
   & .list {
     list-style-type: upper-roman;
-    /* padding-left: 10px; */
-    padding-left: 10px;
     & .list_title {
       margin-bottom: 3rem;
       font-weight: 400;
       color: var(--silver-color);
       padding-left: 5px;
+      &::marker { 
+        font-size: 1.2rem;
+        font-weight:700;
+      }
       & .title {
         font-weight: 700;
         letter-spacing: 2px;
         color: var(--silver-color);
         text-decoration: underline;
+        text-transform: capitalize;
         display: block;
         text-align: start;
         font-size: 1.4rem;
@@ -1303,8 +1306,8 @@ const Container = styled.div`
   }
 
   & .sub_list {
-    list-style-type: disc;
-    padding-left: 7px;
+    list-style-type: lower-latin;
+    padding-left: 5px;
     & li {
       text-transform: none;
     }
