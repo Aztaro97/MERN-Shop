@@ -755,7 +755,7 @@ const JoiningUsStyling = styled.section`
 `;
 
 const NavStyling = styled.section`
-  padding: 1rem;
+  padding: 4rem 1rem !important;
   margin: 0 auto;
   /* margin-top: 1rem; */
   width: 100%;
@@ -814,12 +814,12 @@ const NavStyling = styled.section`
       transition: background 0.2s ease-in;
       padding: 40px 10px;
       & .icon {
-        font-size: 2.3rem;
+        /* font-size: 2rem; */
         color: var(--orange-color);
         margin-bottom: 0.7rem;
         transition: color 0.3s ease-in-out;
-        width: 70px;
-        height: 70px;
+        width: 50px;
+        height: 50px;
         filter: brightness(0) saturate(100%) invert(71%) sepia(84%)
           saturate(5063%) hue-rotate(20deg) brightness(88%) contrast(85%);
         @media only screen and (max-width: 768px) {

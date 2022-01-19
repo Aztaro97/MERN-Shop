@@ -18,7 +18,9 @@ function AboutScreen() {
         <div className="content">
           <Title level={2}>About Us</Title>
           <Paragraph className="para">
-          We are not the only ones, but we are distinguished, so we invite you, our dear customer, to get to know our services and products closely
+            We are not the only ones, but we are distinguished, so we invite
+            you, our dear customer, to get to know our services and products
+            closely
           </Paragraph>
           <Link to="contact-us" className="link">
             contact us
@@ -150,8 +152,17 @@ const FirstSectionComponent = () => {
       <h1 className="title">why choose us ?</h1>
       <Row gutter={[10, 50]}>
         <Col xs={{ span: 24 }} md={{ span: 12 }}>
-          <Slider {...settings} className="slider">
+          <Slider {...settings} className="slider" arrows={false}>
             <div>
+              <img
+                src="/img/business-partners-handshake-international-business-concept.jpg"
+                alt=""
+              />
+            </div>
+            <div>
+              <img src="/img/aerial-view-business-team.jpg" alt="" />
+            </div>
+            {/* <div>
               <img
                 src="https://images.unsplash.com/photo-1611671208430-772bdb3ed5ed?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
                 alt=""
@@ -162,25 +173,7 @@ const FirstSectionComponent = () => {
                 src="https://images.unsplash.com/photo-1611671208430-772bdb3ed5ed?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
                 alt=""
               />
-            </div>
-            <div>
-              <img
-                src="https://images.unsplash.com/photo-1611671208430-772bdb3ed5ed?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-                alt=""
-              />
-            </div>
-            <div>
-              <img
-                src="https://images.unsplash.com/photo-1611671208430-772bdb3ed5ed?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-                alt=""
-              />
-            </div>
-            <div>
-              <img
-                src="https://images.unsplash.com/photo-1611671208430-772bdb3ed5ed?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-                alt=""
-              />
-            </div>
+            </div> */}
           </Slider>
         </Col>
         <Col xs={{ span: 24 }} md={{ span: 12 }}>
@@ -424,10 +417,12 @@ const FirstSectionStyling = styled.section`
   }
   & .slider {
     & div {
-      width: 100%;
+      margin-bottom: 2px;
       & img {
-        width: 100%;
-        /* margin: auto; */
+        max-width: 400px;
+        height: 300px;
+        object-fit: cover;
+        margin: auto;
       }
     }
   }
