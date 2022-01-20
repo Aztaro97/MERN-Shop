@@ -109,7 +109,7 @@ function CraftManList() {
 }
 
 const Container = styled.div`
-  margin-bottom: 20px;
+  padding: 2rem 0;
 `;
 
 const SliderCarousel = styled(Slider)`

@@ -983,12 +983,14 @@ const Banner = () => {
                 give effective results
               </p>
 
-              <Link className="btn_banner btn_1" to="/advertising">
-                read more
-              </Link>
-              <Link className="btn_banner btn_2" to="/register">
-                add your ads
-              </Link>
+              <div className="btn_banner">
+                <Link className="btn_1" to="/advertising">
+                  read more
+                </Link>
+                <Link className="btn_2" to="/register">
+                  add your ads
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -999,19 +1001,21 @@ const Banner = () => {
                 Do you want to enhance or upgrade your business?
                 {/* <span>simple and easy</span> */}
               </h1>
-              <Link className="btn_banner btn_1" to="/e-commerce">
-                read more
-              </Link>
-              <Link className="btn_banner btn_2" to="/register">
-                create your shop
-              </Link>
+              <div className="btn_banner">
+                <Link className="btn_1" to="/e-commerce">
+                  read more
+                </Link>
+                <Link className="btn_2" to="/register">
+                  create your shop
+                </Link>
+              </div>
             </div>
           </div>
         </div>
         {/* <div>
           <div className="landing_overlay bg_img3">
             <div className="content_overlay">
-              <Link className="btn_banner" to="/printing">
+              <Link className="" to="/printing">
                 printing
               </Link>
             </div>
@@ -1020,7 +1024,7 @@ const Banner = () => {
         <div>
           <div className="landing_overlay bg_img4">
             <div className="content_overlay">
-              <Link className="btn_banner" to="/photography">
+              <Link className="" to="/photography">
                 photography
               </Link>
             </div>

@@ -378,7 +378,7 @@ const EmptyCart = styled.div`
   & .link {
     color: #fff;
     background: var(--orange-color);
-    padding: 5px 3rem;
+    padding: 10px 3rem;
     text-decoration: none;
     letter-spacing: 1px;
     text-transform: uppercase;

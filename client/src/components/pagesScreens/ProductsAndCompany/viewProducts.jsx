@@ -71,7 +71,7 @@ const ViewProducts = () => {
               products.map((product, index) => (
                 <Col
                   key={index}
-                  xs={{ span: 12 }}
+                  xs={{ span: 24 }}
                   sm={{ span: 12 }}
                   md={{ span: 8 }}
                   lg={{ span: 6 }}

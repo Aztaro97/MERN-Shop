@@ -67,7 +67,7 @@ const Tab = styled.div`
   /* height: ; */
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  padding:2rem 0;
   /* padding: 4rem 0; */
   & .ant-tabs-top {
     width: 100%;

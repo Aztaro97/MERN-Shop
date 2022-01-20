@@ -8,6 +8,7 @@ import {
   FaInstagram,
   FaTwitter,
 } from "react-icons/fa";
+import Slider from "react-slick";
 import { MdMail } from "react-icons/md";
 
 import ButtonC from "../../ButtonComponeent";
@@ -32,6 +33,27 @@ function CompanyDetails() {
 
   const company = user?.company;
 
+  const settings = {
+    customPaging: function(i) {
+      return (
+        <a>
+          <img
+            src={company && company.urlImg[i].url}
+            alt=""
+            className="img_slid"
+          />
+        </a>
+      );
+    },
+    dots: true,
+    dotsClass: "slick-dots slick-thumb",
+    infinite: true,
+    autoplay: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+
   useEffect(() => {
     dispatch(getCompanyDetails());
   }, [dispatch]);
@@ -49,19 +71,13 @@ function CompanyDetails() {
         <>
           {company && (
             <>
-              <Row gutter={[30, 50]}>
+              <Row gutter={[40, 50]}>
                 <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 12 }}>
-                  <img
-                    src={
-                      company.urlImg.length !== 0 ? company.urlImg : emptyImg
-                    }
-                    alt=""
-                  />
                   <div>
                     <div>
-                      <h1 className="title">{company.name}</h1>
+                      <h1 className="title" style={{marginTop:"0px !important"}} >{company.name}</h1>
                       <p>{company.scopeBusiness}</p>
-                      <hr />
+                      <hr />F
                     </div>
                     <div>
                       <h1 className="title">about us</h1>
@@ -157,40 +173,34 @@ function CompanyDetails() {
                   </div>
                 </Col>
                 <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 12 }}>
-                  <div>
-                    <img
-                      src={
-                        company.urlImg.length !== 0
-                          ? company.urlImg[0].url
-                          : emptyImg
-                      }
-                      alt=""
-                      className="bg_right"
-                    />
-                    <ImageGallerie>
-                      {company.urlImg.map((item, index) => (
-                        <ImageA key={index} src={item.url} />
+                  <Slider {...settings} arrows={false}>
+                    {company.urlImg &&
+                      company.urlImg.map((img, index) => (
+                        <div key={index}>
+                          <img src={img.url} alt="" className="img_slider" />
+                        </div>
                       ))}
-                    </ImageGallerie>
+                  </Slider>
+                </Col>
+                <Col xs={{span: 24}}>
+                  <div
+                    className="edit_btn"
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      margin: "2rem 0",
+                    }}
+                  >
+                    <Link to="/register" style={{ textDecoration: "none" }}>
+                      <ButtonC
+                        style={{ padding: ".5rem 4rem", letterSpacing: "2px" }}
+                      >
+                        edit my profil
+                      </ButtonC>
+                    </Link>
                   </div>
                 </Col>
               </Row>
-              <div
-                className="edit_btn"
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  margin: "2rem 0",
-                }}
-              >
-                <Link to="/register" style={{ textDecoration: "none" }}>
-                  <ButtonC
-                    style={{ padding: ".5rem 4rem", letterSpacing: "2px" }}
-                  >
-                    edit my profil
-                  </ButtonC>
-                </Link>
-              </div>
             </>
           )}
         </>
@@ -229,7 +239,7 @@ const Container = styled.div`
     font-weight: 700;
     font-size: 1.3rem;
     text-transform: uppercase;
-    margin-bottom: 0.3rem;
+    margin: 1rem 0 10px;
     color: var(--silver-color);
   }
 
@@ -298,35 +308,6 @@ const Container = styled.div`
     &:hover {
       opacity: 0.9;
     }
-  }
-`;
-
-// const Container = styled.div`
-//   max-width: var(--max-width);
-//   margin: 0 auto;
-//   padding: 1rem 1rem 0;
-// `;
-
-const ImageGallerie = styled.div`
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-gap: 1rem;
-  /* height:30%; */
-  padding: 0.4rem 0;
-  margin-top: 0.4rem;
-  @media only screen and (max-width: 1000px) {
-    grid-template-columns: repeat(4, 1fr);
-  }
-  @media only screen and (max-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-`;
-
-const ImageA = styled(Image)`
-  height: 100%;
-
-  @media only screen and (max-width: 768px) {
-    border-radius: 10px;
   }
 `;
 

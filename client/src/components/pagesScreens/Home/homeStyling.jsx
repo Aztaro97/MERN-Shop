@@ -306,29 +306,30 @@ export const BannerStyling = styled.section`
       }
 
       & .btn_banner {
-        display: inline-block;
-        text-decoration: none;
-        outline: none;
-        border: none;
-        border-radius: 50px;
-        padding: 5px 20px;
-        text-transform: capitalize !important;
-        text-align: center;
-        letter-spacing: 1px;
-        margin: 10px 0;
-        font-size: 1rem;
-        cursor: pointer;
-        &:hover {
-          opacity: 0.9;
-        }
-        &.btn_1 {
+        display: flex;
+        align-items: center;
+        gap:5px;
+        margin: 5px 0;
+        & .btn_1,
+        & .btn_2 {
+          outline: none;
+          font-size: 1rem;
+          border: none;
           background: var(--silver-color);
           color: var(--black-color);
-        }
-        &.btn_2 {
-          background: var(--orange-color);
-          color: var(--white-color);
-          margin-left: 10px;
+          border-radius: 5px;
+          padding: 10px 20px;
+          text-transform: capitalize !important;
+          text-align: center;
+          letter-spacing: 1px;
+          text-decoration: none;
+          &:hover {
+            opacity: 0.9;
+          }
+          &.btn_2 {
+            background: var(--orange-color);
+            color: var(--white-color);
+          }
         }
       }
     }

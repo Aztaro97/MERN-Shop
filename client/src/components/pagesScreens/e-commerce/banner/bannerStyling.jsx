@@ -59,7 +59,7 @@ export const LandingStyling = styled.section`
         outline: none;
         border: none;
         border-radius: 5px;
-        padding: 5px 20px;
+        padding: 10px 20px;
         background: var(--orange-color);
         text-transform: capitalize;
         color: #fff;
