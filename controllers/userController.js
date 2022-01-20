@@ -693,7 +693,7 @@ const getAllCompanies = asyncHandler(async (req, res) => {
     const type = req.params.type;
 
     // const user = await User.find({company:{type: "company"}});
-    const user = await User.find({ "company.type": type }).select(
+    const user = await User.find({ "company.type": type, typeUser: "merchant" }).select(
       "company , email"
     );
 

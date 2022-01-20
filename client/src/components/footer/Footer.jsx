@@ -97,13 +97,13 @@ function FooterScrren() {
               </a>
             </li>
             <li className="footer-item">
-              <a href="tel:+97155555478" className="link">
-                <FaPhoneAlt /> +971 55 555478
+              <a href="tel:+97142839983" className="link">
+                <FaPhoneAlt /> +971 4 2839983
               </a>
             </li>
             <li className="footer-item">
-              <a href="tel:+97155555478" className="link">
-                <FaPhoneAlt /> +971 55 555478
+              <a href="tel:+971503088810" className="link">
+                <FaPhoneAlt /> +971 50 3088810
               </a>
             </li>
             <li className="footer-item">

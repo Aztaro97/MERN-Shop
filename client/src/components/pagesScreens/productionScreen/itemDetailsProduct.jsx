@@ -44,8 +44,11 @@ function ItemProduction() {
 
   const whatsappMessage = `Product Name: ${article?.name}, Price: ${
     article?.price
-  } AED,  ${article?.type && `Type: ${type}`}, ${article?.capacity &&
-    `Capacity: ${article?.capacity && capacity}`}, 
+  } AED,  
+      ${article?.type && `Type: ${article.type && type}`},
+     ${article?.capacity && `Capacity: ${capacity}`}, 
+     ${article?.size && `Size: ${size}`}, 
+     ${article?.color && `Color: ${color}`}, 
     Quantity : ${qtyNumber}
   `;
 
@@ -55,6 +58,13 @@ function ItemProduction() {
   useEffect(() => {
     if (article && article._id !== articleId) {
       dispatch(getArticleById(articleId));
+    } else {
+      if (article) {
+        setType(article.type[0]);
+        setCapacity(article.capacity[0]);
+        setSize(article.size[0]);
+        setColor(article.color[0]);
+      }
     }
   }, [dispatch, articleId, article]);
 
@@ -73,7 +83,7 @@ function ItemProduction() {
               md={{ span: 12 }}
               lg={{ span: 12 }}
             >
-              <Slider {...settings} arrows={false} >
+              <Slider {...settings} arrows={false}>
                 {article.imgUrl?.map((img, index) => (
                   <div key={index}>
                     <img src={img.url} alt="" className="slide_image" />
@@ -123,7 +133,7 @@ function ItemProduction() {
                         className="select_type"
                       >
                         {article.capacity?.map((item, index) => (
-                          <Option key={index} value={index}>
+                          <Option key={index} value={item}>
                             {item}
                           </Option>
                         ))}
@@ -144,7 +154,7 @@ function ItemProduction() {
                         className="select_type"
                       >
                         {article.size?.map((item, index) => (
-                          <Option key={index} value={index}>
+                          <Option key={item} value={item}>
                             {item}
                           </Option>
                         ))}
@@ -165,7 +175,7 @@ function ItemProduction() {
                         className="select_type"
                       >
                         {article.color?.map((item, index) => (
-                          <Option key={index} value={index}>
+                          <Option key={index} value={item}>
                             {item}
                           </Option>
                         ))}
@@ -191,7 +201,12 @@ function ItemProduction() {
                 <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
                   <div className="product_share">
                     <h4>Order :</h4>
-                    <a href={whatsappLink} className="btn_share">
+                    <a
+                      href={whatsappLink}
+                      className="btn_share"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
                       <BsWhatsapp className="icon" /> order now via whatsapp{" "}
                     </a>
                     {/* <WhatsappShareButton

@@ -39,11 +39,12 @@ const TextAreaStyling = styled.textarea`
   resize: none;
 
   &:focus {
-    /* border-color: var(--orange-color); */
-    /* border-right-width: 0.3px !important; */
     outline: none;
     background: var(--dark-color);
     color: var(--white-color);
+  }
+  &::placeholder {
+    color: var(--silver-color);
   }
 `;
 

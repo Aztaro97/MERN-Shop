@@ -288,6 +288,7 @@ const Container = styled.div`
       background-position: top;
       background-size: cover;
       background-repeat: no-repeat;
+      object-fit:cover;
       & p {
         margin: 0;
         font-size: 1.2rem;
@@ -301,7 +302,7 @@ const Container = styled.div`
           rgba(2, 0, 36, 0.623) 100%,
           rgba(51, 51, 51, 1) 100%
         ),
-        url("/img/printing/offsetPrinting.png");
+        url("/img/printing/printingcard.jpg");
     }
     & .s2 {
       background: linear-gradient(
@@ -309,7 +310,7 @@ const Container = styled.div`
           rgba(2, 0, 36, 0.623) 100%,
           rgba(51, 51, 51, 1) 100%
         ),
-        url("/img/printing/offsetPrinting.png");
+        url("/img/printing/printingcard.jpg");
     }
   }
 

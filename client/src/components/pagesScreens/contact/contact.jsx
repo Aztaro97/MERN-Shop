@@ -236,7 +236,7 @@ const ButtonStyling = styled(Button)`
 const ContactContainer = styled.section`
   background: var(--dark-light-color);
   height: 100% !important;
-  padding: 4rem 2rem 6rem;
+  padding: 6rem 2rem 8rem;
   /* margin-top: 4rem; */
   & .title {
     color: var(--white-color);
@@ -244,6 +244,7 @@ const ContactContainer = styled.section`
     margin-bottom: 7px;
     display: block;
     text-transform: capitalize;
+    letter-spacing: 1px;
   }
   & .para {
     color: var(--silver-color);
@@ -255,7 +256,7 @@ const ContactContainer = styled.section`
       display: flex;
       height: 100%;
       & .media_link {
-        color: #fff;
+        color: var(--silver-color);
         /* background: var(--orange-color); */
         border: 1px solid var(--silver-color);
         transition: all 0.3s ease-in-out;
@@ -301,6 +302,7 @@ const ContactContainer = styled.section`
   }
   @media only screen and (max-width: 768px) {
     margin: 0;
+    padding: 4rem 1rem;
   }
 `;
 

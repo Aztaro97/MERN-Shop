@@ -223,7 +223,7 @@ const ContactSection = styled.section`
 `;
 
 const Banner = styled.div`
-  background: linear-gradient(90deg, #33333365 0%, rgba(2, 0, 36, 0) 0%),
+  background: linear-gradient(90deg, #000000bc 0%, #00000099 0%),
     url("/img/photography/bannerPhotography.png");
   position: relative;
   height: 400px;
@@ -257,6 +257,7 @@ const Banner = styled.div`
       border-radius: 5px;
       &:hover {
         background: var(--orange-color);
+        border: 1px solid var(--orange-color);
         color: #fff;
       }
     }

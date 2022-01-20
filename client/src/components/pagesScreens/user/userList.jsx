@@ -28,7 +28,7 @@ function UserListScreen() {
     confirm({
       title: "Are you sur to delete ?",
       icon: <ExclamationCircleOutlined />,
-      okText: "Yes, I'm",
+      okText: "Yes, Of course",
       className: "modal_container",
       onOk() {
         dispatch(deleteUser(id));
