@@ -22,7 +22,7 @@ function EMarketingScreen() {
           <div className="imgCover">
             <img alt="" src="./img/MarketingHead.jpg" />
           </div>
-          <div className="caption animate__animated">
+          <div className="caption">
             <span className="secColor weSpan ">We</span>
             <h2 className="largestTitle thirdColor weight-700 text-uppercase">
               Are The Best E-Marketing Companies In Dubai, UAE.
@@ -31,56 +31,6 @@ function EMarketingScreen() {
               Our marketing strategies for getting your website publicized give
               effective results. there are no excuses, It's that simple.
             </p>
-            {/* <div className="marketingSelect">
-              <div className="dropdown">
-                <button
-                  className="btn  dropdown-toggle"
-                  type="button"
-                  id="marketingDropDown"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  SEO
-                </button>
-                <div
-                  className="dropdown-menu"
-                  aria-labelledby="marketingDropDown"
-                >
-                  <button className="dropdown-item" type="button">
-                    Google ads
-                  </button>
-                  <button className="dropdown-item" type="button">
-                    Ads on facebook
-                  </button>
-                  <button className="dropdown-item" type="button">
-                    Ads on instagram
-                  </button>
-                  <button className="dropdown-item" type="button">
-                    Ads on linkin
-                  </button>
-                  <button className="dropdown-item" type="button">
-                    Ads on youtube
-                  </button>
-                  <button className="dropdown-item" type="button">
-                    More visits on my website
-                  </button>
-                  <button className="dropdown-item" type="button">
-                    Sms
-                  </button>
-                  <button className="dropdown-item" type="button">
-                    Email
-                  </button>
-                </div>
-              </div>
-              <a
-                type="button"
-                className="btn mainBg grayColor btn-lg text-uppercase  text-uppercase"
-                href="#/"
-              >
-                Try for free
-              </a>
-            </div> */}
           </div>
         </div>
 

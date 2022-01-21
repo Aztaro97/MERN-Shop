@@ -288,7 +288,7 @@ const Container = styled.div`
       background-position: top;
       background-size: cover;
       background-repeat: no-repeat;
-      object-fit:cover;
+      object-fit: cover;
       & p {
         margin: 0;
         font-size: 1.2rem;

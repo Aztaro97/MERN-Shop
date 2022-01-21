@@ -71,7 +71,7 @@ function BurgerMenu({ userInfo }) {
               </Link>
             </li>
             <li>
-              <Link to="/marketing" className="sub_link" onClick={handleClose}>
+              <Link to="/digital-marketing" className="sub_link" onClick={handleClose}>
                 Marketing
               </Link>
             </li>

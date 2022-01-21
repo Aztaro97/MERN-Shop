@@ -7,8 +7,9 @@ import {
   MdOutlineScreenSearchDesktop,
   SiGoogleclassroom,
   GoMegaphone,
-  ImRss
+  ImRss,
 } from "react-icons/all";
+import {Link} from "react-router-dom"
 import "./DigitalMarketing.css";
 import ButtonComponeent from "../../ButtonComponeent";
 // import { MdAdsClick } from "react-icons/all";
@@ -22,14 +23,16 @@ function DigitalMarketingScreen() {
       <Banner>
         <img src="/img/marketing/banner.png" alt="" className="banner_img" />
         <div>
-          <h2 className="title">Digital Products for your ideas</h2>
+          <h2 className="title">
+            Gain A 360° View Of Where Your Marketing Stands
+          </h2>
           <p className="para">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
-            cupiditate dolore earum perferendis asperiores culpa id esse
+          We take the time to learn the dynamics of your business, enabling us to develop unique strategies to your Company.
+
           </p>
-          <Button type="button" className="link">
+          <Link to="/contact-us" className="link">
             contact today
-          </Button>
+          </Link>
         </div>
       </Banner>
       <Container>
@@ -89,14 +92,9 @@ const MarketingService = () => {
           slidesToShow: 3,
         },
       },
+
       {
-        breakpoint: 700,
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-      {
-        breakpoint: 400,
+        breakpoint: 500,
         settings: {
           slidesToShow: 2,
         },
@@ -120,47 +118,42 @@ const MarketingService = () => {
       <Slider {...settings}>
         <div>
           <div className="card_body">
+            <MdOutlineScreenSearchDesktop className="icon" />
             <Title level={4} className="card_title">
               seo
             </Title>
-            <MdOutlineScreenSearchDesktop className="icon" />
-            <p>Lorem ipsum Lorem ipsum Lorem ipsum</p>
           </div>
         </div>
         <div>
           <div className="card_body">
+            <GoMegaphone className="icon" />
             <Title level={4} className="card_title">
               Ads
             </Title>
-            <GoMegaphone className="icon" />
-            <p>Lorem ipsum Lorem ipsum Lorem ipsum</p>
           </div>
         </div>
         <div>
           <div className="card_body">
+            <ImRss className="icon" />
             <Title level={4} className="card_title">
               social media
             </Title>
-            <ImRss className="icon" />
-            <p>Lorem ipsum Lorem ipsum Lorem ipsum</p>
           </div>
         </div>
         <div>
           <div className="card_body">
+            <SiGoogleclassroom className="icon" />
             <Title level={4} className="card_title">
               seo
             </Title>
-            <SiGoogleclassroom className="icon" />
-            <p>Lorem ipsum Lorem ipsum Lorem ipsum</p>
           </div>
         </div>
         <div>
           <div className="card_body">
+            <SiGoogleclassroom className="icon" />
             <Title level={4} className="card_title">
               seo
             </Title>
-            <SiGoogleclassroom className="icon" />
-            <p>Lorem ipsum Lorem ipsum Lorem ipsum</p>
           </div>
         </div>
       </Slider>
@@ -305,25 +298,32 @@ const AboutDigitalSection = () => {
 };
 
 const AboutStyling = styled.section`
-  background: linear-gradient(to bottom, #11111176 0%, #00000099 100%),
+  background: linear-gradient(to bottom, #111111cf 0%, #000000c3 100%),
     url("https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   padding: 40px 30px;
-  color: #ffff;
+  color: var(--silver-color);
   text-align: center;
   & h1 {
-    color: #ffff;
+    color: var(--silver-color);
   }
 `;
 
 const ServiceContainer = styled.div`
-  padding: 30px 0;
+  padding: 2rem 0;
+  background: var(--dark-light-color);
   & .title {
     max-width: 400px;
     margin: 0 auto 15px;
     text-transform: capitalize;
+    color: var(--silver-color) !important;
+    letter-spacing: 1px;
+  }
+  & .description {
+    color: var(--silver-color) !important;
+    text-align: start;
   }
   & .card_body {
     display: flex;
@@ -331,28 +331,26 @@ const ServiceContainer = styled.div`
     justify-content: center;
     flex-direction: column;
     border-radius: 10px;
+    border: 1px solid var(--silver-color);
     /* border: 1px solid #f0f0f0; */
     /* background: #ececec; */
-    width: 200px;
+    max-width: 200px;
     height: 150px;
-    margin: 10px auto 10px;
+    margin: 0 auto 20px;
     padding: 10px;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
       rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 
     & .card_title {
-      color: #333;
       text-transform: uppercase;
-      font-size: 1rem;
+      font-size: 1.2rem;
       font-weight: bold;
+      color: var(--silver-color);
     }
     & .icon {
       font-size: 2.5rem;
-      color: var(--orange-color);
-    }
-    & p {
-      text-align: center;
-      margin: 5px 0;
+      color: var(--silver-color);
+      margin-bottom: 20px;
     }
   }
   /* ///////  Slider Dits  /////// */
@@ -398,7 +396,12 @@ const Banner = styled.section`
     & .link {
       text-align: center;
       margin: auto;
-      border-radius: 30px !important;
+      padding: 10px 20px;
+      border-radius: 5px !important;
+      text-decoration: none;
+      color: #fff;
+      background: var(--orange-color);
+      text-transform: uppercase;
     }
   }
   & .banner_img {
@@ -418,10 +421,13 @@ const Banner = styled.section`
 `;
 
 const Container = styled.div`
-  /* padding: 40px 0; */
   overflow: hidden;
+
+  & section {
+    padding: 4rem 2rem !important;
+  }
   & .title {
-    color: var(--orange-color);
+    color: var(--silver-color);
     text-align: center;
   }
   & .description {
@@ -431,20 +437,25 @@ const Container = styled.div`
   }
 
   & .pk_para {
-    color: var(--orange-color);
+    color: var(--silver-color);
     letter-spacing: 1px;
     text-align: center;
+  }
+  @media only screen and (max-width: 768px) {
+    & section {
+      padding: 2rem 1rem;
+    }
   }
 `;
 
 const TestimonialStyling = styled.section`
-  background: #ececec;
+  background: transparent !important;
   padding: 20px 0;
   & .tm_card {
-    border: 1px solid #ececec;
+    /* border: 1px solid #ececec; */
     margin: 0 20px 20px 20px;
     padding: 20px;
-    background: #fff;
+    background: var(--dark-light-color);
     & .tm_card_header {
       display: flex;
       align-items: center;
@@ -460,6 +471,7 @@ const TestimonialStyling = styled.section`
         text-transform: capitalize;
         margin-bottom: 0;
         margin-left: 10px;
+        color: var(--silver-color);
       }
       & h4 {
         color: var(--orange-color);
@@ -467,6 +479,7 @@ const TestimonialStyling = styled.section`
     }
     & .tm_card_body {
       padding: 10px 0;
+      color: var(--silver-color);
     }
   }
 `;

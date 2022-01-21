@@ -282,7 +282,7 @@ function NavBar() {
                 </Link>
               </li>
               <li>
-                <Link to="/marketing" className="sub_link">
+                <Link to="/digital-marketing" className="sub_link">
                   Marketing
                 </Link>
               </li>
