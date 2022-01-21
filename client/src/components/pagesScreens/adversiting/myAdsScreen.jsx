@@ -128,12 +128,11 @@ function MyAdsScreen() {
 }
 
 const Container = styled.div`
-  padding: 20px;
+  padding: 4rem 2rem;
   & .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
     & .title {
       color: var(--orange-color);
       margin: 0;
@@ -156,6 +155,9 @@ const Container = styled.div`
         opacity: 0.9;
       }
     }
+  }
+  @media only screen and (max-width: 768px) {
+    padding: 2rem 1rem;
   }
 `;
 
@@ -227,7 +229,6 @@ const EmptyAdsContainer = styled.div`
     color: var(--silver-color);
   }
   @media screen and (max-width: 768px) {
-    padding: 20px;
     & img {
       max-width: 100px;
     }

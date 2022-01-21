@@ -455,9 +455,9 @@ const JoiningUsSection = () => {
                 Become a partner <br /> Reach more customers and <br /> achieve
                 growth with us
               </h1>
-              <div className="link">
-                <Link to="/advertising/register" alt="">
-                  Add your ad Now
+              <div>
+                <Link to="/advertising/register" alt="" className="link">
+                  Add your Ads now
                 </Link>
               </div>
             </div>
@@ -737,16 +737,15 @@ const JoiningUsStyling = styled.section`
   }
   .link {
     text-align: center;
-    /* height: 100%; */
-    & a {
-      text-align: center;
-      font-size: 1.1rem;
-      letter-spacing: 2px;
-      background: var(--orange-color);
-      color: #fff;
-      padding: 5px 2rem;
-      border-radius: 5px;
-      text-decoration: none;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    background: var(--orange-color);
+    color: #fff;
+    padding: 10px 2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    &:hover {
+      opacity: .9;
     }
   }
   @media only screen and (max-width: 768px) {
