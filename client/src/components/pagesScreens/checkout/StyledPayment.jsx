@@ -86,6 +86,7 @@ export const Form = styled.form`
   /* border-radius: 10px; */
 
   & .section_shippindAdress {
+    margin-bottom:2rem;
     & > * {
       margin-bottom: 0.6rem;
     }

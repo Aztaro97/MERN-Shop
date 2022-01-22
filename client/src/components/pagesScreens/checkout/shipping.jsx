@@ -421,6 +421,7 @@ const ContainerCart = styled.div`
 
 const Card = styled.div`
   display: flex;
+  gap: 25px;
 
   & .card__image {
     & img {
@@ -453,10 +454,8 @@ const Card = styled.div`
 
   & .card__details {
     display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-top: 1rem;
-    padding-left: 1.7rem;
+    justify-content: start;
+    flex-direction: column;
 
     & .card__title {
       font-size: 1.2rem;

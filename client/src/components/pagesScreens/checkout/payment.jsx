@@ -396,7 +396,7 @@ const SectionShippingAddress = ({
           style={{ width: "100%" }}
           onClick={() => setVisible(true)}
         >
-          Select ur localisation on map
+          Select your localisation on map
         </ButtonC>
         <Modal
           centered

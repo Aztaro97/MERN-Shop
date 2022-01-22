@@ -9,7 +9,7 @@ import {
   GoMegaphone,
   ImRss,
 } from "react-icons/all";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 import "./DigitalMarketing.css";
 import ButtonComponeent from "../../ButtonComponeent";
 // import { MdAdsClick } from "react-icons/all";
@@ -21,14 +21,14 @@ function DigitalMarketingScreen() {
   return (
     <MainContainer>
       <Banner>
-        <img src="/img/marketing/banner.png" alt="" className="banner_img" />
+        {/* <img src="/img/marketing/banner2.jpg" alt="" className="banner_img" /> */}
         <div>
           <h2 className="title">
             Gain A 360° View Of Where Your Marketing Stands
           </h2>
           <p className="para">
-          We take the time to learn the dynamics of your business, enabling us to develop unique strategies to your Company.
-
+            We take the time to learn the dynamics of your business, enabling us
+            to develop unique strategies to your Company.
           </p>
           <Link to="/contact-us" className="link">
             contact today
@@ -197,7 +197,7 @@ const TestimonialComponent = () => {
       <Title level={2} className="title">
         Testimonials
       </Title>
-      <Slider {...settings}>
+      <Slider {...settings} arrows={false}>
         <div>
           <div className="tm_card">
             <div className="tm_card_header">
@@ -366,36 +366,34 @@ const ServiceContainer = styled.div`
   }
 `;
 const Banner = styled.section`
-  /* background: url("https://images.unsplash.com/photo-1563126153-74b8e04c1070?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80"); */
+  background: linear-gradient(90deg, #000000bc 0%, #00000099 0%),
+    url("/img/marketing/banner2.jpg");
+  position: relative;
   height: 400px;
-  background: #ececec;
+  object-fit: cover;
+  background-position: center center;
+  background-size: cover;
+  padding: 2rem;
   /* padding: 10px; */
   /* text-align: end; */
   & div {
-    z-index: 5;
-    position: absolute;
-    top: 200px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     justify-content: center;
+    height: 100%;
     max-width: 400px;
-    text-align: center;
-    padding: 0 20px;
     & .title {
-      color: #333;
+      color: var(--silver-color);
       font-size: 2rem;
       letter-spacing: 1px;
       font-weight: 700;
-      /* text-shadow: 1px 2px 3px #a5a4a4; */
     }
     & .para {
-      color: #333;
-      text-shadow: 1px 2px 3px #9e9c9c;
+      color: var(--silver-color);
     }
     & .link {
       text-align: center;
-      margin: auto;
       padding: 10px 20px;
       border-radius: 5px !important;
       text-decoration: none;
@@ -405,18 +403,21 @@ const Banner = styled.section`
     }
   }
   & .banner_img {
-    /* position: absolute; */
-    /* top: 0;
+    position: absolute;
+    top: 0;
     bottom: 0;
-    left: 0; */
+    /* right: 0; */
     opacity: 0.7;
     /* position: relative; */
-    height: 100%;
-    width: 600px;
+    /* height: 100%; */
+    /* width: 600px; */
     /* right: 0; */
-    z-index: 1;
     float: right;
     object-fit: cover;
+  }
+
+  @media only screen and (max-width: 768px) {
+    padding: 2rem 1rem;
   }
 `;
 

@@ -702,11 +702,13 @@ const Header = styled.div`
   width: 100%;
 
   & a {
+    border: 1px solid var(--silver-color);
     text-decoration: none;
     color: var(--silver-color);
     font-weight: 700;
     position: relative;
-    top: 2rem;
+    top: 20px;
+    padding:5px 10px;
     @media only screen and (max-width: 500px) {
       display: block;
       position: initial;
