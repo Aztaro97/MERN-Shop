@@ -2,9 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { Drawer, Button, Radio, Space, Menu } from "antd";
 import {
-  AppstoreOutlined,
   MailOutlined,
-  SettingOutlined,
+  AppstoreOutlined,
   UserOutlined,
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
@@ -61,7 +60,7 @@ function DrawerComponent({ showDrawer, setShowDrawer }) {
             </Link>
           </Menu.Item> */}
         </SubMenu>
-        <SubMenu key="sub3" icon={<SettingOutlined />} title="Orders">
+        <SubMenu key="sub3" icon={<AppstoreOutlined />} title="Orders">
           <Menu.Item key="5">
             <Link to="/admin/orderlist" onClick={onClose} className="link">
               List Orders
@@ -80,7 +79,7 @@ function DrawerComponent({ showDrawer, setShowDrawer }) {
         </SubMenu>
         <SubMenu
           key="sub4"
-          icon={<SettingOutlined />}
+          icon={<AppstoreOutlined />}
           title="Productions Items"
         >
           <Menu.Item key="8">
@@ -94,7 +93,7 @@ function DrawerComponent({ showDrawer, setShowDrawer }) {
             </Link>
           </Menu.Item> */}
         </SubMenu>
-        <SubMenu key="sub5" icon={<SettingOutlined />} title="Advertising">
+        <SubMenu key="sub5" icon={<AppstoreOutlined />} title="Advertising">
           <Menu.Item key="10">
             <Link to="/admin/advertising" onClick={onClose} className="link">
               All

@@ -177,19 +177,13 @@ function NavBar() {
               trigger={screenWidth > 768 ? "hover" : "click"}
               content={
                 <ListNavigation>
-                  {userInfo && (
-                    <li>
-                      <Link className="link" to="/advertising/profile">
-                        My Ads
-                      </Link>
-                    </li>
-                  )}
+                  
                   {userInfo && userInfo.typeUser === "merchant" && (
                     <>
                       <li>
-                        <Link className="link" to="/myproducts">
-                          {" "}
-                          {t("my_products")}{" "}
+                        <Link className="link" to="/myprofile">
+                          {/* {t("my_products")} */}
+                          my profile
                         </Link>
                       </li>
                       <li>
@@ -203,6 +197,13 @@ function NavBar() {
                         </Link>
                       </li>
                     </>
+                  )}
+                  {userInfo && (
+                    <li>
+                      <Link className="link" to="/advertising/profile">
+                        My Ads
+                      </Link>
+                    </li>
                   )}
                   {!userInfo && (
                     <li>
@@ -236,7 +237,7 @@ function NavBar() {
               )}
             </NavLink>
           </NavItem>
- 
+
           <ToggleMenu open={showToggleMenu} setOpen={setShowToggleMenu} />
           <DrawerComponent
             showDrawer={showDrawer}

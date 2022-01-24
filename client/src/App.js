@@ -242,7 +242,7 @@ function App() {
           <Route path="/products" component={ProductsShop} />
           <Route path="/product/edit/:id" component={EditProductScreen} />
           <Route path="/product/:id" component={ProductDetailsScreen} />
-          <Route path="/myproducts" component={MyProductAndCompanyComponent} />
+          <Route path="/myprofile" component={MyProductAndCompanyComponent} />
           <Route path="/e-commerce" component={EcommerceHomeComponent} />
           <Route path="/companies" component={CompanyListComponent} />
           <Route path="/cart" component={CartComponent} />
