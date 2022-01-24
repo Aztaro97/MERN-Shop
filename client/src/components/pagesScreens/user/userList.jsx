@@ -10,6 +10,7 @@ import { ExclamationCircleOutlined } from "@ant-design/icons";
 import { listUsers, deleteUser } from "../../../flux/actions/userAction";
 import MainContainer from "../../MainContainer";
 import LoaderComponent from "../../loader";
+import ErrorServerPage from "../ErrorServerPage";
 
 const { confirm } = Modal;
 
@@ -50,8 +51,8 @@ function UserListScreen() {
     <MainContainer>
       {loading ? (
         <LoaderComponent />
-      ) : error ? (
-        <h1>error : {error}</h1>
+      ) : error === "Request failed with status code 500" ? (
+        <ErrorServerPage />
       ) : (
         <UserContainer>
           <h3>{t("all_user_lists")}</h3>

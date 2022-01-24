@@ -78,12 +78,7 @@ export const companyProducts = [
     image:
       "https://s.alicdn.com/@img/imgextra/i4/O1CN01B6xQ7K1FUvBMS2Pe6_!!6000000000491-0-tps-5760-1455.jpg",
   },
-  {
-    profileId: "616c2f5251ee99575c4a524e",
-    title: TranslateContent("marketing"),
-    image:
-      "https://s.alicdn.com/@img/imgextra/i4/O1CN01yknlDM1g9qacghqpt_!!6000000004100-0-tps-1920-220.jpg",
-  },
+
   {
     profileId: "616c2f5251ee99575c4a524e",
     title: TranslateContent("real estate"),
@@ -107,12 +102,6 @@ export const companyProducts = [
     title: TranslateContent("pharmacy"),
     image:
       "https://s.alicdn.com/@img/imgextra/i4/O1CN01B6xQ7K1FUvBMS2Pe6_!!6000000000491-0-tps-5760-1455.jpg",
-  },
-  {
-    profileId: "616c2f5251ee99575c4a524e",
-    title: TranslateContent("marketing"),
-    image:
-      "https://s.alicdn.com/@img/imgextra/i4/O1CN01yknlDM1g9qacghqpt_!!6000000004100-0-tps-1920-220.jpg",
   },
 ];
 

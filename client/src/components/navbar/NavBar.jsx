@@ -17,6 +17,7 @@ import { useTranslation } from "react-i18next";
 import cookies from "js-cookie";
 import SelectLangue from "./SelectLangButton";
 import ToggleMenu from "./toggleMenu";
+import DrawerComponent from "./drawer/drawer";
 
 import "./navbar.css";
 
@@ -31,6 +32,7 @@ function NavBar() {
   const [scrollNav, setScrollNav] = useState(false);
   const [showToggleMenu, setShowToggleMenu] = useState(false);
   const [current, setCurrent] = useState(false);
+  const [showDrawer, setShowDrawer] = useState(false);
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -144,7 +146,7 @@ function NavBar() {
           <NavItem>
             <SelectLangue />
           </NavItem>
-          {userInfo && userInfo.isAdmin && (
+          {/* {userInfo && userInfo.isAdmin && (
             <NavItem>
               <Popover
                 placement="bottomRight"
@@ -156,7 +158,19 @@ function NavBar() {
                 </NavLink>
               </Popover>
             </NavItem>
+          )} */}
+
+          {userInfo && userInfo.isAdmin && (
+            <NavItem>
+              <NavLink>
+                <AiTwotoneSetting
+                  className="icon"
+                  onClick={() => setShowDrawer(!showDrawer)}
+                />
+              </NavLink>
+            </NavItem>
           )}
+
           <NavItem>
             <Popover
               placement="bottomRight"
@@ -222,10 +236,12 @@ function NavBar() {
               )}
             </NavLink>
           </NavItem>
-          {/* <NavItem>
-           
-          </NavItem> */}
+ 
           <ToggleMenu open={showToggleMenu} setOpen={setShowToggleMenu} />
+          <DrawerComponent
+            showDrawer={showDrawer}
+            setShowDrawer={setShowDrawer}
+          />
         </Nav>
       </HeaderTop>
       <BottomHeader scrollNav={scrollNav}>

@@ -37,6 +37,7 @@ import { IoIosCloudDone } from "react-icons/io";
 import { successMessage } from "../../message";
 import LoaderComponent from "../../loader";
 import { scopeData } from "../../../utils/ecommerceData";
+import ErrorServerPage from "../ErrorServerPage";
 
 const { RangePicker } = DatePicker;
 const { Option } = Select;
@@ -124,20 +125,15 @@ function RegisterPage() {
     <MainContainer>
       {loading ? (
         <LoaderComponent />
-      ) : error ? (
-        <h1>{error}</h1>
+      ) : error === "Request failed with status code 500" ? (
+        <ErrorServerPage />
       ) : (
         <Container>
           <CompanyInfo {...formik} />
           {/* <BankInfo /> */}
-          <GalleryPhotos />
-          {/* <div className="row">
-          <Link to="/add-product" className="submittion_btn">
-            <ButtonC style={{ margin: "0 auto" }}>
-              {t("save_and_continue")}
-            </ButtonC>
-          </Link>
-        </div> */}
+          <GalleryPhotos
+            urlImg={company?.urlImg.length > 0 ? company.urlImg : []}
+          />
         </Container>
       )}
     </MainContainer>
@@ -561,14 +557,14 @@ const BankInfo = () => {
   );
 };
 
-const GalleryPhotos = () => {
+const GalleryPhotos = ({ urlImg }) => {
   const [loading, setLoading] = useState(false);
   const [submited, isSubmited] = useState(false);
+  const [fileList, setFileList] = useState([]);
 
   const { t } = useTranslation();
   const { userInfo } = useSelector((state) => state.userLogin);
 
-  const [fileList, setFileList] = useState([]);
   const history = useHistory();
 
   const handleChangeImage = ({ fileList: newFileList }) => {
@@ -621,6 +617,10 @@ const GalleryPhotos = () => {
       console.log(error.message);
     }
   };
+
+  useEffect(() => {
+    urlImg.length > 0 && setFileList(urlImg);
+  }, [urlImg]);
 
   return (
     <Form onSubmit={(e) => handleSendImage(e)}>
@@ -708,11 +708,7 @@ const Header = styled.div`
     font-weight: 700;
     position: relative;
     top: 20px;
-    padding:5px 10px;
-    @media only screen and (max-width: 500px) {
-      display: block;
-      position: initial;
-    }
+    padding: 5px 10px;
   }
 
   & .radio_container {
@@ -726,9 +722,19 @@ const Header = styled.div`
         text-transform: uppercase;
       }
     }
-    @media only screen and (max-width: 500px) {
+  }
+  @media only screen and (max-width: 500px) {
+    height: 100%;
+    padding: 1rem 0;
+    & a {
+      display: inline-block;
+      position: initial;
+      margin-bottom: 10px;
+    }
+    & .radio_container {
       display: block;
       text-align: center;
+      padding: 1rem 0;
     }
   }
 `;

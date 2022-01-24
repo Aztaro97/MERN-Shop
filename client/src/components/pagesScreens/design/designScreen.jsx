@@ -595,12 +595,11 @@ const Banner = styled.section`
     & > * {
       color: #fff;
     }
-    & .para {
-      max-width: 400px;
-    }
+
     & .title {
       color: var(--silver-color);
-    }
+      letter-spacing:1px;
+        }
     & .link {
       text-decoration: none;
       font-size: 1.2rem;
@@ -611,7 +610,7 @@ const Banner = styled.section`
       border: 1px solid var(--silver-color);
       color: var(--silver-color);
       text-align: center;
-      max-width: 140px;
+      max-width: 160px;
       margin-top: 10px;
       &:hover {
         opacity: 0.9;
@@ -626,9 +625,6 @@ const Banner = styled.section`
       padding-left: 1rem;
       & > * {
         margin: 0;
-      }
-      & .para {
-        margin-bottom: 5px;
       }
     }
   }

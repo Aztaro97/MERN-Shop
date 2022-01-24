@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ReactGA from "react-ga";
 import { initGA, PageView } from "./components/Tracking/tracking";
 import { GlobalStyle } from "./globalStyle";
+import Dashboard from "./components/pagesScreens/admin/dashboard";
 
 const HomeComponents = lazy(() =>
   import("./components/pagesScreens/Home/HomeComponents")
@@ -331,7 +332,11 @@ function App() {
           <Route path="/photography" component={PhotographyComponent} />
 
           {/*    PRODUCTION ROUTER   ////////////////// */}
-          <Route path="/production/item/:id" component={ItemDetailsProduction} exact />
+          <Route
+            path="/production/item/:id"
+            component={ItemDetailsProduction}
+            exact
+          />
           <Route
             path="/production/:category"
             component={CAtegoriesItemsProduction}
@@ -350,7 +355,7 @@ function App() {
           {/*    ABOUT ROUTER   ////////////////// */}
           <Route path="/exhibition" component={ExhibitionComponent} />
 
-          {/*////////////////  ADMIN ROUTER  ///////////// */}
+          {/*  ADMIN ROUTER  ///////////// */}
           <Route path="/admin/orderlist" component={OrderListComponent} exact />
           <Route path="/admin/userlist" component={UserListComponent} exact />
           <Route
@@ -388,6 +393,7 @@ function App() {
             component={AddNewProduction}
             exact
           />
+          <Route path="/admin" component={Dashboard} exact />
 
           {/* ///////////////////  CONTRACT TERMS AND PRIVACY POLICY   ////////////////// */}
           <Route path="/terms" component={TermsScreen} exact />

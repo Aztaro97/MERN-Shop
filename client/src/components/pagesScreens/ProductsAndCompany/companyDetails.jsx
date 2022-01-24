@@ -77,7 +77,7 @@ function CompanyDetails() {
                     <div>
                       <h1 className="title" style={{marginTop:"0px !important"}} >{company.name}</h1>
                       <p>{company.scopeBusiness}</p>
-                      <hr />F
+                      <hr />
                     </div>
                     <div>
                       <h1 className="title">about us</h1>
