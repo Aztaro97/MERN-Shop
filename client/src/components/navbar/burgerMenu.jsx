@@ -7,6 +7,7 @@ import {
 } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import "./navbar.css"
 
 function BurgerMenu({ userInfo }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -71,7 +72,11 @@ function BurgerMenu({ userInfo }) {
               </Link>
             </li>
             <li>
-              <Link to="/digital-marketing" className="sub_link" onClick={handleClose}>
+              <Link
+                to="/digital-marketing"
+                className="sub_link"
+                onClick={handleClose}
+              >
                 Marketing
               </Link>
             </li>
@@ -125,6 +130,7 @@ function BurgerMenu({ userInfo }) {
 
 const MenuContainer = styled(Menu)`
   height: 100vh;
+  opacity: 1;
   & .navigation {
     display: flex;
     flex-direction: column;
@@ -183,6 +189,8 @@ const MenuContainer = styled(Menu)`
       }
     }
   }
+
+
 
   @media only screen and (min-width: 768px) {
     display: none !important;
