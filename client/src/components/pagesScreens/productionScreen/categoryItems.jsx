@@ -13,7 +13,7 @@ function CategoryItems() {
   const categoryName = params.category;
 
   const { loading, error, articles } = useSelector(
-    (state) => state.ListCategorieArticles
+    (state) => state.articlesList
   );
 
   const dataProducts = [

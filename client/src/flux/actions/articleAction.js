@@ -37,3 +37,18 @@ export const getArticleById = (id) => async (dispatch) => {
     });
   }
 };
+
+export const getAllArticles = () => async (dispatch) => {
+  try {
+    dispatch({
+      type: ARTICLE_LIST_REQUEST,
+    });
+
+    const res = await axios.get("/api/articles");
+    dispatch({ type: ARTICLE_LIST_SUCCESS, payload: res.data });
+  } catch (error) {
+    dispatch({
+      type: ARTICLE_LIST_FAIL,
+    });
+  }
+};

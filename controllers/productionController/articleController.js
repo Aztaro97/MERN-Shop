@@ -80,6 +80,20 @@ const CreateNewArticle = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc GET all articles
+//  @route GET /API/articles
+// @access  PUBLIC
+const getAllArticles = asyncHandler(async (req, res) => {
+  try {
+    const articles = await Articles.find();
+    if (articles) {
+      return res.status(200).json(articles);
+    }
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+
 // @desc    GET ARTICLE BY ID
 // @route   GET /api/article/:id
 // @access  PUBLIC
@@ -105,4 +119,9 @@ const getArticleByCategory = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { CreateNewArticle, getArticleById, getArticleByCategory };
+module.exports = {
+  CreateNewArticle,
+  getArticleById,
+  getArticleByCategory,
+  getAllArticles,
+};

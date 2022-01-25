@@ -78,7 +78,7 @@ const reducer = combineReducers({
   advertising: advertisingReducer,
   adsDelete: adsDeleteReducer,
   userMessage: messageReducer,
-  ListCategorieArticles: ArticlesReducer,
+  articlesList: ArticlesReducer,
   articleDetails: ArticlesDetailsReducer,
 });
 

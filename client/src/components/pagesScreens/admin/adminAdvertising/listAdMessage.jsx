@@ -76,6 +76,8 @@ const Container = styled.div`
   & .title {
     font-size: 1.5em;
     text-align: center;
+    color: var(--silver-color);
+    margin-bottom:2rem;
   }
 `;
 

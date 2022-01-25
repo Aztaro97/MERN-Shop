@@ -87,11 +87,11 @@ function DrawerComponent({ showDrawer, setShowDrawer }) {
               Add new Production
             </Link>
           </Menu.Item>
-          {/* <Menu.Item key="9">
-            <Link to="/admin/productlist" onClick={onClose} className="link">
-              List All Productions
+          <Menu.Item key="9">
+            <Link to="/admin/articles" onClick={onClose} className="link">
+              List All articles
             </Link>
-          </Menu.Item> */}
+          </Menu.Item>
         </SubMenu>
         <SubMenu key="sub5" icon={<AppstoreOutlined />} title="Advertising">
           <Menu.Item key="10">

@@ -101,6 +101,9 @@ const CAtegoriesItemsProduction = lazy(() =>
 const AddNewProduction = lazy(() =>
   import("./components/pagesScreens/productionScreen/formRegisterProduct")
 );
+const ListArticles = lazy(() =>
+  import("./components/pagesScreens/productionScreen/listArticles")
+);
 
 // ////////////////  Printing Component    /////////////////////
 const PrintingComponent = lazy(() =>
@@ -391,6 +394,11 @@ function App() {
           <Route
             path="/admin/new-production"
             component={AddNewProduction}
+            exact
+          />
+          <Route
+            path="/admin/articles"
+            component={ListArticles}
             exact
           />
           <Route path="/admin" component={Dashboard} exact />
