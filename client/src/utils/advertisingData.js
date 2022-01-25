@@ -141,6 +141,11 @@ export const BusinessList = [
     value: "photography",
     icon: <MdCamera />,
   },
+  {
+    title: TranslateContent("others"),
+    value: "others",
+    icon: <MdCamera />,
+  },
 ];
 
 export const listPartnerLogo = [
