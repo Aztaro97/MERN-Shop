@@ -15,6 +15,7 @@ import { useHistory } from "react-router-dom";
 import { listOrders, deliverOrder } from "../../../flux/actions/orderAction";
 // import MainContainer from "../../MainContainer";
 import Loader from "../../loader";
+import MainContainer from "../../MainContainer";
 
 const { Option } = Select;
 
@@ -48,7 +49,7 @@ function OrdersListScreen() {
     }
   }, [dispatch, history, userInfo]);
   return (
-    <>
+    <MainContainer>
       <OrderContainer>
         <h3>{t("all_orders_lists")}</h3>
         {loading ? (
@@ -59,12 +60,12 @@ function OrdersListScreen() {
           <Table>
             <thead>
               <tr>
-                <th>{t("order_number")}</th>
+                {/* <th>{t("order_number")}</th> */}
                 <th>{t("custom_name")}</th>
                 <th>{t("date")}</th>
                 <th>{t("total")}</th>
                 <th>{t("paid")}</th>
-                <th>{t("payment_method")}</th>
+                {/* <th>{t("payment_method")}</th> */}
                 <th>{t("status_order")}</th>
                 <th>{t("detail")}</th>
                 <th>{t("actions")}</th>
@@ -73,7 +74,7 @@ function OrdersListScreen() {
             <tbody>
               {orders.map((order) => (
                 <tr key={order._id}>
-                  <td>{order._id}</td>
+                  {/* <td>{order._id}</td> */}
                   <td>
                     {order.shippingAddress &&
                       order.shippingAddress.firstName +
@@ -97,9 +98,8 @@ function OrdersListScreen() {
                     )}
                   </td>
 
-                  <td>
+                  {/* <td>
                     {order.paymentMethod === "credit" ? (
-                      // order.deliveredAt.substring(0, 10)
                       <div className="payment_credit">
                         <span>{t("credit_card")}</span> <ImCreditCard />
                       </div>
@@ -108,9 +108,8 @@ function OrdersListScreen() {
                         <span>{t("cash_on_delivery")}</span> <FaMoneyBillAlt />
                       </div>
 
-                      // <FaTimesCircle style={{ color: "#ff7979" }} />
                     )}
-                  </td>
+                  </td> */}
 
                   <td>
                     {order.isDelivered ? (
@@ -134,7 +133,7 @@ function OrdersListScreen() {
                     </Link>
                   </td>
                   <td>
-                    <Select
+                    <SelectCustom
                       defaultValue={t("select")}
                       style={{ width: 120 }}
                       onChange={(e) =>
@@ -147,7 +146,7 @@ function OrdersListScreen() {
                       </Option>
                       {/* <Option value="reject">Reject</Option> */}
                       <Option value="delete">{t("delete")}</Option>
-                    </Select>
+                    </SelectCustom>
                   </td>
                 </tr>
               ))}
@@ -155,7 +154,7 @@ function OrdersListScreen() {
           </Table>
         )}
       </OrderContainer>
-    </>
+    </MainContainer>
   );
 }
 
@@ -177,25 +176,26 @@ const Table = styled.table`
   width: 100%;
   & thead {
     & tr {
-      background: var(--orange-color);
+      border-bottom: 2px solid var(--silver-color);
       & th {
         border: 1px solid rgba(0, 0, 0, 0.05);
         padding: 10px;
         text-transform: uppercase;
-        /* font-weight: 700; */
-        color: #fff;
-        font-size: 0.8rem;
+        color: var(--silver-color);
+        font-size: 1rem;
+        letter-spacing: 1px;
       }
     }
   }
   & tbody {
     margin-top: 1rem;
+    padding: 20px 0;
     & tr {
       & td {
         border: 1px solid rgba(0, 0, 0, 0.05);
         padding: 10px;
-        font-size: 0.8rem;
-        /* text-transform: uppercase; */
+        font-size: 1rem;
+        color: var(--silver-color);
       }
     }
   }
@@ -207,6 +207,7 @@ const Table = styled.table`
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 5px;
 
     & p {
       margin-bottom: 0;
@@ -230,29 +231,35 @@ const Table = styled.table`
   }
   .payment_cash {
     background: #b2bec3;
-    padding: 4px 0;
+    padding: 4px;
     & span {
       color: #222;
-      margin-right: 5px;
       text-transform: uppercase;
     }
   }
   .payment_credit {
     background: #2d3436;
-    padding: 4px 0;
+    padding: 4px;
     color: #fff;
     & span {
       color: #fff;
-      margin-right: 5px;
       text-transform: uppercase;
     }
   }
 
   & .view_link {
     text-decoration: none;
-    color: var(--orange-color);
+    color: var(--silver-color);
     & span {
     }
+  }
+`;
+
+const SelectCustom = styled(Select)`
+  & .ant-select-selector {
+    background: transparent !important;
+    color: #fff !important;
+    border: 1px solid var(--silver-color) !important;
   }
 `;
 

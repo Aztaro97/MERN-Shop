@@ -9,6 +9,7 @@ import {
 } from "../../../../flux/actions/advertisingAction/advertisingAction";
 import LoaderComponent from "../../../loader";
 import BodyScreen from "./bodyScreen";
+import MainContainer from "../../../MainContainer"
 
 const ListAdMessage = () => {
   const { userInfo } = useSelector((state) => state.userLogin);
@@ -25,13 +26,15 @@ const ListAdMessage = () => {
   }, [dispatch, userInfo, history]);
 
   return (
-    <Container>
-      <h1 className="title">Messageries</h1>
-      <Grid>
-        <AsideComponent></AsideComponent>
-        <BodyScreen />
-      </Grid>
-    </Container>
+    <MainContainer>
+      <Container>
+        <h1 className="title">Messageries</h1>
+        <Grid>
+          <AsideComponent></AsideComponent>
+          <BodyScreen />
+        </Grid>
+      </Container>
+    </MainContainer>
   );
 };
 

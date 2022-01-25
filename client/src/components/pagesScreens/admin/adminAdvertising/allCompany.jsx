@@ -17,6 +17,7 @@ import { FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { destroyImages } from "../../../../flux/actions/productAction";
 import { Link } from "react-router-dom";
+import MainContainer from "../../../MainContainer";
 const { Option } = Select;
 const { Search } = Input;
 
@@ -55,123 +56,129 @@ const AllCompanyService = () => {
   };
 
   return (
-    <AllCompanyContainer>
-      <h3 className="title">list all Ads</h3>
-      <Row>
-        <Col xs={{ span: 12 }}>
-          <SelectStyling
-            defaultValue="filter by type of Business"
-            style={{ width: 400 }}
-            onChange={handleSelectType}
-          >
-            {BusinessList.map((item, index) => (
-              <Option key={index} value={item.value}>
-                {item.title}
-              </Option>
-            ))}
-          </SelectStyling>
-        </Col>
-        <Col xs={{ span: 12 }}>
-          <Search
-            // bordered={false}
-            style={{ width: "200px" }}
-            placeholder="SEARCH COMPANY"
-            onSearch={(value) => dispatch(searchCompanyName(value))}
-          />
-        </Col>
-      </Row>
-      {loading ? (
-        <LoaderComponent />
-      ) : (
-        <>
-          <Table>
-            <thead>
-              <tr>
-                {/* <th>id</th> */}
-                <th>name</th>
-                <th>email</th>
-                <th>Telephone</th>
-                <th>address</th>
+    <MainContainer>
+      <AllCompanyContainer>
+        <h3 className="title">list all Ads</h3>
+        <Row>
+          <Col xs={{ span: 12 }}>
+            <SelectStyling
+              defaultValue="filter by type of Business"
+              style={{ width: 400 }}
+              onChange={handleSelectType}
+            >
+              {BusinessList.map((item, index) => (
+                <Option key={index} value={item.value}>
+                  {item.title}
+                </Option>
+              ))}
+            </SelectStyling>
+          </Col>
+          <Col xs={{ span: 12 }}>
+            <Search
+              // bordered={false}
+              style={{ width: "200px" }}
+              placeholder="SEARCH COMPANY"
+              onSearch={(value) => dispatch(searchCompanyName(value))}
+            />
+          </Col>
+        </Row>
+        {loading ? (
+          <LoaderComponent />
+        ) : (
+          <>
+            <Table>
+              <thead>
+                <tr>
+                  {/* <th>id</th> */}
+                  <th>name</th>
+                  <th>email</th>
+                  <th>Telephone</th>
+                  <th>address</th>
 
-                <th>company</th>
-                <th>plan</th>
-                <th>Allowed</th>
-                <th>Control</th>
-              </tr>
-            </thead>
-            <tbody>
-              {listAdService?.length > 0 &&
-                listAdService.map((ad) => (
-                  <tr key={ad._id}>
-                    <td>{ad.fullName}</td>
-                    <td>
-                      {" "}
-                      <a href={`mailto:${ad.email}`}> {ad.email} </a>{" "}
-                    </td>
-                    <td>
-                      {" "}
-                      <a href={`tel:${ad.telephone}`}> {ad.telephone}</a>{" "}
-                    </td>
-                    <td>
-                      <ul>
-                        <li>
-                          <span>city:</span> {ad.city}
-                        </li>
-                        <li>
-                          <span>region:</span> {ad.region}
-                        </li>
-                        <li>
-                          <span>country:</span> {ad.country}
-                        </li>
-                      </ul>
-                    </td>
-                    <td>
-                      <ul>
-                        <li>
-                          <span>name:</span> {ad.companyName}
-                        </li>
-                        <li>
-                          <span>Bussiness:</span> {ad.typeBusiness}
-                        </li>
-                        <li className="about">
-                          <span>about:</span> {ad.about}
-                        </li>
-                      </ul>
-                    </td>
-                    <td>
-                      <ul>
-                        <li>Type: {ad.typePlan}</li>
-                        {ad.isPaid && <li>Price: {ad.totalPrice} dh</li>}
-                      </ul>
-                    </td>
-                    <td>
-                      <Switch
-                        onChange={(check) => handleToggleChange(ad._id, check)}
-                        checked={ad.allow}
-                      />
-                    </td>
-                    <td>
-                      <div className="control_container">
-                        <Link to={`/admin/advertising/edit/${ad._id}`}>
-                          <FaRegEdit className="icon edit" />
-                        </Link>
-                        <Popconfirm
-                          title="Are you sure to delete ?"
-                          okText="Yes"
-                          onConfirm={() => handleDelete(ad._id, ad.serviceUrl)}
-                          cancelText="No"
-                        >
-                          <MdDelete className="icon delete" />
-                        </Popconfirm>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-            </tbody>
-          </Table>
-        </>
-      )}
-    </AllCompanyContainer>
+                  <th>company</th>
+                  <th>plan</th>
+                  <th>Allowed</th>
+                  <th>Control</th>
+                </tr>
+              </thead>
+              <tbody>
+                {listAdService?.length > 0 &&
+                  listAdService.map((ad) => (
+                    <tr key={ad._id}>
+                      <td>{ad.fullName}</td>
+                      <td>
+                        {" "}
+                        <a href={`mailto:${ad.email}`}> {ad.email} </a>{" "}
+                      </td>
+                      <td>
+                        {" "}
+                        <a href={`tel:${ad.telephone}`}> {ad.telephone}</a>{" "}
+                      </td>
+                      <td>
+                        <ul>
+                          <li>
+                            <span>city:</span> {ad.city}
+                          </li>
+                          <li>
+                            <span>region:</span> {ad.region}
+                          </li>
+                          <li>
+                            <span>country:</span> {ad.country}
+                          </li>
+                        </ul>
+                      </td>
+                      <td>
+                        <ul>
+                          <li>
+                            <span>name:</span> {ad.companyName}
+                          </li>
+                          <li>
+                            <span>Bussiness:</span> {ad.typeBusiness}
+                          </li>
+                          <li className="about">
+                            <span>about:</span> {ad.about}
+                          </li>
+                        </ul>
+                      </td>
+                      <td>
+                        <ul>
+                          <li>Type: {ad.typePlan}</li>
+                          {ad.isPaid && <li>Price: {ad.totalPrice} dh</li>}
+                        </ul>
+                      </td>
+                      <td>
+                        <Switch
+                          onChange={(check) =>
+                            handleToggleChange(ad._id, check)
+                          }
+                          checked={ad.allow}
+                        />
+                      </td>
+                      <td>
+                        <div className="control_container">
+                          <Link to={`/admin/advertising/edit/${ad._id}`}>
+                            <FaRegEdit className="icon edit" />
+                          </Link>
+                          <Popconfirm
+                            title="Are you sure to delete ?"
+                            okText="Yes"
+                            onConfirm={() =>
+                              handleDelete(ad._id, ad.serviceUrl)
+                            }
+                            cancelText="No"
+                          >
+                            <MdDelete className="icon delete" />
+                          </Popconfirm>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </Table>
+          </>
+        )}
+      </AllCompanyContainer>
+    </MainContainer>
   );
 };
 

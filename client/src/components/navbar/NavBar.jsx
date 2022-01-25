@@ -177,7 +177,6 @@ function NavBar() {
               trigger={screenWidth > 768 ? "hover" : "click"}
               content={
                 <ListNavigation>
-                  
                   {userInfo && userInfo.typeUser === "merchant" && (
                     <>
                       <li>
