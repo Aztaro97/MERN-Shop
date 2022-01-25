@@ -21,7 +21,7 @@ function DrawerComponent({ showDrawer, setShowDrawer }) {
 
   return (
     <DrawerComtainer
-      title="Basic Drawer"
+      title="ADMIN DASHBOARD MENU"
       placement="left"
       closable={false}
       onClose={onClose}
@@ -48,25 +48,27 @@ function DrawerComponent({ showDrawer, setShowDrawer }) {
             </Link>
           </Menu.Item> */}
         </SubMenu>
-        <SubMenu key="sub2" icon={<AppstoreOutlined />} title="Products">
-          <Menu.Item key="3">
-            <Link to="/admin/productlist" onClick={onClose} className="link">
-              List All Items
-            </Link>
-          </Menu.Item>
-          {/* <Menu.Item key="4">
+
+        <SubMenu key="sub2" icon={<AppstoreOutlined />} title="E-COMMERCE">
+          <Menu.ItemGroup key="g1" title="Products">
+            <Menu.Item key="3">
+              <Link to="/admin/productlist" onClick={onClose} className="link">
+                List All Items
+              </Link>
+            </Menu.Item>
+            {/* <Menu.Item key="4">
             <Link to="/admin/productlist" onClick={onClose} className="link">
               List All Items
             </Link>
           </Menu.Item> */}
-        </SubMenu>
-        <SubMenu key="sub3" icon={<AppstoreOutlined />} title="Orders">
-          <Menu.Item key="5">
-            <Link to="/admin/orderlist" onClick={onClose} className="link">
-              List Orders
-            </Link>
-          </Menu.Item>
-          {/* <Menu.Item key="6">
+          </Menu.ItemGroup>
+          <Menu.ItemGroup key="g2" title="Orders">
+            <Menu.Item key="5">
+              <Link to="/admin/orderlist" onClick={onClose} className="link">
+                List Orders
+              </Link>
+            </Menu.Item>
+            {/* <Menu.Item key="6">
             <Link to="/admin/productlist" onClick={onClose} className="link">
               List All Items
             </Link>
@@ -76,7 +78,9 @@ function DrawerComponent({ showDrawer, setShowDrawer }) {
               List All Items
             </Link>
           </Menu.Item> */}
+          </Menu.ItemGroup>
         </SubMenu>
+        
         <SubMenu
           key="sub4"
           icon={<AppstoreOutlined />}
@@ -115,6 +119,17 @@ function DrawerComponent({ showDrawer, setShowDrawer }) {
 const DrawerComtainer = styled(Drawer)`
   & .link {
     text-decoration: none;
+    text-transform: capitalize;
+  }
+
+  & .ant-drawer-title {
+    color: var(--orange-color);
+    letter-spacing: 1px;
+    font-weight: 700;
+  }
+
+  & .ant-menu-title-content {
+    text-transform: uppercase;
   }
 `;
 
