@@ -403,6 +403,7 @@ const BottomHeader = styled.div`
         text-decoration: none !important;
         text-transform: uppercase;
         font-weight: 700 !important;
+        letter-spacing: 1px;
         &:hover {
           background: var(--orange-color) !important;
           color: var(--white-color);
@@ -474,12 +475,19 @@ const BottomHeader = styled.div`
       padding: 7px 1.5rem !important;
     }
 
-    @media only screen and (max-width: 810px) {
-      & .link.create_shop {
-        padding: 7px 7px !important;
+    @media only screen and (max-width: 875px) {
+      & .nav_item {
+        & .link {
+          padding: 20px 8px !important;
+          letter-spacing: 0px;
+        }
+        & .link.add_ads,
+        & .link.create_shop {
+          padding: 7px 10px !important;
+        }
       }
     }
-    @media only screen and (max-width: 767px) {
+    @media only screen and (max-width: 768px) {
       display: none;
     }
   }

@@ -80,7 +80,7 @@ function DrawerComponent({ showDrawer, setShowDrawer }) {
           </Menu.Item> */}
           </Menu.ItemGroup>
         </SubMenu>
-        
+
         <SubMenu
           key="sub4"
           icon={<AppstoreOutlined />}
@@ -120,6 +120,7 @@ const DrawerComtainer = styled(Drawer)`
   & .link {
     text-decoration: none;
     text-transform: capitalize;
+    letter-spacing: 1px;
   }
 
   & .ant-drawer-title {
@@ -127,8 +128,9 @@ const DrawerComtainer = styled(Drawer)`
     letter-spacing: 1px;
     font-weight: 700;
   }
-
+  
   & .ant-menu-title-content {
+    letter-spacing: 1px;
     text-transform: uppercase;
   }
 `;

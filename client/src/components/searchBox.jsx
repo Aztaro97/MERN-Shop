@@ -73,7 +73,7 @@ const Form = styled.form`
     }
   }
 
-  @media only screen and (max-width: 920px) {
+  @media only screen and (max-width: 954px) {
     gap: 2px;
     & input {
       width: 120px;

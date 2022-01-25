@@ -160,15 +160,6 @@ const MenuContainer = styled(Menu)`
     }
   }
 
-  /* & .dropdown {
-    display: block;
-    & .subMenu {
-        display: block;
-        visibility: visible;
-        opacity: 1;
-      }
-  } */
-
   & .subMenu {
     position: relative !important;
     left: -10px;
