@@ -145,52 +145,52 @@ export const BusinessList = [
 
 export const listPartnerLogo = [
   {
-    profileId: "61683883bb90435d90a1bd24",
+    profileId: "61efef99ad6d2f0016acf9eb",
     companyName: "code loccol",
     logoUrl: "https://via.placeholder.com/150",
   },
   {
-    profileId: "61683883bb90435d90a1bd24",
+    profileId: "61efef99ad6d2f0016acf9eb",
     companyName: "Noon",
     logoUrl: "https://via.placeholder.com/150",
   },
   {
-    profileId: "61683883bb90435d90a1bd24",
+    profileId: "61efef99ad6d2f0016acf9eb",
     companyName: "au 79 code",
     logoUrl: "https://via.placeholder.com/150",
   },
   {
-    profileId: "61683883bb90435d90a1bd24",
+    profileId: "61efef99ad6d2f0016acf9eb",
     companyName: "tabalat",
     logoUrl: "https://via.placeholder.com/150",
   },
   {
-    profileId: "61683883bb90435d90a1bd24",
+    profileId: "61efef99ad6d2f0016acf9eb",
     companyName: "au 79 code",
     logoUrl: "https://via.placeholder.com/150",
   },
   {
-    profileId: "61683883bb90435d90a1bd24",
+    profileId: "61efef99ad6d2f0016acf9eb",
     companyName: "au 79 code",
     logoUrl: "https://via.placeholder.com/150",
   },
   {
-    profileId: "61683883bb90435d90a1bd24",
+    profileId: "61efef99ad6d2f0016acf9eb",
     companyName: "au 79 code",
     logoUrl: "https://via.placeholder.com/150",
   },
   {
-    profileId: "61683883bb90435d90a1bd24",
+    profileId: "61efef99ad6d2f0016acf9eb",
     companyName: "au 79 code",
     logoUrl: "https://via.placeholder.com/150",
   },
   {
-    profileId: "61683883bb90435d90a1bd24",
+    profileId: "61efef99ad6d2f0016acf9eb",
     companyName: "au 79 code",
     logoUrl: "https://via.placeholder.com/150",
   },
   {
-    profileId: "61683883bb90435d90a1bd24",
+    profileId: "61efef99ad6d2f0016acf9eb",
     companyName: "au 79 code",
     logoUrl: "https://via.placeholder.com/150",
   },
@@ -330,27 +330,27 @@ export const ThirdBannerData = [
 
 export const servicePicture = [
   {
-    profileId: "6162a11181e69950ac0d7e0d",
+    profileId: "61efef99ad6d2f0016acf9eb",
     imgUrl: "https://via.placeholder.com/150",
   },
   {
-    profileId: "6162a11181e69950ac0d7e0d",
+    profileId: "61efef99ad6d2f0016acf9eb",
     imgUrl: "https://via.placeholder.com/150",
   },
   {
-    profileId: "6162a11181e69950ac0d7e0d",
+    profileId: "61efef99ad6d2f0016acf9eb",
     imgUrl: "https://via.placeholder.com/150",
   },
   {
-    profileId: "6162a11181e69950ac0d7e0d",
+    profileId: "61efef99ad6d2f0016acf9eb",
     imgUrl: "https://via.placeholder.com/150",
   },
   {
-    profileId: "6162a11181e69950ac0d7e0d",
+    profileId: "61efef99ad6d2f0016acf9eb",
     imgUrl: "https://via.placeholder.com/150",
   },
   {
-    profileId: "6162a11181e69950ac0d7e0d",
+    profileId: "61efef99ad6d2f0016acf9eb",
     imgUrl: "https://via.placeholder.com/150",
   },
 ];
