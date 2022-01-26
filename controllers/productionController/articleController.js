@@ -37,7 +37,6 @@ const CreateNewArticle = asyncHandler(async (req, res) => {
     const imgUrlList = [];
 
     const files = req.files.imgfiles;
-    console.log(req.files);
     if (files.length == 0) {
       return res.status(400).json({ msg: "No files were uploaded." });
     } else {
@@ -76,7 +75,7 @@ const CreateNewArticle = asyncHandler(async (req, res) => {
     const newArticle = await article.save();
     res.status(201).json({ newArticle, imgUrlList });
   } catch (error) {
-    console.log(error);
+    throw new Error(error.message)
   }
 });
 
@@ -119,9 +118,69 @@ const getArticleByCategory = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc    UPDATE ARTICLE BY ID
+// @route   PUT /api/article/:id
+// @access  PUBLIC
+const updateArticle = asyncHandler(async (req, res) => {
+  const { name, description, price, category, type, capacity, size, color } =
+    req.body;
+
+  const article = await Articles.findById(req.params.id);
+
+  if (article) {
+    article.name = name;
+    article.description = description;
+    article.price = price;
+    article.category = category;
+    article.type = type;
+    article.capacity = capacity;
+    article.size = size;
+    article.color = color;
+
+    const updatedArticle = await article.save();
+    res.status(200).json({ updatedArticle });
+  } else {
+    return res.status(400).json({ msg: "Article not found" });
+  }
+});
+
+// @desc    DELETE ARTICLE BY ID
+// @route   DELETE /api/article/:id
+// @access  ADMIN
+const deleteArticle = asyncHandler(async (req, res) => {
+  try {
+    const article = await Articles.findById(req.params.id);
+    if (article) {
+
+      const images = article.imgUrl
+
+      for (const image of images) {
+        const { public_id } = image;
+        if (!public_id)
+          return res.status(400).json({ msg: "No images Selected" });
+  
+        cloudinary.v2.uploader.destroy(public_id, async (err, result) => {
+          if (err) throw err;
+        });
+      }
+
+
+
+      article.remove();
+      res.status(200).json({ msg: "Article deleted" });
+    } else {
+      res.status(400).json({ msg: "Article not found" });
+    }
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+
 module.exports = {
   CreateNewArticle,
   getArticleById,
   getArticleByCategory,
   getAllArticles,
+  updateArticle,
+  deleteArticle,
 };

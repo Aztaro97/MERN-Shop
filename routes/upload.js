@@ -25,9 +25,9 @@ const parser = multer({ storage: storage });
 
 // we will upload image on cloudinary
 cloudinary.config({
-  cloud_name: "tarositeweb",
-  api_key: "474848126984384",
-  api_secret: "BWFY6C_AE8a2zI0YHfcVC8wsrjM",
+  cloud_name: "au79code",
+  api_key: "321974213445477",
+  api_secret: "iTj-DqanW5gHnssNfSmMdYLRMwI",
 });
 
 const removeTmp = (path) => {

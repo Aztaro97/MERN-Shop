@@ -1,4 +1,4 @@
-import { Col, InputNumbInputNumber, er, Row, InputNumber } from "antd";
+import { Col, Row, InputNumber } from "antd";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import MainContainer from "../../MainContainer";

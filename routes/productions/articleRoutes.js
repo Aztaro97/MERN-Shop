@@ -4,12 +4,14 @@ const {
   CreateNewArticle,
   getArticleById,
   getArticleByCategory,
-  getAllArticles
+  getAllArticles,
+  updateArticle,
+  deleteArticle
 } = require("../../controllers/productionController/articleController");
 const { protect, admin } = require("../../middleware/authMiddleware");
 
 router.route("/").post(protect, CreateNewArticle).get(getAllArticles);
-router.route("/:id").get(getArticleById);
+router.route("/:id").get(getArticleById).put(updateArticle).delete(deleteArticle);
 router.route("/filter/:category").get(getArticleByCategory);
 
 module.exports = router;

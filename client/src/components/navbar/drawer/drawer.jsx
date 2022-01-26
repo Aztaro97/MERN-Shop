@@ -5,6 +5,8 @@ import {
   MailOutlined,
   AppstoreOutlined,
   UserOutlined,
+  ShoppingCartOutlined,
+  NotificationOutlined,
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -49,7 +51,7 @@ function DrawerComponent({ showDrawer, setShowDrawer }) {
           </Menu.Item> */}
         </SubMenu>
 
-        <SubMenu key="sub2" icon={<AppstoreOutlined />} title="E-COMMERCE">
+        <SubMenu key="sub2" icon={<ShoppingCartOutlined />} title="E-COMMERCE">
           <Menu.ItemGroup key="g1" title="Products">
             <Menu.Item key="3">
               <Link to="/admin/productlist" onClick={onClose} className="link">
@@ -97,10 +99,10 @@ function DrawerComponent({ showDrawer, setShowDrawer }) {
             </Link>
           </Menu.Item>
         </SubMenu>
-        <SubMenu key="sub5" icon={<AppstoreOutlined />} title="Advertising">
+        <SubMenu key="sub5" icon={<NotificationOutlined />} title="Advertising">
           <Menu.Item key="10">
             <Link to="/admin/advertising" onClick={onClose} className="link">
-              All
+              All ads
             </Link>
           </Menu.Item>
         </SubMenu>
@@ -128,7 +130,7 @@ const DrawerComtainer = styled(Drawer)`
     letter-spacing: 1px;
     font-weight: 700;
   }
-  
+
   & .ant-menu-title-content {
     letter-spacing: 1px;
     text-transform: uppercase;

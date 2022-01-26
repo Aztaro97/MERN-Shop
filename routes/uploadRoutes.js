@@ -11,9 +11,9 @@ const Product = require("../models/productModel")
 
 //   CONFIGURATION DE CLOUDINARY
 cloudinary.config({ 
-  cloud_name: 'au79code', 
-  api_key: '321974213445477', 
-  api_secret: 'iTj-DqanW5gHnssNfSmMdYLRMwI' 
+  cloud_name: "au79code",
+  api_key: "321974213445477",
+  api_secret: "iTj-DqanW5gHnssNfSmMdYLRMwI",
 });
 
 async function uploadToCloudinary(locaFilePath) {
