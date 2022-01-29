@@ -297,13 +297,13 @@ function FormRegisterProduct() {
 }
 
 const FormContainer = styled.form`
-  height: calc(65vh - 160px);
   background: var(--dark-light-color);
   padding: 3rem 2rem;
   & .title {
     color: var(--silver-color);
     text-align: center;
     letter-spacing: 1px;
+    text-transform: capitalize;
   }
 
   & ._btn {
