@@ -30,7 +30,7 @@ function ListArticles() {
   const history = useHistory();
 
   const deleteArticle = async (id) => {
-    const {data} = await axios.delete(`/api/articles/${id}`);
+    const { data } = await axios.delete(`/api/articles/${id}`);
     if (data.msg) {
       dispatch(getAllArticles());
     }
