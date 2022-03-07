@@ -332,7 +332,7 @@ const BottomHeader = styled.div`
   justify-content: space-between;
   z-index: 99;
 
-  background: #ececec;
+  background: var(--white-color);
 
   & .navigation {
     display: flex;
