@@ -235,7 +235,7 @@ const Container = styled.div`
   }
 
   & .card_summary {
-    background: var(--dark-light-color);
+    background: var(--bg-color);
     color: #fff;
     padding: 20px;
     & .title {

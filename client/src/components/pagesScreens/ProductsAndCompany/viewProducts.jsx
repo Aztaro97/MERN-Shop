@@ -105,7 +105,7 @@ const ViewProducts = () => {
                         truncateText="…"
                         className="card_desc"
                       />
-                      <hr />
+                      {/* <hr /> */}
                       <div className="price_container">
                         <p className="price">
                           aed <span>{product.price}</span>
@@ -148,7 +148,7 @@ const ViewProducts = () => {
 
 const Container = styled.div`
   margin-top: 20px;
-  padding: 20px 0;
+  padding: 20px 10px;
   & .save_btn {
     display: block;
     width: 200px;
@@ -170,7 +170,8 @@ const Card = styled.div`
   border-radius: 10px;
   width: 100%;
   padding: 20px;
-  background: var(--silver-color);
+  // background: var(--silver-color);
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   & img {
     display: block;
     width: 100%;
@@ -190,9 +191,12 @@ const Card = styled.div`
       font-size: 1rem;
       color: var(--dark-color);
     }
-    & p {
-      color: var(--dark-color);
+    & .card_desc {
+      color: var(--dark-light-color);
       margin-bottom: 0;
+      font-weight: 400;
+      text-transform: capitalize;
+      font-size: 1rem;
     }
     & hr {
       outline: none;
