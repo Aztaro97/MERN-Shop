@@ -160,8 +160,6 @@ export const Drop = styled.div`
 
 export const Form = styled.form``;
 
-
-
 export const UploadIcon = styled.div`
   width: 100%;
   height: 100%;
@@ -205,6 +203,7 @@ export const Ul = styled.ul`
 `;
 
 export const Container = styled.div`
+  margin: 2rem 0;
   padding: 2rem 0;
-  background: var(--dark-light-color);
+  background: var(--bg-color);
 `;

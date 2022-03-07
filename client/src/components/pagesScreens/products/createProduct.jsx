@@ -650,7 +650,7 @@ const FormRight = ({
               <Col xs={{ span: 24 }}>
                 <Label>Add value for size</Label>
               </Col>
-              <Col  xs={{ span: 24 }}>
+              <Col xs={{ span: 24 }}>
                 <Card style={{ border: ".8px solid #c58787" }}>
                   <div>
                     <Drop>
@@ -1169,18 +1169,16 @@ const CountryDropdownCustomer = styled(CountryDropdown)`
   padding: 10px;
   display: block;
   margin-bottom: 1rem;
-  background: var(--dark-color);
-  color: var(--silver-color);
+  background: transparent;
+  color: var(--dark-color);
   width: 100%;
   &:focus {
     outline: none;
     border: 1px solid var(--dark-color);
-    color: var(--white-color);
-    background: var(--dark-color);
+    color: var(--dark-color);
   }
   &:focus-visible {
-    color: var(--silver-color);
-    background: var(--dark-color);
+    color: var(--dark-color);
   }
 `;
 const RegionDropdownCustomer = styled(RegionDropdown)`
@@ -1188,18 +1186,16 @@ const RegionDropdownCustomer = styled(RegionDropdown)`
   padding: 10px;
   display: block;
   margin-bottom: 1rem;
-  background: var(--dark-color);
-  color: var(--silver-color);
+  background: transparent;
+  color: var(--dark-color);
   width: 100%;
   &:focus {
     outline: none;
     border: 1px solid var(--dark-color);
     color: var(--white-color);
-    background: var(--dark-color);
   }
   &:focus-visible {
-    color: var(--silver-color);
-    background: var(--dark-color);
+    color: var(--dark-color);
   }
 `;
 

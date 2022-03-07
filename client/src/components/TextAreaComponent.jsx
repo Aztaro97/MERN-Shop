@@ -36,6 +36,7 @@ const TextAreaStyling = styled.textarea`
   padding: 5px 11px;
   font-size: 0.7rem;
   resize: none;
+  background: transparent;
 
   &:focus {
     outline: none;

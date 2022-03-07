@@ -138,7 +138,7 @@ function NavBar() {
       <HeaderTop scrollNav={scrollNav}>
         <Logo to="/">
           <img src={Logo_SVG} alt="" width="auto" height="auto" />{" "}
-          <span>au 79 code</span>
+          <span>Kassoua</span>
         </Logo>
         {/* <Lang href="/" onClick={handleChangeLang} >{t("language")}</Lang> */}
 

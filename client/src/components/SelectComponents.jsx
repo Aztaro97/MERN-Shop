@@ -37,19 +37,18 @@ function SelectCOmponents({
 
 const SelectE = styled.select`
   text-transform: uppercase;
-  color: var(--silver-color);
+  color: var(--dark-color);
   outline: none;
   border-radius: 5px;
   transition: all 0.3s;
-  background: transparent ;
+  background: transparent !important;
   width: 100%;
   min-width: 0;
-  color: var(--silver-color);
   cursor: pointer;
   padding: 5px 11px;
   font-size: 0.7rem;
   height: 2.5rem;
-  border: 2px solid var(--silver-color);
+  border: 1px solid var(--silver-color);
   letter-spacing: 2px;
 
   &:hover {
@@ -59,14 +58,12 @@ const SelectE = styled.select`
   &:focus {
     outline: none;
     box-shadow: var(--box-shadow-value);
-    background: var(--dark-color);
   }
 `;
 
 const OptionE = styled.option`
   font-size: 1rem;
   cursor: pointer;
-  background: var(--dark-color);
 
   &:hover {
     border: none;
