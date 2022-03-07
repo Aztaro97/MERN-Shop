@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
-export const LandingStyling = styled.section`
-  max-width: var(--max-width);
+export const LandingStyling = styled.div`
   margin: 0 auto;
   /* overflow-x: hidden; */
   & .landing_overlay {
@@ -10,7 +9,7 @@ export const LandingStyling = styled.section`
     align-items: flex-start;
     justify-content: end;
     color: #fff;
-    height: 400px;
+    height: 600px;
     cursor: pointer;
     @media only screen and (max-width: 768px) {
       height: 200px;

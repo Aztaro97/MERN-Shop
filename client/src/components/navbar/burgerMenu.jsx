@@ -7,7 +7,7 @@ import {
 } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import "./navbar.css"
+import "./navbar.css";
 
 function BurgerMenu({ userInfo }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -32,83 +32,21 @@ function BurgerMenu({ userInfo }) {
             Home
           </Link>
         </li>
-        <li className="nav__item dropdown">
-          <Link to="/#services" className="link" onClick={handleShowSubMEnu}>
-            Services{" "}
-            {showDropDown ? <RiArrowDownSLine /> : <RiArrowRightSLine />}
+
+        <li className="nav__item">
+          <Link to="/products" className="link">
+            Shop
           </Link>
-          <ul className="subMenu">
-            <li>
-              <Link to="/design" className="sub_link" onClick={handleClose}>
-                Design
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/photography"
-                className="sub_link"
-                onClick={handleClose}
-              >
-                Photography
-              </Link>
-            </li>
-            <li>
-              <Link to="/printing" className="sub_link" onClick={handleClose}>
-                Printing Press
-              </Link>
-            </li>
-            <li>
-              <Link to="/exhibition" className="sub_link" onClick={handleClose}>
-                Exhibition Management
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/programming"
-                className="sub_link"
-                onClick={handleClose}
-              >
-                Programming
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/digital-marketing"
-                className="sub_link"
-                onClick={handleClose}
-              >
-                Marketing
-              </Link>
-            </li>
-            <li>
-              <Link to="/production" className="sub_link" onClick={handleClose}>
-                Production
-              </Link>
-            </li>
-            <li>
-              <Link to="/pos" className="sub_link" onClick={handleClose}>
-                POS
-              </Link>
-            </li>
-          </ul>
         </li>
         <li className="nav__item">
-          <Link to="/about" className="link" onClick={handleClose}>
-            About
+          <Link to="/companies" className="link">
+            companies
           </Link>
         </li>
+
         <li className="nav__item">
           <Link to="/contact-us" className="link" onClick={handleClose}>
             Contact
-          </Link>
-        </li>
-        <li className="nav__item">
-          <Link
-            to="/advertising/register"
-            className="link border_link"
-            onClick={handleClose}
-          >
-            Add Ads
           </Link>
         </li>
 
@@ -171,6 +109,7 @@ const MenuContainer = styled(Menu)`
     left: -10px;
     list-style: none;
     margin: 0;
+    background: var(--silver-color);
     visibility: ${({ showDropDown }) => (showDropDown ? "visible" : "hidden")};
     opacity: ${({ showDropDown }) => (showDropDown ? 1 : 0)};
     display: ${({ showDropDown }) => (showDropDown ? "block" : "none")};
@@ -189,8 +128,6 @@ const MenuContainer = styled(Menu)`
       }
     }
   }
-
-
 
   @media only screen and (min-width: 768px) {
     display: none !important;

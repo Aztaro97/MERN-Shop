@@ -18,15 +18,15 @@ function Tabulation() {
   const { error: errorCraftman } = useSelector((state) => state.craftmanList);
 
   return (
-    <MainContainer>
-      {errorCompany === "Request failed with status code 500" ||
-      errorCraftman === "Request failed with status code 500" ? (
-        <ErrorServerPage />
-      ) : (
-        <>
-          <LandingPage />
+    <>
+      <LandingPage />
+      <MainContainer>
+        {errorCompany === "Request failed with status code 500" ||
+        errorCraftman === "Request failed with status code 500" ? (
+          <ErrorServerPage />
+        ) : (
           <Tab>
-            <TabsE defaultActiveKey="1" centered >
+            <TabsE defaultActiveKey="1" centered>
               <TabPane
                 tab={
                   <span>
@@ -57,9 +57,9 @@ function Tabulation() {
               </TabPane>
             </TabsE>
           </Tab>
-        </>
-      )}
-    </MainContainer>
+        )}
+      </MainContainer>
+    </>
   );
 }
 
@@ -67,7 +67,7 @@ const Tab = styled.div`
   /* height: ; */
   display: flex;
   justify-content: center;
-  padding:2rem 0;
+  padding: 2rem 0;
   /* padding: 4rem 0; */
   & .ant-tabs-top {
     width: 100%;

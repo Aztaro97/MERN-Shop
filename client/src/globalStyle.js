@@ -15,7 +15,7 @@ export const GlobalStyle = createGlobalStyle`
         margin: 0;
         padding: 0;
         width: 100%;
-        background: #ececec;
+        background: #fff;
         
         /* background:  linear-gradient(90deg, rgba(33,33,33,0.8) 100%, rgba(33,33,33,1) 100%), url("/img/logo_img.jpg"); */
         background-repeat: no-repeat;

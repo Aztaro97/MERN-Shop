@@ -152,6 +152,7 @@ const FormComponent = ({ userInfo }) => {
             placeholder={`${t("company_name_placeholder")}  ( ${t(
               "arabic"
             )} ) `}
+            lang="ar"
             value={companyName_ar}
             onChange={(e) => setCompanyName_ar(e.target.value)}
           />
@@ -193,6 +194,7 @@ const FormComponent = ({ userInfo }) => {
             placeholder={`${t("about_company_placeholder")}  ( ${t(
               "arabic"
             )} ) `}
+            lang="ar"
             value={about_ar}
             onChange={(e) => setAbout_ar(e.target.value)}
           />
@@ -350,6 +352,7 @@ const FormComponent = ({ userInfo }) => {
 
 const CardText = styled.div`
   padding: 20px;
+  color: var(--dark-color);
   & ul {
     list-style: none;
     padding: 0;
@@ -358,7 +361,6 @@ const CardText = styled.div`
 `;
 
 const Container = styled.div`
-  background-color: var(--dark-light-color);
   padding: 3rem;
   margin-bottom: 40px;
   /* position: relative; */
@@ -369,7 +371,7 @@ const Container = styled.div`
     margin-bottom: 14px;
     margin-top: 1rem;
     font-weight: 700;
-    color: var(--white-color);
+    color: var(--dark-color);
   }
   & h3,
   h4 {
@@ -392,7 +394,7 @@ const IconStyling = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--silver-color);
+  color: var(--dark-color);
   & .icon {
     font-size: 1.5rem;
   }
@@ -406,10 +408,10 @@ const InputStyling = styled.input`
   width: 100%;
   outline: none;
   border: none;
-  background: var(--dark-color);
+  background: transparent;
   border: 1px solid var(--silver-color);
   padding: 5px 10px;
-  color: var(--white-color);
+  color: var(--dark-color);
   &:focus {
     color: var(--silver-color);
   }
@@ -417,34 +419,35 @@ const InputStyling = styled.input`
 const TextAreaStyling = styled.textarea`
   width: 100%;
   outline: none;
-  background: var(--dark-color);
+  background: transparent;
   border: 1px solid var(--silver-color);
   padding: 4px 10px;
-  color: var(--white-color);
+  color: var(--dark-color);
   resize: none;
   &:focus {
-    color: var(--silver-color);
+    color: var(--dark-color);
   }
   &::placeholder {
-    color: var(--silver-color);
+    color: var(--dark-color);
   }
 `;
 
 const SelectStyling = styled(Select)`
-  background-color: red !important;
+  color: var(--dark-color);
+
   & > * {
     text-transform: capitalize !important;
   }
 
   & .ant-select-selector {
-    background: var(--dark-color) !important;
     border: 1px solid var(--silver-color) !important;
-    color: var(--white-color) !important;
+    color: var(--dark-color) !important;
   }
 `;
 
 const CountryDropdownStyling = styled(CountryDropdown)`
-  background: var(--dark-color);
+  background: transparent;
+  color: var(--dark-color);
   border: 1px solid var(--silver-color);
   width: 100%;
   padding: 5px 10px;
@@ -453,11 +456,12 @@ const CountryDropdownStyling = styled(CountryDropdown)`
   &:focus {
     outline: none;
     border: none;
-    color: var(--silver-color);
+    color: var(--dark-color);
   }
 `;
 const RegionDropdownStyling = styled(RegionDropdown)`
-  background: var(--dark-color);
+  color: var(--dark-color);
+  background: transparent;
   border: 1px solid var(--silver-color);
   padding: 5px 10px;
   display: block;
@@ -465,7 +469,7 @@ const RegionDropdownStyling = styled(RegionDropdown)`
   &:focus {
     outline: none;
     border: none;
-    color: var(--silver-color);
+    color: var(--dark-color);
   }
 `;
 

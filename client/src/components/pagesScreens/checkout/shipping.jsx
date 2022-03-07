@@ -375,7 +375,7 @@ const CheckBox = styled(CheckBoxC)`
 `;
 
 const ContainerCart = styled.div`
-  background: var(--dark-color);
+  background: var(--bg-color);
   padding: 2rem;
   height: 100%;
   & hr {
@@ -486,24 +486,24 @@ const Card = styled.div`
 `;
 
 const CountryDropdownCustom = styled(CountryDropdown)`
-  color: var(--slider-color);
+  color: var(--dark-color);
   padding: 5px 11px;
-  border: 1px solid #ffffff34;
+  border: 1px solid var(--dark-color);
   outline: none;
   border-radius: 5px;
   transition: all 0.3s;
-  background: var(--dark-color);
+  background: transparent;
   letter-spacing: 2px;
   width: 100%;
   height: 2.5rem;
   &:focus {
     outline: none;
-    background: var(--dark-color);
+    background: transparent;
     color: var(--white-color);
   }
   &:focus-visible {
     outline: none;
-    background: var(--dark-color);
+    background: transparent;
     color: var(--silver-color);
   }
   @media only screen and (max-width: 768px) {
@@ -515,19 +515,19 @@ const CountryDropdownCustom = styled(CountryDropdown)`
 `;
 
 const RegionDropdownCustom = styled(RegionDropdown)`
-  color: var(--slider-color);
+  color: var(--dark-color);
   padding: 5px 11px;
-  border: 1px solid #ffffff34;
+  border: 1px solid var(--dark-color);
   outline: none;
   border-radius: 5px;
   transition: all 0.3s;
-  background: var(--dark-color);
+  background: transparent;
   letter-spacing: 2px;
   width: 100%;
   height: 2.5rem;
   &:focus {
     outline: none;
-    background: var(--dark-color);
+    background: transparent;
     color: var(--silver-color);
   }
   &:focus-visible {

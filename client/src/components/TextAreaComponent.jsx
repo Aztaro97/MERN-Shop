@@ -28,11 +28,10 @@ function TextAreaComponent({
 }
 
 const TextAreaStyling = styled.textarea`
-  border: 1px solid #ffffff34;
+  border: 1px solid var(--dark-color);
   outline: none;
   border-radius: 5px;
   transition: all 0.3s;
-  background: var(--dark-color);
   letter-spacing: 2px;
   padding: 5px 11px;
   font-size: 0.7rem;
@@ -40,11 +39,11 @@ const TextAreaStyling = styled.textarea`
 
   &:focus {
     outline: none;
-    background: var(--dark-color);
-    color: var(--white-color);
+    background: transparent;
+    color: var(--dark-color);
   }
   &::placeholder {
-    color: var(--silver-color);
+    color: var(--dark-color);
   }
 `;
 

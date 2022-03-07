@@ -73,8 +73,8 @@ const ViewProducts = () => {
                   key={index}
                   xs={{ span: 24 }}
                   sm={{ span: 12 }}
-                  md={{ span: 8 }}
-                  lg={{ span: 6 }}
+                  md={{ span: 6 }}
+                  lg={{ span: 4 }}
                 >
                   <Card>
                     <img
@@ -170,7 +170,7 @@ const Card = styled.div`
   border-radius: 10px;
   width: 100%;
   padding: 20px;
-  background: var(--dark-light-color);
+  background: var(--silver-color);
   & img {
     display: block;
     width: 100%;
@@ -188,10 +188,10 @@ const Card = styled.div`
       text-transform: uppercase;
       margin: 0.3rem 0;
       font-size: 1rem;
-      color: var(--silver-color);
+      color: var(--dark-color);
     }
     & p {
-      color: var(--silver-color);
+      color: var(--dark-color);
       margin-bottom: 0;
     }
     & hr {
@@ -202,7 +202,7 @@ const Card = styled.div`
       margin: 0.3rem;
     }
     & .price {
-      color: #49c4d3;
+      color: var(--orange-color);
       margin-bottom: 0.6rem;
     }
     & .price_container {
@@ -212,7 +212,7 @@ const Card = styled.div`
       text-transform: uppercase;
       & .old_price {
         text-decoration-line: line-through;
-        color: var(--silver-color);
+        color: var(--dark-light-color);
       }
     }
   }

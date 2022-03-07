@@ -3,7 +3,6 @@ import { Modal, Radio, Space } from "antd";
 
 export const Border = styled.div`
   border: 1px solid #ffffff34;
-  padding: 1rem;
   border-radius: 10px;
   margin-bottom: 2rem;
 
@@ -81,7 +80,6 @@ export const Border = styled.div`
 `;
 
 export const Form = styled.form`
-  padding: 2rem;
   border: 1px solid #ffffff34;
   /* border-radius: 10px; */
 
@@ -205,7 +203,7 @@ export const Form = styled.form`
 `;
 
 export const ContainerCart = styled.div`
-  background: var(--dark-color);
+  background: var(--bg-color);
   padding: 2rem;
   height: 100%;
 

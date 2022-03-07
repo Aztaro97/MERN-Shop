@@ -39,8 +39,9 @@ const Tab = styled.div`
 `;
 
 const TabsE = styled(Tabs)`
-  color: var(--silver-color);
+  color: var(--dark-color);
   font-weight: 700;
+  text-transform: uppercase;
 
   & .ant-tabs-tab {
     margin: 0 10px;

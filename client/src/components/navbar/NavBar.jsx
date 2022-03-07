@@ -197,13 +197,7 @@ function NavBar() {
                       </li>
                     </>
                   )}
-                  {userInfo && (
-                    <li>
-                      <Link className="link" to="/advertising/profile">
-                        My Ads
-                      </Link>
-                    </li>
-                  )}
+
                   {!userInfo && (
                     <li>
                       <Link to="/auth" className="link">
@@ -267,56 +261,15 @@ function NavBar() {
               Home
             </Link>
           </li>
-          <li className="nav_item dropdown">
-            <Link to="/services" className="link">
-              Services <RiArrowDownSLine />
+
+          <li className="nav_item">
+            <Link to="/products" className="link">
+              Shop
             </Link>
-            <ul className="sub_menu">
-              <li>
-                <Link to="/design" className="sub_link">
-                  Design
-                </Link>
-              </li>
-              <li>
-                <Link to="/photography" className="sub_link">
-                  Photography
-                </Link>
-              </li>
-              <li>
-                <Link to="/printing" className="sub_link">
-                  Printing Press
-                </Link>
-              </li>
-              <li>
-                <Link to="/exhibition" className="sub_link">
-                  Exhibition Management
-                </Link>
-              </li>
-              <li>
-                <Link to="/programming" className="sub_link">
-                  Programming
-                </Link>
-              </li>
-              <li>
-                <Link to="/digital-marketing" className="sub_link">
-                  Marketing
-                </Link>
-              </li>
-              <li>
-                <Link to="/production" className="sub_link">
-                  Production
-                </Link>
-              </li>
-              <li>
-                <Link to="/pos" className="sub_link">
-                  POS
-                </Link>
-              </li>
-            </ul>
           </li>
           <li className="nav_item">
-            <Link to="/about" className="link">
-              About
+            <Link to="/companies" className="link">
+              companies
             </Link>
           </li>
           <li className="nav_item">
@@ -324,11 +277,7 @@ function NavBar() {
               Contact
             </Link>
           </li>
-          <li className="nav_item ">
-            <Link to="/advertising/register" className="link add_ads">
-              Add Ads
-            </Link>
-          </li>
+
           {!userInfo?.company && (
             <li className="nav_item">
               <Link to="/register" className="link create_shop">
@@ -366,7 +315,7 @@ const HeaderTop = styled.div`
   align-items: center;
   width: 100%;
   padding: 1rem 1.5rem;
-  background: #fff;
+  background: #ececec;
   border-bottom: 1px solid #e6e6e6;
   @media only screen and (max-width: 768px) {
     height: 80px;
@@ -383,7 +332,7 @@ const BottomHeader = styled.div`
   justify-content: space-between;
   z-index: 99;
 
-  background: #fff;
+  background: #ececec;
 
   & .navigation {
     display: flex;
@@ -431,7 +380,7 @@ const BottomHeader = styled.div`
         list-style: none;
         padding: 0;
         margin: 0;
-        background: var(--dark-light-color) !important;
+        background: var(--bg-color) !important;
         visibility: hidden;
         opacity: 0;
         display: none;
@@ -512,7 +461,7 @@ const NavItem = styled.li`
 `;
 const NavLink = styled(Link)`
   text-decoration: none;
-  color: var(--silver-color);
+  color: var(--dark-light-color);
   & .icon {
     font-size: 1.5rem;
   }

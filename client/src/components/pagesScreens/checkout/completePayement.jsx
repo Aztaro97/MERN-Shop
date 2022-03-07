@@ -77,7 +77,7 @@ function CompletePayement() {
               </a>
               <h2>COMPLETE PAYEMENT</h2>
             </Header>
-            <Row style={{ padding: "0 10px" }}>
+            <Row gutter={[50, 10]} style={{ padding: "0 10px" }}>
               <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 12 }}>
                 <StripePayment totalPrice={totalPrice} />
               </Col>

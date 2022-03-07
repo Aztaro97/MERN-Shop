@@ -27,19 +27,17 @@ function AdversitingScreen() {
   const lang = i18n.language;
   console.log(lang);
   return (
-    <MainContainer>
+    <Container>
       <Meta title="Welcome to Adversiting" />
       <FirstLandingSlider />
-      <Container>
-        <AdvertisingNavgation lang={lang} />
-        <CompanyShop lang={lang} />
-        <IntroVideoSection lang={lang} />
-        <TypeBusinessSection lang={lang} />
-        <JoiningUsSection />
-        <PartnerSectionLogo lang={lang} />
-        <ServicesSlider lang={lang} />
-      </Container>
-    </MainContainer>
+      <AdvertisingNavgation lang={lang} />
+      <CompanyShop lang={lang} />
+      <IntroVideoSection lang={lang} />
+      <TypeBusinessSection lang={lang} />
+      <JoiningUsSection />
+      <PartnerSectionLogo lang={lang} />
+      <ServicesSlider lang={lang} />
+    </Container>
   );
 }
 
@@ -586,7 +584,7 @@ const ServicesSlider = ({ lang }) => {
 
 const ServiceStyling = styled.section`
   padding: 0 1rem;
-  background: var(--dark-light-color);
+  background: var(--bg-color);
   & .title {
     text-align: center;
     text-transform: uppercase;
@@ -637,7 +635,6 @@ const ServiceStyling = styled.section`
 
 const PartnerLogoStyling = styled.section`
   padding: 0 1rem;
-  background: var(--dark-color);
   & .title {
     text-align: center;
     text-transform: uppercase;
@@ -689,7 +686,7 @@ const PartnerLogoStyling = styled.section`
 `;
 
 const JoiningUsStyling = styled.section`
-  background: var(--dark-light-color);
+  background: var(--bg-color);
   & .title {
     text-align: center;
     letter-spacing: 1px;
@@ -745,7 +742,7 @@ const JoiningUsStyling = styled.section`
     border-radius: 5px;
     text-decoration: none;
     &:hover {
-      opacity: .9;
+      opacity: 0.9;
     }
   }
   @media only screen and (max-width: 768px) {
@@ -758,7 +755,7 @@ const NavStyling = styled.section`
   margin: 0 auto;
   /* margin-top: 1rem; */
   width: 100%;
-  background: var(--dark-light-color);
+  background: var(--bg-color);
   & ._row {
     margin-bottom: 2rem;
     & .search-input {
@@ -787,11 +784,11 @@ const NavStyling = styled.section`
     &:hover {
       transform: scale(1.1);
       & .card_body {
-        background: var(--dark-color);
+        background: var(--white-color);
         & .icon {
           color: var(--white-color);
-          filter: brightness(0) saturate(100%) invert(74%) sepia(7%)
-            saturate(77%) hue-rotate(182deg) brightness(87%) contrast(81%);
+          filter: brightness(0) saturate(100%) invert(17%) sepia(1%)
+            saturate(0%) hue-rotate(139deg) brightness(98%) contrast(90%);
         }
       }
 
@@ -809,7 +806,7 @@ const NavStyling = styled.section`
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      background: var(--dark-color);
+      background: var(--white-color);
       transition: background 0.2s ease-in;
       padding: 40px 10px;
       & .icon {
@@ -819,15 +816,15 @@ const NavStyling = styled.section`
         transition: color 0.3s ease-in-out;
         width: 50px;
         height: 50px;
-        filter: brightness(0) saturate(100%) invert(71%) sepia(84%)
-          saturate(5063%) hue-rotate(20deg) brightness(88%) contrast(85%);
+        filter: brightness(0) saturate(100%) invert(17%) sepia(1%) saturate(0%)
+          hue-rotate(139deg) brightness(98%) contrast(90%);
         @media only screen and (max-width: 768px) {
           width: 50px;
           height: 50px;
         }
       }
       & .title {
-        color: var(--orange-color);
+        color: var(--dark-color);
         text-transform: capitalize;
         font-size: 1rem;
         transition: color 0.1s ease-in-out;
@@ -864,7 +861,6 @@ const NavStyling = styled.section`
 `;
 
 const Container = styled.div`
-  max-width: 1400px;
   margin: 0 auto;
 
   & section {
@@ -877,7 +873,7 @@ const Container = styled.div`
 `;
 
 const IntroVideoStyling = styled.section`
-  background: var(--dark-light-color);
+  background: var(--bg-color);
   & .title {
     text-align: center;
     text-transform: uppercase;

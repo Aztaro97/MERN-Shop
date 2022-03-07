@@ -57,6 +57,7 @@ const Tab = styled.div`
 const TabsE = styled(Tabs)`
   color: var(--silver-color);
   font-weight: 700;
+  text-transform: uppercase;
   width: 100%;
 
   & .ant-tabs-tab {

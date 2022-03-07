@@ -60,7 +60,7 @@ const CompanyInfo = () => {
         <Container>
           {company && (
             <Row gutter={[40, 50]}>
-              <Col xs={{ span: 24 }} md={{ span: 12 }}>
+              <Col xs={{ span: 24 }} md={{ span: 12 }} lg={12}>
                 <div>
                   <h1 style={{ marginTop: 0 }}>{company.name}</h1>
                   <p>{company.scopeBusiness}</p>
@@ -157,7 +157,7 @@ const CompanyInfo = () => {
                   </div>
                 )}
               </Col>
-              <Col xs={{ span: 24 }} md={{ span: 12 }}>
+              <Col xs={{ span: 24 }} md={{ span: 12 }} lg={12}>
                
                 <Slider {...settings} arrows={false}>
                   {company.urlImg &&
@@ -176,7 +176,6 @@ const CompanyInfo = () => {
   );
 };
 const Container = styled.div`
-  max-width: var(--max-width);
   margin: 0 auto;
   padding: 4rem 1rem;
   & .first_img {

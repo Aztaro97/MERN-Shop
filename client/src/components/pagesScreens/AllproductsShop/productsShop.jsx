@@ -153,8 +153,8 @@ const ViewProducts = ({ match }) => {
                   <Col
                     xs={{ span: 12 }}
                     sm={{ span: 12 }}
-                    md={{ span: 8 }}
-                    lg={{ span: 6 }}
+                    md={{ span: 6 }}
+                    lg={{ span: 4 }}
                   >
                     <div key={index} style={{ width: "100%" }}>
                       <ProductItems product={product} />

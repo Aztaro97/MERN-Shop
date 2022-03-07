@@ -31,31 +31,29 @@ const Input = styled.input`
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  color: #ffffffcf;
+  color: var(--dark-light-color);
   list-style: none;
   width: 100%;
   min-width: 0;
   padding: 5px 11px;
   font-size: 0.7rem;
   height: 2.5rem;
-  border: 1px solid #ffffff34;
+  border: 1px solid var(--dark-light-color);
   outline: none;
   border-radius: 5px;
   transition: all 0.3s;
-  background: var(--dark-color);
+  background: transparent;
   letter-spacing: 2px;
 
   &:focus {
     outline: none;
-    background: var(--dark-color);
     color: var(--white-color);
   }
   &:focus-visible {
-    color: var(--silver-color);
-    background: var(--dark-color);
+    color: var(--dark-color);
   }
   &::placeholder {
-    color: var(--silver-color);
+    color: var(--dark-color);
   }
 
   @media only screen and (max-width: 900px) {

@@ -647,7 +647,7 @@ const GalleryPhotos = ({ urlImg }) => {
             </Upload>
           </ImgCrop>
 
-          <p style={{ fontSize: ".8rem", color: "var(--silver-color)" }}>
+          <p style={{ fontSize: ".8rem", color: "var(--dark-color)" }}>
             {" "}
             {t("cover_photo")}
           </p>
@@ -694,7 +694,7 @@ const UploadIcon = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--silver-color);
+  background: var(--dark-color);
 `;
 
 const Header = styled.div`
@@ -702,9 +702,9 @@ const Header = styled.div`
   width: 100%;
 
   & a {
-    border: 1px solid var(--silver-color);
+    border: 1px solid var(--dark-color);
     text-decoration: none;
-    color: var(--silver-color);
+    color: var(--dark-color);
     font-weight: 700;
     position: relative;
     top: 20px;
@@ -716,9 +716,9 @@ const Header = styled.div`
     justify-content: center;
     align-items: center;
     & .radio_group {
-      color: var(--silver-color);
+      color: var(--dark-color);
       & .ant-radio-wrapper {
-        color: var(--silver-color);
+        color: var(--dark-color);
         text-transform: uppercase;
       }
     }
@@ -740,7 +740,6 @@ const Header = styled.div`
 `;
 
 const Container = styled.div`
-  background: var(--dark-light-color);
   padding: 2rem;
 
   & .submittion_btn {
@@ -759,13 +758,13 @@ const Form = styled.form`
     text-transform: uppercase;
     font-size: 1rem;
     font-weight: 700;
-    color: var(--silver-color);
+    color: var(--dark-color);
   }
   & .card {
     border: 0.4px solid var(--siilver-color);
     padding: 1rem 2rem;
     border-radius: 15px;
-    background: var(--dark-color);
+    background: var(--silver-color);
 
     & .grid {
       display: grid;
@@ -837,7 +836,7 @@ const Form = styled.form`
           padding: 0.6rem;
           font-size: 2px;
           background: var(--orange-color);
-          color: white;
+          color: --dark-light-color;
           min-width: 3.12rem;
           text-align: center;
           height: 100%;
@@ -848,7 +847,7 @@ const Form = styled.form`
           padding: 0 10px;
           outline: none;
           border: 2px solid var(--orange-color);
-          background: var(--dark-color);
+          background: transparent;
           /* border-radius: 0 5px 5px 0; */
           font-size: 0.7rem;
           height: 2.5rem;
@@ -865,7 +864,7 @@ const Form = styled.form`
     & .ant-select-selector {
       background: transparent !important;
       border: 1px solid #ffffff34 !important;
-      color: var(--silver-color) !important;
+      color: var(--dark-color) !important;
       &:focus {
         border: 1px solid var(--orange-color);
       }
@@ -873,11 +872,11 @@ const Form = styled.form`
 
     & .ant-select-selection-item {
       background: var(--orange-color) !important;
-      color: var(--white-color);
+      color: var(--dark-light-color);
       border: 1px solid #ffffff34 !important;
       border-radius: 5px;
       & svg {
-        color: var(--white-color);
+        color: var(--dark-light-color);
       }
     }
   }
@@ -892,12 +891,12 @@ const TextArea = styled.textarea`
   width: 100%;
   padding-left: 0.4rem;
   padding-top: 0.5rem;
-  color: var(--silver-color);
+  color: var(--dark-color);
 
   &:focus {
-    color: var(--white-color);
+    color: var(--dark-light-color);
     /* box-shadow: 0 0 0 2px #c58787; */
-    /* border-color: var(--white-color); */
+    /* border-color: var(--dark-light-color); */
   }
 `;
 
@@ -915,14 +914,14 @@ const Ul = styled.ul`
 
     & p {
       text-transform: uppercase;
-      color: var(--silver-color);
+      color: var(--dark-color);
       font-weight: 700;
       margin-bottom: 0;
       margin-right: 2rem;
     }
 
     & .delete_icon {
-      color: var(--silver-color);
+      color: var(--dark-color);
       cursor: pointer;
       &:hover {
         color: #9c1717;
@@ -956,18 +955,18 @@ const DatePickerStyling = styled(DatePicker)`
 const RangePickerStyling = styled(RangePicker)`
   min-width: 200px;
   background: transparent;
-  color: var(--silver-color);
+  color: var(--dark-color);
   &.ant-picker:hover {
     border-color: var(--orange-color) !important ;
-    color: var(--silver-color);
+    color: var(--dark-color);
   }
   &.ant-picker-focused {
-    border-color: var(--silver-color) !important ;
+    border-color: var(--dark-color) !important ;
     box-shadow: none;
-    color: var(--silver-color);
+    color: var(--dark-color);
   }
   & .ant-picker-input > input {
-    color: var(--silver-color);
+    color: var(--dark-color);
   }
 `;
 

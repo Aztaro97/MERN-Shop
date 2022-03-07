@@ -91,8 +91,8 @@ function CraftManList() {
                     <Col
                       xs={{ span: 12 }}
                       sm={{ span: 12 }}
-                      md={{ span: 8 }}
-                      lg={{ span: 6 }}
+                      md={{ span: 6 }}
+                      lg={{ span: 4 }}
                       key={index}
                     >
                       <CardComponent user={user} />

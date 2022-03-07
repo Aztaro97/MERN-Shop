@@ -258,7 +258,7 @@ const ProductDetails = ({ product, setShowModal }) => {
 };
 
 const Container = styled.div`
-  background: var(--dark-light-color);
+  background: var(--bg-color);
   padding: 1rem;
 
   /* ***********    */

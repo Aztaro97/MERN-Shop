@@ -52,10 +52,7 @@ const FirstLandingSlider = () => {
                 <span>We</span>are the best e-commerce companies in dubai, uae.
               </h1>
 
-              <p>
-               
-Create an online store with the leading eCommerce platform
-              </p>
+              <p>Create an online store with the leading eCommerce platform</p>
 
               <Link className="btn_register" to="/register">
                 Get Your Commercial page Free

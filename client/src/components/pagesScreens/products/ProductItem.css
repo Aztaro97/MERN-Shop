@@ -1,7 +1,7 @@
 /* ***********   MODAL  STYLING    *************88 */
 .ant-modal-body {
   padding: 20px !important;
-  background: var(--dark-light-color);
+  background: var(--bg-color);
 }
 .ant-modal-body div {
   /* padding: 20px !important; */

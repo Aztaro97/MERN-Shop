@@ -158,8 +158,9 @@ const Container = styled.div`
 
   & ._card {
     padding: 10px;
-    background: var(--dark-light-color);
     margin-bottom: 2rem;
+    box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
+      rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
     & ._status {
       display: flex;
       align-items: center;
@@ -180,7 +181,7 @@ const Container = styled.div`
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 10px;
         padding: 10px !important;
-        background: var(--dark-color);
+        background: var(--bg-color);
       }
 
       & .product_name {
