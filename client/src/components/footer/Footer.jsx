@@ -180,7 +180,6 @@ function FooterScrren() {
 }
 
 const FooterContainer = styled.footer`
-  max-width: var(--max-width);
   margin: 0 auto;
   background: radial-gradient(
       circle,

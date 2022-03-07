@@ -347,7 +347,6 @@ function NavBar() {
 }
 
 const HeaderContainer = styled.header`
-  max-width: var(--max-width);
   margin: 0 auto !important;
 
   /* position: ${({ scrollNav }) =>
@@ -366,8 +365,9 @@ const HeaderTop = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 1rem 2rem;
+  padding: 1rem 1.5rem;
   background: #fff;
+  border-bottom: 1px solid #e6e6e6;
   @media only screen and (max-width: 768px) {
     height: 80px;
     padding: 0 0.7rem;
@@ -383,8 +383,7 @@ const BottomHeader = styled.div`
   justify-content: space-between;
   z-index: 99;
 
-  background: ${({ scrollNav }) =>
-    scrollNav ? "var(--silver-color)" : "var(--silver-color)"};
+  background: #fff;
 
   & .navigation {
     display: flex;
