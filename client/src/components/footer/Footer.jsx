@@ -42,42 +42,42 @@ function FooterScrren() {
           <h3 className="footer-heading">Our Services</h3>
           <ul className="footer-group">
             <li className="footer-item">
-              <Link to="/design" className="link">
+              <Link to="/#" className="link">
                 Design
               </Link>
             </li>
             <li className="footer-item">
-              <Link to="/photography" className="link">
+              <Link to="/#" className="link">
                 Photography
               </Link>
             </li>
             <li className="footer-item">
-              <Link to="/printing" className="link">
+              <Link to="/#" className="link">
                 Printing Press
               </Link>
             </li>
             <li className="footer-item">
-              <Link to="/exhibition" className="link">
+              <Link to="/#" className="link">
                 Exhibition Management
               </Link>
             </li>
             <li className="footer-item">
-              <Link to="/programming" className="link">
+              <Link to="/#" className="link">
                 Programming
               </Link>
             </li>
             <li className="footer-item">
-              <Link to="/marketing" className="link">
+              <Link to="/#" className="link">
                 Marketing
               </Link>
             </li>
             <li className="footer-item">
-              <Link to="/production" className="link">
+              <Link to="/#" className="link">
                 Production
               </Link>
             </li>
             <li className="footer-item">
-              <Link to="/pos" className="link">
+              <Link to="/#" className="link">
                 POS
               </Link>
             </li>
@@ -97,35 +97,48 @@ function FooterScrren() {
               </a>
             </li>
             <li className="footer-item">
-              <a href="tel:+97142839983" className="link">
-                <FaPhoneAlt /> +971 4 2839983
+              <a href="tel:+971524655728" className="link">
+                <FaPhoneAlt /> +971 52 4655728
               </a>
             </li>
             <li className="footer-item">
-              <a href="tel:+971503088810" className="link">
-                <FaPhoneAlt /> +971 50 3088810
+              <a href="tel:+971524655728" className="link">
+                <FaPhoneAlt /> +971 52 4655728
               </a>
             </li>
             <li className="footer-item">
-              <a href="mailTo:au79code.info@gmail.com" className="link">
-                <BiEnvelope /> au79code.info@gmail.com
+              <a href="mailTo:aztaro97@gmail.com" className="link">
+                <BiEnvelope /> aztaro97@gmail.com
               </a>
             </li>
           </ul>
         </div>
         <div className="collumn">
-          <h3 className="footer-heading">au79code</h3>
+          <h3 className="footer-heading">Kassoua</h3>
           <ul className="footer-group">
             <li className="footer-item">
               <Link to="/" className="link">
                 Home
               </Link>
             </li>
+
             <li className="footer-item">
-              <Link to="/about" className="link">
-                About us
+              <Link to="/products" className="link">
+                Shop
               </Link>
             </li>
+            <li className="footer-item">
+              <Link to="/companies" className="link">
+                Companies
+              </Link>
+            </li>
+            <li className="footer-item">
+              <Link to="/contact-us" className="link">
+                Contact us
+              </Link>
+            </li>
+
+
             <li className="footer-item">
               <Link to="/private-policy" className="link">
                 Privacy Policy

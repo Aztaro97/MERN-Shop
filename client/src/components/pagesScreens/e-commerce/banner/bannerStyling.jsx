@@ -12,8 +12,9 @@ export const LandingStyling = styled.section`
     height: 500px;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover;
+    background-size: cover !important;
     background-origin: content-box;
+    object-fit: cover !important;
     width: 100%;
     &.bg_img1 {
       background: linear-gradient(0deg, #00000073 0%, rgba(0, 0, 0, 0.459) 0%),
