@@ -694,7 +694,7 @@ const UploadIcon = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--dark-color);
+  background: var(--orange-color);
 `;
 
 const Header = styled.div`
