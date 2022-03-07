@@ -761,10 +761,10 @@ const Form = styled.form`
     color: var(--dark-color);
   }
   & .card {
-    border: 0.4px solid var(--siilver-color);
+    // border: 0.4px solid var(--silver-color);
     padding: 1rem 2rem;
     border-radius: 15px;
-    background: var(--silver-color);
+    background: var(--bg-color);
 
     & .grid {
       display: grid;
@@ -848,6 +848,7 @@ const Form = styled.form`
           outline: none;
           border: 2px solid var(--orange-color);
           background: transparent;
+          color: var(--dark-color);
           /* border-radius: 0 5px 5px 0; */
           font-size: 0.7rem;
           height: 2.5rem;
@@ -855,6 +856,7 @@ const Form = styled.form`
         }
         & .input-field:focus {
           /* box-shadow: 0 0 0 2px var(--orange-color); */
+          color: var(--dark-color);
         }
       }
     }
@@ -863,17 +865,18 @@ const Form = styled.form`
   & .select_input {
     & .ant-select-selector {
       background: transparent !important;
-      border: 1px solid #ffffff34 !important;
+      border: 1px solid var(--dark-color) !important;
       color: var(--dark-color) !important;
       &:focus {
-        border: 1px solid var(--orange-color);
+        border: 1px solid var(--dark-color);
+        box-shadow: none;
       }
     }
 
     & .ant-select-selection-item {
-      background: var(--orange-color) !important;
-      color: var(--dark-light-color);
-      border: 1px solid #ffffff34 !important;
+      background: transparent !important;
+      color: var(--dark-color);
+      border: 1px solid var(--dark-color) !important;
       border-radius: 5px;
       & svg {
         color: var(--dark-light-color);
@@ -884,8 +887,8 @@ const Form = styled.form`
 
 const TextArea = styled.textarea`
   border-radius: 5px;
-  border: 1px solid #ffffff45;
-  background: var(--dark-color);
+  border: 1px solid var(--dark-color);
+  background: transparent;
   outline: none;
   height: 5rem;
   width: 100%;
@@ -894,7 +897,7 @@ const TextArea = styled.textarea`
   color: var(--dark-color);
 
   &:focus {
-    color: var(--dark-light-color);
+    color: var(--dark-color);
     /* box-shadow: 0 0 0 2px #c58787; */
     /* border-color: var(--dark-light-color); */
   }
