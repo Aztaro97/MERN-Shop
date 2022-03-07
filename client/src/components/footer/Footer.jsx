@@ -184,7 +184,7 @@ const FooterContainer = styled.footer`
   background: radial-gradient(
       circle,
       rgba(41, 41, 41, 0.863) 0%,
-      rgba(0, 0, 0, 0.753) 0%
+      rgba(0, 0, 0, 0.9) 0%
     ),
     url("/img/footer/footer.jpg");
   background-size: cover;
@@ -265,7 +265,7 @@ const FooterContainer = styled.footer`
   }
 
   & .text_coypright {
-    color: var(--silver-color);
+    color: #fff;
   }
 
   @media only screen and (max-width: 768px) {
