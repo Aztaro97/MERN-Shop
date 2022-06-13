@@ -7,218 +7,72 @@ import ReactGA from "react-ga";
 import { initGA, PageView } from "./components/Tracking/tracking";
 import { GlobalStyle } from "./globalStyle";
 import Dashboard from "./components/pagesScreens/admin/dashboard";
-
-const HomeComponents = lazy(() =>
-  import("./components/pagesScreens/Home/HomeComponents")
-);
-const CreateProductComponent = lazy(() =>
-  import("./components/pagesScreens/products/createProduct")
-);
-const ProductsShop = lazy(() =>
-  import("./components/pagesScreens/AllproductsShop/productsShop")
-);
-const CategoryProduct = lazy(() =>
-  import("./components/pagesScreens/AllproductsShop/categoriesProducts")
-);
-const EditProductScreen = lazy(() =>
-  import("./components/pagesScreens/ProductsAndCompany/editProductScreen")
-);
-const ProductDetailsScreen = lazy(() =>
-  import("./components/pagesScreens/products/ProductDetailsScreen")
-);
-const MyProductAndCompanyComponent = lazy(() =>
-  import("./components/pagesScreens/ProductsAndCompany/tabs")
-);
-const CartComponent = lazy(() => import("./components/pagesScreens/cart/cart"));
-const ShippingComponenet = lazy(() =>
-  import("./components/pagesScreens/checkout/shipping")
-);
-const ThankComponenet = lazy(() =>
-  import("./components/pagesScreens/checkout/thankPage")
-);
-const RegisterComponenet = lazy(() =>
-  import("./components/pagesScreens/auth/RegisterPage")
-);
-const PayementStep = lazy(() =>
-  import("./components/pagesScreens/checkout/completePayement")
-);
-const CompanyListComponent = lazy(() =>
-  import("./components/pagesScreens/CompanyList/index")
-);
-const EcommerceHomeComponent = lazy(() =>
-  import("./components/pagesScreens/e-commerce/homeECommerce")
-);
-const PaymentCompopnent = lazy(() =>
-  import("./components/pagesScreens/checkout/payment")
-);
-const ListOrderScreen = lazy(() =>
-  import("./components/pagesScreens/orders/ordersScreen")
-);
-const CompleteOrder = lazy(() =>
-  import("./components/pagesScreens/orders/placeOrder")
-);
-const MapScreen = lazy(() =>
-  import("./components/pagesScreens/checkout/googleMap/mapScreen")
-);
-
-// /////////////////   Marketing Component   ///////////////
-const EMarketingComponent = lazy(() =>
-  import("./components/pagesScreens/marketing/eMarketingScreen")
-);
-const OutMarketingComponent = lazy(() =>
-  import("./components/pagesScreens/marketing/outDoorMarketing")
-);
-const DigitalMarketingComponent = lazy(() =>
-  import("./components/pagesScreens/marketing/digital-marketing")
-);
-
-// ////////////////  Design Component    /////////////////////
-const DesignComponent = lazy(() =>
-  import("./components/pagesScreens/design/designScreen")
-);
-
-// ////////////////  PROGRAMMING Component    /////////////////////
-const ProgrammingComponent = lazy(() =>
-  import("./components/pagesScreens/programmingScreen/programmingScreen")
-);
-
-// ////////////////  PHOTOGRAPHY Component    /////////////////////
-const PhotographyComponent = lazy(() =>
-  import("./components/pagesScreens/photographyScreen/photographyScreen")
-);
-
-//        PRODUCTION Component    /////////////////////
-const ProductionHomeComponent = lazy(() =>
-  import("./components/pagesScreens/productionScreen/productionHomeScreen")
-);
-
-const ItemDetailsProduction = lazy(() =>
-  import("./components/pagesScreens/productionScreen/itemDetailsProduct")
-);
-const CAtegoriesItemsProduction = lazy(() =>
-  import("./components/pagesScreens/productionScreen/categoryItems")
-);
-const AddNewProduction = lazy(() =>
-  import("./components/pagesScreens/productionScreen/formRegisterProduct")
-);
-const ListArticles = lazy(() =>
-  import("./components/pagesScreens/productionScreen/listArticles")
-);
-const EditArticle = lazy(() =>
-  import("./components/pagesScreens/productionScreen/editItem")
-);
-
-// ////////////////  Printing Component    /////////////////////
-const PrintingComponent = lazy(() =>
-  import("./components/pagesScreens/printing/printingScreen")
-);
-
-// ////////////////  ABOUT Component    /////////////////////
-const AboutComponent = lazy(() =>
-  import("./components/pagesScreens/AboutScreen/aboutScreen")
-);
-
-const pageNotFound = lazy(() =>
-  import("./components/pagesScreens/pageNotFund")
-);
-const ResetPasswordPage = lazy(() =>
-  import("./components/pagesScreens/resetPasswordPage")
-);
-
-// /////////////////  ADVERSITING COMPONENT  //////////////
-const AdversitingComponent = lazy(() =>
-  import("./components/pagesScreens/adversiting/adversiting")
-);
-const AdversitingAllBrandComponent = lazy(() =>
-  import("./components/pagesScreens/adversiting/allBrand")
-);
-const AdversitingProfileComponent = lazy(() =>
-  import("./components/pagesScreens/adversiting/advertisingProfile")
-);
-// const PartnerRegisterComponent = lazy(() =>
-//   import("./components/pagesScreens/adversiting/partnerRegister")
-// );
-const AdvertisingRegister = lazy(() =>
-  import("./components/pagesScreens/adversiting/partnerRegisterForm")
-);
-const CartAdvertising = lazy(() =>
-  import("./components/pagesScreens/adversiting/cartUploading")
-);
-const BillingPaymentAdvertising = lazy(() =>
-  import("./components/pagesScreens/adversiting/BillingStep")
-);
-const ListAdMessageComponent = lazy(() =>
-  import("./components/pagesScreens/admin/adminAdvertising/listAdMessage")
-);
-const AdThankYouRegister = lazy(() =>
-  import("./components/pagesScreens/adversiting/thankScreen")
-);
-
-const AuthComponents = lazy(() =>
-  import("./components/pagesScreens/auth/authTab")
-);
-const ContactUsComponents = lazy(() =>
-  import("./components/pagesScreens/contact/contact")
-);
+import {
+  AboutComponent,
+  AddNewProduction,
+  CartComponent,
+  CAtegoriesItemsProduction,
+  CompanyListComponent,
+  CompleteOrder,
+  DesignComponent,
+  DigitalMarketingComponent,
+  EcommerceHomeComponent,
+  EditArticle,
+  EditProductScreen,
+  EMarketingComponent,
+  HomeComponents,
+  ItemDetailsProduction,
+  ListArticles,
+  ListOrderScreen,
+  MyProductAndCompanyComponent,
+  OutMarketingComponent,
+  pageNotFound,
+  PayementStep,
+  PaymentCompopnent,
+  PhotographyComponent,
+  PrintingComponent,
+  ProductDetailsScreen,
+  ProductionHomeComponent,
+  ProgrammingComponent,
+  RegisterComponenet,
+  ResetPasswordPage,
+  ShippingComponenet,
+  ThankComponenet,
+  AdThankYouRegister,
+  AdversitingAllBrandComponent,
+  AdversitingComponent,
+  AdversitingProfileComponent,
+  AdvertisingRegister,
+  AllCompanyServiceComponent,
+  AuthComponents,
+  BillingPaymentAdvertising,
+  CartAdvertising,
+  CategoryProduct,
+  ConfirmPaymentMethod,
+  ContactUsComponents,
+  CreateProductComponent,
+  EditAdsService,
+  EditServiceComponent,
+  ExhibitionComponent,
+  ListAdMessageComponent,
+  MyAdsScreen,
+  NewPasswordScreen,
+  OrderDetailsComponent,
+  OrderListComponent,
+  PosComponent,
+  PrivatePolicy,
+  ProductListComponent,
+  ProductsShop,
+  ProfileComponent,
+  TermsScreen,
+  UploadServiceFile,
+  UserListComponent,
+  MapScreen
+} from "./router";
 
 const NavBar = lazy(() => import("./components/navbar/NavBar"));
 const Footer = lazy(() => import("./components/footer/Footer"));
-
-const AllCompanyServiceComponent = lazy(() =>
-  import("./components/pagesScreens/admin/adminAdvertising/allCompany")
-);
-const EditServiceComponent = lazy(() =>
-  import("./components/pagesScreens/admin/adminAdvertising/editService")
-);
-
-const NewPasswordScreen = lazy(() =>
-  import("./components/pagesScreens/newPasswordScreen")
-);
-const PrivatePolicy = lazy(() =>
-  import("./components/pagesScreens/regulationScreen.jsx/privatePolicy")
-);
-const TermsScreen = lazy(() =>
-  import("./components/pagesScreens/regulationScreen.jsx/termsContent")
-);
 const ScrollTop = lazy(() => import("./utils/scrollTop"));
-
-const OrderListComponent = lazy(() =>
-  import("./components/pagesScreens/orders/orderList")
-);
-const OrderDetailsComponent = lazy(() =>
-  import("./components/pagesScreens/orders/orderDetails")
-);
-const UserListComponent = lazy(() =>
-  import("./components/pagesScreens/user/userList")
-);
-const ProductListComponent = lazy(() =>
-  import("./components/pagesScreens/products/productsList")
-);
-const UploadServiceFile = lazy(() =>
-  import("./components/pagesScreens/adversiting/uploadServiceFile")
-);
-const MyAdsScreen = lazy(() =>
-  import("./components/pagesScreens/adversiting/myAdsScreen")
-);
-const ConfirmPaymentMethod = lazy(() =>
-  import("./components/pagesScreens/adversiting/confirmTypePayment")
-);
-const EditAdsService = lazy(() =>
-  import("./components/pagesScreens/adversiting/editAdsService")
-);
-const ProfileComponent = lazy(() =>
-  import("./components/pagesScreens/user/profile/tabs")
-);
-
-//  POS PAGE  /////////////////////////////////
-const PosComponent = lazy(() =>
-  import("./components/pagesScreens/pos/posScreen")
-);
-
-//  POS PAGE  /////////////////////////////////
-const ExhibitionComponent = lazy(() =>
-  import("./components/pagesScreens/exhibition/exhibitionScreen")
-);
 
 function App() {
   useEffect(() => {
@@ -355,10 +209,8 @@ function App() {
           {/*    ABOUT ROUTER   ////////////////// */}
           <Route path="/about" component={AboutComponent} />
 
-          {/*    ABOUT ROUTER   ////////////////// */}
           <Route path="/pos" component={PosComponent} />
 
-          {/*    ABOUT ROUTER   ////////////////// */}
           <Route path="/exhibition" component={ExhibitionComponent} />
 
           {/*  ADMIN ROUTER  ///////////// */}
@@ -399,16 +251,8 @@ function App() {
             component={AddNewProduction}
             exact
           />
-          <Route
-            path="/admin/articles"
-            component={ListArticles}
-            exact
-          />
-          <Route
-            path="/admin/article/:id"
-            component={EditArticle}
-            exact
-          />
+          <Route path="/admin/articles" component={ListArticles} exact />
+          <Route path="/admin/article/:id" component={EditArticle} exact />
           <Route path="/admin" component={Dashboard} exact />
 
           {/* ///////////////////  CONTRACT TERMS AND PRIVACY POLICY   ////////////////// */}
